@@ -1,5 +1,14 @@
 <?php
 	
+	/**
+	 * Plugin requirements (TGMPA) & Bootstrap CMB2
+	 */
+	require_once get_template_directory_uri() . 'inc/class-tgm-plugin-activation.php';
+
+	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~PROPER WAY OF ADDING CHILD THEME CSS FILE ~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
 	function theme_enqueue_styles() {
 		wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
 		
@@ -8,19 +17,13 @@
 		
 	}
 	add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
-	/* ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^~~~~~
-	~~~~PROPER WAY OF ADDING CHILD THEME CSS FILE ~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-
-	
-	
-	
+		
 	/**
-	* Proper way to enqueue JS and IE fixes as of Mar 2015
+	* Proper way to enqueue JS 
 	*/
 	function pegasus_child_bootstrap_js() {
 		
-		//wp_enqueue_script( 'pegasus_custom_js', get_stylesheet_directory_uri() . '/js/octane-custom.js', array(), '', true );
+		wp_enqueue_script( 'pegasus_custom_js', get_stylesheet_directory_uri() . '/js/pegasus-custom.js', array(), '', true );
 		
 		//wp_enqueue_script( 'matchHeight_js', get_stylesheet_directory_uri() . '/js/jquery.matchHeight-min.js', array(), '', true );
 		
