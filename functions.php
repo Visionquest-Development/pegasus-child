@@ -3,7 +3,7 @@
 	/**
 	 * Plugin requirements (TGMPA) & Bootstrap CMB2
 	 */
-	require_once get_template_directory_uri() . 'inc/class-tgm-plugin-activation.php';
+	//require_once get_template_directory_uri() . 'inc/class-tgm-plugin-activation.php';
 
 	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~PROPER WAY OF ADDING CHILD THEME CSS FILE ~~~~
