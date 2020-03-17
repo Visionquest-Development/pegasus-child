@@ -14,18 +14,34 @@
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-
+	body { font-size: 12px !important; }
+	body, p, h1, h2, h3, h4, h5, h6, span, div, b, ul, ul li, ul li a, a {
+		font-family: Arial, Helvetica, sans-serif !important;
+	}
 	/* green */
 	a { color: #7b8f0a ;}
 	a:hover {color:#AEC71E;}
 	h1 { color: rgb(45, 92, 136) !important; }
 	h2 { color: #4b63ab !important; }
-	.breadcrumbs { font-size: 12px; }
+	h2 a { color: #2d5c88; }
+	h2 a:hover { color: #AEC71E; }
+	.breadcrumbs { font-size: 12px; border-bottom: 1px solid #ddd; }
 	.breadcrumbs a { color: #2d5c88; }
 	.btn-primary, .btn-secondary { color: black !important; font-weight: bold; }
 	.widget-title { border: 0; }
 	.card.card-categories {
 		border: 0;
+	}
+
+	.content-item-container:first-child {
+		margin-top: 20px;
+	}
+	.content-item-image img { width: 100%; max-width: 100%; height: auto; }
+	.category .block-inner, .archive .block-inner {
+		background-color: #f9f9f9;
+		padding: 20px;
+		border: 1px solid #ededed;
+		color: #747474;
 	}
 
 	.blog article.block-inner {
@@ -306,42 +322,7 @@
 		width: 40%;
 	}
 
-	/* Gallery */
-
-	.slider {
-		padding: 0;
-		border-radius: 5px;
-		background: #24252a;
-	}
-
-	.no-touch .slider {
-		padding: 0 0 1.25em;
-	}
-
-	.slider__item {
-		width: 100%;
-		padding: 1em;
-	}
-
-	.slider__item img {
-		width: 100%;
-	}
-	/* Flickity page dots */
-
-	.slider .flickity-page-dots {
-		bottom: 20px;
-		opacity: 0;
-		-webkit-transition: opacity .3s;
-		transition: opacity .3s;
-	}
-
-	.no-touch .slider:hover .flickity-page-dots {
-		opacity: 1;
-	}
-
-	.slider .flickity-page-dots .dot {
-		background: #131417;
-	}
+	.slick-p { letter-spacing: 1px; word-wrap: break-word; }
 
 	/* Product meta */
 
@@ -721,6 +702,10 @@
 	.well a:hover { color:#2d5c88;}
 	.twitter-block .well a { color:#fff;}
 
+	.wpb_accordion_header { margin-bottom: 20px !important; text-transform: uppercase !important; font-weight: bold !important; }
+	.ui-accordion-content {
+		background-color: #f6f6f6 !important;
+	}
 
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~SITEMAP~~~~~~~~
@@ -738,7 +723,7 @@
 	}
 	
 	@media only screen and ( min-width: 981px ) {
-		
+		.span3 { width: 25%; padding: 20px; }
 	}
 		
 	@media only screen and (max-width: 980px) {

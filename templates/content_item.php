@@ -19,7 +19,7 @@ endif;
 	<article class="article-<?php the_ID(); ?> block-inner ">
 
 		<div class="content-item-image">
-			<img src="<?php echo pegasus_image_display( 'thumbnail', '', true ); ?>" alt="">
+			<img src="<?php echo pegasus_image_display( 'full', '', false ); ?>" alt="">
 		</div>
 
 		<div class="content-item-wrapper">
