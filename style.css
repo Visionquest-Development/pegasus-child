@@ -15,7 +15,18 @@
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 	
+	.nocomments { display: none; }
 	
+	body {
+		font-family: Droid Sans;
+	}
+	
+	h1, h2, h3, h4, h5 {
+		
+		color: #282828;
+	}
+
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ HEADER ~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
@@ -25,13 +36,60 @@
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ NAVIGATION ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
+	#logo {     
+		height: 175px;
+		width: 220px;
+		margin-top: 17px; 
+	}
 
+	.navbar-brand { visibility: hidden; }
+	
+	.the-nav-cart li a { color: white !important; }
+	.the-nav-cart li a:hover { color: #b58a52; }
 	
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ FOOTER ~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
 	
 	
+	.pegasus-footer { 
+		padding-top: 50px; 
+		background-image: url('/wp-content/uploads/2024/07/footer-bg-img.jpg') !important; 
+		background-size: cover;
+		background-position: center center;
+		background-repeat: no-repeat !important;
+	}
+	footer .widgettitle { color: white; text-align: center; }
+	footer #menu-footer-menu-2 { 
+		flex-direction: row !important; 
+		justify-content: center;
+		margin-bottom: 40px; 
+		margin-top: 30px;
+		font-weight: bold;
+	}
+	footer .list-group-item { 
+		padding: 10px !important; 
+	}
+	footer .list-group-item a { color: #838282 !important;  }
+	footer .current-menu-item a { color: white !important; }
+	footer .footer-social-container { padding-bottom: 50px; }
+	footer .footer-social-container .card, .list-group-item {
+		background-color: transparent !important;
+		border: none !important;
+	}
+	footer .coffee-social { flex-direction: row !important; justify-content: center; }
+	footer .footer-social-container .coffee-social li a {
+		padding: 10px 15px;	
+		margin: 5px;
+		background: #282828;
+		border-radius: 50%;
+		border: 1px solid transparent !important;
+	}
+	footer .footer-social-container .coffee-social li a:hover {
+		background: #b58a52;
+	} 
+	footer #colophon { color: #a6a6a6; text-align: center; padding-bottom: 40px; }
+	footer #colophon a { color: #a6a6a6; }
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 	
@@ -39,7 +97,16 @@
 	~~~~~~ HOME PAGE ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
 	
+	.page-template-tpl_home #page-wrap { padding: 0; }
 	
+	.page-template-tpl_home #large-header h1, 
+	.page-template-tpl_home #large-header h2 { color: white; }
+	
+	.sy-pager { display: none !important; }
+	
+	.wp-block-page-list li a { color: #b58a52; }
+	
+	.wp-block-page-list .current-menu-item a { font-weight: bold; }
 	
 	
 	/* ~~~~~~~~~~~~~~~~~~~~~~
@@ -49,6 +116,18 @@
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~WOOCOMMERCE~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
+	
+	#customer_login .col-1, #customer_login .col-2 {
+		max-width: none !important;
+	}
+	
+	.submit-button { background: #b58a52; }
+	
+	.submit-button a { color: #282828; }
+	
+	.sidebar .widget_search .card { border: none; }
+	
+	
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~MEDIA QUERIES~~~~
@@ -58,17 +137,39 @@
 	}
 	
 	@media only screen and ( min-width: 981px ) {
-		
+		#page-wrap { padding: 20px 0; }
 	}
 		
 	@media only screen and (max-width: 980px) {
+		
+		
 		
 	}
 	
 	@media only screen and ( max-width: 767px ) {
 		
+		/* .pegasus-footer {
+			background-size: 250% 100%;
+			background-position: 50% 0%;
+			background-color: #160F0A;
+		} */
+		.pegasus-footer {
+			background-size: 500% 100%;
+			background-position: 50% 100%;
+			background-color: #160F0A;
+			background-attachment: fixed;
+		}
+		footer .coffee-social { flex-direction: row !important; }
+		footer #menu-footer-menu-2 { 
+			flex-direction: column !important; 
+		}
+		
 	}
 	
 	@media only screen and (max-width: 479px) {
-		
+		/* .pegasus-footer {
+			background-size: 250% 100%;
+			background-position: 50% 0%;
+			background-color: #160F0A;
+		} */
 	}
