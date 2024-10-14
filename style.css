@@ -16,11 +16,25 @@
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 	
 	
+	.fa-solid, .fa-light, .fa-regular, .fa-thin, .fa-brands, .fa-duotone {
+		 font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: inherit;
+	}
+	
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ HEADER ~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
+	#logo {
+		width: 200px;
+		height: 90px;
+	}
 	
-	
+	#sage-icon {
+		width: 90px;
+		height: 90px;
+	}
 	
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ NAVIGATION ~~~~~
@@ -38,6 +52,31 @@
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ HOME PAGE ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
+	.home main {
+		background: black;
+	}
+	
+	.home main .discount-area a { color: white; }
+	
+	
+	.home main p { color: white; }
+	
+	.swiper-slide {
+		min-width: 200px;
+	}
+	
+	
+	.home main h1, .home main h2, .home main h3, .home main h4, .home main h5 {
+		color: white;
+	}
+	
+	.home main h1 a, .home main h2 a, .home main h3 a, .home main h4 a, .home main h5 a {
+		color: white;
+	}
+	
+	.home main .nav-pills .nav-item .nav-link.active {
+		background-color: transparent;
+	}
 	
 	
 	
