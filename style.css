@@ -9,43 +9,118 @@
 */
 
 @import url("../pegasus/style.css");
-	
-	
+
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
+
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ HEADER ~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	
+	#logo {
+    width: 60px;
+    height: 60px;
+  }
+
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ NAVIGATION ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
+  @media (min-width: 768px) {
+    .navbar-expand-md .navbar-nav .nav-link {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+  }
 
-	
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ FOOTER ~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
+
+
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ HOME PAGE ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	
-	
+
+  .youtube.losangeles._2 {
+    max-height: none;
+    /* transform: scale(1.16) translate(0); */
+  }
+
+  .youtube.losangeles {
+    width: auto;
+    height: 100vh;
+    max-height: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    /* left: auto;
+    right: auto;
+    transform: scale(1.15) translate(0); */
+  }
+  .youtube {
+    aspect-ratio: 16 / 9;
+    opacity: 1;
+    border-radius: 0;
+    max-height: 900px;
+    margin-top: 0;
+    display: flex;
+    position: absolute;
+    inset: 0%;
+    overflow: hidden;
+    transform: scale(1.4) translate(0);
+  }
+
+  .w-embed-youtubevideo {
+    background-image: url(https://d3e54v103j8qbb.cloudfront.net/static/youtube-placeholder.2b05e7d68d.svg);
+    background-position: 50%;
+    background-size: cover;
+    width: 100%;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+  }
+
+  .home .pegasus-header-content {
+    max-width: 900px;
+  }
+
+  .home .qbiqcamp-home-section-1 {
+    background-image: url(/wp-content/themes/pegasus-child/images/home1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100% 30%;
+    color: white;
+  }
+
+  .home .qbiqcamp-home-section-2 {
+    background-image: url(/wp-content/themes/pegasus-child/images/home2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100% 30%;
+    color: white;
+  }
+
+  .home .qbiqcamp-home-section-3 {
+    background-image: url(/wp-content/themes/pegasus-child/images/home3.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100% 30%;
+    color: white;
+  }
+
+
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~SITEMAP~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
-	
+
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~WOOCOMMERCE~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -54,21 +129,21 @@
 	~~~~~MEDIA QUERIES~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 	@media only screen and ( min-width: 1100px ) and ( max-width: 1405px) {
-		
+
 	}
-	
+
 	@media only screen and ( min-width: 981px ) {
-		
+
 	}
-		
+
 	@media only screen and (max-width: 980px) {
-		
+
 	}
-	
+
 	@media only screen and ( max-width: 767px ) {
-		
+
 	}
-	
+
 	@media only screen and (max-width: 479px) {
-		
+
 	}
