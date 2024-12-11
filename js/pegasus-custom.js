@@ -27,6 +27,16 @@
 	jQuery(document).ready(function($) {
 		// executes when HTML-Document is loaded and DOM is ready
 		//alert("document is ready");
+		
+		var $grid = jQuery('.card-set-wrapper').imagesLoaded( function($) {
+			// init Masonry after all images have loaded
+			$grid.masonry({
+				// options...
+				//columnWidth: 360,
+				itemSelector: '.card-set-item',
+				gutter: 10
+			});
+		});
 	});
 
 
