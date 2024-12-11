@@ -8,44 +8,115 @@
  Version:        0.0.1
 */
 
-@import url("../pegasus/style.css");
-	
-	
+
+
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
+
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ HEADER ~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	
+
+
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ NAVIGATION ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
+  .keegans-header-menu li:hover .sub-menu {
+    display: block;
+    position: absolute;
+    left: 280px;
+    top: 0;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 2px 0;
 
-	
+  }
+
+  .keegans-header-menu .sub-menu li a {
+    text-align: left;
+  }
+
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ FOOTER ~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
+
+
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ HOME PAGE ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	
-	
+  .home #page-wrap section:nth-child(even) {
+      background: #dedede;
+  }
+
+
+
+
+
+/*Dot nav  inspired from [Stephan Rusu](https://codepen.io/stephanrusu/)'s Pen [One Page Scroll](https://codepen.io/stephanrusu/pen/FJzfb/) */
+
+.dotnav-right {
+  right: 10px;
+  top: calc(17vh);
+  z-index: 10;
+  position: fixed;
+}
+
+.dotnav {
+  padding: 0;
+  list-style: none;
+}
+
+.dotnav > li {
+  display: inline-block;
+  font-size: 1rem;
+}
+
+.dotnav > li > a {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #512DA8;
+  vertical-align: top;
+  overflow: hidden;
+  padding: 0;
+  text-indent: -999%;
+  margin-bottom: 5px;
+}
+
+.dotnav > li > a:hover,
+.dotnav > li > a:focus,
+.dotnav .active {
+  background: #512DA8;
+  outline: none;
+}
+
+.dotnav > li > a:active {
+  background: #512DA8;
+}
+
+.dotnav > li.active > a {
+  background: #512DA8;
+}
+
+.dotnav-vertical > li {
+  display: block;
+  margin-right: 10px;
+}
+
+
+
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~SITEMAP~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
-	
+
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~WOOCOMMERCE~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -54,21 +125,21 @@
 	~~~~~MEDIA QUERIES~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 	@media only screen and ( min-width: 1100px ) and ( max-width: 1405px) {
-		
+
 	}
-	
+
 	@media only screen and ( min-width: 981px ) {
-		
+
 	}
-		
+
 	@media only screen and (max-width: 980px) {
-		
+
 	}
-	
+
 	@media only screen and ( max-width: 767px ) {
-		
+
 	}
-	
+
 	@media only screen and (max-width: 479px) {
-		
+
 	}
