@@ -70,9 +70,6 @@ CSS TABLE OF CONTENTS
   --transition: all 0.3s ease-in-out;
 }
 
-<<<<<<< HEAD
-
-=======
 * {
   margin: 0;
   padding: 0;
@@ -80,7 +77,7 @@ CSS TABLE OF CONTENTS
   box-sizing: border-box;
   outline: none;
 }
->>>>>>> 5cc78ff126f61669003216fc56ee3d6c83df02fa
+
 
 body {
   margin: 0;
@@ -101,11 +98,7 @@ h5,
 h6 {
   margin: 0;
   padding: 0;
-<<<<<<< HEAD
-  
-=======
   color: var(--heading-color);
->>>>>>> 5cc78ff126f61669003216fc56ee3d6c83df02fa
   font-family: var(--prosto-one);
 }
 

@@ -15,10 +15,9 @@
 		/* qTip CSS */
 		wp_enqueue_style('odor-css', get_stylesheet_directory_uri() . '/css/style.css', null, false, false);
 		wp_enqueue_style('swiper-css', get_stylesheet_directory_uri() . '/css/swiper-bundle.min.css', null, false, false);
-<<<<<<< HEAD
+
 		wp_enqueue_style('lightbox-css', get_stylesheet_directory_uri() . '/css/lightbox.min.css', null, false, false);
-=======
->>>>>>> 5cc78ff126f61669003216fc56ee3d6c83df02fa
+
 		
 		
 	}
@@ -38,17 +37,13 @@
 		
 		wp_enqueue_script( 'isotope_js', get_stylesheet_directory_uri() . '/js/isotope.pkgd.min.js', array(), '', true );
 		
-<<<<<<< HEAD
+
 		wp_enqueue_script( 'masonry_js', get_stylesheet_directory_uri() . '/js/masonry.js', array(), '', true );
 		
 		wp_enqueue_script( 'images_loaded_js', get_stylesheet_directory_uri() . '/js/imagesLoaded.js', array(), '', true );
 		
 		wp_enqueue_script( 'lightbox_js', get_stylesheet_directory_uri() . '/js/lightbox.min.js', array(), '', true );
-=======
-		
-		
-		
->>>>>>> 5cc78ff126f61669003216fc56ee3d6c83df02fa
+
 		
 		wp_enqueue_script( 'odor_js', get_stylesheet_directory_uri() . '/js/script.js', array(), '', true );
 		
