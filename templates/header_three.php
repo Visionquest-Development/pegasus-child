@@ -1,4 +1,4 @@
-<?php
+	<?php
 		//$top_header_choice =  pegasus_get_option( 'top_header_chk' );
 		//$fixed_header_choice = pegasus_get_option( 'header_fixed_checkbox' );
 		//$headerContainerCheck =  pegasus_get_option( 'header_container' );
@@ -72,9 +72,7 @@
 					}
 				?>
 				<nav id="mega-menu" class="navbar navbar-expand-md fixed-top ">
-					<div class="container <?php echo $header_container_check; ?>">
-
-
+					<div class="container-fluid">
 
 							<!--<a class="navbar-brand mr-auto mr-lg-0" href="#">Offcanvas navbar</a>-->
 							<a class="navbar-brand tk-proxima-nova large" href="<?php echo $home_url; ?>">
@@ -95,9 +93,7 @@
 							<div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
 
 								<?php
-
-
-									$classes_for_nav_menu2 = ' navbar-nav mr-auto ' . $nav_menu_justify_check . ' pegasus-mobile-nav ';
+									$classes_for_nav_menu2 = ' navbar-nav ms-auto ' . $nav_menu_justify_check . ' pegasus-mobile-nav ';
 									//$final_menu2 = ;
 									echo pegasus_get_menu( 'primary', $classes_for_nav_menu2, 4, $fallback_menu );
 								?>
@@ -136,7 +132,7 @@
 											//get_template_part( 'templates/social_icons', 'header' );
 										//}
 									?>
-									<a class="btn btn-primary" href="#">Register</a>
+									<a class="btn " href="/register">Register</a>
 								</div>
 							</div>
 

@@ -8,38 +8,89 @@
  Version:        0.0.1
 */
 
-@import url("../pegasus/style.css");
+/*@import url("../pegasus/style.css");*/
 
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PEGASUS CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
+	.btn-transparent {
+		border-color: white !important;
+		--bs-btn-border-width: 2.5px !important;
+		text-transform: uppercase;
+		color: white !important;
+		padding: 8px 80px !important;
+		font-weight: bold !important;
+		text-shadow: 1px 1px  5px #000; 
+		background-color: rgba( 0, 0, 0, 0.6 ) !important;
+		
+	}
+	
+	.btn-transparent:hover {
+		border-color: white !important;
+		--bs-btn-border-width: 2.5px !important;
+		color: black !important;
+		background-color: white !important;
+		text-shadow: none; 
+	}
+	
+	.btn-solid {
+		--bs-btn-bg: white !important;
+		text-transform: uppercase;
+		color: black !important;
+		padding: 15px 80px !important;
+		font-weight: bold !important;
+		--bs-btn-border-width: 2.5px !important;
+	}
+	.btn-solid:hover {
+		--bs-btn-bg: transparent !important;
+		color: white !important;
+		border-color: white !important;
+		--bs-btn-border-width: 2.5px !important;
+	}
 
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ HEADER ~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
 	#logo {
-    width: 60px;
-    height: 60px;
-  }
+		width: 120px;
+		height: 60px;
+	  }
+	  
+	  #mega-menu .btn {
+		  background-color: #FF8200;
+		  color: white;
+		  text-transform: uppercase;
+	  }
 
 
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ NAVIGATION ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-  @media (min-width: 768px) {
-    .navbar-expand-md .navbar-nav .nav-link {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-  }
+	  @media (min-width: 768px) {
+		.navbar-expand-md .navbar-nav .nav-link {
+			padding-left: 1rem;
+			padding-right: 1rem;
+			font-size: 14px;
+			text-transform: uppercase;
+		}
+		
+		
+	  }
 
 
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ FOOTER ~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-
+	
+	#menu-footer-menu-1 {
+		    flex-direction: column;
+	}
+	
+	#menu-footer-menu-2 {
+		    flex-direction: column;
+	}
 
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -47,74 +98,128 @@
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ HOME PAGE ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
+	
+	.pegasus-header-content {
+		top: 65% !important;
+	}
+	
+	.pegasus-header-content img {
+		width: 487px;
+		height: 230px;
+		margin-bottom: 12rem !important;
+	}
 
-  .youtube.losangeles._2 {
-    max-height: none;
-    /* transform: scale(1.16) translate(0); */
-  }
+	.youtube.losangeles._2 {
+		max-height: none;
+		/* transform: scale(1.16) translate(0); */
+	}
 
-  .youtube.losangeles {
-    width: auto;
-    height: 100vh;
-    max-height: 900px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    /* left: auto;
-    right: auto;
-    transform: scale(1.15) translate(0); */
-  }
-  .youtube {
-    aspect-ratio: 16 / 9;
-    opacity: 1;
-    border-radius: 0;
-    max-height: 900px;
-    margin-top: 0;
-    display: flex;
-    position: absolute;
-    inset: 0%;
-    overflow: hidden;
-    transform: scale(1.4) translate(0);
-  }
+	.youtube.losangeles {
+		width: auto;
+		height: 100vh;
+		max-height: 900px;
+		margin-left: auto;
+		margin-right: auto;
+		display: flex;
+		/* left: auto;
+		right: auto;
+		transform: scale(1.15) translate(0); */
+	}
+	.youtube {
+		aspect-ratio: 16 / 9;
+		opacity: 1;
+		border-radius: 0;
+		max-height: 900px;
+		margin-top: 0;
+		display: flex;
+		position: absolute;
+		inset: 0%;
+		overflow: hidden;
+		transform: scale(1.4) translate(0);
+	}
 
-  .w-embed-youtubevideo {
-    background-image: url(https://d3e54v103j8qbb.cloudfront.net/static/youtube-placeholder.2b05e7d68d.svg);
-    background-position: 50%;
-    background-size: cover;
-    width: 100%;
-    padding-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-    position: relative;
-  }
+	.w-embed-youtubevideo {
+		background-image: url(https://d3e54v103j8qbb.cloudfront.net/static/youtube-placeholder.2b05e7d68d.svg);
+		background-position: 50%;
+		background-size: cover;
+		width: 100%;
+		padding-bottom: 0;
+		padding-left: 0;
+		padding-right: 0;
+		position: relative;
+	}
 
-  .home .pegasus-header-content {
-    max-width: 900px;
-  }
+	.home .pegasus-header-content {
+		max-width: 900px;
+		display: none;
+	}
 
-  .home .qbiqcamp-home-section-1 {
-    background-image: url(/wp-content/themes/pegasus-child/images/home1.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 100% 30%;
-    color: white;
-  }
+	.home .qbiqcamp-home-section-1 {
+		background-image: url(/wp-content/themes/pegasus-child/images/home1.png);
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: 100% 30%;
+		color: white;
+	}
 
-  .home .qbiqcamp-home-section-2 {
-    background-image: url(/wp-content/themes/pegasus-child/images/home2.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 100% 30%;
-    color: white;
-  }
+	.home .qbiqcamp-home-section-2 {
+		background-image: url(/wp-content/themes/pegasus-child/images/home2.png);
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: 100% 30%;
+		color: white;
+	}
 
-  .home .qbiqcamp-home-section-3 {
-    background-image: url(/wp-content/themes/pegasus-child/images/home3.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 100% 30%;
-    color: white;
-  }
+	.home .qbiqcamp-home-section-3 {
+		background-image: url(/wp-content/themes/pegasus-child/images/home3.png);
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: 100% 30%;
+		color: white;
+	}
+	  
+	.home .qbiqcamp-home-section-1, .home .qbiqcamp-home-section-2, .home .qbiqcamp-home-section-3 {
+		position: relative; 
+		height: 90vh;
+	}
+	.home .overlay {
+		background-image: linear-gradient(87deg, #0000008a, #0000);
+		opacity: 1;
+	}
+	
+	.text-container, .button-container {
+		position: relative;
+		z-index: 99;
+	}
+	
+	.qbiq_logo_slider {
+		background: black;
+		padding: 40px 0;
+	}
+	
+	.qbiq_logo_slider .slick-p {
+		display: none;
+	}
+	
+	.qbiq_logo_slider img {
+		width: 60px;
+		height: 60px;
+	}
+	
+	
+	
+	.slick-prev {
+		left: 0px !important;
+	}
+	.slick-next {
+		right: 0px !important;
+	}
+	
+	.slick-prev, .slick-next {
+		color: black !important;
+		background: rgba(255, 255, 255, 0.7) !important;
+		border-radius: 3px;
+	}
 
 
 	/* ~~~~~~~~~~~~~~~~~~~~~~
@@ -139,8 +244,21 @@
 	@media only screen and (max-width: 980px) {
 
 	}
+	
+	@media only screen and ( min-width: 767px ) {
+		#mega-menu #navbarsExampleDefault #menu-main-menu li a {
+			padding-left: 40px;
+			padding-right: 40px;
+		} 
+	}
 
 	@media only screen and ( max-width: 767px ) {
+		
+		.home .qbiqcamp-home-section-1, 
+		.home .qbiqcamp-home-section-2,
+		.home .qbiqcamp-home-section-3 {
+			background-position: 40% 30%;
+		}
 
 	}
 

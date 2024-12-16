@@ -7,76 +7,100 @@
 
 	<?php
 
-			$header_choice = pegasus_get_option( 'header_select' );
-			//var_dump($header_choice);
-			if ( 'header-three' === $header_choice ) {
-				get_template_part( 'templates/additional_header' );
+		$header_choice = pegasus_get_option( 'header_select' );
+		//var_dump($header_choice);
+		if ( 'header-three' === $header_choice ) {
+			get_template_part( 'templates/additional_header' );
+		}
+	?>
+	
+	<?php 
+	
+		$sections = get_post_meta(get_the_ID(), 'homepage_sections_repeatable_group', true);
+
+		
+		if (!empty($sections)) {
+			foreach ($sections as $section) {
+				$bg_image = isset($section['background_image']) ? esc_url($section['background_image']) : '';
+				$title = isset($section['title']) ? esc_html($section['title']) : '';
+				$subtitle = isset($section['subtitle']) ? esc_html($section['subtitle']) : '';
+				$paragraph = isset($section['paragraph']) ? esc_html($section['paragraph']) : '';
+				$button1_text = isset($section['button1_text']) ? esc_html($section['button1_text']) : '';
+				$button1_link = isset($section['button1_link']) ? esc_url($section['button1_link']) : '#';
+				//$button2_text = isset($section['button2_text']) ? esc_html($section['button2_text']) : '';
+				//$button2_link = isset($section['button2_link']) ? esc_url($section['button2_link']) : '#';
+				
+				$output = '';
+
+				//echo '<section class="p-5 qbiqcamp-home-section-2" style="background-image: url(' . $bg_image . ');">';
+				
+				$output .= '<section class="p-5 site qbiqcamp-home-section-2" style="background-image: url(' . $bg_image . ');">';
+				//$output .= '[section class="p-5 qbiqcamp-home-section-2" background="' . $bg_image . '"]';
+					$output .= '<div class="overlay"></div>';
+					$output .= '<div class="text-container container my-5">';
+						$output .= '<div class="p-5 mb-5">';
+							$output .= '<div class="container-fluid py-5">';
+								$output .= '<div class="col-md-6 wow slideInLeft">';
+									$output .= '<h2>' . $title . '</h2>';
+									$output .= '<h4>' . $subtitle . '</h4>';
+									$output .= '<p>' . $paragraph . '</p>';
+								$output .= '</div>';
+								$output .= '<div class="col-md-6"></div>';
+							$output .= '</div>';
+						$output .= '</div>';
+						
+						$output .= '<div class="text-center button-container">';
+							$output .= '<a class="btn btn-transparent mb-3 " href="' . $button1_link . '">' . $button1_text . '</a>';
+						$output .= '</div>';
+						
+					$output .= '</div>';
+					
+				$output .= '</section>';
+				//$output .= '[/section]';
+				
+				echo do_shortcode( $output );
 			}
-		?>
+		} 
+		/*
+		if (!empty($sections)) {
+			foreach ($sections as $section) {
+				$bg_image = !empty($section['background_image']) ? esc_url($section['background_image']) : '';
+				$title = !empty($section['title']) ? esc_html($section['title']) : '';
+				$subtitle = !empty($section['subtitle']) ? esc_html($section['subtitle']) : '';
+				$paragraph = !empty($section['paragraph']) ? esc_html($section['paragraph']) : '';
+				$button1_text = !empty($section['button1_text']) ? esc_html($section['button1_text']) : '';
+				$button1_link = !empty($section['button1_link']) ? esc_url($section['button1_link']) : '#';
 
-	<section class="p-5 qbiqcamp-home-section-1 ">
-		<div class="container my-5">
-  			<div class="p-5 mb-5 ">
-    			<div class="container-fluid py-5">
-					<div class="col-md-6  wow slideInRight">
-						<h2>Drill The details</h2>
-						<p>The game is changing. More is expected of QBs than ever before. Our nationally acclaimed staff believes young players can handle the pressure. That is why we derive all our drills from actual college game movements. Master our drills and you'll excel in the modern passing game.</p>
-					</div>
-					<div class="col-md-6">
+				// Start building the shortcode
+				$output = '[section';
+				$output .= $bg_image ? ' background="' . $bg_image . '"' : '';
+				$output .= ']';
 
-					</div>
-				</div>
+				if ($title) {
+					$output .= '<h2>' . $title . '</h2>';
+				}
+				if ($subtitle) {
+					$output .= '<h4>' . $subtitle . '</h4>';
+				}
+				if ($paragraph) {
+					$output .= '<p>' . $paragraph . '</p>';
+				}
 
-			</div>
-		</div>
-		<div class="text-center">
-			<a class="btn btn-secondary" href="#">Get Invited</a>
-			<a class="btn btn-primary" href="#">Register</a>
-		</div>
-	</section>
+				$output .= '<div class="text-center button-container">';
+				if ($button1_text) {
+					$output .= '<a class="btn btn-transparent mb-3" href="' . $button1_link . '">' . $button1_text . '</a>';
+				}
+				$output .= '</div>'; // button-container
 
-	<section class="p-5 qbiqcamp-home-section-2 ">
-		<div class="container my-5">
-  			<div class="p-5 mb-5 ">
-    			<div class="container-fluid py-5">
-					<div class="col-md-6 wow slideInLeft">
-						<h2>READ THE COVERAGE</h2>
-						<h4>LEARN THE MENTAL SIDE OF THE GAME</h4>
-						<p>In today's pass heavy game it is essential for young quarterbacks to be able to recognize coverage. Learn from the best in the business, QBIQ creator Chris Hixson, about how to identify defenses before the snap and easily predict successful throws.</p>
-					</div>
-					<div class="col-md-6">
+				$output .= '[/section]';
 
-					</div>
-				</div>
-
-			</div>
-		</div>
-		<div class="text-center">
-			<a class="btn btn-secondary" href="#">Get Invited</a>
-			<a class="btn btn-primary" href="#">Register</a>
-		</div>
-	</section>
-
-	<section class="p-5 qbiqcamp-home-section-3 ">
-		<div class="container my-5">
-  			<div class="p-5 mb-5 ">
-    			<div class="container-fluid py-5">
-					<div class="col-md-6  wow slideInRight">
-						<h2>GET FLEXIBLE AND STRONG</h2>
-						<p>Strength for quarterbacks means a balance between power and flexibility. Our program teaches quarterbacks sound, repeatable exercises that strengthen the body, add velocity, and avoid modern shoulder and elbow injuries.</p>
-					</div>
-					<div class="col-md-6">
-
-					</div>
-				</div>
-
-			</div>
-		</div>
-		<div class="text-center">
-			<a class="btn btn-secondary" href="#">Get Invited</a>
-			<a class="btn btn-primary" href="#">Register</a>
-		</div>
-	</section>
+				// Output the final shortcode string
+				echo do_shortcode($output);
+			}
+		}
+		*/
+	
+	?>
 
 	<div id="page-wrap">
 		<?php
@@ -162,6 +186,13 @@
 
 			</div><!--end row -->
 		</div><!-- end container -->
+		
+		
+		<div class="qbiq_logo_slider">
+			<div class="container">
+				<?php echo do_shortcode('[pegasus_logo_slider id="136" ]'); ?>
+			</div>
+		</div> 
 	</div><!-- end page wrap -->
     <?php get_footer(); ?>
 
