@@ -30,6 +30,3 @@
 
 	} //end function
 	add_action( 'wp_enqueue_scripts', 'pegasus_child_bootstrap_js' );
-
-
-
