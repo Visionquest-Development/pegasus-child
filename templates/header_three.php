@@ -34,7 +34,7 @@
 
 		$logo = pegasus_get_option( 'logo' );
 		$centerLogo = ( 'on' === pegasus_get_option( 'logo_centered' ) ) ? 'center' : '';
-		$nav_menu_justify_check = ( 'on' === pegasus_get_option( 'nav_justify' ) ) ? 'mx-auto' : '';
+		$nav_menu_justify_check = ( 'on' === pegasus_get_option( 'nav_justify' ) ) ? 'justify-content-md-center' : '';
 		$moremenuchk = pegasus_get_option( 'header_more_chk' );
 		$woo_check =  pegasus_get_option( 'woo_chk' );
 		$nav_social_check =  pegasus_get_option( 'nav_social_chk' );
@@ -77,11 +77,12 @@
 							<!--<a class="navbar-brand mr-auto mr-lg-0" href="#">Offcanvas navbar</a>-->
 							<a class="navbar-brand tk-proxima-nova large" href="<?php echo $home_url; ?>">
 								<?php
-									if( ! empty( $logo ) ) : ?>
+									get_template_part( 'templates/logo', 'header' );
+									/*if( ! empty( $logo ) ) : ?>
 										<img id="logo" src="<?php echo $logo; ?>" alt=""/>
 									<?php else: ?>
 										<?php bloginfo( 'name' ); ?>
-									<?php endif;
+									<?php endif;*/
 								?>
 							</a>
 

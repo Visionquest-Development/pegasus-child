@@ -20,6 +20,7 @@
 
 		
 		if (!empty($sections)) {
+			$index = 1;
 			foreach ($sections as $section) {
 				$bg_image = isset($section['background_image']) ? esc_url($section['background_image']) : '';
 				$title = isset($section['title']) ? esc_html($section['title']) : '';
@@ -34,7 +35,7 @@
 
 				//echo '<section class="p-5 qbiqcamp-home-section-2" style="background-image: url(' . $bg_image . ');">';
 				
-				$output .= '<section class="p-5 site qbiqcamp-home-section-2" style="background-image: url(' . $bg_image . ');">';
+				$output .= '<section class="p-5 site qbiqcamp-home-section-' . $index . ' " style="background-image: url(' . $bg_image . ');">';
 				//$output .= '[section class="p-5 qbiqcamp-home-section-2" background="' . $bg_image . '"]';
 					$output .= '<div class="overlay"></div>';
 					$output .= '<div class="text-container container my-5">';
@@ -59,6 +60,8 @@
 				//$output .= '[/section]';
 				
 				echo do_shortcode( $output );
+				
+				 $index++;
 			}
 		} 
 		/*
@@ -142,6 +145,53 @@
 				$final_page_header_option = 'off';
 			}
 		?>
+		
+		<section class="qbiq-camp-cards">
+			 
+			<h1 class="title">Hover over the cards</h1>
+
+			<div id="app" class="container">
+			  <div class="card-wrap" data-image="https://images.unsplash.com/photo-1479660656269-197ebb83b540?dpr=2&auto=compress,format&fit=crop&w=1199&h=798&q=80&cs=tinysrgb&crop=">
+				<a href="/atlanta" class="card">
+				  <div class="card-bg"></div>
+				  <div class="card-info">
+					<h1>Atlanta</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				  </div>
+				</a>
+			  </div>
+			  <div class="card-wrap" data-image="https://images.unsplash.com/photo-1479659929431-4342107adfc1?dpr=2&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop=">
+				<div class="card">
+				  <div class="card-bg"></div>
+				  <div class="card-info">
+					<h1>Dallas</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				  </div>
+				</div>
+			  </div>
+			  <div class="card-wrap" data-image="https://images.unsplash.com/photo-1479644025832-60dabb8be2a1?dpr=2&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop=">
+				<div class="card">
+				  <div class="card-bg"></div>
+				  <div class="card-info">
+					<h1>New Jersey</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				  </div>
+				</div>
+			  </div>
+			  <div class="card-wrap" data-image="https://images.unsplash.com/photo-1479621051492-5a6f9bd9e51a?dpr=2&auto=compress,format&fit=crop&w=1199&h=811&q=80&cs=tinysrgb&crop=">
+				<div class="card">
+				  <div class="card-bg"></div>
+				  <div class="card-info">
+					<h1>Vegas</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				  </div>
+				</div>
+			  </div>
+			</div>
+
+		
+		
+		</section>
 
 		<div class="<?php echo $final_container_class; ?>">
 		<!-- Example row of columns -->
@@ -188,12 +238,10 @@
 		</div><!-- end container -->
 		
 		
-		<div class="qbiq_logo_slider">
-			<div class="container">
-				<?php echo do_shortcode('[pegasus_logo_slider id="136" ]'); ?>
-			</div>
-		</div> 
 	</div><!-- end page wrap -->
+	
+	
+	
     <?php get_footer(); ?>
 
 
