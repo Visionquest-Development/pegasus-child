@@ -140,6 +140,26 @@
 		});
 
 	});
+	
+	
+	document.addEventListener('DOMContentLoaded', function() {
+		// Function to update the SVG height
+		function updateSvgHeight() {
+			var svg = document.getElementById('usa');
+			if (!svg) return; // Exit if the SVG is not found
+
+			// Check if the window width is less than 768 pixels
+			if (window.innerWidth < 768) {
+				svg.setAttribute('height', '350'); // Set height to 350
+			} else {
+				svg.setAttribute('height', '450'); // Replace 'original_height' with your default value
+			}
+		}
+
+		// Call the function initially and whenever the window is resized
+		updateSvgHeight();
+		window.addEventListener('resize', updateSvgHeight);
+	});
 
 
 	/*jQuery(window).on('load', function($) {

@@ -29,12 +29,14 @@
 		$background_image  = get_post_meta(get_the_ID(), 'camp_page_section_background_image', true);
 		$video_link        = get_post_meta(get_the_ID(), 'camp_page_section_video_link', true);
 		
-		
+		$qbiq_post_title = get_the_title();
 	?>
-
+	<?php 
+		if ( $event_title ) {
+	?>
 	<section class="custom-section qbiq-parallax" style="background-image: url('<?php echo esc_url($background_image); ?>');">
 		<div class="camp-section-container">
-			<div class="content">
+			<div class="content wow fadeIn">
 				<div class="date-block"><p><?php echo esc_html($event_date); ?></p></div>
 				<h1><?php echo esc_html($event_title); ?></h1>
 				<div class="camp-page-description"><p><?php echo esc_html($event_description); ?></p></div>
@@ -50,6 +52,15 @@
 			</div>
 		</div>
 	</section>
+	<?php 
+		} else {
+			get_template_part( 'templates/additional_header' );
+		}
+		
+		echo '<div class="container mt-3 ">';
+			echo '<h1>' . $qbiq_post_title . '</h1>';
+		echo '</div>';
+	?>
 	
 	<section class="p-3 camp-location-images-grid qbiq-background-black">
 		
@@ -92,13 +103,16 @@
 							foreach ($images as $image) {
 								$img_url = esc_url($image['image']);
 								$caption = esc_attr($image['caption'] ?? 'My caption');
-								$width = esc_attr($image['width']);
-								
+								//Undefined array key "width"
+								if ( isset($image['width']) ) {
+									$width = esc_attr($image['width']);
+								}
 
 								if(empty($width)) {
 									$width = '306';
 								}
-								$output .= '<a href="' . $img_url . '"  data-lightbox="qbiq-camp-location-image-gallery" data-title="' . $caption . '" class="">';
+								$output .= '<a href="' . $img_url . '"  data-lightbox="qbiq-camp-location-image-gallery" data-title="' . $caption . '" class="wow fadeIn">';
+									
 									$output .= '<img src="' . $img_url . '" loading="lazy" width="' . $width . '" class="">';
 								$output .= '</a>';
 								
@@ -127,13 +141,15 @@
 	$hotel_name = get_post_meta(get_the_ID(), 'camp_accomdation_hotel_name', true);
 	$hotel_description = get_post_meta(get_the_ID(), 'camp_accomdation_hotel_description', true);
 	$hotel_image = get_post_meta(get_the_ID(), 'camp_accomdation_hotel_image', true);
-	$hotel_link = get_post_meta(get_the_ID(), 'camp_accomdation_hotel_link', true);
+	$hotel_link = get_post_meta(get_the_ID(), 'camp_accomdation_hotel_link', true) ? get_post_meta(get_the_ID(), 'camp_accomdation_hotel_link', true) : '#';
 	$facility_name = get_post_meta(get_the_ID(), 'camp_accomdation_facility_name', true);
 	$facility_address = get_post_meta(get_the_ID(), 'camp_accomdation_facility_address', true);
 	$facility_image = get_post_meta(get_the_ID(), 'camp_accomdation_facility_image', true);
-	$facility_directions_link = get_post_meta(get_the_ID(), 'camp_accomdation_facility_directions_link', true);
+	$facility_directions_link = get_post_meta(get_the_ID(), 'camp_accomdation_facility_directions_link', true) ? get_post_meta(get_the_ID(), 'camp_accomdation_facility_directions_link', true) : '#';
 	?>
-
+	<?php 
+		if ( $hotel_name ) {
+	?>
 	<section class="camp-section qbiq-background-black">
 		<div class="container">
 			<div class="camp-header">
@@ -141,7 +157,7 @@
 				<h1><?php echo esc_html($hotel_name); ?></h1>
 				<p><?php echo esc_html($hotel_description); ?></p>
 			</div>
-			<div class="camp-content">
+			<div class="camp-content wow fadeInLeft">
 				<div class="hotel-image" style="background-image: url('<?php echo esc_url($hotel_image); ?>');">
 					<div class="hotel-details">
 						<h3><?php echo esc_html($hotel_name); ?></h3>
@@ -149,19 +165,26 @@
 						<a href="<?php echo esc_url($hotel_link); ?>" target="_blank" class="btn">Book Team Hotel</a>
 					</div>
 					
-					<div class="facility-info">
-						<div class="facility-image" style="background-image: url('<?php echo esc_url($facility_image); ?>');"></div>
-						<div class="facility-details">
-							<h4><?php echo esc_html($facility_name); ?></h4>
-							<p><?php echo nl2br(esc_html($facility_address)); ?></p>
-							<a href="<?php echo esc_url($facility_directions_link); ?>" target="_blank" class="btn">Training Facility Directions</a>
-						</div>
-					</div>
+					
 				</div>
-
+				<div class="facility-info ">
+					<?php if ( $facility_image ) { ?>
+					<div class="facility-image" style="background-image: url('<?php echo esc_url($facility_image); ?>');"></div>
+					<?php } ?>
+					<?php if ( $facility_name ) { ?>
+					<div class="facility-details">
+						<h4><?php echo esc_html($facility_name); ?></h4>
+						<p><?php echo wp_kses_post($facility_address); ?></p>
+						<a href="<?php echo esc_url($facility_directions_link); ?>" target="_blank" class="btn">Training Facility Directions</a>
+					</div>
+					<?php } ?>
+				</div>
 			</div>
 		</div>
 	</section>
+	<?php 
+		} //end if 
+	?>
 	
 	
 	<?php 
@@ -174,21 +197,21 @@
 		<div class="container">
 			<div class="itinerary-header">
 				<h1>Camp Itinerary</h1>
-				<?php if ($download_link): ?>
+				<?php /*if ($download_link): ?>
 					<div class="download-btn">
 						<a href="<?php echo esc_url($download_link); ?>" class="btn" download>Download General Itinerary</a>
 					</div>
-				<?php endif; ?>
+				<?php endif;*/ ?>
 			</div>
 
 				<?php
 				// Retrieve itinerary data from post meta
-				$itinerary_days = get_post_meta(get_the_ID(), 'itinerary_days', true);
+				$itinerary_days = get_post_meta(get_the_ID(), 'itinerary_days', true) ? get_post_meta(get_the_ID(), 'itinerary_days', true) : get_post_meta(159, 'itinerary_days', true); //default to the Atlanta events
 
 				if (!empty($itinerary_days)) : ?>
 					<div class="itinerary-content">
 						<?php foreach ($itinerary_days as $day_index => $day) : ?>
-							<div class="itinerary-day">
+							<div class="itinerary-day ">
 								<div class="day-header">
 									<div class="day-label">Day <?php echo $day_index + 1; ?></div>
 									<?php if (!empty($day['day_title'])) : ?>
@@ -215,7 +238,7 @@
 										//$schedule_items = explode("\n", $day['schedule']);
 										foreach ($day['schedule'] as $schedule_item) :
 											if (!empty($schedule_item)) : ?>
-												<li><?php echo wp_kses_post(trim($schedule_item)); ?></li>
+												<li class="wow fadeInLeft"><?php echo wp_kses_post(trim($schedule_item)); ?></li>
 											<?php endif;
 										endforeach; ?>
 									</ul>
@@ -231,22 +254,24 @@
 	<?php 
 	
 	// Get the meta values
-	$header_image = get_post_meta(get_the_ID(), 'camp_tickets_header_image', true);
-	$event_date = get_post_meta(get_the_ID(), 'camp_tickets_event_date', true);
-	$available_spots = get_post_meta(get_the_ID(), 'camp_tickets_available_spots', true);
-	$event_title = get_post_meta(get_the_ID(), 'camp_tickets_event_title', true);
-	$event_description = get_post_meta(get_the_ID(), 'camp_tickets_event_description', true);
+	$header_image = get_post_meta(get_the_ID(), 'camp_tickets_header_image', true) ? get_post_meta(get_the_ID(), 'camp_tickets_header_image', true) : 'https://cdn.prod.website-files.com/64d124bebeae431f3756cc77/65e8a96d03cbb273acbd96bb_cedric-letsch-UZVlSjrIJ3o-unsplashcompactado.png';
+	$ticket_image = get_post_meta(get_the_ID(), 'camp_tickets_ticket_image', true) ? get_post_meta(get_the_ID(), 'camp_tickets_ticket_image', true) : 'https://cdn.prod.website-files.com/64d124bebeae431f3756cc77/66293c76333b6af28cd49f67_Los%20angeles.png';
+	$event_date = get_post_meta(get_the_ID(), 'camp_tickets_event_date', true) ?? '01/01/2026';
+	$available_spots = get_post_meta(get_the_ID(), 'camp_tickets_available_spots', true) ?? '0';
+	$event_title = get_post_meta(get_the_ID(), 'camp_tickets_event_title', true) ?? 'The title';
+	$event_description = get_post_meta(get_the_ID(), 'camp_tickets_event_description', true) ?? 'The description';
 
 	// Use these values in your HTML
 	?>
 	<section class="tickets qbiq-background-black" >
 		<?php /* <div class="tickets-container" style="background-image: url('<?php echo esc_url($header_image); ?>');"> */ ?>
-		<div class="tickets-container" style="background-image: radial-gradient(circle at 50% 0, #0000, #2c1401), url('<?php echo esc_url($header_image); ?>'), radial-gradient(circle at 50% -35%, #fff8ef, #fff8ef);">
+		<div class="tickets-container " style="background-image: radial-gradient(circle at 50% 0, #0000, #2c1401), url('<?php echo esc_url($header_image); ?>'), radial-gradient(circle at 50% -35%, #fff8ef, #fff8ef);">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-12 col-md-6">
-						<div class="ticket-container">
-							<img class="w-50 image-fluid" src="https://cdn.prod.website-files.com/64d124bebeae431f3756cc77/66293c76333b6af28cd49f67_Los%20angeles.png"/>
+						<div class="ticket-container wow fadeInDown">
+							
+							<img class="image-fluid" src="<?php echo esc_url($ticket_image); ?>"/>
 							<?php /* <div class="ticket">
 								<div class="header">
 									<span>LOS ANGELES</span>
@@ -264,7 +289,7 @@
 					</div>
 					<div class="col-sm-12 col-md-6">
 						<div class="event-info-container">
-							<div class="event-info">
+							<div class="event-info wow fadeIn">
 								<div class="spots">
 									<span><?php echo esc_html($available_spots); ?> spots</span>
 								</div>
@@ -310,7 +335,7 @@
 		</div>
 	</section>
 -->
-	
+	<?php /*
 	<div id="page-wrap">
 		<?php
 			//full container page options
@@ -398,7 +423,7 @@
 							<?php comments_template(); ?>
 
 						<?php endwhile; else: ?>
-							<?php /* kinda a 404 of sorts when not working */ ?>
+							<?php // kinda a 404 of sorts when not working  ?>
 							<div class="page-header">
 								<h1>Oh no!</h1>
 							</div>
@@ -409,7 +434,7 @@
 							// Edit post link
 							wp_bootstrap_edit_post_link(
 								sprintf(
-									/* translators: %s: Name of current post */
+									// translators: %s: Name of current post 
 									__( 'Edit<span class="screen-reader-text"> "%s"</span>', 'textdomain' ),
 									get_the_title()
 								),
@@ -443,5 +468,7 @@
 			</div><!--end row -->
 		</div><!-- end container -->
 	</div><!-- end page wrap -->
+	
+	*/ ?>
       <?php get_footer(); ?>
 

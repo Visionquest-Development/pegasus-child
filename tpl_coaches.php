@@ -15,8 +15,7 @@
 	?>
 	
 		<?php echo do_shortcode('[display_coaches]'); ?>
-
-		<div class="<?php echo $final_container_class; ?>">
+		<div class="container">
 		<!-- Example row of columns -->
 			<div class="">
 

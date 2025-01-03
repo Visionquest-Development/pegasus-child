@@ -1,16 +1,140 @@
-<div id="qbiq-camp-map" class="container py-5">
+<div id="qbiq-camp-map" class="container ">
   <div class="row">
     <!-- City List -->
     <div class="col-md-6 city-list-container">
       
-	  <div class="city-item" data-state="ALL">
-        <div class="city-info">
-          <strong>ALL REGIONAL PASS</strong>
-        </div>
-        <span class="city-date">2025</span>
-        <span class="badge">0 spots</span>
-      </div>
-	  
+		<div class="city-item" data-state="ALL">
+			<div class="city-info">
+			  <strong>ALL REGIONAL PASS</strong>
+			</div>
+			<span class="city-date">2025</span>
+			<span class="badge">10 spots</span>
+		</div>
+		
+		<?php
+		// Define the query arguments
+		$args = array(
+			'post_type'      => 'qbiq_events', // Ensure this matches your actual custom post type name
+			'posts_per_page' => -1,            // Adjust this number based on your needs
+			'post_status'    => 'publish',     // Only fetch published posts
+			'order'          => 'ASC',
+			'orderby'        => 'date'
+		);
+
+		// Perform the query
+		$query = new WP_Query($args);
+		
+		$state_abbreviations = array(
+			'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 
+			'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 
+			'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 
+			'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 
+			'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'
+		);
+		
+		
+		$state_to_cities = array(
+			'NY' => array('New York'),
+			'CA' => array('Los Angeles', 'San Diego', 'San Jose', 'San Francisco', 'Fresno', 'Sacramento'),
+			'IL' => array('Chicago'),
+			'TX' => array('Houston', 'San Antonio', 'Dallas', 'Austin', 'Fort Worth', 'El Paso'),
+			'AZ' => array('Phoenix', 'Tucson', 'Mesa'),
+			'PA' => array('Philadelphia'),
+			'FL' => array('Jacksonville', 'Miami'),
+			'OH' => array('Columbus'),
+			'NC' => array('Charlotte'),
+			'IN' => array('Indianapolis'),
+			'WA' => array('Seattle'),
+			'CO' => array('Denver', 'Colorado Springs'),
+			'DC' => array('Washington'),
+			'MA' => array('Boston'),
+			'TN' => array('Nashville', 'Memphis'),
+			'MI' => array('Detroit'),
+			'OK' => array('Oklahoma City'),
+			'OR' => array('Portland'),
+			'NV' => array('Las Vegas'),
+			'KY' => array('Louisville'),
+			'MD' => array('Baltimore'),
+			'WI' => array('Milwaukee'),
+			'NM' => array('Albuquerque'),
+			'MO' => array('Kansas City'),
+			'GA' => array('Atlanta'),
+			'NJ' => array('New Jersey')
+		);
+		
+		
+		function get_state_by_city($city_name, $state_to_cities, $state_abbreviations) {
+			// Convert the state to cities array to a city to state map
+			$city_to_state = [];
+			foreach ($state_to_cities as $state => $cities) {
+				foreach ($cities as $city) {
+					$city_to_state[strtolower($city)] = $state;  // Convert city names to lowercase for case-insensitivity
+				}
+			}
+
+			// Convert the input city name to lowercase for case-insensitivity
+			$city_name_lower = strtolower($city_name);
+
+			// Check if the city exists in the city to state map
+			if (isset($city_to_state[$city_name_lower])) {
+				$state = $city_to_state[$city_name_lower];
+
+				// Confirm that the state is in the list of state abbreviations
+				if (in_array($state, $state_abbreviations)) {
+					return $state;
+				} else {
+					return "State found but not in the list of valid state abbreviations.";
+				}
+			} else {
+				return "City not found.";
+			}
+		}
+		
+		if ($query->have_posts()) : 
+			while ($query->have_posts()) : $query->the_post();
+				// Get the post meta values
+				$state = get_the_title();
+				$spots = get_post_meta(get_the_ID(), 'camp_tickets_available_spots', true);
+				$date = get_post_meta(get_the_ID(), 'camp_tickets_event_date', true);
+
+				// Fallback/default values if meta is missing
+				
+				$state = get_state_by_city($state, $state_to_cities, $state_abbreviations);
+				//$state = !empty($state) ? $state : 'GA';
+				
+				//var_dump( $state );
+				
+				$spots = !empty($spots) ? $spots : '1';
+				$date = !empty($date) ? date('F j, Y', strtotime($date)) : 'TBD';
+
+				// Output the HTML
+				?>
+				<div class="city-item wow fadeInLeft" data-state="<?php echo esc_attr($state); ?>">
+					<div class="city-info">
+						<strong><a href="<?php the_permalink(); ?>" ><?php the_title(); ?></a></strong>
+					</div>
+					<span class="city-date"><?php echo esc_html($date); ?></span>
+					<span class="badge"><?php echo esc_html($spots); ?> spots</span>
+				</div>
+				<?php
+			endwhile;
+		else :
+			echo '<p>No events found.</p>';
+		endif;
+
+		// Reset post data
+		wp_reset_postdata();
+		
+		
+		
+		
+		
+		
+		?>
+		
+		
+		
+		<!--
 	   <div class="city-item" data-state="GA">
         <div class="city-info">
           <strong>ATLANTA</strong>
@@ -50,21 +174,21 @@
         <span class="city-date">June, 2025</span>
         <span class="badge">25 spots</span>
       </div>
-	  
+	  -->
 	  
 
-      <div class="city-item" data-state="LEAD">
+      <!--<div class="city-item" data-state="LEAD">
         <div class="city-info">
           <strong>LEADERSHIP RET.</strong>
         </div>
         <span class="city-date">MAY 23-26/2025</span>
         <span class="badge">25 spots</span>
-      </div>
+      </div>-->
     </div>
 
     <!-- Map -->
     <div class="col-md-6 map-container">
-      <div class="map">
+      <div class="map wow fadeIn">
         
 		
 		<div class="USA" id="usa-map">
@@ -121,7 +245,7 @@
 				  <path id="WI" class="Fade" d="M541.4,109.9l2.9.5,2.9-.6,7.4-3.2,2.9-1.9,2.1-.8,1.9,1.5-1.1,1.1-1.9,3.1-.6,1.9,1,.6,1.8-1,1.1-.2,2.7.8.6,1.1,1.1.2.6-1.1,4,5.3,8.2,1.2,8.2,2.2,2.6,1.1,12.3,2.6,1.6,2.3,3.6,1.2L609,138l1.6,1.4,1.5.9-1.1,2.3-1.8,1.6-2.1,4.7-1.3,2.4.2,1.8,1.5.3,1.1-1.9,1.5-.8.8-2.3,1.9-1.8,2.7-4,4.2-6.3.8-.5.3,1-.2,2.3-2.9,6.8-2.7,5.7-.5,3.2-.6,2.6.8,1.3-.2,2.7-1.9,2.4-.5,1.8.6,3.6.6,3.4-1.5,2.6-.8,2.9-1,3.1,1.1,2.4.6,6.1,1.6,4.5-.2,3L597.2,199l-17.5,1H567l-.7-1.5-2.9-.4-2.6-1.3-2.3-3.7-.3-3.6,2-2.9-.5-1.4-2.1-2.2-.8-3.3-.6-6.8-2.1-2.5-7-4.5-3.8-5.4-3.4-1-2.2-2.8h-3.2l-2.9-3.3-.5-6.5.1-3.8,1.5-3.1-.8-3.2-2.5-2.8,1.8-5.4,5.2-3.8,1.6-1.9-.2-8.1.2-2.8,2.4-2.8Z" transform="translate(-9 -6.4)"/>
 				  <path id="WV" class="Fade" d="M758.9,254.3l5.8-6,2.6-.8,1.6-1.5,1.5-2.2,1.1.3,3.1-.2,4.6-3.6,1.5-.5,1.3,1,2.6,1.2,3,3-.4,4.3-5.4-2.6-4.8-1.8-.1,5.9-2.6,5.7-2.9,2.4-.8,2.3-3,.5-1.7,8.1-2.8.2-1.1-1-1.2-2-2.2.5-.5,5.1-1.8,5.1-5,11,.9,1.4-.1,2-2.2,2.5-1.6-.4-3.1,2.3-2.8-.8-1.8,4.9-3.8,1-2.5-1.3-2.5,1.9-2.3.7-3.2-.8-3.8-4.5-3.5-2.2-2.5-2.5-2.9-3.7-.5-2.3-2.8-1.7-.6-1.3-.2-5.6.3.1,2.4-.2,1.8-1V275l1.7-1.5.1-5.2.9-3.6,1.1-.7.4.3,1,1.1,1.7.5,1.1-1.3-1-3.1v-1.6l3.1-4.6,1.2-1.3,2,.5,2.6-1.8,3.1-3.4,2.4-4.1.2-5.6.5-4.8v-4.9l-1.1-3,.9-1.3.8-.7,4.3,19.3,4.3-.8,11.2-1.3Z" transform="translate(-9 -6.4)"/>
 				  <path id="WY" class="Fade" d="M353,161.9l-1.5,25.4-4.4,44-2.7-.3-83.3-9.1-27.9-3,2-12,6.9-41,3.8-24.2,1.3-11.2,48.2,7,59.1,6.5Z" transform="translate(-9 -6.4)"/>
-				  <path id="PA" class="Fade" href="Pennsylvania" d="M826.3,212.4l-.9-2.5-2.8-.3-.2-1.1-1-3.4,2.4-1.1.2-1.9-1.3-1.3.2-1.9,1.9-3.1v-3.1l2.6-3.2-.1-.1-2.8-.4-2.4-1.9-2-5.6-3.1-.4-2.3-2.3-36.9,7.8-33.5,6.5-.7-6.9-5.7,5.5-1.3.5-4.2,2.6,4.3,25.9,5.1,22.4,3.9-.7L757,241l38.7-7.8,22.4-4.3,1.6-1.4,2.1-1.3,1.4-.3,2.7-1.2,1.7-2.8,1.5-2.2,3.1-3v-.4Zm-4.7,7.88.68,4.67-4.12-2.3-4.23,2.09.91-4.62-3.29-3.38,4.68-.56,2.19-4.18,2,4.28,4.65.79Z" transform="translate(-9 -6.4)"/>
+				  <path id="PA" class="Fade" href="Pennsylvania" d="M826.3,212.4l-.9-2.5-2.8-.3-.2-1.1-1-3.4,2.4-1.1.2-1.9-1.3-1.3.2-1.9,1.9-3.1v-3.1l2.6-3.2-.1-.1-2.8-.4-2.4-1.9-2-5.6-3.1-.4-2.3-2.3-36.9,7.8-33.5,6.5-.7-6.9-5.7,5.5-1.3.5-4.2,2.6,4.3,25.9,5.1,22.4,3.9-.7L757,241l38.7-7.8,22.4-4.3,1.6-1.4,2.1-1.3,1.4-.3,2.7-1.2,1.7-2.8,1.5-2.2,3.1-3v-.4Z" transform="translate(-9 -6.4)"/>
 				</svg>
 
 

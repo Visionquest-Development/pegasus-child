@@ -15,6 +15,9 @@
 		/* qTip CSS */
 		//wp_enqueue_style('twentytwenty-css', get_stylesheet_directory_uri() . '/css/twentytwenty.css', null, false, false);
 		wp_enqueue_style('lightbox-css', get_stylesheet_directory_uri() . '/css/lightbox.min.css', null, false, false);
+		
+		wp_enqueue_style( 'animate', get_stylesheet_directory_uri() . '/css/animate.min.css' );
+
 
 	}
 	add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
@@ -36,20 +39,13 @@
 		wp_enqueue_script( 'lightbox_js', get_stylesheet_directory_uri() . '/js/lightbox.min.js', array(), '', true );
 
 		//wp_enqueue_script( 'masonry_js', get_template_directory_uri() . '/js/parallax.js', array(), '', true );
+		
+		wp_enqueue_script( 'wow', get_stylesheet_directory_uri() . '/js/wow.js', array(), '', true );
+
 
 	} //end function
 	add_action( 'wp_enqueue_scripts', 'pegasus_child_bootstrap_js' );
 
-
-
-	add_action( 'wp_enqueue_scripts', 'sk_enqueue_scripts' );
-	function sk_enqueue_scripts() {
-
-		wp_enqueue_style( 'animate', get_stylesheet_directory_uri() . '/css/animate.min.css' );
-
-		wp_enqueue_script( 'wow', get_stylesheet_directory_uri() . '/js/wow.js', array(), '', true );
-
-	}
 
 	//* Enqueue script to activate WOW.js
 	add_action('wp_enqueue_scripts', 'sk_wow_init_in_footer');
@@ -143,7 +139,7 @@
 		$cmb->add_group_field($group_field_id, array(
 			'name' => __('Paragraph', 'cmb2'),
 			'id'   => 'paragraph',
-			'type' => 'textarea_small',
+			'type' => 'wysiwyg',
 		));
 
 		// Button 1 Text
@@ -293,6 +289,16 @@
 			//),
 			'object_types' => array('qbiq_events'),
 		));
+		
+		/*$cmb->add_field(array(
+			'name' => 'Color',
+			'id'   => $prefix . 'page_color',
+			'type'    => 'colorpicker',
+			//'default' => '#ffffff',
+			'options' => array(
+			    'alpha' => true,
+			),
+		));*/
 
 		$cmb->add_field(array(
 			'name' => __('Event Title', 'cmb2'),
@@ -301,8 +307,14 @@
 		));
 
 		$cmb->add_field(array(
-			'name' => __('Event Date', 'cmb2'),
+			'name' => __('Event Start Date', 'cmb2'),
 			'id'   => $prefix . 'event_date',
+			'type' => 'text_date',
+		));
+		
+		$cmb->add_field(array(
+			'name' => __('Event End Date', 'cmb2'),
+			'id'   => $prefix . 'event_end_date',
 			'type' => 'text_date',
 		));
 
@@ -569,8 +581,18 @@
 
 		// Add all necessary fields
 		$cmb->add_field(array(
-			'name'    => 'Header Image URL',
+			'name'    => 'Background Image',
 			'id'      => $prefix . 'header_image',
+			'type'    => 'file',
+			
+			'text'    => array(
+				'add_upload_file_text' => 'Add Image' // Change upload button text. Default: "Add or Upload File"
+			),
+		));
+		
+		$cmb->add_field(array(
+			'name'    => 'Ticket Image',
+			'id'      => $prefix . 'ticket_image',
 			'type'    => 'file',
 			
 			'text'    => array(
@@ -660,7 +682,7 @@
 		$cmb->add_field(array(
 			'name' => 'Coach Description',
 			'id'   => $prefix . 'description',
-			'type' => 'textarea_code',
+			'type' => 'wysiwyg',
 		));
 		
 		$cmb->add_field(array(
@@ -673,6 +695,109 @@
 	
 	
 	
+	
+	function parse_date_string($dateString) {
+		// Check if the string contains a date range
+		if (strpos($dateString, '-') !== false) {
+			$dates = explode('-', $dateString);
+			$startDate = new DateTime(trim($dates[0]));
+			$endDate = new DateTime(trim($dates[1]));
+			return array($startDate, $endDate);
+		} else {
+			// Handle single date
+			$date = new DateTime($dateString);
+			return array($date);
+		}
+	}
+	
+	function display_qbiq_events_shortcode() {
+		// Define the query arguments
+		$args = array(
+			'post_type'      => 'qbiq_events', // Ensure this matches your actual custom post type name
+			'posts_per_page' => -1,            // Adjust this number based on your needs
+			'post_status'    => 'publish',     // Only fetch published posts
+			'order'          => 'ASC',
+			'orderby'        => 'date'
+			/*'orderby'        => 'meta_value',  // Changed from 'date' to 'meta_value'
+			'meta_key'       => 'camp_page_section_event_date',  // Specifies which meta key to sort by
+			'meta_type'      => 'DATE',
+			'meta_query'     => array(
+				'relation' => 'OR', // Use OR relation to combine conditions
+				array(
+					'key'     => 'camp_page_section_event_date',
+					'compare' => 'EXISTS' // Selects posts that have a date set
+				),
+				array(
+					'key'     => 'camp_page_section_event_date',
+					'compare' => 'NOT EXISTS' // Selects posts that do not have a date set
+				)
+			) */
+		);
+
+		// Perform the query
+		$query = new WP_Query($args);
+		$output = '<section class="qbiq-camp-cards"><div id="app" class="container-fluid">';
+
+		if ($query->have_posts()) {
+			while ($query->have_posts()) {
+				$query->the_post();
+				$post_id = get_the_ID();
+				
+
+				// Retrieve custom fields/meta data. Customize these lines based on your actual field IDs.
+				//$event_image = get_post_meta($post_id, 'event_image_url', true); // Assumes you have a custom field for the image
+				$event_image = get_the_post_thumbnail_url($post_id, 'full') ? get_the_post_thumbnail_url($post_id, 'full') : 'https://images.unsplash.com/photo-1479660656269-197ebb83b540?dpr=2&auto=compress,format&fit=crop&w=1199&h=798&q=80&cs=tinysrgb&crop=';
+				//$event_image = 'https://images.unsplash.com/photo-1479660656269-197ebb83b540?dpr=2&auto=compress,format&fit=crop&w=1199&h=798&q=80&cs=tinysrgb&crop=';
+				
+				$event_url = get_permalink($post_id);
+				$event_location = get_the_title(); // Assuming the post title is used as the location
+				$event_description = get_the_excerpt() ?? 'Read More' ; // Assuming you use the excerpt for the description
+				
+				$event_date = get_post_meta($post_id, 'camp_page_section_event_date', true);
+				
+				//$output .= $event_date;
+				if ( null !== $event_date && '' !== $event_date ) {
+					$final_date = parse_date_string($event_date);
+					
+					
+					if (count($final_date) > 1) {
+						//date range
+						//$output .= $final_date[0]->format('M d Y') . " - " . $final_date[1]->format('M d Y');
+					} else {
+						//single day
+						//$output .= $final_date[0]->format('M d Y') . "\n";
+					}
+				}
+				
+				
+				
+				$output .= '<a href="' . $event_url . '" class="card-wrap" data-image="' . esc_url($event_image) . '">
+								<div class="card">
+									<div class="card-bg"></div>
+									<div class="card-info">
+										<h1>' . esc_html($event_location) . '</h1>
+										<p>' . esc_html($event_description) . '</p>
+									</div>
+								</div>
+							</a>';
+			}
+		} else {
+			$output .= '<p>No events found.</p>';
+		}
+
+		$output .= '</div></section>';
+
+		// Reset post data to avoid conflicts
+		wp_reset_postdata();
+
+		return $output;
+	}
+
+	add_shortcode('display_qbiq_events', 'display_qbiq_events_shortcode');
+	
+	
+
+
 	
 	function display_coaches_shortcode() {
 		// Arguments for the query
@@ -687,6 +812,52 @@
 		// The query
 		$query = new WP_Query($args);
 		$output = '';
+		
+		function qbiq_is_youtube_video($url) {
+			// Parse the URL and extract components
+			$parsed_url = parse_url($url);
+
+			// Check if the host is a YouTube domain
+			if (!isset($parsed_url['host'])) {
+				return false;
+			}
+
+			$youtube_hosts = ['www.youtube.com', 'youtube.com', 'youtu.be'];
+			if (in_array($parsed_url['host'], $youtube_hosts)) {
+				// Further check if it's a valid YouTube watch URL or a shortened youtu.be URL
+				if ($parsed_url['host'] == 'youtu.be') {
+					// youtu.be URLs are always YouTube videos
+					return true;
+				} elseif (isset($parsed_url['path']) && $parsed_url['path'] === '/watch') {
+					// Check for 'v' parameter in query string which signifies video ID on standard YouTube URLs
+					parse_str($parsed_url['query'], $query_params);
+					return isset($query_params['v']);
+				} elseif (isset($parsed_url['path']) && strpos($parsed_url['path'], '/embed/') === 0) {
+					// Check if it is an embed URL which contains '/embed/' followed by video ID
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		function qbiq_convert_youtube_url_to_embed($url) {
+			$parsed_url = parse_url($url);
+			
+			 if (!isset($parsed_url['host'])) {
+				// Return the original URL or handle the error as needed
+				return $url; // Optionally, you could return false or an error message
+			}
+			if ($parsed_url['host'] === 'www.youtube.com' || $parsed_url['host'] === 'youtube.com') {
+				parse_str($parsed_url['query'], $query_params);
+				if (isset($query_params['v'])) {
+					return 'https://www.youtube.com/embed/' . $query_params['v'];
+				}
+			} elseif ($parsed_url['host'] === 'youtu.be') {
+				return 'https://www.youtube.com/embed' . $parsed_url['path'];
+			}
+			return $url; // Return the original URL if it's not a YouTube link
+		}
 
 		if ($query->have_posts()) {
 			while ($query->have_posts()) {
@@ -694,35 +865,67 @@
 				$query->the_post();
 				$post_id = get_the_ID();
 				$post_title = get_the_title();
+				
+				
+				
 
 				// Fetch the meta values
 				$bio_image = get_post_meta($post_id, 'camp_coaches_bio_image', true);
 				$coach_title = get_post_meta($post_id, 'camp_coaches_title', true);
 				$coach_description = get_post_meta($post_id, 'camp_coaches_description', true);
+				
 				$coach_video = get_post_meta($post_id, 'camp_coaches_video', true);
+				
+				
+				$embed_url = qbiq_convert_youtube_url_to_embed($coach_video);
+		
 
 				// Build the output HTML
-				$output .= '<section class="coaches-section"><div class="container"><div class="row">';
+				$output .= '<section class="coaches-section "><div class="container "><div class="row">';
 				$output .= '
 				<div class="col-sm-12 col-md-6">
-					<div class="mt-5 mb-5">
+					<div class="mt-5 mb-5 image-container " style="background-image: url(' . esc_url($bio_image) . ');">';
+						if ( $bio_image ) { 
+							$output .= '<div class="coach-image-container">';
+							//$output .= '<img class="image-fluid" src="' . esc_url($bio_image) . '" alt="Bio Image">';
+							
+							$output .= '<div class="coach-info">';
+							$output .= '<h1>' . $post_title . '</h1>';
+							$output .= '<h2>' . esc_html($coach_title) . '</h2>';
+							$output .= '<p>' . wp_kses_post($coach_description) . '</p>';
+							$output .= '</div>';
+							
+							$output .= '</div>';
+						} else {
+							$output .= '<div class="coach-info-solo">';
+							$output .= '<h1>' . $post_title . '</h1>';
+							$output .= '<h2>' . esc_html($coach_title) . '</h2>';
+							$output .= '<p>' . wp_kses_post($coach_description) . '</p>';
+							$output .= '</div>';
+						}
 						
-						<img class="image-fluid" src="' . esc_url($bio_image) . '" alt="Bio Image">
-						<h1>' . $post_title . '</h1>
-						<h2>' . esc_html($coach_title) . '</h2>
-						<p>' . wp_kses_post($coach_description) . '</p>
-					</div>
-				</div>
-				<div class="col-sm-12 col-md-6">
-					<div class="video-container mt-5 mb-5">
-						<figure class="wp-block-video">
-							<video class=" img-fluid lazyloading" controls>
-								<source src="' . esc_url($coach_video) . '" type="video/mp4">
-								Your browser does not support the video tag.
-							</video>
-						</figure>
-					</div>
-				</div>';
+						
+						$output .= '</div>';
+					$output .= '</div>';
+				$output .= '<div class="col-sm-12 col-md-6">';
+					$output .= '<div class="video-container mt-5 mb-5">';
+						if ( !empty($embed_url) ) {
+							if ( qbiq_is_youtube_video($embed_url)  ) {
+								$output .= '<div class="youtube-container">';
+								$output .= '<iframe src="' . esc_url($embed_url) . '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+								$output .= '</div>';
+							} else {
+								$output .= '<figure class="wp-block-video">';
+									$output .= '<video class=" img-fluid lazyloading" controls>';
+										$output .= '<source src="' . esc_url($coach_video) . '" type="video/mp4">';
+										$output .= 'Your browser does not support the video tag.';
+									$output .= '</video>';
+								$output .= '</figure>';
+								
+							}
+						}
+					$output .= '</div>';
+				$output .= '</div>';
 				
 				$output .= '</div></div></section>';
 			}

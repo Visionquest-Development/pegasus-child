@@ -25,7 +25,7 @@
 				$bg_image = isset($section['background_image']) ? esc_url($section['background_image']) : '';
 				$title = isset($section['title']) ? esc_html($section['title']) : '';
 				$subtitle = isset($section['subtitle']) ? esc_html($section['subtitle']) : '';
-				$paragraph = isset($section['paragraph']) ? esc_html($section['paragraph']) : '';
+				$paragraph = isset($section['paragraph']) ? wp_kses_post($section['paragraph']) : '';
 				$button1_text = isset($section['button1_text']) ? esc_html($section['button1_text']) : '';
 				$button1_link = isset($section['button1_link']) ? esc_url($section['button1_link']) : '#';
 				//$button2_text = isset($section['button2_text']) ? esc_html($section['button2_text']) : '';
@@ -35,7 +35,7 @@
 
 				//echo '<section class="p-5 qbiqcamp-home-section-2" style="background-image: url(' . $bg_image . ');">';
 				
-				$output .= '<section class="p-5 site qbiqcamp-home-section-' . $index . ' " style="background-image: url(' . $bg_image . ');">';
+				$output .= '<section class="p-5 site qbiqcamp-home-section qbiqcamp-home-section-' . $index . ' " style="background-image: url(' . $bg_image . ');">';
 				//$output .= '[section class="p-5 qbiqcamp-home-section-2" background="' . $bg_image . '"]';
 					$output .= '<div class="overlay"></div>';
 					$output .= '<div class="text-container container my-5">';
@@ -146,11 +146,12 @@
 			}
 		?>
 		
-		<section class="qbiq-camp-cards">
+		<!--<section class="qbiq-camp-cards">-->
 			 
-			<h1 class="title">Hover over the cards</h1>
-
-			<div id="app" class="container">
+			
+			<?php echo do_shortcode('[display_qbiq_events]'); ?>
+	
+			<!--<div id="app" class="container">
 			  <div class="card-wrap" data-image="https://images.unsplash.com/photo-1479660656269-197ebb83b540?dpr=2&auto=compress,format&fit=crop&w=1199&h=798&q=80&cs=tinysrgb&crop=">
 				<a href="/atlanta" class="card">
 				  <div class="card-bg"></div>
@@ -187,11 +188,11 @@
 				  </div>
 				</div>
 			  </div>
-			</div>
+			</div>-->
 
 		
 		
-		</section>
+		<!--</section>-->
 
 		<div class="<?php echo $final_container_class; ?>">
 		<!-- Example row of columns -->

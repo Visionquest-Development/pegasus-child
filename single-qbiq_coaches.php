@@ -17,13 +17,61 @@
 		}
 	?>
 	<?php
-	$post_id = get_the_ID(); // Or set a specific post ID if necessary
+		$post_id = get_the_ID(); // Or set a specific post ID if necessary
+		
+		function is_youtube_video($url) {
+			// Parse the URL and extract components
+			$parsed_url = parse_url($url);
 
-	// Fetch the meta values
-	$bio_image = get_post_meta($post_id, 'camp_coaches_bio_image', true);
-	$coach_title = get_post_meta($post_id, 'camp_coaches_title', true);
-	$coach_description = get_post_meta($post_id, 'camp_coaches_description', true);
-	$coach_video = get_post_meta($post_id, 'camp_coaches_video', true);
+			// Check if the host is a YouTube domain
+			if (!isset($parsed_url['host'])) {
+				return false;
+			}
+
+			$youtube_hosts = ['www.youtube.com', 'youtube.com', 'youtu.be'];
+			if (in_array($parsed_url['host'], $youtube_hosts)) {
+				// Further check if it's a valid YouTube watch URL or a shortened youtu.be URL
+				if ($parsed_url['host'] == 'youtu.be') {
+					// youtu.be URLs are always YouTube videos
+					return true;
+				} elseif (isset($parsed_url['path']) && $parsed_url['path'] === '/watch') {
+					// Check for 'v' parameter in query string which signifies video ID on standard YouTube URLs
+					parse_str($parsed_url['query'], $query_params);
+					return isset($query_params['v']);
+				} elseif (isset($parsed_url['path']) && strpos($parsed_url['path'], '/embed/') === 0) {
+					// Check if it is an embed URL which contains '/embed/' followed by video ID
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		function convert_youtube_url_to_embed($url) {
+			$parsed_url = parse_url($url);
+			if ($parsed_url['host'] === 'www.youtube.com' || $parsed_url['host'] === 'youtube.com') {
+				parse_str($parsed_url['query'], $query_params);
+				if (isset($query_params['v'])) {
+					return 'https://www.youtube.com/embed/' . $query_params['v'];
+				}
+			} elseif ($parsed_url['host'] === 'youtu.be') {
+				return 'https://www.youtube.com/embed' . $parsed_url['path'];
+			}
+			return $url; // Return the original URL if it's not a YouTube link
+		}
+
+		// Fetch the meta values
+		$bio_image = get_post_meta($post_id, 'camp_coaches_bio_image', true);
+		$coach_title = get_post_meta($post_id, 'camp_coaches_title', true);
+		$coach_description = get_post_meta($post_id, 'camp_coaches_description', true);
+		
+		
+		$coach_video = get_post_meta($post_id, 'camp_coaches_video', true);
+		
+		
+		$embed_url = convert_youtube_url_to_embed($coach_video);
+		
+		
 	?>
 
 	<section class="">
@@ -32,18 +80,41 @@
 				<div class="col-sm-12 col-md-6">
 					<div class="mt-5 mb-5">
 						<img class="image-fluid" src="<?php echo esc_url($bio_image); ?>" alt="Bio Image">
-						<h2><?php echo esc_html($coach_title); ?></h2>
-						<p><?php echo wp_kses_post($coach_description); ?></p>
+						<div class="coach-info"> 
+							<h2><?php echo esc_html($coach_title); ?></h2>
+							<p><?php echo wp_kses_post($coach_description); ?></p>
+						</div>
 					</div>
 				</div>
 				<div class="col-sm-12 col-md-6">
 					<div class="video-container mt-5 mb-5">
-						<figure class="wp-block-video">
-							<video class=" img-fluid lazyloading" controls>
-								<source src="<?php echo esc_url($coach_video); ?>" type="video/mp4">
-								Your browser does not support the video tag.
-							</video>
-						</figure>
+						<?php if ( !empty($embed_url) ) { ?>
+							<?php 
+								if ( is_youtube_video($coach_video)  ) {
+							?>
+								<iframe 
+									width="560" 
+									height="315" 
+									src="<?php echo esc_url($embed_url); ?>" 
+									frameborder="0" 
+									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+									allowfullscreen
+								>
+								</iframe>
+							<?php 
+								} else {
+							?>
+							<figure class="wp-block-video">
+								<video class=" img-fluid lazyloading" controls>
+									<source src="<?php echo esc_url($coach_video); ?>" type="video/mp4">
+									Your browser does not support the video tag.
+								</video>
+							</figure>
+							<?php 
+								}
+							?>
+							
+						<?php } //end if embed url ?>
 					</div>
 				</div>
 			</div>

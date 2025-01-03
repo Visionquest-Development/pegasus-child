@@ -67,7 +67,7 @@
 		<div class="header-container <?php echo $fixed_header_choice; ?> fixed-top">
 			<div class="header header-sticky primary-menu the-default-third-nav icons-no default-skin ">
 				<?php
-					if($top_header_choice === 'on' ) {
+					if( $top_header_choice === 'on' ) {
 						get_template_part( 'templates/top_bar', 'header' );
 					}
 				?>

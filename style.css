@@ -29,11 +29,12 @@
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 	
 	body {
-		font-family: 'Integral CF', sans-serif !important;
+		font-family: 'Futura Bold' !important;
 	}
 	
 	h1, h2, h3, h4, h5 {
-		font-family: 'Futura Bold', sans-serif !important;
+		font-family: 'Integral CF' !important;
+		color: white !important;
 	}
 	
 	.qbiq-btn {
@@ -77,6 +78,21 @@
 		border-color: white !important;
 		--bs-btn-border-width: 2.5px !important;
 	}
+	
+	.wp-block-video, .youtube-container {
+		padding: 20px;
+		background: #333;
+		border-radius: 7px;
+	}
+	
+	.youtube-container iframe {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 16 / 9;
+	}
+	
+	
+	.qbiq-background-black { background-color: black; color: white; }
 
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ HEADER ~~~~~~
@@ -90,6 +106,11 @@
 		  background-color: #FF8200;
 		  color: white;
 		  text-transform: uppercase;
+	  }
+	  
+	  
+	  .parallax-image {
+		background-position: center center;
 	  }
 
 
@@ -119,6 +140,13 @@
 	#menu-footer-menu-2 {
 		    flex-direction: column;
 	}
+	
+	footer a { text-decoration: none; }
+	
+	footer a,
+	footer li a,
+	footer .nav-link 
+	{ color: white; }
 
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -128,7 +156,7 @@
 	~~~~~~~~~~~~~~~~~~~~~*/
 	
 	.pegasus-header-content {
-		top: 65% !important;
+		
 	}
 	
 	.pegasus-header-content img {
@@ -184,7 +212,7 @@
 
 	
 	  
-	.home .qbiqcamp-home-section-1, .home .qbiqcamp-home-section-2, .home .qbiqcamp-home-section-3 {
+	.home .qbiqcamp-home-section {
 		position: relative; 
 		height: 70vh;
 		background-repeat: no-repeat !important;
@@ -194,6 +222,12 @@
 		background-color: black;
 		background-attachment: fixed;
 	}
+	
+	.home .qbiqcamp-home-section ul {
+		padding: 0;
+		margin: 0;
+	}
+	
 	.home .overlay {
 		background-image: linear-gradient(87deg, #0000008a, #0000);
 		opacity: 1;
@@ -254,7 +288,9 @@
 		background-color: #FF8200 !important;
 	}
 	
-	/* CAMP CARDS */
+	/* ==============================
+		CAMP CARDS 
+	=================================*/
 	
 	
 	.qbiq-camp-cards .title {
@@ -273,7 +309,7 @@
 	  margin-top: 10px;
 	}
 
-	.qbiq-camp-cards .container {
+	.qbiq-camp-cards .container-fluid {
 	  padding: 40px 80px;
 	  display: flex;
 	  flex-wrap: wrap;
@@ -346,6 +382,7 @@
 	.qbiq-camp-cards .card-info {
 	  padding: 20px;
 	  position: absolute;
+	  /*margin-bottom: 30px;*/
 	  bottom: 0;
 	  color: #fff;
 	  transform: translateY(40%);
@@ -384,9 +421,15 @@
 	  font-weight: 700;
 	  text-shadow: rgba(0, 0, 0, 0.5) 0 10px 10px;
 	}
+	
+	
+	
+	/* ==============================
+		BTN
+	=================================*/
 
 		
-	.btn-all-regioin {
+	.btn-all-region {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -397,10 +440,16 @@
 		transition: background-color .3s;
 	}
 
+
+	/* ==============================
+		QBIQ MAP
+	=================================*/
     .city-list-container {
       background-color: #1a1a1a;
       border-radius: 8px;
       padding: 20px;
+	  border-top-right-radius: 0;
+	  border-bottom-right-radius: 0;
     }
 
     .city-item {
@@ -412,8 +461,10 @@
       border-radius: 6px;
       margin-bottom: 10px;
       transition: background-color 0.3s;
+	  text-decoration: none; 
     }
-
+	
+	
     .city-item:hover {
       background-color: #3a3a3a;
 	  transform: scale(1.05);
@@ -431,7 +482,13 @@
 
     .city-info strong {
       font-size: 16px;
+	  text-transform: uppercase;
     }
+	
+	.city-item .city-info a {
+		/* text-decoration: none; */
+		color: white;
+	}
 
     .city-date {
       margin-left: auto;
@@ -477,6 +534,11 @@
       border-radius: 5px;
 	  min-width: 65px;
     }
+	
+	/* ==============================
+		SVG MAP
+	=================================*/
+	
 
     .map-container {
       background-color: #1a1a1a;
@@ -485,6 +547,8 @@
       justify-content: center;
       align-items: center;
       padding: 20px;
+	  border-top-left-radius: 0;
+	  border-bottom-left-radius: 0;
     }
 
     .map {
@@ -592,13 +656,14 @@
 	}
 
 
-	/* ~~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~~SITEMAP~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~*/
+	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~CAMP CUSTOM TEMPLATE ~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 	.custom-section {
 		position: relative;
 		background-size: cover;
 		background-position: center;
+		background-repeat: no-repeat;
 		color: #fff;
 		text-align: center;
 		padding: 100px 20px;
@@ -627,8 +692,7 @@
     align-items: stretch;
     height: 70vh;
     max-height: 900px;
-    display: inline-flex
-;
+    display: inline-flex;
     position: absolute;
     inset: 0%;
 	}
@@ -652,6 +716,10 @@
     padding-top: 0;
     padding-bottom: 80px;
     
+	}
+	
+	.custom-section .camp-section-container h1 {
+		font-size: 3rem;
 	}
 
 	.custom-section .btn {
@@ -713,18 +781,19 @@
 		line-height: 23px;
 	}
 	
-	.camp-page-description p { margin-bottom: 0; }
+	.camp-page-description p { margin-bottom: 0; max-width: 500px; }
 	
 	
-	.qbiq-background-black { background-color: black; color: white; }
 	
+	/* ==============================
+		ACCOMODATION SECTION
+	=================================*/
 	
 	/* General Styling */
 	.camp-section {
 		color: #fff;
 		background-color: #000;
 		padding: 50px 20px;
-		font-family: 'Arial', sans-serif;
 	}
 
 	/* Header Section */
@@ -771,6 +840,7 @@
 		flex-wrap: wrap;
 		gap: 20px;
 		justify-content: space-between;
+		position: relative;
 	}
 
 	/* Hotel Section */
@@ -824,14 +894,12 @@
 	.hotel-details .btn:hover {
 		background: #d98200;
 	}
-
-	/* Facility Section */
+	
+	/* ==============================
+		FACILITY SECTION 
+	=================================*/
 	.facility-info {
-		position: absolute;
-		right: 10px;
-		top: 50%;
-		-webkit-transform: translate3d(-3%, -50%, 0);
-		transform: translate3d(-3%, -50%, 0);
+		
 	}
 
 	.facility-image {
@@ -891,7 +959,9 @@
 		}
 	}
 
-	
+	/* ==============================
+		ITINERARY SECTION
+	=================================*/
 	.itinerary-section {
 		background-color: #000;
 		color: #fff;
@@ -997,7 +1067,9 @@
 		color: #fff;
 	}
 
-
+	/* ==============================
+		TICKETS SECTION
+	=================================*/
 	.tickets {
 		background-size: cover; /* Ensure the image covers the entire section */
 		background-position: center; /* Center the image */
@@ -1020,7 +1092,7 @@
 	}
 	
 	.tickets-container {
-		height: 70vh;
+		height: 90vh;
 		background-size: cover; /* Cover the entire area of the section */
 		background-position: center; /* Center the background image */
 		background-repeat: no-repeat; /* Do not repeat the image */
@@ -1055,7 +1127,6 @@
 		z-index: 999;
 		position: relative;
 	}
-	
 	
 	
 	.spots {
@@ -1125,12 +1196,83 @@
 	
 	
 	
+	/* ==============================
+		RANDOM / COACHES TEMPALTE 
+	=================================*/
 	
-	.coaches-section:nth-child(odd) {
-		background: #dedede;
+	.page-template-tpl_coaches #small-header .overlay { display: none; }
+	.page-template-tpl_coaches #small-header .parallax-content {
+		padding: 400px 0;
 	}
 	
+	.coaches-section {
+		margin: 40px 0;
+		position: relative;
+		border-bottom: 5px solid grey;
+	}
+	
+	.coaches-section .image-container {
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: top left;
+		position: relative;
+	}
+	
+	/*.coaches-section:nth-child(odd) {
+		background: #dedede;
+		
+	} */
+	
+	.coaches-section .coach-info {
+		position: absolute;
+		bottom: 5%;
+		background: rgba(0, 0, 0, 0.3);
+		border-radius: 7px;
+		border: 1px solid white;
+		padding: 10px 20px;
+		width: 60%;
+		left: 5%;
+	}
+	
+	
+	
+	.coaches-section .coach-info p, 
+	.coaches-section .coach-info ul, 
+	.coaches-section .coach-info ul li, 
+	.coaches-section .coach-info ul li a,
+	.coaches-section .coach-info-solo p,
+	.coaches-section .coach-info-solo ul,
+	.coaches-section .coach-info-solo ul li,
+	.coaches-section .coach-info-solo ul li a
+	{ color: white; }
+	
+	.coach-image-container {
+		background-image: radial-gradient(circle farthest-side at 100% 10%, #0000 11%, #000 83%);
+		height: 70vh;
+	}
+	
+	
+	label, legend { color: white !important; }
+	.gfield_description { color: white !important; }
+	
+	#gform_2 {
+		margin-bottom: 40px;
+		border: 2px solid #333;
+		border-radius: 7px;
+		padding: 15px;
+	}
+	
+	.form-check-label { margin-left: 10px !important; }
 
+	/* ==============================
+		etc
+	=================================*/
+	
+	
+	
+	
+	
+	
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~WOOCOMMERCE~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -1150,16 +1292,29 @@
 
 	}
 	
+	/* DESKTOP UP */
 	@media only screen and ( min-width: 767px ) {
 		#mega-menu #navbarsExampleDefault #menu-main-menu li a {
 			padding-left: 40px;
 			padding-right: 40px;
 		} 
 		
+		.custom-section .camp-section-container h1 {
+			font-size: 7rem;
+		}
+		
+		.facility-info {
+			position: absolute;
+			right: 10px;
+			top: 50%;
+			-webkit-transform: translate3d(-3%, -50%, 0);
+			transform: translate3d(-3%, -50%, 0);
+		}
+		
 		.ticket-container img {
 			position: absolute;
-			top: 12vh;
-			right: 20%;
+			/*top: 12vh;
+			right: 20%; */
 		}
 		
 		.event-info {
@@ -1169,13 +1324,45 @@
 		}
 	}
 
+	/* MOBILE DOWN */
 	@media only screen and ( max-width: 767px ) {
 		
-		.home .qbiqcamp-home-section-1, 
-		.home .qbiqcamp-home-section-2,
-		.home .qbiqcamp-home-section-3 {
+		.home .qbiqcamp-home-section {
 			background-position: 40% 30%;
 		}
+		
+		.tickets-container { height: auto; }
+		
+		.city-list-container { 
+			padding: 10px 10px 0 10px !important;
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+		
+		.map-container {
+			padding: 10px;
+			border-top-left-radius: 0;
+			border-top-right-radius: 0;
+		}
+		
+		.city-item { padding: 5px 10px; margin-bottom: 5px; }
+		
+		
+		
+		
+		.camp-section-container { height: 90vh; }
+		
+		.camp-section .camp-content {
+			display: block;
+			margin-bottom: 10px;
+		}
+		
+		.camp-section .camp-content .facility-info {
+			margin-top: 20px;
+		}
+		
+		.day-schedule li { padding: 5px; }
+		
 
 	}
 
