@@ -23,6 +23,7 @@
 		// Fetch custom field values
 		$event_title       = get_post_meta(get_the_ID(), 'camp_page_section_event_title', true);
 		$event_date        = get_post_meta(get_the_ID(), 'camp_page_section_event_date', true);
+		$event_date_end    = get_post_meta(get_the_ID(), 'camp_page_section_event_end_date', true);
 		$event_description = get_post_meta(get_the_ID(), 'camp_page_section_event_description', true);
 		$button_text       = get_post_meta(get_the_ID(), 'camp_page_section_button_text', true);
 		$button_link       = get_post_meta(get_the_ID(), 'camp_page_section_button_link', true);
@@ -37,7 +38,16 @@
 	<section class="custom-section qbiq-parallax" style="background-image: url('<?php echo esc_url($background_image); ?>');">
 		<div class="camp-section-container">
 			<div class="content wow fadeIn">
-				<div class="date-block"><p><?php echo esc_html($event_date); ?></p></div>
+				
+				<?php if ( $event_date ) { ?>
+					<div class="date-block">
+						<p>
+							<?php echo esc_html($event_date); ?> 
+							<?php if ( $event_date_end ) { echo ' - ' . $event_date_end; } ?>
+						</p>
+					</div>
+				<?php } ?>
+				
 				<h1><?php echo esc_html($event_title); ?></h1>
 				<div class="camp-page-description"><p><?php echo esc_html($event_description); ?></p></div>
 				<?php if ($button_text && $button_link): ?>
@@ -217,7 +227,7 @@
 									<?php if (!empty($day['day_title'])) : ?>
 										<div class="day-title"><?php echo esc_html($day['day_title']); ?></div>
 									<?php endif; ?>
-									<?php if (!empty($day['day_date'])) : ?>
+									<?php if (!empty($day['day_date']) ) : ?>
 									
 										<?php 
 											$day_date = $day['day_date']; // Fetch the date from your array or custom field
@@ -256,7 +266,7 @@
 	// Get the meta values
 	$header_image = get_post_meta(get_the_ID(), 'camp_tickets_header_image', true) ? get_post_meta(get_the_ID(), 'camp_tickets_header_image', true) : 'https://cdn.prod.website-files.com/64d124bebeae431f3756cc77/65e8a96d03cbb273acbd96bb_cedric-letsch-UZVlSjrIJ3o-unsplashcompactado.png';
 	$ticket_image = get_post_meta(get_the_ID(), 'camp_tickets_ticket_image', true) ? get_post_meta(get_the_ID(), 'camp_tickets_ticket_image', true) : 'https://cdn.prod.website-files.com/64d124bebeae431f3756cc77/66293c76333b6af28cd49f67_Los%20angeles.png';
-	$event_date = get_post_meta(get_the_ID(), 'camp_tickets_event_date', true) ?? '01/01/2026';
+	//$event_date = get_post_meta(get_the_ID(), 'camp_tickets_event_date', true) ?? '01/01/2026';
 	$available_spots = get_post_meta(get_the_ID(), 'camp_tickets_available_spots', true) ?? '0';
 	$event_title = get_post_meta(get_the_ID(), 'camp_tickets_event_title', true) ?? 'The title';
 	$event_description = get_post_meta(get_the_ID(), 'camp_tickets_event_description', true) ?? 'The description';
@@ -265,7 +275,7 @@
 	?>
 	<section class="tickets qbiq-background-black" >
 		<?php /* <div class="tickets-container" style="background-image: url('<?php echo esc_url($header_image); ?>');"> */ ?>
-		<div class="tickets-container " style="background-image: radial-gradient(circle at 50% 0, #0000, #2c1401), url('<?php echo esc_url($header_image); ?>'), radial-gradient(circle at 50% -35%, #fff8ef, #fff8ef);">
+		<div class="tickets-container background-attachment-fixed " style="background-image: radial-gradient(circle at 50% 0, #0000, #2c1401), url('<?php echo esc_url($header_image); ?>'), radial-gradient(circle at 50% -35%, #fff8ef, #fff8ef);">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-12 col-md-6">
@@ -308,6 +318,7 @@
 								<div class="desc">
 									<p><?php echo wp_kses_post($event_description); ?></p>
 								</div>
+								<a href="/register" class="btn qbiq-btn text-white mb-3">Register</a>
 							</div>
 						</div>
 					</div>

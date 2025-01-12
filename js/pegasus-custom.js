@@ -20,7 +20,52 @@
 			//}
 
 		//});
+		
+		
+		var isBackgroundFixed = false; // State to track whether the class has been added
 
+		function toggle_background_attachment_fixed() {
+			$('.tickets-container, .qbiqcamp-home-section').toggleClass('background-attachment-fixed');
+			isBackgroundFixed = !isBackgroundFixed; // Update state
+		}
+
+		function checkWindowSize() {
+			var currentWidth = $(window).width();
+			if (currentWidth <= 768 && !isBackgroundFixed) {
+				// Window size is less than or equal to 768px and background isn't fixed
+				toggle_background_attachment_fixed();
+			} else if (currentWidth > 768 && isBackgroundFixed) {
+				// Window size is greater than 768px and background is fixed
+				toggle_background_attachment_fixed();
+			}
+		}
+
+		// Initial check
+		checkWindowSize();
+
+		// Check on resize
+		$(window).resize(checkWindowSize);
+		
+		
+		
+		/*
+		function toggle_background_attachment_fixed() {
+			$('.tickets-container').toggleClass('background-attachment-fixed');
+			$('.qbiqcamp-home-section').toggleClass('background-attachment-fixed');
+		}
+		
+		if( $(window).width() <= 768 ){
+			toggle_background_attachment_fixed();
+		} //end if
+		
+		$( window ).resize(function() {
+			if($(window).width() < 768){
+				toggle_background_attachment_fixed();
+			}
+		});
+		*/
+		
+		
 	}); //end document ready function
 
 
@@ -171,7 +216,7 @@
 		//jQuery('#large-header').append('<video autoplay loop muted id="bgvid"><source src="https://www.youtube.com/embed/4aTS5iATUQc?rel=0&controls=0&autoplay=1&mute=1&start=60');
 		let largeHeader = jQuery('.home #large-header').html(
 			'<div class="w-embed-youtubevideo youtube losangeles _2">' + 
-			'<video autoplay muted loop preload="auto">' +
+			'<video autoplay muted loop preload="auto" playsinline>' +
 				'<source src="https://qbiqcamp.com/wp-content/uploads/2024/11/QBIQ-WEB-BANNER-VIDEO-1.mp4" type="video/mp4">' + 
 				'Your browser does not support the video tag.' +
 			'</video>' +  
@@ -198,12 +243,16 @@
 		videoElement.autoplay = true;
 		videoElement.muted = true;
 		videoElement.loop = true;
+		videoElement.playsInline = true; 
 		videoElement.preload = 'auto';
+		
 
 		// Create a source element and add it to the video
 		let sourceElement = document.createElement('source');
 		sourceElement.src = 'https://qbiqcamp.com/wp-content/uploads/2024/11/QBIQ-WEB-BANNER-VIDEO-1.mp4';
 		sourceElement.type = 'video/mp4';
+		
+		
 		videoElement.appendChild(sourceElement);
 		jQuery('.home #large-header canvas').remove();
 
@@ -215,7 +264,7 @@
 			largeHeader.find('.w-embed-youtubevideo').append(videoElement);
 
 			// Re-add the header content
-			largeHeader.append('<div class="pegasus-header-content wow fadeIn d-block" data-wow-delay="2s">' + headerContent + '</div>');
+			largeHeader.append('<div class="pegasus-header-content wow fadeIn d-block" data-wow-delay="1.5s">' + headerContent + '</div>');
 		});
 
 		// Start loading the video

@@ -5,7 +5,7 @@
       
 		<div class="city-item" data-state="ALL">
 			<div class="city-info">
-			  <strong>ALL REGIONAL PASS</strong>
+			  <strong>ALL CAMPS PASS</strong>
 			</div>
 			<span class="city-date">2025</span>
 			<span class="badge">10 spots</span>
@@ -105,7 +105,7 @@
 				//var_dump( $state );
 				
 				$spots = !empty($spots) ? $spots : '1';
-				$date = !empty($date) ? date('F j, Y', strtotime($date)) : 'TBD';
+				$date = !empty($date) ? date('M j, Y', strtotime($date)) : 'TBD';
 
 				// Output the HTML
 				?>

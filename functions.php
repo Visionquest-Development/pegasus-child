@@ -600,11 +600,11 @@
 			),
 		));
 
-		$cmb->add_field(array(
+		/*$cmb->add_field(array(
 			'name' => 'Event Date',
 			'id'   => $prefix . 'event_date',
 			'type' => 'text_date',
-		));
+		));*/
 
 		$cmb->add_field(array(
 			'name' => 'Available Spots',
@@ -858,6 +858,25 @@
 			}
 			return $url; // Return the original URL if it's not a YouTube link
 		}
+		
+		function slugifyCssName($name) {
+			// Normalize the string to remove accents and special characters
+			$normalized = iconv('UTF-8', 'ASCII//TRANSLIT', $name);
+
+			// Convert to lowercase
+			$lowercased = strtolower($normalized);
+
+			// Replace spaces and unwanted characters with hyphens
+			$slug = preg_replace('/[^a-z0-9-]+/', '-', $lowercased);
+
+			// Remove duplicate hyphens
+			$slug = preg_replace('/-+/', '-', $slug);
+
+			// Trim hyphens from the beginning and end of the slug
+			$slug = trim($slug, '-');
+
+			return $slug;
+		}
 
 		if ($query->have_posts()) {
 			while ($query->have_posts()) {
@@ -881,21 +900,18 @@
 		
 
 				// Build the output HTML
-				$output .= '<section class="coaches-section "><div class="container "><div class="row">';
+				$output .= '<section class="coaches-section ' . slugifyCssName( $post_title ) . '"><div class="container "><div class="row">';
 				$output .= '
-				<div class="col-sm-12 col-md-6">
+				<div class="col-md-12 col-lg-6">
 					<div class="mt-5 mb-5 image-container " style="background-image: url(' . esc_url($bio_image) . ');">';
 						if ( $bio_image ) { 
 							$output .= '<div class="coach-image-container">';
 							//$output .= '<img class="image-fluid" src="' . esc_url($bio_image) . '" alt="Bio Image">';
 							
-							$output .= '<div class="coach-info">';
-							$output .= '<h1>' . $post_title . '</h1>';
-							$output .= '<h2>' . esc_html($coach_title) . '</h2>';
-							$output .= '<p>' . wp_kses_post($coach_description) . '</p>';
-							$output .= '</div>';
+							
 							
 							$output .= '</div>';
+							 
 						} else {
 							$output .= '<div class="coach-info-solo">';
 							$output .= '<h1>' . $post_title . '</h1>';
@@ -904,10 +920,16 @@
 							$output .= '</div>';
 						}
 						
+							$output .= '<div class="coach-info">';
+							$output .= '<h1>' . $post_title . '</h1>';
+							$output .= '<h2>' . esc_html($coach_title) . '</h2>';
+							$output .= '<p>' . wp_kses_post($coach_description) . '</p>';
+							$output .= '</div>';
+						
 						
 						$output .= '</div>';
 					$output .= '</div>';
-				$output .= '<div class="col-sm-12 col-md-6">';
+				$output .= '<div class="col-md-12 col-lg-6">';
 					$output .= '<div class="video-container mt-5 mb-5">';
 						if ( !empty($embed_url) ) {
 							if ( qbiq_is_youtube_video($embed_url)  ) {

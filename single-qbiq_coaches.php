@@ -77,7 +77,7 @@
 	<section class="">
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-12 col-md-6">
+				<div class="col-sm-12 col-md-12 col-lg-8 ">
 					<div class="mt-5 mb-5">
 						<img class="image-fluid" src="<?php echo esc_url($bio_image); ?>" alt="Bio Image">
 						<div class="coach-info"> 
@@ -86,7 +86,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-sm-12 col-md-6">
+				<div class="col-sm-12 col-md-12 col-lg-4">
 					<div class="video-container mt-5 mb-5">
 						<?php if ( !empty($embed_url) ) { ?>
 							<?php 

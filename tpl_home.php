@@ -35,11 +35,12 @@
 
 				//echo '<section class="p-5 qbiqcamp-home-section-2" style="background-image: url(' . $bg_image . ');">';
 				
-				$output .= '<section class="p-5 site qbiqcamp-home-section qbiqcamp-home-section-' . $index . ' " style="background-image: url(' . $bg_image . ');">';
+				$output .= '<section class="p-5 site qbiqcamp-home-section qbiqcamp-home-section-' . $index . ' background-attachment-fixed " style="background-image: url(' . $bg_image . ');">';
 				//$output .= '[section class="p-5 qbiqcamp-home-section-2" background="' . $bg_image . '"]';
 					$output .= '<div class="overlay"></div>';
 					$output .= '<div class="text-container container my-5">';
-						$output .= '<div class="p-5 mb-5">';
+					
+						$output .= '<div class="p-sm-5 ">'; 
 							$output .= '<div class="container-fluid py-5">';
 								$output .= '<div class="col-md-6 wow slideInLeft">';
 									$output .= '<h2>' . $title . '</h2>';
@@ -50,10 +51,12 @@
 							$output .= '</div>';
 						$output .= '</div>';
 						
-						$output .= '<div class="text-center button-container">';
-							$output .= '<a class="btn btn-transparent mb-3 " href="' . $button1_link . '">' . $button1_text . '</a>';
-						$output .= '</div>';
 						
+						
+					$output .= '</div>';
+					
+					$output .= '<div class="text-center button-container">';
+						$output .= '<a class="btn btn-transparent mb-3 " href="' . $button1_link . '">' . $button1_text . '</a>';
 					$output .= '</div>';
 					
 				$output .= '</section>';

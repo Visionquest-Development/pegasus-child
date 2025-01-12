@@ -10,36 +10,62 @@
 
 /*@import url("../pegasus/style.css");*/
 
+/*
 @font-face {
-	font-family: 'Integral CF'; /* Choose a name for your font */
-	src: url('/fonts/IntegralCF-Regular.otf') format('otf'); /* Path to your font file */
-	font-weight: normal; /* Optional: Set font weight */
-	font-style: normal; /* Optional: Set font style (italic) */
+	font-family: 'Integral CF'; 
+	src: url('/fonts/IntegralCF-Bold.otf') format('otf'); 
+	font-weight: normal; 
+	font-style: normal; 
 }
+*/
+/*
+@font-face {
+	font-family: 'Futura Bold'; 
+	src: url('/fonts/Futura_Bold.otf') format('otf');
+	font-weight: normal; 
+	font-style: normal; 
+}*/
 
-@font-face {
-	font-family: 'Futura Bold'; /* Choose a name for your font */
-	src: url('/fonts/Futura_Bold.otf') format('otf'); /* Path to your font file */
-	font-weight: normal; /* Optional: Set font weight */
-	font-style: normal; /* Optional: Set font style (italic) */
-}
+
+/*@import url('https://fonts.googleapis.com/css2?family=Anton&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');*/
+@import url('https://fonts.googleapis.com/css?family=Anton|Roboto&display=swap');
+
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PEGASUS CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+	 
+	/*.anton-regular {
+	  font-family: "Anton", serif;
+	  font-weight: 400;
+	  font-style: normal;
+	}*/
 	
 	body {
-		font-family: 'Futura Bold' !important;
-	}
+		/*font-family: 'Futura Bold' !important;*/
+		/*font-family: "Roboto", serif !important;*/
+		/* font-family: "Roboto", "Arial" !important; */
+		font-family: 'Roboto', sans-serif !important;
+		font-weight: 700;
+		font-style: normal;
+		/*--bs-body-font-family: font-family: 'Roboto', sans-serif !important;*/
+	} 
 	
+	h1 {
+		 
+	}
+	 
 	h1, h2, h3, h4, h5 {
-		font-family: 'Integral CF' !important;
+		
+		/*font-family: 'Integral CF', Roberto !important;*/
+		font-family: 'Anton', 'Roboto', Arial !important;
+		  
 		color: white !important;
 	}
 	
 	.qbiq-btn {
 		background-color: #ff8200 !important;
-		color: #fff 1important;
+		color: #fff !important;
 		text-transform: uppercase;
 		font-weight: bold;
 	}
@@ -91,8 +117,14 @@
 		aspect-ratio: 16 / 9;
 	}
 	
+	.background-attachment-fixed { 
+		background-attachment: fixed;
+	}
+	
 	
 	.qbiq-background-black { background-color: black; color: white; }
+	
+	.text-white { color: white; }
 
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ HEADER ~~~~~~
@@ -117,12 +149,20 @@
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ NAVIGATION ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
+	
+		
+	
 	  @media (min-width: 768px) {
 		.navbar-expand-md .navbar-nav .nav-link {
 			padding-left: 1rem;
 			padding-right: 1rem;
 			font-size: 14px;
 			text-transform: uppercase;
+		}
+		
+		.dropdown-item.active, .dropdown-item:active {
+			color: black !important; 
+			font-weight: bold;
 		}
 		
 		
@@ -214,13 +254,14 @@
 	  
 	.home .qbiqcamp-home-section {
 		position: relative; 
-		height: 70vh;
+		/* height: 70vh; */
 		background-repeat: no-repeat !important;
 		background-size: cover;
 		background-position: 100% 30%;
 		color: white;
 		background-color: black;
-		background-attachment: fixed;
+		/* background-attachment: fixed;
+		z-index: 999; */
 	}
 	
 	.home .qbiqcamp-home-section ul {
@@ -467,7 +508,7 @@
 	
     .city-item:hover {
       background-color: #3a3a3a;
-	  transform: scale(1.05);
+	  transform: scale(1.05) !important;
     }
 
     .city-item:last-child {
@@ -486,7 +527,7 @@
     }
 	
 	.city-item .city-info a {
-		/* text-decoration: none; */
+		text-decoration: none;
 		color: white;
 	}
 
@@ -659,6 +700,11 @@
 	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~CAMP CUSTOM TEMPLATE ~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+	
+	.p-relative {
+		position: relative;
+	}
+	
 	.custom-section {
 		position: relative;
 		background-size: cover;
@@ -667,7 +713,7 @@
 		color: #fff;
 		text-align: center;
 		padding: 100px 20px;
-		height: 70vh;
+		/* height: 70vh; */
 		overflow: hidden;
 	}
 
@@ -675,7 +721,7 @@
 		background: rgba(0, 0, 0, 0.6);
 		padding: 50px;
 	}
-	
+	/*
 	.camp-section-container {
 		    z-index: 9;
     grid-column-gap: 16px;
@@ -717,7 +763,7 @@
     padding-bottom: 80px;
     
 	}
-	
+	*/
 	.custom-section .camp-section-container h1 {
 		font-size: 3rem;
 	}
@@ -847,7 +893,7 @@
 	.hotel-image {
 		position: relative;
 		flex: 1 1 65%;
-		height: 70vh;
+		/*height: 70vh;*/
 		background-size: cover;
 		background-position: center;
 		border-radius: 10px;
@@ -1092,11 +1138,11 @@
 	}
 	
 	.tickets-container {
-		height: 90vh;
+		
 		background-size: cover; /* Cover the entire area of the section */
 		background-position: center; /* Center the background image */
 		background-repeat: no-repeat; /* Do not repeat the image */
-		background-attachment: fixed;
+		/* background-attachment: fixed; */
 		    background-color: #fff;
 			border-radius: 10px;
 			position: relative;
@@ -1148,6 +1194,16 @@
     margin-bottom: 10px;
     
 	vertical-align: middle;
+	}
+	 
+	
+	.spots:hover {
+		background: white;
+		
+	}
+	
+	.spots:hover span {
+		color: black;
 	}
 	
 	.spots span {
@@ -1224,14 +1280,14 @@
 	} */
 	
 	.coaches-section .coach-info {
-		position: absolute;
-		bottom: 5%;
+		
+		
 		background: rgba(0, 0, 0, 0.3);
 		border-radius: 7px;
 		border: 1px solid white;
 		padding: 10px 20px;
-		width: 60%;
-		left: 5%;
+		
+		
 	}
 	
 	
@@ -1248,14 +1304,14 @@
 	
 	.coach-image-container {
 		background-image: radial-gradient(circle farthest-side at 100% 10%, #0000 11%, #000 83%);
-		height: 70vh;
+		/*height: 70vh; */
 	}
 	
 	
 	label, legend { color: white !important; }
 	.gfield_description { color: white !important; }
 	
-	#gform_2 {
+	#gform_1, #gform_2 {
 		margin-bottom: 40px;
 		border: 2px solid #333;
 		border-radius: 7px;
@@ -1289,7 +1345,9 @@
 	}
 
 	@media only screen and (max-width: 980px) {
-
+		.home .qbiqcamp-home-section h2 {
+			font-size: 3rem !important; 
+		}
 	}
 	
 	/* DESKTOP UP */
@@ -1298,6 +1356,92 @@
 			padding-left: 40px;
 			padding-right: 40px;
 		} 
+		
+		
+		.home .qbiqcamp-home-section h2 {
+			font-size: 4rem;
+			text-shadow: 2px 2px 10px #000;
+			letter-spacing: 4px;
+		}
+		
+		.home .qbiqcamp-home-section ul {
+			font-size: 2rem;
+			text-shadow: 2px 2px 10px #000;
+		}
+		
+		.camp-section-container {
+		    z-index: 9;
+			grid-column-gap: 16px;
+			grid-row-gap: 16px;
+			outline-offset: 0px;
+			text-align: center;
+			background-color: #0000;
+			background-image: radial-gradient(circle farthest-side at 100% 10%, #0000 11%, #000 83%);
+			outline: 3px #333;
+			grid-template-rows: auto auto;
+			grid-template-columns: 1fr 1fr;
+			grid-auto-columns: 1fr;
+			justify-content: flex-start;
+			align-items: stretch;
+			height: 70vh;
+			/*max-height: 900px;*/ 
+			display: inline-flex;
+			position: absolute;
+			inset: 0%;
+		}
+			
+		.custom-section .content {
+					 grid-column-gap: 0px;
+			grid-row-gap: 0px;
+			flex-flow: column;
+			grid-template-rows: auto auto;
+			grid-template-columns: 1fr 1fr;
+			grid-auto-columns: 1fr;
+			justify-content: flex-end;
+			align-items: flex-start;
+			margin-left: 8vw;
+			padding-top: 0;
+			padding-bottom: 70px;
+			display: flex;
+			position: relative;
+			justify-content: flex-end;
+			align-items: flex-start;
+			padding-top: 0;
+			padding-bottom: 80px;
+			
+		}
+		
+		.home .qbiqcamp-home-section .button-container {
+			position: absolute;
+			bottom: 20px;
+			left: 50%;
+			transform: translate3d(-50%, -50%, 0);
+		}
+	
+		.home .qbiqcamp-home-section {
+			height: 70vh;
+		}
+
+
+		.custom-section {
+			height: 70vh;
+		}
+
+
+		.hotel-image {
+			height: 70vh;
+		}
+
+
+		.coach-image-container { 
+			height: 70vh;
+		}
+
+
+		.tickets-container {
+			height: 90vh;
+		}
+		
 		
 		.custom-section .camp-section-container h1 {
 			font-size: 7rem;
@@ -1322,6 +1466,19 @@
 			position: absolute;
 			top: 20vh;
 		}
+		
+		
+		.coaches-section .coach-info {
+			width: 60%;
+			
+			position: absolute;
+			bottom: 5%;
+			left: 5%;
+		}
+		
+		.coaches-section.don-klein .image-container {
+			background-position: 25% 0;
+		}
 	}
 
 	/* MOBILE DOWN */
@@ -1331,7 +1488,15 @@
 			background-position: 40% 30%;
 		}
 		
-		.tickets-container { height: auto; }
+		.home .qbiqcamp-home-section h2 {
+			font-size: 2rem;
+		}
+		
+		.home .qbiqcamp-home-section-3 h2 {
+			font-size: 1.5rem;
+		}
+		
+		.custom-section { height: 90vh; } 
 		
 		.city-list-container { 
 			padding: 10px 10px 0 10px !important;
@@ -1347,15 +1512,40 @@
 		
 		.city-item { padding: 5px 10px; margin-bottom: 5px; }
 		
+		.camp-section-container .content {
+			position: absolute;
+			bottom: 10px;
+			background: rgba( 0,0,0, 0.7 );
+			
+			border: 2px solid #333;
+			border-radius: 7px;
+			padding: 20px;
+			margin: 0;
+			left: 20px;
+			right: 20px;
+			transform: none !important;
+		}
+		
+		.date-block {
+			margin: 20px;
+			/*border-top: 1px solid white;
+			border-bottom: 1px solid white;
+			border-right: 1px solid white;*/
+			background: rgba( 255, 255, 255, 0.4 );
+			border-left: 5px solid white !important;
+			transform: none !important;
+		}
 		
 		
-		
-		.camp-section-container { height: 90vh; }
 		
 		.camp-section .camp-content {
 			display: block;
 			margin-bottom: 10px;
+			
 		}
+		
+		.hotel-image { height: 70vh; }
+		
 		
 		.camp-section .camp-content .facility-info {
 			margin-top: 20px;
@@ -1363,9 +1553,39 @@
 		
 		.day-schedule li { padding: 5px; }
 		
-
+		
+		
+		
+		.tickets-container { 
+			height: auto; 
+			background-position: 30%; 
+		}
+		
+		
+		.coach-image-container {
+			background-image: none !important;
+			height: 50vh;
+		}
+		
+		.coaches-section .coach-info {
+			/*position: absolute;
+			bottom: 10px; */
+			background: black;
+		}
+		.coaches-section .image-container {
+		    background-position: center;
+		}
+		.coaches-section.don-klein .image-container {
+			background-position: 50% 0;
+		}
+		
+		#footer-widget-1 { display: none; }
+		
+		.footer-widget-area .widget_nav_menu {
+			margin-bottom: 20px;
+		}
 	}
 
 	@media only screen and (max-width: 479px) {
-
+		.custom-section .content { display: block; }
 	}
