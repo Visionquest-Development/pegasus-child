@@ -145,7 +145,10 @@
 		<section id="pegasus-blog" class="py-5" >
 			<div class="container-fluid">
 				<h3>Blog</h3>
-				<pre><code class="language-javascript">[blog the_query="post_type=logo_slider&order_by=title&order=ASC" ][/blog]</code></pre>
+				<div class="text-center">
+					<img src="/wp-content/themes/pegasus-child/screenshots/blog_screenshot.png" alt="placeholder image" class="img-fluid w-25">
+				</div>
+				<pre><code class="language-javascript">[blog the_query="post_type=post&order_by=title&order=ASC" ][/blog]</code></pre>
 				<div class="text-center">
 					<a href="https://github.com/Visionquest-Development/pegasus-blog"
 					class="btn btn-primary  mt-5 mb-2" target="_blank">
@@ -171,14 +174,14 @@
 			<div class="container-fluid">
 				<h3>Callout</h3>
 				<div class="text-center">
-					<img src="http://pegasustheme.com/wp-content/uploads/2016/07/2016-07-22_20-20-55.png" alt="placeholder image" class="img-fluid">
+					<img src="/wp-content/themes/pegasus-child/screenshots/callout1_screenshot.png" alt="placeholder image" class="img-fluid">
 				</div>
 				<pre><code class="language-javascript">[callout button="yes" link="http://example.com" external="yes" color="white" link_text="Learn More" background="http://www.wpfreeware.com/themes/html/appstation/img/download_bg.png"]
 Get your copy now!Suspendisse vitae bibendum mauris. Nunc iaculis nisl vitae laoreet elementum donec dignissim metus sit.
 [/callout]</code></pre>
 
 				<div class="text-center">
-					<img src="//pegasustheme.com/wp-content/uploads/2016/07/2016-07-22_20-21-06.png" alt="placeholder image" class="img-fluid">
+					<img src="/wp-content/themes/pegasus-child/screenshots/callout2_screenshot.png" alt="placeholder image" class="img-fluid">
 				</div>
 				<pre><code class="language-javascript">[callout button="yes" link="http://example.com" color="black" external="yes" backgroundcolor="#dedede"]
 Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Donec sollicitudin molestie malesuada. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec sollicitudin molestie malesuada.
@@ -202,7 +205,7 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 
 				<h5>Logo Slider</h5>
 				<div class="text-center">
-					<img src="http://pegasustheme.com/wp-content/uploads/2016/07/2016-07-22_20-18-26.png" alt="placeholder image" class="img-fluid">
+					<img src="/wp-content/themes/pegasus-child/screenshots/carousel1_screenshot.png" alt="placeholder image" class="img-fluid">
 				</div>
 
 				<pre><code class="language-javascript">
@@ -211,7 +214,7 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 
 				<h5>Testimonial Slider</h5>
 				<!--<div class="text-center">
-					<img src="http://pegasustheme.com/wp-content/uploads/2016/07/2016-07-22_20-18-37.png" alt="placeholder image" class="img-fluid">
+					<img src="/wp-content/themes/pegasus-child/screenshots/carousel1_screenshot.png" alt="placeholder image" class="img-fluid">
 				</div>-->
 				<pre><code class="language-javascript">
 [testimonial_slider image="circle" type="bubble" class="test" the_query="post_type=testimonial&showposts=100" ]
@@ -230,6 +233,9 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 		<section id="pegasus-circle-progress" class="py-5" >
 			<div class="container-fluid">
 				<h3>Circle Progress</h3>
+				<div class="text-center">
+					<img src="/wp-content/themes/pegasus-child/screenshots/circle_progress.gif" alt="placeholder image" class="img-fluid w-25">
+				</div>
 				<pre><code class="language-javascript">[circle_progress number="90"]</code></pre>
 				<div class="text-center">
 					<a href="https://github.com/Visionquest-Development/pegasus-circle-progress" class="btn btn-primary  mt-5 mb-2" target="_blank">
@@ -245,7 +251,10 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 		<section id="pegasus-count-up" class="py-5" >
 			<div class="container-fluid">
 				<h3>Count Up</h3>
-				<pre><code class="language-javascript">[counter_up number="83"]</code></pre>
+				<div class="text-center">
+					<img src="/wp-content/themes/pegasus-child/screenshots/countup.gif" alt="placeholder image" class="img-fluid w-25">
+				</div>
+				<pre><code class="language-javascript">[counter_up number="2025"]</code></pre>
 				<div class="text-center">
 					<a href="https://github.com/Visionquest-Development/pegasus-countup" class="btn btn-primary  mt-5 mb-2" target="_blank">
 						Pegasus Count Up Github
@@ -304,7 +313,7 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 				</div>
 			</div>
 		</section>
-
+		<!--
 		<section id="pegasus-nav-menu" class="py-5" >
 			<div class="container-fluid">
 				<h3>Nav Menu</h3>
@@ -320,7 +329,7 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 				</div>
 			</div>
 		</section>
-
+						-->
 		<section id="pegasus-one-page" class="py-5" >
 			<div class="container-fluid">
 				<h3>One Page</h3>
@@ -407,7 +416,7 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 				</div>
 			</div>
 		</section>
-
+		<!--
 		<section id="pegasus-posts-filter" class="py-5" >
 			<div class="container-fluid">
 				<h3>Posts Filter</h3>
@@ -422,6 +431,7 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 				</div>
 			</div>
 		</section>
+						-->
 
 		<section id="pegasus-slider" class="py-5" >
 			<div class="container-fluid">
@@ -440,6 +450,20 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 		&lt;img class="alignnone size-full wp-image-12" src="https://via.placeholder.com/600x350/" alt="Gold-and-Black-Logo"&gt;
 	[/slide]
 [/slider]</code></pre>
+
+				<h5>News/Posts Slider</h5>
+				<div class="text-center">
+					<img src="http://pegasustheme.com/wp-content/uploads/2016/07/2016-07-22_20-18-46.png" alt="placeholder image" class="img-fluid">
+				</div>
+				<pre><code class="language-javascript">[news_slider the_query="showposts=100&amp;post_type=post"]</code></pre>
+				<div class="text-center">
+					<a href="https://github.com/Visionquest-Development/pegasus-slider" class="btn btn-primary  mt-5 mb-2" target="_blank">
+						Pegasus Slider Github
+					</a>
+					<a href="/pegasus-slider" class="btn btn-secondary  mt-5 mb-2" >
+						Slider Example Page
+					</a>
+				</div>
 
 				<h5>Thumbnail Slider</h5>
 				<div class="text-center">
@@ -460,19 +484,6 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 	[/thumb_slide]
 [/thumb_slider]</code></pre>
 
-				<h5>News/Posts Slider</h5>
-				<div class="text-center">
-					<img src="http://pegasustheme.com/wp-content/uploads/2016/07/2016-07-22_20-18-46.png" alt="placeholder image" class="img-fluid">
-				</div>
-				<pre><code class="language-javascript">[news_slider the_query="showposts=100&amp;post_type=post"]</code></pre>
-				<div class="text-center">
-					<a href="https://github.com/Visionquest-Development/pegasus-slider" class="btn btn-primary  mt-5 mb-2" target="_blank">
-						Pegasus Slider Github
-					</a>
-					<a href="/pegasus-slider" class="btn btn-secondary  mt-5 mb-2" >
-						Slider Example Page
-					</a>
-				</div>
 			</div>
 		</section>
 
@@ -558,9 +569,9 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 			<li class="nav-tooltip nav-item" title="Blog" data-bs-toggle="tooltip" data-placement="left">
 				<a class="nav-link"  href="#pegasus-blog"></a>
 			</li>
-			<li class="nav-tooltip nav-item" title="Blurb" data-bs-toggle="tooltip" data-placement="left">
+			<!--<li class="nav-tooltip nav-item" title="Blurb" data-bs-toggle="tooltip" data-placement="left">
 				<a class="nav-link"  href="#pegasus-blurb"></a>
-			</li>
+			</li>-->
 			<li class="nav-tooltip nav-item" title="Callout" data-bs-toggle="tooltip" data-placement="left">
 				<a class="nav-link"  href="#pegasus-callout"></a>
 			</li>
@@ -585,9 +596,9 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 			<li class="nav-tooltip nav-item" title="Masonry" data-bs-toggle="tooltip" data-placement="left">
 				<a class="nav-link"  href="#pegasus-masonry"></a>
 			</li>
-			<li class="nav-tooltip nav-item" title="Nav Menu" data-bs-toggle="tooltip" data-placement="left">
+			<!--<li class="nav-tooltip nav-item" title="Nav Menu" data-bs-toggle="tooltip" data-placement="left">
 				<a class="nav-link"  href="#pegasus-nav-menu"></a>
-			</li>
+			</li>-->
 			<li class="nav-tooltip nav-item" title="OnePage" data-bs-toggle="tooltip" data-placement="left">
 				<a class="nav-link"  href="#pegasus-one-page"></a>
 			</li>
@@ -600,8 +611,8 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 			<li class="nav-tooltip nav-item" title="Posts Grid" data-bs-toggle="tooltip" data-placement="left">
 				<a class="nav-link"  href="#pegasus-posts-grid"></a>
 			</li>
-			<li class="nav-tooltip nav-item" title="Posts Filter" data-bs-toggle="tooltip" data-placement="left">
-				<a class="nav-link"  href="#pegasus-posts-filter"></a>
+			<!--<li class="nav-tooltip nav-item" title="Posts Filter" data-bs-toggle="tooltip" data-placement="left">
+				<a class="nav-link"  href="#pegasus-posts-filter"></a>-->
 			</li>
 			<li class="nav-tooltip nav-item" title="Slider" data-bs-toggle="tooltip" data-placement="left">
 				<a class="nav-link"  href="#pegasus-slider"></a>

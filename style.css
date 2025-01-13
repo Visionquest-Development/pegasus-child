@@ -14,23 +14,48 @@
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+  .page-id-146 .post-listing li {
+    text-align: center;
+  }
 
+  .page-id-146 .post-listing li img {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  .page-id-146 .post-listing li .content-container {
+    text-align: left;
+  }
 
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ HEADER ~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
 
-
+  h1 { text-transform: capitalize; }
 
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ NAVIGATION ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
+  .site-title a {
+    color: white;
+  }
+
+  #header {
+    background: #512DA8 !important;
+  }
+
+  #header .nav-link { color: white !important; }
+
+  .keegans-header-menu li:hover .sub-menu a {
+    color: white !important;
+  }
+
   .keegans-header-menu li:hover .sub-menu {
     display: block;
     position: absolute;
     left: 280px;
     top: 0;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(82, 45, 168, 0.449);
     padding: 2px 0;
 
   }
@@ -44,6 +69,54 @@
 	~~~~~~~~ FOOTER ~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
 
+  table .scrollable { -webkit-overflow-scrolling: touch; /* lets it scroll lazy */ z-index: 0; }
+
+  .table-wrapper {
+    margin: 0 0 40px;
+  }
+  .table-wrapper .pinned { background: transparent !important; overflow: hidden !important; }
+
+		table caption,
+		table tfoot tr td {
+		  font-weight: normal;
+		}
+
+
+		table th { font-weight: bold; }
+		table td, table th { padding: 9px 10px; text-align: left; }
+
+    table caption {
+      caption-side: top;
+      text-align: left;
+      min-height: 70px;
+      font-weight: bold;
+      border: 1px solid #dedede;
+      background: #777;
+      color: white;
+      padding: 10px 20px;
+      text-transform: capitalize;
+
+    }
+
+		/* Mobile */
+		@media only screen and (max-width: 767px) {
+
+			table.responsive { margin-bottom: 0; }
+
+			.pinned { position: absolute; left: 0; top: 0; background: #fff; width: 35%; overflow: hidden; overflow-x: scroll; /*border-right: 1px solid #ccc; border-left: 1px solid #ccc;*/ }
+			.pinned table { border-right: none; border-left: none; width: 100%; }
+			.pinned table th, .pinned table td { white-space: nowrap; }
+			.pinned td:last-child { border-bottom: 0; }
+
+			div.table-wrapper { position: relative;  overflow: hidden; border-right: 1px solid #ccc; }
+			div.table-wrapper div.scrollable { margin-left: 35%; }
+			div.table-wrapper div.scrollable { overflow: scroll; overflow-y: hidden; }
+
+			table.responsive td, table.responsive th { position: relative; white-space: nowrap; overflow: hidden; }
+			table.responsive th:first-child, table.responsive td:first-child, table.responsive td:first-child, table.responsive.pinned td { display: none; }
+
+      .scrollable table caption { color: #777; }
+		}
 
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -56,6 +129,38 @@
   }
 
 
+  table.pegasus-table {
+    width: 100%;
+    border-collapse: collapse;
+    /* margin: 20px 0 40px; */
+  }
+
+  table.pegasus-table th {
+    background-color: #f1f1f1;
+    text-align: left;
+  }
+
+  table.pegasus-table th,
+  table.pegasus-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  table.pegasus-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  table.pegasus-table thead tr { background-color: #282828; }
+
+  table.pegasus-table thead tr td { padding: 10px; background-color: transparent; }
+
+  table.pegasus-table thead tr td strong { color: white; }
+
+  table.pegasus-table tbody tr:nth-child(0) { background-color: #cccccc; }
+
+  table.pegasus-table tbody tr td { padding: 10px; }
+
+  table.pegasus-table code { color: #d63384;}
 
 
 

@@ -52,3 +52,58 @@
 		return '<pre><code class="language-' . esc_attr($atts['lang']) . '">' . $content . '</code></pre>';
 	}
 	add_shortcode('code', 'custom_code_shortcode');
+
+
+
+	add_action('cmb2_admin_init', 'pegasus_register_repeatable_group_field');
+
+	function pegasus_register_repeatable_group_field() {
+		$prefix = 'pegasus_theme_child_';
+
+		$cmb = new_cmb2_box(array(
+			'id'            => $prefix . 'metabox',
+			'title'         => __('Pegasus Theme Child Metabox', 'cmb2'),
+			'object_types'  => array('page'), // Post type
+		));
+
+		$cmb->add_field(array(
+			'name' => __('GitHub URL', 'pegasus-child'),
+			'desc' => __('GitHub Repository.', 'pegasus-child'),
+			'id'   => $prefix . 'github_url',
+			'type' => 'text_url',
+		));
+
+		$group_field_id_2 = $cmb->add_field(array(
+			'id'          => $prefix . 'shortcodes',
+			'type'        => 'group',
+			'description' => __('Add shortcode to page', 'cmb2'),
+			'options'     => array(
+				'group_title'       => __('Entry {#}', 'cmb2'), // {#} gets replaced by row number
+				'add_button'        => __('Add Another Entry', 'cmb2'),
+				'remove_button'     => __('Remove Entry', 'cmb2'),
+				//'sortable'          => true,
+				//'closed'            => false, // true to have the groups closed by default
+			),
+		));
+
+		$cmb->add_group_field($group_field_id_2, array(
+			'name'       => __('Shortcode', 'pegasus-child'),
+			'desc'       => __('Enter the shortcode to be displayed on the page.', 'pegasus-child'),
+			'id'         => 'shortcode',
+			'type'       => 'wysiwyg',
+		));
+
+		$cmb->add_group_field($group_field_id_2, array(
+			'name'       => __('Shortcode Example', 'pegasus-child'),
+			'desc'       => __('Enter the shortcode to be rendered on the page.', 'pegasus-child'),
+			'id'         => 'shortcode_example',
+			'type'       => 'textarea_code',
+		));
+
+		$cmb->add_group_field($group_field_id_2, array(
+			'name'       => __('Pegasus Settings Table', 'pegasus-child'),
+			'desc'       => __('Enter the shortcode for the settings table.', 'pegasus-child'),
+			'id'         => 'shortcode_settings_table',
+			'type'       => 'text',
+		));
+	}
