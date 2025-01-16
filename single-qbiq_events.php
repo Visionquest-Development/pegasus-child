@@ -346,7 +346,7 @@
 		</div>
 	</section>
 -->
-	<?php /*
+
 	<div id="page-wrap">
 		<?php
 			//full container page options
@@ -383,7 +383,7 @@
 			}
 		?>
 
-		<div class="<?php echo $final_container_class; ?>">
+		<div class="container">
 			<!-- Example row of columns -->
 			<div class="row">
 				<?php
@@ -398,7 +398,7 @@
 					<div class="inner-content">
 						<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 							<?php
-							if( 'off' === $final_page_header_option ) {
+							/*if( 'off' === $final_page_header_option ) {
 								?>
 								<div class="page-header">
 									<?php
@@ -427,11 +427,11 @@
 										<a href="<?php comments_link(); ?>"><?php comments_number(); ?></a>
 									</em></p>
 								</div>
-							<?php } ?>
+							<?php } */ ?>
 
 							<?php the_content(); ?>
 
-							<?php comments_template(); ?>
+							<?php //comments_template(); ?>
 
 						<?php endwhile; else: ?>
 							<?php // kinda a 404 of sorts when not working  ?>
@@ -469,10 +469,10 @@
 				</div>
 				<?php
 				if( 'on' === $pegasus_left_sidebar_option ) {
-					get_sidebar( 'right' );
+					//get_sidebar( 'right' );
 				}
 				if( 'on' !== $left_align_sidebar_chk ) {
-					get_sidebar( 'right' );
+					//get_sidebar( 'right' );
 				}
 				?>
 
@@ -480,6 +480,6 @@
 		</div><!-- end container -->
 	</div><!-- end page wrap -->
 	
-	*/ ?>
+
       <?php get_footer(); ?>
 

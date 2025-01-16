@@ -271,9 +271,6 @@
 		
 	
 	
-	
-	
-	
 
 	add_action('cmb2_admin_init', 'register_custom_section_fields');
 	function register_custom_section_fields() {
@@ -310,6 +307,8 @@
 			'name' => __('Event Start Date', 'cmb2'),
 			'id'   => $prefix . 'event_date',
 			'type' => 'text_date',
+			'date_format' => 'Y-m-d',
+			
 		));
 		
 		$cmb->add_field(array(
@@ -710,15 +709,21 @@
 		}
 	}
 	
-	function display_qbiq_events_shortcode() {
+	function display_qbiq_events_shortcode() { 
 		// Define the query arguments
 		$args = array(
 			'post_type'      => 'qbiq_events', // Ensure this matches your actual custom post type name
 			'posts_per_page' => -1,            // Adjust this number based on your needs
 			'post_status'    => 'publish',     // Only fetch published posts
+			
+			'orderby'        => 'meta_value',
+			'meta_key'       => 'camp_page_section_event_date',
+			'meta_type'      => 'DATE',
 			'order'          => 'ASC',
+			
+			/*'order'          => 'ASC',
 			'orderby'        => 'date'
-			/*'orderby'        => 'meta_value',  // Changed from 'date' to 'meta_value'
+			'orderby'        => 'meta_value',  // Changed from 'date' to 'meta_value'
 			'meta_key'       => 'camp_page_section_event_date',  // Specifies which meta key to sort by
 			'meta_type'      => 'DATE',
 			'meta_query'     => array(
@@ -754,20 +759,42 @@
 				$event_description = get_the_excerpt() ?? 'Read More' ; // Assuming you use the excerpt for the description
 				
 				$event_date = get_post_meta($post_id, 'camp_page_section_event_date', true);
+				$event_date_end = get_post_meta($post_id, 'camp_page_section_event_end_date', true);
+				
 				
 				//$output .= $event_date;
-				if ( null !== $event_date && '' !== $event_date ) {
-					$final_date = parse_date_string($event_date);
+				//if ( null !== $event_date && '' !== $event_date ) {
+					//$final_date = parse_date_string($event_date);
+					//$final_end_date = parse_date_string($event_date_end);
 					
+					//$output .= $final_date[0]->format('M d Y');
+					//echo '<pre>';
+					//var_dump($event_date);
+					//echo '</pre>';
 					
-					if (count($final_date) > 1) {
+					//if (count($final_date) > 1) {
+						
 						//date range
-						//$output .= $final_date[0]->format('M d Y') . " - " . $final_date[1]->format('M d Y');
-					} else {
+						//$output .= $final_date[0]->format('M d Y') . " - " . $final_end_date[1]->format('M d Y');
+						
+					//} else {
 						//single day
 						//$output .= $final_date[0]->format('M d Y') . "\n";
-					}
+					//}
+				//}
+				
+				if (!empty($event_date)) {
+					$formatted_date = DateTime::createFromFormat('Y-m-d', $event_date)->format('M d, Y');
+					//echo $formatted_date; // Outputs: May 05, 2025
+				} else {
+					$formatted_date = 'No event date provided.';
 				}
+
+				// If you want to handle the end date too:
+				/*if (!empty($event_date_end)) {
+					$formatted_end_date = DateTime::createFromFormat('Y-m-d', $event_date_end)->format('M d, Y');
+					$formatted_date .= ' - ' . $formatted_end_date;
+				}*/
 				
 				
 				
@@ -776,7 +803,7 @@
 									<div class="card-bg"></div>
 									<div class="card-info">
 										<h1>' . esc_html($event_location) . '</h1>
-										<p>' . esc_html($event_description) . '</p>
+										<p>' . esc_html($formatted_date) . '</p>
 									</div>
 								</div>
 							</a>';

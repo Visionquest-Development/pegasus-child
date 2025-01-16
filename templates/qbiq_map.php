@@ -17,8 +17,12 @@
 			'post_type'      => 'qbiq_events', // Ensure this matches your actual custom post type name
 			'posts_per_page' => -1,            // Adjust this number based on your needs
 			'post_status'    => 'publish',     // Only fetch published posts
+			//'order'          => 'ASC',
+			//'orderby'        => 'date'
+			'orderby'        => 'meta_value',
+			'meta_key'       => 'camp_page_section_event_date',
+			'meta_type'      => 'DATE',
 			'order'          => 'ASC',
-			'orderby'        => 'date'
 		);
 
 		// Perform the query
@@ -95,7 +99,7 @@
 				// Get the post meta values
 				$state = get_the_title();
 				$spots = get_post_meta(get_the_ID(), 'camp_tickets_available_spots', true);
-				$date = get_post_meta(get_the_ID(), 'camp_tickets_event_date', true);
+				$date = get_post_meta(get_the_ID(), 'camp_page_section_event_date', true);
 
 				// Fallback/default values if meta is missing
 				

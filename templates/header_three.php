@@ -106,16 +106,17 @@
 								<?php
 									$moremenuchk =  pegasus_get_option( 'header_more_chk' );
 									if($moremenuchk === 'on') {
-										$args = array(
+										/*$args = array(
 											'menu' 			=> 'more-menu',
 											'menu_class'	=> 'collapse nav navbar-nav nav-collapse primary-navigation-bar ',
 											'menu_id'	=> 'nav-collapse1',
 											'container'		=> 'false'
 										);
-										wp_nav_menu( $args );
+										wp_nav_menu( $args );*/
+										//get_template_part( 'templates/qbiq_map', 'body' );
 									}
 								?>
-
+								
 								<div class="navbar-right ms-auto">
 									<?php
 
