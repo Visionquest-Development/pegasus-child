@@ -242,8 +242,69 @@
 		</div><!-- end container -->
 		
 		
-	</div><!-- end page wrap -->
+		<div class="container mt-3 mb-5">
+			<div class="row">
+				<div class="col-md-6">
+				
+					<img src="/wp-content/themes/pegasus-child/images/home_video_desc.png">
+				
+				</div>
+				
+				<div class="col-md-6">
+					
+					<!--<div class="iphone-test base">
+						<iframe
+							  id="iPhone-video"
+							  src="https://www.youtube.com/embed/4IidwjBPu3k?mute=1&loop=1&playlist=4IidwjBPu3k"
+							  frameborder="0"
+							  allow="autoplay; encrypted-media"
+							  allowfullscreen
+							></iframe>
+					</div>-->
+					
+					<!--http://qbiqcamp.com/wp-content/uploads/2025/01/QBIQ-HIGHLIGHT-VIDEO-for-site.mp4-->
+					<div class="iphone-test base">
+						<video id="iPhone-video" loop muted autoplay controls>
+							<source src="http://qbiqcamp.com/wp-content/uploads/2025/01/QBIQ-HIGHLIGHT-VIDEO-for-site.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+					</div> 
+					
+				</div>
+				<!--<div class="col-md-4">
+					
+					
+					
+					  <div id="iPhone" class="base">
+						<span class="speaker"></span>
+						<iframe
+						  id="iPhone-video"
+						  src="https://www.youtube.com/embed/4IidwjBPu3k?mute=1&loop=1&playlist=4IidwjBPu3k"
+						  frameborder="0"
+						  allow="autoplay; encrypted-media"
+						  allowfullscreen
+						></iframe>
+					  </div>
+					
+				</div>-->
+			
+			</div>
+			
+		</div>
+		
+		<div class="container">
+			<div class="row">
+				
+				
+			
+			</div>
+			
+		</div>
+	<!--</div>--><!-- end page wrap -->
 	
+	
+	
+
 	
 	
     <?php get_footer(); ?>

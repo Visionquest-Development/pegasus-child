@@ -54,7 +54,7 @@
 					<a href="<?php echo esc_url($button_link); ?>" class="btn"><?php echo esc_html($button_text); ?></a>
 				<?php endif; ?>
 				<?php if ($video_link): ?>
-					<a href="<?php echo esc_url($video_link); ?>" class="video-link btn">
+					<a href="<?php echo esc_url($video_link); ?>" class="video-link btn" target="_blank">
 						<i class="fa fa-play" aria-hidden="true"></i>
 						Play Video
 					</a>

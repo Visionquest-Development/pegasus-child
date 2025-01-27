@@ -125,6 +125,15 @@
 	.qbiq-background-black { background-color: black; color: white; }
 	
 	.text-white { color: white; }
+	
+	/*#field_2_67 {
+		background: #FF8200;
+		padding: 20px;
+	}
+	
+	#field_2_67 .gfield_label {
+		margin: 0 !important;
+	}*/
 
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ HEADER ~~~~~~
@@ -464,6 +473,459 @@
 	}
 	
 	
+	#iPhone {
+		border-top: 50px solid #525255;
+		border-bottom: 100px solid #525255;
+		border-left: 25px solid #525255;
+		border-right: 25px solid #525255;
+		/*border: 10px solid #777;*/
+		background-color: white;
+		border-color: #525255;
+		border-radius: 10px;
+		/* border-width: 2px; */
+		display: block;
+		position: relative;
+		max-width: 400px;
+		min-height: 700px;
+		margin: 40px auto;
+	}
+	
+	#iPhone:before {
+		content: "";
+		top: -36px;
+		left: 50%;
+		transform: translate3d(-50%, -50%, 0);
+		height: 6px;
+		width: 6px;
+		-webkit-border-radius: 20px;
+		-moz-border-radius: 20px;
+		border-radius: 20px;
+		background: #818188;
+		display: block;
+		position: absolute;
+	}
+	
+	#iPhone span.speaker {
+		display: block;
+		position: absolute;
+		top: -20px;
+		left: 50%;
+		background: #818188;
+		transform: translate3d(-50%, -50%, 0);
+		width: 75px;
+		height: 6px;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		border-radius: 10px;
+	}
+	
+	#iPhone:after {
+		content: "";
+		bottom: -100px;
+		left: 50%;
+		transform: translate3d(-50%, -50%, 0);
+		height: 50px;
+		width: 50px;
+		-webkit-border-radius: 20px;
+		-moz-border-radius: 20px;
+		border-radius: 50%;
+		background: #818188;
+		display: block;
+		position: absolute;
+	}
+	
+	.base { position: relative; }
+
+	.base iframe {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	  border: none;
+	}
+	
+	.iphone-test {
+		position: relative;
+		width: 100%;
+		/* max-width: 400px; */
+		margin: 0 auto;
+		background: url(/wp-content/themes/pegasus-child/images/iphone.png);
+		background-size: 345px 700px;
+		background-position: center center;
+		background-repeat: no-repeat;
+		min-height: 700px;
+		z-index: 999;
+		display: block;
+		overflow: visible; 
+	}
+	
+	.iphone-test iframe {
+		position: absolute;
+		top: 48%;
+		left: 49.4%;
+		width: 275px;
+		height: 500px;
+		border: none;
+		transform: translate3d(-50%, -50%, 0);
+
+	}
+	
+	.iphone-test video {
+		position: absolute;
+		top: 48%;
+		left: 49.4%;
+		width: 275px;
+		height: 500px;
+		border: none;
+		transform: translate3d(-50%, -50%, 0);
+	}
+	
+	
+	.register-ticket-container {
+	   position: relative;
+	  width: 100%;
+	  
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  overflow: hidden;
+	     cursor: pointer;
+	}
+
+	.register-ticket {
+	  width: 300px; /* Adjust size as needed */
+	  height: auto;
+	  transition: transform 0.1s ease-out; /* Smooth rotation */
+	  transform-origin: center; /* Rotate around the center of the image */
+	}
+
+		
+	
+
+	/*.base	{
+		position: relative;
+		margin: 80px auto 0;
+		background: #525255;
+	}
+
+	.base:before {
+		background: #ec8277;
+		z-index: 2;
+	}
+
+	.base:after {
+		background: #d2d5d9;
+	}
+
+	.base span:after{
+		background: #b2b5b9;
+		z-index: 1;
+	}
+
+	.base span,
+	.base span:after,
+	.base span:before{
+		-webkit-transition: all 1s ease-in-out;
+		-moz-transition: wall 1s ease-in-out;
+		-o-transition: all 1s ease-in-out;
+		transition: all 1s ease-in-out;
+	}
+
+	.base span {
+		display: block;
+		position: absolute;
+		top: 0px;
+		left: 50%;
+		background: #818188;
+		margin: 4px 0 0 -3px;
+		width: 6px;
+		height: 6px;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		border-radius: 10px;
+
+	}
+
+	.base span:before{
+		
+		text-align: center;
+		background: url('http://visionquestdevelopment.com/html/cool/images/Untitled-1.png');
+		background-size: 100% 100%;
+		
+	  -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+	  -moz-box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+	  box-shadow: 0px 0px 10px rgba(0,0,0,0.3)
+	  ;
+
+		z-index: 2;
+	}
+	
+	
+	#iMac span:before{
+		border-top: 8px solid #ddd;
+		background: url('http://visionquestdevelopment.com/html/cool/images/Untitled-2.png') !important;
+		background-size: 100% 100% !important;
+	}
+	
+	#MacBook span:before{
+		border-top: 8px solid #ddd;
+		background: url('http://visionquestdevelopment.com/html/cool/images/Untitled-3.png') !important;
+		background-size: 100% 100% !important;
+	}
+	
+	
+	
+	#iPad span:before{
+		background: url('http://visionquestdevelopment.com/html/cool/images/Untitled-4.png') !important;
+		background-size: 100% 100% !important;
+	}
+		
+	
+	#iPhone span:before{
+		background: url('http://visionquestdevelopment.com/html/cool/images/Untitled-5.png') !important;
+		background-size: 100% 100% !important;
+	}
+	
+	
+	
+	
+	
+	#iPhone	{
+		margin: 70px auto 0;
+		width: 130px;
+		height: 220px; 
+		-webkit-border-radius: 15px;
+		-moz-border-radius: 15px;
+		border-radius: 15px;
+	}
+
+	#iPhone:before	{
+		top: 30px;
+		margin: 0 -55px 0 0;
+		height: 150px;
+		width: 110px;
+	}
+
+	#iPhone:after	{
+		bottom: 10px;
+		margin: 0 -9px 0 0;
+		height: 18px;
+		width: 18px;
+
+		-webkit-border-radius: 20px;
+		-moz-border-radius: 20px;
+		border-radius: 20px;
+
+		background: #818188;
+	}
+
+	#iPhone span{
+		top: 4px;
+	}
+	#iPhone span:after{
+		top:12px;
+		margin: 0 -20px 0 0;
+		height: 3px;
+		width: 40px;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		border-radius: 10px;
+		background: #818188;
+		}
+
+	#iPhone span:before{
+		height: 150px;
+		top: 22px;
+		width: 110px;
+		margin: 0 -55px 0 0;
+		padding: 50px 0 0 0;
+	 -webkit-box-shadow: 0px 0px 0px ;
+	  -moz-box-shadow: 0px 0px 0px ;
+	  box-shadow: 0px 0px 0px ;
+	}
+
+	
+	@media only screen and (min-width: 1400px){
+		
+		#device	{
+			width: 400px;
+			height: 220px; 
+			-webkit-border-radius: 15px;
+			-moz-border-radius: 15px;
+			border-radius: 15px;
+		}
+
+		#device:before	{
+			top: 17px;
+			margin: 0 -183px 0 0;
+			height: 186px;
+			width: 366px;
+		}
+
+		#device:after	{
+			bottom: -30px;
+			margin: 0 -40px 0 0;
+			height: 15px;
+			width: 80px;
+			background: transparent;
+		 border-bottom: 30px solid #d2d5d9;
+		 border-left: 5px solid transparent;
+		 border-right: 5px solid transparent;
+
+			-webkit-border-radius: 0px;
+			-moz-border-radius: 0px;
+			border-radius: 0px;
+
+		}
+
+		#device span {
+			top: 2px;
+		}
+
+		#device span:after{
+			top:244px;
+			margin: 0 -50px 0 0;
+			height: 6px;
+			width: 100px;
+		}
+
+		#device span:before{
+			height: 165px;
+			top: 20px;
+			width: 300px;
+			margin: 0 -150px 0 0;
+			padding: 65px 0 0 0;
+		}
+		
+		
+		#showcase .iPhone { width: 15%; }
+	
+	} 
+
+	
+	@media only screen and (min-width: 480px) and (max-width: 768px) {
+		
+		#device	{
+			margin: 75px auto 0;
+			width: 200px;
+			height: 240px; 
+			-webkit-border-radius: 15px;
+			-moz-border-radius: 15px;
+			border-radius: 15px;
+			background: #fff;
+		}
+
+		#device:before	{
+			top: 15px;
+			margin: 0 -85px 0 0;
+			height: 194px;
+			width: 170px;
+		}
+
+		#device:after	{
+			bottom: 5px;
+			margin: 0 -10px 0 0;
+			height: 20px;
+			width: 20px;
+
+			-webkit-border-radius: 20px;
+			-moz-border-radius: 20px;
+			border-radius: 20px;
+
+			background: #d2d5d9;
+		}
+
+		#device span {
+			background: #d2d5d9;
+		}
+
+		#device span:after{
+			top:220px;
+			margin: 0;
+			height: 0;
+			border-width: 0 0 0 0;
+			width: 0;
+			background: #d2d5d9;
+		}
+
+		#device span:before{
+			height: 194px;
+			top: 11px;
+			width: 170px;
+			margin: 0 -85px 0 0;
+			padding: 75px 0 0 0;
+		 -webkit-box-shadow: 0px 0px 0px ;
+		  -moz-box-shadow: 0px 0px 0px ;
+		  box-shadow: 0px 0px 0px ;
+		}
+		
+		#showcase .iPhone { width: 50%; }
+	
+	}
+
+	@media only screen and (max-width: 479px) {
+		
+		#device	{
+			margin: 70px auto 0;
+			width: 130px;
+			height: 220px; 
+			-webkit-border-radius: 15px;
+			-moz-border-radius: 15px;
+			border-radius: 15px;
+		}
+
+		#device:before	{
+			top: 30px;
+			margin: 0 -55px 0 0;
+			height: 150px;
+			width: 110px;
+		}
+
+		#device:after	{
+			bottom: 10px;
+			margin: 0 -9px 0 0;
+			height: 18px;
+			width: 18px;
+
+			-webkit-border-radius: 20px;
+			-moz-border-radius: 20px;
+			border-radius: 20px;
+
+			background: #818188;
+		}
+
+		#device span{
+			top: 4px;
+		}
+		#device span:after{
+			top:12px;
+			margin: 0 -20px 0 0;
+			height: 3px;
+			width: 40px;
+			-webkit-border-radius: 10px;
+			-moz-border-radius: 10px;
+			border-radius: 10px;
+			background: #818188;
+			}
+
+		#device span:before{
+			height: 150px;
+			top: 22px;
+			width: 110px;
+			margin: 0 -55px 0 0;
+			padding: 50px 0 0 0;
+		 -webkit-box-shadow: 0px 0px 0px ;
+		  -moz-box-shadow: 0px 0px 0px ;
+		  box-shadow: 0px 0px 0px ;
+		}
+		
+		#showcase .iMac { width: 100%; }
+		#showcase .MacBook { width: 100%; }
+		#showcase .iPad { width: 100%; }
+		#showcase .iPhone { width: 100%; }
+
+	}*/
 	
 	/* ==============================
 		BTN

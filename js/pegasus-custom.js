@@ -207,6 +207,76 @@
 	});
 
 
+	/*document.addEventListener('DOMContentLoaded', () => {
+	  // Select all ticket containers and tickets
+	  const containers = document.querySelectorAll('.register-ticket-container');
+
+	  containers.forEach((container) => {
+		const ticket = container.querySelector('.register-ticket');
+
+		if (ticket) {
+		  container.addEventListener('mousemove', (e) => {
+			const rect = ticket.getBoundingClientRect();
+
+			// Calculate the center of the ticket
+			const ticketCenterX = rect.left + rect.width / 2;
+			const ticketCenterY = rect.top + rect.height / 2;
+
+			// Calculate the angle between the cursor and the ticket center
+			const angleX = (e.clientX - ticketCenterX) / 10; // Smaller divisor for more dramatic rotation
+			const angleY = -(e.clientY - ticketCenterY) / 10;
+
+			// Apply rotation transform
+			ticket.style.transform = `rotateX(${angleY}deg) rotateY(${angleX}deg)`;
+		  });
+
+		  container.addEventListener('mouseleave', () => {
+			// Reset the rotation when the cursor leaves the container
+			ticket.style.transform = `rotateX(0deg) rotateY(0deg)`;
+		  });
+		}
+	  });
+	});*/
+	
+	document.querySelectorAll(".register-ticket-container").forEach((cardWrap) => {
+		  const card = cardWrap.querySelector(".register-ticket");
+		  //const cardBg = cardWrap.querySelector(".card-bg");
+
+		  let width = cardWrap.offsetWidth;
+		  let height = cardWrap.offsetHeight;
+
+		  cardWrap.addEventListener("mousemove", (e) => {
+			const mouseX = e.pageX - cardWrap.offsetLeft - width / 2;
+			const mouseY = e.pageY - cardWrap.offsetTop - height / 2;
+			const mousePX = mouseX / width;
+			const mousePY = mouseY / height;
+
+			const rX = mousePX * 30;
+			const rY = mousePY * -30;
+
+			card.style.transform = `rotateY(${rX}deg) rotateX(${rY}deg)`;
+
+			const tX = mousePX * -40;
+			const tY = mousePY * -40;
+			//cardBg.style.transform = `translateX(${tX}px) translateY(${tY}px)`;
+		  });
+
+		  cardWrap.addEventListener("mouseenter", () => {
+			clearTimeout(cardWrap.mouseLeaveDelay);
+		  });
+
+		  cardWrap.addEventListener("mouseleave", () => {
+			cardWrap.mouseLeaveDelay = setTimeout(() => {
+			  card.style.transform = "";
+			  //cardBg.style.transform = "";
+			}, 1000);
+		  });
+
+		  //cardBg.style.backgroundImage = `url(${cardWrap.getAttribute("data-image")})`;
+	});
+
+
+
 	/*jQuery(window).on('load', function($) {
 		// executes when complete page is fully loaded, including all frames, objects and images
 		//alert("window is loaded");
