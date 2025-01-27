@@ -88,7 +88,7 @@
 										// echo '</pre>';
 										// Output the main shortcode
 										if (!empty($shortcode['shortcode'])) {
-											echo '<div class="mt-3 mb-3">';
+											echo '<div class="mt-3 mb-3 " >';  
 											echo do_shortcode($shortcode['shortcode']);
 											echo '</div>';
 										}

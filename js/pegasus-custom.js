@@ -95,16 +95,85 @@
 			//}
 
 		//});
+		
+		
 
     jQuery( '.keegans-header-menu li a' ).removeAttr("data-toggle").removeAttr("data-bs-toggle");
 
 
+	/*jQuery(window).load(function($) {
+		// executes when complete page is fully loaded, including all frames, objects and images
+		//alert("window is loaded");
+		
+		
+		
+		var $grid = jQuery('body.page-template-tpl_masonry .pegasus-logo-slider-wrapper').imagesLoaded( function($) {
+			// init Masonry after all images have loaded
+			$grid.masonry({
+				// options...
+				//columnWidth: 360,
+				itemSelector: '.pegasus-logo-slider-container',
+				gutter: 10
+			});
+		});
+	});*/
+	
+	jQuery(window).load(function($) {
+		// Executes when the complete page is fully loaded, including all frames, objects, and images
+		
+		var $element = jQuery('body.page-template-tpl_masonry');
+		if ( $element.length ) {
+			var $grid = jQuery('.pegasus-logo-slider-wrapper').imagesLoaded(function() {
+				// Initialize Masonry after all images have loaded
+				$grid.masonry({
+					// options
+					itemSelector: '.pegasus-logo-slider-container',
+					gutter: 10
+				});
+			});
+		}
+		
+
+		// Function to refresh Masonry
+		function refreshMasonry() {
+			if ($grid) {
+				$grid.masonry('layout');
+			}
+		}
+
+		// Detect changes in .mainbar or #header using MutationObserver
+		var observerConfig = { childList: true, subtree: true, attributes: true };
+
+		var observerCallback = function(mutationsList) {
+			for (let mutation of mutationsList) {
+				// Check if the mutation affects .mainbar or #header
+				if (mutation.target.matches('.mainbar, #header')) {
+					refreshMasonry();
+				}
+			}
+		};
+
+		var mainbar = document.querySelector('.mainbar');
+		var header = document.querySelector('#header');
+		if (mainbar || header) {
+			var observer = new MutationObserver(observerCallback);
+			if (mainbar) observer.observe(mainbar, observerConfig);
+			if (header) observer.observe(header, observerConfig);
+		}
+
+		// Optional: Manually trigger Masonry refresh when needed
+		jQuery('.mainbar, #header').on('customChange', function() {
+			refreshMasonry();
+		});
+	});
 
 
-    var scrollSpy = new bootstrap.ScrollSpy(document.body, {
-      target: '#dotnav'
-    });
-
+	var $dotElement = jQuery('#dotnav');
+	if ( $dotElement.length ) {
+		var scrollSpy = new bootstrap.ScrollSpy(document.body, {
+		  target: '#dotnav'
+		});
+	}
     var scrollSpy2 = new bootstrap.ScrollSpy(document.body, {
       target: '#menu-main-nav-2'
     });

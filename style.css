@@ -8,8 +8,11 @@
  Version:        0.0.1
 */
 
-
-
+/*
+:root {
+	--pegasus-nav-item-bkg-color: #361483;
+}
+*/
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -26,6 +29,40 @@
   .page-id-146 .post-listing li .content-container {
     text-align: left;
   }
+  
+  
+  .pegasus-logo-slider-wrapper .pegasus-logo-slider-container .logo-details .text-center a {
+	  color: black;
+  }
+  
+  .pegasus-logo-slider-wrapper .pegasus-logo-slider-container:hover {
+	  opacity: 0.7;
+  }
+  
+  
+
+  
+.home .pegasus-image-container { 
+	    border: 10px solid black;
+    border-radius: 7px;
+    position: relative;
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.home .pegasus-image-container:before {
+	content: "Preview";
+	background: black;
+	color: white;
+	padding: 0 10px 5px 5px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-bottom-right-radius: 7px;
+}
+
+
 
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ HEADER ~~~~~~
@@ -45,6 +82,15 @@
   }
 
   #header .nav-link { color: white !important; }
+  
+  .current-menu-item:hover > a {
+	 background: #361483;
+  }
+  
+  #menu-main-nav-2 .nav-link.active { 
+	  background: #361483;
+  }
+	  
 
   .keegans-header-menu li:hover .sub-menu a {
     color: white !important;

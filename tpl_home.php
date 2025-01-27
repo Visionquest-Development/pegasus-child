@@ -112,7 +112,7 @@
 				</p>
 			</div>
 			<div class="container  text-center">
-					<a href="https://github.com/Visionquest-Development/pegasus" class="btn btn-primary mb-3">Pegasus Github</a>
+					<a href="https://github.com/Visionquest-Development/pegasus" target="_blank" class="btn btn-primary mb-3">Pegasus Github</a>
 			</div>
 
         </section>
@@ -124,15 +124,15 @@
 						<h3>Pegasus Child</h3>
 						<p>For customizations, the Pegasus Child Theme is the best way to get started.</p>
 
-						<a href="https://github.com/Visionquest-Development/pegasus-child" class="btn btn-primary mt-3 mb-5">
+						<a href="https://github.com/Visionquest-Development/pegasus-child" target="_blank" class="btn btn-primary mt-3 mb-5">
 							Pegasus Child Theme Github
 						</a>
 					</div>
 					<div class="col-md-6 mt-5 mb-3 text-center">
 						<h3>Timeline Child</h3>
-						<p>Custom Timeline Child theme can be used for displaying a timeline</p>
+						<p>Custom Timeline Child theme can be used for displaying a timeline</p> 
 
-						<a href="https://github.com/Visionquest-Development/timeline-child" class="btn btn-primary mt-3 mb-5">
+						<a href="https://github.com/Visionquest-Development/timeline-child" target="_blank" class="btn btn-primary mt-3 mb-5">
 							Timeline Child Theme Github
 						</a>
 					</div>
@@ -145,8 +145,10 @@
 		<section id="pegasus-blog" class="py-5" >
 			<div class="container-fluid">
 				<h3>Blog</h3>
-				<div class="text-center">
-					<img src="/wp-content/themes/pegasus-child/screenshots/blog_screenshot.png" alt="placeholder image" class="img-fluid w-25">
+				<div class="text-center pegasus-image-container ">
+					<a href="/wp-content/themes/pegasus-child/screenshots/blog_screenshot.png"  data-lightbox="image-1" data-title="Blog Shortcode">
+						<img src="/wp-content/themes/pegasus-child/screenshots/blog_screenshot.png" alt="placeholder image" class="img-fluid ">
+					</a>
 				</div>
 				<pre><code class="language-javascript">[blog the_query="post_type=post&order_by=title&order=ASC" ][/blog]</code></pre>
 				<div class="text-center">
@@ -173,15 +175,19 @@
 		<section id="pegasus-callout" class="py-5" >
 			<div class="container-fluid">
 				<h3>Callout</h3>
-				<div class="text-center">
-					<img src="/wp-content/themes/pegasus-child/screenshots/callout1_screenshot.png" alt="placeholder image" class="img-fluid">
+				<div class="text-center pegasus-image-container ">
+					<a href="/wp-content/themes/pegasus-child/screenshots/callout1_screenshot.png"  data-lightbox="image-2" data-title="Callout 1">
+						<img src="/wp-content/themes/pegasus-child/screenshots/callout1_screenshot.png" alt="placeholder image" class="img-fluid">
+					</a>
 				</div>
 				<pre><code class="language-javascript">[callout button="yes" link="http://example.com" external="yes" color="white" link_text="Learn More" background="http://www.wpfreeware.com/themes/html/appstation/img/download_bg.png"]
 Get your copy now!Suspendisse vitae bibendum mauris. Nunc iaculis nisl vitae laoreet elementum donec dignissim metus sit.
 [/callout]</code></pre>
 
-				<div class="text-center">
-					<img src="/wp-content/themes/pegasus-child/screenshots/callout2_screenshot.png" alt="placeholder image" class="img-fluid">
+				<div class="text-center pegasus-image-container ">
+					<a href="/wp-content/themes/pegasus-child/screenshots/callout2_screenshot.png"  data-lightbox="image-3" data-title="Callout 2">
+						<img src="/wp-content/themes/pegasus-child/screenshots/callout2_screenshot.png" alt="placeholder image" class="img-fluid">
+					</a>
 				</div>
 				<pre><code class="language-javascript">[callout button="yes" link="http://example.com" color="black" external="yes" backgroundcolor="#dedede"]
 Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Donec sollicitudin molestie malesuada. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec sollicitudin molestie malesuada.
@@ -204,8 +210,11 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 				<h3>Carousel</h3>
 
 				<h5>Logo Slider</h5>
-				<div class="text-center">
-					<img src="/wp-content/themes/pegasus-child/screenshots/carousel1_screenshot.png" alt="placeholder image" class="img-fluid">
+				<div class="text-center pegasus-image-container ">
+					<!--<a href="/wp-content/themes/pegasus-child/screenshots/logo_slider.gif"  data-lightbox="image-4" data-title="Carousel Shortcode">
+						<img src="/wp-content/themes/pegasus-child/screenshots/logo_slider.gif" alt="placeholder image" class="img-fluid">
+					</a>-->
+					<img src="/wp-content/themes/pegasus-child/screenshots/logo_slider.gif" alt="placeholder image" class="img-fluid">
 				</div>
 
 				<pre><code class="language-javascript">
@@ -213,9 +222,12 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 				</code></pre>
 
 				<h5>Testimonial Slider</h5>
-				<!--<div class="text-center">
-					<img src="/wp-content/themes/pegasus-child/screenshots/carousel1_screenshot.png" alt="placeholder image" class="img-fluid">
-				</div>-->
+				<div class="text-center pegasus-image-container ">
+					<!--<a href="/wp-content/themes/pegasus-child/screenshots/carousel1_screenshot.png"  data-lightbox="image-5" data-title="Carousel2 Shortcode">
+						<img src="/wp-content/themes/pegasus-child/screenshots/carousel1_screenshot.png" alt="placeholder image" class="img-fluid">
+					</a>-->
+					<img src="/wp-content/themes/pegasus-child/screenshots/Testimonial_slider.gif" alt="placeholder image" class="img-fluid ">
+				</div>
 				<pre><code class="language-javascript">
 [testimonial_slider image="circle" type="bubble" class="test" the_query="post_type=testimonial&showposts=100" ]
 				</code></pre>
@@ -233,8 +245,11 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 		<section id="pegasus-circle-progress" class="py-5" >
 			<div class="container-fluid">
 				<h3>Circle Progress</h3>
-				<div class="text-center">
-					<img src="/wp-content/themes/pegasus-child/screenshots/circle_progress.gif" alt="placeholder image" class="img-fluid w-25">
+				<div class="text-center pegasus-image-container ">
+					<!--<a href="/wp-content/themes/pegasus-child/screenshots/circle_progress.png"  data-lightbox="image-6" data-title="Circle Progress Shortcode">
+						<img src="/wp-content/themes/pegasus-child/screenshots/circle_progress.gif" alt="placeholder image" class="img-fluid ">
+					</a>-->
+					<img src="/wp-content/themes/pegasus-child/screenshots/circle_progress.gif" alt="placeholder image" class="img-fluid ">
 				</div>
 				<pre><code class="language-javascript">[circle_progress number="90"]</code></pre>
 				<div class="text-center">
@@ -251,8 +266,11 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 		<section id="pegasus-count-up" class="py-5" >
 			<div class="container-fluid">
 				<h3>Count Up</h3>
-				<div class="text-center">
-					<img src="/wp-content/themes/pegasus-child/screenshots/countup.gif" alt="placeholder image" class="img-fluid w-25">
+				<div class="text-center pegasus-image-container ">
+					<!--<a href="/wp-content/themes/pegasus-child/screenshots/countup.png"  data-lightbox="image-7" data-title="Countup Shortcode">
+						<img src="/wp-content/themes/pegasus-child/screenshots/countup.gif" alt="placeholder image" class="img-fluid ">
+					</a>-->
+					<img src="/wp-content/themes/pegasus-child/screenshots/countup.gif" alt="placeholder image" class="img-fluid ">
 				</div>
 				<pre><code class="language-javascript">[counter_up number="2025"]</code></pre>
 				<div class="text-center">
@@ -290,18 +308,24 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 		<section id="pegasus-masonry" class="py-5" >
 			<div class="container-fluid">
 				<h3>Masonry</h3>
+				<div class=" pegasus-image-container ">
+					<!--<a href="/wp-content/themes/pegasus-child/screenshots/countup.png"  data-lightbox="image-7" data-title="Countup Shortcode">
+						<img src="/wp-content/themes/pegasus-child/screenshots/countup.gif" alt="placeholder image" class="img-fluid ">
+					</a>-->
+					<img src="/wp-content/themes/pegasus-child/screenshots/Masonry.gif" alt="placeholder image" class="img-fluid ">
+				</div>
 				<pre><code class="language-javascript">[masonry]
-&lt;img src="https://via.placeholder.com/250/250/"&gt;
-&lt;img src="https://via.placeholder.com/250/250/"&gt;
-&lt;img src="https://via.placeholder.com/250/500/"&gt;
-&lt;img src="https://via.placeholder.com/250/250/"&gt;
-&lt;img src="https://via.placeholder.com/250/500/"&gt;
-&lt;img src="https://via.placeholder.com/250/250/"&gt;
-&lt;img src="https://via.placeholder.com/250/250/"&gt;
-&lt;img src="https://via.placeholder.com/250/500/"&gt;
-&lt;img src="https://via.placeholder.com/250/250/"&gt;
-&lt;img src="https://via.placeholder.com/250/250/"&gt;
-&lt;img src="https://via.placeholder.com/250/500/"&gt;
+&lt;img src="http://pegasustheme.com/wp-content/uploads/2025/01/abarth.png" alt="image"&gt;
+&lt;img src="http://pegasustheme.com/wp-content/uploads/2025/01/Acura.png" alt="image"&gt;
+&lt;img src="http://pegasustheme.com/wp-content/uploads/2025/01/alfaromeo.png" alt="image"&gt;
+&lt;img src="http://pegasustheme.com/wp-content/uploads/2025/01/Aston-Martin.png" alt="image"&gt;
+&lt;img src="http://pegasustheme.com/wp-content/uploads/2025/01/Audi.png" alt="image"&gt;
+&lt;img src="http://pegasustheme.com/wp-content/uploads/2025/01/bentley.png" alt="image"&gt;
+&lt;img src="http://pegasustheme.com/wp-content/uploads/2025/01/BMW.png" alt="image"&gt;
+&lt;img src="http://pegasustheme.com/wp-content/uploads/2025/01/Buick.png" alt="image"&gt;
+&lt;img src="http://pegasustheme.com/wp-content/uploads/2025/01/Cadillac.png" alt="image"&gt;
+&lt;img src="http://pegasustheme.com/wp-content/uploads/2025/01/Chevrolet.png" alt="image"&gt;
+&lt;img src="http://pegasustheme.com/wp-content/uploads/2025/01/chrysler.png" alt="image"&gt;
 [/masonry]</code></pre>
 				<div class="text-center">
 					<a href="https://github.com/Visionquest-Development/pegasus-masonry" class="btn btn-primary  mt-5 mb-2" target="_blank">
@@ -319,7 +343,7 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 				<h3>Nav Menu</h3>
 				<pre><code class="language-javascript">[menu menu="primary"]</code></pre>
 				<pre><code class="language-javascript">[bootstrap_menu menu="primary" additional_classes="navbar-expand"]</code></pre>
-				<div class="text-center">
+				<div class="">
 					<a href="https://github.com/Visionquest-Development/pegasus-navmenu" class="btn btn-primary  mt-5 mb-2" target="_blank">
 						Pegasus Nav Menu Github
 					</a>
@@ -349,17 +373,17 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 			<div class="container-fluid">
 				<h3>Packery</h3>
 				<pre><code class="language-javascript">[packery]
-&lt;img src="https://via.placeholder.com/250/250/"&gt;
-&lt;img src="https://via.placeholder.com/250/250/"&gt;
-&lt;img src="https://via.placeholder.com/250/500/"&gt;
-&lt;img src="https://via.placeholder.com/250/250/"&gt;
-&lt;img src="https://via.placeholder.com/250/500/"&gt;
-&lt;img src="https://via.placeholder.com/250/250/"&gt;
-&lt;img src="https://via.placeholder.com/250/250/"&gt;
-&lt;img src="https://via.placeholder.com/250/500/"&gt;
-&lt;img src="https://via.placeholder.com/250/250/"&gt;
-&lt;img src="https://via.placeholder.com/250/250/"&gt;
-&lt;img src="https://via.placeholder.com/250/500/"&gt;
+&lt;img src="http://pegasustheme.com/wp-content/uploads/2025/01/abarth.png" alt="image"&gt;
+&lt;img src="http://pegasustheme.com/wp-content/uploads/2025/01/Acura.png" alt="image"&gt;
+&lt;img src="http://pegasustheme.com/wp-content/uploads/2025/01/alfaromeo.png" alt="image"&gt;
+&lt;img src="http://pegasustheme.com/wp-content/uploads/2025/01/Aston-Martin.png" alt="image"&gt;
+&lt;img src="http://pegasustheme.com/wp-content/uploads/2025/01/Audi.png" alt="image"&gt;
+&lt;img src="http://pegasustheme.com/wp-content/uploads/2025/01/bentley.png" alt="image"&gt;
+&lt;img src="http://pegasustheme.com/wp-content/uploads/2025/01/BMW.png" alt="image"&gt;
+&lt;img src="http://pegasustheme.com/wp-content/uploads/2025/01/Buick.png" alt="image"&gt;
+&lt;img src="http://pegasustheme.com/wp-content/uploads/2025/01/Cadillac.png" alt="image"&gt;
+&lt;img src="http://pegasustheme.com/wp-content/uploads/2025/01/Chevrolet.png" alt="image"&gt;
+&lt;img src="http://pegasustheme.com/wp-content/uploads/2025/01/chrysler.png" alt="image"&gt;
 [/packery]</code></pre>
 				<div class="text-center">
 					<a href="https://github.com/Visionquest-Development/pegasus-packery" class="btn btn-primary  mt-5 mb-2" target="_blank">
@@ -375,6 +399,12 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 		<section id="pegasus-popup" class="py-5" >
 			<div class="container-fluid">
 				<h3>Popup</h3>
+				<div class=" pegasus-image-container ">
+					<!--<a href="/wp-content/themes/pegasus-child/screenshots/loop.png"  data-lightbox="image-11" data-title="Loop Grid Shortcode">
+						<img src="/wp-content/themes/pegasus-child/screenshots/loop.png" alt="placeholder image" class="img-fluid">
+					</a>-->
+					<img src="/wp-content/themes/pegasus-child/screenshots/popup.gif" alt="placeholder image" class="img-fluid">
+				</div>
 				<pre><code class="language-javascript">[popup] &lt;img src="//farm9.staticflickr.com/8241/8589392310_7b6127e243_b.jpg"&gt; [/popup]</code></pre>
 				<div class="text-center">
 					<a href="https://github.com/Visionquest-Development/pegasus-popup" class="btn btn-primary  mt-5 mb-2" target="_blank">
@@ -392,16 +422,33 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 				<h3>Posts Grid</h3>
 
 				<h5>Loop Shortcode</h5>
+				<div class=" pegasus-image-container ">
+					<a href="/wp-content/themes/pegasus-child/screenshots/loop.png"  data-lightbox="image-11" data-title="Loop Grid Shortcode">
+						<img src="/wp-content/themes/pegasus-child/screenshots/loop.png" alt="placeholder image" class="img-fluid">
+					</a>
+					<!--<img src="/wp-content/themes/pegasus-child/screenshots/loop.png" alt="placeholder image" class="img-fluid">-->
+				</div>
 				<pre><code class="language-javascript">[loop the_query="post_type=post&showposts=10"]</code></pre>
-				<pre><code class="language-javascript">[loop the_query="post_type=post&showposts=100&category_name=hot-news&ord=ASC&ord_by=title"]</code></pre>
+				<pre><code class="language-javascript">[loop the_query="post_type=post&showposts=100&category_name=hot-news&order=ASC&order_by=title"]</code></pre>
 
 				<h5>Loop Posts Shortcode</h5>
+				<div class=" pegasus-image-container ">
+					<a href="/wp-content/themes/pegasus-child/screenshots/loop-posts.png"  data-lightbox="image-11" data-title="Loop Grid Shortcode">
+						<img src="/wp-content/themes/pegasus-child/screenshots/loop-posts.png" alt="placeholder image" class="img-fluid">
+					</a>
+					<!--<img src="/wp-content/themes/pegasus-child/screenshots/loop-posts.png" alt="placeholder image" class="img-fluid">-->
+				</div>
 				<pre><code class="language-javascript">[loop-posts the_query="post_type=post&showposts=10"]</code></pre></p>
-				<pre><code class="language-javascript">[loop-posts the_query="post_type=post&showposts=100&category_name=hot-news&ord=ASC&ord_by=title"]</code></pre>
+				<pre><code class="language-javascript">[loop-posts the_query="post_type=post&showposts=100&category_name=hot-news&order=ASC&order_by=title"]</code></pre>
 
 				<h5>Loop Grid Shortcode</h5>
-				<div class="text-center">
-					<img src="http://pegasustheme.com/wp-content/uploads/2016/07/2016-07-22_20-29-37.png" alt="placeholder image" class="img-fluid">
+				<div class=" pegasus-image-container ">
+					<!--<a href="//pegasustheme.com/wp-content/uploads/2016/07/2016-07-22_20-29-37.png"  data-lightbox="image-11" data-title="Loop Grid Shortcode">
+						<img src="//pegasustheme.com/wp-content/uploads/2016/07/2016-07-22_20-29-37.png" alt="placeholder image" class="img-fluid">
+					</a>-->
+					<a href="/wp-content/themes/pegasus-child/screenshots/loop-grid.png"  data-lightbox="image-11" data-title="Loop Grid Shortcode">
+						<img src="/wp-content/themes/pegasus-child/screenshots/loop-grid.png" alt="placeholder image" class="img-fluid">
+					</a>
 				</div>
 				<pre><code class="language-javascript">[loop-grid the_query="post_type=post&showposts=10"]</code></pre></p>
 				<pre><code class="language-javascript">[loop-grid the_query="showposts=99&post_type=post" bkg_color="#dedede"]</code></pre>
@@ -421,7 +468,7 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 			<div class="container-fluid">
 				<h3>Posts Filter</h3>
 				<pre><code class="language-javascript">[ajax_filter_posts per_page="1"］</code></pre>
-				<div class="text-center">
+				<div class="">
 					<a href="https://github.com/Visionquest-Development/pegasus-posts-filter" class="btn btn-primary  mt-5 mb-2" target="_blank">
 						Pegasus Posts Filter Github
 					</a>
@@ -439,8 +486,11 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 				<p>This includes the Regular Slider, Thumbnail Slider, and News/Posts Slider.</p>
 
 				<h5>Slider</h5>
-				<div class="text-center">
-					<img src="http://pegasustheme.com/wp-content/uploads/2016/07/2016-07-22_20-19-04.png" alt="placeholder image" class="img-fluid">
+				<div class=" pegasus-image-container ">
+					<!--<a href="//pegasustheme.com/wp-content/uploads/2016/07/2016-07-22_20-19-04.png" data-lightbox="image-12" data-title="Slider Shortcode">
+						<img src="//pegasustheme.com/wp-content/uploads/2016/07/2016-07-22_20-19-04.png" alt="placeholder image" class="img-fluid">
+					</a>-->
+					<img src="/wp-content/themes/pegasus-child/screenshots/slider1.gif" alt="placeholder image" class="img-fluid"> 
 				</div>
 				<pre><code class="language-javascript">[slider]
 	[slide class="testing"]
@@ -452,22 +502,20 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 [/slider]</code></pre>
 
 				<h5>News/Posts Slider</h5>
-				<div class="text-center">
-					<img src="http://pegasustheme.com/wp-content/uploads/2016/07/2016-07-22_20-18-46.png" alt="placeholder image" class="img-fluid">
+				<div class=" pegasus-image-container ">
+					<!--<a href="//pegasustheme.com/wp-content/uploads/2016/07/2016-07-22_20-18-46.png"  data-lightbox="image-13" data-title="News Slider Shortcode">
+						<img src="//pegasustheme.com/wp-content/uploads/2016/07/2016-07-22_20-18-46.png" alt="placeholder image" class="img-fluid">
+					</a>-->
+					<img src="/wp-content/themes/pegasus-child/screenshots/news_slider.gif" alt="placeholder image" class="img-fluid">
 				</div>
 				<pre><code class="language-javascript">[news_slider the_query="showposts=100&amp;post_type=post"]</code></pre>
-				<div class="text-center">
-					<a href="https://github.com/Visionquest-Development/pegasus-slider" class="btn btn-primary  mt-5 mb-2" target="_blank">
-						Pegasus Slider Github
-					</a>
-					<a href="/pegasus-slider" class="btn btn-secondary  mt-5 mb-2" >
-						Slider Example Page
-					</a>
-				</div>
 
 				<h5>Thumbnail Slider</h5>
-				<div class="text-center">
-					<img src="http://pegasustheme.com/wp-content/uploads/2016/07/2016-07-22_20-14-49.png" alt="placeholder image" class="img-fluid">
+				<div class=" pegasus-image-container ">
+					<!--<a href="//pegasustheme.com/wp-content/uploads/2016/07/2016-07-22_20-14-49.png"  data-lightbox="image-14" data-title="Thumbnail Slider Shortcode">
+						<img src="//pegasustheme.com/wp-content/uploads/2016/07/2016-07-22_20-14-49.png" alt="placeholder image" class="img-fluid">
+					</a>-->
+					<img src="/wp-content/themes/pegasus-child/screenshots/thumbnail_slider.gif" alt="placeholder image" class="img-fluid"> 
 				</div>
 				<pre><code class="language-javascript">[thumb_slider]
 	[thumb_slide title="slide1" number="1"]
@@ -484,12 +532,27 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 	[/thumb_slide]
 [/thumb_slider]</code></pre>
 
+				<div class="text-center">
+					<a href="https://github.com/Visionquest-Development/pegasus-slider" class="btn btn-primary  mt-5 mb-2" target="_blank">
+						Pegasus Slider Github
+					</a>
+					<a href="/pegasus-slider" class="btn btn-secondary  mt-5 mb-2" >
+						Slider Example Page
+					</a>
+				</div>
+
 			</div>
 		</section>
 
 		<section id="pegasus-tabs" class="py-5" >
 			<div class="container-fluid">
-				<h3>Tab</h3>
+				<h3>Tabs</h3>
+				<div class=" pegasus-image-container ">
+					<!--<a href="//pegasustheme.com/wp-content/uploads/2016/07/2016-07-22_20-14-49.png"  data-lightbox="image-14" data-title="Thumbnail Slider Shortcode">
+						<img src="//pegasustheme.com/wp-content/uploads/2016/07/2016-07-22_20-14-49.png" alt="placeholder image" class="img-fluid">
+					</a>-->
+					<img src="/wp-content/themes/pegasus-child/screenshots/tabs.gif" alt="placeholder image" class="img-fluid"> 
+				</div>
 				<pre><code class="language-javascript">[tabs]
 	[tab class="first" title="Home"]
 		Vivamus suscipit tortor eget felis porttitor volutpat. Pellentesque in ipsum id orci porta dapibus.
@@ -501,7 +564,7 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 		&lt;img loading="lazy" decoding="async" class="alignnone size-full wp-image-6" src="http://visionquestdev.com/learn-wordpress/wp-content/uploads/2016/06/quadroIdeas_1153.jpg" alt="quadroIdeas_1153" width="960" height="386" /&gt;
 	[/tab]
 [/tabs]</code></pre>
-			<div class="text-center">
+				<div class="text-center">
 					<a href="https://github.com/Visionquest-Development/pegasus-tabs" class="btn btn-primary  mt-5 mb-2" target="_blank">
 						Pegasus Tabs Github
 					</a>
@@ -515,6 +578,12 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 		<section id="pegasus-toggleslide" class="py-5" >
 			<div class="container-fluid">
 				<h3>Toggle Slide</h3>
+				<div class=" pegasus-image-container ">
+					<!--<a href="//pegasustheme.com/wp-content/uploads/2016/07/2016-07-22_20-14-49.png"  data-lightbox="image-14" data-title="Thumbnail Slider Shortcode">
+						<img src="//pegasustheme.com/wp-content/uploads/2016/07/2016-07-22_20-14-49.png" alt="placeholder image" class="img-fluid">
+					</a>-->
+					<img src="/wp-content/themes/pegasus-child/screenshots/toggleslide.gif" alt="placeholder image" class="img-fluid"> 
+				</div>
 				<pre><code class="language-javascript">[toggleslide title="the_title"]Toggle slide content[/toggleslide]</code></pre>
 				<div class="text-center">
 					<a href="https://github.com/Visionquest-Development/pegasus-toggleslide" class="btn btn-primary  mt-5 mb-2" target="_blank">
@@ -537,8 +606,14 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 		<section id="pegasus-wow" class="py-5" >
 			<div class="container-fluid">
 				<h3>Wow</h3>
+				<div class=" pegasus-image-container ">
+					<!--<a href="//pegasustheme.com/wp-content/uploads/2016/07/2016-07-22_20-14-49.png"  data-lightbox="image-14" data-title="Thumbnail Slider Shortcode">
+						<img src="//pegasustheme.com/wp-content/uploads/2016/07/2016-07-22_20-14-49.png" alt="placeholder image" class="img-fluid">
+					</a>-->
+					<img src="/wp-content/themes/pegasus-child/screenshots/wow.gif" alt="placeholder image" class="img-fluid"> 
+				</div>
 				<pre><code class="language-javascript">[wow]</code></pre>
-				<div class="text-center">
+				<div class="text-center"> 
 					<a href="https://github.com/Visionquest-Development/pegasus-wow" class="btn btn-primary  mt-5 mb-2" target="_blank">
 						Pegasus Wow Github
 					</a>
@@ -563,9 +638,9 @@ Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent
 			<li class="nav-tooltip nav-item" title="Home Top" data-bs-toggle="tooltip" data-placement="left">
 				<a class="nav-link"  href="#home-top-section"></a>
 			</li>
-			<li class="nav-tooltip nav-item" title="Child Theme" data-bs-toggle="tooltip" data-placement="left">
+			<!--<li class="nav-tooltip nav-item" title="Child Theme" data-bs-toggle="tooltip" data-placement="left">
 				<a class="nav-link"  href="#child-theme-row"></a>
-			</li>
+			</li>--> 
 			<li class="nav-tooltip nav-item" title="Blog" data-bs-toggle="tooltip" data-placement="left">
 				<a class="nav-link"  href="#pegasus-blog"></a>
 			</li>
