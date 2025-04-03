@@ -9,43 +9,211 @@
 */
 
 /*@import url("../pegasus/style.css");*/
-	
-	
+
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
+
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ HEADER ~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	
+	#logo {
+    width: 200px;
+  }
+
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ NAVIGATION ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
+  #menu-main-nav li.menu-item {
+    padding: 0 12px;
+    border-radius: 20px;
+  }
 
-	
+  #menu-main-nav li.menu-item:hover a {
+    color: white;
+  }
+
+  #menu-main-nav li.menu-item.current-menu-item {
+    background: rgb(26, 78, 141);
+    border-radius: 20px;
+    padding: 0 12px;
+  }
+
+  #menu-main-nav li.menu-item.current-menu-item {
+    color: white !important;
+  }
+
+  #menu-main-nav .sub-menu {
+    background: rgb(26, 78, 141);
+
+  }
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ FOOTER ~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
+
+
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ HOME PAGE ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	
-	
+
+
+
+	.home-pets{
+		padding: 20px 0;
+	}
+
+	.slick-next, .slick-prev {
+		width: 40px;
+		height: 40px;
+		z-index: 99;
+		background: rgba( 255, 255, 255, 0.7 );
+		border-radius: 10px;
+	}
+
+	.slick-next:hover, .slick-prev:hover {
+		background: rgba( 255, 255, 255, 0.9 );
+	}
+
+	.slick-next:before, .slick-prev:before { font-size: 32px; }
+
+	.pets-slider .slick-slide { margin: 0 15px; }
+
+	.pet {
+		border: 1px solid #dedede;
+		margin: 0 5px 20px;
+		max-width: 200px;
+	}
+
+	.pet .pet-img {
+		background-size: cover !important;
+		background-repeat: no-repeat !important;
+		min-height: 200px;
+	}
+
+	.pet .inside-content { background: white; padding: 20px 10px; }
+
+	.pet .pet-name {
+		display: block;
+		color: #010066;
+		font-weight: bold;
+		text-transform: capitalize;
+	}
+	.pet h3 {
+		margin: 0 0 20px;
+	}
+
+	.pet-container { padding: 0 !important; }
+
+	.pet .read-more {
+		display: block;
+	}
+
+
+	.pet-details {
+		background: #dedede;
+		border-radius: 20px;
+		padding: 20px 20px 10px 20px;
+		box-shadow: 2px 2px 5px white;
+		margin-bottom: 20px;
+		color: black;
+		text-shadow: 2px 1px 2px white;
+	}
+
+
+
+	.page-template-dogs .content-item-container article,
+	.page-template-cats .content-item-container article,
+	.page-template-tpl_rehome .content-item-container article
+	{
+		border: 1px solid #777;
+		border-radius: 10px;
+		padding: 20px;
+
+	}
+
+	.page-template-dogs .content-item-container article .content-item-image,
+	.page-template-cats .content-item-container article .content-item-image,
+	.page-template-tpl_rehome .content-item-container article .content-item-image
+	{
+		background-size: cover;
+		background-position: center center;
+		background-repeat: no-repeat;
+		/* min-height: 400px; */
+		/* height: 250px;
+		width: 250px; */
+		min-height: 450px;
+		height: auto;
+		width: 100%;
+		margin: 0 auto 10px;
+		display: block;
+	}
+
+	.pets-template-default #page-wrap, .rehome-template-default #page-wrap {
+		padding: 20px;
+	}
+
+
+
+	.pets-template-default .video-container, .rehome-template-default .video-container {
+		background: #777;
+		border: 1px solid black;
+		border-radius: 10px;
+		padding: 20px;
+	}
+
+	.pets-template-default .gallery-container, .rehome-template-default .gallery-container {
+		background: #777;
+		border: 1px solid black;
+		border-radius: 10px;
+		padding: 20px;
+	}
+
+	.pets-column {
+		background: #010066;
+		border: 1px solid black;
+		border-radius: 15px;
+		color: white;
+	}
+
+	.pets-gallery-video {
+		background: #dedede;
+		border: 1px solid black;
+		border-radius: 15px;
+	}
+
+	.home-middle-info {
+		border-top: 5px solid #010066;
+		border-top-style:dashed;
+		border-bottom: 5px solid #010066;
+		border-bottom-style:dashed;
+		padding: 40px 0;
+		background: white;
+	}
+
+	.home-middle-info { vertical-align: center; text-align: center; }
+
+	.home-middle-info .home-images .home-img-bkg {
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: 100% 100%;
+		min-height: 172px;
+		width: 100%;
+		height: auto;
+		margin: 0 auto;
+	}
+
+
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~SITEMAP~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
-	
+
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~WOOCOMMERCE~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -54,21 +222,21 @@
 	~~~~~MEDIA QUERIES~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 	@media only screen and ( min-width: 1100px ) and ( max-width: 1405px) {
-		
+
 	}
-	
+
 	@media only screen and ( min-width: 981px ) {
-		
+
 	}
-		
+
 	@media only screen and (max-width: 980px) {
-		
+
 	}
-	
+
 	@media only screen and ( max-width: 767px ) {
-		
+
 	}
-	
+
 	@media only screen and (max-width: 479px) {
-		
+
 	}
