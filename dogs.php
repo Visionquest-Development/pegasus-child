@@ -54,14 +54,14 @@
 
 
 
-				<div class="inner-content col-md-12">
+				<div class="inner-content  col-md-12">
 
 					<div class="content-no-sidebar">
 
 						<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 							<?php
-
+								/*
 								$page_header_choice =  pegasus_get_option('page_header_chk' );
 
 								if( $page_header_choice != 'on' ) {
@@ -78,7 +78,7 @@
 
 								<div class="page-header-spacer"></div>
 
-							<?php } ?>
+							<?php } */ ?>
 
 
 
@@ -86,7 +86,7 @@
 
 
 
-							<div class="container-fluid">
+							<div class="container-fluid pets-panel opp-bkg mt-5">
 
 							<!-- Example row of columns -->
 
@@ -227,7 +227,7 @@
 															?>
 
 
-
+															<?php /*
 															<div class="content-item-cats"><i><?php the_category(); ?></i></div>
 
 
@@ -279,13 +279,13 @@
 																<?php }	?>
 
 															</div>
+															*/ ?>
 
 															<!-- output a read more button -->
 
-															<a class="button btn btn-primary" href="<?php the_permalink(); ?>"> Read More </a>
+															<a class="opp-button " href="<?php the_permalink(); ?>">Learn More</a>
 
-														</div>
-
+														</div> <!--end content item wrapper-->
 
 
 														<?php

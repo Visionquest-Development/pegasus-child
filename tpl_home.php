@@ -6,17 +6,56 @@
 
 		<?php
 			echo do_shortcode('[slider]
-			[slide class="testing"]Welcome to Our Pals Place!<br /><img class="alignnone size-full wp-image-12" src="http://ourpalsplace.test/wp-content/wp-content/themes/pegasus-child/images/slider/1.jpg" alt="Gold-and-Black-Logo"/>[/slide]
-			[slide]Want to make a difference?<br />Volunteer with us!<br /><img class="alignnone size-full wp-image-12" src="http://ourpalsplace.test/wp-content/wp-content/themes/pegasus-child/images/slider/2.jpg" alt="Gold-and-Black-Logo"/>[/slide]
-			[slide]Apply to be a 2025 Animal Advocate Intern!<br /><img class="alignnone size-full wp-image-12" src="http://ourpalsplace.test/wp-content/wp-content/themes/pegasus-child/images/slider/3.jpg" alt="Gold-and-Black-Logo"/>[/slide]
-			[slide]Camp O.P.P. 2025 Registration is now open!<br /><img class="alignnone size-full wp-image-12" src="http://ourpalsplace.test/wp-content/wp-content/themes/pegasus-child/images/slider/4.jpg" alt="Gold-and-Black-Logo"/>[/slide]
-			[slide]Your support saves lives.<br /><img class="alignnone size-full wp-image-12" src="http://ourpalsplace.test/wp-content/wp-content/themes/pegasus-child/images/slider/5.jpg" alt="Gold-and-Black-Logo"/>[/slide]
+				[slide class="testing"]
+					<div class="p-relative slide-1">
+						<div class="home-slider-text">
+							<h2>Welcome to Our Pals Place!</h2>
+						</div>
+						<img class="alignnone size-full wp-image-12" src="http://ourpalsplace.test/wp-content/wp-content/themes/pegasus-child/images/slider/1.jpg" />
+					</div>
+				[/slide]
+				[slide]
+					<div class="p-relative slide-2">
+						<div class="home-slider-text pull-left">
+							<h2>Want to make a difference?</h2><br /><h2>Volunteer with us!</h2><br />
+							<button class="opp-button center" id="opp-button-1">Learn More</button>
+						</div>
+						<img class="alignnone size-full wp-image-12" src="http://ourpalsplace.test/wp-content/wp-content/themes/pegasus-child/images/slider/4.jpg" />
+					</div>
+				[/slide]
+				[slide]
+					<div class="p-relative slide-3">
+						<div class="home-slider-text pull-left">
+							<h2>Apply to be a 2025 Animal Advocate Intern!</h2><br />
+							<button class="opp-button center" id="opp-button-2">Learn More</button>
+						</div>
+						<img class="alignnone size-full wp-image-12" src="http://ourpalsplace.test/wp-content/wp-content/themes/pegasus-child/images/slider/2.jpg" />
+					</div>
+				[/slide]
+				[slide]
+					<div class="p-relative slide-4">
+						<div class="home-slider-text pull-right">
+							<h2>Camp O.P.P. 2025 Registration is now open!</h2><br />
+							<button class="opp-button center" id="opp-button-3">Learn More</button>
+						</div>
+						<img class="alignnone size-full wp-image-12" src="http://ourpalsplace.test/wp-content/wp-content/themes/pegasus-child/images/slider/3.jpg" />
+					</div>
+				[/slide]
+				[slide]
+					<div class="p-relative slide-5">
+						<div class="home-slider-text ">
+							<h2>Your support saves lives.<h2><br />
+							<button class="opp-button center" id="opp-button-4">Donate</button>
+						</div>
+						<img class="alignnone size-full wp-image-12" src="http://ourpalsplace.test/wp-content/wp-content/themes/pegasus-child/images/slider/5.jpg" />
+					</div>
+				[/slide]
 			[/slider]' );
 		?>
-
+		<?php /*
 		<section class="home-middle-info clearfix">
 			<div class="container-fluid">
-				<!-- Three columns -->
+
 				<div class="row">
 
 					<div class="col-lg-3 home-images">
@@ -55,63 +94,99 @@
 			</div><!-- /.container -->
 
 		</section>
+		*/ ?>
 
 		<section class="home-bkg-color home-pets" >
-			<h2>Find your Newest Family Member</h2>
-
+			<!--<h2>Find your Newest Family Member</h2>-->
+			<a href="http://opp.ourpalsplace.org/meet-our-dogs/" class="opp-button center">Find Your Best Match</a>
 			<div class="pets-slider">
-				<?php
-					$query = new WP_Query(array(
-						'post_type' => array( 'pets' ),
-						'petcategory'          => 'dogs',
-						//'term'=>$term->slug,
-						'posts_per_page' => -1,
-						'order'                  => 'ASC',
-						'orderby'                => 'title'
-					) );
-					while ( $query->have_posts() ) : $query->the_post();
-					?>
+			<?php
+				$query = new WP_Query(array(
+					'post_type' => array('pets'),
+					'petcategory' => 'dogs',
+					'posts_per_page' => -1,
+					'order' => 'ASC',
+					'orderby' => 'title'
+				));
 
-					<div class="pet pet-id-<?php the_ID(); ?>">
-						<?php
-						if ( has_post_thumbnail() ) {
-						$thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full', false, '' );
-						}else{
-						$thumb_url = array( get_template_directory_uri() . "/images/banner.png", "1");
-						}
-						?>
+				if ($query->have_posts()) : ?>
 
-							<!--<img class="pet-img" src="<?php //echo $thumb_url[0];?>">-->
-							<div class="pet-img" style="background: url(<?php echo $thumb_url[0];?>) center center no-repeat;">
-
-							</div>
-
-							<div class="inside-content">
-								<a id="" class="pet-name" href="<?php the_permalink(); ?>" >
-									<?php the_title(); ?>
-								</a>
-
-								<a class="read-more" href="<?php the_permalink(); ?>" >Read My Story</a>
-
-							</div>
-
-					</div>
-					<?php endwhile;
-					wp_reset_query();
+				<?php while ($query->have_posts()) : $query->the_post();
+					$thumb_url = has_post_thumbnail() ? wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'large')[0] : get_template_directory_uri() . "/images/banner.png";
 				?>
+				<div class="pet-cards-wrap justify-content-center py-5">
+					<div class="pet-box">
+						<div class="pet-image" style="background-image: url('<?php echo esc_url($thumb_url); ?>');">
+						<div class="pet-overlay">
+							<a href="<?php the_permalink(); ?>" class="pet-name">
+							<?php the_title(); ?>
+							</a>
+						</div>
+						</div>
+					</div>
+				</div>
+				<?php endwhile; ?>
+
+				<?php endif;
+				wp_reset_postdata();
+			?>
 
 			</div><!--end -col-md-4-->
-
-
-
-
-			<a href="http://opp.ourpalsplace.org/meet-our-dogs/" class="opp-button">Meet All Our Dogs</a>
+					<br>
+			<a href="http://opp.ourpalsplace.org/meet-our-dogs/" class="opp-button center">View All</a>
 			<!--<a href="http://opp.ourpalsplace.org/meet-our-cats/" class="opp-button">Meet All Our Cats</a>-->
 		</section>
+
+
+		<section>
+
+			<?php
+				$services_json = '[
+				{
+					"title": "Our Pal\'s Place Daycare, Boarding, & Training",
+					"image": "//opp.ourpalsplace.org/wp-content/uploads/2020/03/Logo-DBT.jpg",
+					"link": "/daycare"
+				},
+				{
+					"title": "ReHome Superstore",
+					"image": "//opp.ourpalsplace.org/wp-content/uploads/2019/11/logo_upscale-thrift-shopping.jpg",
+					"link": "/superstore"
+				}
+				]';
+
+				$services = json_decode($services_json, true);
+			?>
+
+				<div class="services-container container-fluid py-3 mb-5">
+					<h2 class="text-center mb-5">Our Services</h2>
+					<div class="row g-4">
+						<?php foreach ($services as $service): ?>
+						<div class="col-6">
+							<div class="card h-100 border-0 shadow-sm rounded-1 overflow-hidden">
+							<div class="row g-0 h-100">
+								<div class="col-12 col-lg-8">
+									<img src="<?php echo esc_url($service['image']); ?>" alt="<?php echo esc_attr($service['title']); ?>" class="img-fluid h-100 w-100 object-fit-cover">
+								</div>
+								<div class="col-12 col-lg-4 d-flex flex-column justify-content-between  p-4">
+									<h5 class="fw-bold mb-3"><?php echo esc_html($service['title']); ?></h5>
+									<a href="<?php echo esc_url($service['link']); ?>" class=" opp-button center mt-auto align-self-start">Learn More</a>
+								</div>
+							</div>
+							</div>
+						</div>
+						<?php endforeach; ?>
+					</div>
+				</div>
+
+
+		</section>
+
+
+
 		<div class="container-fluid home-opp-content ">
 			<div class="content-no-sidebar row">
 				<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-					<?php the_content(); ?>
+					<?php //the_content(); ?>
 				<?php endwhile; else: ?>
 					<?php /* kinda a 404 of sorts when not working */ ?>
 					<div class="page-header">

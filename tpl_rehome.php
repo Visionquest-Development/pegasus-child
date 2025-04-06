@@ -86,7 +86,7 @@
 
 
 
-							<div class="container-fluid">
+							<div class="container-fluid opp-bkg">
 
 							<!-- Example row of columns -->
 
@@ -226,7 +226,7 @@
 
 															?>
 
-
+															<?php /*
 
 															<div class="content-item-cats"><i><?php the_category(); ?></i></div>
 
@@ -278,7 +278,10 @@
 
 																<?php }	?>
 
+
 															</div>
+
+															*/ ?>
 
 															<!-- output a read more button -->
 

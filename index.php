@@ -6,16 +6,9 @@
 			exit;
 		}
 		get_header();
+		global $post;
 	?>
 	<div id="page-wrap">
-		<?php
-
-			$header_choice = pegasus_get_option( 'header_select' );
-			//var_dump($header_choice);
-			if ( 'header-three' === $header_choice ) {
-				get_template_part( 'templates/additional_header' );
-			}
-		?>
 		<?php
 			//full container page options
 			$post_full_container_choice = get_post_meta( get_the_ID(), 'pegasus-page-container-checkbox', true );
@@ -41,7 +34,9 @@
 			//page header theme option
 			$global_disable_page_header_option =  pegasus_get_option('page_header_chk' ) ? pegasus_get_option('page_header_chk' ) : 'off';
 			//check theme option for page header before page option
-			$page_title = $post->post_title;
+			if ( isset($post) ) {
+				$page_title = $post->post_title;
+			}
 			$is_this_home = is_home();
 			if ( 'on' === $global_disable_page_header_option ) {
 				$final_page_header_option = 'on';
@@ -61,44 +56,116 @@
 			<!-- Example row of columns -->
 			<div class="row">
 				<?php
-					/*if( 'on' === $pegasus_left_sidebar_option && 'on' === $left_align_sidebar_chk ) {
+					if( 'on' === $pegasus_left_sidebar_option && 'on' === $left_align_sidebar_chk ) {
 						get_sidebar( 'left' );
 					} else if( 'on' === $left_align_sidebar_chk ) {
 						get_sidebar( 'right' );
-					}*/
+					}
 				?>
 
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xg-12<?php //echo $page_body_content_class; ?>">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xg-12 <?php //echo $page_body_content_class; ?>">
 					<div class="inner-content">
-						<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-							<?php if( 'off' === $final_page_header_option ) { ?>
-								<div class="page-header">
+
+						<?php
+						 	if ( is_front_page() && is_home() ) {
+							  // Default homepage
+							  //echo '<h1>Default Homepage</h1>';
+							} elseif ( is_front_page() ) {
+							  // static homepage
+							  //echo '<h1>Front Page</h1>';
+							} elseif ( is_home() ) {
+							  	// blog page
+							  	?>
+								<?php /* ?>
+								<ul id="blog-categories">
+									<li class="cat-item ">
+										<a href="#self">All</a>
+									</li>
 									<?php
-										if( '' === $page_title ) {
-											echo '';
-										} elseif ( $page_title ) {
-											echo '<h1>';
-											echo the_title();
-											echo '</h1>';
-										}
+										$args = array(
+										'show_option_all'    => '',
+										'orderby'            => 'name',
+										'order'              => 'ASC',
+										'style'              => 'list',
+										'show_count'         => 0,
+										'hide_empty'         => 1,
+										'use_desc_for_title' => 0,
+										'child_of'           => 0,
+										'feed'               => '',
+										'feed_type'          => '',
+										'feed_image'         => '',
+										'exclude'            => '',
+										'exclude_tree'       => '',
+										'include'            => '',
+										'hierarchical'       => 0,
+										'title_li'           => 0,
+										'show_option_none'   => __( '' ),
+										'number'             => null,
+										'echo'               => 1,
+										'depth'              => 0,
+										'current_category'   => 0,
+										'pad_counts'         => 0,
+										'taxonomy'           => 'category',
+										'walker'             => null
+										);
+										wp_list_categories( $args );
 									?>
-								</div>
-							<?php }else{ ?>
-								<!--<div class="page-header-spacer"></div>-->
-								<?php get_template_part( 'templates/additional_header', 'header' ); ?>
-							<?php } ?>
+								</ul>
+								<?php */ ?>
+								<?php
+									$paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+									$blog_query = new WP_Query(
+										array(
+											'post_type' => array( 'post' ),
+											'paged' => $paged,
+											'posts_per_page' => 10,
+											'order'                  => 'DESC',
+											'orderby'                => 'date'
+										)
+									);
+									while ( $blog_query->have_posts() ) : $blog_query->the_post();
+								?>
+									<?php get_template_part( 'templates/content_item', 'content-item' ); ?>
+								<?php
+									endwhile;
+									wp_reset_query();
+								?>
+								<?php
+							} else {
+							  //everything else
+								?>
+								<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-							<?php the_content(); ?>
+									<?php if( 'off' === $final_page_header_option ) { ?>
+										<div class="page-header">
+											<?php
+											if( '' === $page_title ) {
+												echo '';
+											} elseif ( $page_title ) {
+												echo '<h1>';
+												echo the_title();
+												echo '</h1>';
+											}
+											?>
+										</div>
+									<?php }else{ ?>
+										<div class="page-header-spacer"></div>
+									<?php } //else ?>
 
-							<?php comments_template(); ?>
+									<?php the_content(); ?>
 
-						<?php endwhile; else: ?>
-							<?php /* kinda a 404 of sorts when not working */ ?>
-							<div class="page-header">
-								<h1>Oh no!</h1>
-							</div>
-							<p>No content is appearing for this page!</p>
-						<?php endif; ?>
+									<?php comments_template(); ?>
+								<?php endwhile; else: ?>
+									<?php /* kinda a 404 of sorts when not working */ ?>
+									<div class="page-header">
+										<h1>Oh no!</h1>
+									</div>
+									<p>No content is appearing for this page!</p>
+								<?php endif; ?>
+								<?php
+							} //end page template check
+						?>
+
 						<?php
 							if ( function_exists( 'wp_bootstrap_edit_post_link' ) ) {
 								// Edit post link
@@ -123,12 +190,12 @@
 					</div><!--end inner content-->
 				</div>
 				<?php
-					/*if( 'on' === $pegasus_left_sidebar_option ) {
+					if( 'on' === $pegasus_left_sidebar_option ) {
 						get_sidebar( 'right' );
 					}
 					if( 'on' !== $left_align_sidebar_chk ) {
 						get_sidebar( 'right' );
-					}*/
+					}
 				?>
 			</div><!--end row -->
 		</div><!-- end container -->
