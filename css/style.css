@@ -3717,7 +3717,7 @@ input {
   background-color: rgba(0, 0, 0, 0.8);
 }
 .category__item:hover .category__image .category-icon img {
-  filter: invert(49%) sepia(60%) saturate(5401%) hue-rotate(354deg) brightness(96%) contrast(105%);
+  /* filter: invert(49%) sepia(60%) saturate(5401%) hue-rotate(354deg) brightness(96%) contrast(105%); */
 }
 
 .category-two__item:hover .category__image .category-icon {

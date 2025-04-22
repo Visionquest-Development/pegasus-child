@@ -47,28 +47,6 @@
 			}
 		?>
 		
-		<div class="container-fluid pt-3">
-			<div class="masonry-container">
-				<?php
-				$query2 = new WP_Query( array( 
-					'post_type' => array( 'card_sets' ), 
-					'posts_per_page' => -1,
-					'orderby' => 'date',  // Specifies the field to sort by.
-					'order' => 'ASC',     // Specifies the sorting order.
-				) );
-				while ( $query2->have_posts() ) : $query2->the_post();
-				?>
-					<div class="card-set-item">
-						<?php get_template_part( '/templates/card_set_item' ); ?>
-					</div>
-				<?php 
-				endwhile;
-				wp_reset_postdata();
-				//wp_reset_query();
-				?>
-			</div>
-		</div>
-		
 		<div class="<?php echo $final_container_class; ?>">
 		<!-- Example row of columns -->
 			<div class="">
@@ -106,6 +84,30 @@
 
 			</div><!--end row -->
 		</div><!-- end container -->
+		
+		<div class="container pt-3">
+			<div class="card-set-container">
+				<?php
+				$query2 = new WP_Query( array( 
+					'post_type' => array( 'card_sets' ), 
+					'posts_per_page' => -1,
+					'orderby' => 'title',  // Specifies the field to sort by.
+					'order' => 'ASC',     // Specifies the sorting order.
+				) );
+				while ( $query2->have_posts() ) : $query2->the_post();
+				?>
+					<div class="card-set-item">
+						<?php get_template_part( '/templates/card_set_item' ); ?>
+					</div>
+				<?php 
+				endwhile;
+				wp_reset_postdata();
+				//wp_reset_query();
+				?>
+			</div>
+		</div>
+		
+		
 	</div><!-- end page wrap -->
 
 <?php get_footer(); ?>

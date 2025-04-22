@@ -19,13 +19,13 @@ endif;
 	<article class="article-<?php the_ID(); ?> block-inner ">
 
 		<div class="content-item-image">
-			<img src="<?php echo pegasus_image_display( 'full', '', false ); ?>" alt="">
+			<img src="<?php echo pegasus_image_display( 'full', 'w-50', false ); ?>" alt="">
 		</div>
 
 		<div class="content-item-wrapper">
 			<!-- the permalink and title -->
 			<a href="<?php the_permalink(); ?>" alt="<?php the_title(); ?>">
-				<h3 class="content-item-title"><?php the_title(); ?></h3>
+				<h4 class="content-item-title"><?php the_title(); ?></h4>
 			</a>
 			<?php
 				$the_time = the_time( 'l, F jS, Y' ) ? the_time( 'l, F jS, Y' ) : '';
@@ -72,15 +72,18 @@ endif;
 
 		<?php
 		// Edit post link
-		wp_bootstrap_edit_post_link(
-			sprintf(
-			/* translators: %s: Name of current post */
-				__( 'Edit<span class="screen-reader-text"> "%s"</span>', 'textdomain' ),
-				get_the_title()
-			),
-			'<span class="edit-link">',
-			'</span>'
-		);
+		if ( function_exists( 'wp_bootstrap_edit_post_link' ) ) {
+			// Edit post link
+			wp_bootstrap_edit_post_link(
+				sprintf(
+					/* translators: %s: Name of current post */
+					__( 'Edit<span class="screen-reader-text"> "%s"</span>', 'textdomain' ),
+					get_the_title()
+				),
+				'<span class="edit-link">',
+				'</span>'
+			);
+		}
 		?>
 
 	</article>

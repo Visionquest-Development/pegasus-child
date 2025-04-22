@@ -28,7 +28,7 @@
 	*/
 	function pegasus_child_bootstrap_js() {
 		
-		wp_enqueue_script( 'pegasus_custom_js', get_stylesheet_directory_uri() . '/js/pegasus-custom.js', array(), '', true );
+		wp_enqueue_script( 'pegasus_child_custom_js', get_stylesheet_directory_uri() . '/js/pegasus-custom.js', array(), '', true );
 		
 		wp_enqueue_script( 'swiper_js', get_stylesheet_directory_uri() . '/js/swiper-bundle.min.js', array(), '', true );
 		
@@ -38,7 +38,11 @@
 		wp_enqueue_script( 'isotope_js', get_stylesheet_directory_uri() . '/js/isotope.pkgd.min.js', array(), '', true );
 		
 
-		wp_enqueue_script( 'masonry_js', get_stylesheet_directory_uri() . '/js/masonry.js', array(), '', true );
+		//wp_enqueue_script( 'masonry_js', get_stylesheet_directory_uri() . '/js/masonry.js', array(), '', true );
+		
+		wp_enqueue_script( 'match_height_js', get_stylesheet_directory_uri() . '/js/matchHeight.js', array(), '', true );
+		
+		wp_enqueue_script( 'packery_js', get_stylesheet_directory_uri() . '/js/packery.min.js', array(), '', true );
 		
 		wp_enqueue_script( 'images_loaded_js', get_stylesheet_directory_uri() . '/js/imagesLoaded.js', array(), '', true );
 		
@@ -90,9 +94,6 @@
 	);
 
 	register_post_type('card_sets', $card_sets_args);
-	
-	
-		
 
 	remove_post_type_support('card_sets', 'author', 'excerpt', 'trackbacks');
 
@@ -156,7 +157,6 @@
 
 
 
-
 	add_action('cmb2_admin_init', 'pegasus_card_sets_metabox' );
 
 	function pegasus_card_sets_metabox() {
@@ -170,6 +170,21 @@
 				'priority'     => 'high',
 			)
 		);
+		
+		
+		$card_sets_metabox->add_field( array(
+			'name' => __( 'Home Page Image', 'pegasus-bootstrap' ),
+			'desc' => __( 'Image to display on the homepage.', 'pegasus-bootstrap' ),
+			'id'   => $prefix . 'alt_image',
+			'type' => 'file',
+		) );
+		
+		$card_sets_metabox->add_field( array(
+			'name' => __( 'Home Page Caption', 'pegasus-bootstrap' ),
+			'desc' => __( 'Text / Headline to display on the homepage.', 'pegasus-bootstrap' ),
+			'id'   => $prefix . 'alt_title',
+			'type' => 'text',
+		) );
 
 		$card_sets_group_fields = $card_sets_metabox->add_field(
 			array(
@@ -250,8 +265,8 @@
 	}
 
 	function itsg_add_custom_column_do_sortable($vars) {
-		if (isset($vars['post_type']) && 'card_sets' == $vars['post_type']) {
-			if (isset($vars['orderby']) && 'usefulness' == $vars['orderby']) {
+		if ( isset( $vars['post_type'] ) && 'card_sets' == $vars['post_type'] ) {
+			if ( isset($vars['orderby'] ) && 'usefulness' == $vars['orderby'] ) {
 				$vars = array_merge(
 					$vars,
 					array(
@@ -327,7 +342,7 @@
 		return '<div class="card-set-wrapper">' . $output . '</div>';
 	}
 	add_shortcode("pegasus_card_set", "pegasus_card_set_query_shortcode");
-	
+	/*
 	function register_query_vars( $vars ) {
 		$vars[] = 'card-sets'; // Add card_set_slug to the list of valid query vars
 		$vars[] = 'card_sets'; // Add card_set_slug to the list of valid query vars
@@ -335,4 +350,74 @@
 		return $vars;
 	}
 	add_filter( 'query_vars', 'register_query_vars' );
+	*/
+	
+	
+	
+	
+	
+	
+	
+	
 
+	add_filter('woocommerce_variation_is_visible', 'hide_out_of_stock_variations', 10, 4);
+
+	function hide_out_of_stock_variations($visible, $variation_id, $variable_product, $variation) {
+		// Get the variation object
+		$variation_obj = wc_get_product($variation_id);
+		
+		// Check if stock management is enabled for this variation
+		if ($variation_obj->managing_stock()) {
+			// If stock quantity is 0 or less, hide this variation
+			if ($variation_obj->get_stock_quantity() <= 0) {
+				return false;
+			}
+		}
+		
+		return $visible;
+	}
+
+	// Additionally filter attribute options that would lead to out-of-stock variations
+	add_filter('woocommerce_dropdown_variation_attribute_options_args', 'filter_out_of_stock_attributes', 10, 1);
+
+	function filter_out_of_stock_attributes($args) {
+		global $product;
+		
+		// Only apply to variable products
+		if (!$product->is_type('variable')) {
+			return $args;
+		}
+		
+		// Get all available variations
+		$variations = $product->get_available_variations();
+		$filtered_options = [];
+		
+		// Current attribute being processed
+		$current_attribute = sanitize_title($args['attribute']);
+		
+		foreach ($variations as $variation) {
+			// Get the variation product
+			$variation_obj = wc_get_product($variation['variation_id']);
+			
+			// Skip if variation has zero stock
+			if ($variation_obj->managing_stock() && $variation_obj->get_stock_quantity() <= 0) {
+				continue;
+			}
+			
+			// If this is a valid variation, add its attribute value to the options
+			if (isset($variation['attributes']['attribute_' . $current_attribute])) {
+				$filtered_options[] = $variation['attributes']['attribute_' . $current_attribute];
+			}
+		}
+		
+		// Override the options with our filtered list
+		if (!empty($filtered_options)) {
+			$filtered_options = array_reverse($filtered_options);
+			$args['options'] = array_unique($filtered_options);
+		}
+		
+		//reverse_variation_dropdown_options();
+		
+		return $args;
+	}
+	

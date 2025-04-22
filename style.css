@@ -15,6 +15,45 @@
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 	
+	.ad-banner-area .ad-banner__item h2 {
+		text-shadow: 2px 2px 5px #000;
+	}
+	
+	.swiper.category__slider .swiper-slide {
+		width: 250px;
+		
+	}
+	.swiper.category__slider .swiper-wrapper {
+	    justify-content: center;
+	}
+	
+	
+	.ad-banner__content {
+		position: absolute;
+		top: 5%; 
+		left: 50%;
+		transform: translate3d(-50%, 20%, 0);
+	}
+	
+	.ad-banner__item {
+		padding-top: 250px;
+		padding-bottom: 250px;
+	}
+	
+	.home-buttons {
+		margin: 20px auto;
+		display: block;
+		max-width: 200px;
+	}
+	
+	
+	select {
+		color: white; 
+	}
+	
+	select option {
+		color: black;
+	}
 	
 	.fa-solid, .fa-light, .fa-regular, .fa-thin, .fa-brands, .fa-duotone {
 		 font-family: FontAwesome;
@@ -23,12 +62,21 @@
         text-decoration: inherit;
 	}
 	
+	#respond { 
+		background: transparent !important;
+		margin: 20px 0;
+	}
+	
+	#respond #submit {
+		padding: 7px 10px;
+	}
+	
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ HEADER ~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
 	#logo {
-		width: 200px;
-		height: 90px;
+		width: 30px;
+		height: 30px;
 	}
 	
 	#sage-icon {
@@ -44,7 +92,32 @@
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ FOOTER ~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
+	.footer-widget-area #menu-footer-1, 
+	.footer-widget-area #menu-footer-2 {
+		flex-direction: column;
+	}
 	
+	.sage-social {
+		margin: 20px 0;
+		padding: 0;
+		display: flex;
+		flex-direction: row;
+	}
+	
+	.sage-social li {
+		flex: 1 1 25%;
+		text-align: center;
+	}
+	
+	.sage-social li a {
+		color: white;
+		font-size: 2rem;
+		text-decoration: none;
+	}
+	
+	.sage-social li a:hover {
+		opacity: 0.8;
+	}
 	
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -80,6 +153,29 @@
 	
 	
 	
+	.card-set-container {
+		display: flex;
+		flex-direction: row;
+		gap: 20px;
+	}
+	
+	.card-set-container .card-set-item {
+		flex: 1 1 32%;
+	}
+	
+	.single-card_sets .card-set-wrapper {
+		
+	}
+	
+	
+	.single-card_sets .card-set-wrapper .card-set-item {
+		width: 420px;
+	}
+	
+	.single-card_sets .card-set-wrapper .card-set-item img {
+		
+	}
+	
 	
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~SITEMAP~~~~~~~~
@@ -105,6 +201,15 @@
 	}
 	
 	@media only screen and ( max-width: 767px ) {
+		
+		.swiper.category__slider .swiper-wrapper {
+			flex-direction: column;
+		}
+		
+		.swiper.category__slider .swiper-slide {
+			margin: 0 auto;
+		}
+	
 		
 	}
 	
