@@ -9,16 +9,16 @@
 
 
 	jQuery(document).ready(function($) {
-
+		
 		//if($(window).width() >= 768){
 			//initialize()
 		//}//end if
-
+		
 		//$( window ).resize(function() {
 			//if($(window).width() > 768){
 				//initialize();
 			//}
-
+			
 		//});
 
 	}); //end document ready function
