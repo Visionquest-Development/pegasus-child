@@ -1,5 +1,9 @@
 
 <?php /* Template Name: Home Template */ ?>
+// Prevent direct access
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 	<?php get_header(); ?>
 	<div id="home-content">
 
@@ -44,7 +48,7 @@
 				[slide]
 					<div class="p-relative slide-5">
 						<div class="home-slider-text ">
-							<h2>Your support saves lives.<h2><br />
+							<h2>Your support saves lives.</h2><br />
 							<button class="opp-button center" id="opp-button-4">Donate</button>
 						</div>
 						<img class="alignnone size-full wp-image-12" src="http://ourpalsplace.test/wp-content/wp-content/themes/pegasus-child/images/slider/5.jpg" />

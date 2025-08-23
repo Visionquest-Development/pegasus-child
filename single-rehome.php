@@ -1,4 +1,10 @@
 	<?php get_header(); ?>
+	<?php
+	// Prevent direct access
+	if ( ! defined( 'ABSPATH' ) ) {
+		exit;
+	}
+	?>
 
 
 
@@ -120,7 +126,7 @@
 
 					<div class="w-50 mt-3 ml-auto mr-auto mb-5">
 
-						<img class="w-100" src="<?php echo $thumb_url[0];?>">
+						<img class="w-100" src="<?php echo esc_url( $thumb_url[0] ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>">
 
 					</div>
 
@@ -178,25 +184,25 @@
 
 						<p><b>Size:</b> <?php //echo $size; ?></p>-->
 
-						<?php if ( $gender && 'custom' !== $gender ) { ?><p><b>Gender:</b> <?php echo $gender; ?></p><?php } ?>
+						<?php if ( $gender && 'custom' !== $gender ) { ?><p><b>Gender:</b> <?php echo esc_html( $gender ); ?></p><?php } ?>
 
-						<?php if ( '' !== $size ) { ?><p><b>Size:</b> <?php echo $size; ?></p><?php } ?>
+						<?php if ( '' !== $size ) { ?><p><b>Size:</b> <?php echo esc_html( $size ); ?></p><?php } ?>
 
-						<?php if ( $growth && 'custom' !== $growth ) { ?><p><b>Full Grown:</b> <?php echo $growth; ?></p><?php } ?>
+						<?php if ( $growth && 'custom' !== $growth ) { ?><p><b>Full Grown:</b> <?php echo esc_html( $growth ); ?></p><?php } ?>
 
-						<?php if ( '' !== $breed ) { ?><p><b>Primary Breed:</b> <?php echo $breed; ?></p><?php } ?>
+						<?php if ( '' !== $breed ) { ?><p><b>Primary Breed:</b> <?php echo esc_html( $breed ); ?></p><?php } ?>
 
-						<?php if ( '' !== $rescue ) { ?><p><b>Rescued From:</b> <?php echo $rescue; ?></p><?php } ?>
+						<?php if ( '' !== $rescue ) { ?><p><b>Rescued From:</b> <?php echo esc_html( $rescue ); ?></p><?php } ?>
 
-						<?php if ( $f_dogs && 'custom' !== $f_dogs ) { ?><p><b>Good With Other Dogs:</b> <?php echo $f_dogs; ?></p><?php } ?>
+						<?php if ( $f_dogs && 'custom' !== $f_dogs ) { ?><p><b>Good With Other Dogs:</b> <?php echo esc_html( $f_dogs ); ?></p><?php } ?>
 
-						<?php if ( $f_cats && 'custom' !== $f_cats ) { ?><p><b>Good With Cats:</b> <?php echo $f_cats; ?></p><?php } ?>
+						<?php if ( $f_cats && 'custom' !== $f_cats ) { ?><p><b>Good With Cats:</b> <?php echo esc_html( $f_cats ); ?></p><?php } ?>
 
-						<?php if ( $f_child && 'custom' !== $f_child ) { ?><p><b>Good With Children:</b> <?php echo $f_child; ?></p><?php } ?>
+						<?php if ( $f_child && 'custom' !== $f_child ) { ?><p><b>Good With Children:</b> <?php echo esc_html( $f_child ); ?></p><?php } ?>
 
-						<?php if ( $h_trained && 'custom' !== $h_trained ) { ?><p><b>House Trained:</b> <?php echo $h_trained; ?></p><?php } ?>
+						<?php if ( $h_trained && 'custom' !== $h_trained ) { ?><p><b>House Trained:</b> <?php echo esc_html( $h_trained ); ?></p><?php } ?>
 
-						<?php if ( $contact_info && '' !== $contact_info ) { ?><p><b>Contact Info:</b> <?php echo $contact_info; ?></p><?php } ?>
+						<?php if ( $contact_info && '' !== $contact_info ) { ?><p><b>Contact Info:</b> <?php echo wp_kses_post( $contact_info ); ?></p><?php } ?>
 
 
 
@@ -314,7 +320,7 @@
 
 								<source src="/media/cc0-videos/flower.mp4" type="video/mp4" />-->
 
-								<source src="<?php echo $video_url; ?>" type="video/mp4" />
+								<source src="<?php echo esc_url( $video_url ); ?>" type="video/mp4" />
 
 
 

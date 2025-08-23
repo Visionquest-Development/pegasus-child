@@ -1,4 +1,10 @@
 	<?php get_header(); ?>
+	<?php
+	// Prevent direct access
+	if ( ! defined( 'ABSPATH' ) ) {
+		exit;
+	}
+	?>
 
 	<div id="page-wrap">
 		<?php
@@ -58,7 +64,7 @@
 
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-9 col-xg-9 pets-gallery-video mb-2">
 						<div class="page-header mb-3">
-							<h1><?php wp_title(''); ?></h1>
+							<h1><?php echo esc_html( wp_get_document_title() ); ?></h1>
 						</div>
 						<?php /*
 						<div class="row">
@@ -187,7 +193,7 @@
 					<div class="col-md-12">
 						<hr>
 						<p>Our Pal's Place adoption process is called "Companion Match" <a href='/companion-match/'>Learn More</a></p>
-						<p>If you are interested in <?php wp_title(''); ?>...</p>
+						<p>If you are interested in <?php echo esc_html( get_the_title() ); ?>...</p>
 						<ul>
 							<li>Come Meet him/her Saturday &amp; Sundays 1:00-5:00pm or weekday by appointment</li>
 							<li>Complete the <a href="/companion-match-form/">Companion Match Form</a> which helps us determine if she/he is a good match for you</li>

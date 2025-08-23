@@ -12,13 +12,13 @@
 
 
 	function theme_enqueue_styles() {
-		wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
+		wp_enqueue_style( 'parent-style', esc_url( get_template_directory_uri() ) . '/style.css' );
 
 		/* slick */
-		wp_enqueue_style('slick-css', get_stylesheet_directory_uri() . '/css/slick.css', null, false, false);
-		wp_enqueue_style('slick-theme-css', get_stylesheet_directory_uri() . '/css/slick-theme.css', null, false, false);
+		wp_enqueue_style('slick-css', esc_url( get_stylesheet_directory_uri() ) . '/css/slick.css', null, false, false);
+		wp_enqueue_style('slick-theme-css', esc_url( get_stylesheet_directory_uri() ) . '/css/slick-theme.css', null, false, false);
 
-		wp_enqueue_style('magnific-css', get_stylesheet_directory_uri() . '/css/magnific.css', null, false, false);
+		wp_enqueue_style('magnific-css', esc_url( get_stylesheet_directory_uri() ) . '/css/magnific.css', null, false, false);
 
 	}
 	add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
@@ -34,17 +34,17 @@
 	*/
 	function pegasus_child_bootstrap_js() {
 
-		wp_enqueue_script( 'opp_custom_js', get_stylesheet_directory_uri() . '/js/custom.js', array(), '', true );
+		wp_enqueue_script( 'opp_custom_js', esc_url( get_stylesheet_directory_uri() ) . '/js/custom.js', array(), '', true );
 
-		wp_enqueue_script( 'matchHeight_js', get_stylesheet_directory_uri() . '/js/jquery.matchHeight-min.js', array(), '', true );
+		wp_enqueue_script( 'matchHeight_js', esc_url( get_stylesheet_directory_uri() ) . '/js/jquery.matchHeight-min.js', array(), '', true );
 
-		wp_enqueue_script( 'fitvids_js', get_stylesheet_directory_uri() . '/js/fitvids.js', array(), '', true );
+		wp_enqueue_script( 'fitvids_js', esc_url( get_stylesheet_directory_uri() ) . '/js/fitvids.js', array(), '', true );
 
 		//wp_enqueue_script( 'popup_js', get_stylesheet_directory_uri() . '/js/jquery.magnific-popup.min.js', array(), '', true );
 
 		//wp_enqueue_script( 'pegasus_child_custom_js', get_stylesheet_directory_uri() . '/js/pegasus-custom.js', array(), '', true );
 		//plugins_url( 'js/slick.min.js', dirname(__FILE__) . '/../../pegasus-carousel/pegasus-carousel.php' )
-		$slick_js = get_stylesheet_directory_uri() . '/js/slick.js';
+		$slick_js = esc_url( get_stylesheet_directory_uri() ) . '/js/slick.js';
 
 		wp_enqueue_script( 'slick_js', $slick_js, array(), '', true );
 
@@ -485,9 +485,9 @@
 
 	function show_if_rehome_post_type( $cmb ) {
 		if ( isset( $_GET['post'] ) ) {
-			$post_id = $_GET['post'];
+			$post_id = absint( $_GET['post'] );
 			return get_post_type( $post_id ) === 'rehome';
-		} elseif ( isset( $_GET['post_type'] ) && $_GET['post_type'] === 'rehome' ) {
+		} elseif ( isset( $_GET['post_type'] ) && sanitize_text_field( $_GET['post_type'] ) === 'rehome' ) {
 			return true;
 		}
 		return false;
@@ -558,6 +558,7 @@
 		if ( is_product() ) {
 			global $product;
 	/**		$product_id = $product->get_id(); */
+			$product_id = $product->get_id();
 			if (has_term('Camp OPP', 'product_cat', $product_id)){
 				?>
 					<style type="text/css">.quantity, .buttons_added { width:0; height:0; display: none; visibility: hidden; }</style>

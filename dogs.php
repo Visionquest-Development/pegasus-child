@@ -5,6 +5,10 @@
 	Template Name: Dogs Page Template
 
 */
+// Prevent direct access
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 ?>
 
@@ -174,17 +178,17 @@
 
 
 
-												<div class="content-item-container col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 <?php echo strtolower( $tax ); ?>">
+												<div class="content-item-container col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 <?php echo esc_attr( strtolower( $tax ) ); ?>">
 
 													<article class="article-<?php the_ID(); ?> block-inner ">
 
 
 
-														<a href="<?php the_permalink(); ?>" class="content-item-image" style="background-image: url( '<?php echo pegasus_image_display( 'full', '', false ); ?>' );">
+														<a href="<?php echo esc_url( get_permalink() ); ?>" class="content-item-image" style="background-image: url( '<?php echo esc_url( pegasus_image_display( 'full', '', false ) ); ?>' );">
 
 															<?php /*
 
-															<img src="<?php echo pegasus_image_display( 'thumbnail', '', false ); ?>" alt="">
+															<img src="<?php echo esc_url( pegasus_image_display( 'thumbnail', '', false ) ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>">
 
 															*/  ?>
 
@@ -196,7 +200,7 @@
 
 															<!-- the permalink and title -->
 
-															<a href="<?php the_permalink(); ?>" alt="<?php the_title(); ?>">
+															<a href="<?php echo esc_url( get_permalink() ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>">
 
 																<h3 class="content-item-title"><?php the_title(); ?></h3>
 
@@ -283,7 +287,7 @@
 
 															<!-- output a read more button -->
 
-															<a class="opp-button " href="<?php the_permalink(); ?>">Learn More</a>
+															<a class="opp-button " href="<?php echo esc_url( get_permalink() ); ?>">Learn More</a>
 
 														</div> <!--end content item wrapper-->
 
