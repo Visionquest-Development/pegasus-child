@@ -1,5 +1,9 @@
 
 <?php /* Template Name: Contact Template */ ?>
+// Prevent direct access
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 	<?php get_header(); ?>
 	<div id="">
 
