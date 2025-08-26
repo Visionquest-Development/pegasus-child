@@ -10,42 +10,63 @@
 
 @import url("../pegasus/style.css");
 	
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
+
+	.space-mono-regular {
+	  font-family: "Space Mono", monospace;
+	  font-weight: 400;
+	  font-style: normal;
+	}
+
+	.space-mono-bold {
+	  font-family: "Space Mono", monospace;
+	  font-weight: 700;
+	  font-style: normal;
+	}
+
+	.space-mono-regular-italic {
+	  font-family: "Space Mono", monospace;
+	  font-weight: 400;
+	  font-style: italic;
+	}
+
+	.space-mono-bold-italic {
+	  font-family: "Space Mono", monospace;
+	  font-weight: 700;
+	  font-style: italic;
+	}
+	
+	h1, h2, h3, h4, h5, h6, body {
+		font-family: "Space Mono", monospace !important;
+		font-weight: 400 !important;
+		font-style: normal !important;
+	}
+	
+	/*
+	
+	--primary-color: #fa4f09;
+    --secondary-color: #000000;
+    --sub-bg: #191919;
+    --heading-color: #ffffff;
+    --paragraph: #d2d2d2;
+    --span: #ffffff;
+    --border: #414141;
+    --border-light: #a9a9a9;
+    --white: #ffffff;
+    --black: #000000;
+	
+	*/
+	
 	
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 	
-	.ad-banner-area .ad-banner__item h2 {
-		text-shadow: 2px 2px 5px #000;
+	.figure-caption {
+		color: white !important; 
 	}
-	
-	.swiper.category__slider .swiper-slide {
-		width: 250px;
-		
-	}
-	.swiper.category__slider .swiper-wrapper {
-	    justify-content: center;
-	}
-	
-	
-	.ad-banner__content {
-		position: absolute;
-		top: 5%; 
-		left: 50%;
-		transform: translate3d(-50%, 20%, 0);
-	}
-	
-	.ad-banner__item {
-		padding-top: 250px;
-		padding-bottom: 250px;
-	}
-	
-	.home-buttons {
-		margin: 20px auto;
-		display: block;
-		max-width: 200px;
-	}
-	
 	
 	select {
 		color: white; 
@@ -71,12 +92,93 @@
 		padding: 7px 10px;
 	}
 	
+	.wc-block-components-order-summary-item__quantity span { color: black; }
+	
+	.searchSubmit {
+		background-color: #fa4f09 !important;
+		border-color: #fa4f09 !important;
+	}
+	
+	.btn:where(.wp-element-button, .wp-block-button__link) {
+		background-color: #fa4f09 !important;
+		border-color: #fa4f09 !important;
+	}
+	
+	#gform_submit_button_1 {
+		background-color: #fa4f09 !important;
+		border-color: #fa4f09 !important;
+	}
+	
+	.nocomments { display: none; }
+	
+	.tml-action-login .sidebar { display: none; }
+	
+	.btn-primary,
+	.tml-action-login .btn-primary,
+	.tml-action-register .btn-primary
+	{ 
+		background-color: #fa4f09 !important;
+		border-color: #fa4f09 !important;
+	}
+	
+	
+	
+	
+	.pegasus-accordion .accordion-item {
+		border: 1px solid white !important;
+	}
+	
+	.pegasus-accordion button .accordion-title {
+		margin: 0;
+		padding: 7px 10px !important;
+	}
+	
+	.pegasus-accordion button {
+		padding-left: 20px !important;
+		padding-right: 20px !important;
+	}
+	
+	.pegasus-accordion button .icon {
+		right: 22px !important;
+		top: 27px !important;
+	}
+	
+	.pegasus-accordion .accordion-item button[aria-expanded="true"] {
+		background: white;
+		color: black;
+	}
+	
+	.pegasus-accordion .accordion-item button[aria-expanded="true"] span {
+		color: black;
+	}
+	
+	.pegasus-accordion .accordion-item button[aria-expanded="true"] .accordion-title {
+		background: black;
+		color: white;
+	}
+	
+	.pegasus-accordion .accordion-content {
+		background: white;
+		color: black;
+		padding-left: 20px !important;
+		padding-right: 20px !important;
+	}
+	
+	.pegasus-accordion .accordion-content b {
+		font-weight: bold;
+	}
+	
+	.pegasus-accordion .figure-caption {
+		color: black !important; 
+	}
+	
+	
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ HEADER ~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
 	#logo {
-		width: 30px;
-		height: 30px;
+		width: 25px;
+		height: 32px;
 	}
 	
 	#sage-icon {
@@ -87,13 +189,30 @@
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ NAVIGATION ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
+	
+	
+	.the-nav-cart li a { color: white; }
+	
+	.the-nav-cart .sub-menu {
+		background: rgba(255, 255, 255, 1);
+		color: black; 
+	}
+	
+	
+	.user-menu-container .sub-menu .nav-link,
+	.user-menu-container .sub-menu,
+	.user-menu-container .sub-menu li,
+	.user-menu-container .sub-menu li a
+	{ color: black !important; }
 
 	
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ FOOTER ~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
 	.footer-widget-area #menu-footer-1, 
-	.footer-widget-area #menu-footer-2 {
+	.footer-widget-area #menu-footer-2,
+	.footer-widget-area #menu-footer-3
+	{
 		flex-direction: column;
 	}
 	
@@ -118,6 +237,8 @@
 	.sage-social li a:hover {
 		opacity: 0.8;
 	}
+	
+	footer a.nav-link { color: white; }
 	
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -167,6 +288,11 @@
 		
 	}
 	
+	.card-set-item .content-item-title { color: white; }
+	
+	.card-set-item .content-item-wrapper a { color: white; }
+	
+	
 	
 	.single-card_sets .card-set-wrapper .card-set-item {
 		width: 420px;
@@ -177,6 +303,63 @@
 	}
 	
 	
+	.ad-banner-area .ad-banner__item h2 {
+		text-shadow: 2px 2px 5px #000;
+	}
+	
+	.swiper.category__slider .swiper-slide {
+		width: 250px;
+		
+	}
+	.swiper.category__slider .swiper-wrapper {
+	    justify-content: center;
+	}
+	
+	
+	.ad-banner__content {
+		position: absolute;
+		top: 5%; 
+		left: 50%;
+		transform: translate3d(-50%, 20%, 0);
+	}
+	
+	.ad-banner__item {
+		padding-top: 250px;
+		padding-bottom: 250px;
+	}
+	
+	.home-buttons {
+		margin: 20px auto;
+		display: block;
+		max-width: 200px;
+	}
+	
+	.white-back .slick-list {
+		background: transparent !important;
+	}
+	 
+	.testimonial-slider, 
+	.testimonial-slider blockquote p,
+	.testimonial-slider cite,
+	.testimonial-slider cite a
+	{
+		color: white !important;
+	}
+	
+	.slick-prev:before, .slick-next:before {
+		    color: white !important
+	}
+	
+	
+	.testimonial-image {
+		min-width: 500px !important;
+	}
+	
+	.testimonial-image .post-img-feat {
+		min-height: 500px; 
+	}
+	
+	
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~SITEMAP~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -184,6 +367,127 @@
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~WOOCOMMERCE~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
+	.woocommerce .products li.product h2 {
+		color: white;
+	}
+	
+	.woocommerce .product-categories li a {
+		color: white;
+	}
+	
+	.woocommerce div.product form.cart .variations select {
+		padding-left: 5px;
+	}
+	
+	.woocommerce div.product form.cart .variations label {
+		margin-right: 10px;
+	}
+	
+	
+	/*.wc-block-grid__product-title, 
+	.wc-block-grid__product a */
+	.wc-block-grid__products,
+	.wc-block-grid__product a
+	{
+		color: white !important;
+	}
+	
+	
+	.woocommerce .single_add_to_cart_button {
+		background-color: #fa4f09; 
+	}
+	
+	.woocommerce-mini-cart li a,
+	.woocommerce-mini-cart .quantity
+	.woocommerce-mini-cart .bdi {
+		color: black;
+	}
+	
+	
+	/* 1. Base WooCommerce buttons (links and inputs with the .button class) */
+	.woocommerce a.button,
+	.woocommerce-page a.button,
+	.woocommerce button.button,
+	.woocommerce-page button.button,
+	.woocommerce input.button,
+	.woocommerce-page input.button,
+	.woocommerce #respond input#submit,
+	.woocommerce-page #respond input#submit {
+	  background-color: #fa4f09 !important;  /* Set background to accent color */
+	  color: #fff !important;               /* Ensure text is white for contrast */
+	  border-color: #fa4f09 !important;     /* Match border to accent color */
+	}
+
+	/* 2. Primary action buttons (.button.alt) – e.g. Proceed to Checkout, Place Order */
+	.woocommerce a.button.alt,
+	.woocommerce-page a.button.alt,
+	.woocommerce button.button.alt,
+	.woocommerce-page button.button.alt,
+	.woocommerce input.button.alt,
+	.woocommerce-page input.button.alt,
+	.woocommerce #respond input#submit.alt,
+	.woocommerce-page #respond input#submit.alt {
+	  background-color: #fa4f09 !important;  /* Same accent background for primary buttons */
+	  color: #fff !important;               /* White text on accent-colored button */
+	  border-color: #fa4f09 !important;     /* Border in accent color */
+	}
+
+	/* 3. Hover state for all WooCommerce buttons (normal and .alt) */
+	.woocommerce a.button:hover,
+	.woocommerce-page a.button:hover,
+	.woocommerce button.button:hover,
+	.woocommerce-page button.button:hover,
+	.woocommerce input.button:hover,
+	.woocommerce-page input.button:hover,
+	.woocommerce #respond input#submit:hover,
+	.woocommerce-page #respond input#submit:hover,
+	.woocommerce a.button.alt:hover,
+	.woocommerce-page a.button.alt:hover,
+	.woocommerce button.button.alt:hover,
+	.woocommerce-page button.button.alt:hover,
+	.woocommerce input.button.alt:hover,
+	.woocommerce-page input.button.alt:hover,
+	.woocommerce #respond input#submit.alt:hover,
+	.woocommerce-page #respond input#submit.alt:hover {
+	  background-color: #d94306 !important; /* Slightly darker shade for hover effect */
+	  border-color: #d94306 !important;     /* Darken border on hover */
+	  color: #fff !important;               /* Keep text white on hover */
+	}
+
+	/* 4. Form controls (checkboxes, radio buttons) accent color */
+	.woocommerce input[type="checkbox"],
+	.woocommerce-page input[type="checkbox"],
+	.woocommerce input[type="radio"],
+	.woocommerce-page input[type="radio"] {
+	  accent-color: #fa4f09;  /* Use accent color for checkmarks and radio dot */
+	}
+
+	
+	.wc-block-components-product-name {
+		color: #fa4f09;
+	}
+	
+	.wc-block-components-quantity-selector
+	{
+		background: white;
+		color: black;
+	}
+	
+	.wc-block-cart__submit-button,
+	.wc-block-components-checkout-place-order-button
+	{
+		background: #fa4f09;
+		color: white;
+	}
+	
+	.wc-block-cart__submit-button span {
+		color: black;
+		text-decoration: none !important;
+		font-weight: bold;
+	}
+	
+	
+	
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~MEDIA QUERIES~~~~
@@ -198,8 +502,21 @@
 		
 	@media only screen and (max-width: 980px) {
 		
+		.ad-banner__item {
+			padding-top: 150px;
+			padding-bottom: 150px;
+			margin-bottom: 0;
+		}
+		
+		.home-buttons { margin-top: 0; }
 	}
 	
+	@media only screen and ( min-width: 767px ) {
+		#menu-main-nav-1 .dropdown-item.active {
+			color: var(--pegasus-sub-nav-item-color);
+			font-weight: bold;
+		}
+	}
 	@media only screen and ( max-width: 767px ) {
 		
 		.swiper.category__slider .swiper-wrapper {
@@ -208,6 +525,18 @@
 		
 		.swiper.category__slider .swiper-slide {
 			margin: 0 auto;
+		}
+		
+		#menu-main-nav-1 .menu-item.menu-item-has-children.dropdown .dropdown-menu {
+			/* display: block !important; */
+			background-color: transparent;
+		}
+
+		
+		#menu-main-nav-1 .dropdown-item.active {
+			background: transparent !important;
+			font-weight: bold;
+			text-decoration: underline;
 		}
 	
 		

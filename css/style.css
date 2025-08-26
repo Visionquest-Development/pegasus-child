@@ -87,7 +87,7 @@ body {
   background-color: var(--black);
   line-height: 28px;
   font-weight: 400;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
 }
 
 h1,
