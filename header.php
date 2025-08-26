@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html <?php pegasus_language_attributes(); ?> class="no-js">
+<html <?php language_attributes(); ?> class="no-js">
 	<head>
 		<meta charset="<?php bloginfo( 'charset' ); ?>">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,6 +25,16 @@
 		</title> */ ?>
 		<?php wp_head(); ?>
 		<?php global $post; ?>
+
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-KDRTCCQHSJ"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'G-KDRTCCQHSJ');
+		</script>
 	</head>
 	<?php
 
@@ -67,7 +77,7 @@
 			<?php  if( 'on' === $page_loader_choice ) { ?>
 				<div class="page-loader">
 					<img src="<?php echo get_template_directory_uri(); ?>/images/loader.gif" alt="">
-				</div> 
+				</div>
 			<?php }  ?>
 			<div class="mainbar">
 
@@ -111,7 +121,7 @@
 						<?php if( 'on' !== pegasus_get_option( 'full_container_chk' ) & 'container' !== $header_container_check ) : ?>
 						<div class="<?php echo $final_inner_container_class; ?>">
 							<?php endif; ?>
-							<?php 									
+							<?php
 								if( ! empty( $logo ) ) : ?>
 									<a class="sage-icon-container" href="<?php echo esc_url( home_url( '/' ) ); ?>">
 										<img id="sage-icon" src="/wp-content/themes/pegasus-child/images/Icon_Black_White.png" alt=""/>
