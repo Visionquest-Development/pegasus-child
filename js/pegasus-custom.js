@@ -153,7 +153,7 @@
 			}
 		};
 	}
-	}
+	
 
 
 	jQuery(document).ready(function($) {
