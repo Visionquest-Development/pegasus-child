@@ -132,7 +132,6 @@
 									<h1 class="site-title <?php echo $centerLogo; ?>"><a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 								<?php endif;
 							?>
-							</a>
 							<!-- Brand and toggle get grouped for better mobile display -->
 							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1"  aria-label="Toggle navigation">
 								<span class="navbar-toggler-icon"></span>
@@ -161,9 +160,9 @@
 							}
 								?>
 							</div>
-													<?php if( 'on' !== pegasus_get_option( 'full_container_chk' ) ) : ?>
-					</div ><!-- container-->
-			<?php endif; ?>
+						<?php if( 'on' !== pegasus_get_option( 'full_container_chk' ) ) : ?>
+						</div ><!-- container-->
+						<?php endif; ?>
 					</nav>
 					<?php
 						// Include collapsible search container below the nav for sticky header
