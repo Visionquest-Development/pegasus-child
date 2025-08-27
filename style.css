@@ -177,7 +177,7 @@
 
 		box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 		position: relative;
-		z-index: 1020; /* Ensure it appears above other content */
+		    z-index: 800; /* Ensure it appears above other content */
 	}
 
 	/* Search form wrapper */
