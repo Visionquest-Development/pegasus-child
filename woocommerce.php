@@ -1,4 +1,4 @@
-	<?php get_header(); ?>
+<?php get_header(); ?>
     <div id="page-wrap">
 		<?php
 			//full container page options

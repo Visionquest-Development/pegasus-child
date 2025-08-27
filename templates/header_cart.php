@@ -35,10 +35,10 @@
 ?>
 
 <ul class="the-nav-cart pl-md-3 ms-auto">
-	<?php 
+	<?php
 		// Add search toggle button if search is enabled
 		$searchmenuchk = pegasus_get_option( 'search_box_chk' );
-		if( 'on' === $searchmenuchk ) : 
+		if( 'on' === $searchmenuchk ) :
 	?>
 		<li class="menu-item search-toggle-item">
 			<button class="btn nav-link search-toggle-btn" type="button" data-bs-toggle="collapse" data-bs-target="#headerSearchCollapse" aria-expanded="false" aria-controls="headerSearchCollapse" id="searchToggleButton" aria-label="Toggle search">
@@ -76,28 +76,28 @@
 						}
 
 						$temporary_name = substr( $final_name, 0, 25 );
-						
+
 						if( '' != $temporary_name ) {
 							?>
-							<?php /* 
+							<?php /*
 								<a class="nav-link" href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="<?php _e('My Account','woothemes'); ?>">
 							*/ ?>
 								<?php echo $temporary_name . $final_last_name; ?>
 								<?php echo $current_user->user_email; ?>
 								<hr>
-							<?php /* 
+							<?php /*
 							</a>
 							*/ ?>
 							<?php
 						}
-						
+
 					} else{ ?>
 						<a class="nav-link" href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="<?php _e('Sign In','woothemes'); ?>">
 							<?php _e('Sign In','woothemes'); ?>
 						</a>
 				<?php } ?>
 			</li>
-			<?php 
+			<?php
 				if ( is_user_logged_in() ) {
 			?>
 				<li class="menu-item">
@@ -110,7 +110,7 @@
 						<?php _e('Orders','woothemes'); ?>
 					</a>
 				</li>
-			<?php 
+			<?php
 				} else {
 			?>
 				<li class="menu-item">
@@ -157,6 +157,3 @@
 	</li>
 	<?php endif; ?>
 </ul>
-
-
-

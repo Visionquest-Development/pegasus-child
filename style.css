@@ -110,7 +110,7 @@
 
 	/* Search toggle button in cart area */
 	.the-nav-cart .search-toggle-item {
-		
+
 		align-items: center;
 		list-style: none !important;
 		margin: 0 !important;
@@ -173,8 +173,8 @@
 
 	/* Search collapse container */
 	.search-collapse-container {
-		
-		
+
+
 		box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 		position: relative;
 		z-index: 1020; /* Ensure it appears above other content */
@@ -234,16 +234,16 @@
 		.search-form-wrapper {
 			padding: 1rem 0;
 		}
-		
+
 		.search-collapse-container .col-12 {
 			padding-left: 1rem;
 			padding-right: 1rem;
 		}
-		
+
 		.search-collapse-container .search-field {
 			font-size: 16px; /* Prevent zoom on iOS */
 		}
-		
+
 		/* Full width on mobile */
 		.search-collapse-container .input-group {
 			width: 100%;
@@ -271,9 +271,9 @@
 	/* Desktop styles */
 	@media (min-width: 992px) {
 		.search-collapse-container {
-			
+
 		}
-		
+
 		.search-form-wrapper {
 			padding: 2rem 0;
 		}
@@ -285,29 +285,29 @@
 			background-color: #343a40;
 			border-top-color: #495057;
 		}
-		
+
 		.search-collapse-container .search-field {
 			background-color: #495057;
 			border-color: #6c757d;
 			color: #ffffff;
 		}
-		
+
 		.search-collapse-container .search-field::-webkit-input-placeholder {
 			color: #adb5bd;
 		}
-		
+
 		.search-collapse-container .search-field::-moz-placeholder {
 			color: #adb5bd;
 		}
-		
+
 		.search-collapse-container .search-field:-ms-input-placeholder {
 			color: #adb5bd;
 		}
-		
+
 		.search-collapse-container .search-field::-ms-input-placeholder {
 			color: #adb5bd;
 		}
-		
+
 		.search-collapse-container .search-field::placeholder {
 			color: #adb5bd;
 		}
@@ -329,11 +329,11 @@
 		.search-collapse-container {
 			border-top-width: 2px;
 		}
-		
+
 		.search-collapse-container .search-field {
 			border-width: 3px;
 		}
-		
+
 		.search-toggle-btn:focus {
 			outline-width: 3px !important;
 		}
@@ -354,6 +354,54 @@
 	{
 		background-color: #fa4f09 !important;
 		border-color: #fa4f09 !important;
+	}
+
+  .pegasus-accordion .accordion-item {
+		border: 1px solid white !important;
+	}
+
+	.pegasus-accordion button .accordion-title {
+		margin: 0;
+		padding: 7px 10px !important;
+	}
+
+	.pegasus-accordion button {
+		padding-left: 20px !important;
+		padding-right: 20px !important;
+	}
+
+	.pegasus-accordion button .icon {
+		right: 22px !important;
+		top: 27px !important;
+	}
+
+	.pegasus-accordion .accordion-item button[aria-expanded="true"] {
+		background: white;
+		color: black;
+	}
+
+	.pegasus-accordion .accordion-item button[aria-expanded="true"] span {
+		color: black;
+	}
+
+	.pegasus-accordion .accordion-item button[aria-expanded="true"] .accordion-title {
+		background: black;
+		color: white;
+	}
+
+	.pegasus-accordion .accordion-content {
+		background: white;
+		color: black;
+		padding-left: 20px !important;
+		padding-right: 20px !important;
+	}
+
+	.pegasus-accordion .accordion-content b {
+		font-weight: bold;
+	}
+
+	.pegasus-accordion .figure-caption {
+		color: black !important;
 	}
 
 

@@ -25,7 +25,6 @@
 		</title> */ ?>
 		<?php wp_head(); ?>
 		<?php global $post; ?>
-
 		<!-- Google tag (gtag.js) -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-KDRTCCQHSJ"></script>
 		<script>

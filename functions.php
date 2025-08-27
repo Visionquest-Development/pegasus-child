@@ -421,6 +421,9 @@
 		return $args;
 	}
 
+
+
+
 	add_filter('woocommerce_coupon_error', function ($message, $error_code, $coupon) {
 		if (in_array($coupon->get_code(), ['beta', 'owner69420'])) {
 			$message = '<div>Coupon is valid for registered users only. <a href="' . home_url('/register') . '">Register now!</a></div>';
@@ -449,3 +452,82 @@
 
 		return false;
 	}
+
+	// [pegasus_image image_url="https://example.com/pic.jpg" class="my-img" style="lightbox" lightbox="true" alt="Alt text" caption="Driving Snow (NM)"]
+	// [pegasus_image image_url="https://example.com/pic.jpg" class="my-img" style="lightbox" lightbox="true" alt="Alt text" caption="Driving Snow (NM)" lightbox_set="gallery-1"]
+	add_shortcode('pegasus_image', function ($atts) {
+		$atts = shortcode_atts([
+			'class'        => '',
+			'image_url'    => '',
+			'style'        => 'lightbox', // 'lightbox' | 'image' (both will get data-lightbox)
+			'lightbox'     => 'true',     // kept for compatibility; data-lightbox is always added
+			'alt'          => '',
+			'caption'      => '',
+			'lightbox_set' => '',
+		], $atts, 'pegasus_image');
+
+		// Basic validation
+		if (empty($atts['image_url'])) {
+			return '';
+		}
+
+		// Sanitize
+		$img_url   = esc_url($atts['image_url']);
+		// Support multiple classes while mostly keeping your structure
+		$img_class = implode(' ', array_filter(array_map('sanitize_html_class', preg_split('/\s+/', trim((string) $atts['class'])))));
+		$style     = strtolower(sanitize_text_field($atts['style'])) === 'image' ? 'image' : 'lightbox';
+		// Note: $use_lb retained for compatibility, but we always output data-lightbox per your requirement
+		$use_lb    = strtolower(sanitize_text_field($atts['lightbox'])) !== 'false';
+		$alt       = esc_attr($atts['alt']);
+		$caption   = wp_kses_post($atts['caption']);
+
+		// Unique set handling (keeps your counter approach)
+		global $pegasus_image_counter;
+		if (!isset($pegasus_image_counter)) {
+			$pegasus_image_counter = 0;
+		}
+		$unique_id = $pegasus_image_counter;
+
+		$check_set_value = trim(sanitize_text_field($atts['lightbox_set']));
+		if ($check_set_value !== '') {
+			// Keep your 'set-' prefix and normalize provided value
+			$set_value = 'set-' . sanitize_title($check_set_value);
+		} else {
+			$set_value = 'set-' . $unique_id; // unique per shortcode call
+		}
+
+		// Build <img>
+		$img_html = sprintf(
+			'<img class="wp-block-image %s" src="%s" alt="%s" />',
+			esc_attr($img_class),
+			$img_url,
+			$alt
+		);
+
+		// Always wrap in <a> and always include data-lightbox on the anchor.
+		// Lightbox2 caption goes in data-title; visible caption (if any) is below the link.
+		$a_attrs  = sprintf(
+			' class="%s" href="%s" data-lightbox="%s"%s',
+			esc_attr($img_class),
+			$img_url,
+			esc_attr($set_value),
+			($caption !== '' ? ' data-title="' . esc_attr(wp_strip_all_tags($caption)) . '"' : '')
+		);
+		$a_html = '<a' . $a_attrs . '>' . $img_html . '</a>';
+
+		// If caption is present, wrap in <figure> with a <figcaption> (outside the link).
+		if ($caption !== '') {
+			$output = sprintf(
+				'<figure class="wp-block-image size-large %s">%s<figcaption class="figure-caption">%s</figcaption></figure>',
+				esc_attr($img_class),
+				$a_html,
+				$caption
+			);
+		} else {
+			$output = $a_html;
+		}
+
+		$pegasus_image_counter++;
+
+		return $output;
+	});
