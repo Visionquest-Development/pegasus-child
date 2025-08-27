@@ -1,5 +1,5 @@
 <?php
-	
+
 	/**
 	 * Plugin requirements (TGMPA) & Bootstrap CMB2
 	 */
@@ -11,52 +11,52 @@
 
 	function theme_enqueue_styles() {
 		wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
-		
+
 		/* qTip CSS */
 		wp_enqueue_style('odor-css', get_stylesheet_directory_uri() . '/css/style.css', null, false, false);
 		wp_enqueue_style('swiper-css', get_stylesheet_directory_uri() . '/css/swiper-bundle.min.css', null, false, false);
 
 		wp_enqueue_style('lightbox-css', get_stylesheet_directory_uri() . '/css/lightbox.min.css', null, false, false);
 
-		
-		
+
+
 	}
 	add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
-		
+
 	/**
-	* Proper way to enqueue JS 
+	* Proper way to enqueue JS
 	*/
 	function pegasus_child_bootstrap_js() {
-		
+
 		wp_enqueue_script( 'pegasus_child_custom_js', get_stylesheet_directory_uri() . '/js/pegasus-custom.js', array(), '', true );
-		
+
 		wp_enqueue_script( 'swiper_js', get_stylesheet_directory_uri() . '/js/swiper-bundle.min.js', array(), '', true );
-		
+
 		wp_enqueue_script( 'counter_js', get_stylesheet_directory_uri() . '/js/jquery.counterup.min.js', array(), '', true );
-		
-		
+
+
 		wp_enqueue_script( 'isotope_js', get_stylesheet_directory_uri() . '/js/isotope.pkgd.min.js', array(), '', true );
-		
+
 
 		//wp_enqueue_script( 'masonry_js', get_stylesheet_directory_uri() . '/js/masonry.js', array(), '', true );
-		
+
 		wp_enqueue_script( 'match_height_js', get_stylesheet_directory_uri() . '/js/matchHeight.js', array(), '', true );
-		
+
 		wp_enqueue_script( 'packery_js', get_stylesheet_directory_uri() . '/js/packery.min.js', array(), '', true );
-		
+
 		wp_enqueue_script( 'images_loaded_js', get_stylesheet_directory_uri() . '/js/imagesLoaded.js', array(), '', true );
-		
+
 		wp_enqueue_script( 'lightbox_js', get_stylesheet_directory_uri() . '/js/lightbox.min.js', array(), '', true );
 
-		
+
 		wp_enqueue_script( 'odor_js', get_stylesheet_directory_uri() . '/js/script.js', array(), '', true );
-		
+
 		//wp_enqueue_script( 'pace_js', get_stylesheet_directory_uri() . '/js/pace.min.js', array(), '', true );
-		
-		
+
+
 	} //end function
 	add_action( 'wp_enqueue_scripts', 'pegasus_child_bootstrap_js' );
-	
+
 	/*============================
 	======= Card Sets Post Type =======
 	============================*/
@@ -170,15 +170,15 @@
 				'priority'     => 'high',
 			)
 		);
-		
-		
+
+
 		$card_sets_metabox->add_field( array(
 			'name' => __( 'Home Page Image', 'pegasus-bootstrap' ),
 			'desc' => __( 'Image to display on the homepage.', 'pegasus-bootstrap' ),
 			'id'   => $prefix . 'alt_image',
 			'type' => 'file',
 		) );
-		
+
 		$card_sets_metabox->add_field( array(
 			'name' => __( 'Home Page Caption', 'pegasus-bootstrap' ),
 			'desc' => __( 'Text / Headline to display on the homepage.', 'pegasus-bootstrap' ),
@@ -279,7 +279,7 @@
 
 		return $vars;
 	}
-	
+
 	/*~~~~~~~~~~~~~~~~~~~~
 		CARD SET SHORTCODE
 	~~~~~~~~~~~~~~~~~~~~~*/
@@ -351,21 +351,21 @@
 	}
 	add_filter( 'query_vars', 'register_query_vars' );
 	*/
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
 
 	add_filter('woocommerce_variation_is_visible', 'hide_out_of_stock_variations', 10, 4);
 
 	function hide_out_of_stock_variations($visible, $variation_id, $variable_product, $variation) {
 		// Get the variation object
 		$variation_obj = wc_get_product($variation_id);
-		
+
 		// Check if stock management is enabled for this variation
 		if ($variation_obj->managing_stock()) {
 			// If stock quantity is 0 or less, hide this variation
@@ -373,7 +373,7 @@
 				return false;
 			}
 		}
-		
+
 		return $visible;
 	}
 
@@ -382,48 +382,48 @@
 
 	function filter_out_of_stock_attributes($args) {
 		global $product;
-		
+
 		// Only apply to variable products
 		if (!$product->is_type('variable')) {
 			return $args;
 		}
-		
+
 		// Get all available variations
 		$variations = $product->get_available_variations();
 		$filtered_options = [];
-		
+
 		// Current attribute being processed
 		$current_attribute = sanitize_title($args['attribute']);
-		
+
 		foreach ($variations as $variation) {
 			// Get the variation product
 			$variation_obj = wc_get_product($variation['variation_id']);
-			
+
 			// Skip if variation has zero stock
 			if ($variation_obj->managing_stock() && $variation_obj->get_stock_quantity() <= 0) {
 				continue;
 			}
-			
+
 			// If this is a valid variation, add its attribute value to the options
 			if (isset($variation['attributes']['attribute_' . $current_attribute])) {
 				$filtered_options[] = $variation['attributes']['attribute_' . $current_attribute];
 			}
 		}
-		
+
 		// Override the options with our filtered list
 		if (!empty($filtered_options)) {
 			$filtered_options = array_reverse($filtered_options);
 			$args['options'] = array_unique($filtered_options);
 		}
-		
+
 		//reverse_variation_dropdown_options();
-		
+
 		return $args;
 	}
-	
-	
-	
-	
+
+
+
+
 	add_filter('woocommerce_coupon_error', function ($message, $error_code, $coupon) {
 		if (in_array($coupon->get_code(), ['beta', 'owner69420'])) {
 			$message = '<div>Coupon is valid for registered users only. <a href="' . home_url('/register') . '">Register now!</a></div>';
@@ -431,8 +431,8 @@
 
 		return $message;
 	}, 10, 3);
-	
-	
+
+
 	function is_theme_my_login_page() {
 		// Check if TML is active
 		if ( ! function_exists( 'theme_my_login' ) ) {
@@ -531,6 +531,3 @@
 
 		return $output;
 	});
-
-	
-	

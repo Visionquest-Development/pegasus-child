@@ -1,4 +1,4 @@
-	<?php get_header(); ?>
+<?php get_header(); ?>
     <div id="page-wrap">
 		<?php
 			//full container page options
@@ -39,18 +39,15 @@
 
 		<div class="<?php echo $final_container_class; ?> my-5 ">
 			<div class="row">
-				
-				
 				<?php get_sidebar( 'shop' ); ?>
-				
-				
+
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-9 col-xg-9 order-1 order-lg-2">
-					<div class="inner-content">	
+					<div class="inner-content">
 						<?php woocommerce_content(); ?>
 					</div><!--end inner content-->
 				</div>
-				
-		   
+
+
 			</div><!--end row -->
 		</div><!-- end container -->
 	</div><!-- end page wrap -->
