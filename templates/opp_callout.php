@@ -2,7 +2,7 @@
 <div class="opp-callout-container text-center p-4 shadow-sm rounded">
     <!-- Logo Section -->
     <div class="opp-logo mb-3">
-        <img src="http://ourpalsplace.test/wp-content/uploads/2025/04/bf9e4b_cc89f506e2cb4067bd2745ecc4e24202mv2.png" alt="Our Pal's Place Logo" class="img-fluid" style="max-width: 100px;">
+        <img src="http://opp.ourpalsplace.org/wp-content/uploads/2025/04/bf9e4b_cc89f506e2cb4067bd2745ecc4e24202mv2.png" alt="Our Pal's Place Logo" class="img-fluid" style="max-width: 100px;">
     </div>
 
     <!-- Title Section -->

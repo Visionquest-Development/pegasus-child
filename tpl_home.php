@@ -3,15 +3,15 @@
 	<?php get_header(); ?>
 	<div id="home-content">
 
-
-		<?php
+		<div class="home-slider">
+		<?php /*
 			echo do_shortcode('[slider]
 				[slide class="testing"]
 					<div class="p-relative slide-1">
 						<div class="home-slider-text">
-							<h2>Welcome to Our Pals Place!</h2>
+							<h2>Welcome to <br>Our Pals Place!</h2>
 						</div>
-						<img class="alignnone size-full wp-image-12" src="http://ourpalsplace.test/wp-content/wp-content/themes/pegasus-child/images/slider/1.jpg" />
+						<img class="alignnone size-full wp-image-12" src="//www.opp.ourpalsplace.org/wp-content/themes/pegasus-child/images/slider/1.jpg" />
 					</div>
 				[/slide]
 				[slide]
@@ -20,7 +20,7 @@
 							<h2>Want to make a difference?</h2><br /><h2>Volunteer with us!</h2><br />
 							<button class="opp-button center" id="opp-button-1">Learn More</button>
 						</div>
-						<img class="alignnone size-full wp-image-12" src="http://ourpalsplace.test/wp-content/wp-content/themes/pegasus-child/images/slider/4.jpg" />
+						<img class="alignnone size-full wp-image-12" src="//www.opp.ourpalsplace.org/wp-content/themes/pegasus-child/images/slider/4.jpg" />
 					</div>
 				[/slide]
 				[slide]
@@ -29,7 +29,7 @@
 							<h2>Apply to be a 2025 Animal Advocate Intern!</h2><br />
 							<button class="opp-button center" id="opp-button-2">Learn More</button>
 						</div>
-						<img class="alignnone size-full wp-image-12" src="http://ourpalsplace.test/wp-content/wp-content/themes/pegasus-child/images/slider/2.jpg" />
+						<img class="alignnone size-full wp-image-12" src="//www.opp.ourpalsplace.org/wp-content/themes/pegasus-child/images/slider/2.jpg" />
 					</div>
 				[/slide]
 				[slide]
@@ -38,7 +38,7 @@
 							<h2>Camp O.P.P. 2025 Registration is now open!</h2><br />
 							<button class="opp-button center" id="opp-button-3">Learn More</button>
 						</div>
-						<img class="alignnone size-full wp-image-12" src="http://ourpalsplace.test/wp-content/wp-content/themes/pegasus-child/images/slider/3.jpg" />
+						<img class="alignnone size-full wp-image-12" src="//www.opp.ourpalsplace.org/wp-content/themes/pegasus-child/images/slider/3.jpg" />
 					</div>
 				[/slide]
 				[slide]
@@ -47,11 +47,15 @@
 							<h2>Your support saves lives.<h2><br />
 							<button class="opp-button center" id="opp-button-4">Donate</button>
 						</div>
-						<img class="alignnone size-full wp-image-12" src="http://ourpalsplace.test/wp-content/wp-content/themes/pegasus-child/images/slider/5.jpg" />
+						<img class="alignnone size-full wp-image-12" src="//www.opp.ourpalsplace.org/wp-content/themes/pegasus-child/images/slider/5.jpg" />
 					</div>
 				[/slide]
-			[/slider]' );
+			[/slider]' ); */
 		?>
+		<?php
+			echo do_shortcode('[vqd_home_slider]');
+		?>
+		</div>
 		<?php /*
 		<section class="home-middle-info clearfix">
 			<div class="container-fluid">
@@ -138,21 +142,35 @@
 		</section>
 
 
-		<section>
+		<section class="">
 
 			<?php
 				$services_json = '[
 				{
 					"title": "Our Pal\'s Place Daycare, Boarding, & Training",
 					"image": "//opp.ourpalsplace.org/wp-content/uploads/2020/03/Logo-DBT.jpg",
-					"link": "/daycare"
+					"link": "https://www.dbt.ourpalsplace.org/"
 				},
 				{
 					"title": "ReHome Superstore",
 					"image": "//opp.ourpalsplace.org/wp-content/uploads/2019/11/logo_upscale-thrift-shopping.jpg",
-					"link": "/superstore"
+					"link": "/rehome-superstore"
 				}
 				]';
+				
+				/*
+				{
+					"title": "Camp OPP 2025",
+					"image": "//opp.ourpalsplace.org/wp-content/uploads/2020/03/Camp_OPP_Logo_2011.jpg",
+					"link": "/camp-opp-2025"
+				},
+				{
+					"title": "Camp Counselors",
+					"image": "//www.opp.ourpalsplace.org/wp-content/uploads/2022/04/web_site_camp_counselors_link.jpg",
+					"link": "/camp-counselors"
+				}
+				
+				*/
 
 				$services = json_decode($services_json, true);
 			?>
@@ -162,7 +180,7 @@
 					<div class="row g-4">
 						<?php foreach ($services as $service): ?>
 						<div class="col-6">
-							<div class="card h-100 border-0 shadow-sm rounded-1 overflow-hidden">
+							<div class="card h-100  shadow-sm rounded-1 overflow-hidden">
 							<div class="row g-0 h-100">
 								<div class="col-12 col-lg-8">
 									<img src="<?php echo esc_url($service['image']); ?>" alt="<?php echo esc_attr($service['title']); ?>" class="img-fluid h-100 w-100 object-fit-cover">

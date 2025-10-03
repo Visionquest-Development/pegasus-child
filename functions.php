@@ -420,6 +420,16 @@
 			//'desc' => __( 'Check this box to make the page fullwidth', 'cmb2' ),
 			'id'   => $prefix . '_rescue',
 			'type' => 'text',
+			'show_on_cb' => function( $cmb ) {
+				// Hide this field for the 'rehome' post type
+				if ( isset( $_GET['post'] ) ) {
+					$post_id = $_GET['post'];
+					return get_post_type( $post_id ) !== 'rehome';
+				} elseif ( isset( $_GET['post_type'] ) && $_GET['post_type'] === 'rehome' ) {
+					return false;
+				}
+				return true;
+			},
 		) );
 		$cmb_demo2->add_field( array(
 			'name' => __( 'Good With Other Dogs', 'cmb2' ),
@@ -554,10 +564,11 @@
 
 	/** Functions to support woocommerce */
 	/** @Hide quantity in product detail using CSS */
+	/*
 	function hide_quantity_using_css() {
 		if ( is_product() ) {
 			global $product;
-	/**		$product_id = $product->get_id(); */
+			$product_id = $product->get_id();
 			if (has_term('Camp OPP', 'product_cat', $product_id)){
 				?>
 					<style type="text/css">.quantity, .buttons_added { width:0; height:0; display: none; visibility: hidden; }</style>
@@ -571,6 +582,8 @@
 		}
 	}
 	add_action( 'wp_head', 'hide_quantity_using_css' );
+	
+	*/
 
 	add_filter( 'woocommerce_quantity_input_args', 'hide_quantity_input_field', 20, 2 );
 	function hide_quantity_input_field( $args, $product ) {
@@ -716,7 +729,211 @@
 			//remove_menu_page('wp-mail-smtp');
 			remove_menu_page('jetpack');
 		}
-
-
-
 	}
+	
+	
+	/**
+	 * VQD Home Slider via CMB2 (no JSON)
+	 * - Visible only on post ID 2 or pages using template named "Home Template"
+	 * - Repeatable slides: image (media upload), alignment, optional slide class, WYSIWYG content
+	 * - Shortcode: [vqd_home_slider] or [vqd_home_slider id="123"]
+	 */
+
+	/**
+	 * Helper: sanitize multiple classes safely.
+	 */
+	function vqd_sanitize_classes($class_string) {
+		$classes = preg_split('/\s+/', (string) $class_string, -1, PREG_SPLIT_NO_EMPTY);
+		$clean   = array_map('sanitize_html_class', $classes);
+		return trim(implode(' ', array_filter($clean)));
+	}
+
+	/**
+	 * Show-on callback: Only show box on post ID 2 OR when page template is "Home Template".
+	 */
+	function vqd_slider_show_on_home_cb( $cmb ) {
+		$post_id = 0;
+		if (isset($_GET['post'])) {
+			$post_id = (int) $_GET['post'];
+		} elseif (isset($_POST['post_ID'])) {
+			$post_id = (int) $_POST['post_ID'];
+		}
+		
+		if ( ! $post_id ) return false;
+
+		// Condition 1: Exactly post ID 2
+		if ( $post_id === 2 ) return true;
+
+		// Condition 2: Page uses a template whose label is "Home Template"
+		$template_slug = get_page_template_slug( $post_id ); // e.g. "templates/home-template.php"
+		if ( $template_slug ) {
+			// Common fallbacks by filename
+			$allowed_slugs = [
+				'home-template.php',
+				'tpl_home.php',
+				'template-home.php',
+				'page-home.php',
+				'front-page.php',
+				'templates/home-template.php',
+				'templates/home.php',
+			];
+			if ( in_array( $template_slug, $allowed_slugs, true ) ) {
+				return true;
+			}
+
+			// Resolve by *display name* "Home Template" if theme exposes it
+			$templates_map = wp_get_theme()->get_page_templates( get_post( $post_id ), 'page' ); // [file => "Name"]
+			if ( isset($templates_map[$template_slug]) && $templates_map[$template_slug] === 'Home Template' ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Register CMB2 box + fields.
+	 */
+	add_action('cmb2_admin_init', function () {
+		$prefix = 'vqd_slider_';
+
+		$cmb = new_cmb2_box([
+			'id'           => $prefix . 'box',
+			'title'        => __('Hero Slider', 'vqd'),
+			'object_types' => ['page'],            // homepage/page only
+			'show_on_cb'   => 'vqd_slider_show_on_home_cb', // limit to ID 2 or "Home Template"
+		]);
+
+		$group_field_id = $cmb->add_field([
+			'id'          => $prefix . 'slides',
+			'type'        => 'group',
+			'description' => __('Add slides for the homepage hero slider.', 'vqd'),
+			'options'     => [
+				'group_title'   => __('Slide {#}', 'vqd'),
+				'add_button'    => __('Add Slide', 'vqd'),
+				'remove_button' => __('Remove Slide', 'vqd'),
+				'sortable'      => true,
+				'closed'       => true,
+			],
+		]);
+
+		// Image: media upload (single)
+		$cmb->add_group_field($group_field_id, [
+			'name'       => __('Slide Image', 'vqd'),
+			'id'         => 'image',
+			'type'       => 'file',
+			'desc'       => __('Upload/select the slide image.', 'vqd'),
+			'options'    => [
+				'url' => true, // hide the text URL field; value will still be the URL
+			],
+			'query_args' => [
+				'type' => ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/avif'],
+			],
+			'preview_size' => [200, 120],
+		]);
+
+		// Alignment class
+		$cmb->add_group_field($group_field_id, [
+			'name'    => __('Text Alignment', 'vqd'),
+			'id'      => 'align',
+			'type'    => 'radio_inline',
+			'options' => [
+				'pull-left'  => __('pull-left', 'vqd'),
+				'pull-right' => __('pull-right', 'vqd'),
+				'top-center' => __('top-center', 'vqd'),
+			],
+			'default' => 'top-center',
+			'desc'    => __('Applies to the .home-slider-text container.', 'vqd'),
+		]);
+
+		// Optional extra class on [slide]
+		$cmb->add_group_field($group_field_id, [
+			'name' => __('Extra Slide Class (optional)', 'vqd'),
+			'id'   => 'slide_class',
+			'type' => 'text',
+			'desc' => __('Added as class="..." on the [slide] shortcode wrapper.', 'vqd'),
+		]);
+
+		// WYSIWYG content for the slide
+		$cmb->add_group_field($group_field_id, [
+			'name'    => __('Slide Content', 'vqd'),
+			'id'      => 'content',
+			'type'    => 'wysiwyg',
+			'options' => [
+				'media_buttons' => true,
+				'textarea_rows' => 8,
+				'teeny'         => false,
+				'wpautop'       => true,
+			],
+			'desc'    => __('Content inside the .home-slider-text container (headings, buttons, etc.).', 'vqd'),
+		]);
+	});
+
+	/**
+	 * Build the [slider]... string from CMB2 slides.
+	 */
+	function vqd_build_slider_shortcode_from_meta( $post_id ): string {
+		$slides = get_post_meta( $post_id, 'vqd_slider_slides', true );
+		if ( ! is_array($slides) || empty($slides) ) {
+			return '';
+		}
+
+		$allowed_align = ['pull-left', 'pull-right', 'top-center'];
+		$sc = '[slider]';
+		$i  = 1;
+
+		foreach ( $slides as $slide ) {
+			// Image URL from CMB2 'file' field (can be URL or array depending on config)
+			$img = '';
+			if ( ! empty( $slide['image'] ) ) {
+				$img = is_array($slide['image'])
+					? ( isset($slide['image']['url']) ? esc_url($slide['image']['url']) : '' )
+					: esc_url($slide['image']);
+			}
+
+			$align = ( isset($slide['align']) && in_array($slide['align'], $allowed_align, true) )
+				? $slide['align'] : 'top-center';
+
+			$slide_class_raw = isset($slide['slide_class']) ? $slide['slide_class'] : '';
+			$slide_class     = vqd_sanitize_classes($slide_class_raw);
+
+			$content = isset($slide['content']) ? $slide['content'] : '';
+			$content = wp_kses_post( $content );
+
+			$sc .= $slide_class ? '[slide class="' . $slide_class . '"]' : '[slide]';
+
+			$sc .= '<div class="p-relative slide-' . intval($i) . '">';
+			$sc .= '<div class="home-slider-text ' . esc_attr($align) . '">';
+			$sc .= $content; // already kses-sanitized
+			$sc .= '</div>';
+
+			if ( $img ) {
+				$sc .= '<img class="alignnone size-full" src="' . $img . '" />';
+			}
+
+			$sc .= '</div>'; // .p-relative
+			$sc .= '[/slide]';
+
+			$i++;
+		}
+
+		$sc .= '[/slider]';
+		return $sc;
+	}
+
+	/**
+	 * Shortcode: [vqd_home_slider] or [vqd_home_slider id="123"]
+	 */
+	add_shortcode('vqd_home_slider', function( $atts ) {
+		$atts = shortcode_atts([
+			'id' => '', // optional: render slider from a specific page ID
+		], $atts, 'vqd_home_slider');
+
+		$post_id = ! empty($atts['id']) ? intval($atts['id']) : get_the_ID();
+		if ( ! $post_id ) return '';
+
+		$shortcode_str = vqd_build_slider_shortcode_from_meta( $post_id );
+		if ( '' === $shortcode_str ) return '';
+
+		return do_shortcode( $shortcode_str );
+	});

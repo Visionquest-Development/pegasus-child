@@ -57,6 +57,26 @@ jQuery(document).ready(function ($) {
       infinite: true, // Enable infinite scrolling
       autoplay: true, // Enable autoplay
       autoplaySpeed: 3000, // Set autoplay speed
+      responsive: [
+        {
+          breakpoint: 900,
+          settings: {
+            arrows: true,
+            centerMode: true,
+            centerPadding: '0',
+            slidesToShow: 3
+          }
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            arrows: true,
+            centerMode: true,
+            centerPadding: '0',
+            slidesToShow: 1
+          }
+        }
+      ]
     });
 
     // Apply matchHeight on slider initialization and every render
@@ -75,6 +95,9 @@ jQuery(document).ready(function ($) {
   $('.camp-block').matchHeight();
   $('.counselor-page-block').matchHeight();
   $('.contact-section .card').matchHeight();
+  $('.donation-block').matchHeight();
+  //$('.donation-block p').matchHeight();
+
   //$('.volunteer-block p').matchHeight();
 
 
@@ -97,7 +120,7 @@ jQuery(document).ready(function ($) {
   });
 
   $("#opp-button-3").on( 'click', function(){
-    var targetUrl = window.location.host + '/camp-opp-2025/';
+    var targetUrl = window.location.host + '/camp-opp-2025p/';
     if (targetUrl) {
       window.location.href = targetUrl;
     } else {
