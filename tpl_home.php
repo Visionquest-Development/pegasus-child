@@ -85,31 +85,48 @@
 		</div><!-- end container -->
 
 		<section id="home-top-section" class="py-5" style="background: #231e61; color: white; ">
-            <div class="container-fluid">
-                <h3>WordPress Bootstrap Theme</h3>
-                <p><strong>Free for the Community</strong></p>
-                <p>When creating custom themes for clients at various jobs,
-					I ended up doing the same thing repeatedly. Therefore,
-					I decided to build a theme that I could always use as a
-					base for my clients' websites and then build upon.
-					This is a custom Bootstrap Theme for WordPress made with
-					CMB2 and various JS libraries.
-					<strong>It comes with a suite of plugins that are separately
-						installed to add functionality to a site.</strong>
-				</p>
-            </div>
-			<div class="container-fluid my-5">
-				<h3>Pegasus Theme for WordPress</h3>
-				<p>WordPress theme for free based on Twitter Bootstrap 5
-					for front-end markup, CMB2 for theme settings and custom fields,
-					and Woocommerce for online shopping. I developed it to help my
-					build process for custom bootstrap themes, and I want to put it
-					out there for free for the open-source community and the WordPress
-					community. Made with love from
-					<a target="_blank" href="http://visionquestdevelopment.com">
-						http://visionquestdevelopment.com
-					</a>.
-				</p>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-6 center ">
+						<h3>WordPress Bootstrap Theme</h3>
+						<img class="w-50 mb-3 img-fluid" src="https://visionquestdevelopment.com/wp-content/uploads/2025/06/pegasus.png">
+						
+						<p><strong>Free for the Community</strong></p>
+						<p>When creating custom themes for clients at various jobs,
+							I ended up doing the same thing repeatedly. Therefore,
+							I decided to build a theme that I could always use as a
+							base for my clients' websites and then build upon.
+							This is a custom Bootstrap Theme for WordPress made with
+							CMB2 and various JS libraries.
+							
+						</p>
+					</div>
+					<div class="col-md-6 center">
+						<h3>Pegasus Suite of Plugins</h3>
+						<img class="w-50 mb-3 img-fluid" src="https://visionquestdevelopment.com/wp-content/uploads/2025/06/raw5.png">
+						
+						<p><strong>It comes with a suite of plugins that are separately installed to add functionality to a site.</strong></p>
+						<p>WordPress theme for free based on Twitter Bootstrap 5
+							for front-end markup, CMB2 for theme settings and custom fields,
+							and Woocommerce for online shopping. I developed it to help my
+							build process for custom bootstrap themes, and I want to put it
+							out there for free for the open-source community and the WordPress
+							community. Made with love from
+							<a target="_blank" href="http://visionquestdevelopment.com">
+								http://visionquestdevelopment.com
+							</a>.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="container  text-center">
+					<p>Installation can be done by running the following code in the terminal while in the wp-content/themes directory:</p>
+			</div>
+			<div class="container  text-center">
+					HTTPS
+					<pre><code class="language-javascript">git clone https://github.com/Visionquest-Development/pegasus.git pegasus</code></pre>
+					SSH
+					<pre><code class="language-javascript">git clone git@github.com:Visionquest-Development/pegasus.git pegasus</code></pre>
 			</div>
 			<div class="container  text-center">
 					<a href="https://github.com/Visionquest-Development/pegasus" target="_blank" class="btn btn-primary mb-3">Pegasus Github</a>
@@ -137,6 +154,21 @@
 						</a>
 					</div>
 				</div>
+				<div class="row">
+					<div class="col-12 mb-3">
+						<div class="container  text-center">
+							<p>Installation can be done by running the following code in the terminal while in the wp-content/themes directory:</p>
+						</div>
+						<div class="container  text-center">
+							HTTPS
+							<pre><code class="language-javascript">git clone https://github.com/Visionquest-Development/pegasus-child.git pegasus-child</code></pre>
+							SSH
+							<pre><code class="language-javascript">git clone git@github.com:Visionquest-Development/pegasus-child.git pegasus-child</code></pre>
+						</div>
+					</div>
+					
+				</div>
+				
 			</div>
 
 		</section>
