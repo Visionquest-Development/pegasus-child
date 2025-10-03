@@ -22,7 +22,9 @@
 		if (!empty($sections)) {
 			$index = 1;
 			foreach ($sections as $section) {
-				$bg_image = isset($section['background_image']) ? esc_url($section['background_image']) : '';
+				$bg_image = isset($section['background_image']) 
+					? esc_url(str_replace(['http://', 'https://'], 'https://', $section['background_image'])) 
+					: '';
 				$title = isset($section['title']) ? esc_html($section['title']) : '';
 				$subtitle = isset($section['subtitle']) ? esc_html($section['subtitle']) : '';
 				$paragraph = isset($section['paragraph']) ? wp_kses_post($section['paragraph']) : '';
@@ -265,7 +267,7 @@
 					<!--http://qbiqcamp.com/wp-content/uploads/2025/01/QBIQ-HIGHLIGHT-VIDEO-for-site.mp4-->
 					<div class="iphone-test base">
 						<video id="iPhone-video" loop muted autoplay controls>
-							<source src="http://qbiqcamp.com/wp-content/uploads/2025/01/QBIQ-HIGHLIGHT-VIDEO-for-site.mp4" type="video/mp4">
+							<source src="https://qbiqcamp.com/wp-content/uploads/2025/01/QBIQ-HIGHLIGHT-VIDEO-for-site.mp4" type="video/mp4">
 							Your browser does not support the video tag.
 						</video>
 					</div> 

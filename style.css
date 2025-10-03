@@ -28,7 +28,14 @@
 
 
 /*@import url('https://fonts.googleapis.com/css2?family=Anton&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');*/
-@import url('https://fonts.googleapis.com/css?family=Anton|Roboto&display=swap');
+/*@import url('https://fonts.googleapis.com/css?family=Anton|Roboto&display=swap'); */
+
+/*
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@800;900&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;700&display=swap');          
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@400;700&family=League+Spartan:wght@800;900&family=Inter:wght@600;700&display=swap');
 
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -63,12 +70,15 @@
 		color: white !important;
 	}
 	
-	.qbiq-btn {
+	.qbiq-btn, .btn-primary {
 		background-color: #ff8200 !important;
+		border-color: #ff8200 !important;
 		color: #fff !important;
 		text-transform: uppercase;
 		font-weight: bold;
 	}
+	
+	.inner-content a { color: #ff8200; }
 
 	.btn-transparent {
 		border-color: white !important;
@@ -125,6 +135,120 @@
 	.qbiq-background-black { background-color: black; color: white; }
 	
 	.text-white { color: white; }
+	
+	.ginput_total { color: white !important; }
+	
+	
+	.qbiq-promo .text-1 {
+		font-size: 3rem;
+		    line-height: 1;
+			margin-top: 20px;
+	}
+	
+	.qbiq-promo .code-block {
+		font-size: 2.5rem;
+		font-weight: bold;
+		color: #FF8200;
+		line-height: 1.2;
+	}
+	
+	.qbiq-promo .text-2 {
+		font-size: 3rem;
+		    line-height: 1;
+	}
+	
+	
+	#homePromoModal .modal-content {
+		border: 4px solid #FF8200;
+	}
+	
+	#homePromoModal .modal-header {
+		background: black;
+	}
+	
+	#homePromoModal .btn-close {
+	  --bs-btn-close-color: #fff;
+	}
+	
+	
+	/* ===== QBIQ modal hero ===== */
+	.qbiq-hero{
+	  background:#000;
+	  color:#fff;
+	  text-align:center;
+	  padding:2.25rem 1.25rem;
+	  border-radius:.75rem;
+	}
+
+	.qbiq-gradient{
+	  --grad-start:#F5A33C;   /* tweak to taste */
+	  --grad-end:#F0D6A0;
+	  background:linear-gradient(180deg,var(--grad-start),var(--grad-end));
+	  -webkit-background-clip:text;
+	  background-clip:text;
+	  color:transparent;
+	  font-weight:900;
+	  line-height:1;
+	  letter-spacing:.5px;
+	  text-transform:uppercase;
+	}
+
+	/* Sizes tuned for modals; scales down nicely */
+	.qbiq-year{
+	  font-size:clamp(3rem, 8vw, 6rem);
+	  margin-bottom:.35rem;
+	  
+	  font-family: "League Spartan", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	  font-weight: 900;
+	}
+
+	.qbiq-title{
+	  font-size:clamp(3rem, 7.5vw, 5rem);
+	  margin:.1rem 0;
+	  font-family: "League Spartan", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	  font-weight: 900;
+	}
+
+	.qbiq-sub {
+	  margin-top:.7rem;
+	  margin-bottom:.7rem;
+	  font-weight:800;
+	  letter-spacing:.8px;
+	  font-size:clamp(.8rem, 2.5vw, 1rem);
+	  opacity:.95;
+	  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	  font-weight: 900;
+	}
+	
+
+	.qbiq-callout{
+	  margin: 1rem 0;
+	  font-weight:900;
+	  font-size:clamp(1.1rem, 4.5vw, 1.75rem);
+	  letter-spacing:.5px;
+	  text-transform: uppercase;
+	}
+
+	.qbiq-promo p{
+	  margin:.25rem 0 1.5rem;
+	  font-size:clamp(1rem, 3.5vw, 1.125rem);
+	}
+	.qbiq-promo codeblock{
+	  padding:.15rem .4rem;
+	  background:#111;
+	  border:1px solid rgba(255,255,255,.15);
+	  border-radius:.35rem;
+	  font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+	}
+
+	
+
+	/* Optional: make the modal bigger for this hero */
+	@media (min-width: 576px){
+	  #homePromoModal .modal-dialog{ max-width:720px; }
+	}
+
+	
 	
 	/*#field_2_67 {
 		background: #FF8200;
@@ -1408,6 +1532,11 @@
 	=================================*/
 	.facility-info {
 		
+	}
+	
+	.facility-info-normal {
+		max-width: 1440px;
+		margin: 0 auto;
 	}
 
 	.facility-image {

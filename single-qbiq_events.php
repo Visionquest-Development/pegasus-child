@@ -40,7 +40,7 @@
 			<div class="content wow fadeIn">
 				
 				<?php if ( $event_date ) { ?>
-					<div class="date-block">
+					<div class="date-block d-none">
 						<p>
 							<?php echo esc_html($event_date); ?> 
 							<?php if ( $event_date_end ) { echo ' - ' . $event_date_end; } ?>
@@ -70,6 +70,71 @@
 		echo '<div class="container mt-3 ">';
 			echo '<h1>' . $qbiq_post_title . '</h1>';
 		echo '</div>';
+	?>
+	
+	<?php 
+	// Retrieve CMB2 custom fields
+	$hotel_name = get_post_meta(get_the_ID(), 'camp_accomdation_hotel_name', true);
+	$hotel_description = get_post_meta(get_the_ID(), 'camp_accomdation_hotel_description', true);
+	$hotel_image = get_post_meta(get_the_ID(), 'camp_accomdation_hotel_image', true);
+	$hotel_link = get_post_meta(get_the_ID(), 'camp_accomdation_hotel_link', true) ? get_post_meta(get_the_ID(), 'camp_accomdation_hotel_link', true) : '#';
+	$facility_name = get_post_meta(get_the_ID(), 'camp_accomdation_facility_name', true);
+	$facility_address = get_post_meta(get_the_ID(), 'camp_accomdation_facility_address', true);
+	$facility_image = get_post_meta(get_the_ID(), 'camp_accomdation_facility_image', true);
+	$facility_directions_link = get_post_meta(get_the_ID(), 'camp_accomdation_facility_directions_link', true) ? get_post_meta(get_the_ID(), 'camp_accomdation_facility_directions_link', true) : '#';
+	?>
+	<?php 
+		if ( $hotel_name ) {
+	?>
+	<section class="camp-section qbiq-background-black">
+		<div class="container">
+			<div class="camp-header">
+				<h5>Official Team Hotel</h5>
+				<h1><?php echo esc_html($hotel_name); ?></h1>
+				<p><?php echo esc_html($hotel_description); ?></p>
+			</div>
+			<div class="camp-content wow fadeInLeft">
+				<div class="hotel-image" style="background-image: url('<?php echo esc_url($hotel_image); ?>');">
+					<div class="hotel-details">
+						<h3><?php echo esc_html($hotel_name); ?></h3>
+						<div class="stars">★★★★★</div>
+						<a href="<?php echo esc_url($hotel_link); ?>" target="_blank" class="btn">Book Team Hotel</a>
+					</div>
+					
+					
+				</div>
+				<div class="facility-info ">
+					<?php if ( $facility_image ) { ?>
+					<div class="facility-image" style="background-image: url('<?php echo esc_url($facility_image); ?>');"></div>
+					<?php } ?>
+					<?php if ( $facility_name ) { ?>
+					<div class="facility-details">
+						<h4><?php echo esc_html($facility_name); ?></h4>
+						<p><?php echo wp_kses_post($facility_address); ?></p>
+						<a href="<?php echo esc_url($facility_directions_link); ?>" target="_blank" class="btn">Training Facility Directions</a>
+					</div>
+					<?php } ?>
+				</div>
+			</div>
+		</div>
+	</section>
+	<?php 
+		} else {
+	?>
+		<div class="facility-info-normal ">
+			<?php if ( $facility_image ) { ?>
+			<div class="facility-image" style="background-image: url('<?php echo esc_url($facility_image); ?>');"></div>
+			<?php } ?>
+			<?php if ( $facility_name ) { ?>
+			<div class="facility-details">
+				<h4><?php echo esc_html($facility_name); ?></h4>
+				<p><?php echo wp_kses_post($facility_address); ?></p>
+				<a href="<?php echo esc_url($facility_directions_link); ?>" target="_blank" class="btn">Training Facility Directions</a>
+			</div>
+			<?php } ?>
+		</div>
+	<?php 
+		}
 	?>
 	
 	<section class="p-3 camp-location-images-grid qbiq-background-black">
@@ -146,55 +211,7 @@
 		</div>
 	</section>
 	
-	<?php 
-	// Retrieve CMB2 custom fields
-	$hotel_name = get_post_meta(get_the_ID(), 'camp_accomdation_hotel_name', true);
-	$hotel_description = get_post_meta(get_the_ID(), 'camp_accomdation_hotel_description', true);
-	$hotel_image = get_post_meta(get_the_ID(), 'camp_accomdation_hotel_image', true);
-	$hotel_link = get_post_meta(get_the_ID(), 'camp_accomdation_hotel_link', true) ? get_post_meta(get_the_ID(), 'camp_accomdation_hotel_link', true) : '#';
-	$facility_name = get_post_meta(get_the_ID(), 'camp_accomdation_facility_name', true);
-	$facility_address = get_post_meta(get_the_ID(), 'camp_accomdation_facility_address', true);
-	$facility_image = get_post_meta(get_the_ID(), 'camp_accomdation_facility_image', true);
-	$facility_directions_link = get_post_meta(get_the_ID(), 'camp_accomdation_facility_directions_link', true) ? get_post_meta(get_the_ID(), 'camp_accomdation_facility_directions_link', true) : '#';
-	?>
-	<?php 
-		if ( $hotel_name ) {
-	?>
-	<section class="camp-section qbiq-background-black">
-		<div class="container">
-			<div class="camp-header">
-				<h5>Official Team Hotel</h5>
-				<h1><?php echo esc_html($hotel_name); ?></h1>
-				<p><?php echo esc_html($hotel_description); ?></p>
-			</div>
-			<div class="camp-content wow fadeInLeft">
-				<div class="hotel-image" style="background-image: url('<?php echo esc_url($hotel_image); ?>');">
-					<div class="hotel-details">
-						<h3><?php echo esc_html($hotel_name); ?></h3>
-						<div class="stars">★★★★★</div>
-						<a href="<?php echo esc_url($hotel_link); ?>" target="_blank" class="btn">Book Team Hotel</a>
-					</div>
-					
-					
-				</div>
-				<div class="facility-info ">
-					<?php if ( $facility_image ) { ?>
-					<div class="facility-image" style="background-image: url('<?php echo esc_url($facility_image); ?>');"></div>
-					<?php } ?>
-					<?php if ( $facility_name ) { ?>
-					<div class="facility-details">
-						<h4><?php echo esc_html($facility_name); ?></h4>
-						<p><?php echo wp_kses_post($facility_address); ?></p>
-						<a href="<?php echo esc_url($facility_directions_link); ?>" target="_blank" class="btn">Training Facility Directions</a>
-					</div>
-					<?php } ?>
-				</div>
-			</div>
-		</div>
-	</section>
-	<?php 
-		} //end if 
-	?>
+	
 	
 	
 	<?php 

@@ -19,11 +19,6 @@
 		<div class="container pt-5 ">
 			<h2>Quarterback Tickets</h2>
 			<div class="row">
-				<div class="col-md-3">	
-					<div class="register-ticket-container">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/QBIQ_ALL_CAMPS_PASS.png" alt="Ticket" class="register-ticket">
-					</div>
-				</div>
 				<div class="col-md-3">
 					<div class="register-ticket-container">
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/BASIC.png" alt="Ticket" class="register-ticket">
@@ -39,7 +34,13 @@
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/MASTERS.png" alt="Ticket" class="register-ticket">
 					</div>
 				</div>
-				
+			
+				<div class="col-md-3">	
+					<div class="register-ticket-container">
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/QBIQ_ALL_CAMPS_PASS.png" alt="Ticket" class="register-ticket">
+					</div>
+				</div>
+			
 			</div>
 		</div>
 		
@@ -61,7 +62,22 @@
 		</div>
 		
 		
-		
+		<div class="container mt-3 mb-5">
+			<div class="row">
+				<div class="col-md-6">
+					<img src="/wp-content/themes/pegasus-child/images/home_video_desc.png">
+				</div>
+				
+				<div class="col-md-6">
+					<div class="iphone-test base">
+						<video id="iPhone-video" loop muted autoplay controls>
+							<source src="http://qbiqcamp.com/wp-content/uploads/2025/01/QBIQ-HIGHLIGHT-VIDEO-for-site.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+					</div> 
+				</div>
+			</div>
+		</div>
 		
 		<?php
 			//full container page options

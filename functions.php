@@ -992,3 +992,247 @@
 
 	// Register the shortcode
 	add_shortcode('display_coaches', 'display_coaches_shortcode');
+	
+	/* =============================================================================================================*/
+	
+	// Helper: ordinal suffix (1st, 2nd, 3rd, 4th...)
+	if (!function_exists('vqdev_ordinal')) {
+		function vqdev_ordinal($n) {
+			$n = (int) $n;
+			if (($n % 100) >= 11 && ($n % 100) <= 13) return $n . 'th';
+			switch ($n % 10) {
+				case 1: return $n . 'st';
+				case 2: return $n . 'nd';
+				case 3: return $n . 'rd';
+				default: return $n . 'th';
+			}
+		}
+	}
+	
+	if (!function_exists('vqdev_month_abbr4')) {
+		function vqdev_month_abbr4(DateTime $d): string {
+			static $map = [
+				'Jan'=>'JAN','Feb'=>'FEB','Mar'=>'MAR','Apr'=>'APR','May'=>'MAY','Jun'=>'JUN',
+				'Jul'=>'JUL','Aug'=>'AUG','Sep'=>'SEPT','Oct'=>'OCT','Nov'=>'NOV','Dec'=>'DEC',
+			];
+			return $map[$d->format('M')] ?? strtoupper($d->format('M'));
+		}
+	}
+	
+	// 1) Ensure the promo renderer exists (keeps the same name used elsewhere)
+	if (!function_exists('vqdev_render_monthly_promo_from_hardcoded_json')) {
+	  function vqdev_render_monthly_promo_from_hardcoded_json() {
+		// 17-day rolling cycle, rotating 20% → 15% → 10%. Spots reset each window.
+		$json = <<<JSON
+	{
+	  "cycle_days": 17,
+	  "anchor": "2025-09-01T00:00:00",
+	  "spots_total": 20,
+	  "tiers": [
+		{ "percent": 20, "code": "QBIQ20" },
+		{ "percent": 15, "code": "QBIQ15" },
+		{ "percent": 10, "code": "QBIQ10" }
+	  ]
+	}
+	JSON;
+
+		$config = json_decode($json, true);
+		if (!is_array($config) || empty($config['tiers'])) return;
+
+		$tz     = function_exists('wp_timezone') ? wp_timezone() : new DateTimeZone(date_default_timezone_get());
+		$nowTs  = function_exists('current_time') ? current_time('timestamp') : time();
+
+		// Preview override: ?promo_date=YYYY-MM-DD (kept)
+		if (isset($_GET['promo_date'])) {
+		  $raw = trim((string)$_GET['promo_date']);
+		  $tmp = DateTime::createFromFormat('Y-m-d H:i:s', $raw . ' 00:00:00', $tz)
+			  ?: DateTime::createFromFormat('Y-m-d', $raw, $tz);
+		  if ($tmp instanceof DateTime) $nowTs = $tmp->getTimestamp();
+		}
+
+		$cycleDays = max(1, (int)($config['cycle_days'] ?? 17));
+		$tiers     = $config['tiers'];
+		$spotsTotal = (int)($config['spots_total'] ?? 20);
+
+		try { $anchor = new DateTime((string)($config['anchor'] ?? '2025-01-01T00:00:00'), $tz); }
+		catch (\Exception $e) { $anchor = new DateTime('2025-01-01T00:00:00', $tz); }
+
+		// Which cycle window are we in?
+		$diffDays = (int) floor(($nowTs - $anchor->getTimestamp()) / 86400);
+		if ($diffDays < 0) {
+		  $cyclesBack = (int) ceil(abs($diffDays) / $cycleDays);
+		  $diffDays  += $cyclesBack * $cycleDays;
+		}
+		$windowIndex = (int) floor($diffDays / $cycleDays);
+		$tierIndex   = $windowIndex % count($tiers);
+		$promo       = $tiers[$tierIndex] ?? null;
+		if (!$promo) return;
+
+		$percent = (int)($promo['percent'] ?? 0);
+		$code    = (string)($promo['code'] ?? '');
+		if ($percent <= 0 || $code === '') return;
+
+		// Current window start (for daily decrement)
+		$windowStart = clone $anchor;
+		if ($windowIndex !== 0) $windowStart->modify('+' . ($windowIndex * $cycleDays) . ' days');
+
+		// Spots left = total minus days elapsed in this window (floored at midnight, WP timezone)
+		$daysElapsed = (int) floor(($nowTs - $windowStart->getTimestamp()) / 86400);
+		if ($daysElapsed < 0) $daysElapsed = 0;
+		$spotsLeft = max(0, min($spotsTotal, $spotsTotal - $daysElapsed));
+
+		$esc = function ($s) {
+		  return function_exists('esc_html') ? esc_html($s) : htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8');
+		};
+
+		echo '<div class="qbiq-year qbiq-gradient">2026</div>';
+		echo '<div class="qbiq-title qbiq-gradient">OPENING DRIVE</div>';
+
+		echo '<span class="qbiq-title qbiq-gradient">' . $esc($percent) . '% OFF</span>';
+		echo '<br>';
+
+		// ⬇️ Replaced the old "ENDS ..." line with your copy + dynamic counter
+		echo '<span class="qbiq-callout">For next ' . $esc($spotsTotal) . ' registrations.</span>';
+		echo '<br>';
+		echo '<span class="qbiq-callout">' . $esc($spotsLeft) . '/' . $esc($spotsTotal) . ' spots left</span>';
+
+		//echo '<div class="qbiq-sub">QUARTERBACKS ONLY</div>';
+
+		echo '<div class="qbiq-promo mt-2" role="status" aria-live="polite">';
+		  echo '<span class="text-1">Use code </span>';
+		  echo '<code class="code-block">' . $esc($code) . '</code>';
+		echo '</div>';
+	  }
+	}
+
+	// 2) Output the modal markup in the footer *only* on the homepage and only if promo text exists.
+	add_action('wp_footer', function () {
+		if (!is_front_page()) return; // or use is_home() depending on your setup
+
+		ob_start();
+		vqdev_render_monthly_promo_from_hardcoded_json();
+		$promo_html = trim(ob_get_clean());
+
+		if ($promo_html === '') return; // No promo this month; don’t render modal.
+
+		?>
+		<!-- Home Promo Modal -->
+		<div class="modal fade" id="homePromoModal" tabindex="-1" aria-labelledby="homePromoLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered modal-lg">
+			<div class="modal-content">
+			
+			  <div class="modal-header">
+				<h2 class="modal-title fs-5" id="homePromoLabel">Special Offer</h2>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?php echo esc_attr__('Close', 'textdomain'); ?>"></button>
+			  </div>
+			  
+			  <div class="modal-body">
+				
+				
+				<!--<img src="https://qbiqcamp.com/wp-content/themes/pegasus-child/images/popup-bkg.png">-->
+				
+				<div class="qbiq-hero">
+			
+				  <!-- Your dynamic promo line -->
+				  <div class="">
+					<?php if (function_exists('vqdev_render_monthly_promo_from_hardcoded_json')) {
+					  vqdev_render_monthly_promo_from_hardcoded_json();
+					} ?>
+				  </div>
+
+				  <div class="qbiq-callout">SIGN YOUR WR'S UP TOO!</div>
+
+
+				  <?php get_template_part( 'templates/logo', 'header' ); ?>
+				</div>
+				
+				<?php /* 
+				<div class="popup-promo" role="status" aria-live="polite">
+				  <?php echo $promo_html; // already escaped in renderer ?>
+				</div> */ ?>
+			  </div>
+			  
+			  <div class="modal-footer">
+				<button type="button" id="promoCopyBtn" class="btn btn-outline-secondary">Copy code</button>
+				<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Got it</button>
+				<button type="button" id="promoHide7dBtn" class="btn btn-link ms-auto" data-bs-dismiss="modal" style="text-decoration:none">
+				  Don’t show for 7 days
+				</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+
+		<script>
+		(function() {
+		  const HIDE_KEY = 'vqdevPromoHiddenUntil';
+		  const nowSec = Math.floor(Date.now() / 1000);
+		  try {
+			const until = JSON.parse(localStorage.getItem(HIDE_KEY));
+			if (until && nowSec < Number(until)) {
+			  return; // still within hide window
+			}
+		  } catch (e) {}
+
+		  const modalEl = document.getElementById('homePromoModal');
+		  if (!modalEl || typeof bootstrap === 'undefined' || !bootstrap.Modal) return;
+
+		  const modal = new bootstrap.Modal(modalEl);
+
+		  // Auto-show after a brief delay
+		  window.setTimeout(function() {
+			modal.show();
+		  }, 800);
+
+		  // Copy code button
+		  const copyBtn = document.getElementById('promoCopyBtn');
+		  if (copyBtn) {
+			copyBtn.addEventListener('click', function() {
+			  const codeEl = modalEl.querySelector('#homePromoModal .code-block');
+			  const text = codeEl ? codeEl.textContent.trim() : '';
+			  if (!text) return;
+			  if (navigator.clipboard && navigator.clipboard.writeText) {
+				navigator.clipboard.writeText(text).then(function() {
+				  copyBtn.textContent = 'Copied!';
+				  setTimeout(function(){ copyBtn.textContent = 'Copy code'; }, 1500);
+				});
+			  }
+			});
+		  }
+
+		  // Hide for 7 days
+		  const hide7Btn = document.getElementById('promoHide7dBtn');
+		  if (hide7Btn) {
+			hide7Btn.addEventListener('click', function() {
+			  const SEVEN_DAYS = 7 * 24 * 60 * 60;
+			  const until = nowSec + SEVEN_DAYS;
+			  try { localStorage.setItem(HIDE_KEY, JSON.stringify(until)); } catch (e) {}
+			});
+		  }
+		})();
+		</script>
+		<?php
+	}, 100);
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
