@@ -57,7 +57,7 @@
 			</div>
 		</div>
 		
-		<section class="jumbotron text-center">
+		<!--<section class="jumbotron text-center">
 			<div class="container">
 				<h1 class="jumbotron-heading">A Legacy of Service and Excellence</h1>
 				<p class="lead text-muted">Built on a foundation of service and excellence, Outlaw Coffee Company embodies the commitment and courage of our veteran roots. We serve more than just coffee; we serve a community bound by respect, honor, and a shared love for quality. Join us in celebrating a legacy that goes beyond the cup—a legacy that honors the past, embraces the present, and brews a brighter future. Outlaw Coffee Company isn’t just about what’s in your cup; it’s about the spirit with which it’s made.</p>
@@ -67,7 +67,7 @@
 					
 				</p>
 			</div>
-		</section>
+		</section>-->
 		
 		<div class="<?php echo $final_container_class; ?>">
 		<!-- Example row of columns -->
@@ -89,7 +89,7 @@
 									?>
 								</div>
 							<?php }else{ ?>
-								<div class="page-header-spacer"></div>
+								<!--<div class="page-header-spacer"></div>-->
 							<?php } ?>
 
 							<?php the_content(); ?>

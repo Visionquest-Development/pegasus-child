@@ -25,21 +25,52 @@
 		
 		color: #282828;
 	}
+	
+	.color-1 { color: #664421; } /* brown */
+	.color-2 { color: #c3a384; } /* tan */
+	.color-3 { color: #efa308; } /* yellow */
+	.color-4 { color: #d8560f; } /*orange*/
 
 
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ HEADER ~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
+	#header {
+		/*background: none !important; */
+		background: url('/wp-content/themes/pegasus-child/images/Header.png') !important;
+		background-size: 100% 100% !important; 
+		
+		background-repeat: no-repeat !important;
+	}
 	
+	header .bg-light {
+		background-color: transparent !important;
+	}
 	
 	
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ NAVIGATION ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-	#logo {     
-		height: 175px;
+	
+	.navbar-brand {
+		font-size: 0px !important;
+		margin: 0;
+		padding: 0;
+	}
+	
+	#logo, .logo-svg-container {     
+		height: 285px;
 		width: 220px;
-		margin-top: 17px; 
+		margin: 10px auto 0; 
+		
+	}
+	
+	.logo-svg-container .cls-1 {
+		fill: #664421;
+	}
+	
+	.the-default-nav {
+		font-weight: bold; 
 	}
 
 	.navbar-brand { visibility: hidden; }
@@ -54,24 +85,26 @@
 	
 	.pegasus-footer { 
 		padding-top: 50px; 
-		background-image: url('/wp-content/uploads/2024/07/footer-bg-img.jpg') !important; 
+		/*background-image: url('/wp-content/uploads/2024/07/footer-bg-img.jpg') !important; 
 		background-size: cover;
 		background-position: center center;
-		background-repeat: no-repeat !important;
+		background-repeat: no-repeat !important; */
+		background: white;
+		color: white;
 	}
-	footer .widgettitle { color: white; text-align: center; }
-	footer #menu-footer-menu-2 { 
+	footer .widgettitle {  text-align: center; }
+	/*footer #menu-footer-menu-2 { 
 		flex-direction: row !important; 
 		justify-content: center;
 		margin-bottom: 40px; 
 		margin-top: 30px;
 		font-weight: bold;
-	}
+	}*/
 	footer .list-group-item { 
 		padding: 10px !important; 
 	}
 	footer .list-group-item a { color: #838282 !important;  }
-	footer .current-menu-item a { color: white !important; }
+	footer .current-menu-item a { color: black !important; text-decoration: underline; }
 	footer .footer-social-container { padding-bottom: 50px; }
 	footer .footer-social-container .card, .list-group-item {
 		background-color: transparent !important;
@@ -88,8 +121,8 @@
 	footer .footer-social-container .coffee-social li a:hover {
 		background: #b58a52;
 	} 
-	footer #colophon { color: #a6a6a6; text-align: center; padding-bottom: 40px; }
-	footer #colophon a { color: #a6a6a6; }
+	footer #colophon { color: white; text-align: center;  }
+	footer #colophon a { color: white; }
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 	
@@ -108,6 +141,17 @@
 	
 	.wp-block-page-list .current-menu-item a { font-weight: bold; }
 	
+	.home-section {
+		color: white; 
+		text-align: center;
+	}
+	
+	
+	#block-7 .wp-block-page-list .wp-block-pages-list__item:has(> a[href*="/user-registration/"]) {
+	  display: none !important;
+	}
+	
+	
 	
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~SITEMAP~~~~~~~~
@@ -116,6 +160,21 @@
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~WOOCOMMERCE~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
+	
+	
+	.woocommerce ul.products { 
+		display: flex;
+		flex-flow: wrap;
+	}
+	
+	ul.products li.product {
+		/* flex: 1; */
+		/*flex-grow: 2; */
+		flex: 0 21%;
+		float: none !important;
+		margin: 5px 10px !important;
+		width: 100% !important;
+	}
 	
 	#customer_login .col-1, #customer_login .col-2 {
 		max-width: none !important;
@@ -127,7 +186,39 @@
 	
 	.sidebar .widget_search .card { border: none; }
 	
+	.woocommerce-account #wpforms-form-36 {
+		border: 1px solid #cfc8d8;
+		padding: 20px;
+		border-radius: 5px;
+	}
+
+	.woocommerce-account #username, .woocommerce-account #password {
+		background-color: var(--wpforms-field-background-color);
+		background-clip: padding-box;
+		border-radius: var(--wpforms-field-border-radius);
+		color: var(--wpforms-field-text-color);
+		border-width: var(--wpforms-field-border-size);
+		border-style: var(--wpforms-field-border-style);
+		border-color: var(--wpforms-field-border-color);
+		padding: 0 var(--wpforms-field-size-padding-h);
+		font-size: var(--wpforms-field-size-font-size);
+		line-height: 100%;
+		box-shadow: none;
+		transition: border 0.15s, box-shadow 0.15s;
+		display: block;
+		width: 100%;
+		box-sizing: border-box;
+		font-family: inherit;
+		font-style: normal;
+		font-weight: 400;
+		margin: 0;
+		height: var(--wpforms-field-size-input-height);
+	}	
 	
+	.woocommerce-form-login .woocommerce-form-row label {
+		display: block;
+		width: 100%;
+	}	
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~MEDIA QUERIES~~~~
@@ -156,7 +247,7 @@
 		.pegasus-footer {
 			background-size: 500% 100%;
 			background-position: 50% 100%;
-			background-color: #160F0A;
+			/*background-color: #160F0A;*/
 			background-attachment: fixed;
 		}
 		footer .coffee-social { flex-direction: row !important; }
@@ -173,3 +264,10 @@
 			background-color: #160F0A;
 		} */
 	}
+
+function debug_wpforms_fields($user_id, $fields, $form_data) {
+    error_log("WPForms fields for user $user_id: " . print_r($fields, true));
+}
+add_action('wpforms_user_registered', 'debug_wpforms_fields', 5, 3);
+
+
