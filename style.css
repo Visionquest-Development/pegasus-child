@@ -9,43 +9,575 @@
 */
 
 /*@import url("../pegasus/style.css");*/
-	
-	
+
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+	body {
+		 position: relative;
+		z-index: 0
+	}
+	body:after {
+		content: '';
+		background: url(https://images.getbento.com/accounts/35ee5eeeb5f36064ffc2a0eb43193b78/media/images/46797logo-2.png);
+		position: fixed;
+		inset: 0 auto 0 1rem;
+		background-size: 25%;
+		background-repeat: no-repeat;
+		background-position: left 1rem center;
+		width: calc(100% - 1rem);
+		background-attachment: fixed;
+		z-index: -2;
+		opacity: .08
+	}
+	
+	/* ================================
+	   GRADIENT HEADLINE
+	  ================================ */
+
+	.ulg-gradient-heading,
+	.wp-block-heading
+	{
+		font-size: 5rem;
+		font-weight: 700;
+		margin-bottom: 1rem;
+		text-transform: lowercase;
+		letter-spacing: 0.02em;
+
+		/* Gradient text */
+		background: linear-gradient(
+			90deg,
+			#4D0D13 0%,
+			#AF2A24 25%,
+			#F25D3B 50%,
+			#F89F3C 75%,
+			#F7D580 100%
+		);
+		-webkit-background-clip: text !important;
+		background-clip: text !important;
+		color: transparent !important;
+		text-transform: uppercase;
+	}
+	
+	/* ================================
+	   GRADIENT BORDER
+	  ================================ */
+	  
+	header,
+	.ulg-heading-border
+	{
+		 border-bottom: 5px solid transparent;
+
+	  /* 2. Apply your gradient as the source */
+	  border-image-source: linear-gradient(
+		to right,
+		#4D0D13,
+		#AF2A24,
+		#F25D3B,
+		#F89F3C,
+		#F7D580,
+		#F5F2EB
+	  );
+
+	  /* 3. The Magic: Slice set to 1 makes it stretch properly */
+	  border-image-slice: 1;
+	}
+	
+	.btn-primary {
+		background-color: #92712A !important;
+		border-color: #92712A !important;
+	}
+	
+	.btn-primary:hover {
+		background-color: white !important;
+		border-color: #92712A !important;
+		color: black !important;
+	}
+	
+	.btn-outline-primary {
+		border-color: #92712A !important;
+	}
+	
+	.btn-outline-primary:hover {
+		background-color: #92712A !important;
+	}
 	
 	
+	.nocomments { display: none; }
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ HEADER ~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	
+	  #logo {
+		width: 330px;
+	  }
+		
+		.ulg-brand-bar {
+			background: #0F172A;
+		}
+		
+		.ulg-brand-bar a {
+			text-decoration: none;
+		}
+		
+		.ulg-brand-bar a:hover {
+			text-decoration: underline;
+		}
+		
+		.brandbar-nav a::after {
+		  content: "|";
+		  color: white;
+		  margin-left: 10px; /* Adjusts space between text and pipe */
+		}
+		
+		.brandbar-nav a:last-child::after {
+		  content: "";
+		  color: white;
+
+		}
+		
+		.ulg-brand-bar .dropdown {
+			background: white;
+			border-radius: 8px;
+			padding: 0 7px;
+		}
+		
+		.ulg-brand-bar .dropdown-toggle::after {
+			color: black !important;
+		}
+		
+		#ulgDropdown {
+			padding: 2px !important;
+			margin-bottom: 0 !important;
+			
+		}
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ NAVIGATION ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-
 	
+
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ FOOTER ~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
+	footer #menu-main-nav-1,
+	footer #menu-brands
+	{
+		flex-direction: column;
+		color: white;
+	}
+
+	footer #menu-main-nav-1 a,
+	footer #menu-brands a
+	{
+		
+		color: white;
+	}
 	
+	footer a.active { color: #92712A !important; }
+	
+	#block-7 img {
+		width: 50%;
+	}
 	
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ HOME PAGE ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
+
+	/* ================================
+	   HERO INTRO SECTION
+	   ================================ */
+
+	.upl-hero-intro {
+		padding: 4rem 1rem;
+		background-color: #F5F2EB; /* light_cream */
+		background-size: cover;
+		background-position: center;
+		color: #0B0D15;
+	}
+
+
+
+	/* ================================
+	   PARAGRAPH STYLING
+	   ================================ */
+
+	.upl-hero-text {
+		max-width: 760px;
+		margin: 0 auto;
+		font-size: 1.1rem;
+		color: #0B0D15;
+		line-height: 1.65;
+		
+	}
+
+	/* Responsive tweak */
+	@media (max-width: 768px) {
+		.upl-gradient-heading {
+			font-size: 2.4rem;
+		}
+	}
+
+	
+	.background-white {
+		background: white;
+	}
 	
 	
 	
 	
+	
+	/* ============================================
+	   ulg DOUBLE BORDER SECTION WRAPPER
+	   ============================================ */
+
+	.ulg-home-section .ulg-home-section-text {
+		position: relative;
+		border: 4px solid black; /* Outer white border (thicker) */
+		padding: 0;
+		overflow: hidden;
+		color: black;
+		background: white;
+	}
+	
+	.ulg-home-section .ulg-home-section-text:hover {
+		border: 4px solid #92712A;
+	}
+
+	/* Inner border */
+	.ulg-home-section .ulg-home-section-text::before {
+		content: "";
+		position: absolute;
+		top: 6px;
+		left: 6px;
+		right: 6px;
+		bottom: 6px;
+		border: 1px solid black; /* Thin inner border */
+		pointer-events: none;
+		z-index: 2;
+	}
+	
+	/* Inner border hover */
+	.ulg-home-section .ulg-home-section-text:hover::before {
+		border-color: #92712A; /* INNER border gold on hover */
+	}
+
+	.mr-2 { margin-right: 1rem; }
+	.ml-2 { margin-left: 1rem; }
+	.pr-2 { padding-right: 1rem !important; }
+	.pl-2 { padding-left: 1rem !important; }
+
+	/* Image should cover cleanly */
+	.ulg-home-section-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+
+
+
+	/* ============================================
+	   BUTTON STYLING
+	   ============================================ */
+
+	.ulg-btn {
+		background-color: #92712A !important;
+	}
+	
+	.ulg-section-btn {
+		color: #fff !important;
+		
+		padding: 0.65rem 1.75rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		border-radius: 0;
+		position: relative;
+		text-transform: uppercase;
+		background: #92712A;
+		z-index: 5;
+		max-width: 200px;
+		margin: 0 auto 20px;
+	}
+
+
+
+	/* Hover effect */
+	.ulg-section-btn:hover {
+		background-color: black;
+	}
+
+
+	/* ============================================
+	   RESPONSIVE FIXES
+	   ============================================ */
+
+	@media (max-width: 991px) {
+		.ulg-home-section .ulg-home-section-text,
+		.ulg-home-section .ulg-home-section-image {
+			margin-bottom: 2rem;
+		}
+	}
+
+
+	.home-section-container { 
+		
+		
+	}
+	
+	
+	.ulg-home-section-image {
+		/* max-height: 700px; */ 
+		background-size: cover;
+		background-position: center;
+		/* background-size: 100% 100%; */
+		background-repeat: no-repeat;
+		min-height: 500px;
+	}
+	
+	
+	
+	.location-gallery__grid {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1.5rem;
+	}
+
+	.location-gallery__item {
+		flex: 1 1 200px;
+	}
+	
+
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~SITEMAP~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
 	
+	.ulg-location-card {
+		border: 2px solid black;
+		padding: 20px;
+		height: 100%;
+		text-align: center;
+	}
+	
+	
+	/* --- GRID WRAPPER --- */
+	.ulg-locations-grid {
+	  display: grid;
+	  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	  gap: 2rem;
+	  margin: 3rem 0;
+	}
+
+	/* If you kept Bootstrap row/cols, this just adds spacing */
+	.ulg-locations-grid .col,
+	.ulg-locations-grid .ulg-location {
+	  margin-bottom: 0; /* grid gap handles spacing */
+	}
+
+	/* --- CARD --- */
+	.ulg-location {
+	  position: relative;
+	  background-color: #ffffff;
+	  border: 1px solid #d6d6d6;
+	  padding: 2.5rem 2rem;
+	  text-align: center;
+	  font-family: inherit;
+	}
+
+	.ulg-location-inner {
+	  display: flex;
+	  flex-direction: column;
+	  height: 100%;
+	}
+
+	/* --- HEADER / LOGO / TITLE --- */
+	.ulg-location-logo {
+	  margin-bottom: 1.5rem;
+	}
+
+	.ulg-location-logo img {
+	  max-width: 220px;
+	  height: auto;
+	}
+
+	.ulg-location-name {
+	  letter-spacing: 0.15em;
+	  text-transform: uppercase;
+	  font-size: 0.75rem;
+	  margin-bottom: 0.5rem;
+	}
+
+	.ulg-location-subtitle {
+	  text-transform: uppercase;
+	  font-size: 0.75rem;
+	  letter-spacing: 0.1em;
+	  margin-bottom: 1.5rem;
+	}
+
+	/* --- ADDRESS / PHONE --- */
+	.ulg-location-address {
+	  margin-bottom: 0.75rem;
+	  line-height: 1.4;
+	}
+
+	.ulg-location-address a {
+	  color: #1a1a1a;
+	  text-decoration: underline;
+	}
+
+	.ulg-location-phone {
+	  margin-bottom: 1.5rem;
+	}
+
+	.ulg-location-phone a {
+	  color: #1a1a1a;
+	  text-decoration: underline;
+	}
+
+	/* --- HOURS --- */
+	.ulg-location-hours {
+	  font-weight: bold;
+	  font-size: 0.9rem;
+	  line-height: 1.5;
+	  border: 1px solid #777;
+	  max-width: 250px;
+	  margin: 0 auto 1.5rem;
+	  padding: 20px 20px 5px;
+	}
+
+	/* --- SOCIAL ICONS --- */
+	.ulg-location-social {
+	  margin-bottom: 1.5rem;
+	}
+
+	.ulg-location-social a {
+	  display: inline-flex;
+	  align-items: center;
+	  justify-content: center;
+	  margin: 0 0.5rem;
+	  width: 32px;
+	  height: 32px;
+	  border-radius: 50%;
+	  border: 1px solid #1a1a1a;
+	  text-decoration: none;
+	  font-size: 1rem;
+	  color: #1a1a1a;
+	}
+
+	.ulg-location-social a:hover {
+	  background-color: #1a1a1a;
+	  color: #ffffff;
+	}
+
+	/* --- BUTTONS --- */
+	.ulg-location-actions {
+	  margin-top: auto;
+	  display: flex;
+	  flex-direction: column;
+	  gap: 0.75rem;
+	}
+
+	.ulg-location-actions .ulg-btn {
+	  display: block;
+	  width: 100%;
+	  padding: 0.85rem 1rem;
+	  border: 1px solid #202432;      /* dark navy-ish */
+	  background-color: #202432;
+	  color: #ffffff;
+	  text-transform: uppercase;
+	  letter-spacing: 0.08em;
+	  font-size: 0.8rem;
+	  text-align: center;
+	  text-decoration: none;
+	}
+
+	.ulg-location-actions .ulg-btn-secondary {
+	  background-color: transparent;
+	  color: #202432;
+	}
+
+	.ulg-location-actions .ulg-btn:hover {
+	  opacity: 0.9;
+	}
+
+	/* --- SMALL SCREEN TWEAKS --- */
+	@media (max-width: 576px) {
+	  .ulg-location {
+		padding: 2rem 1.5rem;
+	  }
+	}
+
+	
+	
+	
+	
+	.pegasus-toggle {
+		background: white;
+	}
+	
+	
+	.pegasus-trigger {
+		
+	}
+	
+	.pegasus-trigger {
+	  position: relative;
+	  display: inline-block;
+	  padding-bottom: 10px;
+	  width: 100%;
+	  display: block;
+	}
+
+	.pegasus-trigger::after {
+	  content: "";
+	  position: absolute;
+	  left: 0;
+	  bottom: 0;
+	  height: 5px;   /* Thickness */
+	  width: 100%;   /* Change this to 50% for a half-width underline */
+	  
+	  /* The 6-color gradient background */
+	  background: linear-gradient(
+		to right, 
+		#4D0D13,
+		#AF2A24,
+		#F25D3B,
+		#F89F3C,
+		#F7D580,
+		#F5F2EB
+	  );
+	  
+		/*
+	  
+		background: linear-gradient(
+		  to right, 
+		  red 0% 16.6%, 
+		  orange 16.6% 33.2%, 
+		  yellow 33.2% 49.8%, 
+		  green 49.8% 66.4%, 
+		  blue 66.4% 83%, 
+		  purple 83% 100%
+		);
+		*/
+		
+	}
+	
+	
+	#gform_wrapper_2 {
+		background: white;
+		border: 1px solid #777;
+		border-radius: 7px;
+		padding: 20px;
+		margin-top: 2rem;
+		margin-bottom: 2rem;
+	}
+	
+
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~WOOCOMMERCE~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -54,21 +586,22 @@
 	~~~~~MEDIA QUERIES~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 	@media only screen and ( min-width: 1100px ) and ( max-width: 1405px) {
-		
+
 	}
-	
+
 	@media only screen and ( min-width: 981px ) {
-		
+    
 	}
-		
+
 	@media only screen and (max-width: 980px) {
-		
+
 	}
-	
+
 	@media only screen and ( max-width: 767px ) {
-		
+
 	}
-	
+
 	@media only screen and (max-width: 479px) {
-		
+
 	}
+
