@@ -1,0 +1,154 @@
+<!--
+	<div id="mega-menu" class="header header-sticky primary-menu the-default-fifth-nav icons-no default-skin ">
+
+
+	</div>
+-->
+<?php
+	$top_header_choice = pegasus_get_option( 'top_header_chk' );
+
+	//echo $top_header_choice;
+	if($top_header_choice === 'on' ) {
+		get_template_part( 'templates/top_bar', 'header' );
+	}
+	
+	get_template_part( 'templates/ulg_top_bar', 'header' );
+?>
+<nav class="navbar navbar-inverse d-none ">
+	<div class="container">
+		<div class="navbar-header">
+			<?php /*
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<span class="visually-hidden">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			*/ ?>
+			
+			<?php
+			$logo =  pegasus_get_option( 'logo' );
+			if( ! empty( $logo ) ) : ?>
+				<a class="logo-container" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img id="logo" src="<?php echo esc_url( $logo ); ?>" alt=""/></a>
+			<?php else: ?>
+				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+			<?php endif; ?>
+			
+			
+			
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+			<?php
+				$args = array(
+					'container'		=> false,
+					//'menu' 			=> 'primary-menu',
+					'theme_location'  => 'primary',
+					'menu_class'	=> 'header-five-menu',
+					//'menu_class'	=> 'nav navbar-nav primary-navigation-bar',
+					//'menu_id' => false
+					//'items_wrap'      => '<ul id="%1$s" class="%2$s nav navbar-nav">%3$s</ul>',
+					//'walker' => new wp_bootstrap_navwalker()
+				);
+				wp_nav_menu( $args );
+		?>
+		</div><!--/.navbar-collapse -->
+	</div>
+</nav>
+
+<div class="sidebar-nav open" id="header">
+
+	<!-- Sidebar navigate Button -->
+	<div class="navi-btn">
+		<a href="#"><i class="fa fa-bars"></i></a>
+	</div>
+
+
+	<!-- Logo Area -->
+	<div class="header-five-logo">
+		<!-- Heading -->
+		<?php
+		$logo =  pegasus_get_option( 'logo' );
+		if( ! empty( $logo ) ) : ?>
+			<a class="logo-container" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img id="logo" src="<?php echo esc_url( $logo ); ?>" alt=""/></a>
+		<?php else: ?>
+			<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+		<?php endif; ?>
+
+		<!-- Logo sub text -->
+		<!--<span>Some Text Here</span>-->
+	</div>
+	
+	<hr class="header-hr">
+	<div class="theloft-address">
+		<address itemscope itemtype="https://schema.org/PostalAddress">
+		  <a href="https://maps.google.com/?cid=6406428500416290500" 
+			 class="site-location__address" 
+			 target="_blank" 
+			 rel="noopener" 
+			 itemprop="hasMap"
+			 data-bb-track="button" 
+			 data-bb-track-on="click" 
+			 data-bb-track-category="Address" 
+			 data-bb-track-action="Click" 
+			 data-bb-track-label="Header">
+			 
+			<span itemprop="streetAddress">1032 Broadway,</span><br>
+			<span>
+				<span itemprop="addressLocality">Columbus</span>,
+				<span itemprop="addressRegion">GA</span>
+				<span itemprop="postalCode">31901</span>
+			</span>
+			<span class="sr-only"> (opens in a new tab)</span>
+		  </a>
+		</address>
+	</div>
+	<hr class="header-hr">
+
+	<!-- Sidebar Widget -->
+	<div class="nav-sidebar-widget">
+		
+		<a href="https://tables.toasttab.com/restaurants/ba52c07a-225d-406c-be37-215c844188f7/findTime" class="btn btn-brand btn-block" target="_blank" rel="noopener">
+			Reservations<span class="sr-only"> (opens in a new tab)</span>
+		</a>
+	
+		<!-- Sidebar list items -->
+		<?php
+			$args = array(
+				'container'		=> false,
+				//'menu' 			=> 'primary-menu',
+				'theme_location'  => 'primary',
+				'menu_class'	=> ' header-five-menu',
+				//'menu_class'	=> 'nav navbar-nav primary-navigation-bar',
+				//'menu_id' => false
+				//'items_wrap'      => '<ul id="%1$s" class="%2$s nav navbar-nav">%3$s</ul>',
+				//'walker' => new wp_bootstrap_navwalker()
+			);
+			wp_nav_menu( $args );
+		?>
+		
+		<a href="https://order.toasttab.com/online/theloft" target="_blank" class="btn btn-brand btn-block">
+			Order Online
+		</a>
+	</div>
+	<div class="w-100 text-center ">
+	<?php
+		/*
+		$woo_check =  pegasus_get_option( 'woo_chk' );
+		if ( $woo_check === 'on' ) {
+			if ( class_exists( 'WooCommerce' ) ) {
+			  // code that requires WooCommerce
+			  get_template_part( 'templates/header-cart', 'header' );
+			} else {
+			  // you don't appear to have WooCommerce activated
+			  echo '<div class="nav navbar-nav woo-error navbar-right">Enable WooCommerce</div>';
+			}
+		} */
+		//$nav_social_check =  pegasus_get_option( 'nav_social_chk' );
+		//if($nav_social_check === 'on'){
+			get_template_part( 'templates/social_icons', 'header' );
+		//}
+	?>
+	</div>
+
+</div>
+
