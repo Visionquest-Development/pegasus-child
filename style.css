@@ -15,12 +15,93 @@
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 	
+	body.admin-bar .the-default-third-nav #mega-menu.fixed-top {
+		    top: 78px !important;
+	}
+	
+	body.admin-bar .the-default-third-nav.on #mega-menu.fixed-top {
+		    top: 32px !important;
+	}
+	
+	#mega-menu {
+		    top: 44px !important;
+	}
+	
+	.the-default-third-nav.on #mega-menu {
+		    top: 0 !important;
+	}
+	
+	
+	
+	.ulg-gradient-heading
+	{
+		font-size: 5rem;
+		font-weight: 700;
+		margin-bottom: 1rem;
+		text-transform: lowercase;
+		letter-spacing: 0.02em;
+
+		/* Gradient text */
+		background: linear-gradient(
+			90deg,
+			#4D0D13 0%,
+			#AF2A24 25%,
+			#F25D3B 50%,
+			#F89F3C 75%,
+			#F7D580 100%
+		);
+		-webkit-background-clip: text !important;
+		background-clip: text !important;
+		color: transparent !important;
+		text-transform: uppercase;
+	}
 	
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ HEADER ~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
+	#logo {
+		width: 200px;
+	}
 	
-	
+	.ulg-brand-bar {
+			background: #0F172A;
+		}
+		
+		.ulg-brand-bar a {
+			text-decoration: none;
+		}
+		
+		.ulg-brand-bar a:hover {
+			text-decoration: underline;
+		}
+		
+		.brandbar-nav a::after {
+		  content: "|";
+		  color: white;
+		  margin-left: 10px; /* Adjusts space between text and pipe */
+		}
+		
+		.brandbar-nav a:last-child::after {
+		  content: "";
+		  color: white;
+
+		}
+		
+		.ulg-brand-bar .dropdown {
+			background: white;
+			border-radius: 8px;
+			padding: 0 7px;
+		}
+		
+		.ulg-brand-bar .dropdown-toggle::after {
+			color: black !important;
+		}
+		
+		#ulgDropdown {
+			padding: 2px !important;
+			margin-bottom: 0 !important;
+			
+		}
 	
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ NAVIGATION ~~~~~
@@ -31,6 +112,175 @@
 	~~~~~~~~ FOOTER ~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
 	
+	.restaurant-contact h2 {
+		font-size: 18px;
+	}
+	
+	footer {
+		padding-top: 20px;
+	}
+	
+	.mabellas-social {
+		margin: 20px 0;
+		padding: 0;
+		display: flex;
+		flex-direction: row;
+		list-style-type: none;
+	}
+
+	.mabellas-social li {
+		flex: 1 1 25%;
+		text-align: center;
+	}
+
+	.mabellas-social li a {
+		color: white;
+		font-size: 2rem;
+		text-decoration: none;
+	}
+
+	.mabellas-social li a:hover {
+		
+		color: #92712A;
+	}
+	
+	#menu-footer-nav-1 {
+		flex-direction: column;
+	}
+	
+	footer a {
+		color: white;
+	}
+	
+	footer a.nav-link,
+	footer .widget-title {
+		color: white;
+		text-align: center;
+	}
+	
+	
+	/* ================================
+   MABELLAS NEWSLETTER SECTION
+   ================================ */
+
+	.mabellas-newsletter-section {
+		padding: 4rem 0;
+		background-color: #0C0C0C; /* main dark background */
+		color: #F5F5F5;
+	}
+
+	.mabellas-newsletter-card {
+		position: relative;
+		border: 4px solid #C9AC7A;
+		padding: 2.75rem 2.25rem;
+		max-width: 720px;
+		margin: 0 auto;
+		background: radial-gradient(circle at top, #292524 0%, #0C0C0C 55%, #000 100%);
+	}
+
+	/* inner border */
+	.mabellas-newsletter-card::before {
+		content: "";
+		position: absolute;
+		inset: 10px;
+		border: 1px solid #C9AC7A;
+		pointer-events: none;
+	}
+
+	/* Titles & text */
+	.mabellas-newsletter-title {
+		font-family: 'Playfair Display', serif;
+		font-size: 2rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		margin-bottom: 1rem;
+	}
+
+	.mabellas-newsletter-text {
+		font-size: 1rem;
+		color: #C9C9C9;
+		margin-bottom: 2rem;
+	}
+
+	/* Form layout */
+	.mabellas-newsletter-form {
+		max-width: 640px;
+		margin: 0 auto;
+	}
+
+	.mabellas-newsletter-fields {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		justify-content: center;
+	}
+
+	/* Input */
+	.mabellas-newsletter-input {
+		flex: 1 1 260px;
+		min-width: 0;
+		padding: 0.75rem 1rem;
+		border-radius: 0;
+		border: 1px solid #4A433E;
+		background-color: #0C0C0C;
+		color: #F5F5F5;
+		font-size: 0.95rem;
+	}
+
+	.mabellas-newsletter-input::placeholder {
+		color: #777;
+	}
+
+	/* Button */
+	.mabellas-newsletter-btn {
+		flex: 0 0 auto;
+		padding: 0.75rem 1.75rem;
+		background-color: #C9AC7A;
+		color: #0C0C0C;
+		border: none;
+		border-radius: 0;
+		font-weight: 600;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		font-size: 0.85rem;
+		cursor: pointer;
+		transition: background-color 0.25s ease, color 0.25s ease, transform 0.15s ease;
+	}
+
+	.mabellas-newsletter-btn:hover {
+		background-color: #E0C49B;
+		color: #000;
+		transform: translateY(-1px);
+	}
+
+	/* Fine print */
+	.mabellas-newsletter-note {
+		margin-top: 1rem;
+		font-size: 0.8rem;
+		color: #8C8C8C;
+	}
+
+	/* Accessibility helper class (if not already in your CSS) */
+	.visually-hidden {
+		position: absolute !important;
+		height: 1px;
+		width: 1px;
+		overflow: hidden;
+		clip: rect(1px, 1px, 1px, 1px);
+		white-space: nowrap;
+	}
+
+	/* Responsive tweaks */
+	@media (max-width: 767.98px) {
+		.mabellas-newsletter-card {
+			padding: 2.25rem 1.75rem;
+		}
+
+		.mabellas-newsletter-title {
+			font-size: 1.7rem;
+		}
+	}
+
 	
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -38,6 +288,192 @@
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ HOME PAGE ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
+	
+	
+	/* ============================================
+   LOCATION BLOCK WRAPPER
+   ============================================ */
+	
+	.home-locations {
+		overflow: hidden;
+	}
+	
+	.mabellas-location-card {
+		margin-bottom: 3rem;
+		border: 4px solid white;      /* Outer border */
+		
+	}
+
+	/* ============================================
+	   DOUBLE BORDER IMAGE BLOCK
+	   ============================================ */
+
+	.mabellas-location-image {
+		position: relative;
+		height: 420px;
+		overflow: hidden;
+		background-position: 100% 50%;
+		background-size: cover;
+	}
+
+	
+
+	/* Hover (optional gold border highlight) */
+	.mabellas-location-image:hover {
+		border-color: #92712A;
+	}
+	
+
+	/* ============================================
+	   TEXT AREA
+	   ============================================ */
+
+	.mabellas-location-card h2 {
+		margin-top: 1.75rem;
+		margin-bottom: 1.25rem;
+		font-family: 'Playfair Display', serif;
+		font-size: 2rem;
+		letter-spacing: 0.07em;
+		text-transform: uppercase;
+	}
+
+	/* ============================================
+	   BUTTON
+	   ============================================ */
+
+	.mabellas-location-btn {
+		background-color: #92712A;
+		color: #fff;
+		padding: 0.65rem 1.75rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		border-radius: 0;
+		border: none;
+		transition: background-color 0.25s ease;
+	}
+
+	.mabellas-location-btn:hover {
+		background-color: #000;
+		color: #fff;
+		border: 2px solid white;
+	}
+
+	/* ============================================
+	   RESPONSIVE
+	   ============================================ */
+
+	@media (max-width: 767px) {
+		.mabellas-location-image {
+			height: 300px;
+		}
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/* ============================================
+	   MABELLAS DOUBLE BORDER SECTION WRAPPER
+	   ============================================ */
+
+	.mabellas-home-section .mabellas-home-section-text {
+		position: relative;
+		border: 4px solid white; /* Outer white border (thicker) */
+		padding: 0;
+		overflow: hidden;
+	}
+	
+	.mabellas-home-section .mabellas-home-section-text:hover {
+		border: 4px solid #92712A;
+	}
+
+	/* Inner border */
+	.mabellas-home-section .mabellas-home-section-text::before {
+		content: "";
+		position: absolute;
+		top: 6px;
+		left: 6px;
+		right: 6px;
+		bottom: 6px;
+		border: 1px solid white; /* Thin inner border */
+		pointer-events: none;
+		z-index: 2;
+	}
+	
+	/* Inner border hover */
+	.mabellas-home-section .mabellas-home-section-text:hover::before {
+		border-color: #92712A; /* INNER border gold on hover */
+	}
+
+	.mr-2 { margin-right: 1rem; }
+	.ml-2 { margin-left: 1rem; }
+	.pr-2 { padding-right: 1rem !important; }
+	.pl-2 { padding-left: 1rem !important; }
+
+	/* Image should cover cleanly */
+	.mabellas-home-section-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+
+
+
+	/* ============================================
+	   BUTTON STYLING
+	   ============================================ */
+
+	.mabellas-btn {
+		background-color: #92712A !important;
+	}
+	
+	.mabellas-section-btn {
+		color: #fff !important;
+		
+		padding: 0.65rem 1.75rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		border-radius: 0;
+		position: relative;
+		text-transform: uppercase;
+		background: #92712A;
+		z-index: 5;
+		max-width: 200px;
+		margin: 0 auto 20px;
+	}
+
+
+
+	/* Hover effect */
+	.mabellas-section-btn:hover {
+		background-color: black;
+	}
+
+
+	/* ============================================
+	   RESPONSIVE FIXES
+	   ============================================ */
+
+	@media (max-width: 991px) {
+		.mabellas-home-section .mabellas-home-section-text,
+		.mabellas-home-section .mabellas-home-section-image {
+			margin-bottom: 2rem;
+		}
+	}
+
+
+	
+	
+	
+	
+	
 	
 	
 	
