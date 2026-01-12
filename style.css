@@ -11,10 +11,73 @@
 /*@import url("../pegasus/style.css");*/
 	
 	
+
+	.ulg-gradient-heading
+	{
+		font-size: 5rem;
+		font-weight: 700;
+		margin-bottom: 1rem;
+		text-transform: lowercase;
+		letter-spacing: 0.02em;
+
+		/* Gradient text */
+		background: linear-gradient(
+			90deg,
+			#4D0D13 0%,
+			#AF2A24 25%,
+			#F25D3B 50%,
+			#F89F3C 75%,
+			#F7D580 100%
+		);
+		-webkit-background-clip: text !important;
+		background-clip: text !important;
+		color: transparent !important;
+		text-transform: uppercase;
+	}
+	
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
+	.ulg-brand-bar {
+			background: #0F172A;
+		}
+		
+		.ulg-brand-bar a {
+			text-decoration: none;
+		}
+		
+		.ulg-brand-bar a:hover {
+			text-decoration: underline;
+		}
+		
+		.brandbar-nav a::after {
+		  content: "|";
+		  color: white;
+		  margin-left: 10px; /* Adjusts space between text and pipe */
+		}
+		
+		.brandbar-nav a:last-child::after {
+		  content: "";
+		  color: white;
+
+		}
+		
+		.ulg-brand-bar .dropdown {
+			background: white;
+			border-radius: 8px;
+			padding: 0 7px;
+		}
+		
+		.ulg-brand-bar .dropdown-toggle::after {
+			color: black !important;
+		}
+		
+		#ulgDropdown {
+			padding: 2px !important;
+			margin-bottom: 0 !important;
+			
+		}
+		
 	
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ HEADER ~~~~~~
@@ -39,7 +102,228 @@
 	~~~~~~ HOME PAGE ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
 	
+	.ulg-home-section-image {
+		/* max-height: 700px; */ 
+		background-size: cover;
+		background-position: center;
+		/* background-size: 100% 100%; */
+		background-repeat: no-repeat;
+		min-height: 500px;
+	}
 	
+	.ulg-home-section .ulg-home-section-text {
+		position: relative;
+		border: 4px solid black; /* Outer white border (thicker) */
+		padding: 0;
+		overflow: hidden;
+		color: black;
+		background: white;
+		text-align: center;
+	}
+	
+	.ulg-home-section .ulg-home-section-text:hover {
+		border: 4px solid #92712A;
+	}
+	
+	.ulg-btn {
+		background-color: #92712A !important;
+	}
+	
+	.ulg-section-btn {
+		color: #fff !important;
+		
+		padding: 0.65rem 1.75rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		border-radius: 0;
+		position: relative;
+		text-transform: uppercase;
+		background: #92712A;
+		z-index: 5;
+		max-width: 200px;
+		margin: 0 auto 20px;
+	}
+
+
+
+	/* Hover effect */
+	.ulg-section-btn:hover {
+		background-color: black !important;
+	}
+	
+	
+	
+	/* Restaurant Menu (Bootstrap 5 + custom styling) */
+	.vqmenu {
+	  --vqmenu-radius: 14px;
+	  --vqmenu-border: rgba(0,0,0,.08);
+	  --vqmenu-muted: rgba(0,0,0,.62);
+	}
+
+	.vqmenu-title {
+	  letter-spacing: -0.02em;
+	}
+
+	.vqmenu-tabs .nav-link {
+	  font-weight: 600;
+	}
+
+	.vqmenu-tabs .nav-link.active {
+	  border-bottom-color: transparent;
+	}
+
+	.vqmenu-panels {
+	  border: 1px solid var(--vqmenu-border);
+	  border-top: 0;
+	  border-radius: 0 0 var(--vqmenu-radius) var(--vqmenu-radius);
+	  padding: 1.25rem;
+	  background: #fff;
+	}
+
+	.vqmenu-tabdesc {
+	  max-width: 60ch;
+	}
+
+	.vqmenu-sectionhead {
+	  display: flex;
+	  flex-direction: column;
+	  gap: .25rem;
+	  margin-bottom: 1rem;
+	}
+
+	.vqmenu-sectiontitle {
+	  font-size: 1.25rem;
+	  letter-spacing: -0.01em;
+	}
+
+	.vqmenu-sectionnote {
+	  color: var(--vqmenu-muted);
+	  font-size: .95rem;
+	}
+
+	.vqmenu-card {
+	  border-radius: var(--vqmenu-radius);
+	  border-color: var(--vqmenu-border);
+	}
+
+	.vqmenu-itemtop {
+	  display: grid;
+	  grid-template-columns: 1fr auto;
+	  align-items: start;
+	  gap: .75rem;
+	}
+
+	.vqmenu-itemname {
+	  font-size: 1.05rem;
+	  line-height: 1.2;
+	}
+
+	.vqmenu-price {
+	  font-weight: 700;
+	  white-space: nowrap;
+	}
+
+	.vqmenu-itemdesc {
+	  color: var(--vqmenu-muted);
+	  line-height: 1.35;
+	}
+
+	.vqmenu-badges {
+	  display: flex;
+	  align-items: center;
+	  flex-wrap: wrap;
+	  gap: .5rem;
+	}
+
+	.vqmenu-badge {
+	  display: inline-flex;
+	  align-items: center;
+	  border: 1px solid var(--vqmenu-border);
+	  border-radius: 999px;
+	  padding: .125rem .55rem;
+	  font-size: .75rem;
+	  font-weight: 700;
+	  text-transform: uppercase;
+	  letter-spacing: .02em;
+	}
+
+	.vqmenu-badge--veg {
+	  border-color: rgba(25, 135, 84, .35);
+	}
+
+	.vqmenu-badge--gf {
+	  border-color: rgba(13, 110, 253, .35);
+	}
+
+	.vqmenu-spice {
+	  font-size: .9rem;
+	  line-height: 1;
+	}
+
+	.vqmenu-extras {
+	  border-top: 1px dashed var(--vqmenu-border);
+	  padding-top: .75rem;
+	}
+
+	.vqmenu-extraslabel {
+	  font-size: .8rem;
+	  font-weight: 700;
+	  text-transform: uppercase;
+	  letter-spacing: .03em;
+	  color: var(--vqmenu-muted);
+	  margin-bottom: .35rem;
+	}
+
+	.vqmenu-extraslist {
+	  list-style: none;
+	  padding-left: 0;
+	  display: grid;
+	  gap: .25rem;
+	}
+
+	.vqmenu-extrasitem {
+	  display: grid;
+	  grid-template-columns: 1fr auto;
+	  gap: .75rem;
+	  font-size: .95rem;
+	}
+
+	.vqmenu-extrasprice {
+	  white-space: nowrap;
+	  font-weight: 600;
+	}
+
+	/* Mobile polish */
+	@media (max-width: 575.98px) {
+	  .vqmenu-panels {
+		padding: 1rem;
+	  }
+	}
+	
+	.vqmenu-footnotes {
+	  border-top: 1px dashed var(--vqmenu-border);
+	  padding-top: 1rem;
+	}
+
+	.vqmenu-footnotes-title {
+	  font-size: .95rem;
+	  font-weight: 800;
+	  letter-spacing: .02em;
+	  text-transform: uppercase;
+	  color: var(--vqmenu-muted);
+	}
+
+	.vqmenu-footnotes-list {
+	  padding-left: 1.1rem;
+	  color: var(--vqmenu-muted);
+	  font-size: .95rem;
+	  line-height: 1.35;
+	}
+
+	.vqmenu-footnotes-item + .vqmenu-footnotes-item {
+	  margin-top: .4rem;
+	}
+
 	
 	
 	/* ~~~~~~~~~~~~~~~~~~~~~~
