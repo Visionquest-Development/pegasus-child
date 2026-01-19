@@ -18,12 +18,12 @@
 			<?php
 				$current_host = wp_parse_url( home_url(), PHP_URL_HOST );
 				$subs = [
-					'Uptown Life Group' => 'https://uptownlifegroup.com',
-					'The Loft'   => 'https://theloft.com',
-					'Mabellas'   => 'https://mabellas.com',
-					'Salt Cellar'=> 'https://saltcellar.com',
-					'Mix Market' => 'https://themixmarket.com',
-					'Tommy G\'s' => 'https://tommygs.com',
+					'Uptown Life Group' => '//uptownlifegroup.com',
+					'The Loft'   => '//theloft.com',
+					'Mabellas'   => '//mabellas.com',
+					'Salt Cellar'=> '//saltcellar.com',
+					'Mix Market' => '//themixmarket.com',
+					'Tommy G\'s' => '//tommygs.com',
 				];
 				$index = 0;
 				$total = count( $subs );
@@ -53,12 +53,12 @@
 				<?php
 					$current_host = wp_parse_url( home_url(), PHP_URL_HOST );
 					$subs = [
-						'Uptown Life Group' => 'https://uptownlifegroup.com',
-						'The Loft'    => 'https://theloft.com',
-						'Mabellas'    => 'https://mabellas.com',
-						'Salt Cellar' => 'https://saltcellar.com',
-						'Mix Market'  => 'https://themixmarket.com',
-						'Tommy G\'s'  => 'https://tommygs.com',
+						'Uptown Life Group' => '//uptownlifegroup.com',
+						'The Loft'    => '//theloft.com',
+						'Mabellas'    => '//mabellas.com',
+						'Salt Cellar' => '//saltcellar.com',
+						'Mix Market'  => '//themixmarket.com',
+						'Tommy G\'s'  => '//tommygs.com',
 					];
 					foreach ( $subs as $label => $url ) {
 						$link_host = wp_parse_url( $url, PHP_URL_HOST );
