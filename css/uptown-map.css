@@ -1,303 +1,528 @@
 /* Uptown Life Group Restaurant Map Styles */
 
 .uptown-restaurant-map {
-    font-family: Arial, sans-serif;
-    /* background-color: #f5f5f5; */
-    margin-bottom: 30px;
+  font-family: Arial, sans-serif;
+  margin-bottom: 30px;
+}
+
+/* ================================
+   TOP NAVIGATION - Above the map
+   ================================ */
+.uptown-restaurant-map .top-nav {
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px 8px 0 0;
+}
+
+.uptown-restaurant-map .nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.uptown-restaurant-map .nav-header-content {
+  flex: 1;
+  min-width: 200px;
+}
+
+.uptown-restaurant-map .nav-title {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.uptown-restaurant-map .nav-description {
+  color: #666;
+  margin: 5px 0 0 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.uptown-restaurant-map .nav-buttons {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.uptown-restaurant-map .reset-view {
+  background: #2196F3;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.uptown-restaurant-map .reset-view:hover {
+  background: #1976D2;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+}
+
+/* ================================
+   RESTAURANT GRID
+   ================================ */
+.uptown-restaurant-map .restaurant-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.uptown-restaurant-map .restaurant-card {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid #e0e0e0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.uptown-restaurant-map .restaurant-card:hover {
+  background-color: #f5f5f5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border-color: #ccc;
+}
+
+.uptown-restaurant-map .restaurant-card.active {
+  background-color: #e3f2fd;
+  border-color: #2196F3;
+}
+
+.uptown-restaurant-map .restaurant-image {
+  width: 80px;
+  height: 60px;
+  border-radius: 6px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  flex-shrink: 0;
+  background-color: #f0f0f0;
+}
+
+.uptown-restaurant-map .restaurant-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.uptown-restaurant-map .restaurant-name {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.uptown-restaurant-map .restaurant-address {
+  color: #666;
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+
+.uptown-restaurant-map .restaurant-phone {
+  color: #888;
+  font-size: 11px;
+}
+
+.uptown-restaurant-map .color-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 6px;
+  flex-shrink: 0;
+}
+
+/* ================================
+   MAP WRAPPER
+   ================================ */
+.uptown-restaurant-map .map-wrapper {
+  position: relative;
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+}
+
+.uptown-restaurant-map #uptown-map {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+}
+
+/* ================================
+   MAP INTERACTION OVERLAY (Desktop)
+   ================================ */
+.uptown-restaurant-map .map-interaction-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.uptown-restaurant-map .map-interaction-overlay span {
+  background: rgba(255, 255, 255, 0.95);
+  color: #333;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+  transition: transform 0.2s ease;
+}
+
+.uptown-restaurant-map .map-interaction-overlay:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.uptown-restaurant-map .map-interaction-overlay:hover span {
+  transform: scale(1.05);
+}
+
+.uptown-restaurant-map .map-interaction-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Visual indicator when map is interactive */
+.uptown-restaurant-map .map-wrapper.interactive {
+  box-shadow: 0 0 0 3px #2196F3;
+}
+
+/* ================================
+   INFO PANEL POPUP - Inside Map
+   ================================ */
+.uptown-restaurant-map .uptown-info-panel {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  max-width: 450px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  display: none;
+  overflow: hidden;
+  -webkit-animation: slideUp 0.3s ease;
+          animation: slideUp 0.3s ease;
+}
+
+@-webkit-keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .uptown-restaurant-map .container {
-    display: flex;
-    flex-direction: column;
-  
-    position: relative; /* Add positioning context */
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .uptown-restaurant-map .top-nav {
-    background-color: transparent; /* Remove solid background */
-    padding: 15px;
-    position: absolute; /* Position above the map */
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 10; /* Ensure it's above the map */
-    box-shadow: none; /* Remove shadow */
-    border-bottom: none; /* Remove border */
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .uptown-restaurant-map .map-container {
-    flex: 1;
-    position: relative;
-    height: 100%;
-    z-index: 1; /* Lower than top-nav */
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .uptown-restaurant-map #map {
-    width: 100%;
-    height: 100%;
-  }
-  
-  /* Add explicit styling for the actual map container */
-  .uptown-restaurant-map #uptown-map {
-    width: 100%;
-    height: 700px;
-    min-height: 300px; /* Reduced from 500px */
-  }
-  
-  .uptown-restaurant-map h1 {
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 24px;
-  }
-  
+}
+
+.uptown-restaurant-map .uptown-info-panel.active {
+  display: flex;
+  flex-direction: row;
+}
+
+.uptown-restaurant-map .uptown-info-panel .close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-radius: 50%;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.uptown-restaurant-map .uptown-info-panel .close-btn:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.uptown-restaurant-map .panel-image {
+  width: 140px;
+  flex-shrink: 0;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.uptown-restaurant-map .panel-image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  padding: 10px;
+}
+
+.uptown-restaurant-map .panel-content {
+  flex: 1;
+  padding: 15px;
+  min-width: 0;
+}
+
+.uptown-restaurant-map .panel-content h3 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  color: #333;
+  padding-bottom: 8px;
+  border-bottom: 2px solid currentColor;
+}
+
+.uptown-restaurant-map .panel-details p {
+  margin: 4px 0;
+  font-size: 13px;
+  color: #555;
+}
+
+.uptown-restaurant-map .panel-details strong {
+  margin-right: 5px;
+}
+
+.uptown-restaurant-map .panel-description {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.4;
+  margin: 10px 0;
+}
+
+.uptown-restaurant-map .panel-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 10px 0;
+}
+
+.uptown-restaurant-map .panel-features span {
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+.uptown-restaurant-map .panel-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+}
+
+.uptown-restaurant-map .action-btn {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.uptown-restaurant-map .call-btn {
+  background: #4CAF50;
+  color: white;
+}
+
+.uptown-restaurant-map .call-btn:hover {
+  background: #43A047;
+}
+
+.uptown-restaurant-map .directions-btn {
+  background: #666;
+  color: white;
+}
+
+.uptown-restaurant-map .directions-btn:hover {
+  background: #555;
+}
+
+/* ================================
+   RESPONSIVE - Tablet
+   ================================ */
+@media (max-width: 992px) {
   .uptown-restaurant-map .restaurant-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Fixed 4-column layout instead of auto-fit */
-    gap: 10px; /* Reduced from 20px */
-    margin-top: 10px; /* Reduced from 20px */
+    grid-template-columns: repeat(2, 1fr);
   }
-  
+
+  .uptown-restaurant-map .uptown-info-panel {
+    max-width: none;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+  }
+}
+
+/* ================================
+   RESPONSIVE - Mobile
+   ================================ */
+@media (max-width: 768px) {
+  .uptown-restaurant-map .top-nav {
+    padding: 12px;
+  }
+
+  .uptown-restaurant-map .nav-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .uptown-restaurant-map .nav-buttons {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .uptown-restaurant-map .nav-buttons .reset-view {
+    flex: 1;
+    padding: 12px;
+  }
+
+  .uptown-restaurant-map .nav-title {
+    font-size: 20px;
+  }
+
+  .uptown-restaurant-map .nav-description {
+    font-size: 13px;
+  }
+
+  .uptown-restaurant-map .restaurant-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
   .uptown-restaurant-map .restaurant-card {
-    background-color: rgba(249, 249, 249, 0.7); /* Semi-transparent background */
-    backdrop-filter: blur(3px); /* Slight blur effect */
-    -webkit-backdrop-filter: blur(3px); /* For Safari */
-    border-radius: 8px;
-    padding: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 2px solid rgba(255, 255, 255, 0.3); /* Translucent border */
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-    text-align: left;
+    flex-direction: column;
+    text-align: center;
+    padding: 8px;
   }
-  
+
   .uptown-restaurant-map .restaurant-image {
-    width: 100px; /* Reduced from 160px */
-    height: 70px; /* Reduced from 100px */
-    border-radius: 6px; /* Reduced from 12px */
+    width: 100%;
+    height: 50px;
     -o-object-fit: contain;
        object-fit: contain;
-    flex-shrink: 0;
-    background-color: #f0f0f0;
   }
-  
-  .uptown-restaurant-map .restaurant-info {
-    flex: 1;
-  }
-  
-  .uptown-restaurant-map .restaurant-card:hover {
-    background-color: rgba(255, 255, 255, 0.85);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  }
-  
-  .uptown-restaurant-map .restaurant-card.active {
-    background-color: rgba(227, 242, 253, 0.85); /* Semi-transparent blue */
-    border-color: rgba(33, 150, 243, 0.7); /* Semi-transparent blue border */
-  }
-  
-  .uptown-restaurant-map .nav-header {
-    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-  }
-  
-  .uptown-restaurant-map .nav-title {
-    margin: 0;
-    font-size: 24px; /* Reduced from 28px */
-    color: #333;
-  }
-  
-  .uptown-restaurant-map .nav-description {
-    color: #666;
-    margin: 3px 0 0 0; /* Reduced from 5px */
-    font-size: 14px; /* Reduced from 16px */
-    line-height: 1.3;
-  }
-  
+
   .uptown-restaurant-map .restaurant-name {
-    font-weight: bold;
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
-  
-  .uptown-restaurant-map .restaurant-address {
-    color: #666;
-    font-size: 14px;
-    margin-bottom: 5px;
-  }
-  
-  .uptown-restaurant-map .restaurant-phone {
-    color: #888;
     font-size: 12px;
-  }
-  
-  .uptown-restaurant-map .color-indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 8px;
-  }
-  
-  .uptown-restaurant-map .info-panel {
-    position: absolute;
-    top: auto;
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    padding: 12px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    max-width: none;
-    height: auto;
-    max-height: 180px;
-    overflow-y: auto;
-    display: none;
-    z-index: 20;
-    transform: translateY(10px);
-    opacity: 0;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-  }
-  
-  /* Restore the active state class that was removed */
-  .uptown-restaurant-map .info-panel.active {
-    display: flex; /* Use flexbox layout */
-    flex-direction: row; /* Horizontal layout */
-    transform: translateY(0);
-    opacity: 1;
-  }
-  
-  /* Create columns for info panel content */
-  .uptown-restaurant-map #uptown-panel-content {
-    display: flex;
+    justify-content: center;
     flex-wrap: wrap;
-    width: 100%;
-    align-items: center;
-    gap: 5px;
   }
-  
-  .uptown-restaurant-map #uptown-panel-content h3 {
+
+  .uptown-restaurant-map .restaurant-address,
+  .uptown-restaurant-map .restaurant-phone {
+    font-size: 10px;
+  }
+
+  .uptown-restaurant-map .map-wrapper {
+    min-height: 350px;
+  }
+
+  /* Mobile info panel - full width card style */
+  .uptown-restaurant-map .uptown-info-panel {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    flex-direction: column;
+  }
+
+  .uptown-restaurant-map .panel-image {
     width: 100%;
-    margin: 0 0 5px 0;
+    height: 100px;
+  }
+
+  .uptown-restaurant-map .panel-content {
+    padding: 12px;
+  }
+
+  .uptown-restaurant-map .panel-content h3 {
     font-size: 16px;
-    padding-bottom: 5px;
   }
-  
-  .uptown-restaurant-map #uptown-panel-content > div {
-    flex: 1;
-    min-width: 150px;
-    padding-right: 10px;
-  }
-  
-  .uptown-restaurant-map #uptown-panel-content p {
-    margin: 2px 0;
-    font-size: 13px;
-    line-height: 1.2;
-  }
-  
-  .uptown-restaurant-map #uptown-panel-content strong {
+
+  .uptown-restaurant-map .panel-details p {
     font-size: 12px;
   }
-  
-  /* Make the features more compact */
-  .uptown-restaurant-map #uptown-panel-content span {
-    font-size: 10px !important;
-    padding: 1px 4px !important;
-    margin: 1px !important;
-    display: inline-block;
+
+  .uptown-restaurant-map .panel-description {
+    font-size: 12px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
-  
-  /* Compact button layout */
-  .uptown-restaurant-map #uptown-panel-content > div:last-child {
-    width: 100%;
-    flex-basis: 100%;
-    text-align: center;
-    padding-top: 5px;
-    margin-top: 3px;
-    border-top: 1px solid rgba(0,0,0,0.05);
+
+  .uptown-restaurant-map .panel-features {
+    display: none; /* Hide features on mobile for space */
   }
-  
-  /* Make buttons more compact */
-  .uptown-restaurant-map #uptown-panel-content button {
-    padding: 5px 12px !important;
-    font-size: 12px !important;
+
+  .uptown-restaurant-map .panel-actions {
+    margin-top: 10px;
   }
-  
-  .uptown-restaurant-map .close-btn {
-    float: right;
-    cursor: pointer;
-    font-size: 18px;
-    color: #666;
+
+  .uptown-restaurant-map .action-btn {
+    padding: 10px;
+    font-size: 14px;
   }
-  
-  .uptown-restaurant-map .close-btn:hover {
-    color: #333;
+}
+
+/* ================================
+   RESPONSIVE - Small Mobile
+   ================================ */
+@media (max-width: 480px) {
+  .uptown-restaurant-map .restaurant-grid {
+    grid-template-columns: 1fr;
   }
-  
-  .uptown-restaurant-map .reset-view {
-    background: #2196F3;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-size: 16px;
-    font-weight: 500;
+
+  .uptown-restaurant-map .restaurant-card {
+    flex-direction: row;
+    text-align: left;
   }
-  
-  .uptown-restaurant-map .reset-view:hover {
-    background: #1976D2;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+
+  .uptown-restaurant-map .restaurant-image {
+    width: 60px;
+    height: 45px;
   }
-  
-  /* Media query for responsive layout */
-  @media (max-width: 992px) {
-    .uptown-restaurant-map .restaurant-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+
+  .uptown-restaurant-map .restaurant-name {
+    justify-content: flex-start;
   }
-  
-  @media (max-width: 768px) {
-    .uptown-restaurant-map .restaurant-grid {
-      grid-template-columns: 1fr;
-    }
-  
-    .uptown-restaurant-map .restaurant-card {
-        padding: 15px;
-        flex-direction: column;
-        text-align: center;
-    }
-  
-    .uptown-restaurant-map .restaurant-image {
-        width: 100%;
-        height: 100px;
-        -o-object-fit: contain;
-           object-fit: contain;
-        background-color: #f0f0f0;
-    }
-  
-    .uptown-restaurant-map .nav-title {
-        font-size: 24px;
-    }
-  
-    .uptown-restaurant-map .info-panel {
-        top: 10px;
-        right: 10px;
-        left: 10px;
-        max-width: none;
-    }
-  }
-  
+}

@@ -31,7 +31,7 @@
 		z-index: -2;
 		opacity: .08
 	}
-	
+
 	/* ================================
 	   GRADIENT HEADLINE
 	  ================================ */
@@ -59,11 +59,11 @@
 		color: transparent !important;
 		text-transform: uppercase;
 	}
-	
+
 	/* ================================
 	   GRADIENT BORDER
 	  ================================ */
-	  
+
 	header,
 	.ulg-heading-border
 	{
@@ -83,27 +83,27 @@
 	  /* 3. The Magic: Slice set to 1 makes it stretch properly */
 	  border-image-slice: 1;
 	}
-	
+
 	.btn-primary {
 		background-color: #92712A !important;
 		border-color: #92712A !important;
 	}
-	
+
 	.btn-primary:hover {
 		background-color: white !important;
 		border-color: #92712A !important;
 		color: black !important;
 	}
-	
+
 	.btn-outline-primary {
 		border-color: #92712A !important;
 	}
-	
+
 	.btn-outline-primary:hover {
 		background-color: #92712A !important;
 	}
-	
-	
+
+
 	.nocomments { display: none; }
 
 	/*~~~~~~~~~~~~~~~~~~~~~
@@ -112,51 +112,73 @@
 	  #logo {
 		width: 330px;
 	  }
-		
+
 		.ulg-brand-bar {
 			background: #0F172A;
 		}
-		
+
+
+
+	.ulg-brand-logo-img {
+		width: 200px;
+    height: auto;
+    background: white;
+    padding: 5px 7px;
+    border-radius: 5px;
+	}
+
 		.ulg-brand-bar a {
 			text-decoration: none;
 		}
-		
+
 		.ulg-brand-bar a:hover {
 			text-decoration: underline;
 		}
-		
+
 		.brandbar-nav a::after {
 		  content: "|";
 		  color: white;
 		  margin-left: 10px; /* Adjusts space between text and pipe */
 		}
-		
+
 		.brandbar-nav a:last-child::after {
 		  content: "";
 		  color: white;
 
 		}
-		
+
 		.ulg-brand-bar .dropdown {
 			background: white;
 			border-radius: 8px;
 			padding: 0 7px;
 		}
-		
+
+	.ulg-dropdown-logo {
+		max-height: 24px;
+		width: auto;
+		display: inline-block;
+	}
+
+	@media (max-width: 767px) {
+		.ulg-brand-logo {
+			display: none;
+		}
+	}
+
 		.ulg-brand-bar .dropdown-toggle::after {
 			color: black !important;
 		}
-		
+
 		#ulgDropdown {
 			padding: 2px !important;
 			margin-bottom: 0 !important;
-			
+
 		}
 
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ NAVIGATION ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-	
+
 
 
 	/*~~~~~~~~~~~~~~~~~~~~~
@@ -172,16 +194,16 @@
 	footer #menu-main-nav-1 a,
 	footer #menu-brands a
 	{
-		
+
 		color: white;
 	}
-	
+
 	footer a.active { color: #92712A !important; }
-	
+
 	#block-7 img {
 		width: 50%;
 	}
-	
+
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
@@ -213,7 +235,7 @@
 		font-size: 1.1rem;
 		color: #0B0D15;
 		line-height: 1.65;
-		
+
 	}
 
 	/* Responsive tweak */
@@ -223,15 +245,15 @@
 		}
 	}
 
-	
+
 	.background-white {
 		background: white;
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 	/* ============================================
 	   ulg DOUBLE BORDER SECTION WRAPPER
 	   ============================================ */
@@ -244,7 +266,7 @@
 		color: black;
 		background: white;
 	}
-	
+
 	.ulg-home-section .ulg-home-section-text:hover {
 		border: 4px solid #92712A;
 	}
@@ -261,7 +283,7 @@
 		pointer-events: none;
 		z-index: 2;
 	}
-	
+
 	/* Inner border hover */
 	.ulg-home-section .ulg-home-section-text:hover::before {
 		border-color: #92712A; /* INNER border gold on hover */
@@ -276,7 +298,8 @@
 	.ulg-home-section-image img {
 		width: 100%;
 		height: 100%;
-		object-fit: cover;
+		-o-object-fit: cover;
+		   object-fit: cover;
 		display: block;
 	}
 
@@ -289,10 +312,10 @@
 	.ulg-btn {
 		background-color: #92712A !important;
 	}
-	
+
 	.ulg-section-btn {
 		color: #fff !important;
-		
+
 		padding: 0.65rem 1.75rem;
 		font-weight: 600;
 		letter-spacing: 0.08em;
@@ -325,23 +348,23 @@
 	}
 
 
-	.home-section-container { 
-		
-		
+	.home-section-container {
+
+
 	}
-	
-	
+
+
 	.ulg-home-section-image {
-		/* max-height: 700px; */ 
+		/* max-height: 700px; */
 		background-size: cover;
 		background-position: center;
 		/* background-size: 100% 100%; */
 		background-repeat: no-repeat;
 		min-height: 500px;
 	}
-	
-	
-	
+
+
+
 	.location-gallery__grid {
 		display: flex;
 		flex-wrap: wrap;
@@ -351,20 +374,20 @@
 	.location-gallery__item {
 		flex: 1 1 200px;
 	}
-	
+
 
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~SITEMAP~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
-	
+
 	.ulg-location-card {
 		border: 2px solid black;
 		padding: 20px;
 		height: 100%;
 		text-align: center;
 	}
-	
-	
+
+
 	/* --- GRID WRAPPER --- */
 	.ulg-locations-grid {
 	  display: grid;
@@ -512,19 +535,19 @@
 	  }
 	}
 
-	
-	
-	
-	
+
+
+
+
 	.pegasus-toggle {
 		background: white;
 	}
-	
-	
+
+
 	.pegasus-trigger {
-		
+
 	}
-	
+
 	.pegasus-trigger {
 	  position: relative;
 	  display: inline-block;
@@ -540,10 +563,10 @@
 	  bottom: 0;
 	  height: 5px;   /* Thickness */
 	  width: 100%;   /* Change this to 50% for a half-width underline */
-	  
+
 	  /* The 6-color gradient background */
 	  background: linear-gradient(
-		to right, 
+		to right,
 		#4D0D13,
 		#AF2A24,
 		#F25D3B,
@@ -551,23 +574,23 @@
 		#F7D580,
 		#F5F2EB
 	  );
-	  
+
 		/*
-	  
+
 		background: linear-gradient(
-		  to right, 
-		  red 0% 16.6%, 
-		  orange 16.6% 33.2%, 
-		  yellow 33.2% 49.8%, 
-		  green 49.8% 66.4%, 
-		  blue 66.4% 83%, 
+		  to right,
+		  red 0% 16.6%,
+		  orange 16.6% 33.2%,
+		  yellow 33.2% 49.8%,
+		  green 49.8% 66.4%,
+		  blue 66.4% 83%,
 		  purple 83% 100%
 		);
 		*/
-		
+
 	}
-	
-	
+
+
 	#gform_wrapper_2 {
 		background: white;
 		border: 1px solid #777;
@@ -576,7 +599,7 @@
 		margin-top: 2rem;
 		margin-bottom: 2rem;
 	}
-	
+
 
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~WOOCOMMERCE~~~~~
@@ -590,7 +613,7 @@
 	}
 
 	@media only screen and ( min-width: 981px ) {
-    
+
 	}
 
 	@media only screen and (max-width: 980px) {

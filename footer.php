@@ -31,12 +31,12 @@
 					endif;
 				?>
 
-				<section class="d-none">
+				<section class="">
 
 					<?php echo do_shortcode('[pegasus_logo_slider id="86"]'); ?>
 
 				</section>
-				
+
 				<section class="">
 
 					<?php //echo do_shortcode('[slider][slide class="testing"]<img class="alignnone size-full wp-image-12" src="https://visionquestdev.com/ulg/wp-content/uploads/2025/12/slide1-scaled.png" alt="Gold-and-Black-Logo">[/slide][slide]<img class="alignnone size-full wp-image-12" src="https://visionquestdev.com/ulg/wp-content/uploads/2025/12/slide3-scaled.png" alt="Gold-and-Black-Logo">[/slide][slide]<img class="alignnone size-full wp-image-12" src="https://visionquestdev.com/ulg/wp-content/uploads/2025/12/slide2-scaled.png" alt="Gold-and-Black-Logo">[/slide][/slider]'); ?>
