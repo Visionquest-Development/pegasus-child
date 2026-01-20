@@ -54,13 +54,13 @@
 				$final_page_header_option = 'off';
 			}
 		?>
-		
+
 		<section>
 			<?php
 				//echo do_shortcode('[slider][slide class="testing"]<img class="alignnone size-full wp-image-12" src="https://visionquestdev.com/ulg/wp-content/uploads/2025/12/slide1-scaled.png" alt="Gold-and-Black-Logo">[/slide][slide]<img class="alignnone size-full wp-image-12" src="https://visionquestdev.com/ulg/wp-content/uploads/2025/12/slide3-scaled.png" alt="Gold-and-Black-Logo">[/slide][slide]<img class="alignnone size-full wp-image-12" src="https://visionquestdev.com/ulg/wp-content/uploads/2025/12/slide2-scaled.png" alt="Gold-and-Black-Logo">[/slide][/slider]');
 			?>
 		</section>
-		
+
 		<section class="upl-hero-intro ">
 			<div class="container text-center">
 				<h2 class="ulg-gradient-heading">
@@ -68,14 +68,14 @@
 				</h2>
 
 				<p class="upl-hero-text">
-					Welcome to the Uptown Life Group! We currently have 5 unique concepts located in 
-					Columbus, GA. Stop by and visit one of our restaurants today for great food, 
+					Welcome to the Uptown Life Group! We currently have 5 unique concepts located in
+					Columbus, GA. Stop by and visit one of our restaurants today for great food,
 					hospitality, and entertainment.
 				</p>
 			</div>
 		</section>
-		
-		
+
+
 		<div class="<?php echo $final_container_class; ?>">
 		<!-- Example row of columns -->
 			<div class="">
@@ -135,9 +135,9 @@
 			</div><!--end row -->
 		</div><!-- end container -->
 
-		
+
 		<main id="primary" class="site-main ulg-home">
-			
+
 			<?php if ( have_posts() ) : ?>
 				<?php while ( have_posts() ) : the_post(); ?>
 
@@ -207,9 +207,9 @@
 											<div class="col-lg-8">
 												<?php if ( $image_url ) : ?>
 													<div class="ulg-home-section-image " style="background-image: url('<?php echo esc_url( $image_url ); ?>');">
-													
-														
-													
+
+
+
 													</div>
 												<?php endif; ?>
 											</div>
@@ -220,8 +220,8 @@
 											<div class="col-lg-8 order-lg-1 order-2">
 												<?php if ( $image_url ) : ?>
 													<div class="ulg-home-section-image  " style="background-image: url('<?php echo esc_url( $image_url ); ?>');">
-														
-														
+
+
 													</div>
 												<?php endif; ?>
 											</div>
@@ -278,13 +278,13 @@
 			<?php endif; ?>
 
 		</main>
-		
-		
 
-		<section class="py-5 mb-5 d-none d-lg-block">
+
+
+		<section class="py-5 mb-5 d-none d-md-block">
 			<?php echo do_shortcode( '[uptown_restaurant_map height="600px"]' ); ?>
 		</section>
 
-		
+
 	</div><!-- end page wrap -->
     <?php get_footer(); ?>
