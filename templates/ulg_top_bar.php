@@ -1,6 +1,6 @@
 <div class=" ulg-brand-bar py-2">
 	<div class="container d-flex align-items-center justify-content-between">
-		<a class="ulg-brand-logo d-none d-md-flex align-items-center" href="<?= esc_url(home_url('/')); ?>">
+		<a class="ulg-brand-logo d-none d-lg-flex align-items-center" href="<?= esc_url(home_url('/')); ?>">
 			<img
 				src="http://uptownlifegroup.com/wp-content/uploads/2025/12/57777logo.png"
 				alt="Uptown Life Group"
@@ -14,7 +14,7 @@
 		</a>
 		*/ ?>
 
-		<nav class="brandbar-nav d-none d-md-flex align-items-center gap-2 ms-auto">
+		<nav class="brandbar-nav d-none d-lg-flex align-items-center gap-2 ms-auto">
 			<?php
 				$current_host = wp_parse_url( home_url(), PHP_URL_HOST );
 				$subs = [
@@ -39,7 +39,7 @@
 				}
 			?>
 		</nav>
-		<div class="dropdown d-block d-md-none mx-auto">
+		<div class="dropdown d-block d-lg-none mx-auto">
 			<button class="btn btn-link ulg-gradient-heading text-decoration-none dropdown-toggle " type="button" id="ulgDropdown" data-bs-toggle="dropdown" aria-expanded="false">
 				<img
 					src="http://uptownlifegroup.com/wp-content/uploads/2025/12/57777logo.png"
