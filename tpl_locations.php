@@ -113,11 +113,11 @@
 
 			</div><!--end row -->
 		</div><!-- end container -->
-		
-		
-		
+
+
+
 		<div class="container ulg-locations-wrapper">
-			<h1 class="ulg-heading text-center mb-5 mt-1 pb-5"><?php the_title(); ?></h1>
+			<h1 class="ulg-heading ulg-gradient-heading text-center mb-5 mt-1 pb-5"><?php the_title(); ?></h1>
 			<div class="row">
 
 				<?php
@@ -270,7 +270,7 @@
 
 			</div><!-- /.row -->
 		</div><!-- /.container -->
-		
-		
+
+
 	</div><!-- end page wrap -->
     <?php get_footer(); ?>
