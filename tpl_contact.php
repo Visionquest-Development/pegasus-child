@@ -55,6 +55,29 @@
 			}
 		?>
 
+		<section class="py-5 mb-5 ulg-contact-intro">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-10">
+						<div class="row align-items-center g-4">
+							<div class="col-md-6">
+								<h2 class="mb-3">Contact Us</h2>
+								<p class="mb-3">Uptown Life Group is a collection of restaurants and events rooted in Columbus, Georgia. We focus on great food, welcoming spaces, and memorable experiences that bring the community together.</p>
+								<p class="mb-4">Explore our venues and concepts on the <a href="/our-concepts/">locations page</a>, and reach out below for details about our events or restaurants.</p>
+								<a class="btn btn-outline-primary" href="/our-concepts/">View Our Locations</a>
+							</div>
+							<div class="col-md-6">
+								<div class="ulg-contact-card p-4">
+									<h3 class="h5 mb-2">Events & Restaurants</h3>
+									<p class="mb-0">Tell us about your event, partnership, or restaurant inquiry and our team will follow up with the right details.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
 
 		<div class="<?php echo $final_container_class; ?>">
 		<!-- Example row of columns -->

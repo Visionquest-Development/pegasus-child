@@ -9,17 +9,8 @@
 
 // Enqueue scripts and styles for the restaurant map
 function uptown_restaurant_map_enqueue_scripts() {
-    // Check if we're on the homepage or if the shortcode is used on the current page
-    $should_enqueue = is_front_page() || is_home();
+    // Only enqueue when the map shortcode is present on the current page.
 
-    if (!$should_enqueue) {
-        global $post;
-        if (is_a($post, 'WP_Post')) {
-            $should_enqueue = has_shortcode($post->post_content, 'uptown_restaurant_map');
-        }
-    }
-
-    if ($should_enqueue) {
         // Mapbox GL JS
         wp_enqueue_script('mapbox-gl-js', 'https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.js', array(), '3.0.1', true);
         wp_enqueue_style('mapbox-gl-css', 'https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.css', array(), '3.0.1');
@@ -35,7 +26,7 @@ function uptown_restaurant_map_enqueue_scripts() {
             'mapbox_token' => 'pk.eyJ1IjoiamltYm9vYnJpZW4iLCJhIjoiY21kZjlwcXZ2MGFxYTJqcHQwdHh3ajY2cCJ9.tD_YFIg-n5zAOnug76yDOg',
             'theme_url' => get_stylesheet_directory_uri()
         ));
-    }
+
 }
 add_action('wp_enqueue_scripts', 'uptown_restaurant_map_enqueue_scripts');
 

@@ -179,6 +179,30 @@
 	~~~~~~ NAVIGATION ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
 
+	.ulg-contact-intro {
+		background: #F5F2EB;
+		border-top: 1px solid #e8ddcf;
+		border-bottom: 1px solid #e8ddcf;
+	}
+
+	.ulg-contact-intro h2 {
+		color: #0F172A;
+	}
+
+	.ulg-contact-intro a {
+		color: #92712A;
+	}
+
+	.ulg-contact-intro a:hover {
+		color: #0F172A;
+	}
+
+	.ulg-contact-card {
+		background: #ffffff;
+		border: 1px solid #d6d6d6;
+		box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+	}
+
 
 
 	/*~~~~~~~~~~~~~~~~~~~~~
