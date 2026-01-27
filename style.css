@@ -9,30 +9,30 @@
 */
 
 /*@import url("../pegasus/style.css");*/
-	
-	
+
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
+
 	body.admin-bar .the-default-third-nav #mega-menu.fixed-top {
 		    top: 78px !important;
 	}
-	
+
 	body.admin-bar .the-default-third-nav.on #mega-menu.fixed-top {
 		    top: 32px !important;
 	}
-	
+
 	#mega-menu {
 		    top: 44px !important;
 	}
-	
+
 	.the-default-third-nav.on #mega-menu {
 		    top: 0 !important;
 	}
-	
-	
-	
+
+
+
 	.ulg-gradient-heading
 	{
 		font-size: 5rem;
@@ -55,71 +55,93 @@
 		color: transparent !important;
 		text-transform: uppercase;
 	}
-	
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ HEADER ~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-	#logo {
-		width: 200px;
-	}
-	
-	.ulg-brand-bar {
+  #logo {
+		width: 220px;
+	  }
+
+		.ulg-brand-bar {
 			background: #0F172A;
 		}
-		
+
+
+
+	.ulg-brand-logo-img {
+		width: 200px;
+    height: auto;
+    background: white;
+    padding: 5px 7px;
+    border-radius: 5px;
+	}
+
 		.ulg-brand-bar a {
 			text-decoration: none;
 		}
-		
+
 		.ulg-brand-bar a:hover {
 			text-decoration: underline;
 		}
-		
+
 		.brandbar-nav a::after {
 		  content: "|";
 		  color: white;
 		  margin-left: 10px; /* Adjusts space between text and pipe */
 		}
-		
+
 		.brandbar-nav a:last-child::after {
 		  content: "";
 		  color: white;
 
 		}
-		
+
 		.ulg-brand-bar .dropdown {
 			background: white;
 			border-radius: 8px;
 			padding: 0 7px;
 		}
-		
+
+	.ulg-dropdown-logo {
+		max-height: 24px;
+		width: auto;
+		display: inline-block;
+	}
+
+	@media (max-width: 767px) {
+		.ulg-brand-logo {
+			display: none;
+		}
+	}
+
 		.ulg-brand-bar .dropdown-toggle::after {
 			color: black !important;
 		}
-		
+
 		#ulgDropdown {
 			padding: 2px !important;
 			margin-bottom: 0 !important;
-			
+
 		}
-	
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ NAVIGATION ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
 
-	
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ FOOTER ~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-	
+
 	.restaurant-contact h2 {
 		font-size: 18px;
 	}
-	
+
 	footer {
 		padding-top: 20px;
 	}
-	
+
 	.mabellas-social {
 		margin: 20px 0;
 		padding: 0;
@@ -140,25 +162,25 @@
 	}
 
 	.mabellas-social li a:hover {
-		
+
 		color: #92712A;
 	}
-	
+
 	#menu-footer-nav-1 {
 		flex-direction: column;
 	}
-	
+
 	footer a {
 		color: white;
 	}
-	
+
 	footer a.nav-link,
 	footer .widget-title {
 		color: white;
 		text-align: center;
 	}
-	
-	
+
+
 	/* ================================
    MABELLAS NEWSLETTER SECTION
    ================================ */
@@ -227,6 +249,22 @@
 		font-size: 0.95rem;
 	}
 
+	.mabellas-newsletter-input::-webkit-input-placeholder {
+		color: #777;
+	}
+
+	.mabellas-newsletter-input::-moz-placeholder {
+		color: #777;
+	}
+
+	.mabellas-newsletter-input:-ms-input-placeholder {
+		color: #777;
+	}
+
+	.mabellas-newsletter-input::-ms-input-placeholder {
+		color: #777;
+	}
+
 	.mabellas-newsletter-input::placeholder {
 		color: #777;
 	}
@@ -281,27 +319,27 @@
 		}
 	}
 
-	
+
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ HOME PAGE ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
+
+
 	/* ============================================
    LOCATION BLOCK WRAPPER
    ============================================ */
-	
+
 	.home-locations {
 		overflow: hidden;
 	}
-	
+
 	.mabellas-location-card {
 		margin-bottom: 3rem;
 		border: 4px solid white;      /* Outer border */
-		
+
 	}
 
 	/* ============================================
@@ -316,13 +354,13 @@
 		background-size: cover;
 	}
 
-	
+
 
 	/* Hover (optional gold border highlight) */
 	.mabellas-location-image:hover {
 		border-color: #92712A;
 	}
-	
+
 
 	/* ============================================
 	   TEXT AREA
@@ -369,15 +407,15 @@
 		}
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
 	/* ============================================
 	   MABELLAS DOUBLE BORDER SECTION WRAPPER
 	   ============================================ */
@@ -388,7 +426,7 @@
 		padding: 0;
 		overflow: hidden;
 	}
-	
+
 	.mabellas-home-section .mabellas-home-section-text:hover {
 		border: 4px solid #92712A;
 	}
@@ -405,7 +443,7 @@
 		pointer-events: none;
 		z-index: 2;
 	}
-	
+
 	/* Inner border hover */
 	.mabellas-home-section .mabellas-home-section-text:hover::before {
 		border-color: #92712A; /* INNER border gold on hover */
@@ -420,7 +458,8 @@
 	.mabellas-home-section-image img {
 		width: 100%;
 		height: 100%;
-		object-fit: cover;
+		-o-object-fit: cover;
+		   object-fit: cover;
 		display: block;
 	}
 
@@ -433,10 +472,10 @@
 	.mabellas-btn {
 		background-color: #92712A !important;
 	}
-	
+
 	.mabellas-section-btn {
 		color: #fff !important;
-		
+
 		padding: 0.65rem 1.75rem;
 		font-weight: 600;
 		letter-spacing: 0.08em;
@@ -469,19 +508,19 @@
 	}
 
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~SITEMAP~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
-	
+
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~WOOCOMMERCE~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -490,21 +529,21 @@
 	~~~~~MEDIA QUERIES~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 	@media only screen and ( min-width: 1100px ) and ( max-width: 1405px) {
-		
+
 	}
-	
+
 	@media only screen and ( min-width: 981px ) {
-		
+
 	}
-		
+
 	@media only screen and (max-width: 980px) {
-		
+
 	}
-	
+
 	@media only screen and ( max-width: 767px ) {
-		
+
 	}
-	
+
 	@media only screen and (max-width: 479px) {
-		
+
 	}
