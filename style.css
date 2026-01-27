@@ -41,52 +41,77 @@
 		color: transparent !important;
 		text-transform: uppercase;
 	}
-	
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	.ulg-brand-bar {
+  #logo {
+		width: 330px;
+	  }
+
+		.ulg-brand-bar {
 			background: #0F172A;
 		}
-		
+
+
+
+	.ulg-brand-logo-img {
+		width: 200px;
+    height: auto;
+    background: white;
+    padding: 5px 7px;
+    border-radius: 5px;
+	}
+
 		.ulg-brand-bar a {
 			text-decoration: none;
 		}
-		
+
 		.ulg-brand-bar a:hover {
 			text-decoration: underline;
 		}
-		
+
 		.brandbar-nav a::after {
 		  content: "|";
 		  color: white;
 		  margin-left: 10px; /* Adjusts space between text and pipe */
 		}
-		
+
 		.brandbar-nav a:last-child::after {
 		  content: "";
 		  color: white;
 
 		}
-		
+
 		.ulg-brand-bar .dropdown {
 			background: white;
 			border-radius: 8px;
 			padding: 0 7px;
 		}
-		
+
+	.ulg-dropdown-logo {
+		max-height: 24px;
+		width: auto;
+		display: inline-block;
+	}
+
+	@media (max-width: 767px) {
+		.ulg-brand-logo {
+			display: none;
+		}
+	}
+
 		.ulg-brand-bar .dropdown-toggle::after {
 			color: black !important;
 		}
-		
+
 		#ulgDropdown {
 			padding: 2px !important;
 			margin-bottom: 0 !important;
-			
+
 		}
-		
-		
-	
+
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ HEADER ~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
@@ -94,13 +119,13 @@
 		margin-top: 3rem;
 		margin-bottom: 3rem;
 	}
-	
+
 	#header {
 		background: white;
-		
+
 		background-image: url(https://images.getbento.com/accounts/415b6c14ebfac54073234e04f7977c09/media/images/46451nav-pattern-seamless.jpg);
 	}
-	
+
 	@media (min-width: 769px) {
 		.site-header-desktop {
 			margin: 0rem 0 0rem 1rem;
@@ -108,60 +133,60 @@
 			border-right: 2px solid #141414;
 		}
 	}
-	
+
 	.header-hr {
 		border: 2px solid black;
 		opacity: 0.9;
 	}
-	
+
 	.theloft-address {
 		text-align: center;
 		color: black;
 		text-decoration: none;
 	}
-	
-	.theloft-address a {	
+
+	.theloft-address a {
 		color: black;
 		text-decoration: none;
 	}
-	
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ NAVIGATION ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
 	.sidebar-nav .navi-btn a i {
 	  background: #4a6682;
 	}
-	
+
 	.nav-sidebar-widget ul {
 		padding: 1.5rem 0;
 		flex-direction: column;
 	}
-	
+
 	/* NAV LINKS */
 	.nav-sidebar-widget ul li a {
 		text-align: left !important;
 		text-transform: uppercase;
 		color: #222;
 		font-weight: 600;
-		
+
 		text-decoration: none;
 	}
-	
+
 	.nav-sidebar-widget ul li a:hover {
 		background: #4a6682;
 		color: #222;
 	}
-	
+
 	.nav-sidebar-widget ul li a.active,
 	.nav-sidebar-widget ul li.current-menu-item a
 	{
 		color: #92712A !important;
 	}
-	
+
 	.nav-sidebar-widget ul li a.active:hover {
 		color: black !important;
 	}
-	
+
 	.btn-brand {
 		font-family: "Aclonica" !important;
 		color: #F1EBE1 !important;
@@ -173,11 +198,11 @@
 		font-weight: bold !important;
 		    padding: 8px 20px !important;
 	}
-	
+
 	.btn-brand:hover {
 		background-color: black !important;
 	}
-	
+
 
 	.pegasus-social li a {
 		background: #222;
@@ -191,35 +216,35 @@
 		vertical-align: middle;
 		display: block;
 	}
-	
+
 	.pegasus-social li a:hover {
 		background: #92712A;
 	}
-	
-	
+
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ FOOTER ~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-	
+
 	#block-7 img {
 		width: 50%;
 	}
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ HOME PAGE ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-	
+
 	.ulg-home-section-image {
-		/* max-height: 700px; */ 
+		/* max-height: 700px; */
 		background-size: cover;
 		background-position: center;
 		/* background-size: 100% 100%; */
 		background-repeat: no-repeat;
 		min-height: 500px;
 	}
-	
+
 	.ulg-home-section .ulg-home-section-text {
 		position: relative;
 		border: 4px solid black; /* Outer white border (thicker) */
@@ -229,18 +254,18 @@
 		background: white;
 		text-align: center;
 	}
-	
+
 	.ulg-home-section .ulg-home-section-text:hover {
 		border: 4px solid #92712A;
 	}
-	
+
 	.ulg-btn {
 		background-color: #92712A !important;
 	}
-	
+
 	.ulg-section-btn {
 		color: #fff !important;
-		
+
 		padding: 0.65rem 1.75rem;
 		font-weight: 600;
 		letter-spacing: 0.08em;
@@ -259,10 +284,10 @@
 	.ulg-section-btn:hover {
 		background-color: black !important;
 	}
-	
-	
-	
-	
+
+
+
+
 	/* Restaurant Menu (Bootstrap 5 + custom styling) */
 	.vqmenu {
 	  --vqmenu-radius: 14px;
@@ -409,7 +434,7 @@
 		padding: 1rem;
 	  }
 	}
-	
+
 	.vqmenu-footnotes {
 	  border-top: 1px dashed var(--vqmenu-border);
 	  padding-top: 1rem;
@@ -434,12 +459,12 @@
 	  margin-top: .4rem;
 	}
 
-	
-	
+
+
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~SITEMAP~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
-	
+
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~WOOCOMMERCE~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -448,21 +473,21 @@
 	~~~~~MEDIA QUERIES~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 	@media only screen and ( min-width: 1100px ) and ( max-width: 1405px) {
-		
+
 	}
-	
+
 	@media only screen and ( min-width: 981px ) {
-		
+
 	}
-		
+
 	@media only screen and (max-width: 980px) {
-		
+
 	}
-	
+
 	@media only screen and ( max-width: 767px ) {
-		
+
 	}
-	
+
 	@media only screen and (max-width: 479px) {
-		
+
 	}
