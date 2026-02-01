@@ -208,6 +208,12 @@
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ FOOTER ~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
+
+
+  .ulg-logo-slider .logo-slide {
+    margin: 0 1rem;
+  }
+
 	footer #menu-main-nav-1,
 	footer #menu-brands
 	{

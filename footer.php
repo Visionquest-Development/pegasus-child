@@ -33,7 +33,8 @@
 
 				<section class="">
 
-					<?php echo do_shortcode('[pegasus_logo_slider id="86"]'); ?>
+					<?php //echo do_shortcode('[pegasus_logo_slider id="86"]'); ?>
+					<?php get_template_part('templates/logo_slider'); ?>
 
 				</section>
 
