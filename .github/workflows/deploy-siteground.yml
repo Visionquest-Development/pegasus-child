@@ -63,6 +63,7 @@ jobs:
           host: ${{ matrix.site.host }}
           username: ${{ matrix.site.user }}
           key: ${{ secrets.SITEGROUND_SSH_KEY }}
+          passphrase: ${{ secrets.SITEGROUND_SSH_PASSPHRASE }}
           port: ${{ secrets.SITEGROUND_SSH_PORT }}
           script: |
             cd ${{ matrix.site.remote_path }}
