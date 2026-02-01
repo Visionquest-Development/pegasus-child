@@ -133,6 +133,9 @@
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ FOOTER ~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
+  .ulg-logo-slider .logo-slide {
+    margin: 0 1rem;
+  }
 
 	.restaurant-contact h2 {
 		font-size: 18px;

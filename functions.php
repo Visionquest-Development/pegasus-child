@@ -25,6 +25,12 @@
 
 		wp_enqueue_script( 'pegasus_child_custom_js', get_stylesheet_directory_uri() . '/js/pegasus-custom.js', array(), '', true );
 
+		wp_enqueue_style( 'slick-css' );
+		wp_enqueue_style( 'slick-theme-css' );
+		wp_enqueue_script( 'match-height-js' );
+		wp_enqueue_script( 'slick-js' );
+		wp_enqueue_script( 'pegasus-carousel-plugin' );
+
 		//wp_enqueue_script( 'matchHeight_js', get_stylesheet_directory_uri() . '/js/jquery.matchHeight-min.js', array(), '', true );
 
 
