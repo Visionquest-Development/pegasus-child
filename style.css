@@ -225,6 +225,9 @@
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ FOOTER ~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
+  .ulg-logo-slider .logo-slide {
+    margin: 0 1rem;
+  }
 
 	#block-7 img {
 		width: 50%;
