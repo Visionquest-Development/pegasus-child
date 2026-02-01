@@ -25,13 +25,19 @@
 
 		wp_enqueue_script( 'pegasus_child_custom_js', get_stylesheet_directory_uri() . '/js/pegasus-custom.js', array(), '', true );
 
+		wp_enqueue_style( 'slick-css' );
+		wp_enqueue_style( 'slick-theme-css' );
+		wp_enqueue_script( 'match-height-js' );
+		wp_enqueue_script( 'slick-js' );
+		wp_enqueue_script( 'pegasus-carousel-plugin' );
+
 		//wp_enqueue_script( 'matchHeight_js', get_stylesheet_directory_uri() . '/js/jquery.matchHeight-min.js', array(), '', true );
 
 
 	} //end function
 	add_action( 'wp_enqueue_scripts', 'pegasus_child_bootstrap_js' );
 
-	
+
 	/**
 	 * Homepage Sections metabox (CMB2) – shown only on the static front page
 	 */
@@ -40,8 +46,8 @@
 
 			$homepage_id = (int) get_option( 'page_on_front' ); // ID of the static front page
 			$about_page_id = 77; // About page ID
-			
-			
+
+
 			// Build list of page IDs this box should appear on.
 			$page_ids = array_filter( array( $homepage_id, $about_page_id ) );
 
