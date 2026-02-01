@@ -51,7 +51,6 @@
 		  ]
 		});
 
-
 	}); //end document ready function
 
 
