@@ -58,7 +58,7 @@
 		width: 330px;
 	  }
 
-    
+
 
 
       .ulg-brand-bar {
@@ -230,6 +230,10 @@
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ FOOTER ~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
+  .ulg-logo-slider .logo-slide {
+    margin: 0 1rem;
+  }
+
 	#block-7 img { width: 50%; }
 
 	footer #menu-footer-menu-1 a,
