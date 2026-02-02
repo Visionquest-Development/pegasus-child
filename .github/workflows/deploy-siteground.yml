@@ -44,17 +44,17 @@ jobs:
             branch: saltcellar_theme
             host: gvam1248.siteground.biz
             user: u1922-ox3nr6uplk2h
-            remote_path: /home/u1922-ox3nr6uplk2h/www/mabellas.com/public_html/wp-content/themes/pegasus-child
+            remote_path: /home/u1922-ox3nr6uplk2h/www/saltcellar.com/public_html/wp-content/themes/pegasus-child
           - name: The Mix Market
             branch: mixmarket_theme
             host: gvam1248.siteground.biz
             user: u1926-nm5r7lzdccbc
-            remote_path: /home/u1926-nm5r7lzdccbc/www/mabellas.com/public_html/wp-content/themes/pegasus-child
+            remote_path: /home/u1926-nm5r7lzdccbc/www/themixmarket.com/public_html/wp-content/themes/pegasus-child
           - name: TommyG's
             branch: tommygs_theme
             host: gvam1248.siteground.biz
             user: u1929-p96clzjdofva
-            remote_path: /home/u1929-p96clzjdofva/www/mabellas.com/public_html/wp-content/themes/pegasus-child
+            remote_path: /home/u1929-p96clzjdofva/www/tommygs.com/public_html/wp-content/themes/pegasus-child
     steps:
       - name: Deploy via SSH
         if: github.ref_name == matrix.site.branch
