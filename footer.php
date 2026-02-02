@@ -13,8 +13,8 @@
 						?><div id="toTop" class="fa fa-chevron-up"></div><?php
 					}
 				?>
-				
-				<section class="">
+
+				<section class="py-2 bg-white">
 
 					<?php //echo do_shortcode('[pegasus_logo_slider id="86"]'); ?>
 					<?php get_template_part('templates/logo_slider'); ?>
