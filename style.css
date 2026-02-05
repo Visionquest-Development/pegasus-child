@@ -266,6 +266,64 @@ body {
     margin-right: 10px;
   }
 
+/* FAQ accordion styling (Coblocks) */
+.wp-block-coblocks-accordion {
+  display: grid;
+  gap: 14px;
+}
+
+.wp-block-coblocks-accordion-item details {
+  border-radius: 12px;
+  background: #f2f2f2;
+  overflow: hidden;
+  border: 1px solid #e6e6e6;
+}
+
+.wp-block-coblocks-accordion-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 16px 20px;
+  font-weight: 700;
+  color: #1f1f1f;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wp-block-coblocks-accordion-item summary::-webkit-details-marker,
+.wp-block-coblocks-accordion-item summary::marker {
+  display: none;
+  content: "";
+}
+
+.wp-block-coblocks-accordion-item summary::before {
+  content: "▶";
+  font-size: 12px;
+  line-height: 1;
+  color: #1f1f1f;
+  transform: translateY(1px);
+  transition: transform 0.2s ease;
+}
+
+.wp-block-coblocks-accordion-item details[open] summary::before {
+  transform: translateY(1px) rotate(90deg);
+}
+
+.wp-block-coblocks-accordion-item details[open] summary {
+  background: #e9e9e9;
+}
+
+.wp-block-coblocks-accordion-item__content {
+  padding: 16px 20px 20px;
+  border-top: 1px solid #e1e1e1;
+  background: #ffffff;
+  color: #303030;
+}
+
+.wp-block-coblocks-accordion-item__content p {
+  margin-bottom: 10px;
+}
+
   .boxed-btn {
     background: #ff5d00;
     padding: 10px 20px;
@@ -321,6 +379,42 @@ body {
   left: -10px;
 }
 
+/* Gallery highlight cards */
+.gallery-cta-grid .gallery-cta-card {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 320px;
+  padding: 24px;
+  border-radius: 18px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  text-decoration: none;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+  transition: transform 0.2s ease;
+}
+
+.gallery-cta-grid .gallery-cta-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.65) 100%);
+}
+
+.gallery-cta-grid .gallery-cta-title {
+  position: relative;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.gallery-cta-grid .gallery-cta-card:hover {
+  transform: translateY(-4px);
+}
+
 
 
 	/* ~~~~~~~~~~~~~~~~~~~~~~
@@ -330,6 +424,42 @@ body {
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~WOOCOMMERCE~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
+
+	/* ~~~~~~~~~~~~~~~~~~~~~~
+	~~EXTERIOR GALLERY~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~*/
+	.exterior-gallery-section {
+		background-color: var(--oak-dark);
+		color: #fff;
+	}
+
+	.exterior-gallery-section h2 {
+		color: #fff;
+	}
+
+	.exterior-gallery-section p {
+		color: rgba(255, 255, 255, 0.8);
+	}
+
+	.exterior-gallery-section .masonry-grid {
+		margin: 0 -8px;
+	}
+
+	.exterior-gallery-section .masonry-grid a {
+		display: block;
+		margin: 8px;
+		overflow: hidden;
+		border-radius: 8px;
+	}
+
+	.exterior-gallery-section .masonry-grid img {
+		display: block;
+		width: 100%;
+		max-width: 350px;
+		height: auto;
+		border-radius: 8px;
+	}
+
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~MEDIA QUERIES~~~~
@@ -343,13 +473,37 @@ body {
 	}
 
 	@media only screen and (max-width: 980px) {
-
+		.exterior-gallery-section .masonry-grid img {
+			max-width: 300px;
+		}
 	}
 
 	@media only screen and ( max-width: 767px ) {
+		.exterior-gallery-section .masonry-grid img {
+			max-width: 250px;
+		}
 
+		.exterior-gallery-section .masonry-grid a {
+			margin: 5px;
+			border-radius: 6px;
+		}
+
+		.exterior-gallery-section .masonry-grid img {
+			border-radius: 6px;
+		}
 	}
 
 	@media only screen and (max-width: 479px) {
+		.exterior-gallery-section .masonry-grid {
+			margin: 0 -4px;
+		}
 
+		.exterior-gallery-section .masonry-grid a {
+			margin: 4px;
+		}
+
+		.exterior-gallery-section .masonry-grid img {
+			max-width: 100%;
+			width: calc(50vw - 20px);
+		}
 	}

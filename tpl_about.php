@@ -55,7 +55,7 @@
 			}
 		?>
 
-<div class="<?php echo $final_container_class; ?>">
+<div class="<?php echo $final_container_class; ?> mt-3">
 		<!-- Example row of columns -->
 			<div class="">
 
@@ -129,19 +129,21 @@
 					<h2 class="wp-block-heading">Our Story</h2>
 
 
-					<div class="wp-block-media-text has-media-on-the-right is-stacked-on-mobile" style="grid-template-columns:auto 32%">
-						<div class="wp-block-media-text__content">
+					<div class="row g-4 align-items-center">
+						<div class="col-md-8">
 							<p>Our journey began with a simple goal: to provide top-tier contracting services that meet the unique needs of each client. Over the years, we have expanded our offerings to include a comprehensive range of interior and exterior repair and renovation services. From intricate tile work and custom cabinetry to roof repairs and outdoor living spaces, our team is dedicated to delivering results that exceed expectations.</p>
 						</div>
-						<figure class="wp-block-media-text__media">
-							<img decoding="async" width="259" height="194" src="https://34oakcontracting.com/wp-content/uploads/2024/07/images.jpeg" alt="" class="wp-image-661 size-full">
-						</figure>
+						<div class="col-md-4 text-center">
+							<figure class="mb-0">
+								<img decoding="async" width="359" height="294" src="https://34oakcontracting.com/wp-content/uploads/2024/07/images.jpeg" alt="" class="img-fluid">
+							</figure>
+						</div>
 					</div>
 
 
 
 
-					<div class="row g-4 align-items-center">
+					<div class="row g-4 my-5 align-items-center">
 						<div class="col-md-4 text-center">
 							<figure class="wp-block-image size-large is-resized has-lightbox">
 								<a href="https://www.bbb.org/us/ga/woodstock/profile/roofing-contractors/34-oak-contracting-llc-0443-91825803">
@@ -163,24 +165,30 @@
 						</div>
 					</div>
 
+					<hr>
+
 
 					<h2 class="wp-block-heading">Working Together</h2>
 
 
-					<div class="wp-block-media-text is-stacked-on-mobile" style="grid-template-columns:38% auto">
-						<figure class="wp-block-media-text__media">
-							<img loading="lazy" decoding="async" width="1215" height="1215" src="https://34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-1.png" alt="" class="wp-image-357 size-full" srcset="https://34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-1.png 1215w, https://34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-1-500x500.png 500w, https://34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-1-150x150.png 150w, https://34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-1-768x768.png 768w" sizes="auto, (max-width: 1215px) 100vw, 1215px">
-						</figure>
-						<div class="wp-block-media-text__content">
+					<div class="row g-4 align-items-center mb-5">
+						<div class="col-md-4 text-center">
+							<figure class="mb-0">
+								<img loading="lazy" decoding="async" width="1215" height="1215" src="https://34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-1.png" alt="" class="img-fluid ">
+							</figure>
+						</div>
+						<div class="col-md-8">
 							<p>At 34 Oak, we pride ourselves on delivering a seamless, end-to-end client experience.</p>
 
-							<p>Our knowledgeable representatives offer expert guidance during the initial consultation to bring your property vision to life.</p>
+							<p>Our knowledgeable representatives offer expert guidance during the initial consultation to bring your property vision to life, then provide clear timelines, transparent estimates, and consistent updates throughout the project.</p>
+
+							<p>From planning and permitting to final walkthroughs, we coordinate the details so you can focus on your home while our team handles the work with care and precision.</p>
 						</div>
 					</div>
 
-					<h2 class="wp-block-heading has-text-align-center">Our Services</h2>
+					<h2 class="wp-block-heading  has-text-align-center">Our Services</h2>
 
-					<div class="row g-4">
+					<div class="row mb-5 g-4">
 						<div class="col-lg-4 col-md-6">
 							<figure class="wp-block-image size-large has-lightbox">
 								<a href="https://34oakcontracting.com/interior-repairs/">
@@ -230,7 +238,8 @@
 						</div>
 					</div>
 
-					<h2 class="wp-block-heading has-text-align-center">Why Choose Us</h2>
+					<hr>
+					<h2 class="wp-block-heading mt-3 mb-5 has-text-align-center">Why Choose Us</h2>
 
 					<div class="row">
 						<div class="wp-block-media-text is-stacked-on-mobile col-md-6">
@@ -261,7 +270,11 @@
 			</div>
 		</div>
 
-		<div class="container">
+		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		Frequently Asked Questions
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+		<div class="container mb-5">
+			<h2 class="wp-block-heading mt-3 mb-5 has-text-align-center">Frequently Asked Questions</h2>
 			<div class="wp-block-coblocks-accordion">
 				<div class="wp-block-coblocks-accordion-item">
 					<details>
@@ -466,7 +479,13 @@
 				</div>
 			</div>
 		</div>
+		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		END Frequently Asked Questions
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
+		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		Our Service Areas
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 		<div class="container">
 			<div class="row g-4">
 				<div class="col-lg-4 col-md-6">
