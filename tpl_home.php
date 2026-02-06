@@ -128,43 +128,49 @@
 
 				<div class="row g-4" id="service-contents">
 					<div class="col-lg-4 col-md-6">
-						<div class="service-card card h-100">
-							<img src="https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/9u9u9u.webp" class="card-img-top" alt="Exterior" title="Exterior">
-							<div class="card-body">
-								<div class="service-icon">
-									<i class="fa fa-shield"></i>
+						<a class="service-card-link" href="/services/exterior-repairs/">
+							<div class="service-card card h-100">
+								<img src="https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/9u9u9u.webp" class="card-img-top" alt="Exterior" title="Exterior">
+								<div class="card-body">
+									<div class="service-icon">
+										<i class="fa fa-shield"></i>
+									</div>
+									<h3 class="card-title">Exterior Repairs</h3>
+									<p class="card-text">Transform your property with exterior renovations. Increase its value and curb appeal with updated siding, roofing, landscaping, and outdoor living areas.</p>
+									<span class="btn btn-brand btn-sm">Learn More <i class="fa fa-arrow-right"></i></span>
 								</div>
-								<h3 class="card-title">Exterior Repairs</h3>
-								<p class="card-text">Transform your property with exterior renovations. Increase its value and curb appeal with updated siding, roofing, landscaping, and outdoor living areas.</p>
-								<a href="#" class="btn btn-brand btn-sm">Learn More <i class="fa fa-arrow-right"></i></a>
 							</div>
-						</div>
+						</a>
 					</div>
 					<div class="col-lg-4 col-md-6">
-						<div class="service-card card h-100">
-							<img src="https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/56-300x200.webp" class="card-img-top" alt="Interior" title="Interior">
-							<div class="card-body">
-								<div class="service-icon">
-									<i class="fa fa-wrench"></i>
+						<a class="service-card-link" href="/services/interior-repairs/">
+							<div class="service-card card h-100">
+								<img src="https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/56-300x200.webp" class="card-img-top" alt="Interior" title="Interior">
+								<div class="card-body">
+									<div class="service-icon">
+										<i class="fa fa-wrench"></i>
+									</div>
+									<h3 class="card-title">Interior Repairs</h3>
+									<p class="card-text">Update fixtures and finishes, redesign rooms, and create a more comfortable and attractive living area that reflects your personal style.</p>
+									<span class="btn btn-brand btn-sm">Learn More <i class="fa fa-arrow-right"></i></span>
 								</div>
-								<h3 class="card-title">Interior Repairs</h3>
-								<p class="card-text">Update fixtures and finishes, redesign rooms, and create a more comfortable and attractive living area that reflects your personal style.</p>
-								<a href="#" class="btn btn-brand btn-sm">Learn More <i class="fa fa-arrow-right"></i></a>
 							</div>
-						</div>
+						</a>
 					</div>
 					<div class="col-lg-4 col-md-6">
-						<div class="service-card card h-100">
-							<img src="https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/pexels-marianne-238377-500x295.jpg" class="card-img-top" alt="Make Ready" title="Make Ready">
-							<div class="card-body">
-								<div class="service-icon">
-									<i class="fa fa-home"></i>
+						<a class="service-card-link" href="/services/make-ready-repairs/">
+							<div class="service-card card h-100">
+								<img src="https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/pexels-marianne-238377-500x295.jpg" class="card-img-top" alt="Make Ready" title="Make Ready">
+								<div class="card-body">
+									<div class="service-icon">
+										<i class="fa fa-home"></i>
+									</div>
+									<h3 class="card-title">Make Ready Repairs</h3>
+									<p class="card-text">From walkways and patios to water features and retaining walls, add texture and interest to your yard or garden with endless design possibilities.</p>
+									<span class="btn btn-brand btn-sm">Learn More <i class="fa fa-arrow-right"></i></span>
 								</div>
-								<h3 class="card-title">Make Ready Repairs</h3>
-								<p class="card-text">From walkways and patios to water features and retaining walls, add texture and interest to your yard or garden with endless design possibilities.</p>
-								<a href="#" class="btn btn-brand btn-sm">Learn More <i class="fa fa-arrow-right"></i></a>
 							</div>
-						</div>
+						</a>
 					</div>
 				</div>
 			</div>
