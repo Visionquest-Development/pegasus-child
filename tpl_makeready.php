@@ -120,8 +120,13 @@ if ( 'header-three' === $header_choice ) {
 		</div><!--end row -->
 	</div><!-- end container -->
 
+	<?php get_template_part( 'templates/make-ready/gallery' ); ?>
 
+	<?php get_template_part( 'templates/make-ready/silverchase' ); ?>
 
+	<?php get_template_part( 'templates/make-ready/greg-michell' ); ?>
+
+	<?php get_template_part( 'templates/make-ready/woodstock' ); ?>
 
 
 </div><!-- end page wrap -->

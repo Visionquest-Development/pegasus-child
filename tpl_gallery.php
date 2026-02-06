@@ -120,21 +120,7 @@ if ( 'header-three' === $header_choice ) {
 		</div><!--end row -->
 	</div><!-- end container -->
 
-	<?php
-	echo do_shortcode(
-		'[thumb_slider]
-			[thumb_slide title="Interior" number="1"]
-				<img src="https://34oakcontracting.com/wp-content/uploads/2024/07/images.jpeg" alt="Interior">
-			[/thumb_slide]
-			[thumb_slide title="Exterior" number="2"]
-				<img src="https://34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-1.png" alt="Exterior">
-			[/thumb_slide]
-			[thumb_slide title="Make Ready" number="3"]
-				<img src="https://34oakcontracting.com/wp-content/uploads/2024/05/BBB-Dynamic-Seal-4-2048x742.png" alt="Make Ready">
-			[/thumb_slide]
-		[/thumb_slider]'
-	);
-	?>
+
 
 	<section class="container py-5 gallery-cta-grid">
 		<div class="row g-4">

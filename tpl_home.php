@@ -76,7 +76,7 @@
 									?>
 								</div>
 							<?php }else{ ?>
-								<div class="page-header-spacer"></div>
+								<div class="page-header-spacer d-none"></div>
 							<?php } ?>
 
 							<?php the_content(); ?>
@@ -114,8 +114,28 @@
 
 			</div><!--end row -->
 		</div><!-- end container -->
+		<section id="home-slider" class="section-padding container d-none home-slider p-5">
+		<?php
+		echo do_shortcode(
+			'[thumb_slider]
+				[thumb_slide title="slide1" number="1"]
+					<img src="http://slippry.com/assets/img/image-1.jpg" alt="This is caption 1">
+				[/thumb_slide]
+				[thumb_slide title="slide2" number="2"]
+					<img src="http://slippry.com/assets/img/image-2.jpg" alt="This is caption 2">
+				[/thumb_slide]
+				[thumb_slide title="slide3" number="3"]
+					<img src="http://slippry.com/assets/img/image-3.jpg" alt="This is caption 3">
+				[/thumb_slide]
+				[thumb_slide title="slide4" number="4"]
+					<img src="http://slippry.com/assets/img/image-4.jpg" alt="This is caption 4">
+				[/thumb_slide]
+			[/thumb_slider]'
+		);
+		?>
+		</section>
 
-		<section id="our-service" class="section-padding home-service service-section py-5 oak-section-light">
+		<section id="our-service" class="section-padding d-none home-service service-section py-5 oak-section-light">
 			<div class="container">
 				<div class="row mb-4">
 					<div class="col-lg-8 col-md-10 col-12">
@@ -196,6 +216,7 @@
 		</section>
 
 
+		<?php $interior_img_path = get_stylesheet_directory_uri() . '/images/Interior'; ?>
 		<section class="service-feature-section py-5 oak-section-light">
 			<div class="container">
 				<div class="row g-4 align-items-center">
@@ -215,9 +236,78 @@
 						</div>
 					</div>
 				</div>
+
+				<!-- Interior Service Cards -->
+				<div class="row mt-5 mb-3">
+					<div class="col-12">
+						<div class="section-title">
+							<h3>Our Interior Services <span></span></h3>
+						</div>
+					</div>
+				</div>
+				<div class="gallery-cta-grid">
+					<div class="row g-4">
+						<div class="col-lg-4 col-md-6">
+							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/interior/#kitchen-gallery" style="background-image: url('<?php echo $interior_img_path; ?>/kitchen/gallery-photos/kitchen-gallery-01.jpg');">
+								<span class="gallery-cta-overlay"></span>
+								<span class="gallery-cta-title">Kitchens</span>
+							</a>
+						</div>
+						<div class="col-lg-4 col-md-6">
+							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/interior/#bathroom-gallery" style="background-image: url('<?php echo $interior_img_path; ?>/bathroom/gallery-photos/bathroom-gallery-01.jpg');">
+								<span class="gallery-cta-overlay"></span>
+								<span class="gallery-cta-title">Bathrooms</span>
+							</a>
+						</div>
+						<div class="col-lg-4 col-md-6">
+							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/interior/#general-interior-gallery" style="background-image: url('<?php echo $interior_img_path; ?>/general-interior/built-ins/built-ins-01.jpg');">
+								<span class="gallery-cta-overlay"></span>
+								<span class="gallery-cta-title">Built-Ins & Cabinetry</span>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<!-- Interior Featured Projects -->
+				<div class="row mt-5 mb-3">
+					<div class="col-12">
+						<div class="section-title">
+							<h3>Featured Projects <span></span></h3>
+						</div>
+					</div>
+				</div>
+				<div class="gallery-cta-grid">
+					<div class="row g-4">
+						<div class="col-lg-3 col-md-6">
+							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/interior/#canton-kitchen-upstairs" style="background-image: url('<?php echo $interior_img_path; ?>/kitchen/gallery-photos/kitchen-gallery-05.jpg');">
+								<span class="gallery-cta-overlay"></span>
+								<span class="gallery-cta-title">Canton Kitchen</span>
+							</a>
+						</div>
+						<div class="col-lg-3 col-md-6">
+							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/interior/#woodstock-kitchen" style="background-image: url('<?php echo $interior_img_path; ?>/kitchen/gallery-photos/kitchen-gallery-10.jpg');">
+								<span class="gallery-cta-overlay"></span>
+								<span class="gallery-cta-title">Woodstock Kitchen</span>
+							</a>
+						</div>
+						<div class="col-lg-3 col-md-6">
+							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/interior/#roswell-master-bath" style="background-image: url('<?php echo $interior_img_path; ?>/bathroom/gallery-photos/bathroom-gallery-05.jpg');">
+								<span class="gallery-cta-overlay"></span>
+								<span class="gallery-cta-title">Roswell Master Bath</span>
+							</a>
+						</div>
+						<div class="col-lg-3 col-md-6">
+							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/interior/#general-interior-gallery" style="background-image: url('<?php echo $interior_img_path; ?>/general-interior/basement-after-woodstock.jpg');">
+								<span class="gallery-cta-overlay"></span>
+								<span class="gallery-cta-title">Basement Finish</span>
+							</a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</section>
 
+		<?php $exterior_img_path = get_stylesheet_directory_uri() . '/images/Exterior'; ?>
 		<section class="service-feature-section py-5 oak-section-accent">
 			<div class="container">
 				<div class="row g-4 align-items-center">
@@ -234,6 +324,74 @@
 							</div>
 							<p>We handle siding, roofing, decks, fencing, and outdoor living upgrades with craftsmanship that stands up to the elements.</p>
 							<a class="btn btn-brand" href="/services/exterior/">Explore Exterior <i class="fa fa-arrow-right"></i></a>
+						</div>
+					</div>
+				</div>
+
+				<!-- Exterior Service Cards -->
+				<div class="row mt-5 mb-3">
+					<div class="col-12">
+						<div class="section-title">
+							<h3>Our Exterior Services <span></span></h3>
+						</div>
+					</div>
+				</div>
+				<div class="gallery-cta-grid">
+					<div class="row g-4">
+						<div class="col-lg-4 col-md-6">
+							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/exterior/#roswell-siding-windows" style="background-image: url('<?php echo $exterior_img_path; ?>/gallery-photos/home-side-siding-fence.jpg');">
+								<span class="gallery-cta-overlay"></span>
+								<span class="gallery-cta-title">Siding & Windows</span>
+							</a>
+						</div>
+						<div class="col-lg-4 col-md-6">
+							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/exterior/#marietta-roof-siding" style="background-image: url('<?php echo $exterior_img_path; ?>/gallery-photos/traditional-home-front-double-garage.jpg');">
+								<span class="gallery-cta-overlay"></span>
+								<span class="gallery-cta-title">Roofing & Gutters</span>
+							</a>
+						</div>
+						<div class="col-lg-4 col-md-6">
+							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/exterior/#smyrna-porch" style="background-image: url('<?php echo $exterior_img_path; ?>/gallery-photos/screened-porch-sectional-sofa.jpg');">
+								<span class="gallery-cta-overlay"></span>
+								<span class="gallery-cta-title">Decks & Porches</span>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<!-- Exterior Featured Projects -->
+				<div class="row mt-5 mb-3">
+					<div class="col-12">
+						<div class="section-title">
+							<h3>Featured Projects <span></span></h3>
+						</div>
+					</div>
+				</div>
+				<div class="gallery-cta-grid">
+					<div class="row g-4">
+						<div class="col-lg-3 col-md-6">
+							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/exterior/#blue-ridge" style="background-image: url('<?php echo $exterior_img_path; ?>/gallery-photos/cabin-multi-level-deck-twilight.jpg');">
+								<span class="gallery-cta-overlay"></span>
+								<span class="gallery-cta-title">Blue Ridge Cabin</span>
+							</a>
+						</div>
+						<div class="col-lg-3 col-md-6">
+							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/exterior/#roswell-siding-gazebo" style="background-image: url('<?php echo $exterior_img_path; ?>/gallery-photos/green-siding-home-portico-entrance.jpg');">
+								<span class="gallery-cta-overlay"></span>
+								<span class="gallery-cta-title">Roswell Siding & Gazebo</span>
+							</a>
+						</div>
+						<div class="col-lg-3 col-md-6">
+							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/exterior/#smyrna-porch" style="background-image: url('<?php echo $exterior_img_path; ?>/gallery-photos/covered-porch-stone-veneer-flag.jpg');">
+								<span class="gallery-cta-overlay"></span>
+								<span class="gallery-cta-title">Smyrna Porch & Sunroom</span>
+							</a>
+						</div>
+						<div class="col-lg-3 col-md-6">
+							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/exterior/#woodstock-outdoor-living" style="background-image: url('<?php echo $exterior_img_path; ?>/gallery-photos/covered-patio-outdoor-furniture.jpg');">
+								<span class="gallery-cta-overlay"></span>
+								<span class="gallery-cta-title">Woodstock Outdoor Living</span>
+							</a>
 						</div>
 					</div>
 				</div>

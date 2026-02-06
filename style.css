@@ -40,6 +40,8 @@ body {
 	~~~~~~~~~~~~~~~~~~~~~*/
 	#logo { width: 200px; }
 
+  #header { border-bottom: 6px solid #C75A1E; }
+
 
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ NAVIGATION ~~~~~
@@ -49,6 +51,11 @@ body {
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ FOOTER ~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
+
+  footer a,
+  footer .nav-link { color: white !important; }
+
+  footer .nav-link:hover { background-color: var(--oak-primary) !important; }
 
 
 
@@ -136,7 +143,7 @@ body {
     width: 40px;
     height: 40px;
     border-radius: 10px;
-    background: rgba(179, 32, 37, 0.12);
+    background: rgba(242, 183, 5, 0.15);
     color: var(--oak-primary);
     display: inline-flex;
     align-items: center;
@@ -163,17 +170,17 @@ body {
 .home-service .btn,
 .service-feature-section .btn,
 .purchase-btn {
-  background: var(--oak-primary);
-  border-color: var(--oak-primary);
-  color: #ffffff;
+  background: var(--oak-secondary);
+  border-color: var(--oak-secondary);
+  color: #000;
 }
 
 .home-service .btn:hover,
 .service-feature-section .btn:hover,
 .purchase-btn:hover {
-  background: var(--oak-primary);
-  border-color: var(--oak-primary);
-  color: #ffffff;
+  background: var(--oak-secondary);
+  border-color: var(--oak-secondary);
+  color: #000;
 }
 
   .feature-card {
@@ -360,7 +367,7 @@ body {
 }
 
   .boxed-btn {
-    background: #ff5d00;
+    background: var(--oak-secondary);
     padding: 10px 20px;
     border-radius: 20px;
     color: #fff;
@@ -396,7 +403,7 @@ body {
   border-radius: 0 20px 0 20px;
   padding: 15px 20px 15px 60px;
   text-transform: capitalize;
-  color: #fff;
+  color: #000;
   position: relative;
   margin-top: 5px;
   display: inline-block;
@@ -448,6 +455,15 @@ body {
 
 .gallery-cta-grid .gallery-cta-card:hover {
   transform: translateY(-4px);
+}
+
+.gallery-cta-grid .gallery-cta-card--sm {
+  min-height: 200px;
+  padding: 18px;
+}
+
+.gallery-cta-grid .gallery-cta-card--sm .gallery-cta-title {
+  font-size: 1.25rem;
 }
 
 /* Service feature sections */
@@ -559,6 +575,21 @@ body {
 	~~~~~~~~~~~~~~~~~~~~~~~*/
 
 	/* ~~~~~~~~~~~~~~~~~~~~~~
+	~~SECTION UTILITIES~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~*/
+	.section-alt-bg {
+		background-color: #f5f5f5;
+	}
+
+	.gallery-section-title {
+		color: #222;
+	}
+
+	.gallery-section-subtitle {
+		color: var(--oak-muted);
+	}
+
+	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~INTERIOR GALLERY~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
 	.interior-gallery-section {
@@ -590,7 +621,8 @@ body {
 	}
 
 	.interior-gallery-section .masonry-grid img,
-	.exterior-gallery-section .masonry-grid img {
+	.exterior-gallery-section .masonry-grid img,
+  .masonry-grid img {
 		display: block;
 		width: 100%;
 		max-width: 425px;
@@ -695,4 +727,4 @@ body {
 			max-width: 100%;
 			width: calc(50vw - 20px);
 		}
-	}
+}
