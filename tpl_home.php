@@ -115,7 +115,7 @@
 			</div><!--end row -->
 		</div><!-- end container -->
 
-		<section id="our-service" class="section-padding home-service service-section py-5">
+		<section id="our-service" class="section-padding home-service service-section py-5 oak-section-light">
 			<div class="container">
 				<div class="row mb-4">
 					<div class="col-lg-8 col-md-10 col-12">
@@ -127,38 +127,41 @@
 				</div>
 
 				<div class="row g-4" id="service-contents">
-					<div class="col-lg-4 col-md-6">
-						<a class="service-card-link" href="/services/exterior-repairs/">
+					<div class="col-lg-6 col-md-6">
+						<a class="service-card-link" href="/services/exterior/">
 							<div class="service-card card h-100">
 								<img src="https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/9u9u9u.webp" class="card-img-top" alt="Exterior" title="Exterior">
 								<div class="card-body">
 									<div class="service-icon">
 										<i class="fa fa-shield"></i>
 									</div>
-									<h3 class="card-title">Exterior Repairs</h3>
+									<h3 class="card-title">Exterior</h3>
 									<p class="card-text">Transform your property with exterior renovations. Increase its value and curb appeal with updated siding, roofing, landscaping, and outdoor living areas.</p>
 									<span class="btn btn-brand btn-sm">Learn More <i class="fa fa-arrow-right"></i></span>
 								</div>
 							</div>
 						</a>
 					</div>
-					<div class="col-lg-4 col-md-6">
-						<a class="service-card-link" href="/services/interior-repairs/">
+					<div class="col-lg-6 col-md-6">
+						<a class="service-card-link" href="/services/interior/">
 							<div class="service-card card h-100">
 								<img src="https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/56-300x200.webp" class="card-img-top" alt="Interior" title="Interior">
 								<div class="card-body">
 									<div class="service-icon">
 										<i class="fa fa-wrench"></i>
 									</div>
-									<h3 class="card-title">Interior Repairs</h3>
+									<h3 class="card-title">Interior</h3>
 									<p class="card-text">Update fixtures and finishes, redesign rooms, and create a more comfortable and attractive living area that reflects your personal style.</p>
 									<span class="btn btn-brand btn-sm">Learn More <i class="fa fa-arrow-right"></i></span>
 								</div>
 							</div>
 						</a>
 					</div>
-					<div class="col-lg-4 col-md-6">
-						<a class="service-card-link" href="/services/make-ready-repairs/">
+				</div>
+
+				<div class="row g-4 mt-0">
+					<div class="col-lg-6 col-md-6">
+						<a class="service-card-link" href="/services/make-ready/">
 							<div class="service-card card h-100">
 								<img src="https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/pexels-marianne-238377-500x295.jpg" class="card-img-top" alt="Make Ready" title="Make Ready">
 								<div class="card-body">
@@ -172,12 +175,117 @@
 							</div>
 						</a>
 					</div>
+					<div class="col-lg-6 col-md-6">
+						<a class="service-card-link" href="/services/commercial/">
+							<div class="service-card card h-100">
+								<img src="https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/9u9u9u.webp" class="card-img-top" alt="Commercial" title="Commercial">
+								<div class="card-body">
+									<div class="service-icon">
+										<i class="fa fa-building"></i>
+									</div>
+									<h3 class="card-title">Commercial</h3>
+									<p class="card-text">Keep your commercial property looking sharp with efficient repairs, tenant make-readies, and renovations that minimize downtime.</p>
+									<span class="btn btn-brand btn-sm">Learn More <i class="fa fa-arrow-right"></i></span>
+								</div>
+							</div>
+						</a>
+					</div>
 				</div>
 			</div>
 
 		</section>
 
-		<section id="ourfeatures" class="section-padding home-feature py-5 bg-light position-relative">
+
+		<section class="service-feature-section py-5 oak-section-light">
+			<div class="container">
+				<div class="row g-4 align-items-center">
+					<div class="col-lg-6 order-1 order-lg-1">
+						<div class="make-ready-image" style="background-image: url('https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/56-300x200.webp');">
+							<span class="make-ready-image-overlay"></span>
+						</div>
+					</div>
+					<div class="col-lg-6 order-2 order-lg-2">
+						<div class="make-ready-content">
+							<div class="section-title">
+								<h2>Interior <span></span></h2>
+								<p>Refresh and reimagine living spaces with clean finishes, thoughtful upgrades, and quality repairs.</p>
+							</div>
+							<p>From fixtures and finishes to drywall, trim, and flooring, we bring craftsmanship that makes rooms feel new again.</p>
+							<a class="btn btn-brand" href="/services/interior/">Explore Interior <i class="fa fa-arrow-right"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="service-feature-section py-5 oak-section-accent">
+			<div class="container">
+				<div class="row g-4 align-items-center">
+					<div class="col-lg-6 order-1 order-lg-2">
+						<div class="make-ready-image" style="background-image: url('https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/9u9u9u.webp');">
+							<span class="make-ready-image-overlay"></span>
+						</div>
+					</div>
+					<div class="col-lg-6 order-2 order-lg-1">
+						<div class="make-ready-content">
+							<div class="section-title">
+								<h2>Exterior <span></span></h2>
+								<p>Transform your property with exterior renovations that boost curb appeal and protect your investment.</p>
+							</div>
+							<p>We handle siding, roofing, decks, fencing, and outdoor living upgrades with craftsmanship that stands up to the elements.</p>
+							<a class="btn btn-brand" href="/services/exterior/">Explore Exterior <i class="fa fa-arrow-right"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="make-ready-feature-section service-feature-section py-5 oak-section-light">
+			<div class="container">
+				<div class="row g-4 align-items-center">
+					<div class="col-lg-6 order-1 order-lg-1">
+						<div class="make-ready-image" style="background-image: url('https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/pexels-marianne-238377-500x295.jpg');">
+							<span class="make-ready-image-overlay"></span>
+						</div>
+					</div>
+					<div class="col-lg-6 order-2 order-lg-2">
+						<div class="make-ready-content">
+							<div class="section-title">
+								<h2>Make Ready Repairs <span></span></h2>
+								<p>Our bread-and-butter service for property managers, investors, and homeowners who need fast, dependable turnarounds.</p>
+							</div>
+							<p>We handle punch lists, minor repairs, paint touch-ups, flooring fixes, hardware replacements, and curb appeal upgrades so a property is ready to show, rent, or sell without delays.</p>
+							<p>From the first walkthrough to final clean-up, we keep the process organized and transparent, deliver clear scopes, and hit timelines that keep your projects moving.</p>
+							<a class="btn btn-brand" href="/services/make-ready/">Explore Make Ready <i class="fa fa-arrow-right"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="service-feature-section py-5 oak-section-accent">
+			<div class="container">
+				<div class="row g-4 align-items-center">
+					<div class="col-lg-6 order-1 order-lg-2">
+						<div class="make-ready-image" style="background-image: url('https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/9u9u9u.webp');">
+							<span class="make-ready-image-overlay"></span>
+						</div>
+					</div>
+					<div class="col-lg-6 order-2 order-lg-1">
+						<div class="make-ready-content">
+							<div class="section-title">
+								<h2>Commercial <span></span></h2>
+								<p>Keep your business spaces sharp with efficient repairs and renovations that minimize downtime.</p>
+							</div>
+							<p>We coordinate scopes, schedules, and execution so your property stays tenant-ready and on brand.</p>
+							<a class="btn btn-brand" href="/services/commercial/">Explore Commercial <i class="fa fa-arrow-right"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="ourfeatures" class="section-padding home-feature py-5 oak-section-light position-relative">
 			<div class="container">
 				<div class="row mb-4">
 					<div class="col-lg-8 col-md-10 col-12">
@@ -247,7 +355,7 @@
 
 		</section>
 
-		<section id="cta" class="section-padding" style="background-image:url('https://34oakcontracting.com/wp-content/plugins/clever-fox/inc/conceptly/images/bg/cta-bg.jpg');background-attachment:scroll;">
+		<section id="cta" class="section-padding oak-section-dark oak-cta" style="background-image:url('https://34oakcontracting.com/wp-content/plugins/clever-fox/inc/conceptly/images/bg/cta-bg.jpg');background-attachment:scroll;">
 			<div class="container">
 				<div class="row cta">
 					<div id="cta-header" class="col-lg-9 col-md-12 col-12 text-lg-left text-center mb-lg-0 mb-4">
@@ -263,7 +371,7 @@
 			</div>
 		</section>
 
-		<section id="our-partners" class="bg-dark partners-section">
+		<section id="our-partners" class="partners-section oak-section-dark">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">

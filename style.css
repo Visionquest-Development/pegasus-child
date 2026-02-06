@@ -15,11 +15,18 @@
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-:root {
-	--oak-primary: #ff5d00;
-	--oak-dark: #111111;
-	--oak-muted: #6b6f76;
-	--oak-light: #f6f6f6;
+  :root {
+    --oak-primary: #F2B705;        /* Oak Gold (PRIMARY) */
+    --oak-secondary: #C75A1E;      /* Burnt Orange */
+    --oak-tertiary: #8C3A1A;       /* Deep Rust / Copper */
+
+    /* Neutrals */
+    --oak-dark: #1C1C1C;           /* Soft Charcoal */
+    --oak-mid: #3F3F3F;            /* Graphite */
+
+    /* Supporting */
+    --oak-highlight: #F4C95D;      /* Warm Amber */
+    --oak-light: #F4F2EE;          /* Off White */
 }
 
 body {
@@ -151,6 +158,23 @@ body {
     border-color: var(--oak-primary);
     color: #ffffff;
   }
+
+/* Ensure home buttons use primary color */
+.home-service .btn,
+.service-feature-section .btn,
+.purchase-btn {
+  background: var(--oak-primary);
+  border-color: var(--oak-primary);
+  color: #ffffff;
+}
+
+.home-service .btn:hover,
+.service-feature-section .btn:hover,
+.purchase-btn:hover {
+  background: var(--oak-primary);
+  border-color: var(--oak-primary);
+  color: #ffffff;
+}
 
   .feature-card {
     display: flex;
@@ -426,6 +450,104 @@ body {
   transform: translateY(-4px);
 }
 
+/* Service feature sections */
+.service-feature-section {
+  background: transparent;
+}
+
+/* Oak color scheme section helpers */
+.oak-section-light {
+  background: var(--oak-light);
+}
+
+.oak-section-accent {
+  background: var(--oak-highlight);
+}
+
+.oak-section-dark {
+  background: var(--oak-dark);
+  color: #ffffff;
+}
+
+.oak-section-dark .section-title h2,
+.oak-section-dark .section-title p,
+.oak-section-dark p,
+.oak-section-dark h2,
+.oak-section-dark h3,
+.oak-section-dark h4 {
+  color: #ffffff;
+}
+
+.oak-section-dark .section-title span {
+  background: var(--oak-primary);
+}
+
+.oak-cta {
+  position: relative;
+  background-color: var(--oak-dark);
+}
+
+.oak-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.oak-cta .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Footer nav menus: stack items */
+#footer-widgets .menu.nav {
+  display: block;
+}
+
+#footer-widgets .menu.nav .nav-item,
+#footer-widgets .menu.nav .nav-link,
+#footer-widgets .menu.nav .dropdown-item {
+  display: block;
+}
+
+.service-feature-section .section-title h2 {
+  color: var(--oak-dark);
+}
+
+.service-feature-section .section-title p {
+  color: var(--oak-muted);
+}
+
+.make-ready-image {
+  position: relative;
+  min-height: 360px;
+  border-radius: 18px;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+}
+
+.make-ready-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.35));
+}
+
+.make-ready-content p {
+  color: #444;
+  margin-bottom: 16px;
+}
+
+.make-ready-image {
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: auto;
+  min-height: 400px;
+  background-position: center center;
+}
+
+
 
 
 	/* ~~~~~~~~~~~~~~~~~~~~~~
@@ -435,6 +557,46 @@ body {
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~WOOCOMMERCE~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
+
+	/* ~~~~~~~~~~~~~~~~~~~~~~
+	~~INTERIOR GALLERY~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~*/
+	.interior-gallery-section {
+		background-color: var(--oak-dark);
+		color: #fff;
+	}
+
+	.interior-gallery-section h2 {
+		color: #fff;
+	}
+
+	.interior-gallery-section p {
+		color: rgba(255, 255, 255, 0.8);
+	}
+
+	.interior-gallery-section .masonry-grid,
+	.exterior-gallery-section .masonry-grid {
+		margin: 0 -8px;
+	}
+
+	.interior-gallery-section .masonry-grid a,
+	.exterior-gallery-section .masonry-grid a {
+		display: inline-block;
+		margin: 8px;
+		overflow: hidden;
+		border-radius: 8px;
+		max-width: 425px;
+		vertical-align: top;
+	}
+
+	.interior-gallery-section .masonry-grid img,
+	.exterior-gallery-section .masonry-grid img {
+		display: block;
+		width: 100%;
+		max-width: 425px;
+		height: auto;
+		border-radius: 8px;
+	}
 
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~EXTERIOR GALLERY~~~~~
@@ -452,15 +614,18 @@ body {
 		color: rgba(255, 255, 255, 0.8);
 	}
 
+	/* legacy selectors kept for backwards compat */
 	.exterior-gallery-section .masonry-grid {
 		margin: 0 -8px;
 	}
 
 	.exterior-gallery-section .masonry-grid a {
-		display: block;
+		display: inline-block;
 		margin: 8px;
 		overflow: hidden;
 		border-radius: 8px;
+		max-width: 425px;
+		vertical-align: top;
 	}
 
 	.exterior-gallery-section .masonry-grid img {
@@ -484,36 +649,49 @@ body {
 	}
 
 	@media only screen and (max-width: 980px) {
-		.exterior-gallery-section .masonry-grid img {
+		.exterior-gallery-section .masonry-grid a,
+		.interior-gallery-section .masonry-grid a {
+			max-width: 300px;
+		}
+
+		.exterior-gallery-section .masonry-grid img,
+		.interior-gallery-section .masonry-grid img {
 			max-width: 300px;
 		}
 	}
 
 	@media only screen and ( max-width: 767px ) {
-		.exterior-gallery-section .masonry-grid img {
+		.exterior-gallery-section .masonry-grid a,
+		.interior-gallery-section .masonry-grid a {
 			max-width: 250px;
-		}
-
-		.exterior-gallery-section .masonry-grid a {
 			margin: 5px;
 			border-radius: 6px;
 		}
 
-		.exterior-gallery-section .masonry-grid img {
+		.exterior-gallery-section .masonry-grid img,
+		.interior-gallery-section .masonry-grid img {
+			max-width: 250px;
+		}
+
+		.exterior-gallery-section .masonry-grid img,
+		.interior-gallery-section .masonry-grid img {
 			border-radius: 6px;
 		}
 	}
 
 	@media only screen and (max-width: 479px) {
-		.exterior-gallery-section .masonry-grid {
+		.exterior-gallery-section .masonry-grid,
+		.interior-gallery-section .masonry-grid {
 			margin: 0 -4px;
 		}
 
-		.exterior-gallery-section .masonry-grid a {
+		.exterior-gallery-section .masonry-grid a,
+		.interior-gallery-section .masonry-grid a {
 			margin: 4px;
 		}
 
-		.exterior-gallery-section .masonry-grid img {
+		.exterior-gallery-section .masonry-grid img,
+		.interior-gallery-section .masonry-grid img {
 			max-width: 100%;
 			width: calc(50vw - 20px);
 		}
