@@ -59,6 +59,7 @@ sort( $woodstock_after );
 				}
 
 				$gallery_output .= '[/masonry]';
+				$gallery_output = str_replace( ' loading="lazy"', '', $gallery_output );
 				echo do_shortcode( $gallery_output );
 				?>
 			</div>

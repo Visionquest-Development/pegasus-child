@@ -3,8 +3,8 @@
 <div class="row mb-5 g-4">
 	<div class="col-lg-4 col-md-6">
 		<figure class="wp-block-image size-large has-lightbox">
-			<a href="https://34oakcontracting.com/interior-repairs/">
-				<img loading="lazy" decoding="async" width="1152" height="2048" src="https://34oakcontracting.com/wp-content/uploads/2024/05/1-3-1152x2048.png" alt="" class="wp-image-346" srcset="https://34oakcontracting.com/wp-content/uploads/2024/05/1-3-1152x2048.png 1152w, https://34oakcontracting.com/wp-content/uploads/2024/05/1-3-281x500.png 281w, https://34oakcontracting.com/wp-content/uploads/2024/05/1-3-768x1365.png 768w, https://34oakcontracting.com/wp-content/uploads/2024/05/1-3-864x1536.png 864w, https://34oakcontracting.com/wp-content/uploads/2024/05/1-3.png 1350w" sizes="auto, (max-width: 1152px) 100vw, 1152px">
+			<a href="/services/interior/">
+				<img decoding="async" width="1152" height="2048" src="https://34oakcontracting.com/wp-content/uploads/2024/05/1-3-1152x2048.png" alt="" class="wp-image-346" srcset="https://34oakcontracting.com/wp-content/uploads/2024/05/1-3-1152x2048.png 1152w, https://34oakcontracting.com/wp-content/uploads/2024/05/1-3-281x500.png 281w, https://34oakcontracting.com/wp-content/uploads/2024/05/1-3-768x1365.png 768w, https://34oakcontracting.com/wp-content/uploads/2024/05/1-3-864x1536.png 864w, https://34oakcontracting.com/wp-content/uploads/2024/05/1-3.png 1350w" sizes="auto, (max-width: 1152px) 100vw, 1152px">
 			</a>
 		</figure>
 
@@ -12,15 +12,15 @@
 
 		<div class="wp-block-buttons is-layout-flex wp-block-buttons-is-layout-flex">
 			<div class="wp-block-button">
-				<a class="wp-block-button__link wp-element-button" href="https://34oakcontracting.com/interior-repairs/">See More!</a>
+				<a class="wp-block-button__link wp-element-button" href="/services/interior/">See More!</a>
 			</div>
 		</div>
 	</div>
 
 	<div class="col-lg-4 col-md-6">
 		<figure class="wp-block-image size-large has-lightbox">
-			<a href="https://34oakcontracting.com/exterior-repairs/">
-				<img loading="lazy" decoding="async" width="1152" height="2048" src="https://34oakcontracting.com/wp-content/uploads/2024/05/2-2-1152x2048.png" alt="" class="wp-image-348" srcset="https://34oakcontracting.com/wp-content/uploads/2024/05/2-2-1152x2048.png 1152w, https://34oakcontracting.com/wp-content/uploads/2024/05/2-2-281x500.png 281w, https://34oakcontracting.com/wp-content/uploads/2024/05/2-2-768x1365.png 768w, https://34oakcontracting.com/wp-content/uploads/2024/05/2-2-864x1536.png 864w, https://34oakcontracting.com/wp-content/uploads/2024/05/2-2.png 1350w" sizes="auto, (max-width: 1152px) 100vw, 1152px">
+			<a href="/services/exterior/">
+				<img decoding="async" width="1152" height="2048" src="https://34oakcontracting.com/wp-content/uploads/2024/05/2-2-1152x2048.png" alt="" class="wp-image-348" srcset="https://34oakcontracting.com/wp-content/uploads/2024/05/2-2-1152x2048.png 1152w, https://34oakcontracting.com/wp-content/uploads/2024/05/2-2-281x500.png 281w, https://34oakcontracting.com/wp-content/uploads/2024/05/2-2-768x1365.png 768w, https://34oakcontracting.com/wp-content/uploads/2024/05/2-2-864x1536.png 864w, https://34oakcontracting.com/wp-content/uploads/2024/05/2-2.png 1350w" sizes="auto, (max-width: 1152px) 100vw, 1152px">
 			</a>
 		</figure>
 
@@ -28,15 +28,15 @@
 
 		<div class="wp-block-buttons is-layout-flex wp-block-buttons-is-layout-flex">
 			<div class="wp-block-button">
-				<a class="wp-block-button__link wp-element-button" href="https://34oakcontracting.com/exterior-repairs/">See More!</a>
+				<a class="wp-block-button__link wp-element-button" href="/services/exterior/">See More!</a>
 			</div>
 		</div>
 	</div>
 
 	<div class="col-lg-4 col-md-6">
 		<figure class="wp-block-image size-large has-lightbox">
-			<a href="https://34oakcontracting.com/make-ready-repairs/">
-				<img loading="lazy" decoding="async" width="1152" height="2048" src="https://34oakcontracting.com/wp-content/uploads/2024/05/3-2-1152x2048.png" alt="" class="wp-image-347" srcset="https://34oakcontracting.com/wp-content/uploads/2024/05/3-2-1152x2048.png 1152w, https://34oakcontracting.com/wp-content/uploads/2024/05/3-2-281x500.png 281w, https://34oakcontracting.com/wp-content/uploads/2024/05/3-2-768x1365.png 768w, https://34oakcontracting.com/wp-content/uploads/2024/05/3-2-864x1536.png 864w, https://34oakcontracting.com/wp-content/uploads/2024/05/3-2.png 1350w" sizes="auto, (max-width: 1152px) 100vw, 1152px">
+			<a href="/services/make-ready/">
+				<img decoding="async" width="1152" height="2048" src="https://34oakcontracting.com/wp-content/uploads/2024/05/3-2-1152x2048.png" alt="" class="wp-image-347" srcset="https://34oakcontracting.com/wp-content/uploads/2024/05/3-2-1152x2048.png 1152w, https://34oakcontracting.com/wp-content/uploads/2024/05/3-2-281x500.png 281w, https://34oakcontracting.com/wp-content/uploads/2024/05/3-2-768x1365.png 768w, https://34oakcontracting.com/wp-content/uploads/2024/05/3-2-864x1536.png 864w, https://34oakcontracting.com/wp-content/uploads/2024/05/3-2.png 1350w" sizes="auto, (max-width: 1152px) 100vw, 1152px">
 			</a>
 		</figure>
 
@@ -44,7 +44,7 @@
 
 		<div class="wp-block-buttons is-layout-flex wp-block-buttons-is-layout-flex">
 			<div class="wp-block-button">
-				<a class="wp-block-button__link wp-element-button" href="https://34oakcontracting.com/make-ready-repairs/">See More!</a>
+				<a class="wp-block-button__link wp-element-button" href="/services/make-ready/">See More!</a>
 			</div>
 		</div>
 	</div>

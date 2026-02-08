@@ -40,6 +40,7 @@ sort( $after_images );
 					$gallery_output .= '<a href="' . $mr_path . '/main/' . $filename . '" data-lightbox="silverchase-main" data-title="Silverchase - Progress" class="wow fadeIn"><img src="' . $mr_path . '/main/' . $filename . '" loading="lazy"></a>';
 				}
 				$gallery_output .= '[/masonry]';
+				$gallery_output = str_replace( ' loading="lazy"', '', $gallery_output );
 				echo do_shortcode( $gallery_output );
 				?>
 			</div>
@@ -62,6 +63,7 @@ sort( $after_images );
 					$gallery_output .= '<a href="' . $mr_path . '/before/' . $filename . '" data-lightbox="silverchase-before" data-title="Silverchase - Before" class="wow fadeIn"><img src="' . $mr_path . '/before/' . $filename . '" loading="lazy"></a>';
 				}
 				$gallery_output .= '[/masonry]';
+				$gallery_output = str_replace( ' loading="lazy"', '', $gallery_output );
 				echo do_shortcode( $gallery_output );
 				?>
 			</div>
@@ -84,6 +86,7 @@ sort( $after_images );
 					$gallery_output .= '<a href="' . $mr_path . '/after/' . $filename . '" data-lightbox="silverchase-after" data-title="Silverchase - After" class="wow fadeIn"><img src="' . $mr_path . '/after/' . $filename . '" loading="lazy"></a>';
 				}
 				$gallery_output .= '[/masonry]';
+				$gallery_output = str_replace( ' loading="lazy"', '', $gallery_output );
 				echo do_shortcode( $gallery_output );
 				?>
 			</div>

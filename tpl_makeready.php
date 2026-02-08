@@ -120,6 +120,42 @@ if ( 'header-three' === $header_choice ) {
 		</div><!--end row -->
 	</div><!-- end container -->
 
+	<!-- Make Ready Project Navigation -->
+	<?php $mr_img_path = get_stylesheet_directory_uri() . '/images/make-ready'; ?>
+	<section class="service-feature-section py-5 oak-section-light">
+		<div class="container">
+			<div class="row mb-3">
+				<div class="col-12">
+					<div class="section-title">
+						<h3>Our Make Ready Projects <span></span></h3>
+					</div>
+				</div>
+			</div>
+			<div class="gallery-cta-grid">
+				<div class="row g-4">
+					<div class="col-lg-4 col-md-6">
+						<a class="gallery-cta-card gallery-cta-card--sm" href="#silverchase-make-ready" style="background-image: url('<?php echo $mr_img_path; ?>/silverchase-aaron-alona/after/after-001.jpg');">
+							<span class="gallery-cta-overlay"></span>
+							<span class="gallery-cta-title">Silverchase</span>
+						</a>
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<a class="gallery-cta-card gallery-cta-card--sm" href="#greg-michell-make-ready" style="background-image: url('<?php echo $mr_img_path; ?>/greg-michell/after/after-01.jpg');">
+							<span class="gallery-cta-overlay"></span>
+							<span class="gallery-cta-title">Roswell</span>
+						</a>
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<a class="gallery-cta-card gallery-cta-card--sm" href="#woodstock-make-ready" style="background-image: url('<?php echo $mr_img_path; ?>/woodstock-jc-jennifer/after/after-01.jpg');">
+							<span class="gallery-cta-overlay"></span>
+							<span class="gallery-cta-title">Woodstock</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
 	<?php get_template_part( 'templates/make-ready/gallery' ); ?>
 
 	<?php get_template_part( 'templates/make-ready/silverchase' ); ?>

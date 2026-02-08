@@ -89,6 +89,7 @@ $gallery_img_path = get_stylesheet_directory_uri() . '/images/Exterior/gallery-p
 				$gallery_output .= '<a href="' . $gallery_img_path . '/two-story-screened-porch.jpg" data-lightbox="exterior-gallery" data-title="Two-Story Screened Porch Addition" class="wow fadeIn"><img src="' . $gallery_img_path . '/two-story-screened-porch.jpg" loading="lazy" class=""></a>';
 
 				$gallery_output .= '[/masonry]';
+				$gallery_output = str_replace( ' loading="lazy"', '', $gallery_output );
 
 				echo do_shortcode( $gallery_output );
 				?>

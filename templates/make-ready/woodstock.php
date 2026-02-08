@@ -38,6 +38,7 @@ sort( $after_images );
 					$gallery_output .= '<a href="' . $mr_path . '/main/' . $filename . '" data-lightbox="woodstock-main" data-title="Woodstock - Progress" class="wow fadeIn"><img src="' . $mr_path . '/main/' . $filename . '" loading="lazy"></a>';
 				}
 				$gallery_output .= '[/masonry]';
+				$gallery_output = str_replace( ' loading="lazy"', '', $gallery_output );
 				echo do_shortcode( $gallery_output );
 				?>
 			</div>
@@ -60,6 +61,7 @@ sort( $after_images );
 					$gallery_output .= '<a href="' . $mr_path . '/after/' . $filename . '" data-lightbox="woodstock-after" data-title="Woodstock - After" class="wow fadeIn"><img src="' . $mr_path . '/after/' . $filename . '" loading="lazy"></a>';
 				}
 				$gallery_output .= '[/masonry]';
+				$gallery_output = str_replace( ' loading="lazy"', '', $gallery_output );
 				echo do_shortcode( $gallery_output );
 				?>
 			</div>

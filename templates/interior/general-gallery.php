@@ -121,6 +121,7 @@ $general_img_path = get_stylesheet_directory_uri() . '/images/Interior/general-i
 				$gallery_output .= '<a href="' . $general_img_path . '/closet-expansion/closet-expansion-render-02.png" data-lightbox="general-interior-gallery" data-title="Closet Expansion Design Render" class="wow fadeIn"><img src="' . $general_img_path . '/closet-expansion/closet-expansion-render-02.png" loading="lazy"></a>';
 
 				$gallery_output .= '[/masonry]';
+				$gallery_output = str_replace( ' loading="lazy"', '', $gallery_output );
 
 				echo do_shortcode( $gallery_output );
 				?>

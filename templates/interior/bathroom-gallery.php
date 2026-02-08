@@ -81,6 +81,7 @@ $bath_gallery_path = get_stylesheet_directory_uri() . '/images/Interior/bathroom
 				$gallery_output .= '<a href="' . $bath_gallery_path . '/bathroom-gallery-28.jpg" data-lightbox="bathroom-gallery" data-title="Bathroom Renovation" class="wow fadeIn"><img src="' . $bath_gallery_path . '/bathroom-gallery-28.jpg" loading="lazy"></a>';
 
 				$gallery_output .= '[/masonry]';
+				$gallery_output = str_replace( ' loading="lazy"', '', $gallery_output );
 
 				echo do_shortcode( $gallery_output );
 				?>

@@ -60,7 +60,7 @@
 		<!-- Example row of columns -->
 			<div class="">
 
-				<div class="inner-content">
+				<div class="">
 					<div class="content-no-sidebar">
 						<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 							<?php if( 'off' === $final_page_header_option ) { ?>
@@ -135,7 +135,7 @@
 		?>
 		</section>
 
-		<section id="our-service" class="section-padding d-none home-service service-section py-5 oak-section-light">
+		<section id="our-service" class="section-padding  home-service service-section py-5 oak-section-light">
 			<div class="container">
 				<div class="row mb-4">
 					<div class="col-lg-8 col-md-10 col-12">
@@ -147,23 +147,9 @@
 				</div>
 
 				<div class="row g-4" id="service-contents">
-					<div class="col-lg-6 col-md-6">
-						<a class="service-card-link" href="/services/exterior/">
-							<div class="service-card card h-100">
-								<img src="https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/9u9u9u.webp" class="card-img-top" alt="Exterior" title="Exterior">
-								<div class="card-body">
-									<div class="service-icon">
-										<i class="fa fa-shield"></i>
-									</div>
-									<h3 class="card-title">Exterior</h3>
-									<p class="card-text">Transform your property with exterior renovations. Increase its value and curb appeal with updated siding, roofing, landscaping, and outdoor living areas.</p>
-									<span class="btn btn-brand btn-sm">Learn More <i class="fa fa-arrow-right"></i></span>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="col-lg-6 col-md-6">
-						<a class="service-card-link" href="/services/interior/">
+
+					<div class="col-lg-3 col-md-3">
+						<a class="service-card-link" href="#interior-section">
 							<div class="service-card card h-100">
 								<img src="https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/56-300x200.webp" class="card-img-top" alt="Interior" title="Interior">
 								<div class="card-body">
@@ -177,11 +163,25 @@
 							</div>
 						</a>
 					</div>
-				</div>
 
-				<div class="row g-4 mt-0">
-					<div class="col-lg-6 col-md-6">
-						<a class="service-card-link" href="/services/make-ready/">
+					<div class="col-lg-3 col-md-3">
+						<a class="service-card-link" href="#exterior-section">
+							<div class="service-card card h-100">
+								<img src="https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/9u9u9u.webp" class="card-img-top" alt="Exterior" title="Exterior">
+								<div class="card-body">
+									<div class="service-icon">
+										<i class="fa fa-shield"></i>
+									</div>
+									<h3 class="card-title">Exterior</h3>
+									<p class="card-text">Transform your property with exterior renovations. Increase its value and curb appeal with updated siding, roofing, landscaping, and outdoor living areas.</p>
+									<span class="btn btn-brand btn-sm">Learn More <i class="fa fa-arrow-right"></i></span>
+								</div>
+							</div>
+						</a>
+					</div>
+
+					<div class="col-lg-3 col-md-3">
+						<a class="service-card-link" href="#make-ready-section">
 							<div class="service-card card h-100">
 								<img src="https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/pexels-marianne-238377-500x295.jpg" class="card-img-top" alt="Make Ready" title="Make Ready">
 								<div class="card-body">
@@ -195,8 +195,8 @@
 							</div>
 						</a>
 					</div>
-					<div class="col-lg-6 col-md-6">
-						<a class="service-card-link" href="/services/commercial/">
+					<div class="col-lg-3 col-md-3">
+						<a class="service-card-link" href="#commercial-section">
 							<div class="service-card card h-100">
 								<img src="https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/9u9u9u.webp" class="card-img-top" alt="Commercial" title="Commercial">
 								<div class="card-body">
@@ -217,7 +217,7 @@
 
 
 		<?php $interior_img_path = get_stylesheet_directory_uri() . '/images/Interior'; ?>
-		<section class="service-feature-section py-5 oak-section-light">
+		<section id="interior-section" class="service-feature-section py-5 oak-section-light">
 			<div class="container">
 				<div class="row g-4 align-items-center">
 					<div class="col-lg-6 order-1 order-lg-1">
@@ -308,7 +308,7 @@
 		</section>
 
 		<?php $exterior_img_path = get_stylesheet_directory_uri() . '/images/Exterior'; ?>
-		<section class="service-feature-section py-5 oak-section-accent">
+		<section id="exterior-section" class="service-feature-section py-5 oak-section-accent">
 			<div class="container">
 				<div class="row g-4 align-items-center">
 					<div class="col-lg-6 order-1 order-lg-2">
@@ -398,7 +398,8 @@
 			</div>
 		</section>
 
-		<section class="make-ready-feature-section service-feature-section py-5 oak-section-light">
+		<?php $mr_img_path = get_stylesheet_directory_uri() . '/images/make-ready'; ?>
+		<section id="make-ready-section" class="make-ready-feature-section service-feature-section py-5 oak-section-light">
 			<div class="container">
 				<div class="row g-4 align-items-center">
 					<div class="col-lg-6 order-1 order-lg-1">
@@ -418,10 +419,41 @@
 						</div>
 					</div>
 				</div>
+
+				<!-- Make Ready Featured Projects -->
+				<div class="row mt-5 mb-3">
+					<div class="col-12">
+						<div class="section-title">
+							<h3>Featured Projects <span></span></h3>
+						</div>
+					</div>
+				</div>
+				<div class="gallery-cta-grid">
+					<div class="row g-4">
+						<div class="col-lg-4 col-md-6">
+							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/make-ready/#silverchase-make-ready" style="background-image: url('<?php echo $mr_img_path; ?>/silverchase-aaron-alona/after/after-001.jpg');">
+								<span class="gallery-cta-overlay"></span>
+								<span class="gallery-cta-title">Silverchase</span>
+							</a>
+						</div>
+						<div class="col-lg-4 col-md-6">
+							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/make-ready/#greg-michell-make-ready" style="background-image: url('<?php echo $mr_img_path; ?>/greg-michell/after/after-01.jpg');">
+								<span class="gallery-cta-overlay"></span>
+								<span class="gallery-cta-title">Roswell</span>
+							</a>
+						</div>
+						<div class="col-lg-4 col-md-6">
+							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/make-ready/#woodstock-make-ready" style="background-image: url('<?php echo $mr_img_path; ?>/woodstock-jc-jennifer/after/after-01.jpg');">
+								<span class="gallery-cta-overlay"></span>
+								<span class="gallery-cta-title">Woodstock</span>
+							</a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</section>
 
-		<section class="service-feature-section py-5 oak-section-accent">
+		<section id="commercial-section" class="service-feature-section py-5 oak-section-accent">
 			<div class="container">
 				<div class="row g-4 align-items-center">
 					<div class="col-lg-6 order-1 order-lg-2">
