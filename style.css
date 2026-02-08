@@ -688,6 +688,16 @@
 		border-radius: 8px;
 	}
 
+  #top-bar i.fa {
+    margin-right: 0.5rem;
+  }
+
+  #gform_wrapper_1 {
+    background: var(--oak-light);
+    padding: 20px;
+    border-radius: 10px;
+    color: black;
+  }
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~MEDIA QUERIES~~~~
@@ -697,6 +707,9 @@
 	}
 
 	@media only screen and ( min-width: 981px ) {
+    #top-bar .text a {
+      margin-right: 1rem;
+    }
 
 	}
 
@@ -720,9 +733,7 @@
 
 
 
-    #top-bar i.fa {
-      margin-right: 0.5rem;
-    }
+
 
     #top-bar .right {
       text-align: center !important;

@@ -149,7 +149,7 @@
 				<div class="row g-4" id="service-contents">
 
 					<div class="col-lg-3 col-md-3">
-						<a class="service-card-link" href="#interior-section">
+						<a class="service-card-link" href="/services/interior">
 							<div class="service-card card h-100">
 								<img src="https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/56-300x200.webp" class="card-img-top" alt="Interior" title="Interior">
 								<div class="card-body">
@@ -165,7 +165,7 @@
 					</div>
 
 					<div class="col-lg-3 col-md-3">
-						<a class="service-card-link" href="#exterior-section">
+						<a class="service-card-link" href="/services/exterior">
 							<div class="service-card card h-100">
 								<img src="https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/9u9u9u.webp" class="card-img-top" alt="Exterior" title="Exterior">
 								<div class="card-body">
@@ -181,7 +181,7 @@
 					</div>
 
 					<div class="col-lg-3 col-md-3">
-						<a class="service-card-link" href="#make-ready-section">
+						<a class="service-card-link" href="/services/make-ready">
 							<div class="service-card card h-100">
 								<img src="https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/pexels-marianne-238377-500x295.jpg" class="card-img-top" alt="Make Ready" title="Make Ready">
 								<div class="card-body">
@@ -196,7 +196,7 @@
 						</a>
 					</div>
 					<div class="col-lg-3 col-md-3">
-						<a class="service-card-link" href="#commercial-section">
+						<a class="service-card-link" href="/services/commercial">
 							<div class="service-card card h-100">
 								<img src="https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/9u9u9u.webp" class="card-img-top" alt="Commercial" title="Commercial">
 								<div class="card-body">
@@ -215,265 +215,6 @@
 
 		</section>
 
-
-		<?php $interior_img_path = get_stylesheet_directory_uri() . '/images/Interior'; ?>
-		<section id="interior-section" class="service-feature-section py-5 oak-section-light">
-			<div class="container">
-				<div class="row g-4 align-items-center">
-					<div class="col-lg-6 order-1 order-lg-1">
-						<div class="make-ready-image" style="background-image: url('https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/56-300x200.webp');">
-							<span class="make-ready-image-overlay"></span>
-						</div>
-					</div>
-					<div class="col-lg-6 order-2 order-lg-2">
-						<div class="make-ready-content">
-							<div class="section-title">
-								<h2>Interior <span></span></h2>
-								<p>Refresh and reimagine living spaces with clean finishes, thoughtful upgrades, and quality repairs.</p>
-							</div>
-							<p>From fixtures and finishes to drywall, trim, and flooring, we bring craftsmanship that makes rooms feel new again.</p>
-							<a class="btn btn-brand" href="/services/interior/">Explore Interior <i class="fa fa-arrow-right"></i></a>
-						</div>
-					</div>
-				</div>
-
-				<!-- Interior Service Cards -->
-				<div class="row mt-5 mb-3">
-					<div class="col-12">
-						<div class="section-title">
-							<h3>Our Interior Services <span></span></h3>
-						</div>
-					</div>
-				</div>
-				<div class="gallery-cta-grid">
-					<div class="row g-4">
-						<div class="col-lg-4 col-md-6">
-							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/interior/#kitchen-gallery" style="background-image: url('<?php echo $interior_img_path; ?>/kitchen/gallery-photos/kitchen-gallery-01.jpg');">
-								<span class="gallery-cta-overlay"></span>
-								<span class="gallery-cta-title">Kitchens</span>
-							</a>
-						</div>
-						<div class="col-lg-4 col-md-6">
-							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/interior/#bathroom-gallery" style="background-image: url('<?php echo $interior_img_path; ?>/bathroom/gallery-photos/bathroom-gallery-01.jpg');">
-								<span class="gallery-cta-overlay"></span>
-								<span class="gallery-cta-title">Bathrooms</span>
-							</a>
-						</div>
-						<div class="col-lg-4 col-md-6">
-							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/interior/#general-interior-gallery" style="background-image: url('<?php echo $interior_img_path; ?>/general-interior/built-ins/built-ins-01.jpg');">
-								<span class="gallery-cta-overlay"></span>
-								<span class="gallery-cta-title">Built-Ins & Cabinetry</span>
-							</a>
-						</div>
-					</div>
-				</div>
-
-				<!-- Interior Featured Projects -->
-				<div class="row mt-5 mb-3">
-					<div class="col-12">
-						<div class="section-title">
-							<h3>Featured Projects <span></span></h3>
-						</div>
-					</div>
-				</div>
-				<div class="gallery-cta-grid">
-					<div class="row g-4">
-						<div class="col-lg-3 col-md-6">
-							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/interior/#canton-kitchen-upstairs" style="background-image: url('<?php echo $interior_img_path; ?>/kitchen/gallery-photos/kitchen-gallery-05.jpg');">
-								<span class="gallery-cta-overlay"></span>
-								<span class="gallery-cta-title">Canton Kitchen</span>
-							</a>
-						</div>
-						<div class="col-lg-3 col-md-6">
-							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/interior/#woodstock-kitchen" style="background-image: url('<?php echo $interior_img_path; ?>/kitchen/gallery-photos/kitchen-gallery-10.jpg');">
-								<span class="gallery-cta-overlay"></span>
-								<span class="gallery-cta-title">Woodstock Kitchen</span>
-							</a>
-						</div>
-						<div class="col-lg-3 col-md-6">
-							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/interior/#roswell-master-bath" style="background-image: url('<?php echo $interior_img_path; ?>/bathroom/gallery-photos/bathroom-gallery-05.jpg');">
-								<span class="gallery-cta-overlay"></span>
-								<span class="gallery-cta-title">Roswell Master Bath</span>
-							</a>
-						</div>
-						<div class="col-lg-3 col-md-6">
-							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/interior/#general-interior-gallery" style="background-image: url('<?php echo $interior_img_path; ?>/general-interior/basement-after-woodstock.jpg');">
-								<span class="gallery-cta-overlay"></span>
-								<span class="gallery-cta-title">Basement Finish</span>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<?php $exterior_img_path = get_stylesheet_directory_uri() . '/images/Exterior'; ?>
-		<section id="exterior-section" class="service-feature-section py-5 oak-section-accent">
-			<div class="container">
-				<div class="row g-4 align-items-center">
-					<div class="col-lg-6 order-1 order-lg-2">
-						<div class="make-ready-image" style="background-image: url('https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/9u9u9u.webp');">
-							<span class="make-ready-image-overlay"></span>
-						</div>
-					</div>
-					<div class="col-lg-6 order-2 order-lg-1">
-						<div class="make-ready-content">
-							<div class="section-title">
-								<h2>Exterior <span></span></h2>
-								<p>Transform your property with exterior renovations that boost curb appeal and protect your investment.</p>
-							</div>
-							<p>We handle siding, roofing, decks, fencing, and outdoor living upgrades with craftsmanship that stands up to the elements.</p>
-							<a class="btn btn-brand" href="/services/exterior/">Explore Exterior <i class="fa fa-arrow-right"></i></a>
-						</div>
-					</div>
-				</div>
-
-				<!-- Exterior Service Cards -->
-				<div class="row mt-5 mb-3">
-					<div class="col-12">
-						<div class="section-title">
-							<h3>Our Exterior Services <span></span></h3>
-						</div>
-					</div>
-				</div>
-				<div class="gallery-cta-grid">
-					<div class="row g-4">
-						<div class="col-lg-4 col-md-6">
-							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/exterior/#roswell-siding-windows" style="background-image: url('<?php echo $exterior_img_path; ?>/gallery-photos/home-side-siding-fence.jpg');">
-								<span class="gallery-cta-overlay"></span>
-								<span class="gallery-cta-title">Siding & Windows</span>
-							</a>
-						</div>
-						<div class="col-lg-4 col-md-6">
-							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/exterior/#marietta-roof-siding" style="background-image: url('<?php echo $exterior_img_path; ?>/gallery-photos/traditional-home-front-double-garage.jpg');">
-								<span class="gallery-cta-overlay"></span>
-								<span class="gallery-cta-title">Roofing & Gutters</span>
-							</a>
-						</div>
-						<div class="col-lg-4 col-md-6">
-							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/exterior/#smyrna-porch" style="background-image: url('<?php echo $exterior_img_path; ?>/gallery-photos/screened-porch-sectional-sofa.jpg');">
-								<span class="gallery-cta-overlay"></span>
-								<span class="gallery-cta-title">Decks & Porches</span>
-							</a>
-						</div>
-					</div>
-				</div>
-
-				<!-- Exterior Featured Projects -->
-				<div class="row mt-5 mb-3">
-					<div class="col-12">
-						<div class="section-title">
-							<h3>Featured Projects <span></span></h3>
-						</div>
-					</div>
-				</div>
-				<div class="gallery-cta-grid">
-					<div class="row g-4">
-						<div class="col-lg-3 col-md-6">
-							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/exterior/#blue-ridge" style="background-image: url('<?php echo $exterior_img_path; ?>/gallery-photos/cabin-multi-level-deck-twilight.jpg');">
-								<span class="gallery-cta-overlay"></span>
-								<span class="gallery-cta-title">Blue Ridge Cabin</span>
-							</a>
-						</div>
-						<div class="col-lg-3 col-md-6">
-							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/exterior/#roswell-siding-gazebo" style="background-image: url('<?php echo $exterior_img_path; ?>/gallery-photos/green-siding-home-portico-entrance.jpg');">
-								<span class="gallery-cta-overlay"></span>
-								<span class="gallery-cta-title">Roswell Siding & Gazebo</span>
-							</a>
-						</div>
-						<div class="col-lg-3 col-md-6">
-							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/exterior/#smyrna-porch" style="background-image: url('<?php echo $exterior_img_path; ?>/gallery-photos/covered-porch-stone-veneer-flag.jpg');">
-								<span class="gallery-cta-overlay"></span>
-								<span class="gallery-cta-title">Smyrna Porch & Sunroom</span>
-							</a>
-						</div>
-						<div class="col-lg-3 col-md-6">
-							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/exterior/#woodstock-outdoor-living" style="background-image: url('<?php echo $exterior_img_path; ?>/gallery-photos/covered-patio-outdoor-furniture.jpg');">
-								<span class="gallery-cta-overlay"></span>
-								<span class="gallery-cta-title">Woodstock Outdoor Living</span>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<?php $mr_img_path = get_stylesheet_directory_uri() . '/images/make-ready'; ?>
-		<section id="make-ready-section" class="make-ready-feature-section service-feature-section py-5 oak-section-light">
-			<div class="container">
-				<div class="row g-4 align-items-center">
-					<div class="col-lg-6 order-1 order-lg-1">
-						<div class="make-ready-image" style="background-image: url('https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/pexels-marianne-238377-500x295.jpg');">
-							<span class="make-ready-image-overlay"></span>
-						</div>
-					</div>
-					<div class="col-lg-6 order-2 order-lg-2">
-						<div class="make-ready-content">
-							<div class="section-title">
-								<h2>Make Ready Repairs <span></span></h2>
-								<p>Our bread-and-butter service for property managers, investors, and homeowners who need fast, dependable turnarounds.</p>
-							</div>
-							<p>We handle punch lists, minor repairs, paint touch-ups, flooring fixes, hardware replacements, and curb appeal upgrades so a property is ready to show, rent, or sell without delays.</p>
-							<p>From the first walkthrough to final clean-up, we keep the process organized and transparent, deliver clear scopes, and hit timelines that keep your projects moving.</p>
-							<a class="btn btn-brand" href="/services/make-ready/">Explore Make Ready <i class="fa fa-arrow-right"></i></a>
-						</div>
-					</div>
-				</div>
-
-				<!-- Make Ready Featured Projects -->
-				<div class="row mt-5 mb-3">
-					<div class="col-12">
-						<div class="section-title">
-							<h3>Featured Projects <span></span></h3>
-						</div>
-					</div>
-				</div>
-				<div class="gallery-cta-grid">
-					<div class="row g-4">
-						<div class="col-lg-4 col-md-6">
-							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/make-ready/#silverchase-make-ready" style="background-image: url('<?php echo $mr_img_path; ?>/silverchase-aaron-alona/after/after-001.jpg');">
-								<span class="gallery-cta-overlay"></span>
-								<span class="gallery-cta-title">Silverchase</span>
-							</a>
-						</div>
-						<div class="col-lg-4 col-md-6">
-							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/make-ready/#greg-michell-make-ready" style="background-image: url('<?php echo $mr_img_path; ?>/greg-michell/after/after-01.jpg');">
-								<span class="gallery-cta-overlay"></span>
-								<span class="gallery-cta-title">Roswell</span>
-							</a>
-						</div>
-						<div class="col-lg-4 col-md-6">
-							<a class="gallery-cta-card gallery-cta-card--sm" href="/services/make-ready/#woodstock-make-ready" style="background-image: url('<?php echo $mr_img_path; ?>/woodstock-jc-jennifer/after/after-01.jpg');">
-								<span class="gallery-cta-overlay"></span>
-								<span class="gallery-cta-title">Woodstock</span>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section id="commercial-section" class="service-feature-section py-5 oak-section-accent">
-			<div class="container">
-				<div class="row g-4 align-items-center">
-					<div class="col-lg-6 order-1 order-lg-2">
-						<div class="make-ready-image" style="background-image: url('https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/9u9u9u.webp');">
-							<span class="make-ready-image-overlay"></span>
-						</div>
-					</div>
-					<div class="col-lg-6 order-2 order-lg-1">
-						<div class="make-ready-content">
-							<div class="section-title">
-								<h2>Commercial <span></span></h2>
-								<p>Keep your business spaces sharp with efficient repairs and renovations that minimize downtime.</p>
-							</div>
-							<p>We coordinate scopes, schedules, and execution so your property stays tenant-ready and on brand.</p>
-							<a class="btn btn-brand" href="/services/commercial/">Explore Commercial <i class="fa fa-arrow-right"></i></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
 
 		<section id="ourfeatures" class="section-padding home-feature py-5 oak-section-light position-relative">
 			<div class="container">
