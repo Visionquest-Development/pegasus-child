@@ -1,6 +1,6 @@
 <?php
 /*
-	Template Name: Home Template
+	Template Name: Careers Template
 */
 ?>
 	<?php get_header(); ?>
