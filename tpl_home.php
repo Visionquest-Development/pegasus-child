@@ -61,7 +61,7 @@
 			?>
 		</section>
 
-		<section class="upl-hero-intro ">
+		<section class="upl-hero-intro wow fadeIn" data-wow-delay="0.5s">
 			<div class="container text-center">
 				<h2 class="ulg-gradient-heading">
 					where life is art
@@ -206,7 +206,7 @@
 
 											<div class="col-lg-8">
 												<?php if ( $image_url ) : ?>
-													<div class="ulg-home-section-image " style="background-image: url('<?php echo esc_url( $image_url ); ?>');">
+													<div class="ulg-home-section-image wow fadeInUp" style="background-image: url('<?php echo esc_url( $image_url ); ?>');">
 
 
 
@@ -219,7 +219,7 @@
 											<!-- Image left / Text right -->
 											<div class="col-lg-8 order-lg-1 order-2">
 												<?php if ( $image_url ) : ?>
-													<div class="ulg-home-section-image  " style="background-image: url('<?php echo esc_url( $image_url ); ?>');">
+													<div class="ulg-home-section-image wow fadeInUp" style="background-image: url('<?php echo esc_url( $image_url ); ?>');">
 
 
 													</div>
@@ -281,7 +281,7 @@
 
 
 
-		<section class="py-5 mb-5 d-none d-md-block">
+		<section class="py-5 mb-5 d-none d-md-block wow fadeIn" data-wow-delay="0.5s">
 			<?php echo do_shortcode( '[uptown_restaurant_map height="600px"]' ); ?>
 		</section>
 
