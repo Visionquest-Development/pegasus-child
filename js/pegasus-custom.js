@@ -21,6 +21,19 @@
 
 		//});
 
+    $('.pegasus-toggle .pegasus-trigger').each(function() {
+      var $trigger = $(this);
+      if ($trigger.find('.pegasus-toggle-icon').length === 0) {
+        $trigger.append(' <i class="fa fa-chevron-up pegasus-toggle-icon" aria-hidden="true"></i>');
+      }
+
+    });
+
+    $('.pegasus-toggle .pegasus-trigger').on('click', function() {
+      var $trigger = $(this);
+      $trigger.find('.pegasus-toggle-icon').toggleClass('fa-chevron-up fa-chevron-down');
+    });
+
 
     $('.ulg-logo-slider').slick({
 		  centerMode: false,

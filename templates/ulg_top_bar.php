@@ -14,21 +14,27 @@
 		</a>
 		*/ ?>
 
-		<nav class="brandbar-nav d-none d-lg-flex align-items-center gap-2 ms-auto">
+		<?php
+			$current_host = wp_parse_url( home_url(), PHP_URL_HOST );
+			$subs = [
+				'Uptown Life Group' => '//uptownlifegroup.com',
+				'The Loft'   => '//theloft.com',
+				'Mabellas'   => '//mabellas.com',
+				'Mabellas Midtown'   => '//mabellas.com',
+				'Salt Cellar'=> '//saltcellar.com',
+				'Mix Market' => '//themixmarket.com',
+				'Tommy G\'s' => '//tommygs.com',
+			];
+		?>
+		<nav class="brandbar-nav d-none d-lg-flex align-items-center  ms-auto">
 			<?php
-				$current_host = wp_parse_url( home_url(), PHP_URL_HOST );
-				$subs = [
-					'Uptown Life Group' => '//uptownlifegroup.com',
-					'The Loft'   => '//theloft.com',
-					'Mabellas'   => '//mabellas.com',
-					'Salt Cellar'=> '//saltcellar.com',
-					'Mix Market' => '//themixmarket.com',
-					'Tommy G\'s' => '//tommygs.com',
-				];
 				$index = 0;
 				$total = count( $subs );
 				foreach ( $subs as $label => $url ) {
 					$link_host = wp_parse_url( $url, PHP_URL_HOST );
+					if ( $link_host && $current_host && $link_host === $current_host ) {
+						continue;
+					}
 					$is_active = $link_host && $current_host && $link_host === $current_host;
 					$active_class = $is_active ? ' is-active' : '';
 					echo '<a class="text-white' . esc_attr( $active_class ) . '" href="' . esc_url( $url ) . '">' . esc_html( $label ) . '</a>';
@@ -51,15 +57,6 @@
 
 			<ul class="dropdown-menu dropdown-menu-end text-white" aria-labelledby="ulgDropdown">
 				<?php
-					$current_host = wp_parse_url( home_url(), PHP_URL_HOST );
-					$subs = [
-						'Uptown Life Group' => '//uptownlifegroup.com',
-						'The Loft'    => '//theloft.com',
-						'Mabellas'    => '//mabellas.com',
-						'Salt Cellar' => '//saltcellar.com',
-						'Mix Market'  => '//themixmarket.com',
-						'Tommy G\'s'  => '//tommygs.com',
-					];
 					foreach ( $subs as $label => $url ) {
 						$link_host = wp_parse_url( $url, PHP_URL_HOST );
 						if ( $link_host && $current_host && $link_host === $current_host ) {
