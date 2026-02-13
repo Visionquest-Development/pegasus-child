@@ -131,7 +131,7 @@
 					<?php foreach ($events as $event) : ?>
 
 						<div class="grid-item col-12 col-lg-3 mb-4">
-							<div class="card h-100 shadow-sm border-0">
+							<div class="card h-100 shadow-sm border-0 wow fadeInUp">
 
 								<?php if (!empty($event['image'])) : ?>
 									<a href="<?php echo esc_url($event['link']); ?>">
