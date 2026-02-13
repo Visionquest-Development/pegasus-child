@@ -54,14 +54,14 @@
 				$final_page_header_option = 'off';
 			}
 		?>
-		
+
 		<div class="container-fluid my-5 home-locations" >
 			<h2 class="text-white text-center pb-3">Locations</h2>
 			<div class="row g-3">
 
 				<!-- UPTOWN COLUMBUS -->
 				<div class="col-lg-6">
-					<div class="mabellas-location-card text-center h-100 p-3 text-white">
+					<div class="mabellas-location-card text-center h-100 p-3 text-white wow fadeInLeft">
 
 						<div class="mabellas-location-image"
 							 style="background-image:url('https://visionquestdev.com/mabellas/wp-content/uploads/2025/12/INYtFcBSnyge5MW6Z7bQ_Mabellas-62.png');">
@@ -75,7 +75,7 @@
 
 				<!-- MIDLAND -->
 				<div class="col-lg-6">
-					<div class="mabellas-location-card text-center h-100 p-3 text-white">
+					<div class="mabellas-location-card text-center h-100 p-3 text-white wow fadeInRight">
 
 						<div class="mabellas-location-image"
 							 style="background-image:url('https://visionquestdev.com/mabellas/wp-content/uploads/2025/12/EkmDKBDTRaC41Pg7v0uw_Mabellas-17.png');">
@@ -91,7 +91,7 @@
 		</div>
 
 		<hr>
-		
+
 		<main id="primary" class="site-main mabellas-home">
 			<h2 class="text-white text-center pb-2 px-3">The "Talk" of the Town</h2>
 			<?php if ( have_posts() ) : ?>
@@ -130,7 +130,7 @@
 
 											<!-- Text left / Image right -->
 											<div class="col-lg-4 d-flex">
-												<div class="mabellas-home-section-text pegasus-bg-dark w-100 d-flex flex-column justify-content-center text-center text-white p-5 ">
+												<div class="mabellas-home-section-text pegasus-bg-dark w-100 d-flex flex-column justify-content-center text-center text-white p-5 wow fadeInLeft">
 													<?php if ( $title ) : ?>
 														<h2 class="mabellas-section-title mb-2">
 															<?php echo esc_html( $title ); ?>
@@ -161,7 +161,7 @@
 											</div>
 
 											<div class="col-lg-8">
-												<div class="mabellas-home-section-image h-100 ">
+												<div class="mabellas-home-section-image h-100 wow fadeInUp">
 													<?php if ( $image_url ) : ?>
 														<img src="<?php echo esc_url( $image_url ); ?>" alt="" class="img-fluid w-100 h-100 ">
 													<?php endif; ?>
@@ -172,7 +172,7 @@
 
 											<!-- Image left / Text right -->
 											<div class="col-lg-8 order-lg-1 order-2">
-												<div class="mabellas-home-section-image h-100 ">
+												<div class="mabellas-home-section-image h-100 wow fadeInUp">
 													<?php if ( $image_url ) : ?>
 														<img src="<?php echo esc_url( $image_url ); ?>" alt="" class="img-fluid w-100 h-100 ">
 													<?php endif; ?>
@@ -180,7 +180,7 @@
 											</div>
 
 											<div class="col-lg-4 order-lg-2 order-1 d-flex">
-												<div class="mabellas-home-section-text pegasus-bg-dark w-100 d-flex flex-column justify-content-center text-center text-white p-5 ">
+												<div class="mabellas-home-section-text pegasus-bg-dark w-100 d-flex flex-column justify-content-center text-center text-white p-5 wow fadeInRight">
 													<?php if ( $title ) : ?>
 														<h2 class="mabellas-section-title mb-2">
 															<?php echo esc_html( $title ); ?>
@@ -231,7 +231,7 @@
 			<?php endif; ?>
 
 		</main>
-		
+
 		<section>
 			<div class="container py-5">
 				<div class="mabellas-newsletter-card text-center">
