@@ -1,6 +1,6 @@
 <div class=" ulg-brand-bar py-2">
 	<div class="container d-flex align-items-center justify-content-between">
-		<a class="ulg-brand-logo d-none d-lg-flex align-items-center" href="<?= esc_url(home_url('/')); ?>">
+		<a class="ulg-brand-logo d-none d-lg-flex align-items-center" href="https://uptownlifegroup.com" target="_blank">
 			<img
 				src="http://uptownlifegroup.com/wp-content/uploads/2025/12/57777logo.png"
 				alt="Uptown Life Group"
