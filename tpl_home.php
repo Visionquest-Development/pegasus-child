@@ -54,8 +54,8 @@
 				$final_page_header_option = 'off';
 			}
 		?>
-		
-		
+
+
 		<div class="<?php echo $final_container_class; ?>">
 		<!-- Example row of columns -->
 			<div class="">
@@ -115,9 +115,9 @@
 			</div><!--end row -->
 		</div><!-- end container -->
 
-		
+
 		<main id="primary" class="site-main ulg-home">
-			
+
 			<?php if ( have_posts() ) : ?>
 				<?php while ( have_posts() ) : the_post(); ?>
 
@@ -154,7 +154,7 @@
 
 											<!-- Text left / Image right -->
 											<div class="col-lg-4 d-flex">
-												<div class="ulg-home-section-text pegasus-bg-dark w-100 d-flex flex-column justify-content-center   p-5 ">
+												<div class="ulg-home-section-text pegasus-bg-dark w-100 d-flex flex-column justify-content-center wow fadeInLeft p-5 ">
 													<?php if ( $title ) : ?>
 														<h2 class="ulg-section-title ulg-heading-border mb-2">
 															<?php echo esc_html( $title ); ?>
@@ -186,10 +186,10 @@
 
 											<div class="col-lg-8">
 												<?php if ( $image_url ) : ?>
-													<div class="ulg-home-section-image " style="background-image: url('<?php echo esc_url( $image_url ); ?>');">
-													
-														
-													
+													<div class="ulg-home-section-image wow fadeInUp" style="background-image: url('<?php echo esc_url( $image_url ); ?>');">
+
+
+
 													</div>
 												<?php endif; ?>
 											</div>
@@ -199,15 +199,15 @@
 											<!-- Image left / Text right -->
 											<div class="col-lg-8 order-lg-1 order-2">
 												<?php if ( $image_url ) : ?>
-													<div class="ulg-home-section-image  " style="background-image: url('<?php echo esc_url( $image_url ); ?>');">
-														
-														
+													<div class="ulg-home-section-image wow fadeInUp" style="background-image: url('<?php echo esc_url( $image_url ); ?>');">
+
+
 													</div>
 												<?php endif; ?>
 											</div>
 
 											<div class="col-lg-4 order-lg-2 order-1 d-flex">
-												<div class="ulg-home-section-text pegasus-bg-dark w-100 d-flex flex-column justify-content-center   p-5 ">
+												<div class="ulg-home-section-text pegasus-bg-dark w-100 d-flex flex-column justify-content-center wow fadeInRight p-5 ">
 													<?php if ( $title ) : ?>
 														<h2 class="ulg-section-title ulg-heading-border mb-2">
 															<?php echo esc_html( $title ); ?>
@@ -258,14 +258,14 @@
 			<?php endif; ?>
 
 		</main>
-		
-		
+
+
 		<?php /*
 		<section class="py-5 mb-5">
 			<?php echo do_shortcode( '[uptown_restaurant_map height="600px"]' ); ?>
 		</section>
 		*/ ?>
 
-		
+
 	</div><!-- end page wrap -->
     <?php get_footer(); ?>

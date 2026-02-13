@@ -74,7 +74,8 @@
 		.brandbar-nav a::after {
 		  content: "|";
 		  color: white;
-		  margin-left: 10px; /* Adjusts space between text and pipe */
+		  /*margin-left: 10px; Adjusts space between text and pipe */
+      padding: 0 5px;
 		}
 
 		.brandbar-nav a:last-child::after {

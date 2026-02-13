@@ -133,8 +133,8 @@
 									<li>Event and door staff</li>
 									<li>Managers and kitchen leadership</li>
 								</ul>
-								<p class="mb-4">Openings change throughout the year. Visit the ULG careers page to view current roles, expand job descriptions, and submit an application.</p>
-								<a class="btn btn-primary" href="https://uptownlifegroup.com/careers">View Careers at ULG</a>
+								<p class="mb-4">Openings change throughout the year. Visit the Uptown Life Group (ULG) careers page to view current roles, expand job descriptions, and submit an application.</p>
+								<a class="btn btn-primary" href="https://uptownlifegroup.com/careers">View Careers at Uptown Life Group (ULG)</a>
 							</div>
 							<div class="col-lg-6">
 								<div class="p-4 bg-light h-100 rounded">
