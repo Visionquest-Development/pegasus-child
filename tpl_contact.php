@@ -67,7 +67,7 @@
 
 							</div>
 							<div class="col-md-6">
-								<div class="ulg-contact-card p-4">
+								<div class="ulg-contact-card p-4 wow fadeInUp">
 									<h3 class="h5 mb-2">Events & Restaurants</h3>
 									<p class="mb-0">Tell us about your event, partnership, or restaurant inquiry and our team will follow up with the right details.</p>
 								</div>
@@ -139,7 +139,7 @@
 		</div><!-- end container -->
 
 
-		<section class="py-5 mb-5 d-none d-md-block">
+		<section class="py-5 mb-5 d-none d-md-block wow fadeIn" data-wow-delay="0.5s">
 			<?php echo do_shortcode( '[uptown_restaurant_map height="600px"]' ); ?>
 		</section>
 

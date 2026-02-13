@@ -137,7 +137,7 @@
 						?>
 
 						<div class="col-md-6 col-lg-6 mb-4">
-							<div class="ulg-location-card">
+							<div class="ulg-location-card wow fadeIn">
 
 								<?php
 								$prefix = 'ulg_location_';

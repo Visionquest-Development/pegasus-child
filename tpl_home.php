@@ -174,7 +174,7 @@
 
 											<!-- Text left / Image right -->
 											<div class="col-lg-4 d-flex">
-												<div class="ulg-home-section-text pegasus-bg-dark w-100 d-flex flex-column justify-content-center   p-5 ">
+												<div class="ulg-home-section-text pegasus-bg-dark w-100 d-flex flex-column justify-content-center wow fadeInLeft p-5 ">
 													<?php if ( $title ) : ?>
 														<h2 class="ulg-section-title ulg-heading-border mb-2">
 															<?php echo esc_html( $title ); ?>
@@ -227,7 +227,7 @@
 											</div>
 
 											<div class="col-lg-4 order-lg-2 order-1 d-flex">
-												<div class="ulg-home-section-text pegasus-bg-dark w-100 d-flex flex-column justify-content-center   p-5 ">
+												<div class="ulg-home-section-text pegasus-bg-dark w-100 d-flex flex-column justify-content-center wow fadeInRight p-5 ">
 													<?php if ( $title ) : ?>
 														<h2 class="ulg-section-title ulg-heading-border mb-2">
 															<?php echo esc_html( $title ); ?>
