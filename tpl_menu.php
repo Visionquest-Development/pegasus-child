@@ -515,7 +515,8 @@
       "footnotes": [
         "*These items can be cooked to order. Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness.",
         "We cannot guarantee well done steaks. All sales are final.",
-        "GF - gluten friendly. V - vegetarian.",
+        "GF - gluten friendly.",
+        "V - vegetarian.",
         "If you have a severe food allergy, please inform your server.",
         "20% automatic gratuity added to parties of 8 or more."
       ]
