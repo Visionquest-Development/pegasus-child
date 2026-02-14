@@ -199,8 +199,8 @@
     },
 
     {
-      "id": "entrees",
-      "label": "Entrées & Salads",
+      "id": "salads",
+      "label": "Salads",
       "description": "",
       "sections": [
         {
@@ -238,7 +238,15 @@
               ]
             }
           ]
-        },
+        }
+      ]
+    },
+
+    {
+      "id": "entrees",
+      "label": "Entrées",
+      "description": "",
+      "sections": [
         {
           "title": "Entrées — Land",
           "note": "",
@@ -564,6 +572,16 @@ JSON;
 
 		?>
 		<main id="primary" class="site-main">
+		  <style>
+			#vqmenuTabContent .tab-pane {
+			  background: #e3eaf4;
+			  padding: 1.5rem;
+			}
+
+			#vqmenuTabContent .vqmenu-badges .vqmenu-badge {
+			  display: block;
+			}
+		  </style>
 		  <div class="container py-5 vqmenu">
 			<header class="vqmenu-header mb-4">
 			  <?php if (!empty($menu_data['restaurant_name'])) : ?>
@@ -612,7 +630,7 @@ JSON;
 				$sections = $tab['sections'] ?? [];
 			  ?>
 				<section
-				  class="tab-pane fade <?php echo esc_attr($active); ?>"
+				  class="tab-pane fade <?php echo esc_attr($active); ?><?php echo ($tab_id === 'salads') ? ' vqmenu-panel--salads' : ''; ?>"
 				  id="panel-<?php echo esc_attr($tab_id); ?>"
 				  role="tabpanel"
 				  aria-labelledby="tab-<?php echo esc_attr($tab_id); ?>"
