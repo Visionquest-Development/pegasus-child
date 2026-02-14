@@ -118,66 +118,77 @@
 		$menu_json = <<<JSON
 {
   "restaurant_name": "Salt Cellar",
-  "updated": "2026-01-09",
+  "updated": "2026-02-14",
   "tabs": [
     {
-      "id": "summer",
-      "label": "Summer Menu",
+      "id": "starters",
+      "label": "Starters",
       "description": "",
-      "download": {
-        "href": "https://media-cdn.getbento.com/accounts/415b6c14ebfac54073234e04f7977c09/media/yPJSmYr8SUGLmyC6oVPP_60363-25_summer_menu.jpg",
-        "text": "Download Menu",
-        "target": "_blank"
-      },
       "sections": [
         {
           "title": "Starters",
           "note": "",
           "items": [
             {
-              "name": "Appetizer Trio",
-              "description": "Chef's creation. Ask your server for details.",
-              "price": "Market Price",
-              "badges": [],
-              "spicy_level": 0,
-              "extras": []
-            },
-            {
-              "name": "Sweet Vidalia Onion Rings",
-              "description": "With an avocado lemon-herb dipping sauce.",
-              "price": "12.00",
-              "badges": ["V"],
-              "spicy_level": 0,
-              "extras": []
-            },
-            {
-              "name": "Jumbo Lump 4 oz. Crab Cake",
-              "description": "Spicy creamed corn, lemon wedge, topped with microgreens.",
-              "price": "22.00",
+              "name": "Tempura Fried Shiitake Mushrooms",
+              "description": "Soy citrus dipping sauce.",
+              "price": "13.95",
               "badges": [],
               "spicy_level": 0,
               "extras": []
             },
             {
               "name": "Raw Oysters*",
-              "description": "Six cocktail oysters, served with cocktail sauce, remoulade, and saltine crackers.",
+              "description": "Six cocktail oysters, served with Chalaca cocktail sauce, remoulade, and saltine crackers.",
               "price": "Market Price",
-              "badges": ["GF"],
-              "spicy_level": 0,
-              "extras": []
-            },
-            {
-              "name": "Mussels",
-              "description": "Served with chorizo, tomato jus, fennel, garlic.",
-              "price": "14.00",
               "badges": [],
               "spicy_level": 0,
               "extras": []
             },
             {
-              "name": "Fried Oysters",
-              "description": "Six oysters, served with cocktail sauce & remoulade.",
-              "price": "12.00",
+              "name": "Lamb Meatballs",
+              "description": "Saffron risotto, tzatziki & chermoula sauce.",
+              "price": "14.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Truffled-Parmesan French Fries",
+              "description": "Hand-cut fries, truffle oil, grated Parmesan cheese.",
+              "price": "8.95",
+              "badges": ["GF"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Appetizer Trio",
+              "description": "Mini crab cakes, coconut shrimp, pan-seared sea scallops.",
+              "price": "Market Price",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Jumbo Lump 4 oz. Crab Cake",
+              "description": "Spicy creamed corn, lemon wedge, topped with micro greens.",
+              "price": "23.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Sweet Vidalia Onion Rings",
+              "description": "Avocado lemon-herbed dipping sauce.",
+              "price": "12.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Ahi Tuna Tataki",
+              "description": "Acevichada sauce, passion fruit gelée, criolla salad.",
+              "price": "15.95",
               "badges": [],
               "spicy_level": 0,
               "extras": []
@@ -191,131 +202,140 @@
       "id": "entrees",
       "label": "Entrées & Salads",
       "description": "",
-      "download": {
-        "href": "https://media-cdn.getbento.com/accounts/415b6c14ebfac54073234e04f7977c09/media/BIdOq81RTsCOGAufrCvN_60363-25_summer_menu.jpg",
-        "text": "Download Menu",
-        "target": "_blank"
-      },
       "sections": [
         {
-          "title": "Entrées",
+          "title": "Salads",
           "note": "",
           "items": [
             {
-              "name": "Horseradish Crusted Halibut",
-              "description": "Baked potato, grilled asparagus, traditional lemon butter.",
-              "price": "36.00",
+              "name": "Saltcellar Salad",
+              "description": "Mixed greens, chickpeas, heart of palm, roasted tomatoes, smoked blue cheese, red onions, creamy lemon herb dressing.",
+              "price": "13.95",
+              "badges": ["GF", "V"],
+              "spicy_level": 0,
+              "extras": [
+                { "label": "Add grilled chicken", "price": "9" },
+                { "label": "Add jumbo gulf shrimp", "price": "14" }
+              ]
+            },
+            {
+              "name": "Crab Salad",
+              "description": "Lump crab, micro arugula, crispy sunchokes, pickled onion. Dijon horseradish cream.",
+              "price": "18.95",
               "badges": ["GF"],
               "spicy_level": 0,
               "extras": []
             },
             {
-              "name": "Saltcellar Burger",
-              "description": "Two 4 oz patties, American cheese, two onion rings, bacon jam, secret sauce, brioche bun, French fries.",
-              "price": "18.00",
+              "name": "Harvest Greens Salad",
+              "description": "Mixed greens, roasted sweet potatoes, pumpkin seeds, dried cherries, feta cheese, honey mustard vinaigrette.",
+              "price": "13.95",
+              "badges": ["GF", "V"],
+              "spicy_level": 0,
+              "extras": [
+                { "label": "Add grilled chicken", "price": "9" },
+                { "label": "Add jumbo gulf shrimp", "price": "14" }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Entrées — Land",
+          "note": "",
+          "items": [
+            {
+              "name": "Grilled Lamb Chop",
+              "description": "Saffron risotto, garlic, balsamic reduction.",
+              "price": "43.95",
               "badges": [],
               "spicy_level": 0,
               "extras": []
             },
             {
-              "name": "Grilled Shrimp",
-              "description": "Marinated and grilled red shrimp, herbed mashed potatoes, green beans.",
-              "price": "32.00",
-              "badges": ["GF"],
-              "spicy_level": 0,
-              "extras": []
-            },
-            {
-              "name": "Shrimp Pasta",
-              "description": "Harissa, tomato, shrimp, spinach, fettuccine pasta.",
-              "price": "36.00",
-              "badges": [],
-              "spicy_level": 1,
-              "extras": []
-            },
-            {
-              "name": "Jumbo Lump Crab Cakes",
-              "description": "Remoulade sauce, sautéed baby spinach, spicy creamed corn.",
-              "price": "42.00",
-              "badges": [],
-              "spicy_level": 1,
-              "extras": []
-            },
-            {
-              "name": "Saltcellar Seafood Platter",
-              "description": "Three scallops, two shrimp, one (4oz.) shucked Maine lobster tail, grilled asparagus, spicy creamed corn, your choice of sauce.",
-              "price": "46.00",
-              "badges": ["GF"],
-              "spicy_level": 0,
-              "extras": []
-            },
-            {
-              "name": "Braised Short Rib",
-              "description": "Boneless short rib, honey red wine demi-glaze, herbed mashed potatoes, grilled asparagus.",
-              "price": "43.00",
+              "name": "Braised Boneless Short Rib*",
+              "description": "Herbed mashed potatoes, grilled asparagus, red wine sauce.",
+              "price": "39.95",
               "badges": [],
               "spicy_level": 0,
               "extras": []
             },
             {
-              "name": "Ribeye Steak (16oz.)",
-              "description": "Loaded baked potato, grilled asparagus, chimichurri.",
-              "price": "42.00",
-              "badges": ["GF"],
-              "spicy_level": 0,
-              "extras": []
-            },
-            {
-              "name": "Lamb Chop Marinated in Green Herbs",
-              "description": "Spring vegetable medley, fresh tzatziki sauce.",
-              "price": "35.00",
+              "name": "Center Cut Filet* (8oz)",
+              "description": "Charred leek puree, truffled mushrooms, green peppercorn sauce.",
+              "price": "49.95",
               "badges": [],
               "spicy_level": 0,
               "extras": []
             },
             {
-              "name": "Bourbon Glazed Norwegian Salmon",
-              "description": "Spicy creamed corn, green beans.",
-              "price": "33.00",
-              "badges": ["GF"],
-              "spicy_level": 1,
+              "name": "Ribeye Steak* (16oz)",
+              "description": "Herbed mashed potatoes, chimichurri sauce.",
+              "price": "44.95",
+              "badges": [],
+              "spicy_level": 0,
               "extras": []
             },
             {
-              "name": "Surf & Turf",
-              "description": "10 oz ribeye, one (4 oz.) shucked Maine lobster tail, herbed mashed potatoes, sautéed spinach, veal peppercorn sauce.",
-              "price": "48.00",
+              "name": "Saltcellar Burger*",
+              "description": "Two 4 oz Angus beef patties, American cheese, fried onion rings, bacon jam, secret sauce, brioche bun, seasoned fries.",
+              "price": "17.95",
               "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "The Produce Platter",
+              "description": "Leek confit, glazed turnip root, broccoli puree, roasted maitake mushrooms.",
+              "price": "22.95",
+              "badges": ["GF", "Vegan"],
               "spicy_level": 0,
               "extras": []
             }
           ]
         },
         {
-          "title": "Salads",
+          "title": "Entrées — Sea",
           "note": "",
           "items": [
             {
-              "name": "Kale Caesar Salad",
-              "description": "Kale, blueberries, candied pecans, pecorino cheese, creamy Caesar dressing.",
-              "price": "14.00",
-              "badges": ["GF", "V"],
+              "name": "Seafood Fettuccini",
+              "description": "Shrimp, scallops, lobster, creamy garlic Parmesan cheese sauce.",
+              "price": "36.95",
+              "badges": [],
               "spicy_level": 0,
-              "extras": [
-                { "label": "Add grilled chicken", "price": "9.00" },
-                { "label": "Add jumbo gulf shrimp", "price": "13.00" }
-              ]
+              "extras": []
             },
             {
-              "name": "Saltcellar Salad",
-              "description": "Mixed greens, chickpeas, heart of palm, roasted tomatoes, smoked blue cheese, red onions, creamy lemon herb dressing.",
-              "price": "14.00",
-              "badges": ["GF", "V"],
+              "name": "Grilled Florida Grouper",
+              "description": "Lobster cream sauce, herbed mashed potatoes, grilled asparagus.",
+              "price": "44.95",
+              "badges": [],
               "spicy_level": 0,
-              "extras": [
-                { "label": "Add grilled chicken", "price": "9.00" },
-                { "label": "Add jumbo gulf shrimp", "price": "13.00" }
-              ]
+              "extras": []
+            },
+            {
+              "name": "Mediterranean Salmon",
+              "description": "Heirloom tomatoes, Kalamata olives, olive oil, fresh dill, couscous.",
+              "price": "37.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Seared Rainbow Trout",
+              "description": "Smashed fingerling potatoes, seasonal vegetables, lemon butter.",
+              "price": "34.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Chilean Sea Bass",
+              "description": "Miso broth, sesame ginger roasted baby bok choy, crispy shiitake mushrooms.",
+              "price": "42.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
             }
           ]
         }
@@ -326,70 +346,31 @@
       "id": "sides",
       "label": "Sides",
       "description": "",
-      "download": {
-        "href": "https://media-cdn.getbento.com/accounts/415b6c14ebfac54073234e04f7977c09/media/lcyJIajMQ8OsxQLParAU_60363-25_summer_menu.jpg",
-        "text": "Download Sides",
-        "target": "_blank"
-      },
       "sections": [
         {
           "title": "Sides",
-          "note": "",
+          "note": "All sides $6.50",
           "items": [
-            {
-              "name": "Spicy Creamed Corn",
-              "description": "",
-              "price": "5.00",
-              "badges": ["GF", "V"],
-              "spicy_level": 1,
-              "extras": []
-            },
-            {
-              "name": "Green Beans",
-              "description": "",
-              "price": "5.00",
-              "badges": ["GF", "V"],
-              "spicy_level": 0,
-              "extras": []
-            },
-            {
-              "name": "Sautéed Baby Spinach",
-              "description": "",
-              "price": "5.00",
-              "badges": ["GF"],
-              "spicy_level": 0,
-              "extras": []
-            },
             {
               "name": "Herbed Mashed Potatoes",
               "description": "",
-              "price": "5.00",
+              "price": "6.50",
+              "badges": ["V"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Hand-Cut French Fries",
+              "description": "With Bay Seasoning.",
+              "price": "6.50",
               "badges": ["GF", "V"],
               "spicy_level": 0,
               "extras": []
             },
             {
-              "name": "Vegetable Medley",
+              "name": "Sautéed Shiitake Mushrooms",
               "description": "",
-              "price": "5.00",
-              "badges": ["GF", "V"],
-              "spicy_level": 0,
-              "extras": []
-            },
-            {
-              "name": "Baked Potato",
-              "description": "Condiments served on the side.",
-              "price": "5.00",
-              "badges": [],
-              "spicy_level": 0,
-              "extras": [
-                { "label": "Add condiments", "price": "3.00" }
-              ]
-            },
-            {
-              "name": "French-Cut French Fries",
-              "description": "With bay seasoning.",
-              "price": "5.00",
+              "price": "6.50",
               "badges": ["V"],
               "spicy_level": 0,
               "extras": []
@@ -397,92 +378,140 @@
             {
               "name": "Grilled Asparagus",
               "description": "",
-              "price": "5.00",
+              "price": "6.50",
               "badges": ["GF", "V"],
               "spicy_level": 0,
               "extras": [
-                { "label": "Add extra", "price": "2.00" }
+                { "label": "Add extra", "price": "2" }
               ]
             },
             {
-              "name": "Side Saltcellar or Kale Salad",
+              "name": "Sautéed Baby Spinach",
               "description": "",
-              "price": "5.00",
+              "price": "6.50",
+              "badges": ["GF", "V"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Seasonal Vegetables",
+              "description": "",
+              "price": "6.50",
+              "badges": ["V"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Spicy Creamed Corn",
+              "description": "",
+              "price": "6.50",
+              "badges": ["V"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Risotto",
+              "description": "",
+              "price": "6.50",
+              "badges": ["GF"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Baked Potato",
+              "description": "",
+              "price": "6.50",
+              "badges": ["GF"],
+              "spicy_level": 0,
+              "extras": [
+                { "label": "Loaded", "price": "2.75" }
+              ]
+            },
+            {
+              "name": "Side Saltcellar Salad",
+              "description": "",
+              "price": "6.50",
               "badges": ["GF", "V"],
               "spicy_level": 0,
               "extras": [
-                { "label": "Add extra", "price": "3.00" }
+                { "label": "Add extra", "price": "2" }
+              ]
+            },
+            {
+              "name": "Side Harvest Salad",
+              "description": "",
+              "price": "6.50",
+              "badges": ["GF", "V"],
+              "spicy_level": 0,
+              "extras": [
+                { "label": "Add extra", "price": "2" }
               ]
             }
           ]
         }
       ]
     },
-	
-	{
-	  "id": "addons",
-	  "label": "Add Ons",
-	  "description": "",
-	  "download": {
-		"href": "https://media-cdn.getbento.com/accounts/415b6c14ebfac54073234e04f7977c09/media/R3zwwRPEQueA7RmOvsUG_60363-25_summer_menu.jpg",
-		"text": "Download Add Ons",
-		"target": "_blank"
-	  },
-	  "sections": [
-		{
-		  "title": "Add Ons",
-		  "note": "",
-		  "items": [
-			{
-			  "name": "Grilled Shrimp (2)",
-			  "description": "",
-			  "price": "9.00",
-			  "badges": [],
-			  "spicy_level": 0,
-			  "extras": []
-			},
-			{
-			  "name": "Grilled Scallops (2)",
-			  "description": "",
-			  "price": "10.00",
-			  "badges": [],
-			  "spicy_level": 0,
-			  "extras": []
-			},
-			{
-			  "name": "Horseradish Parmesan Crust",
-			  "description": "",
-			  "price": "7.00",
-			  "badges": [],
-			  "spicy_level": 0,
-			  "extras": []
-			},
-			{
-			  "name": "Maine Lobster Tail",
-			  "description": "",
-			  "price": "14.00",
-			  "badges": [],
-			  "spicy_level": 0,
-			  "extras": []
-			},
-			{
-			  "name": "Blue Cheese Topper",
-			  "description": "",
-			  "price": "6.00",
-			  "badges": [],
-			  "spicy_level": 0,
-			  "extras": []
-			}
-		  ]
-		}
-	  ],
-	  "footnotes": [
-		"*These items can be cooked to order. Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness.",
-		"We cannot guarantee well-done steaks. All sales are final.",
-		"GF - items prepared with little or no gluten. V - vegetarian.",
-		"20% automatic gratuity added to parties of 8 or more."
-	  ]
-	}
+
+    {
+      "id": "additions",
+      "label": "Additions",
+      "description": "",
+      "sections": [
+        {
+          "title": "Additions",
+          "note": "",
+          "items": [
+            {
+              "name": "Seared Sea Scallops (2)",
+              "description": "",
+              "price": "7",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Grilled Jumbo Gulf Shrimp (2)",
+              "description": "",
+              "price": "7",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Maine Lobster Tail (4oz)",
+              "description": "",
+              "price": "14",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Jumbo Lump 4oz. Crab Cake",
+              "description": "",
+              "price": "18",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Sauces",
+              "description": "Green peppercorn, lemon butter, bourbon glaze, chimichurri, remoulade, cocktail.",
+              "price": "2.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        }
+      ],
+      "footnotes": [
+        "*These items can be cooked to order. Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness.",
+        "We cannot guarantee well done steaks. All sales are final.",
+        "GF - gluten friendly. V - vegetarian.",
+        "If you have a severe food allergy, please inform your server.",
+        "20% automatic gratuity added to parties of 8 or more."
+      ]
+    }
   ]
 }
 JSON;
