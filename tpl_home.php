@@ -69,7 +69,8 @@
 
 						<h2>UPTOWN COLUMBUS</h2>
 
-						<a href="#" class="mabellas-location-btn">VISIT US</a>
+						<a href="/locations/uptown-columbus" class="mabellas-location-btn">VISIT US</a>
+						<a href="/menu/uptown-columbus" class="mabellas-location-btn">VIEW MENU</a>
 					</div>
 				</div>
 
@@ -83,7 +84,8 @@
 
 						<h2>MIDLAND</h2>
 
-						<a href="#" class="mabellas-location-btn">VISIT US</a>
+						<a href="/locations/midland" class="mabellas-location-btn">VISIT US</a>
+						<a href="/menu/midland" class="mabellas-location-btn">VIEW MENU</a>
 					</div>
 				</div>
 

@@ -1,0 +1,194 @@
+<?php
+/*
+	Template Name: Uptown Menu Template
+*/
+?>
+	<?php get_header(); ?>
+
+	<?php
+		$header_choice = pegasus_get_option( 'header_select' );
+		//var_dump($header_choice);
+		if ( 'header-three' === $header_choice ) {
+			get_template_part( 'templates/additional_header' );
+		}
+	?>
+
+	<div id="page-wrap">
+
+		<?php
+			//full container page options
+			$post_full_container_choice = get_post_meta( get_the_ID(), 'pegasus-page-container-checkbox', true );
+			//full container theme option
+			$global_full_container_option = pegasus_get_option('full_container_chk' );
+
+			//assign post class
+			$pegasus_post_container_choice = ( 'on' === $post_full_container_choice ) ? 'container-fluid' : 'container';
+			//assign global class
+			$pegasus_global_container_choice = ( 'on' === $global_full_container_option ) ? 'container-fluid' : 'container' ;
+			//check global first then post
+			$final_container_class = ( 'container-fluid' === $pegasus_global_container_choice ) ? $pegasus_global_container_choice : $pegasus_post_container_choice;
+
+			//left align right sidebar?
+			$left_align_sidebar_chk =  pegasus_get_option( 'sidebar_left_chk' ) ? pegasus_get_option( 'sidebar_left_chk' ) : 'off';
+			//enable both sidebars?
+			$pegasus_left_sidebar_option = ( 'on' === pegasus_get_option( 'both_sidebar_chk' ) ) ? pegasus_get_option( 'both_sidebar_chk' ) : 'off';
+			//change content class if both sidebars
+			$page_body_content_class = ( 'on' === $pegasus_left_sidebar_option  ) ? 'col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xg-6' : 'col-xs-12 col-sm-12 col-md-12 col-lg-9 col-xg-9';
+
+			//page header page options
+			$post_disable_page_header_choice = get_post_meta( get_the_ID(), 'pegasus-page-header-checkbox', true ) ? get_post_meta( get_the_ID(), 'pegasus-page-header-checkbox', true ) : 'off';
+			//page header theme option
+			$global_disable_page_header_option =  pegasus_get_option('page_header_chk' ) ? pegasus_get_option('page_header_chk' ) : 'off';
+			//check theme option for page header before page option
+			$page_title = $post->post_title;
+			$is_this_home = is_home();
+			if ( 'on' === $global_disable_page_header_option ) {
+				$final_page_header_option = 'on';
+			} elseif ( 'on' === $post_disable_page_header_choice ) {
+				$final_page_header_option = 'on';
+			} else {
+				$final_page_header_option = 'off';
+			}
+
+			if ( true === $is_this_home ) {
+				$final_page_header_option = 'off';
+			}
+		?>
+
+
+		<div class="<?php echo $final_container_class; ?>">
+		<!-- Example row of columns -->
+			<div class="">
+
+				<div class="inner-content">
+					<div class="content-no-sidebar">
+						<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+							<?php if( 'off' === $final_page_header_option ) { ?>
+								<div class="page-header">
+									<?php
+									if( '' === $page_title ) {
+										echo '';
+									} elseif ( $page_title ) {
+										echo '<h1>';
+										echo the_title();
+										echo '</h1>';
+									}
+									?>
+								</div>
+							<?php }else{ ?>
+								<!--<div class="page-header-spacer"></div>-->
+							<?php } ?>
+
+							<?php the_content(); ?>
+
+						<?php endwhile; else: ?>
+							<?php /* kinda a 404 of sorts when not working */ ?>
+							<div class="page-header">
+								<h1>Oh no!</h1>
+							</div>
+							<p>No content is appearing for this page!</p>
+						<?php endif; ?>
+						<?php
+							if ( function_exists( 'wp_bootstrap_edit_post_link' ) ) {
+								// Edit post link
+								wp_bootstrap_edit_post_link(
+									sprintf(
+										/* translators: %s: Name of current post */
+										__( 'Edit<span class="screen-reader-text"> "%s"</span>', 'pegasus' ),
+										get_the_title()
+									),
+									'<span class="edit-link">',
+									'</span>'
+								);
+							}
+							if ( function_exists( 'wp_bootstrap_posts_pagination' ) ) {
+								wp_bootstrap_posts_pagination( array(
+									'prev_text'          => __( 'Previous page', 'pegasus' ),
+									'next_text'          => __( 'Next page', 'pegasus' ),
+									'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'pegasus' ) . ' </span>'
+								) );
+							}
+						?>
+					</div>
+				</div><!--end inner content-->
+
+			</div><!--end row -->
+		</div><!-- end container -->
+		<?php
+		$menu_json_path = get_stylesheet_directory() . '/data/menu.json';
+		$menu_json = file_get_contents($menu_json_path);
+		$menu_data = json_decode($menu_json, true);
+		if (!is_array($menu_data) || empty($menu_data['tabs'])) {
+		  $menu_data = ['restaurant_name' => '', 'updated' => '', 'tabs' => []];
+		}
+
+		// Format helpers
+		function vqmenu_money($value) {
+		  // accepts strings like "14" or "14.00"
+		  $num = is_numeric($value) ? number_format((float)$value, 2, '.', '') : $value;
+		  // If you prefer no cents when .00, tweak here:
+		  if (is_numeric($value) && fmod((float)$value, 1.0) === 0.0) {
+			$num = number_format((float)$value, 0, '.', '');
+		  }
+		  return '$' . $num;
+		}
+
+		function vqmenu_badge_class($label) {
+		  $label = strtoupper(trim((string)$label));
+		  return match ($label) {
+			'V'   => 'vqmenu-badge vqmenu-badge--veg',
+			'GF'  => 'vqmenu-badge vqmenu-badge--gf',
+			'GF*' => 'vqmenu-badge vqmenu-badge--gf',
+			default => 'vqmenu-badge'
+		  };
+		}
+
+		// Enqueue the mobile menu JS
+		$theme_uri = get_stylesheet_directory_uri();
+		$theme_dir = get_stylesheet_directory();
+		$js_rel = '/assets/restaurant-menu/restaurant-menu.js';
+		if (file_exists($theme_dir . $js_rel)) {
+		  wp_enqueue_script('vq-restaurant-menu', $theme_uri . $js_rel, [], filemtime($theme_dir . $js_rel), true);
+		}
+
+		$tabs = $menu_data['tabs'];
+		$first_tab_id = $tabs[0]['id'] ?? 'menu';
+
+		?>
+		<main id="primary" class="site-main">
+		  <div class="container py-5 vqmenu">
+			<header class="vqmenu-header mb-4">
+			  <?php if (!empty($menu_data['restaurant_name'])) : ?>
+				<h1 class="vqmenu-title mb-1"><?php echo esc_html($menu_data['restaurant_name']); ?></h1>
+			  <?php else : ?>
+				<h1 class="vqmenu-title mb-1"><?php the_title(); ?></h1>
+			  <?php endif; ?>
+
+			  <?php if (!empty($menu_data['updated'])) : ?>
+				<div class="vqmenu-meta ">
+				  Updated: <?php echo esc_html($menu_data['updated']); ?>
+				</div>
+			  <?php endif; ?>
+			</header>
+
+			<!-- Desktop: tabbed menu (hidden < 992px) -->
+			<div class="vqmenu-desktop">
+			  <?php include get_stylesheet_directory() . '/templates/menu-tabs.php'; ?>
+			</div>
+
+			<!-- Mobile: long-scroll menu (hidden >= 992px) -->
+			<div class="vqmenu-mobile">
+			  <?php include get_stylesheet_directory() . '/templates/menu-mobile.php'; ?>
+			</div>
+		  </div>
+		</main>
+
+		<?php /*
+		<section class="py-5 mb-5">
+			<?php echo do_shortcode( '[uptown_restaurant_map height="600px"]' ); ?>
+		</section>
+		*/ ?>
+
+
+	</div><!-- end page wrap -->
+    <?php get_footer(); ?>
