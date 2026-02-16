@@ -55,7 +55,9 @@
 			}
 		?>
 
-
+		<section class="crab-section">
+			<img src="http://saltcellar.com/wp-content/uploads/2026/02/crab_transparent.png" alt="Crab" class="mx-auto d-block img-fluid">
+		</section>
 		<div class="<?php echo $final_container_class; ?>">
 		<!-- Example row of columns -->
 			<div class="">
