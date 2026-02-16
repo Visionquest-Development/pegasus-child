@@ -54,8 +54,8 @@
 				$final_page_header_option = 'off';
 			}
 		?>
-		
-		
+
+
 		<div class="<?php echo $final_container_class; ?>">
 		<!-- Example row of columns -->
 			<div class="">
@@ -114,7 +114,7 @@
 
 			</div><!--end row -->
 		</div><!-- end container -->
-		<?php 
+		<?php
 		$menu_json = <<<JSON
 {
   "restaurant_name": "Salt Cellar",
@@ -573,16 +573,6 @@ JSON;
 
 		?>
 		<main id="primary" class="site-main">
-		  <style>
-			#vqmenuTabContent .tab-pane {
-			  background: #e3eaf4;
-			  padding: 1.5rem;
-			}
-
-			#vqmenuTabContent .vqmenu-badges .vqmenu-badge {
-			  display: block;
-			}
-		  </style>
 		  <div class="container py-5 vqmenu">
 			<header class="vqmenu-header mb-4">
 			  <?php if (!empty($menu_data['restaurant_name'])) : ?>
@@ -643,7 +633,7 @@ JSON;
 				  <?php else : ?>
 					<div class="mt-3"></div>
 				  <?php endif; ?>
-				  
+
 				  <?php if (!empty($tab['download']['href'])) : ?>
 					  <div class="vqmenu-download mb-4">
 						<a
@@ -764,12 +754,12 @@ JSON;
 				  <?php endif; ?>
 				</section>
 			  <?php endforeach; ?>
-			  
-			  
-			  
+
+
+
 			</div>
-			
-			
+
+
 				<?php if (!empty($tab['footnotes']) && is_array($tab['footnotes'])) : ?>
 				  <div class="vqmenu-footnotes mt-4">
 					<h4 class="vqmenu-footnotes-title mb-2">Notes</h4>
@@ -792,6 +782,6 @@ JSON;
 		</section>
 		*/ ?>
 
-		
+
 	</div><!-- end page wrap -->
     <?php get_footer(); ?>

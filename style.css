@@ -308,6 +308,17 @@
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
+  #vqmenuTabContent .tab-pane,
+  #gform_wrapper_1 {
+    background: #e3eaf4;
+    padding: 1.5rem;
+  }
+
+  #vqmenuTabContent .vqmenu-badges .vqmenu-badge {
+    display: block;
+  }
+
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ HOME PAGE ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
