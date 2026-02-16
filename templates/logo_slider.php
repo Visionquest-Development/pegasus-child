@@ -1,7 +1,7 @@
 
 <div class=" ulg-logo-slider slider">
 	<figure class="logo-slide mabellas-logo" >
-		<a class="slick-slider-item" href="https://mabellas.com" style="background-image: url('https://mabellas.com/wp-content/uploads/2025/12/1RunoTqHQBmWIskGsNoM_Mabellas-18.png');">
+		<a class="slick-slider-item" href="https://mabellas.com" style="background-image: url('https://visionquestdev.com/mabellas/wp-content/uploads/2025/12/1RunoTqHQBmWIskGsNoM_Mabellas-18.png');">
 			<img class="post-img-feat img-fluid" src="https://visionquestdev.com/mabellas/wp-content/uploads/2025/12/92014white-logo.png" alt="Mabellas">
 		</a>
 	</figure>
