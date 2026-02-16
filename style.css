@@ -54,7 +54,7 @@
 			background: #0F172A;
 		}
 
-
+    .ulg-brand-bar .dropdown-item { color: black !important; }
 
 	.ulg-brand-logo-img {
 		width: 200px;
