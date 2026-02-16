@@ -280,7 +280,7 @@
     margin: 0 1rem;
   }
 
-  .logo-slide {
+  .logo-slide a {
     background-size: cover;
     background-position: center;
     /* background-size: 100% 100%; */
@@ -288,6 +288,7 @@
     min-height: 250px;
     position: relative;
     border-radius: 5px;
+    display: block;
   }
 
   .logo-slide img {
@@ -307,7 +308,7 @@
 	}
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-
+  .home .inner-content,
   #vqmenuTabContent .tab-pane,
   #gform_wrapper_1 {
     background: #e3eaf4;
