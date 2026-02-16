@@ -18,6 +18,7 @@
 			$current_host = wp_parse_url( home_url(), PHP_URL_HOST );
 			$subs = [
 				'Uptown Life Group' => '//uptownlifegroup.com',
+				'ULG Events' => '//events.uptownlifegroup.com',
 				'The Loft'   => '//theloft.com',
 				'Mabellas'   => '//mabellas.com',
 				'Mabellas Midtown'   => '//mabellas.com',
