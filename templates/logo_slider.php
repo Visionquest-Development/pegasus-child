@@ -20,7 +20,7 @@
 			<img class="post-img-feat img-fluid" src="https://visionquestdev.com/ulg/wp-content/uploads/2025/12/saltcellar.png" alt="Salt Cellar">
 		</a>
 	</figure>
-	<figure class="logo-slide" style="background-image: url('http://themixmarket.com/wp-content/uploads/2026/01/211219429f35d-02e8-4ec7-8cc8-f67.png');">
+	<figure class="logo-slide" style="background-image: url('https://visionquestdev.com/mixmarket/wp-content/uploads/2026/01/211219429f35d-02e8-4ec7-8cc8-f67.png');">
 		<a class="slick-slider-item" href="https://themixmarket.com">
 			<img class="post-img-feat img-fluid" src="https://visionquestdev.com/ulg/wp-content/uploads/2025/12/mix-market.png" alt="The Mix Market">
 		</a>
