@@ -31,7 +31,7 @@
 		  speed: 800,
 		  responsive: [
 			{
-			  breakpoint: 768,
+			  breakpoint: 990,
 			  settings: {
 				arrows: true,
 				centerMode: false,
@@ -39,11 +39,11 @@
 			  }
 			},
 			{
-			  breakpoint: 480,
+			  breakpoint: 560,
 			  settings: {
 				arrows: true,
 				centerMode: false,
-				slidesToShow: 1
+				slidesToShow: 2
 			  }
 			}
 		  ]
