@@ -228,6 +228,12 @@
 	display: block;
 }
 
+.mabellas-logo img {
+  -webkit-filter: initial !important;
+          filter: initial !important;
+          background: rgba(0,0,0, 0.7) !important;
+}
+
 .logo-slide img {
 	-webkit-filter: invert(100%) brightness(200%);
 			filter: invert(100%) brightness(200%);
