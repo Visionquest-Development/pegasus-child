@@ -1,6 +1,7 @@
 {
   "restaurant_name": "Salt Cellar",
   "updated": "2026-02-14",
+  "pdf_url": "assets/saltcellar-menu.pdf",
   "tabs": [
     {
       "id": "starters",
