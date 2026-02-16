@@ -585,3 +585,9 @@
 	@media only screen and (max-width: 479px) {
 
 	}
+
+  @media only screen and (max-width: 500px) {
+    .ulg-brand-bar {
+      padding-left: 40px;
+    }
+	}

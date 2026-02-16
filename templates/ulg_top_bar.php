@@ -27,7 +27,7 @@
 				'Tommy G\'s' => '//tommygs.com',
 			];
 		?>
-		<nav class="brandbar-nav d-none d-lg-flex align-items-center  ms-auto">
+		<nav class="brandbar-nav d-none d-lg-inline align-items-center  ms-auto">
 			<?php
 				$index = 0;
 				$total = count( $subs );
