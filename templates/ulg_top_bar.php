@@ -21,7 +21,6 @@
 				'ULG Events' => '//events.uptownlifegroup.com',
 				'The Loft'   => '//theloft.com',
 				'Mabellas'   => '//mabellas.com',
-				'Mabellas Midtown'   => '//mabellas.com',
 				'Salt Cellar'=> '//saltcellar.com',
 				'Mix Market' => '//themixmarket.com',
 				'Tommy G\'s' => '//tommygs.com',
