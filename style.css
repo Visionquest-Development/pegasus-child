@@ -33,6 +33,8 @@
 		opacity: .08
 	}
 
+  .nocomments { display: none !important; }
+
 	/* ================================
 	   GRADIENT HEADLINE
 	  ================================ */
