@@ -1,0 +1,688 @@
+{
+  "restaurant_name": "Tommy G’s",
+  "updated": "2026-01-09",
+  "tabs": [
+    {
+      "id": "pizzas",
+      "label": "Pizzas",
+      "description": "",
+      "sections": [
+        {
+          "title": "Pizzas",
+          "note": "All pizzas come in 12\" (Small) or 16\" (Large).",
+          "items": [
+            {
+              "name": "Classic Cheese",
+              "description": "Tomato sauce, mozzarella",
+              "price": "",
+              "badges": ["V"],
+              "spicy_level": 0,
+              "extras": [
+                { "label": "Small (12\")", "price": "14" },
+                { "label": "Large (16\")", "price": "17" }
+              ]
+            },
+            {
+              "name": "Tommy G’s Deluxe",
+              "description": "Pepperoni, Italian sausage, mushrooms, onions, roasted red peppers, tomato sauce, mozzarella cheese",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": [
+                { "label": "Small (12\")", "price": "22" },
+                { "label": "Large (16\")", "price": "26" }
+              ]
+            },
+            {
+              "name": "All the Meats",
+              "description": "Pepperoni, Italian sausage, ham, bacon, tomato sauce, mozzarella cheese",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": [
+                { "label": "Small (12\")", "price": "22" },
+                { "label": "Large (16\")", "price": "26" }
+              ]
+            },
+            {
+              "name": "Florentine",
+              "description": "Creamy ricotta cheese, fresh spinach, garlic, roasted tomato, mozzarella cheese",
+              "price": "",
+              "badges": ["V"],
+              "spicy_level": 0,
+              "extras": [
+                { "label": "Small (12\")", "price": "22" },
+                { "label": "Large (16\")", "price": "26" }
+              ]
+            },
+            {
+              "name": "Veggies Only",
+              "description": "Onions, roasted red peppers, mushrooms, broccoli, spinach, black olives, tomato sauce, mozzarella cheese",
+              "price": "",
+              "badges": ["V"],
+              "spicy_level": 0,
+              "extras": [
+                { "label": "Small (12\")", "price": "20" },
+                { "label": "Large (16\")", "price": "24" }
+              ]
+            },
+            {
+              "name": "Spicy Vodka",
+              "description": "Vodka sauce, mozzarella cheese, cup pepperoni, hot honey drizzle",
+              "price": "",
+              "badges": [],
+              "spicy_level": 2,
+              "extras": [
+                { "label": "Small (12\")", "price": "22" },
+                { "label": "Large (16\")", "price": "26" }
+              ]
+            },
+            {
+              "name": "BBQ Chicken",
+              "description": "Grilled chicken, caramelized onion, bacon, BBQ sauce, mozzarella cheese",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": [
+                { "label": "Small (12\")", "price": "22" },
+                { "label": "Large (16\")", "price": "26" }
+              ]
+            },
+            {
+              "name": "Buffalo Chicken",
+              "description": "Buffalo sauce, fried chicken, mozzarella, sharp cheddar, onions, topped with ranch and green onions",
+              "price": "",
+              "badges": [],
+              "spicy_level": 3,
+              "extras": [
+                { "label": "Small (12\")", "price": "22" },
+                { "label": "Large (16\")", "price": "26" }
+              ]
+            },
+            {
+              "name": "Black & Blue",
+              "description": "Grilled steak, gorgonzola cheese sauce, mushroom, spinach, roasted tomatoes, mozzarella cheese",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": [
+                { "label": "Small (12\")", "price": "24" },
+                { "label": "Large (16\")", "price": "28" }
+              ]
+            },
+            {
+              "name": "Margherita",
+              "description": "Fresh mozzarella, basil, tomato sauce, EVOO",
+              "price": "",
+              "badges": ["V"],
+              "spicy_level": 0,
+              "extras": [
+                { "label": "Small (12\")", "price": "22" },
+                { "label": "Large (16\")", "price": "26" }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Build Your Own",
+          "note": "Start with a base and choose your toppings. Pricing is per topping.",
+          "items": [
+            {
+              "name": "Base Pizza",
+              "description": "Tomato sauce, mozzarella (customize with meats and veggies below)",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Meats (each)",
+              "description": "Bacon • Beef steak • Chicken • Ham • Italian sausage • Meatball • Pepperoni • Salami",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": [
+                { "label": "Small topping", "price": "4" },
+                { "label": "Large topping", "price": "5" }
+              ]
+            },
+            {
+              "name": "Veggies (each)",
+              "description": "Banana peppers • Black olives • Broccoli • Jalapeño peppers • Mushroom • Onions • Pineapple • Roasted red peppers • Roasted tomatoes • Spinach",
+              "price": "",
+              "badges": ["V"],
+              "spicy_level": 0,
+              "extras": [
+                { "label": "Small topping", "price": "3" },
+                { "label": "Large topping", "price": "4" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pasta",
+      "label": "Pasta",
+      "description": "",
+      "sections": [
+        {
+          "title": "Pasta",
+          "note": "",
+          "items": [
+            {
+              "name": "Spaghetti Villa Nova",
+              "description": "Original Villa Nova meat sauce, Parmesan cheese, melted mozzarella",
+              "price": "18",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Spicy Chicken Tortellini",
+              "description": "Grilled chicken, cheese stuffed tortellini, spicy vodka sauce, spinach, fresh basil, Parmesan",
+              "price": "18",
+              "badges": [],
+              "spicy_level": 2,
+              "extras": []
+            },
+            {
+              "name": "Beef & Broccoli Stir Fry",
+              "description": "Broccoli, red bell peppers, green onion, fresh ginger, garlic, sweet soy sauce, with rice noodles",
+              "price": "18",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "entrees",
+      "label": "Entrées",
+      "description": "",
+      "sections": [
+        {
+          "title": "Entrées",
+          "note": "Served with choice of one side.",
+          "items": [
+            {
+              "name": "Smothered Grilled Chicken",
+              "description": "Sautéed onions, peppers, mushrooms, melted Swiss cheese, roasted garlic aioli",
+              "price": "18",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Shrimp & Grits",
+              "description": "Cheddar grits, Cajun cream sauce, onions, peppers, andouille sausage, topped with green onions",
+              "price": "18",
+              "badges": [],
+              "spicy_level": 1,
+              "extras": []
+            },
+            {
+              "name": "Roasted Pork Loin",
+              "description": "Butternut squash & zucchini hash, caramelized apples",
+              "price": "18",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wings",
+      "label": "Wings",
+      "description": "",
+      "sections": [
+        {
+          "title": "Wings",
+          "note": "6 Wings $9 | 12 Wings $18",
+          "items": [
+            {
+              "name": "Traditional Buffalo",
+              "description": "",
+              "price": "",
+              "badges": ["GF"],
+              "spicy_level": 2,
+              "extras": [
+                { "label": "6 Wings", "price": "9" },
+                { "label": "12 Wings", "price": "18" }
+              ]
+            },
+            {
+              "name": "Garlic Parmesan",
+              "description": "",
+              "price": "",
+              "badges": ["GF"],
+              "spicy_level": 0,
+              "extras": [
+                { "label": "6 Wings", "price": "9" },
+                { "label": "12 Wings", "price": "18" }
+              ]
+            },
+            {
+              "name": "Korean BBQ",
+              "description": "",
+              "price": "",
+              "badges": [],
+              "spicy_level": 1,
+              "extras": [
+                { "label": "6 Wings", "price": "9" },
+                { "label": "12 Wings", "price": "18" }
+              ]
+            },
+            {
+              "name": "Hot Honey Sriracha",
+              "description": "",
+              "price": "",
+              "badges": [],
+              "spicy_level": 2,
+              "extras": [
+                { "label": "6 Wings", "price": "9" },
+                { "label": "12 Wings", "price": "18" }
+              ]
+            },
+            {
+              "name": "Nashville Hot",
+              "description": "",
+              "price": "",
+              "badges": [],
+              "spicy_level": 3,
+              "extras": [
+                { "label": "6 Wings", "price": "9" },
+                { "label": "12 Wings", "price": "18" }
+              ]
+            },
+            {
+              "name": "Lemon Pepper",
+              "description": "Dry rub",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": [
+                { "label": "6 Wings", "price": "9" },
+                { "label": "12 Wings", "price": "18" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "apps",
+      "label": "Apps",
+      "description": "",
+      "sections": [
+        {
+          "title": "Appetizers",
+          "note": "",
+          "items": [
+            {
+              "name": "Steamed Pork Pot Stickers",
+              "description": "Ponzu sauce",
+              "price": "11",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Buffalo Chicken Dip",
+              "description": "Celery, soft pita bread",
+              "price": "11",
+              "badges": [],
+              "spicy_level": 2,
+              "extras": []
+            },
+            {
+              "name": "Mozzarella Cheese Sticks",
+              "description": "Marinara sauce",
+              "price": "9",
+              "badges": ["V"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Chips & Queso",
+              "description": "Spicy sausage, Rotel tomatoes, crisp tortilla chips",
+              "price": "11",
+              "badges": [],
+              "spicy_level": 2,
+              "extras": []
+            },
+            {
+              "name": "Edamame",
+              "description": "Steamed soybeans, Maldon sea salt",
+              "price": "7",
+              "badges": ["V", "GF"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Hand Breaded Chicken Tenders",
+              "description": "Honey mustard dipping sauce",
+              "price": "14",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Korean Pork Sliders",
+              "description": "Spicy pork bulgogi, bao bun, pickled vegetables",
+              "price": "12",
+              "badges": [],
+              "spicy_level": 2,
+              "extras": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "salads",
+      "label": "Salads",
+      "description": "",
+      "sections": [
+        {
+          "title": "Salads",
+          "note": "",
+          "items": [
+            {
+              "name": "Classic Caesar",
+              "description": "Romaine lettuce, cracked black pepper, croutons, creamy Caesar dressing",
+              "price": "12",
+              "badges": ["V"],
+              "spicy_level": 0,
+              "extras": [
+                { "label": "Add grilled or fried chicken", "price": "6" },
+                { "label": "Add grilled or fried shrimp", "price": "9" }
+              ]
+            },
+            {
+              "name": "Tommy G’s House",
+              "description": "Mixed baby lettuces, cheddar cheese, grape tomatoes, pumpkin seeds, dried cranberries, red bell pepper, balsamic dressing",
+              "price": "13",
+              "badges": ["V"],
+              "spicy_level": 0,
+              "extras": [
+                { "label": "Add grilled or fried chicken", "price": "6" },
+                { "label": "Add grilled or fried shrimp", "price": "9" }
+              ]
+            },
+            {
+              "name": "Greek Salad",
+              "description": "Chopped romaine, Kalamata olives, grape tomato, cucumber, sliced red onion, bell pepper, crumbled feta cheese, classic Greek dressing",
+              "price": "12",
+              "badges": ["V"],
+              "spicy_level": 0,
+              "extras": [
+                { "label": "Add grilled or fried chicken", "price": "6" },
+                { "label": "Add grilled or fried shrimp", "price": "9" }
+              ]
+            },
+            {
+              "name": "Apple Pecan",
+              "description": "Spring mix, Granny Smith apple, pecans, red onions, sharp cheddar, brown butter vinaigrette",
+              "price": "13",
+              "badges": ["V"],
+              "spicy_level": 0,
+              "extras": [
+                { "label": "Add grilled or fried chicken", "price": "6" },
+                { "label": "Add grilled or fried shrimp", "price": "9" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tacos",
+      "label": "Street Tacos",
+      "description": "",
+      "sections": [
+        {
+          "title": "Street Tacos",
+          "note": "Comes with 3 flour tacos",
+          "items": [
+            {
+              "name": "Thai Shrimp",
+              "description": "Tempura fried shrimp, sweet chili glaze, napa slaw, soy citrus",
+              "price": "15",
+              "badges": [],
+              "spicy_level": 1,
+              "extras": []
+            },
+            {
+              "name": "Steak House",
+              "description": "Grilled flank steak, cheddar cheese, grilled onions, lettuce, tomato, house-made steak sauce",
+              "price": "16",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sandwiches",
+      "label": "Sandwiches",
+      "description": "",
+      "sections": [
+        {
+          "title": "Sandwiches",
+          "note": "Served with choice of dill fries or chips",
+          "items": [
+            {
+              "name": "Gyro",
+              "description": "Beef & lamb gyro meat wrapped in whole wheat pita, lettuce, tomato, red onion, feta cheese, tzatziki sauce",
+              "price": "16",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Chicken Bacon Ranch Club",
+              "description": "Grilled chicken, ranch, cheddar, lettuce, tomato, brioche bun",
+              "price": "16",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Cheesesteak Hoagie",
+              "description": "Flank steak, grilled onions, white American cheese, hoagie roll",
+              "price": "17",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Shrimp Po' Boy",
+              "description": "Fried shrimp, remoulade sauce, lettuce, tomato, toasted hoagie bun",
+              "price": "16",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Grilled Chicken Caesar Wrap",
+              "description": "Whole wheat tortilla, grilled chicken, Parmesan cheese, romaine lettuce, Caesar dressing",
+              "price": "16",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "burgers",
+      "label": "Burgers",
+      "description": "",
+      "sections": [
+        {
+          "title": "Burgers",
+          "note": "All burgers have 2 all-beef patties. Served with choice of dill fries or chips.",
+          "items": [
+            {
+              "name": "Bacon Pimento",
+              "description": "Pimento cheese, bacon, jalapeño jelly",
+              "price": "15",
+              "badges": [],
+              "spicy_level": 1,
+              "extras": [
+                { "label": "Make it a triple", "price": "4" }
+              ]
+            },
+            {
+              "name": "Mushroom Swiss",
+              "description": "Mushrooms, Swiss cheese, roasted garlic aioli, lettuce, tomato",
+              "price": "15",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": [
+                { "label": "Make it a triple", "price": "4" }
+              ]
+            },
+            {
+              "name": "BBQ Bacon",
+              "description": "Cheddar cheese, smokey bacon, BBQ sauce, pickles, lettuce, tomato",
+              "price": "15",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": [
+                { "label": "Make it a triple", "price": "4" }
+              ]
+            },
+            {
+              "name": "Steak",
+              "description": "House-made steak sauce, grilled onions, lettuce, tomato, American cheese",
+              "price": "15",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": [
+                { "label": "Make it a triple", "price": "4" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sides",
+      "label": "Sides",
+      "description": "",
+      "sections": [
+        {
+          "title": "Sides",
+          "note": "",
+          "items": [
+            {
+              "name": "Dill Fries",
+              "description": "",
+              "price": "5",
+              "badges": ["V"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Mac & Cheese",
+              "description": "",
+              "price": "5",
+              "badges": ["V"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Garlic Mashed Potatoes",
+              "description": "",
+              "price": "5",
+              "badges": ["V"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Cheddar Grits",
+              "description": "",
+              "price": "5",
+              "badges": ["V"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Sautéed Spinach",
+              "description": "",
+              "price": "5",
+              "badges": ["V"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Steamed Broccoli",
+              "description": "",
+              "price": "5",
+              "badges": ["V"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Squash & Zucchini Hash",
+              "description": "",
+              "price": "5",
+              "badges": ["V"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Loaded Mashed Potatoes",
+              "description": "",
+              "price": "6",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Sweet Potato Fries",
+              "description": "",
+              "price": "7",
+              "badges": ["V"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Queso Fries",
+              "description": "",
+              "price": "7",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Side Salad",
+              "description": "Romaine lettuces, carrots, purple cabbage, cucumber, grape tomatoes, house-made ranch dressing",
+              "price": "7",
+              "badges": ["V"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Side Caesar Salad",
+              "description": "Romaine lettuce, cracked black pepper, croutons, creamy Caesar dressing",
+              "price": "7",
+              "badges": ["V"],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
