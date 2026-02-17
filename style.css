@@ -43,6 +43,8 @@
 		text-transform: uppercase;
 	}
 
+  .nocomments { display: none !important; }
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -178,10 +180,32 @@
 	~~~~~~ HOME PAGE ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
 
+  .home .inner-content {
+    padding: 20px;
+    margin-top:1rem;
+    background-color: #ba833b;
+    color: white;
+  }
+
   .pegasus-header-content .hero__content.container {
     border: 6px solid white;
     padding: 7rem 0 !important;
   }
+
+  @media only screen and (max-width: 1200px) {
+    .pegasus-header-content .hero__content.container {
+      padding: 3rem 0 !important;
+    }
+
+    .pegasus-header-content h1 {
+      font-size: 4rem !important;
+    }
+    .pegasus-header-content h1 small {
+      font-size: 2rem !important;
+    }
+	}
+
+
 
   .pegasus-header-content h1 {
     font-family: "High Cruiser";
