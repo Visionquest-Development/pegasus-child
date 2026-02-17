@@ -60,6 +60,8 @@
 		text-transform: uppercase;
 	}
 
+  .nocomments { display: none !important; }
+
 	/* ================================
 	   GRADIENT BORDER
 	  ================================ */
