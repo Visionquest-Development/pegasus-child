@@ -1,0 +1,753 @@
+{
+  "restaurant_name": "The Loft",
+  "updated": "2026-01-14",
+  "tabs": [
+    {
+      "id": "food",
+      "label": "Food",
+      "description": "",
+      "download": {
+        "href": "https://media-cdn.getbento.com/accounts/1c1399494fd5b9fe83d59486e6681424/media/htYTFD9ESeKGrGDz9Zr4_3FYsdXy6SgO7QzVyJuU4_Loft%2520Menu%25202024%2520%283%29.pdf",
+        "text": "Download PDF",
+        "target": "_blank"
+      },
+      "sections": [
+        {
+          "title": "Opening Acts",
+          "note": "",
+          "items": [
+            {
+              "name": "Jalapeno & Cheddar Corn Muffins",
+              "description": "Whipped butter.",
+              "price": "7.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Cheddar Bacon Tater Tots",
+              "description": "Smoked crumble bacon | beer cheddar cheese sauce | ranch drizzle.",
+              "price": "11.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Crispy Fried Green Tomatoes",
+              "description": "Feta cheese spread | bacon-onion jam.",
+              "price": "9.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Smoked Shrimp Cocktail",
+              "description": "Jumbo smoked shrimp | chipotle orange cocktail sauce.",
+              "price": "15.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Shrimp Tacos",
+              "description": "Tempura fried shrimp | chili glaze | napa slaw | soy citrus.",
+              "price": "14.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Buffalo Chicken Dip",
+              "description": "Celery | warm pita bread.",
+              "price": "10.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Chicken Fingers",
+              "description": "Honey mustard & cajun mayo dipping sauce.",
+              "price": "12.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "The Green Room",
+          "note": "Served with choice of grilled organic chicken breast, chicken fingers, or grilled shrimp. *Grilled beef tenderloin tips, please add 10.99.",
+          "items": [
+            {
+              "name": "Caesar",
+              "description": "Chopped romaine | house-made garlic croutons | parmesan cheese | classic Caesar dressing.",
+              "price": "15.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Southwestern",
+              "description": "Iceberg lettuce | romaine lettuce | pepper jack cheese | sliced avocado | chopped bacon | pico de gallo | tortilla strips | mango-habanero ranch.",
+              "price": "16.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "The Tanya",
+              "description": "Mixed baby lettuces | white cheddar cheese | grape tomatoes | pumpkin seeds | dried cranberries | fresh red bell peppers | house-made balsamic dressing.",
+              "price": "15.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Broadway Burgers",
+          "note": "You may choose between a 1/2 lb of Angus beef burger, organic chicken breast or Boca veggie burger. Served on a brioche bun.",
+          "items": [
+            {
+              "name": "Chef's Burger*",
+              "description": "Please ask your server about today's inspiration.",
+              "price": "16.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Classic Bacon Cheese*",
+              "description": "Smoked bacon | cheddar cheese | lettuce | tomato | red onion | pickles.",
+              "price": "15.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Pimento Cheese Burger*",
+              "description": "House-made pimento cheese | bacon-onion jam.",
+              "price": "15.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Ham & Cheese*",
+              "description": "Smoked ham | swiss cheese | spicy honey mustard | lettuce | tomato | red onion | pickles.",
+              "price": "16.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Sandwiches & Wraps",
+          "note": "",
+          "items": [
+            {
+              "name": "Gulf Coast Fish Sandwich",
+              "description": "Grilled mahi-mahi filet | lettuce | tomato | tartar sauce | brioche bun.",
+              "price": "16.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Southwest Chicken Wrap",
+              "description": "Sliced organic chicken | pepper jack cheese | chopped bacon | shredded lettuce | avocado | pico de gallo | tortilla strips | mango-habanero ranch | whole wheat tortilla.",
+              "price": "16.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Spicy Fried Chicken Sandwich",
+              "description": "Ranch dressing | lettuce | tomatoes | pickles | brioche bun.",
+              "price": "15.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Cuban Pork Wrap",
+              "description": "Sliced roast pork | smoked ham | Swiss cheese | spicy honey mustard | pickles | whole wheat tortilla.",
+              "price": "15.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Main Stage",
+          "note": "",
+          "items": [
+            {
+              "name": "Seared Salmon*",
+              "description": "Lemon-butter | sauteed baby spinach | mashed potatoes.",
+              "price": "26.99",
+              "badges": ["GF"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Fork Tender BBQ St. Louis Ribs",
+              "description": "1/2 rack | BBQ sauce | French fries | creamy slaw.",
+              "price": "22.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Unstuffed Chicken",
+              "description": "Spinach | goat cheese | mashed potatoes | lemon-butter.",
+              "price": "23.99",
+              "badges": ["GF"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Cajun Shrimp Pasta",
+              "description": "Sauteed shrimp | andouille sausage | pepper & onion medley | spicy cream sauce | pappardelle pasta.",
+              "price": "26.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Braised Lamb Shank",
+              "description": "Mashed potatoes | Brussels sprouts | red wine sauce.",
+              "price": "29.99",
+              "badges": ["GF"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Herb Crusted Double Cut Pork Chop*",
+              "description": "Roasted shallot port wine sauce | cheese grits.",
+              "price": "27.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Grilled Filet Medallions*",
+              "description": "Two 4oz medallions | mushroom red wine demi | choice of two sides.",
+              "price": "30.99",
+              "badges": ["GF"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Ribeye (16oz)*",
+              "description": "Choice of two sides.",
+              "price": "41.00",
+              "badges": ["GF"],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Sides",
+          "note": "",
+          "items": [
+            {
+              "name": "Mashed Potatoes",
+              "description": "",
+              "price": "3.99",
+              "badges": ["GF"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Soulful Mac N Cheese",
+              "description": "",
+              "price": "3.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Sauteed Button Mushrooms",
+              "description": "",
+              "price": "3.99",
+              "badges": ["GF"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Spicy Creamed Corn",
+              "description": "",
+              "price": "3.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Green Beans",
+              "description": "",
+              "price": "3.99",
+              "badges": ["GF"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Brussels Sprouts, Bacon & Hot Honey",
+              "description": "",
+              "price": "3.99",
+              "badges": ["GF"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Sauteed Baby Spinach",
+              "description": "",
+              "price": "3.99",
+              "badges": ["GF"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "French Fries",
+              "description": "",
+              "price": "3.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Sweet Potato Fries",
+              "description": "",
+              "price": "3.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "White Cheddar Grits",
+              "description": "",
+              "price": "3.99",
+              "badges": ["GF"],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        }
+      ],
+      "footnotes": [
+        "All burgers, sandwiches, and wraps served with a choice of side.",
+        "20% automatic gratuity added to parties of 8 or more. These items are served raw or undercooked. Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness, especially if you have certain medical conditions."
+      ]
+    },
+    {
+      "id": "drinks",
+      "label": "Drinks",
+      "description": "",
+      "sections": [
+        {
+          "title": "Premium & Domestic Beer By the Bottle",
+          "note": "",
+          "items": [
+            {
+              "name": "Premium",
+              "description": "Angry Orchard, Corona, Dos Equis lager, Guinness, Heineken, Modelo Especial, Shiner Bock, Stella Artois, Yuengling, Voodoo Ranger IPA.",
+              "price": "5.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Domestic",
+              "description": "Budweiser, Bud Light, Coors Light, Miller High Life, Miller Lite, PBR, Michelob Ultra* (4.5).",
+              "price": "4.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Non - Alcoholic Beer",
+          "note": "",
+          "items": [
+            {
+              "name": "Heineken 0.0",
+              "description": "",
+              "price": "5.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Stella NA",
+              "description": "",
+              "price": "5.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Sam Adams Just The Haze",
+              "description": "",
+              "price": "5.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Cocktails",
+          "note": "",
+          "items": [
+            {
+              "name": "Bourbon's Unchained Melody",
+              "description": "Maker's Mark bourbon | lime juice | simple | mint | cucumber.",
+              "price": "10.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Walking on Sunshine Spritz",
+              "description": "Grey Goose vodka | apricot fruitful liqueur | peach de vigne liqueur | lime juice.",
+              "price": "13.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Pretty in Pink Lemonade",
+              "description": "Strawberry Parrot Bay rum | strawberry fruitful liqueur | simple | lemon juice | Sprite.",
+              "price": "10.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Watermelon Crawl Margarita",
+              "description": "Camarena tequila | Watermelon Pucker | lime juice | simple | sour mix.",
+              "price": "12.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Purple Haze Martini",
+              "description": "Gray Whale gin | triple sec | blackberry puree | lemon juice | simple.",
+              "price": "12.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Old Time Rock & Roll Old Fashion",
+              "description": "Old Forester bourbon | Angostura bitters | simple.",
+              "price": "13.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Peach Mambo #9 Mojito",
+              "description": "Denizen rum | peach de vigne liqueur | peach puree | lime juice | simple | mint.",
+              "price": "11.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Brown Eyed Girl Bourbon",
+              "description": "Blade & Bow bourbon | ginger fruitful liqueur | lemon juice | simple.",
+              "price": "11.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Twist & Shout Mule",
+              "description": "New Amsterdam vodka | ginger fruitful liqueur | rosemary simple | lemon juice | Fever-Tree ginger beer.",
+              "price": "11.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Seltzers & Hard Teas",
+          "note": "",
+          "items": [
+            {
+              "name": "High Noon",
+              "description": "Black cherry, peach, pineapple, watermelon.",
+              "price": "6.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Sun Cruiser Lemonade Tea",
+              "description": "",
+              "price": "6.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Red Wine",
+          "note": "",
+          "items": [
+            {
+              "name": "J Vineyards",
+              "description": "Pinot noir | California. Glass $12 / Bottle $46.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Love Oregon",
+              "description": "Pinot noir | Willamette Valley, Oregon. Glass $13 / Bottle $50.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Oberon",
+              "description": "Cabernet sauvignon | Napa Valley, California. Glass $13 / Bottle $50.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "San Simeon",
+              "description": "Cabernet sauvignon | Paso Robles, California. Glass $12 / Bottle $46.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Highlands 41, Black Granite",
+              "description": "Red blend | Paso Robles, California. Glass $11 / Bottle $42.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Sterling",
+              "description": "Merlot | Napa Valley, California. Glass $11 / Bottle $42.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Unshackled",
+              "description": "Red blend | California. Glass $12 / Bottle $46.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "White Wine",
+          "note": "",
+          "items": [
+            {
+              "name": "Diora",
+              "description": "Chardonnay | Monterey, California. Glass $12 / Bottle $46.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Frei Brothers Reserve",
+              "description": "Chardonnay | Russian River Valley, California. Glass $13 / Bottle $50.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Whitehaven",
+              "description": "Sauvignon blanc | Marlborough, New Zealand. Glass $12 / Bottle $46.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "The Champion",
+              "description": "Sauvignon blanc | Marlborough, New Zealand. Glass $13 / Bottle $50.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Barone Fini",
+              "description": "Pinot grigio | Valdadige, Italy. Glass $10 / Bottle $38.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Escher Haus",
+              "description": "Riesling | Rheinhessen, Germany. Glass $10 / Bottle $38.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "The Pale",
+              "description": "Rose | Provence, France. Glass $12 / Bottle $46.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Sparkling",
+          "note": "",
+          "items": [
+            {
+              "name": "Placido",
+              "description": "Moscato d'Asti | Italy. Glass $11 / Bottle $42.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "La Marca",
+              "description": "Prosecco | DOC, Italy. Glass $11 / Bottle $42.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Marenco Brachetto d'Acqui",
+              "description": "Pineto | Italy. Glass $11 / Bottle $42.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        }
+      ],
+      "footnotes": [
+        "All alcohol sales are final."
+      ]
+    },
+    {
+      "id": "weekly-specials",
+      "label": "Weekly Specials",
+      "description": "",
+      "sections": [
+        {
+          "title": "Uptown Blues Plates",
+          "note": "",
+          "items": [
+            {
+              "name": "Made fresh daily.",
+              "description": "Limited availability.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Tuesday",
+          "note": "",
+          "items": [
+            {
+              "name": "Smothered Chicken",
+              "description": "Grilled chicken breast | sauteed peppers & onions | melted Swiss cheese | mashed potatoes | green beans | bacon | hot honey.",
+              "price": "20.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Wednesday",
+          "note": "",
+          "items": [
+            {
+              "name": "Roast Pork Tenderloin",
+              "description": "Mashed potatoes | Brussels sprouts | apricot - mustard glaze.",
+              "price": "20.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Thursday",
+          "note": "",
+          "items": [
+            {
+              "name": "Chef's Choice Pasta of The Day",
+              "description": "Side house salad. Priced weekly.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Friday",
+          "note": "",
+          "items": [
+            {
+              "name": "Shrimp & Grits",
+              "description": "Cheesy grits | tomato & andouille sausage gravy | side house salad.",
+              "price": "22.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Saturday",
+          "note": "",
+          "items": [
+            {
+              "name": "Ultimate Surf N Turf",
+              "description": "4oz filet medallion | Maryland-style crab cake | grilled shrimp | lemon butter | choice of two sides.",
+              "price": "35.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
