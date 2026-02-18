@@ -234,7 +234,7 @@
 
 		</main>
 
-		<section>
+		<section class="d-none">
 			<div class="container py-5">
 				<div class="mabellas-newsletter-card text-center">
 					<h2 class="mabellas-newsletter-title">
