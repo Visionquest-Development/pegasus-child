@@ -31,7 +31,7 @@
 		    top: 0 !important;
 	}
 
-
+  a, .nav-link, .nav-tabs .nav-link { color: white; }
 
 	.ulg-gradient-heading
 	{

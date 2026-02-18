@@ -85,7 +85,7 @@
 						<h2>MIDTOWN</h2>
 
 						<a href="/locations/midtown" class="mabellas-location-btn">VISIT US</a>
-						<a href="/menu/midtown" class="mabellas-location-btn">VIEW MENU</a>
+						<a href="/menus/midtown" class="mabellas-location-btn">VIEW MENU</a>
 					</div>
 				</div>
 
