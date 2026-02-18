@@ -454,3 +454,169 @@
 		);
 	}
 	add_action( 'cmb2_admin_init', 'mabellas_locations_metabox' );
+
+	/**
+	 * Pegasus Page Options for Locations CPT
+	 */
+	function mabellas_locations_page_options_metabox() {
+		$prefix = 'pegasus';
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox2_locations',
+			'title'        => __( 'Pegasus Page Options', 'pegasus' ),
+			'object_types' => array( 'locations' ),
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Fullwidth Container Checkbox', 'pegasus' ),
+			'desc' => __( 'Check this box to make the page fullwidth, this shuold override the global fullwidth theme option.', 'pegasus' ),
+			'id'   => $prefix . '-page-container-checkbox',
+			'type' => 'checkbox',
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Disable Page Header', 'pegasus' ),
+			'desc' => __( 'Check this box to disable the Page Header.', 'pegasus' ),
+			'id'   => $prefix . '-page-header-checkbox',
+			'type' => 'checkbox',
+		) );
+	}
+	add_action( 'cmb2_admin_init', 'mabellas_locations_page_options_metabox' );
+
+	/**
+	 * Additional Header Options for Locations CPT
+	 */
+	function mabellas_locations_additional_header_metabox() {
+		$prefix = 'pegasus';
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox_locations_additional_header',
+			'title'        => __( 'Additional Header Options', 'pegasus' ),
+			'object_types' => array( 'locations' ),
+		) );
+
+		$cmb->add_field( array(
+			'name'             => __( 'Additional Header', 'pegasus' ),
+			'desc'             => __( 'Select Header Type (no hdr, sml hdr, lrg hdr)', 'pegasus' ),
+			'id'               => $prefix . '_page_header_select',
+			'type'             => 'select',
+			'show_option_none' => false,
+			'default'          => 'no-header',
+			'options'          => array(
+				'no-header'  => __( 'No Header - No Spacing', 'pegasus' ),
+				'space'      => __( 'No Header - Just Spacing', 'pegasus' ),
+				'sml-header' => __( 'Small Header - With Parallax', 'pegasus' ),
+				'lrg-header' => __( 'Large Header - Full Width and Height', 'pegasus' ),
+			),
+		) );
+
+		$cmb->add_field( array(
+			'name'    => __( 'Overlay color', 'pegasus' ),
+			'id'      => $prefix . '_add_header_overlay_color',
+			'type'    => 'colorpicker',
+			'default' => '#303543'
+		) );
+
+		$cmb->add_field( array(
+			'name'    => __( 'Overlay Opacity', 'pegasus' ),
+			'id'      => $prefix . '_add_header_overlay_opacity',
+			'type'    => 'text',
+			'default' => '0.4'
+		) );
+
+		$cmb->add_field( array(
+			'name'    => __( 'NoSpacer Padding', 'pegasus' ),
+			'id'      => $prefix . '_nospacer_padding',
+			'type'    => 'text',
+			'default' => '25px 0'
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Disable Parallax', 'pegasus' ),
+			'desc' => __( 'Check this box if you want to disable parallax effect.', 'pegasus' ),
+			'id'   => $prefix . '_add_header_disable_parralax_chk',
+			'type' => 'checkbox',
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Disable Overlay', 'pegasus' ),
+			'desc' => __( 'Check this box if you want to disable overlay on small or large header effect.', 'pegasus' ),
+			'id'   => $prefix . '_add_header_disable_overlay_chk',
+			'type' => 'checkbox',
+		) );
+
+		$cmb->add_field( array(
+			'name'             => __( 'Image Repeat', 'pegasus' ),
+			'desc'             => __( 'Choose how the background image repeats.', 'pegasus' ),
+			'id'               => $prefix . '_add_header_bkg_img_repeat',
+			'type'             => 'select',
+			'show_option_none' => false,
+			'default'          => 'none',
+			'options'          => array(
+				'no-repeat' => __( 'No Repeat', 'cmb2' ),
+				'repeat'    => __( 'Repeat', 'cmb2' ),
+				'repeat-x'  => __( 'Repeat X', 'cmb2' ),
+				'repeat-y'  => __( 'Repeat Y', 'cmb2' ),
+				'space'     => __( 'Space', 'cmb2' ),
+				'round'     => __( 'Round', 'cmb2' ),
+			),
+		) );
+
+		$cmb->add_field( array(
+			'name'             => __( 'Image Position', 'pegasus' ),
+			'desc'             => __( 'Choose the background image position.', 'pegasus' ),
+			'id'               => $prefix . '_add_header_bkg_img_pos',
+			'type'             => 'select',
+			'show_option_none' => false,
+			'default'          => '50-0',
+			'options'          => array(
+				'50-0'         => __( '50% 0', 'cmb2' ),
+				'100-100'      => __( '100% 100%', 'cmb2' ),
+				'center-center'=> __( 'Center Center', 'cmb2' ),
+				'top-left'     => __( 'Top Left', 'cmb2' ),
+				'top-center'   => __( 'Top Center', 'cmb2' ),
+				'top-right'    => __( 'Top Right', 'cmb2' ),
+				'bottom-left'  => __( 'Bottom Left', 'cmb2' ),
+				'bottom-center'=> __( 'Bottom Center', 'cmb2' ),
+				'bottom-right' => __( 'Bottom Right', 'cmb2' ),
+			),
+		) );
+
+		$cmb->add_field( array(
+			'name'             => __( 'Image Size', 'pegasus' ),
+			'desc'             => __( 'Choose the background image size.', 'pegasus' ),
+			'id'               => $prefix . '_add_header_bkg_img_size',
+			'type'             => 'select',
+			'show_option_none' => false,
+			'default'          => 'cover',
+			'options'          => array(
+				'auto'    => __( 'None', 'cmb2' ),
+				'cover'   => __( 'Cover', 'cmb2' ),
+				'100-100' => __( '100% 100%', 'cmb2' ),
+				'contain' => __( 'Contain', 'cmb2' ),
+			),
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Background Attachment Fixed', 'pegasus' ),
+			'desc' => __( 'Check this box if you want the background image to be fixed / parallax effect.', 'pegasus' ),
+			'id'   => $prefix . '_add_header_bkg_img_fixed_chk',
+			'type' => 'checkbox',
+		) );
+
+		$cmb->add_field( array(
+			'name'    => __( 'Header Content wysiwyg', 'cmb2' ),
+			'desc'    => __( 'This will show up in the Additional Header select area.', 'cmb2' ),
+			'id'      => $prefix . '_page_header_wysiwyg',
+			'type'    => 'wysiwyg',
+			'options' => array( 'textarea_rows' => 5 ),
+		) );
+
+		$cmb->add_field( array(
+			'name'    => __( 'Header Content color', 'pegasus' ),
+			'id'      => $prefix . '_page_header_wysiwyg_color',
+			'type'    => 'rgba_colorpicker',
+			'default' => '#fff'
+		) );
+	}
+	add_action( 'cmb2_admin_init', 'mabellas_locations_additional_header_metabox' );

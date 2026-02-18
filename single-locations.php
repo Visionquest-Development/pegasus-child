@@ -39,6 +39,12 @@
 			if ( true === $is_this_home ) {
 				$final_page_header_option = 'off';
 			}
+
+			// If an additional header is selected, hide the default page title header.
+			$post_additional_header_choice = get_post_meta( get_the_ID(), 'pegasus_page_header_select', true );
+			if ( in_array( $post_additional_header_choice, array( 'sml-header', 'lrg-header' ), true ) ) {
+				$final_page_header_option = 'on';
+			}
 		?>
 
 		<div class="<?php echo $final_container_class; ?>">
