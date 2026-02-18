@@ -399,6 +399,25 @@
 			)
 		);
 
+		$cmb->add_field(
+			array(
+				'name' => __( 'Menu URL', 'pegasus-bootstrap' ),
+				'desc' => __( 'Link to the menu page (optional).', 'pegasus-bootstrap' ),
+				'id'   => $prefix . 'menu_url',
+				'type' => 'text_url',
+			)
+		);
+
+		$cmb->add_field(
+			array(
+				'name'    => __( 'Menu Button Text', 'pegasus-bootstrap' ),
+				'desc'    => __( 'e.g. VIEW MENU', 'pegasus-bootstrap' ),
+				'id'      => $prefix . 'menu_button_text',
+				'type'    => 'text',
+				'default' => 'View Menu',
+			)
+		);
+
 		// Card / Front-end display meta
 		$cmb->add_field(
 			array(
@@ -417,17 +436,17 @@
 
 		$cmb->add_field(
 			array(
-				'name'    => __( 'Card Button Text', 'pegasus-bootstrap' ),
-				'desc'    => __( 'e.g. VISIT US', 'pegasus-bootstrap' ),
+				'name'    => __( 'Order Online Button Text', 'pegasus-bootstrap' ),
+				'desc'    => __( 'e.g. ORDER ONLINE', 'pegasus-bootstrap' ),
 				'id'      => $prefix . 'card_button_text',
 				'type'    => 'text',
-				'default' => 'Visit Us',
+				'default' => 'Order Online',
 			)
 		);
 
 		$cmb->add_field(
 			array(
-				'name' => __( 'Card Button Link', 'pegasus-bootstrap' ),
+				'name' => __( 'Order Online Button Link', 'pegasus-bootstrap' ),
 				'desc' => __( 'If empty, can link to the single location page.', 'pegasus-bootstrap' ),
 				'id'   => $prefix . 'card_button_link',
 				'type' => 'text_url',

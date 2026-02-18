@@ -91,6 +91,8 @@
 			$phone2_tel = get_post_meta( $location_id, $prefix . 'phone2_tel', true );
 			$maps_url = get_post_meta( $location_id, $prefix . 'maps_url', true );
 			$reservation_url = get_post_meta( $location_id, $prefix . 'reservation_url', true );
+			$menu_url = get_post_meta( $location_id, $prefix . 'menu_url', true );
+			$menu_button_text = get_post_meta( $location_id, $prefix . 'menu_button_text', true );
 			$card_button_text = get_post_meta( $location_id, $prefix . 'card_button_text', true );
 			$card_button_link = get_post_meta( $location_id, $prefix . 'card_button_link', true );
 			$card_image_value = get_post_meta( $location_id, $prefix . 'card_background_image', true );
@@ -100,35 +102,20 @@
 				: '';
 
 			$location_name = $display_name ? $display_name : get_the_title();
-			$primary_text = $card_button_text ? $card_button_text : 'Visit Us';
+			$primary_text = $card_button_text ? $card_button_text : 'Order Online';
 			$primary_link = $card_button_link ? $card_button_link : get_permalink( $location_id );
+			$menu_text = $menu_button_text ? $menu_button_text : 'View Menu';
 		?>
 
 		<div class="container-fluid my-5 home-locations">
 			<div class="container">
-				<div class="row g-4 align-items-start">
+				<h1 class="text-white text-center mb-4"><?php echo esc_html( $location_name ); ?></h1>
+
+				<div class="row g-4 align-items-start mb-5">
 					<div class="col-12 col-lg-6">
-						<div class="mabellas-location-card text-center h-100 p-3 text-white">
-							<?php if ( $card_image ) : ?>
-								<div class="mabellas-location-image" style="background-image:url('<?php echo esc_url( $card_image ); ?>');"></div>
-							<?php endif; ?>
-
-							<h2><?php echo esc_html( $location_name ); ?></h2>
-
-							<div class="d-flex flex-column align-items-center gap-2">
-								<?php if ( $primary_link ) : ?>
-									<a href="<?php echo esc_url( $primary_link ); ?>" class="mabellas-location-btn">
-										<?php echo esc_html( $primary_text ); ?>
-									</a>
-								<?php endif; ?>
-
-								<?php if ( $reservation_url ) : ?>
-									<a href="<?php echo esc_url( $reservation_url ); ?>" class="mabellas-location-btn">
-										Reserve a Table
-									</a>
-								<?php endif; ?>
-							</div>
-						</div>
+						<?php if ( $card_image ) : ?>
+							<div class="mabellas-location-image" style="background-image:url('<?php echo esc_url( $card_image ); ?>');"></div>
+						<?php endif; ?>
 					</div>
 
 					<div class="col-12 col-lg-6">
@@ -174,6 +161,47 @@
 									</a>
 								</p>
 							<?php endif; ?>
+						</div>
+					</div>
+				</div>
+
+				<div class="row g-4">
+					<div class="col-12 col-lg-4">
+						<div class="card h-100 text-center">
+							<div class="card-body d-flex flex-column justify-content-between">
+								<h3 class="h5">Order Online</h3>
+								<?php if ( $primary_link ) : ?>
+									<a href="<?php echo esc_url( $primary_link ); ?>" class="mabellas-location-btn" target="_blank">
+										<?php echo esc_html( $primary_text ); ?>
+									</a>
+								<?php endif; ?>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-12 col-lg-4">
+						<div class="card h-100 text-center">
+							<div class="card-body d-flex flex-column justify-content-between">
+								<h3 class="h5">Reserve a Table</h3>
+								<?php if ( $reservation_url ) : ?>
+									<a href="<?php echo esc_url( $reservation_url ); ?>" class="mabellas-location-btn" target="_blank">
+										Reserve a Table
+									</a>
+								<?php endif; ?>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-12 col-lg-4">
+						<div class="card h-100 text-center">
+							<div class="card-body d-flex flex-column justify-content-between">
+								<h3 class="h5">Menu</h3>
+								<?php if ( $menu_url ) : ?>
+									<a href="<?php echo esc_url( $menu_url ); ?>" class="mabellas-location-btn">
+										<?php echo esc_html( $menu_text ); ?>
+									</a>
+								<?php endif; ?>
+							</div>
 						</div>
 					</div>
 				</div>
