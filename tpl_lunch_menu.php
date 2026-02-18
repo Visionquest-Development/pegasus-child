@@ -1,6 +1,6 @@
 <?php
 /*
-	Template Name: Entertainment Template
+	Template Name: Lunch Menu Template
 */
 ?>
 	<?php get_header(); ?>
@@ -114,64 +114,74 @@
 
 			</div><!--end row -->
 		</div><!-- end container -->
-
 		<?php
-		$events_path = get_stylesheet_directory() . '/data/events.json';
-		$json_data = file_exists( $events_path ) ? file_get_contents( $events_path ) : '[]';
+		$menu_json_path = get_stylesheet_directory() . '/data/menu-lunch.json';
+		$menu_json = file_get_contents($menu_json_path);
+		$menu_data = json_decode($menu_json, true);
+		if (!is_array($menu_data) || empty($menu_data['tabs'])) {
+		  $menu_data = ['restaurant_name' => '', 'updated' => '', 'tabs' => []];
+		}
 
-		// Option B: If pasting the JSON directly into PHP (remove comments if choosing this):
-		// $json_data = '[PASTE_JSON_DATA_HERE]';
+		// Format helpers
+		function vqmenu_money($value) {
+		  // accepts strings like "14" or "14.00"
+		  $num = is_numeric($value) ? number_format((float)$value, 2, '.', '') : $value;
+		  // If you prefer no cents when .00, tweak here:
+		  if (is_numeric($value) && fmod((float)$value, 1.0) === 0.0) {
+			$num = number_format((float)$value, 0, '.', '');
+		  }
+		  return '$' . $num;
+		}
 
-		$events = json_decode($json_data, true);
+		function vqmenu_badge_class($label) {
+		  $label = strtoupper(trim((string)$label));
+		  return match ($label) {
+			'V'   => 'vqmenu-badge vqmenu-badge--veg',
+			'GF'  => 'vqmenu-badge vqmenu-badge--gf',
+			'GF*' => 'vqmenu-badge vqmenu-badge--gf',
+			default => 'vqmenu-badge'
+		  };
+		}
+
+		// Enqueue the mobile menu JS
+		$theme_uri = get_stylesheet_directory_uri();
+		$theme_dir = get_stylesheet_directory();
+		$js_rel = '/assets/restaurant-menu/restaurant-menu.js';
+		if (file_exists($theme_dir . $js_rel)) {
+		  wp_enqueue_script('vq-restaurant-menu', $theme_uri . $js_rel, [], filemtime($theme_dir . $js_rel), true);
+		}
+
+		$tabs = $menu_data['tabs'];
+		$first_tab_id = $tabs[0]['id'] ?? 'menu';
+
 		?>
+		<main id="primary" class="site-main">
+		  <div class="container py-5 vqmenu">
+			<header class="vqmenu-header mb-4">
+			  <?php if (!empty($menu_data['restaurant_name'])) : ?>
+				<h1 class="vqmenu-title mb-1"><?php echo esc_html($menu_data['restaurant_name']); ?></h1>
+			  <?php else : ?>
+				<h1 class="vqmenu-title mb-1"><?php the_title(); ?></h1>
+			  <?php endif; ?>
 
-		<div class="container my-5">
-			<div class="row grid" id="events-grid">
+			  <?php if (!empty($menu_data['updated'])) : ?>
+				<div class="vqmenu-meta text-muted">
+				  Updated: <?php echo esc_html($menu_data['updated']); ?>
+				</div>
+			  <?php endif; ?>
+			</header>
 
-				<?php if (!empty($events)) : ?>
-					<?php foreach ($events as $event) : ?>
-
-						<div class="grid-item col-12 col-lg-3 mb-4">
-							<div class="card h-100 shadow-sm border-0 wow fadeInUp">
-
-								<?php if (!empty($event['image'])) : ?>
-									<a href="<?php echo esc_url($event['link']); ?>">
-										<img src="<?php echo esc_url($event['image']); ?>" class="card-img-top" alt="<?php echo esc_attr($event['title']); ?>">
-									</a>
-								<?php endif; ?>
-
-								<div class="card-body">
-									<h6 class="card-subtitle mb-2 text-muted small">
-										<?php echo esc_html($event['date']); ?>
-									</h6>
-
-									<h5 class="card-title">
-										<a href="<?php echo esc_url($event['link']); ?>" class="text-decoration-none text-dark">
-											<?php echo esc_html($event['title']); ?>
-										</a>
-									</h5>
-
-									<p class="card-text small text-secondary">
-										<?php echo esc_html($event['description']); ?>
-									</p>
-								</div>
-
-								<div class="card-footer bg-white border-top-0">
-									 <span class="badge bg-primary">
-										<?php echo esc_html($event['tag']); ?>
-									 </span>
-								</div>
-
-							</div>
-						</div>
-
-					<?php endforeach; ?>
-				<?php else : ?>
-					<p>No events found.</p>
-				<?php endif; ?>
-
+			<!-- Desktop: tabbed menu (hidden < 992px) -->
+			<div class="vqmenu-desktop">
+			  <?php include get_stylesheet_directory() . '/templates/menu-tabs.php'; ?>
 			</div>
-		</div>
+
+			<!-- Mobile: long-scroll menu (hidden >= 992px) -->
+			<div class="vqmenu-mobile">
+			  <?php include get_stylesheet_directory() . '/templates/menu-mobile.php'; ?>
+			</div>
+		  </div>
+		</main>
 
 		<?php /*
 		<section class="py-5 mb-5">

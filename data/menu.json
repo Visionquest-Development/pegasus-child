@@ -1,10 +1,10 @@
 {
   "restaurant_name": "The Loft",
-  "updated": "2026-01-14",
+  "updated": "2026-02-18",
   "tabs": [
     {
-      "id": "food",
-      "label": "Food",
+      "id": "loft-menu",
+      "label": "Loft Menu",
       "description": "",
       "download": {
         "href": "https://media-cdn.getbento.com/accounts/1c1399494fd5b9fe83d59486e6681424/media/htYTFD9ESeKGrGDz9Zr4_3FYsdXy6SgO7QzVyJuU4_Loft%2520Menu%25202024%2520%283%29.pdf",
@@ -109,8 +109,8 @@
           "note": "You may choose between a 1/2 lb of Angus beef burger, organic chicken breast or Boca veggie burger. Served on a brioche bun.",
           "items": [
             {
-              "name": "Chef's Burger*",
-              "description": "Please ask your server about today's inspiration.",
+              "name": "Chef’s Burger*",
+              "description": "Please ask your server about today’s inspiration.",
               "price": "16.99",
               "badges": [],
               "spicy_level": 0,
@@ -186,14 +186,14 @@
           "items": [
             {
               "name": "Seared Salmon*",
-              "description": "Lemon-butter | sauteed baby spinach | mashed potatoes.",
+              "description": "Lemon-butter | sautéed baby spinach | mashed potatoes.",
               "price": "26.99",
               "badges": ["GF"],
               "spicy_level": 0,
               "extras": []
             },
             {
-              "name": "Fork Tender BBQ St. Louis Ribs",
+              "name": "Fork Tender BBQ St.Louis Ribs",
               "description": "1/2 rack | BBQ sauce | French fries | creamy slaw.",
               "price": "22.99",
               "badges": [],
@@ -210,10 +210,10 @@
             },
             {
               "name": "Cajun Shrimp Pasta",
-              "description": "Sauteed shrimp | andouille sausage | pepper & onion medley | spicy cream sauce | pappardelle pasta.",
+              "description": "Sautéed shrimp | andouille sausage | pepper & onion medley | spicy cream sauce | pappardelle pasta.",
               "price": "26.99",
               "badges": [],
-              "spicy_level": 0,
+              "spicy_level": 1,
               "extras": []
             },
             {
@@ -271,7 +271,7 @@
               "extras": []
             },
             {
-              "name": "Sauteed Button Mushrooms",
+              "name": "Sautéed Button Mushrooms",
               "description": "",
               "price": "3.99",
               "badges": ["GF"],
@@ -283,7 +283,7 @@
               "description": "",
               "price": "3.99",
               "badges": [],
-              "spicy_level": 0,
+              "spicy_level": 1,
               "extras": []
             },
             {
@@ -303,7 +303,7 @@
               "extras": []
             },
             {
-              "name": "Sauteed Baby Spinach",
+              "name": "Sautéed Baby Spinach",
               "description": "",
               "price": "3.99",
               "badges": ["GF"],
@@ -335,18 +335,7 @@
               "extras": []
             }
           ]
-        }
-      ],
-      "footnotes": [
-        "All burgers, sandwiches, and wraps served with a choice of side.",
-        "20% automatic gratuity added to parties of 8 or more. These items are served raw or undercooked. Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness, especially if you have certain medical conditions."
-      ]
-    },
-    {
-      "id": "drinks",
-      "label": "Drinks",
-      "description": "",
-      "sections": [
+        },
         {
           "title": "Premium & Domestic Beer By the Bottle",
           "note": "",
@@ -404,8 +393,8 @@
           "note": "",
           "items": [
             {
-              "name": "Bourbon's Unchained Melody",
-              "description": "Maker's Mark bourbon | lime juice | simple | mint | cucumber.",
+              "name": "Bourbon’s Unchained Melody",
+              "description": "Maker’s Mark bourbon | lime juice | simple | mint | cucumber.",
               "price": "10.00",
               "badges": [],
               "spicy_level": 0,
@@ -505,59 +494,80 @@
           "items": [
             {
               "name": "J Vineyards",
-              "description": "Pinot noir | California. Glass $12 / Bottle $46.",
+              "description": "Pinot noir | California.",
               "price": "",
               "badges": [],
               "spicy_level": 0,
-              "extras": []
+              "extras": [
+                { "label": "Glass", "price": "12.00" },
+                { "label": "Bottle", "price": "46.00" }
+              ]
             },
             {
               "name": "Love Oregon",
-              "description": "Pinot noir | Willamette Valley, Oregon. Glass $13 / Bottle $50.",
+              "description": "Pinot noir | Willamette Valley, Oregon.",
               "price": "",
               "badges": [],
               "spicy_level": 0,
-              "extras": []
+              "extras": [
+                { "label": "Glass", "price": "13.00" },
+                { "label": "Bottle", "price": "50.00" }
+              ]
             },
             {
               "name": "Oberon",
-              "description": "Cabernet sauvignon | Napa Valley, California. Glass $13 / Bottle $50.",
+              "description": "Cabernet sauvignon | Napa Valley, California.",
               "price": "",
               "badges": [],
               "spicy_level": 0,
-              "extras": []
+              "extras": [
+                { "label": "Glass", "price": "13.00" },
+                { "label": "Bottle", "price": "50.00" }
+              ]
             },
             {
               "name": "San Simeon",
-              "description": "Cabernet sauvignon | Paso Robles, California. Glass $12 / Bottle $46.",
+              "description": "Cabernet sauvignon | Paso Robles, California.",
               "price": "",
               "badges": [],
               "spicy_level": 0,
-              "extras": []
+              "extras": [
+                { "label": "Glass", "price": "12.00" },
+                { "label": "Bottle", "price": "46.00" }
+              ]
             },
             {
               "name": "Highlands 41, Black Granite",
-              "description": "Red blend | Paso Robles, California. Glass $11 / Bottle $42.",
+              "description": "Red blend | Paso Robles, California.",
               "price": "",
               "badges": [],
               "spicy_level": 0,
-              "extras": []
+              "extras": [
+                { "label": "Glass", "price": "11.00" },
+                { "label": "Bottle", "price": "42.00" }
+              ]
             },
             {
               "name": "Sterling",
-              "description": "Merlot | Napa Valley, California. Glass $11 / Bottle $42.",
+              "description": "Merlot | Napa Valley, California.",
               "price": "",
               "badges": [],
               "spicy_level": 0,
-              "extras": []
+              "extras": [
+                { "label": "Glass", "price": "11.00" },
+                { "label": "Bottle", "price": "42.00" }
+              ]
             },
             {
               "name": "Unshackled",
-              "description": "Red blend | California. Glass $12 / Bottle $46.",
+              "description": "Red blend | California.",
               "price": "",
               "badges": [],
               "spicy_level": 0,
-              "extras": []
+              "extras": [
+                { "label": "Glass", "price": "12.00" },
+                { "label": "Bottle", "price": "46.00" }
+              ]
             }
           ]
         },
@@ -567,59 +577,80 @@
           "items": [
             {
               "name": "Diora",
-              "description": "Chardonnay | Monterey, California. Glass $12 / Bottle $46.",
+              "description": "Chardonnay | Monterey, California.",
               "price": "",
               "badges": [],
               "spicy_level": 0,
-              "extras": []
+              "extras": [
+                { "label": "Glass", "price": "12.00" },
+                { "label": "Bottle", "price": "46.00" }
+              ]
             },
             {
               "name": "Frei Brothers Reserve",
-              "description": "Chardonnay | Russian River Valley, California. Glass $13 / Bottle $50.",
+              "description": "Chardonnay | Russian River Valley, California.",
               "price": "",
               "badges": [],
               "spicy_level": 0,
-              "extras": []
+              "extras": [
+                { "label": "Glass", "price": "13.00" },
+                { "label": "Bottle", "price": "50.00" }
+              ]
             },
             {
               "name": "Whitehaven",
-              "description": "Sauvignon blanc | Marlborough, New Zealand. Glass $12 / Bottle $46.",
+              "description": "Sauvignon blanc | Marlborough, New Zealand.",
               "price": "",
               "badges": [],
               "spicy_level": 0,
-              "extras": []
+              "extras": [
+                { "label": "Glass", "price": "12.00" },
+                { "label": "Bottle", "price": "46.00" }
+              ]
             },
             {
               "name": "The Champion",
-              "description": "Sauvignon blanc | Marlborough, New Zealand. Glass $13 / Bottle $50.",
+              "description": "Sauvignon blanc | Marlborough, New Zealand.",
               "price": "",
               "badges": [],
               "spicy_level": 0,
-              "extras": []
+              "extras": [
+                { "label": "Glass", "price": "13.00" },
+                { "label": "Bottle", "price": "50.00" }
+              ]
             },
             {
               "name": "Barone Fini",
-              "description": "Pinot grigio | Valdadige, Italy. Glass $10 / Bottle $38.",
+              "description": "Pinot grigio | Valdadige, Italy.",
               "price": "",
               "badges": [],
               "spicy_level": 0,
-              "extras": []
+              "extras": [
+                { "label": "Glass", "price": "10.00" },
+                { "label": "Bottle", "price": "38.00" }
+              ]
             },
             {
               "name": "Escher Haus",
-              "description": "Riesling | Rheinhessen, Germany. Glass $10 / Bottle $38.",
+              "description": "Riesling | Rheinhessen, Germany.",
               "price": "",
               "badges": [],
               "spicy_level": 0,
-              "extras": []
+              "extras": [
+                { "label": "Glass", "price": "10.00" },
+                { "label": "Bottle", "price": "38.00" }
+              ]
             },
             {
               "name": "The Pale",
-              "description": "Rose | Provence, France. Glass $12 / Bottle $46.",
+              "description": "Rosé | Provence, France.",
               "price": "",
               "badges": [],
               "spicy_level": 0,
-              "extras": []
+              "extras": [
+                { "label": "Glass", "price": "12.00" },
+                { "label": "Bottle", "price": "46.00" }
+              ]
             }
           ]
         },
@@ -629,53 +660,43 @@
           "items": [
             {
               "name": "Placido",
-              "description": "Moscato d'Asti | Italy. Glass $11 / Bottle $42.",
+              "description": "Moscato d’Asti | Italy.",
               "price": "",
               "badges": [],
               "spicy_level": 0,
-              "extras": []
+              "extras": [
+                { "label": "Glass", "price": "11.00" },
+                { "label": "Bottle", "price": "42.00" }
+              ]
             },
             {
               "name": "La Marca",
-              "description": "Prosecco | DOC, Italy. Glass $11 / Bottle $42.",
+              "description": "Prosecco | DOC, Italy.",
               "price": "",
               "badges": [],
               "spicy_level": 0,
-              "extras": []
+              "extras": [
+                { "label": "Glass", "price": "11.00" },
+                { "label": "Bottle", "price": "42.00" }
+              ]
             },
             {
-              "name": "Marenco Brachetto d'Acqui",
-              "description": "Pineto | Italy. Glass $11 / Bottle $42.",
+              "name": "Marenco Brachetto d’Acqui",
+              "description": "Pineto | Italy.",
               "price": "",
               "badges": [],
               "spicy_level": 0,
-              "extras": []
+              "extras": [
+                { "label": "Glass", "price": "11.00" },
+                { "label": "Bottle", "price": "42.00" }
+              ]
             }
           ]
-        }
-      ],
-      "footnotes": [
-        "All alcohol sales are final."
-      ]
-    },
-    {
-      "id": "weekly-specials",
-      "label": "Weekly Specials",
-      "description": "",
-      "sections": [
+        },
         {
           "title": "Uptown Blues Plates",
-          "note": "",
-          "items": [
-            {
-              "name": "Made fresh daily.",
-              "description": "Limited availability.",
-              "price": "",
-              "badges": [],
-              "spicy_level": 0,
-              "extras": []
-            }
-          ]
+          "note": "Made fresh daily. Limited availability.",
+          "items": []
         },
         {
           "title": "Tuesday",
@@ -683,7 +704,7 @@
           "items": [
             {
               "name": "Smothered Chicken",
-              "description": "Grilled chicken breast | sauteed peppers & onions | melted Swiss cheese | mashed potatoes | green beans | bacon | hot honey.",
+              "description": "Grilled chicken breast | sautéed peppers & onions | melted Swiss cheese | mashed potatoes | green beans | bacon | hot honey.",
               "price": "20.99",
               "badges": [],
               "spicy_level": 0,
@@ -710,9 +731,9 @@
           "note": "",
           "items": [
             {
-              "name": "Chef's Choice Pasta of The Day",
+              "name": "Chef’s Choice Pasta of The Day",
               "description": "Side house salad. Priced weekly.",
-              "price": "",
+              "price": "Priced weekly",
               "badges": [],
               "spicy_level": 0,
               "extras": []
@@ -747,6 +768,12 @@
             }
           ]
         }
+      ],
+      "footnotes": [
+        "All burgers, sandwiches, and wraps served with a choice of side.",
+        "*All Alcohol Sales Are Final*.",
+        "20% Automatic gratuity added to parties of 8 or more.",
+        "*These items are served raw or undercooked. Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness, especially if you have certain medical conditions."
       ]
     }
   ]

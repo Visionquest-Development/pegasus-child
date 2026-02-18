@@ -1,0 +1,363 @@
+{
+  "restaurant_name": "The Loft",
+  "updated": "2026-02-18",
+  "tabs": [
+    {
+      "id": "loft-lunch",
+      "label": "Loft Lunch Menu",
+      "description": "",
+      "download": {
+        "href": "",
+        "text": "Download PDF",
+        "target": "_blank"
+      },
+      "sections": [
+        {
+          "title": "Opening Acts",
+          "note": "",
+          "items": [
+            {
+              "name": "Thai Shrimp Tacos",
+              "description": "Tempura fried shrimp | chili glaze | Napa slaw | soy citrus.",
+              "price": "14.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Buffalo Chicken Dip",
+              "description": "Celery | warm pita bread.",
+              "price": "10.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Chicken Fingers",
+              "description": "Honey mustard & Cajun mayo dipping sauces.",
+              "price": "12.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "The Green Room",
+          "note": "Served with choice of grilled organic chicken breast, chicken fingers, grilled shrimp. *Grilled beef tenderloin tips, please add $10.99.",
+          "items": [
+            {
+              "name": "Caesar",
+              "description": "Chopped romaine | house made garlic croutons | Parmesan cheese | classic caesar dressing.",
+              "price": "15.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Southwestern",
+              "description": "Iceberg lettuce | romaine lettuce | pepper jack cheese | sliced avocado | chopped bacon | pico de gallo | tortilla strips | mango-habanero ranch.",
+              "price": "16.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "The Tanya",
+              "description": "Mixed baby lettuces | white cheddar cheese | grape tomatoes | pumpkin seeds | dried cranberries | fresh red bell peppers | house-made balsamic dressing.",
+              "price": "15.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Spinach - Strawberry",
+              "description": "Baby spinach | strawberries | goat cheese | pecan | shaved red onions | mixed seed dressing.",
+              "price": "15.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Broadway Burgers",
+          "note": "You may choose between a 1/2 LB of Angus beef burger, organic chicken breast or Boca veggie burger. Served on a Brioche bun.",
+          "items": [
+            {
+              "name": "Classic Bacon Cheese*",
+              "description": "Smoked bacon | cheddar cheese | lettuce | tomato | red onion | pickles.",
+              "price": "15.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Pimento Cheese Burger*",
+              "description": "House-made pimento cheese | bacon-onion jam.",
+              "price": "15.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Sandwiches & Wraps",
+          "note": "",
+          "items": [
+            {
+              "name": "Gulf Coast Fish Sandwich",
+              "description": "Grilled Mahi Mahi | lettuce | tomato | tartar sauce | toasted brioche bun.",
+              "price": "15.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Southwest Chicken Wrap",
+              "description": "Sliced grilled chicken | shredded pepper jack cheese | chopped bacon | shredded lettuce | avocado | Pico de Gallo | tortilla strips | mango-habanero ranch | whole wheat tortilla.",
+              "price": "16.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Spicy Fried Chicken Sandwich",
+              "description": "Lettuce | tomato | pickle | ranch dressing | toasted brioche bun.",
+              "price": "16.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Cuban Pork Wrap",
+              "description": "Sliced roast pork | smoked ham | Swiss cheese | spicy honey mustard | pickles | whole wheat tortilla.",
+              "price": "15.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Uptown Blues Plates",
+          "note": "Until 3:30pm everyday. Served with choice of two sides, except Saturday Brunch.",
+          "items": [
+            {
+              "name": "Uptown Blues Plates",
+              "description": "",
+              "price": "15.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Tuesday",
+          "note": "",
+          "items": [
+            {
+              "name": "Hamburger Steak",
+              "description": "Mushrooms & onions in brown gravy.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Fried Chicken Cordon Blue",
+              "description": "Mornay sauce.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Fried Shrimp",
+              "description": "Cocktail sauce.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Wednesday",
+          "note": "",
+          "items": [
+            {
+              "name": "Meatloaf",
+              "description": "Ketchup glaze.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Smothered Chicken",
+              "description": "Bacon, cheddar, BBQ sauce.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Fried Pork Cutlet",
+              "description": "Lemon butter.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Thursday",
+          "note": "",
+          "items": [
+            {
+              "name": "Oven Baked Ranch Chicken",
+              "description": "",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Teriyaki Beef Tips Skewers",
+              "description": "Peppers & onions | rice.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Fish N Chips",
+              "description": "Tartar sauce.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Friday",
+          "note": "",
+          "items": [
+            {
+              "name": "Grilled Chicken Parmigiana",
+              "description": "",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Country Fried Chuck Steak",
+              "description": "Country gravy.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Grilled Shrimp",
+              "description": "Garlic Parmesan sauce.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Sides",
+          "note": "",
+          "items": [
+            {
+              "name": "Mashed Potatoes",
+              "description": "",
+              "price": "3.99",
+              "badges": ["GF"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "White Cheddar Grits",
+              "description": "",
+              "price": "3.99",
+              "badges": ["GF"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Soulful Mac N Cheese",
+              "description": "",
+              "price": "3.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Green Beans",
+              "description": "",
+              "price": "3.99",
+              "badges": ["GF"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Sautéed Baby Spinach",
+              "description": "",
+              "price": "3.99",
+              "badges": ["GF"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "French Fries",
+              "description": "",
+              "price": "3.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Sweet Potato Fries",
+              "description": "",
+              "price": "3.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Sautéed Mushrooms",
+              "description": "",
+              "price": "3.99",
+              "badges": ["GF"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Vegetable of the Day",
+              "description": "",
+              "price": "3.99",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        }
+      ],
+      "footnotes": [
+        "All burgers, sandwiches and wraps are served with a choice of side.",
+        "20% automatic gratuity added to parties of 8 or more.",
+        "*These items are served raw or undercooked. Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness, especially if you have certain medical conditions."
+      ]
+    }
+  ]
+}

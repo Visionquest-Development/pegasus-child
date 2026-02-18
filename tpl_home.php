@@ -259,7 +259,8 @@
 
 		</main>
 		<?php
-		$json_data = file_get_contents( get_stylesheet_directory() . '/events.json' );
+		$events_path = get_stylesheet_directory() . '/data/events.json';
+		$json_data = file_exists( $events_path ) ? file_get_contents( $events_path ) : '[]';
 
 		// Option B: If pasting the JSON directly into PHP (remove comments if choosing this):
 		// $json_data = '[PASTE_JSON_DATA_HERE]';
