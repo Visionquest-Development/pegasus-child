@@ -690,25 +690,21 @@
 	.vqmenu-mobile-nav {
 	  position: -webkit-sticky;
 	  position: sticky;
-	  top: 40px;
-	  left: 40px;
+	  top: 92px; /* fallback: ULG bar (~44px) + mega-menu (~48px) — JS overrides dynamically */
 	  z-index: 100;
 	  background: #fff;
 	  border-bottom: 1px solid var(--vqmenu-border);
 	  padding: 0;
+	  transition: top 0.3s ease;
 	}
 
-  .vqmenu-mobile-nav {
-    top: 92px;
-  }
-
-	/* Offset sticky nav below admin bar + header-five hamburger button */
+	/* Admin bar fallback (JS overrides dynamically) */
 	.admin-bar .vqmenu-mobile-nav {
-	  top: 123px; /* 32px admin bar + 40px hamburger */
+	  top: 123px;
 	}
 	@media screen and (max-width: 782px) {
 	  .admin-bar .vqmenu-mobile-nav {
-		top: 123px; /* 46px admin bar + 40px hamburger */
+		top: 138px;
 	  }
 	}
 

@@ -1,0 +1,161 @@
+<?php
+/*
+	Template Name: Reservations Template
+*/
+?>
+	<?php get_header(); ?>
+
+	<?php
+		$header_choice = pegasus_get_option( 'header_select' );
+		//var_dump($header_choice);
+		if ( 'header-three' === $header_choice ) {
+			get_template_part( 'templates/additional_header' );
+		}
+	?>
+
+	<div id="page-wrap">
+
+		<?php
+			//full container page options
+			$post_full_container_choice = get_post_meta( get_the_ID(), 'pegasus-page-container-checkbox', true );
+			//full container theme option
+			$global_full_container_option = pegasus_get_option('full_container_chk' );
+
+			//assign post class
+			$pegasus_post_container_choice = ( 'on' === $post_full_container_choice ) ? 'container-fluid' : 'container';
+			//assign global class
+			$pegasus_global_container_choice = ( 'on' === $global_full_container_option ) ? 'container-fluid' : 'container' ;
+			//check global first then post
+			$final_container_class = ( 'container-fluid' === $pegasus_global_container_choice ) ? $pegasus_global_container_choice : $pegasus_post_container_choice;
+
+			//left align right sidebar?
+			$left_align_sidebar_chk =  pegasus_get_option( 'sidebar_left_chk' ) ? pegasus_get_option( 'sidebar_left_chk' ) : 'off';
+			//enable both sidebars?
+			$pegasus_left_sidebar_option = ( 'on' === pegasus_get_option( 'both_sidebar_chk' ) ) ? pegasus_get_option( 'both_sidebar_chk' ) : 'off';
+			//change content class if both sidebars
+			$page_body_content_class = ( 'on' === $pegasus_left_sidebar_option  ) ? 'col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xg-6' : 'col-xs-12 col-sm-12 col-md-12 col-lg-9 col-xg-9';
+
+			//page header page options
+			$post_disable_page_header_choice = get_post_meta( get_the_ID(), 'pegasus-page-header-checkbox', true ) ? get_post_meta( get_the_ID(), 'pegasus-page-header-checkbox', true ) : 'off';
+			//page header theme option
+			$global_disable_page_header_option =  pegasus_get_option('page_header_chk' ) ? pegasus_get_option('page_header_chk' ) : 'off';
+			//check theme option for page header before page option
+			$page_title = $post->post_title;
+			$is_this_home = is_home();
+			if ( 'on' === $global_disable_page_header_option ) {
+				$final_page_header_option = 'on';
+			} elseif ( 'on' === $post_disable_page_header_choice ) {
+				$final_page_header_option = 'on';
+			} else {
+				$final_page_header_option = 'off';
+			}
+
+			if ( true === $is_this_home ) {
+				$final_page_header_option = 'off';
+			}
+		?>
+
+
+		<div class="<?php echo $final_container_class; ?>">
+		<!-- Example row of columns -->
+			<div class="">
+
+				<div class="inner-content">
+					<div class="content-no-sidebar">
+						<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+							<?php if( 'off' === $final_page_header_option ) { ?>
+								<div class="page-header">
+									<?php
+									if( '' === $page_title ) {
+										echo '';
+									} elseif ( $page_title ) {
+										echo '<h1>';
+										echo the_title();
+										echo '</h1>';
+									}
+									?>
+								</div>
+							<?php }else{ ?>
+								<!--<div class="page-header-spacer"></div>-->
+							<?php } ?>
+
+							<?php the_content(); ?>
+
+						<?php endwhile; else: ?>
+							<?php /* kinda a 404 of sorts when not working */ ?>
+							<div class="page-header">
+								<h1>Oh no!</h1>
+							</div>
+							<p>No content is appearing for this page!</p>
+						<?php endif; ?>
+						<?php
+							if ( function_exists( 'wp_bootstrap_edit_post_link' ) ) {
+								// Edit post link
+								wp_bootstrap_edit_post_link(
+									sprintf(
+										/* translators: %s: Name of current post */
+										__( 'Edit<span class="screen-reader-text"> "%s"</span>', 'pegasus' ),
+										get_the_title()
+									),
+									'<span class="edit-link">',
+									'</span>'
+								);
+							}
+							if ( function_exists( 'wp_bootstrap_posts_pagination' ) ) {
+								wp_bootstrap_posts_pagination( array(
+									'prev_text'          => __( 'Previous page', 'pegasus' ),
+									'next_text'          => __( 'Next page', 'pegasus' ),
+									'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'pegasus' ) . ' </span>'
+								) );
+							}
+						?>
+					</div>
+				</div><!--end inner content-->
+
+			</div><!--end row -->
+		</div><!-- end container -->
+
+		<div class="container-fluid my-5 home-locations" >
+			<h2 class="text-white text-center pb-3">Make a Reservation</h2>
+			<div class="row g-3">
+
+				<!-- UPTOWN COLUMBUS -->
+				<div class="col-lg-6">
+					<div class="mabellas-location-card text-center h-100 p-3 text-white wow fadeInLeft">
+
+						<div class="mabellas-location-image"
+							 style="background-image:url('https://visionquestdev.com/mabellas/wp-content/uploads/2025/12/INYtFcBSnyge5MW6Z7bQ_Mabellas-62.png');">
+						</div>
+
+						<h2>UPTOWN COLUMBUS</h2>
+
+						<a href="https://tables.toasttab.com/restaurants/2e40ad16-2a18-4285-a2b5-4f20dbad029e/findTime" class="mabellas-location-btn">Reservations Uptown</a>
+					</div>
+				</div>
+
+				<!-- MIDLAND -->
+				<div class="col-lg-6">
+					<div class="mabellas-location-card text-center h-100 p-3 text-white wow fadeInRight">
+
+						<div class="mabellas-location-image"
+							 style="background-image:url('https://visionquestdev.com/mabellas/wp-content/uploads/2025/12/EkmDKBDTRaC41Pg7v0uw_Mabellas-17.png');">
+						</div>
+
+						<h2>MIDLAND</h2>
+
+						<a href="https://tables.toasttab.com/restaurants/14215290-2f1e-4cab-bdd4-98add3ae120d/findTime" class="mabellas-location-btn">Reservations Midland</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<?php /*
+		<section class="py-5 mb-5">
+			<?php echo do_shortcode( '[uptown_restaurant_map height="600px"]' ); ?>
+		</section>
+		*/ ?>
+
+
+	</div><!-- end page wrap -->
+    <?php get_footer(); ?>
