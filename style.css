@@ -12,43 +12,54 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Lora:wght@700&display=swap');
 
-.menu-heading {
-  font-family: "Cinzel", serif;
-  letter-spacing: 0.02em;
-}
+  .menu-heading {
+    font-family: "Cinzel", serif;
+    letter-spacing: 0.02em;
+  }
 
-.menu-item, h1, h2, h3, h4, h5 {
-  font-family: "Cinzel", serif;
-}
+  .menu-item, h1, h2, h3, h4, h5 {
+    font-family: "Cinzel", serif;
+  }
 
-.menu-body, p {
-  font-family: "EB Garamond", serif;
-}
+  .menu-body, p {
+    font-family: "EB Garamond", serif;
+  }
 
-.menu-tagline {
-  font-family: "EB Garamond", serif;
-  font-style: italic;
-}
+  .menu-tagline {
+    font-family: "EB Garamond", serif;
+    font-style: italic;
+  }
 
-.vqmenu-itemname {
-  font-family: "Cinzel", serif;
-  letter-spacing: 0.02em;
-  font-weight: bold;
-}
+  .vqmenu-itemname {
+    font-family: "Cinzel", serif;
+    letter-spacing: 0.02em;
+    font-weight: bold;
+  }
 
-.menu-item {
-  font-family: "Cinzel", serif;
-}
+  .menu-item {
+    font-family: "Cinzel", serif;
+  }
 
-.vqmenu-itemdesc {
-  font-family: "EB Garamond", serif;
-}
+  .vqmenu-itemdesc {
+    font-family: "EB Garamond", serif;
+  }
 
-#vqmenuTabContent .menu-tagline {
-  font-family: "EB Garamond", serif;
-  font-style: italic;
-}
+  #vqmenuTabContent .menu-tagline {
+    font-family: "EB Garamond", serif;
+    font-style: italic;
+  }
 
+  .pegasus-header-content {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 3rem 1rem !important;
+    max-width: 500px !important;
+    color: black;
+  }
+  @media only screen and (max-width: 768px) {
+    .pegasus-header-content {
+      max-width: 250px !important;
+    }
+  }
 
 	.inner-content {
 		background: white;
