@@ -550,13 +550,29 @@
 	.vqmenu-mobile-nav {
 	  position: -webkit-sticky;
 	  position: sticky;
-	  top: 0;
+	  top: 40px;
 	  left: 40px;
 	  z-index: 100;
 	  background: #fff;
 	  border-bottom: 1px solid var(--vqmenu-border);
 	  padding: 0;
-    margin-left: 25px;
+
+	}
+
+	/* Offset sticky nav below admin bar + header-five hamburger button */
+	.admin-bar .vqmenu-mobile-nav {
+	  top: 32px; /* 32px admin bar + 40px hamburger */
+	}
+  @media screen and (max-width: 620px) {
+    .vqmenu-mobile-nav {
+      margin-left: 25px;
+    }
+  }
+
+	@media screen and (max-width: 782px) {
+	  .admin-bar .vqmenu-mobile-nav {
+		top: 44px; /* 46px admin bar + 40px hamburger */
+	  }
 	}
 
 	/* Scroll-fade indicators */
