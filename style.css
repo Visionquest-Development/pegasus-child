@@ -690,13 +690,26 @@
 	.vqmenu-mobile-nav {
 	  position: -webkit-sticky;
 	  position: sticky;
-	  top: 0;
+	  top: 40px;
 	  left: 40px;
 	  z-index: 100;
 	  background: #fff;
 	  border-bottom: 1px solid var(--vqmenu-border);
 	  padding: 0;
-	  margin-left: 25px;
+	}
+
+  .vqmenu-mobile-nav {
+    top: 92px;
+  }
+
+	/* Offset sticky nav below admin bar + header-five hamburger button */
+	.admin-bar .vqmenu-mobile-nav {
+	  top: 123px; /* 32px admin bar + 40px hamburger */
+	}
+	@media screen and (max-width: 782px) {
+	  .admin-bar .vqmenu-mobile-nav {
+		top: 123px; /* 46px admin bar + 40px hamburger */
+	  }
 	}
 
 	/* Scroll-fade indicators */
