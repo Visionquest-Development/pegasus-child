@@ -83,7 +83,7 @@ $bath_ba_path = get_stylesheet_directory_uri() . '/images/Interior/bathroom/befo
 </section>
 
 <!-- Marietta - Bathroom Expansion -->
-<section id="marietta-bath-expansion" class="interior-section py-5 section-alt-bg">
+<!-- <section id="marietta-bath-expansion" class="interior-section py-5 section-alt-bg">
 	<div class="container">
 		<div class="row mb-4">
 			<div class="col-12">
@@ -101,7 +101,7 @@ $bath_ba_path = get_stylesheet_directory_uri() . '/images/Interior/bathroom/befo
 			</div>
 		</div>
 	</div>
-</section>
+</section> -->
 
 <!-- Marietta - Master Bath -->
 <section id="marietta-master-bath" class="interior-section py-5">

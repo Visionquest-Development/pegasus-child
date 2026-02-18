@@ -38,26 +38,17 @@ $kitchen_ba_path = get_stylesheet_directory_uri() . '/images/Interior/kitchen/be
 			</div>
 		</div>
 		<div class="row g-4 mb-4">
-			<div class="col-lg-6 col-md-6">
-				<div class="pegasus-image-diff" id="canton-kitchen-up-3">
+			<!-- <div class="col-lg-6 col-md-6">
+				<div class="pegasus-image-diff " id="canton-kitchen-up-3">
 					<img class="pegasus-image-diff__image pegasus-image-diff__image--before" src="<?php echo $kitchen_ba_path; ?>/canton-upstairs-kitchen-rocca-kozial/before-photos-upstairs/before-3.jpg" alt="Before">
 					<img class="pegasus-image-diff__image pegasus-image-diff__image--after" src="<?php echo $kitchen_ba_path; ?>/canton-upstairs-kitchen-rocca-kozial/after-photos-upstairs/after-3.jpg" alt="After">
 					<div class="pegasus-image-diff__handle"></div>
 				</div>
-			</div>
+			</div> -->
 			<div class="col-lg-6 col-md-6">
 				<div class="pegasus-image-diff" id="canton-kitchen-up-4">
 					<img class="pegasus-image-diff__image pegasus-image-diff__image--before" src="<?php echo $kitchen_ba_path; ?>/canton-upstairs-kitchen-rocca-kozial/before-photos-upstairs/before-4.jpg" alt="Before">
 					<img class="pegasus-image-diff__image pegasus-image-diff__image--after" src="<?php echo $kitchen_ba_path; ?>/canton-upstairs-kitchen-rocca-kozial/after-photos-upstairs/after-4.jpg" alt="After">
-					<div class="pegasus-image-diff__handle"></div>
-				</div>
-			</div>
-		</div>
-		<div class="row g-4 mb-4">
-			<div class="col-lg-6 col-md-6">
-				<div class="pegasus-image-diff" id="canton-kitchen-up-5">
-					<img class="pegasus-image-diff__image pegasus-image-diff__image--before" src="<?php echo $kitchen_ba_path; ?>/canton-upstairs-kitchen-rocca-kozial/before-photos-upstairs/before-5.jpg" alt="Before">
-					<img class="pegasus-image-diff__image pegasus-image-diff__image--after" src="<?php echo $kitchen_ba_path; ?>/canton-upstairs-kitchen-rocca-kozial/after-photos-upstairs/after-5.jpg" alt="After">
 					<div class="pegasus-image-diff__handle"></div>
 				</div>
 			</div>
@@ -69,7 +60,17 @@ $kitchen_ba_path = get_stylesheet_directory_uri() . '/images/Interior/kitchen/be
 				</div>
 			</div>
 		</div>
-		<div class="row g-4 mb-4">
+		<!-- <div class="row g-4 mb-4">
+			<div class="col-lg-6 col-md-6">
+				<div class="pegasus-image-diff" id="canton-kitchen-up-5">
+					<img class="pegasus-image-diff__image pegasus-image-diff__image--before" src="<?php echo $kitchen_ba_path; ?>/canton-upstairs-kitchen-rocca-kozial/before-photos-upstairs/before-5.jpg" alt="Before">
+					<img class="pegasus-image-diff__image pegasus-image-diff__image--after" src="<?php echo $kitchen_ba_path; ?>/canton-upstairs-kitchen-rocca-kozial/after-photos-upstairs/after-5.jpg" alt="After">
+					<div class="pegasus-image-diff__handle"></div>
+				</div>
+			</div>
+
+		</div> -->
+		<!-- <div class="row g-4 mb-4">
 			<div class="col-lg-6 col-md-6">
 				<div class="pegasus-image-diff" id="canton-kitchen-up-7">
 					<img class="pegasus-image-diff__image pegasus-image-diff__image--before" src="<?php echo $kitchen_ba_path; ?>/canton-upstairs-kitchen-rocca-kozial/before-photos-upstairs/before-7.jpg" alt="Before">
@@ -77,7 +78,7 @@ $kitchen_ba_path = get_stylesheet_directory_uri() . '/images/Interior/kitchen/be
 					<div class="pegasus-image-diff__handle"></div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </section>
 
@@ -106,7 +107,7 @@ $kitchen_ba_path = get_stylesheet_directory_uri() . '/images/Interior/kitchen/be
 				</div>
 			</div>
 		</div>
-		<div class="row g-4 mb-4">
+		<!-- <div class="row g-4 mb-4">
 			<div class="col-lg-6 col-md-6">
 				<div class="pegasus-image-diff" id="canton-kitchen-bsmt-3">
 					<img class="pegasus-image-diff__image pegasus-image-diff__image--before" src="<?php echo $kitchen_ba_path; ?>/canton-upstairs-kitchen-rocca-kozial/before-photos-basement/before-3.jpg" alt="Before">
@@ -114,7 +115,7 @@ $kitchen_ba_path = get_stylesheet_directory_uri() . '/images/Interior/kitchen/be
 					<div class="pegasus-image-diff__handle"></div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </section>
 
@@ -143,7 +144,7 @@ $kitchen_ba_path = get_stylesheet_directory_uri() . '/images/Interior/kitchen/be
 				</div>
 			</div>
 		</div>
-		<div class="row g-4 mb-4">
+		<!-- <div class="row g-4 mb-4">
 			<div class="col-lg-6 col-md-6">
 				<div class="pegasus-image-diff" id="woodstock-kitchen-3">
 					<img class="pegasus-image-diff__image pegasus-image-diff__image--before" src="<?php echo $kitchen_ba_path; ?>/woodstock-cabinets-countertops-jc-jennifer/before-3.jpg" alt="Before">
@@ -158,6 +159,6 @@ $kitchen_ba_path = get_stylesheet_directory_uri() . '/images/Interior/kitchen/be
 					<div class="pegasus-image-diff__handle"></div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </section>

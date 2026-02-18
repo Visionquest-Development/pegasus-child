@@ -149,7 +149,7 @@
 				<div class="row g-4" id="service-contents">
 
 					<div class="col-lg-3 col-md-3">
-						<a class="service-card-link" href="/services/interior">
+						<a class="service-card-link" href="/gallery/#interior-section">
 							<div class="service-card card h-100">
 								<img src="https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/56-300x200.webp" class="card-img-top" alt="Interior" title="Interior">
 								<div class="card-body">
@@ -165,7 +165,7 @@
 					</div>
 
 					<div class="col-lg-3 col-md-3">
-						<a class="service-card-link" href="/services/exterior">
+						<a class="service-card-link" href="/gallery/#exterior-section">
 							<div class="service-card card h-100">
 								<img src="https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/9u9u9u.webp" class="card-img-top" alt="Exterior" title="Exterior">
 								<div class="card-body">
@@ -181,7 +181,7 @@
 					</div>
 
 					<div class="col-lg-3 col-md-3">
-						<a class="service-card-link" href="/services/make-ready">
+						<a class="service-card-link" href="/gallery/#make-ready-section">
 							<div class="service-card card h-100">
 								<img src="https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/pexels-marianne-238377-500x295.jpg" class="card-img-top" alt="Make Ready" title="Make Ready">
 								<div class="card-body">
@@ -196,7 +196,7 @@
 						</a>
 					</div>
 					<div class="col-lg-3 col-md-3">
-						<a class="service-card-link" href="/services/commercial">
+						<a class="service-card-link" href="/gallery/#commercial-section">
 							<div class="service-card card h-100">
 								<img src="https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/9u9u9u.webp" class="card-img-top" alt="Commercial" title="Commercial">
 								<div class="card-body">
