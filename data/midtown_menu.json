@@ -1,10 +1,10 @@
 {
-  "restaurant_name": "Mabellas Midland",
-  "updated": "2026-01-09",
+  "restaurant_name": "Mabellas - Midtown",
+  "updated": "2026-02-18",
   "tabs": [
     {
       "id": "food-midland",
-      "label": "Food",
+      "label": "Menu",
       "description": "",
       "download": {
         "href": "",
