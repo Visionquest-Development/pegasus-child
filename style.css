@@ -402,7 +402,16 @@
 	  background: #fff;
 	  border-bottom: 1px solid var(--vqmenu-border);
 	  padding: 0;
+	}
 
+	/* Offset sticky nav below the WP admin bar when logged in */
+	.admin-bar .vqmenu-mobile-nav {
+	  top: 32px;
+	}
+	@media screen and (max-width: 782px) {
+	  .admin-bar .vqmenu-mobile-nav {
+		top: 46px;
+	  }
 	}
 
 	/* Scroll-fade indicators */
