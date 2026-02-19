@@ -115,7 +115,7 @@
 			</div><!--end row -->
 		</div><!-- end container -->
 		<?php
-		$menu_json_path = get_stylesheet_directory() . '/data/midtown_menu.json';
+		$menu_json_path = get_stylesheet_directory() . '/data/midland_menu.json';
 		$menu_json = file_get_contents($menu_json_path);
 		$menu_data = json_decode($menu_json, true);
 		if (!is_array($menu_data) || empty($menu_data['tabs'])) {

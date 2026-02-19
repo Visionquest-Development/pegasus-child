@@ -82,10 +82,10 @@
 							 style="background-image:url('https://visionquestdev.com/mabellas/wp-content/uploads/2025/12/EkmDKBDTRaC41Pg7v0uw_Mabellas-17.png');">
 						</div>
 
-						<h2>MIDTOWN</h2>
+						<h2>MIDLAND</h2>
 
-						<a href="/locations/midtown" class="mabellas-location-btn">VISIT US</a>
-						<a href="/menus/midtown" class="mabellas-location-btn">VIEW MENU</a>
+						<a href="/locations/midland" class="mabellas-location-btn">VISIT US</a>
+						<a href="/menus/midland" class="mabellas-location-btn">VIEW MENU</a>
 					</div>
 				</div>
 

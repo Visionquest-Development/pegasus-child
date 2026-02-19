@@ -628,6 +628,10 @@
 
 	}
 
+  .vqmenu-mobile {
+    background: #ffefd5;
+  }
+
 	.vqmenu-tabdesc {
 	  max-width: 60ch;
 	}
