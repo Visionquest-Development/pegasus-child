@@ -45,6 +45,97 @@
 	} //end function
 	add_action( 'wp_enqueue_scripts', 'pegasus_child_bootstrap_js' );
 
+	/**
+	 * Homepage Service Cards metabox (CMB2) – shown only on the static front page
+	 */
+	if ( ! function_exists( 'oak_homepage_cards_metabox' ) ) {
+		function oak_homepage_cards_metabox() {
+
+			$homepage_id = (int) get_option( 'page_on_front' ); // ID of the static front page
+			if ( ! $homepage_id ) {
+				return; // bail if a front page is not set
+			}
+
+			$prefix = 'oak_homepage_cards_';
+
+			$cmb = new_cmb2_box( array(
+				'id'            => $prefix . 'metabox',
+				'title'         => __( 'Homepage Service Cards', 'pegasus-bootstrap' ),
+				'object_types'  => array( 'page' ),
+				'show_on'       => array(
+					'key'   => 'id',
+					'value' => array( $homepage_id ),
+				),
+				'context'       => 'normal',
+				'priority'      => 'high',
+				'show_names'    => true,
+			) );
+
+			$group_field_id = $cmb->add_field( array(
+				'id'          => $prefix . 'group',
+				'type'        => 'group',
+				'description' => __( 'Add service cards for the homepage', 'pegasus-bootstrap' ),
+				'options'     => array(
+					'group_title'   => __( 'Card {#}', 'pegasus-bootstrap' ),
+					'add_button'    => __( 'Add Another Card', 'pegasus-bootstrap' ),
+					'remove_button' => __( 'Remove Card', 'pegasus-bootstrap' ),
+					'sortable'      => true,
+				),
+			) );
+
+			$cmb->add_group_field( $group_field_id, array(
+				'name'    => __( 'Title', 'pegasus-bootstrap' ),
+				'id'      => 'title',
+				'type'    => 'text',
+			) );
+
+			$cmb->add_group_field( $group_field_id, array(
+				'name'    => __( 'Description', 'pegasus-bootstrap' ),
+				'id'      => 'description',
+				'type'    => 'textarea_small',
+			) );
+
+			$cmb->add_group_field( $group_field_id, array(
+				'name'    => __( 'Image', 'pegasus-bootstrap' ),
+				'id'      => 'image',
+				'type'    => 'file',
+				'options' => array(
+					'url' => false,
+				),
+				'text'    => array(
+					'add_upload_file_text' => __( 'Add Card Image', 'pegasus-bootstrap' ),
+				),
+			) );
+
+			$cmb->add_group_field( $group_field_id, array(
+				'name'    => __( 'Image Alt Text', 'pegasus-bootstrap' ),
+				'id'      => 'image_alt',
+				'type'    => 'text',
+			) );
+
+			$cmb->add_group_field( $group_field_id, array(
+				'name'    => __( 'Link URL', 'pegasus-bootstrap' ),
+				'id'      => 'link',
+				'type'    => 'text_url',
+			) );
+
+			$cmb->add_group_field( $group_field_id, array(
+				'name'    => __( 'Icon Class', 'pegasus-bootstrap' ),
+				'desc'    => __( 'Font Awesome class, e.g. fa fa-wrench', 'pegasus-bootstrap' ),
+				'id'      => 'icon_class',
+				'type'    => 'text',
+			) );
+
+			$cmb->add_group_field( $group_field_id, array(
+				'name'    => __( 'Button Text', 'pegasus-bootstrap' ),
+				'id'      => 'button_text',
+				'type'    => 'text',
+				'default' => 'Learn More',
+			) );
+		}
+	}
+	add_action( 'cmb2_admin_init', 'oak_homepage_cards_metabox' );
+
 
 	/*============================
 	======= Gallery Post Type ========

@@ -135,6 +135,13 @@
 		?>
 		</section>
 
+		<?php
+		$service_cards = get_post_meta( get_the_ID(), 'oak_homepage_cards_group', true );
+		if ( ! is_array( $service_cards ) ) {
+			$service_cards = [];
+		}
+		?>
+
 		<section id="our-service" class="section-padding  home-service service-section py-5 oak-section-light">
 			<div class="container">
 				<div class="row mb-4">
@@ -147,69 +154,43 @@
 				</div>
 
 				<div class="row g-4" id="service-contents">
-
-					<div class="col-lg-3 col-md-3">
-						<a class="service-card-link" href="/gallery/#interior-section">
-							<div class="service-card card h-100">
-								<img src="https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/56-300x200.webp" class="card-img-top" alt="Interior" title="Interior">
-								<div class="card-body">
-									<div class="service-icon">
-										<i class="fa fa-wrench"></i>
+					<?php if ( ! empty( $service_cards ) ) : ?>
+						<?php foreach ( $service_cards as $card ) :
+							$card_title = isset( $card['title'] ) ? $card['title'] : '';
+							$card_description = isset( $card['description'] ) ? $card['description'] : '';
+							$card_link = isset( $card['link'] ) ? $card['link'] : '';
+							$card_icon = isset( $card['icon_class'] ) ? $card['icon_class'] : '';
+							$card_button = isset( $card['button_text'] ) && $card['button_text'] !== '' ? $card['button_text'] : 'Learn More';
+							$card_image = isset( $card['image'] ) ? $card['image'] : '';
+							$card_alt = isset( $card['image_alt'] ) ? $card['image_alt'] : $card_title;
+						?>
+							<div class="col-lg-3 col-md-6">
+								<a class="service-card-link" href="<?php echo esc_url( $card_link ); ?>">
+									<div class="service-card card h-100">
+										<?php if ( $card_image ) : ?>
+											<img src="<?php echo esc_url( $card_image ); ?>" class="card-img-top" alt="<?php echo esc_attr( $card_alt ); ?>" title="<?php echo esc_attr( $card_alt ); ?>">
+										<?php endif; ?>
+										<div class="card-body">
+											<?php if ( $card_icon ) : ?>
+												<div class="service-icon">
+													<i class="<?php echo esc_attr( $card_icon ); ?>"></i>
+												</div>
+											<?php endif; ?>
+											<?php if ( $card_title ) : ?>
+												<h3 class="card-title"><?php echo esc_html( $card_title ); ?></h3>
+											<?php endif; ?>
+											<?php if ( $card_description ) : ?>
+												<p class="card-text"><?php echo esc_html( $card_description ); ?></p>
+											<?php endif; ?>
+											<span class="btn btn-brand btn-sm">
+												<?php echo esc_html( $card_button ); ?> <i class="fa fa-arrow-right"></i>
+											</span>
+										</div>
 									</div>
-									<h3 class="card-title">Interior</h3>
-									<p class="card-text">Update fixtures and finishes, redesign rooms, and create a more comfortable and attractive living area that reflects your personal style.</p>
-									<span class="btn btn-brand btn-sm">Learn More <i class="fa fa-arrow-right"></i></span>
-								</div>
+								</a>
 							</div>
-						</a>
-					</div>
-
-					<div class="col-lg-3 col-md-3">
-						<a class="service-card-link" href="/gallery/#exterior-section">
-							<div class="service-card card h-100">
-								<img src="https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/9u9u9u.webp" class="card-img-top" alt="Exterior" title="Exterior">
-								<div class="card-body">
-									<div class="service-icon">
-										<i class="fa fa-shield"></i>
-									</div>
-									<h3 class="card-title">Exterior</h3>
-									<p class="card-text">Transform your property with exterior renovations. Increase its value and curb appeal with updated siding, roofing, landscaping, and outdoor living areas.</p>
-									<span class="btn btn-brand btn-sm">Learn More <i class="fa fa-arrow-right"></i></span>
-								</div>
-							</div>
-						</a>
-					</div>
-
-					<div class="col-lg-3 col-md-3">
-						<a class="service-card-link" href="/gallery/#make-ready-section">
-							<div class="service-card card h-100">
-								<img src="https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/pexels-marianne-238377-500x295.jpg" class="card-img-top" alt="Make Ready" title="Make Ready">
-								<div class="card-body">
-									<div class="service-icon">
-										<i class="fa fa-home"></i>
-									</div>
-									<h3 class="card-title">Make Ready Repairs</h3>
-									<p class="card-text">From walkways and patios to water features and retaining walls, add texture and interest to your yard or garden with endless design possibilities.</p>
-									<span class="btn btn-brand btn-sm">Learn More <i class="fa fa-arrow-right"></i></span>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="col-lg-3 col-md-3">
-						<a class="service-card-link" href="/gallery/#commercial-section">
-							<div class="service-card card h-100">
-								<img src="https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/9u9u9u.webp" class="card-img-top" alt="Commercial" title="Commercial">
-								<div class="card-body">
-									<div class="service-icon">
-										<i class="fa fa-building"></i>
-									</div>
-									<h3 class="card-title">Commercial</h3>
-									<p class="card-text">Keep your commercial property looking sharp with efficient repairs, tenant make-readies, and renovations that minimize downtime.</p>
-									<span class="btn btn-brand btn-sm">Learn More <i class="fa fa-arrow-right"></i></span>
-								</div>
-							</div>
-						</a>
-					</div>
+						<?php endforeach; ?>
+					<?php endif; ?>
 				</div>
 			</div>
 
