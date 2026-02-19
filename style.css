@@ -624,7 +624,8 @@
 	  border-top: 0;
 	  border-radius: 0 0 var(--vqmenu-radius) var(--vqmenu-radius);
 	  padding: 1.25rem;
-	  background: #fff;
+	  background: #ffefd5;
+
 	}
 
 	.vqmenu-tabdesc {
