@@ -135,7 +135,7 @@
 						</div>
 						<div class="col-md-4 text-center">
 							<figure class="mb-0">
-								<img decoding="async" width="359" height="294" src="https://34oakcontracting.com/wp-content/uploads/2024/07/images.jpeg" alt="" class="img-fluid">
+								<img decoding="async" width="359" height="294" src="//34oakcontracting.com/wp-content/uploads/2024/07/images.jpeg" alt="" class="img-fluid">
 							</figure>
 						</div>
 					</div>
@@ -146,21 +146,21 @@
 					<div class="row g-4 my-5 align-items-center">
 						<div class="col-md-4 text-center">
 							<figure class="wp-block-image size-large is-resized has-lightbox">
-								<a href="https://www.bbb.org/us/ga/woodstock/profile/roofing-contractors/34-oak-contracting-llc-0443-91825803">
-									<img decoding="async" width="2048" height="742" src="https://34oakcontracting.com/wp-content/uploads/2024/05/BBB-Dynamic-Seal-4-2048x742.png" alt="" class="wp-image-353" style="width:211px;height:auto" srcset="https://34oakcontracting.com/wp-content/uploads/2024/05/BBB-Dynamic-Seal-4-2048x742.png 2048w, https://34oakcontracting.com/wp-content/uploads/2024/05/BBB-Dynamic-Seal-4-500x181.png 500w, https://34oakcontracting.com/wp-content/uploads/2024/05/BBB-Dynamic-Seal-4-768x278.png 768w, https://34oakcontracting.com/wp-content/uploads/2024/05/BBB-Dynamic-Seal-4-1536x557.png 1536w" sizes="(max-width: 2048px) 100vw, 2048px">
+								<a href="//www.bbb.org/us/ga/woodstock/profile/roofing-contractors/34-oak-contracting-llc-0443-91825803">
+									<img decoding="async" width="2048" height="742" src="//34oakcontracting.com/wp-content/uploads/2024/05/BBB-Dynamic-Seal-4-2048x742.png" alt="" class="wp-image-353" style="width:211px;height:auto" srcset="//34oakcontracting.com/wp-content/uploads/2024/05/BBB-Dynamic-Seal-4-2048x742.png 2048w, //34oakcontracting.com/wp-content/uploads/2024/05/BBB-Dynamic-Seal-4-500x181.png 500w, //34oakcontracting.com/wp-content/uploads/2024/05/BBB-Dynamic-Seal-4-768x278.png 768w, //34oakcontracting.com/wp-content/uploads/2024/05/BBB-Dynamic-Seal-4-1536x557.png 1536w" sizes="(max-width: 2048px) 100vw, 2048px">
 								</a>
 							</figure>
 						</div>
 
 						<div class="col-md-4 text-center">
 							<figure class="wp-block-image size-full is-resized">
-								<img decoding="async" width="200" height="168" src="https://34oakcontracting.com/wp-content/uploads/2024/05/GreenJHLogo.jpg" alt="" class="wp-image-354" style="width:85px;height:auto">
+								<img decoding="async" width="200" height="168" src="//34oakcontracting.com/wp-content/uploads/2024/05/GreenJHLogo.jpg" alt="" class="wp-image-354" style="width:85px;height:auto">
 							</figure>
 						</div>
 
 						<div class="col-md-4 text-center">
 							<figure class="wp-block-image size-full is-resized">
-								<img loading="lazy" decoding="async" width="400" height="200" src="https://34oakcontracting.com/wp-content/uploads/2024/05/615e3e_2ce135537e094e7dbc532b56d18d455bmv2.gif" alt="" class="wp-image-369" style="width:165px;height:auto">
+								<img loading="lazy" decoding="async" width="400" height="200" src="//34oakcontracting.com/wp-content/uploads/2024/05/615e3e_2ce135537e094e7dbc532b56d18d455bmv2.gif" alt="" class="wp-image-369" style="width:165px;height:auto">
 							</figure>
 						</div>
 					</div>
@@ -174,7 +174,7 @@
 					<div class="row g-4 align-items-center mb-5">
 						<div class="col-md-4 text-center">
 							<figure class="mb-0">
-								<img loading="lazy" decoding="async" width="1215" height="1215" src="https://34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-1.png" alt="" class="img-fluid ">
+								<img loading="lazy" decoding="async" width="1215" height="1215" src="//34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-1.png" alt="" class="img-fluid ">
 							</figure>
 						</div>
 						<div class="col-md-8">
@@ -194,7 +194,7 @@
 					<div class="row">
 						<div class="wp-block-media-text is-stacked-on-mobile col-md-6">
 							<figure class="wp-block-media-text__media">
-								<img loading="lazy" decoding="async" width="1215" height="1215" src="https://34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-2.png" alt="" class="wp-image-359 size-full" srcset="https://34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-2.png 1215w, https://34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-2-500x500.png 500w, https://34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-2-150x150.png 150w, https://34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-2-768x768.png 768w" sizes="auto, (max-width: 1215px) 100vw, 1215px">
+								<img loading="lazy" decoding="async" width="1215" height="1215" src="//34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-2.png" alt="" class="wp-image-359 size-full" srcset="//34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-2.png 1215w, //34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-2-500x500.png 500w, //34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-2-150x150.png 150w, //34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-2-768x768.png 768w" sizes="auto, (max-width: 1215px) 100vw, 1215px">
 							</figure>
 							<div class="wp-block-media-text__content">
 								<p>Our trained specialists have the solutions you need.</p>
@@ -208,7 +208,7 @@
 								<p>Through frequent quality control checks, we maintain on-site organization and constant communication with our clients.</p>
 							</div>
 							<figure class="wp-block-media-text__media">
-								<img loading="lazy" decoding="async" width="1215" height="1215" src="https://34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-3.png" alt="" class="wp-image-360 w-50 size-full" srcset="https://34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-3.png 1215w, https://34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-3-500x500.png 500w, https://34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-3-150x150.png 150w, https://34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-3-768x768.png 768w" sizes="auto, (max-width: 1215px) 100vw, 1215px">
+								<img loading="lazy" decoding="async" width="1215" height="1215" src="//34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-3.png" alt="" class="wp-image-360 w-50 size-full" srcset="//34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-3.png 1215w, //34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-3-500x500.png 500w, //34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-3-150x150.png 150w, //34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-3-768x768.png 768w" sizes="auto, (max-width: 1215px) 100vw, 1215px">
 							</figure>
 
 							<p>Our commitment to excellence means that a 34 Oak project is not considered complete until both the project manager and client are satisfied with a job well done. <em><strong>Trust 34 Oak to exceed your expectations and deliver the results you need.</strong></em></p>
