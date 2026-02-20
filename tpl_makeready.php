@@ -134,19 +134,19 @@ if ( 'header-three' === $header_choice ) {
 			<div class="gallery-cta-grid">
 				<div class="row g-4">
 					<div class="col-lg-4 col-md-6">
-						<a class="gallery-cta-card gallery-cta-card--sm" href="#silverchase-make-ready" style="background-image: url('<?php echo $mr_img_path; ?>/silverchase-aaron-alona/after/after-001.jpg');">
+						<a class="gallery-cta-card gallery-cta-card--sm" href="#silverchase-make-ready" style="background-image: url('<?php echo $mr_img_path; ?>/silverchase-aaron-alona/after/after-018.jpg');">
 							<span class="gallery-cta-overlay"></span>
 							<span class="gallery-cta-title">Silverchase</span>
 						</a>
 					</div>
 					<div class="col-lg-4 col-md-6">
-						<a class="gallery-cta-card gallery-cta-card--sm" href="#greg-michell-make-ready" style="background-image: url('<?php echo $mr_img_path; ?>/greg-michell/after/after-01.jpg');">
+						<a class="gallery-cta-card gallery-cta-card--sm" href="#greg-michell-make-ready" style="background-image: url('<?php echo $mr_img_path; ?>/greg-michell/after/after-18.jpg');">
 							<span class="gallery-cta-overlay"></span>
 							<span class="gallery-cta-title">Roswell</span>
 						</a>
 					</div>
 					<div class="col-lg-4 col-md-6">
-						<a class="gallery-cta-card gallery-cta-card--sm" href="#woodstock-make-ready" style="background-image: url('<?php echo $mr_img_path; ?>/woodstock-jc-jennifer/after/after-01.jpg');">
+						<a class="gallery-cta-card gallery-cta-card--sm" href="#woodstock-make-ready" style="background-image: url('<?php echo $mr_img_path; ?>/woodstock-jc-jennifer/after/after-18.jpg');">
 							<span class="gallery-cta-overlay"></span>
 							<span class="gallery-cta-title">Woodstock</span>
 						</a>

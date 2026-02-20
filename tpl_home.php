@@ -197,6 +197,27 @@
 		</section>
 
 
+
+		<section id="home-video" class="section-padding py-5 oak-section-light">
+			<div class="container">
+				<div class="row align-items-center g-4">
+					<div class="col-lg-6 order-2 order-lg-1">
+						<div class="section-title">
+							<h2>See 34 Oak in Action<span></span></h2>
+							<p>Watch how our team transforms interiors, exteriors, and make-ready projects with craftsmanship and care. From planning to final walkthrough, we keep you informed and deliver results you can be proud of.</p>
+						</div>
+					</div>
+					<div class="col-lg-6 order-1 order-lg-2">
+						<div class="ratio ratio-16x9">
+							<video controls>
+								<source src="https://34oakcontracting.com/wp-content/uploads/2026/02/34oak-video.mp4" type="video/mp4">
+							</video>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
 		<section id="ourfeatures" class="section-padding home-feature py-5 oak-section-light position-relative">
 			<div class="container">
 				<div class="row mb-4">
