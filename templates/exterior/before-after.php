@@ -277,8 +277,8 @@ $theme_img_path = get_stylesheet_directory_uri() . '/images/Exterior/before-and-
 			</div>
 			<div class="col-lg-6 col-md-6">
 				<div class="pegasus-image-diff" id="smyrna-5">
-					<img class="pegasus-image-diff__image pegasus-image-diff__image--before" src="<?php echo $theme_img_path; ?>/smyrna-covered-porch/before-5.jpg" alt="Before">
-					<img class="pegasus-image-diff__image pegasus-image-diff__image--after" src="<?php echo $theme_img_path; ?>/smyrna-covered-porch/after-5.jpg" alt="After">
+					<img class="pegasus-image-diff__image pegasus-image-diff__image--before" src="<?php echo $theme_img_path; ?>/smyrna-covered-porch/before-7.jpg" alt="Before">
+					<img class="pegasus-image-diff__image pegasus-image-diff__image--after" src="<?php echo $theme_img_path; ?>/smyrna-covered-porch/after-7.jpg" alt="After">
 					<div class="pegasus-image-diff__handle"></div>
 				</div>
 			</div>

@@ -28,7 +28,7 @@ $gallery_img_path = get_stylesheet_directory_uri() . '/images/Exterior/gallery-p
 
 				$gallery_output .= '<a href="' . $gallery_img_path . '/cabin-front-porch-sunset.jpg" data-lightbox="exterior-gallery" data-title="Cabin Front Porch at Sunset" class="wow fadeIn"><img src="' . $gallery_img_path . '/cabin-front-porch-sunset.jpg" loading="lazy" class=""></a>';
 
-				$gallery_output .= '<a href="' . $gallery_img_path . '/cabin-aerial-multi-deck-evening.jpg" data-lightbox="exterior-gallery" data-title="Cabin Aerial Multi-Deck Evening View" class="wow fadeIn"><img src="' . $gallery_img_path . '/cabin-aerial-multi-deck-evening.jpg" loading="lazy" class=""></a>';
+				//	$gallery_output .= '<a href="' . $gallery_img_path . '/cabin-aerial-multi-deck-evening.jpg" data-lightbox="exterior-gallery" data-title="Cabin Aerial Multi-Deck Evening View" class="wow fadeIn"><img src="' . $gallery_img_path . '/cabin-aerial-multi-deck-evening.jpg" loading="lazy" class=""></a>';
 
 				$gallery_output .= '<a href="' . $gallery_img_path . '/fire-pit-area-string-lights.jpg" data-lightbox="exterior-gallery" data-title="Fire Pit Area with String Lights" class="wow fadeIn"><img src="' . $gallery_img_path . '/fire-pit-area-string-lights.jpg" loading="lazy" class=""></a>';
 
@@ -52,17 +52,17 @@ $gallery_img_path = get_stylesheet_directory_uri() . '/images/Exterior/gallery-p
 
 				$gallery_output .= '<a href="' . $gallery_img_path . '/cabin-deck-bar-neon-sign.jpg" data-lightbox="exterior-gallery" data-title="Cabin Deck Bar with Neon Sign" class="wow fadeIn"><img src="' . $gallery_img_path . '/cabin-deck-bar-neon-sign.jpg" loading="lazy" class=""></a>';
 
-				$gallery_output .= '<a href="' . $gallery_img_path . '/cabin-deck-bar-neon-wolf.jpg" data-lightbox="exterior-gallery" data-title="Cabin Deck Bar with Neon Wolf Sign" class="wow fadeIn"><img src="' . $gallery_img_path . '/cabin-deck-bar-neon-wolf.jpg" loading="lazy" class=""></a>';
+				//$gallery_output .= '<a href="' . $gallery_img_path . '/cabin-deck-bar-neon-wolf.jpg" data-lightbox="exterior-gallery" data-title="Cabin Deck Bar with Neon Wolf Sign" class="wow fadeIn"><img src="' . $gallery_img_path . '/cabin-deck-bar-neon-wolf.jpg" loading="lazy" class=""></a>';
 
-				$gallery_output .= '<a href="' . $gallery_img_path . '/gray-siding-home-aerial-rear.jpg" data-lightbox="exterior-gallery" data-title="Gray Siding Home Aerial Rear View" class="wow fadeIn"><img src="' . $gallery_img_path . '/gray-siding-home-aerial-rear.jpg" loading="lazy" class=""></a>';
+				//$gallery_output .= '<a href="' . $gallery_img_path . '/gray-siding-home-aerial-rear.jpg" data-lightbox="exterior-gallery" data-title="Gray Siding Home Aerial Rear View" class="wow fadeIn"><img src="' . $gallery_img_path . '/gray-siding-home-aerial-rear.jpg" loading="lazy" class=""></a>';
 
 				$gallery_output .= '<a href="' . $gallery_img_path . '/gray-siding-home-aerial-side.jpg" data-lightbox="exterior-gallery" data-title="Gray Siding Home Aerial Side View" class="wow fadeIn"><img src="' . $gallery_img_path . '/gray-siding-home-aerial-side.jpg" loading="lazy" class=""></a>';
 
-				$gallery_output .= '<a href="' . $gallery_img_path . '/blue-colonial-home-front-aerial.jpg" data-lightbox="exterior-gallery" data-title="Blue Colonial Home Front Aerial" class="wow fadeIn"><img src="' . $gallery_img_path . '/blue-colonial-home-front-aerial.jpg" loading="lazy" class=""></a>';
+				//$gallery_output .= '<a href="' . $gallery_img_path . '/blue-colonial-home-front-aerial.jpg" data-lightbox="exterior-gallery" data-title="Blue Colonial Home Front Aerial" class="wow fadeIn"><img src="' . $gallery_img_path . '/blue-colonial-home-front-aerial.jpg" loading="lazy" class=""></a>';
 
 				$gallery_output .= '<a href="' . $gallery_img_path . '/blue-colonial-home-front.jpg" data-lightbox="exterior-gallery" data-title="Blue Colonial Home Front View" class="wow fadeIn"><img src="' . $gallery_img_path . '/blue-colonial-home-front.jpg" loading="lazy" class=""></a>';
 
-				$gallery_output .= '<a href="' . $gallery_img_path . '/gray-siding-home-side-bay-window.jpg" data-lightbox="exterior-gallery" data-title="Gray Siding Home Side with Bay Window" class="wow fadeIn"><img src="' . $gallery_img_path . '/gray-siding-home-side-bay-window.jpg" loading="lazy" class=""></a>';
+				//$gallery_output .= '<a href="' . $gallery_img_path . '/gray-siding-home-side-bay-window.jpg" data-lightbox="exterior-gallery" data-title="Gray Siding Home Side with Bay Window" class="wow fadeIn"><img src="' . $gallery_img_path . '/gray-siding-home-side-bay-window.jpg" loading="lazy" class=""></a>';
 
 				$gallery_output .= '<a href="' . $gallery_img_path . '/green-siding-home-portico-entrance.jpg" data-lightbox="exterior-gallery" data-title="Green Siding Home with Portico Entrance" class="wow fadeIn"><img src="' . $gallery_img_path . '/green-siding-home-portico-entrance.jpg" loading="lazy" class=""></a>';
 

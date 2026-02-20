@@ -156,7 +156,7 @@ if ( 'header-three' === $header_choice ) {
 		</div>
 	</section>
 
-	<?php get_template_part( 'templates/make-ready/gallery' ); ?>
+	<?php //get_template_part( 'templates/make-ready/gallery' ); ?>
 
 	<?php get_template_part( 'templates/make-ready/silverchase' ); ?>
 

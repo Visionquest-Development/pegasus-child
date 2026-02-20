@@ -24,7 +24,7 @@ sort( $after_images );
 			</div>
 		</div>
 
-		<?php if ( $main_images ) : ?>
+		<?php /* if ( $main_images ) : ?>
 		<!-- Progress Photos -->
 		<div class="row mb-4">
 			<div class="col-12">
@@ -45,7 +45,7 @@ sort( $after_images );
 				?>
 			</div>
 		</div>
-		<?php endif; ?>
+		<?php endif; */?>
 
 		<?php if ( $before_images ) : ?>
 		<!-- Before Photos -->
