@@ -150,6 +150,7 @@
 
 		.ulg-brand-bar a {
 			text-decoration: none;
+      font-family: var(--bs-body-font-family) !important;
 		}
 
 		.ulg-brand-bar a:hover {
@@ -879,7 +880,7 @@
 	  font-size: 1.6rem;
 	  font-weight: 700;
 	  letter-spacing: .01em;
-
+    color: black;
 	  margin: 0;
 	}
 
