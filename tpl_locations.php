@@ -153,6 +153,7 @@
 								$zip            = get_post_meta( $post_id, $prefix . 'zip', true );
 								$phone_display  = get_post_meta( $post_id, $prefix . 'phone_display', true );
 								$phone_tel      = get_post_meta( $post_id, $prefix . 'phone_tel', true );
+								$email          = get_post_meta( $post_id, $prefix . 'email', true );
 								$hours          = get_post_meta( $post_id, $prefix . 'hours_op', true );
 								$maps_url       = get_post_meta( $post_id, $prefix . 'maps_url', true );
 								$card_btn_text  = get_post_meta( $post_id, $prefix . 'card_button_text', true );
@@ -219,6 +220,14 @@
 									<?php elseif ( $phone_display ) : ?>
 										<p class="ulg-location-phone mb-3">
 											<?php echo esc_html( $phone_display ); ?>
+										</p>
+									<?php endif; ?>
+
+									<?php if ( $email ) : ?>
+										<p class="ulg-location-email mb-3">
+											<a href="mailto:<?php echo esc_attr( $email ); ?>">
+												<?php echo esc_html( $email ); ?>
+											</a>
 										</p>
 									<?php endif; ?>
 

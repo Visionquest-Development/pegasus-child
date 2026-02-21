@@ -28,7 +28,7 @@
 			//change content class if both sidebars
 			$page_body_content_class = ( 'on' === $pegasus_left_sidebar_option  ) ? 'col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xg-6' : 'col-xs-12 col-sm-12 col-md-12 col-lg-9 col-xg-9';
 			$page_body_content_class = 'col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xg-12';
-			
+
 			//page header page options
 			$post_disable_page_header_choice = get_post_meta( get_the_ID(), 'pegasus-page-header-checkbox', true ) ? get_post_meta( get_the_ID(), 'pegasus-page-header-checkbox', true ) : 'off';
 			//page header theme option
@@ -43,7 +43,7 @@
 				$final_page_header_option = 'off';
 			}
 		?>
-		
+
 		<?php
 		if ( have_posts() ) :
 			while ( have_posts() ) :
@@ -66,7 +66,7 @@
 				$phone_tel      = get_post_meta( $post_id, $meta_prefix . 'phone_tel', true );
 				$phone2_display = get_post_meta( $post_id, $meta_prefix . 'phone2_display', true );
 				$phone2_tel     = get_post_meta( $post_id, $meta_prefix . 'phone2_tel', true );
-
+				$email          = get_post_meta( $post_id, $meta_prefix . 'email', true );
 				$maps_url       = get_post_meta( $post_id, $meta_prefix . 'maps_url', true );
 				$res_url        = get_post_meta( $post_id, $meta_prefix . 'reservation_url', true );
 
@@ -89,15 +89,15 @@
 						<div class="location-header container py-5">
 							<div class="row">
 								<div class="col-md-12">
-									
+
 									<?php if ( has_post_thumbnail() ) : ?>
 										<div class="location-featured-image mb-4 mb-md-0">
 											<?php the_post_thumbnail( 'large', array( 'class' => 'img-fluid rounded' ) ); ?>
 										</div>
 									<?php endif; ?>
-									
+
 									<hr>
-									
+
 									<h1 class="location-title">
 										<?php echo esc_html( $display_name ? $display_name : get_the_title() ); ?>
 									</h1>
@@ -107,9 +107,9 @@
 											<?php echo esc_html( $subtitle ); ?>
 										</p>
 									<?php endif; ?>
-									
+
 									<hr>
-									
+
 									<div class="row">
 										<div class="col-6">
 
@@ -158,7 +158,7 @@
 													</p>
 												</div>
 											<?php endif; ?>
-										
+
 											<?php if ( $phone_display || $phone2_display ) : ?>
 												<div class="location-phones mb-3">
 													<?php if ( $phone_display ) : ?>
@@ -186,9 +186,17 @@
 															<?php endif; ?>
 														</p>
 													<?php endif; ?>
+
+													<?php if ( $email ) : ?>
+														<p class="mb-0">
+															<a href="mailto:<?php echo esc_attr( $email ); ?>">
+																<?php echo esc_html( $email ); ?>
+															</a>
+														</p>
+													<?php endif; ?>
 												</div>
 											<?php endif; ?>
-											
+
 											<div class="location-actions mb-4">
 												<?php if ( $maps_url ) : ?>
 													<a class="btn btn-primary me-2"
@@ -252,7 +260,7 @@
 											</ul>
 										</div>
 									<?php endif; ?>
-									
+
 									<hr>
 
 								</div><!-- /.col-md-8 -->
@@ -270,7 +278,7 @@
 								</div>
 
 								<div class="col-md-4">
-									
+
 								</div>
 							</div><!-- /.row -->
 						</section>
@@ -364,7 +372,7 @@
 							<?php
 							/*
 							if( 'off' === $final_page_header_option ) {
-								
+
 								?>
 								<div class="page-header">
 									<?php
@@ -393,10 +401,10 @@
 										<a href="<?php comments_link(); ?>"><?php comments_number(); ?></a>
 									</em></p>
 								</div>
-							<?php } 
+							<?php }
 							*/ ?>
-							
-							
+
+
 
 
 							<?php the_content(); ?>

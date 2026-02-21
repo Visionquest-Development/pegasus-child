@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 	/**
@@ -140,7 +140,7 @@
 				'type' => 'text',
 			)
 		);
-		
+
 		$cmb->add_field(
 			array(
 				'name' => __( 'Subtitle', 'pegasus-bootstrap' ),
@@ -230,6 +230,14 @@
 			)
 		);
 
+		$cmb->add_field(
+			array(
+				'name' => __( 'Email', 'pegasus-bootstrap' ),
+				'id'   => $prefix . 'email',
+				'type' => 'text',
+			)
+		);
+
 		// URLs
 		$cmb->add_field(
 			array(
@@ -282,7 +290,7 @@
 				'type' => 'text_url',
 			)
 		);
-		
+
 		$cmb->add_field(
 			array(
 				'name' => __( 'Hours of Operation', 'pegasus-bootstrap' ),
@@ -290,8 +298,8 @@
 				'id'   => $prefix . 'hours_op',
 				'type' => 'wysiwyg',
 			)
-		);		
-		
+		);
+
 		$cmb->add_field(
 			array(
 				'name' => __( 'Facebook Link', 'pegasus-bootstrap' ),
@@ -300,7 +308,7 @@
 				'type' => 'text_url',
 			)
 		);
-		
+
 		$cmb->add_field(
 			array(
 				'name' => __( 'Instagram Link', 'pegasus-bootstrap' ),
@@ -309,10 +317,10 @@
 				'type' => 'text_url',
 			)
 		);
-		
+
 	}
 	add_action( 'cmb2_admin_init', 'ulg_locations_metabox' );
-	
+
 	add_action( 'cmb2_admin_init', 'locations_register_metaboxes' );
 	function locations_register_metaboxes() {
 
@@ -377,7 +385,7 @@
 			'type' => 'text',
 		) );
 	}
-		
+
 
 
 
