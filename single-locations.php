@@ -95,6 +95,7 @@
 			$phone_tel = get_post_meta( $location_id, $prefix . 'phone_tel', true );
 			$phone2_display = get_post_meta( $location_id, $prefix . 'phone2_display', true );
 			$phone2_tel = get_post_meta( $location_id, $prefix . 'phone2_tel', true );
+			$email = get_post_meta( $location_id, $prefix . 'email', true );
 			$maps_url = get_post_meta( $location_id, $prefix . 'maps_url', true );
 			$reservation_url = get_post_meta( $location_id, $prefix . 'reservation_url', true );
 			$menu_url = get_post_meta( $location_id, $prefix . 'menu_url', true );
@@ -158,6 +159,14 @@
 								</p>
 							<?php elseif ( $phone2_display ) : ?>
 								<p class="mb-2"><?php echo esc_html( $phone2_display ); ?></p>
+							<?php endif; ?>
+
+							<?php if ( $email ) : ?>
+								<p class="mb-0">
+									<a href="mailto:<?php echo esc_attr( $email ); ?>">
+										<?php echo esc_html( $email ); ?>
+									</a>
+								</p>
 							<?php endif; ?>
 
 							<?php if ( $maps_url ) : ?>

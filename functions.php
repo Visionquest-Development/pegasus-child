@@ -381,6 +381,15 @@
 			)
 		);
 
+		// Email
+		$cmb->add_field(
+			array(
+				'name' => __( 'Email', 'pegasus-bootstrap' ),
+				'id'   => $prefix . 'email',
+				'type' => 'text',
+			)
+		);
+
 		// URLs
 		$cmb->add_field(
 			array(
