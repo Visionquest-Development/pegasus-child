@@ -1026,7 +1026,17 @@
 	}
 
 	@media only screen and ( max-width: 767px ) {
+    #nav_menu-2 {
+      text-align: left !important;
+    }
 
+    footer .widget-title {
+      text-align: left !important;
+    }
+
+    footer a.nav-link, footer .widget-title {
+      text-align: left !important;
+    }
 	}
 
 	@media only screen and (max-width: 479px) {

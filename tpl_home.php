@@ -92,6 +92,43 @@
 			</div>
 		</div>
 
+		<!-- Special Events Section -->
+		<section id="special-events" class="section-padding py-5 mabellas-section-light">
+			<div class="container">
+				<div class="row align-items-center g-4">
+					<div class="col-lg-6 order-2 order-lg-1">
+						<h2>Special Events</h2>
+						<h3 class="mb-3">Immortal Estate Wine Dinner at Mabella Midland</h3>
+						<p class="mb-2"><strong>Date:</strong> March 25th, 2026</p>
+						<p class="mb-2"><strong>Time:</strong> 6:30pm</p>
+						<p class="mb-2"><strong>Where:</strong> Mabella Midland (6835 Midland Commons Blvd, Columbus, GA)</p>
+						<p class="mb-4"><strong>Tickets:</strong> $125 per person, tax &amp; gratuity included</p>
+
+						<p class="mb-3">
+							Rooted in Stone, Bound by Time: Dinner So Good It&apos;s Immortal
+						</p>
+						<p class="mb-3">
+							Join us at Mabella Midland for one night that will be etched in immortality.
+							Experience a menu carefully crafted by our Chef and paired with wines from Immortal Estate.
+							Tickets are $125 per person.
+						</p>
+						<p class="mb-3">
+							The wine dinner is only for patrons aged 21 or older.
+							This event will be held only at our Mabella Midland location: 6835 Midland Commons Blvd, Columbus, GA.
+						</p>
+						<p class="mb-0">We look forward to sharing an immortal dinner with you.</p>
+					</div>
+					<div class="col-lg-6 order-1 order-lg-2">
+						<img
+							src="http://mabellas.com/wp-content/uploads/2026/02/Immortal_Dinner.png"
+							alt="Immortal Estate Wine Dinner at Mabella Midland"
+							class="img-fluid w-100"
+						>
+					</div>
+				</div>
+			</div>
+		</section>
+
 		<hr>
 
 		<main id="primary" class="site-main mabellas-home">
