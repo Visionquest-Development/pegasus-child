@@ -64,6 +64,12 @@ $kitchen_gallery_path = get_stylesheet_directory_uri() . '/images/Interior/kitch
 
 				$gallery_output .= '<a href="' . $kitchen_gallery_path . '/kitchen-gallery-19.jpg" data-lightbox="kitchen-gallery" data-title="Kitchen Renovation" class="wow fadeIn"><img src="' . $kitchen_gallery_path . '/kitchen-gallery-19.jpg" loading="lazy"></a>';
 
+				$gallery_output .= '<a href="' . $kitchen_gallery_path . '/kitchen-gallery-20.jpg" data-lightbox="kitchen-gallery" data-title="Kitchen Renovation" class="wow fadeIn"><img src="' . $kitchen_gallery_path . '/kitchen-gallery-20.jpg" loading="lazy"></a>';
+
+				$gallery_output .= '<a href="' . $kitchen_gallery_path . '/kitchen-gallery-21.jpg" data-lightbox="kitchen-gallery" data-title="Kitchen Renovation" class="wow fadeIn"><img src="' . $kitchen_gallery_path . '/kitchen-gallery-21.jpg" loading="lazy"></a>';
+
+				$gallery_output .= '<a href="' . $kitchen_gallery_path . '/kitchen-gallery-22.jpg" data-lightbox="kitchen-gallery" data-title="Kitchen Renovation" class="wow fadeIn"><img src="' . $kitchen_gallery_path . '/kitchen-gallery-22.jpg" loading="lazy"></a>';
+
 				$gallery_output .= '[/masonry]';
 				$gallery_output = str_replace( ' loading="lazy"', '', $gallery_output );
 

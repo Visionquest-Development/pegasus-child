@@ -174,14 +174,14 @@ $bath_ba_path = get_stylesheet_directory_uri() . '/images/Interior/bathroom/befo
 			<div class="col-lg-6 col-md-6">
 				<div class="pegasus-image-diff" id="roswell-mccurry-bath-1">
 					<img class="pegasus-image-diff__image pegasus-image-diff__image--before" src="<?php echo $bath_ba_path; ?>/roswell-secondary-bath-mccurry/before-1.jpg" alt="Before">
-					<img class="pegasus-image-diff__image pegasus-image-diff__image--after" src="<?php echo $bath_ba_path; ?>/roswell-secondary-bath-mccurry/render-1.png" alt="Design Render">
+					<img class="pegasus-image-diff__image pegasus-image-diff__image--after" src="<?php echo $bath_ba_path; ?>/roswell-secondary-bath-mccurry/after-1.jpg" alt="Design Render">
 					<div class="pegasus-image-diff__handle"></div>
 				</div>
 			</div>
 			<div class="col-lg-6 col-md-6">
 				<div class="pegasus-image-diff" id="roswell-mccurry-bath-2">
 					<img class="pegasus-image-diff__image pegasus-image-diff__image--before" src="<?php echo $bath_ba_path; ?>/roswell-secondary-bath-mccurry/before-2.jpg" alt="Before">
-					<img class="pegasus-image-diff__image pegasus-image-diff__image--after" src="<?php echo $bath_ba_path; ?>/roswell-secondary-bath-mccurry/render-2.png" alt="Design Render">
+					<img class="pegasus-image-diff__image pegasus-image-diff__image--after" src="<?php echo $bath_ba_path; ?>/roswell-secondary-bath-mccurry/after-2.jpg" alt="Design Render">
 					<div class="pegasus-image-diff__handle"></div>
 				</div>
 			</div>
@@ -190,7 +190,7 @@ $bath_ba_path = get_stylesheet_directory_uri() . '/images/Interior/bathroom/befo
 			<div class="col-lg-6 col-md-6">
 				<div class="pegasus-image-diff" id="roswell-mccurry-bath-3">
 					<img class="pegasus-image-diff__image pegasus-image-diff__image--before" src="<?php echo $bath_ba_path; ?>/roswell-secondary-bath-mccurry/before-3.jpg" alt="Before">
-					<img class="pegasus-image-diff__image pegasus-image-diff__image--after" src="<?php echo $bath_ba_path; ?>/roswell-secondary-bath-mccurry/render-3.png" alt="Design Render">
+					<img class="pegasus-image-diff__image pegasus-image-diff__image--after" src="<?php echo $bath_ba_path; ?>/roswell-secondary-bath-mccurry/after-3.jpg" alt="Design Render">
 					<div class="pegasus-image-diff__handle"></div>
 				</div>
 			</div>
