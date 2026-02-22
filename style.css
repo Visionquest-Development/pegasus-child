@@ -515,6 +515,141 @@
 	}
 
 
+	/*~~~~~~~~~~~~~~~~~~~~~
+	~~ SINGLE EVENT PAGE ~~
+	~~~~~~~~~~~~~~~~~~~~~*/
+
+	/* Hero banner */
+	.ulg-single-event-hero {
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		min-height: 400px;
+		display: flex;
+		align-items: flex-end;
+		position: relative;
+	}
+
+	.ulg-single-event-hero-overlay {
+		width: 100%;
+		padding: 3rem 0;
+		background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+		color: #fff;
+	}
+
+	.ulg-single-event-title {
+		font-size: 2.8rem;
+		font-weight: 700;
+		margin-bottom: 0.5rem;
+		color: #fff;
+	}
+
+	.ulg-single-event-date {
+		font-size: 1.15rem;
+		margin-bottom: 0.25rem;
+		color: rgba(255,255,255,0.9);
+	}
+
+	.ulg-single-event-venue {
+		font-size: 1.05rem;
+		color: rgba(255,255,255,0.85);
+		margin-bottom: 0;
+	}
+
+	.ulg-single-event-venue a {
+		color: #F7D580;
+		text-decoration: none;
+	}
+
+	.ulg-single-event-venue a:hover {
+		color: #fff;
+		text-decoration: underline;
+	}
+
+	/* Quick-info cards */
+	.ulg-detail-card {
+		border: none;
+		border-radius: 0;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+	}
+
+	.ulg-detail-icon {
+		font-size: 1.8rem;
+		margin-bottom: 0.25rem;
+	}
+
+	.ulg-detail-card strong {
+		font-size: 0.8rem;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		color: #92712A;
+	}
+
+	.ulg-detail-card span {
+		font-size: 0.95rem;
+		color: #333;
+	}
+
+	/* Card headers */
+	.ulg-card-header {
+		background: #f8f5ef;
+		border-bottom: 2px solid #92712A;
+	}
+
+	.ulg-card-header h5 {
+		font-size: 1rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+		color: #333;
+	}
+
+	/* AV equipment badges */
+	.ulg-badge {
+		background: #92712A;
+		color: #fff;
+		font-weight: 600;
+		font-size: 0.75rem;
+		letter-spacing: 0.03em;
+		padding: 0.35em 0.75em;
+		border-radius: 3px;
+	}
+
+	/* Status badge in sidebar */
+	.ulg-status-badge {
+		font-size: 0.75rem;
+		font-weight: 700;
+		padding: 0.35em 0.75em;
+		border-radius: 3px;
+		color: #fff;
+	}
+
+	.ulg-status-badge.ulg-event-status-upcoming  { background: #92712A; }
+	.ulg-status-badge.ulg-event-status-active     { background: #2e7d32; }
+	.ulg-status-badge.ulg-event-status-past        { background: #757575; }
+	.ulg-status-badge.ulg-event-status-cancelled  { background: #c62828; }
+
+	/* Content area */
+	.ulg-single-event-content {
+		font-size: 1.05rem;
+		line-height: 1.8;
+	}
+
+	@media (max-width: 767px) {
+		.ulg-single-event-hero {
+			min-height: 280px;
+		}
+
+		.ulg-single-event-title {
+			font-size: 1.8rem;
+		}
+
+		.ulg-single-event-hero-overlay {
+			padding: 2rem 0;
+		}
+	}
+
+
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~MEDIA QUERIES~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
