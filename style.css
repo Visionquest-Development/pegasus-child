@@ -370,6 +370,151 @@
 	~~~~WOOCOMMERCE~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
 
+	/*~~~~~~~~~~~~~~~~~~~~~
+	~~~~ EVENTS PAGE ~~~~~
+	~~~~~~~~~~~~~~~~~~~~~*/
+
+	/* Filter bar */
+	.ulg-events-filters {
+		background: #f8f9fa;
+		border-top: 1px solid #e9ecef;
+		border-bottom: 1px solid #e9ecef;
+	}
+
+	.ulg-filter-btn {
+		background: transparent;
+		border: 1px solid #ccc;
+		color: #333;
+		border-radius: 0;
+		font-size: 0.85rem;
+		font-weight: 600;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		padding: 0.4rem 1rem;
+		transition: all 0.2s ease;
+	}
+
+	.ulg-filter-btn:hover,
+	.ulg-filter-btn.active {
+		background: #92712A;
+		border-color: #92712A;
+		color: #fff;
+	}
+
+	/* Event cards */
+	.ulg-events-page .ulg-event-card {
+		border: none;
+		border-radius: 0;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+	}
+
+	.ulg-events-page .ulg-event-card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+	}
+
+	.ulg-event-card-img-wrap {
+		position: relative;
+		overflow: hidden;
+	}
+
+	.ulg-event-card-img {
+		width: 100%;
+		height: 240px;
+		-o-object-fit: cover;
+		   object-fit: cover;
+	}
+
+	.ulg-event-no-image {
+		height: 100px;
+		background: #f0ece4;
+	}
+
+	/* Date badge */
+	.ulg-event-date-badge {
+		position: absolute;
+		top: 12px;
+		left: 12px;
+		background: #92712A;
+		color: #fff;
+		text-align: center;
+		padding: 6px 12px;
+		line-height: 1.1;
+		border-radius: 4px;
+		min-width: 55px;
+	}
+
+	.ulg-event-month {
+		display: block;
+		font-size: 0.7rem;
+		font-weight: 600;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+	}
+
+	.ulg-event-day {
+		display: block;
+		font-size: 1.4rem;
+		font-weight: 700;
+	}
+
+	/* Status badge (active, past, cancelled) */
+	.ulg-event-status-badge {
+		position: absolute;
+		top: 12px;
+		right: 12px;
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		padding: 4px 10px;
+		border-radius: 4px;
+		color: #fff;
+	}
+
+	.ulg-event-status-active    { background: #2e7d32; }
+	.ulg-event-status-past      { background: #757575; }
+	.ulg-event-status-cancelled { background: #c62828; }
+
+	/* Event type tag */
+	.ulg-event-type-tag {
+		display: inline-block;
+		align-self: flex-start;
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: #92712A;
+		border: 1px solid #92712A;
+		padding: 2px 8px;
+	}
+
+	.ulg-events-page .card-title a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.ulg-events-page .card-title a:hover {
+		color: #92712A;
+	}
+
+	.ulg-event-venue a {
+		color: #555;
+		text-decoration: none;
+	}
+
+	.ulg-event-venue a:hover {
+		color: #92712A;
+		text-decoration: underline;
+	}
+
+	.ulg-event-price {
+		color: #92712A;
+		font-size: 1.1rem;
+	}
+
+
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~MEDIA QUERIES~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/

@@ -175,3 +175,4 @@
 
 
 	require_once get_stylesheet_directory() . '/cpt_locations.php';
+	require_once get_stylesheet_directory() . '/cpt_events.php';
