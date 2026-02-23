@@ -591,6 +591,7 @@ add_action( 'rest_api_init', function () {
 		$origin = get_http_origin();
 
 		$allowed_origins = array(
+			// Production domains
 			'https://uptownlifegroup.com',
 			'https://www.uptownlifegroup.com',
 			'https://events.uptownlifegroup.com',
@@ -604,6 +605,13 @@ add_action( 'rest_api_init', function () {
 			'https://www.themixmarket.com',
 			'https://tommygs.com',
 			'https://www.tommygs.com',
+			// Local development domains
+			'http://ulgevents.test',
+			'http://theloftnew.test',
+			'http://mabellas.test',
+			'http://saltcellar.test',
+			'http://themixmarket.test',
+			'http://tommygs.test',
 		);
 
 		if ( in_array( $origin, $allowed_origins, true ) ) {
