@@ -585,42 +585,86 @@ function ulg_rest_get_events( WP_REST_Request $request ) {
 ======= CORS for ULG Domains
 ============================*/
 
+/**
+ * Return the list of allowed CORS origins.
+ */
+function ulg_events_get_allowed_origins() {
+	return array(
+		// Production domains
+		'https://uptownlifegroup.com',
+		'https://www.uptownlifegroup.com',
+		'https://events.uptownlifegroup.com',
+		'https://theloft.com',
+		'https://www.theloft.com',
+		'https://mabellas.com',
+		'https://www.mabellas.com',
+		'https://saltcellar.com',
+		'https://www.saltcellar.com',
+		'https://themixmarket.com',
+		'https://www.themixmarket.com',
+		'https://tommygs.com',
+		'https://www.tommygs.com',
+		// Local development domains
+		'http://ulgevents.test',
+		'http://theloftnew.test',
+		'http://mabellas.test',
+		'http://saltcellar.test',
+		'http://themixmarket.test',
+		'http://tommygs.test',
+	);
+}
+
+/**
+ * Early CORS handler — fires on `init` so it catches preflight OPTIONS
+ * requests that never reach the REST API layer.
+ * Reads $_SERVER directly instead of relying on get_http_origin().
+ */
+add_action( 'init', function () {
+	// Only act on REST API requests.
+	if ( false === strpos( $_SERVER['REQUEST_URI'], '/' . rest_get_url_prefix() . '/' ) ) {
+		return;
+	}
+
+	// Read Origin header directly — more reliable than get_http_origin().
+	$origin = isset( $_SERVER['HTTP_ORIGIN'] ) ? $_SERVER['HTTP_ORIGIN'] : '';
+
+	if ( empty( $origin ) ) {
+		return;
+	}
+
+	$allowed = ulg_events_get_allowed_origins();
+
+	if ( in_array( $origin, $allowed, true ) ) {
+		header( 'Access-Control-Allow-Origin: ' . $origin );
+		header( 'Access-Control-Allow-Methods: GET, OPTIONS' );
+		header( 'Access-Control-Allow-Headers: Content-Type, Authorization' );
+		header( 'Access-Control-Allow-Credentials: true' );
+		header( 'Vary: Origin' );
+	}
+
+	// Handle preflight — respond immediately so the browser proceeds.
+	if ( 'OPTIONS' === $_SERVER['REQUEST_METHOD'] ) {
+		status_header( 200 );
+		exit;
+	}
+} );
+
+/**
+ * Also filter the REST response headers as a safety net for the actual
+ * GET request, in case the init hook fires too early for rest_get_url_prefix().
+ */
 add_action( 'rest_api_init', function () {
 	remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
 	add_filter( 'rest_pre_serve_request', function ( $value ) {
-		$origin = get_http_origin();
+		$origin = isset( $_SERVER['HTTP_ORIGIN'] ) ? $_SERVER['HTTP_ORIGIN'] : '';
 
-		$allowed_origins = array(
-			// Production domains
-			'https://uptownlifegroup.com',
-			'https://www.uptownlifegroup.com',
-			'https://events.uptownlifegroup.com',
-			'https://theloft.com',
-			'https://www.theloft.com',
-			'https://mabellas.com',
-			'https://www.mabellas.com',
-			'https://saltcellar.com',
-			'https://www.saltcellar.com',
-			'https://themixmarket.com',
-			'https://www.themixmarket.com',
-			'https://tommygs.com',
-			'https://www.tommygs.com',
-			// Local development domains
-			'http://ulgevents.test',
-			'http://theloftnew.test',
-			'http://mabellas.test',
-			'http://saltcellar.test',
-			'http://themixmarket.test',
-			'http://tommygs.test',
-		);
-
-		if ( in_array( $origin, $allowed_origins, true ) ) {
+		if ( ! empty( $origin ) && in_array( $origin, ulg_events_get_allowed_origins(), true ) ) {
 			header( 'Access-Control-Allow-Origin: ' . $origin );
+			header( 'Access-Control-Allow-Methods: GET, OPTIONS' );
+			header( 'Access-Control-Allow-Headers: Content-Type, Authorization' );
+			header( 'Access-Control-Allow-Credentials: true' );
+			header( 'Vary: Origin' );
 		}
-
-		header( 'Access-Control-Allow-Methods: GET, OPTIONS' );
-		header( 'Access-Control-Allow-Headers: Content-Type' );
-		header( 'Access-Control-Allow-Credentials: true' );
 
 		return $value;
 	} );
