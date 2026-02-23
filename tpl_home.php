@@ -266,6 +266,13 @@
 		</section>
 		*/ ?>
 
+		<section class=" py-5">
+			<div class="container">
+				<h2 class="text-center text-dark mb-4">Upcoming Events</h2>
+				<?php echo do_shortcode( '[ulg_events]' ); ?>
+			</div>
+		</section>
+
 
 	</div><!-- end page wrap -->
     <?php get_footer(); ?>
