@@ -577,7 +577,13 @@ function ulg_rest_get_events( WP_REST_Request $request ) {
 		wp_reset_postdata();
 	}
 
-	return new WP_REST_Response( $data, 200 );
+	$response = new WP_REST_Response( $data, 200 );
+
+	// Prevent proxy caches (SiteGround, etc.) from serving stale
+	// responses that are missing the Vary-by-Origin CORS headers.
+	$response->header( 'Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0' );
+
+	return $response;
 }
 
 
