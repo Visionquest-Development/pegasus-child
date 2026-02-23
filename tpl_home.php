@@ -306,6 +306,12 @@
 			</div>
 		</section>
 
+		<section class="bg-white py-5">
+			<div class="container">
+				<h2 class="text-center text-dark mb-4">Upcoming Events</h2>
+				<?php echo do_shortcode( '[ulg_events]' ); ?>
+			</div>
+		</section>
 
 		<div class="<?php echo $final_container_class; ?>">
 		<!-- Example row of columns -->
