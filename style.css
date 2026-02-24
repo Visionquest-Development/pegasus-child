@@ -133,6 +133,11 @@
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ FOOTER ~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
+
+  #block-8 img, #block-11 img {
+		width: 200px;
+	}
+
   .ulg-logo-slider .logo-slide {
     margin: 0 1rem;
   }
