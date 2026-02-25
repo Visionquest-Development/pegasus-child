@@ -2,18 +2,11 @@
 	<div class="container d-flex align-items-center justify-content-between">
 		<a class="ulg-brand-logo d-none d-lg-flex align-items-center" href="https://uptownlifegroup.com" target="_blank">
 			<img
-				src="//uptownlifegroup.com/wp-content/uploads/2025/12/57777logo.png"
+				src="/wp-content/themes/pegasus-child/images/uptown_logo.png"
 				alt="Uptown Life Group"
 				class="img-fluid ulg-brand-logo-img"
 			/>
 		</a>
-		<?php /*
-		<a class="navbar-brand m-0 d-flex align-items-center gap-2" href="<?= esc_url(home_url('/')); ?>">
-			<?php the_custom_logo(); ?>
-			<span class="text-cream small text-white">Restaurants • Bars • Music Venues — Uptown Columbus</span>
-		</a>
-		*/ ?>
-
 		<?php
 			$current_host = wp_parse_url( home_url(), PHP_URL_HOST );
 			$subs = [
@@ -39,9 +32,6 @@
 					$active_class = $is_active ? ' is-active' : '';
 					echo '<a class="text-white' . esc_attr( $active_class ) . '" href="' . esc_url( $url ) . '">' . esc_html( $label ) . '</a>';
 					$index++;
-					//if ( $index < $total ) {
-					//	echo '<span class="text-white px-1">|</span>';
-					//}
 				}
 			?>
 		</nav>
@@ -54,7 +44,6 @@
 				/>
 				<span class="visually-hidden">Uptown Life Group</span>
 			</button>
-
 			<ul class="dropdown-menu dropdown-menu-end text-white" aria-labelledby="ulgDropdown">
 				<?php
 					foreach ( $subs as $label => $url ) {
