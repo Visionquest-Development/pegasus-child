@@ -276,6 +276,55 @@
 	~~~~~~ HOME PAGE ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
 
+  body.admin-bar .large-header.large-header-has-slider .sy-box {
+    margin: 0 !important;
+    height: calc(100vh - 133px);
+  }
+
+  .large-header.large-header-has-slider .sy-box {
+    margin: 0 !important;
+    height: calc(100vh - 101px);
+  }
+
+  .large-header.large-header-has-slider .sy-pager {
+    position: absolute;
+    bottom: 10px;
+    z-index: 99;
+    margin: 0 !important;
+  }
+
+
+
+  .home-slider-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+  }
+
+  .home-slider-text h2 {
+    font-size: 3em;
+    margin: 0;
+    padding: 0;
+
+    color: var(--main-color);
+    font-weight: bold;
+  }
+
+  .home-slider-text.pull-left {
+    left: 10%;
+    top: 10%;
+    transform: translate(0, 0);
+  }
+  .home-slider-text.pull-right {
+    right: 0;
+    top: 0;
+    transform: translate(0, 0);
+  }
+
+
 	/* ================================
 	   HERO INTRO SECTION
 	   ================================ */
