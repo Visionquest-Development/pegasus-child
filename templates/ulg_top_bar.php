@@ -1,8 +1,11 @@
+<?php
+$uptown_little_logo_url = '/wp-content/themes/pegasus-child/images/uptown_little_logo.png';
+?>
 <div class=" ulg-brand-bar py-2">
 	<div class="container d-flex align-items-center justify-content-between">
 		<a class="ulg-brand-logo d-none d-lg-flex align-items-center" href="https://uptownlifegroup.com" target="_blank">
 			<img
-				src="/wp-content/themes/pegasus-child/images/uptown_logo.png"
+				src="<?php echo $uptown_little_logo_url; ?>"
 				alt="Uptown Life Group"
 				class="img-fluid ulg-brand-logo-img"
 			/>
@@ -38,7 +41,7 @@
 		<div class="dropdown d-block d-lg-none mx-auto">
 			<button class="btn btn-link ulg-gradient-heading text-decoration-none dropdown-toggle " type="button" id="ulgDropdown" data-bs-toggle="dropdown" aria-expanded="false">
 				<img
-					src="//uptownlifegroup.com/wp-content/uploads/2025/12/57777logo.png"
+					src="<?php echo $uptown_little_logo_url; ?>"
 					alt="Uptown Life Group"
 					class="ulg-dropdown-logo"
 				/>
