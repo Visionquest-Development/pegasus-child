@@ -74,7 +74,7 @@
 
 		<!-- Logo sub text -->
 		<!--<span>Some Text Here</span>-->
-		<img src="http://saltcellar.com/wp-content/uploads/2026/02/left-wave_transparent_clean.png" alt="Left wave" class="img-fluid mb-2">
+		<img src="/wp-content/uploads/2026/02/left-wave_transparent_clean.png" alt="Left wave" class="img-fluid mb-2">
 	</div>
 
 	<!--<hr class="header-hr">
