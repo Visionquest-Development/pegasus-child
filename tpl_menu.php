@@ -124,7 +124,7 @@
 					<div class="mabellas-location-card text-center h-100 p-3 text-white wow fadeInLeft">
 
 						<div class="mabellas-location-image"
-							 style="background-image:url('https://visionquestdev.com/mabellas/wp-content/uploads/2025/12/INYtFcBSnyge5MW6Z7bQ_Mabellas-62.png');">
+							 style="background-image:url('/wp-content/uploads/2025/12/INYtFcBSnyge5MW6Z7bQ_Mabellas-62.png');">
 						</div>
 
 						<h2>UPTOWN COLUMBUS</h2>
@@ -139,7 +139,7 @@
 					<div class="mabellas-location-card text-center h-100 p-3 text-white wow fadeInRight">
 
 						<div class="mabellas-location-image"
-							 style="background-image:url('https://visionquestdev.com/mabellas/wp-content/uploads/2025/12/EkmDKBDTRaC41Pg7v0uw_Mabellas-17.png');">
+							 style="background-image:url('/mabellas/wp-content/uploads/2025/12/EkmDKBDTRaC41Pg7v0uw_Mabellas-17.png');">
 						</div>
 
 						<h2>MIDLAND</h2>
