@@ -120,7 +120,7 @@
 					</div>
 					<div class="col-lg-6 order-1 order-lg-2">
 						<img
-							src="http://mabellas.com/wp-content/uploads/2026/02/Immortal_Dinner.png"
+							src="https://mabellas.com/wp-content/uploads/2026/02/Immortal_Dinner.png"
 							alt="Immortal Estate Wine Dinner at Mabella Midland"
 							class="img-fluid w-100"
 						>
