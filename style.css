@@ -14,7 +14,24 @@
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	body {
+  :root {
+    --wpadmin-bar-height: 32px;
+    --ulg-brand-bar-height: 40px;
+    --site-header-height: 56px;
+
+    --global-offset-height: calc(
+      var(--ulg-brand-bar-height) +
+      var(--site-header-height)
+    );
+
+    --global-offset-height-with-admin: calc(
+      var(--wpadmin-bar-height) +
+      var(--ulg-brand-bar-height) +
+      var(--site-header-height)
+    );
+  }
+
+  body {
 		 position: relative;
 		z-index: 0
 	}
@@ -61,6 +78,26 @@
 	}
 
   .nocomments { display: none !important; }
+
+
+  body.admin-bar .large-header.large-header-has-slider .sy-box {
+    margin: 0 !important;
+    height: calc(100vh - var(--global-offset-height-with-admin));
+  }
+
+  .large-header.large-header-has-slider .sy-box {
+    margin: 0 !important;
+    height: calc(100vh - var(--global-offset-height));
+  }
+
+  .large-header.large-header-has-slider .sy-pager {
+    position: absolute;
+    bottom: 10px;
+    z-index: 99;
+    margin: 0 !important;
+  }
+
+
 
 	/* ================================
 	   GRADIENT BORDER
@@ -275,24 +312,6 @@
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ HOME PAGE ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-
-  body.admin-bar .large-header.large-header-has-slider .sy-box {
-    margin: 0 !important;
-    height: calc(100vh - 133px);
-  }
-
-  .large-header.large-header-has-slider .sy-box {
-    margin: 0 !important;
-    height: calc(100vh - 101px);
-  }
-
-  .large-header.large-header-has-slider .sy-pager {
-    position: absolute;
-    bottom: 10px;
-    z-index: 99;
-    margin: 0 !important;
-  }
-
 
 
   .home-slider-text {
