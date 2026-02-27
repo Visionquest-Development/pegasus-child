@@ -18,7 +18,22 @@
   src: url("//media-cdn.getbento.com/accounts/015918f16e14731605c95b2f465f5462/media/Yu6fTooJSBuW9kJ0Vo1u_eXhkv0wTQKiMi8DPTqbQ_high-cruiser.ttf") format("truetype")
 }
 
+:root {
+  --wpadmin-bar-height: 32px;
+  --ulg-brand-bar-height: 40px;
+  --site-header-height: calc(44px + 86px);
 
+  --global-offset-height: calc(
+    var(--ulg-brand-bar-height) +
+    var(--site-header-height)
+  );
+
+  --global-offset-height-with-admin: calc(
+    var(--wpadmin-bar-height) +
+    var(--ulg-brand-bar-height) +
+    var(--site-header-height)
+  );
+}
 
 	.ulg-gradient-heading
 	{
@@ -46,15 +61,15 @@
   .nocomments { display: none !important; }
 
 
-  
+
   body.admin-bar .large-header.large-header-has-slider .sy-box {
     margin: 0 !important;
-    height: calc(100vh - 133px);
+    height: calc(100vh - var(--global-offset-height-with-admin));
   }
 
   .large-header.large-header-has-slider .sy-box {
     margin: 0 !important;
-    height: calc(100vh - 101px);
+    height: calc(100vh - var(--global-offset-height));
   }
 
   .large-header.large-header-has-slider .sy-pager {
@@ -63,7 +78,7 @@
     z-index: 99;
     margin: 0 !important;
   }
-
+  .large-header.large-header-has-slider img { width: 100%; }
 
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
