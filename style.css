@@ -89,7 +89,7 @@
 
   .home-slider-text {
     position: absolute;
-    top: 30%;
+    top: 25%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -265,7 +265,7 @@
 
   .hero__content.container {
     border: 6px solid white;
-    padding: 7rem 0 !important;
+    padding: 1rem !important;
   }
 
   @media only screen and (max-width: 1200px) {
@@ -285,7 +285,7 @@
 
   .hero__content h1 {
     font-family: "High Cruiser";
-    font-size: 6.5rem;
+    font-size: 5rem;
     line-height: 1.1;
     font-weight: 500;
     text-transform: uppercase;
