@@ -12,6 +12,23 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Lora:wght@700&display=swap');
 
+  :root {
+    --wpadmin-bar-height: 32px;
+    --ulg-brand-bar-height: 40px;
+    --site-header-height: 0px;
+
+    --global-offset-height: calc(
+      var(--ulg-brand-bar-height) +
+      var(--site-header-height)
+    );
+
+    --global-offset-height-with-admin: calc(
+      var(--wpadmin-bar-height) +
+      var(--ulg-brand-bar-height) +
+      var(--site-header-height)
+    );
+  }
+
   .menu-heading {
     font-family: "Cinzel", serif;
     letter-spacing: 0.02em;
@@ -106,15 +123,15 @@
   .nocomments { display: none !important; }
 
 
-  
+
   body.admin-bar .large-header.large-header-has-slider .sy-box {
     margin: 0 !important;
-    height: calc(100vh - 133px);
+    height: calc(100vh - var(--global-offset-height-with-admin));
   }
 
   .large-header.large-header-has-slider .sy-box {
     margin: 0 !important;
-    height: calc(100vh - 101px);
+    height: calc(100vh - var(--global-offset-height));
   }
 
   .large-header.large-header-has-slider .sy-pager {
@@ -124,7 +141,7 @@
     margin: 0 !important;
   }
 
-
+  .large-header.large-header-has-slider img { width: 100%; }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
