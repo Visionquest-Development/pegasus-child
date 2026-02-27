@@ -650,6 +650,7 @@
     .vqmenu-mobile-nav {
       height: 43px;
       margin-left: 30px;
+      top: 0;
     }
   }
 
