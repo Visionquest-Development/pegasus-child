@@ -712,12 +712,12 @@
 
 	}
 
-  @media only screen and (max-width: 1100px) {
+  @media only screen and (max-width: 991px) {
     .hero__content h1 {
-      font-size: 4rem !important;
+      font-size: 2rem !important;
     }
     .hero__content h1 small {
-      font-size: 2rem !important;
+      font-size: 1rem !important;
     }
   }
 
@@ -726,9 +726,7 @@
 	}
 
 	@media only screen and ( max-width: 767px ) {
-    .hero__content.container {
-      padding: 2rem 0 !important;
-    }
+    
 	}
 
 	@media only screen and (max-width: 479px) {
