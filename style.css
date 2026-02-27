@@ -717,7 +717,7 @@
 	}
 
 	@media only screen and ( max-width: 767px ) {
-    .pegasus-header-content .hero__content.container {
+    .hero__content.container {
       padding: 2rem 0 !important;
     }
 	}
