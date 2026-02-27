@@ -78,21 +78,16 @@
     }
   }
 
-	.inner-content {
-		background: white;
-		padding: 20px;
-		margin-top: 1rem;
-	}
 
-.saltcellar-wave-col {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
+  .saltcellar-wave-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-.saltcellar-wave-col img {
-  vertical-align: middle;
-}
+  .saltcellar-wave-col img {
+    vertical-align: middle;
+  }
 
 
 
@@ -149,6 +144,10 @@
     }
   }
 
+  .home-hero-section {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 20px;
+  }
 
   .home-slider-text {
     position: absolute;
@@ -183,13 +182,13 @@
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   #logo {
-		width: 330px;
-	  }
+    width: 330px;
+  }
 
-		.ulg-brand-bar {
-			background: #0F172A;
-      height: 42px;
-		}
+  .ulg-brand-bar {
+    background: #0F172A;
+    height: 42px;
+  }
 
 
 
@@ -201,32 +200,31 @@
     border-radius: 5px;
 	}
 
-		.ulg-brand-bar a {
-			text-decoration: none;
-		}
+  .ulg-brand-bar a {
+    text-decoration: none;
+  }
 
-		.ulg-brand-bar a:hover {
-			text-decoration: underline;
-		}
+  .ulg-brand-bar a:hover {
+    text-decoration: underline;
+  }
 
-		.brandbar-nav a::after {
-		  content: "|";
-		  color: white;
-		  /*margin-left: 10px; Adjusts space between text and pipe */
-      padding: 0 5px;
-		}
+  .brandbar-nav a::after {
+    content: "|";
+    color: white;
+    /*margin-left: 10px; Adjusts space between text and pipe */
+    padding: 0 5px;
+  }
 
-		.brandbar-nav a:last-child::after {
-		  content: "";
-		  color: white;
+  .brandbar-nav a:last-child::after {
+    content: "";
+    color: white;
+  }
 
-		}
-
-		.ulg-brand-bar .dropdown {
-			background: white;
-			border-radius: 8px;
-			padding: 0 7px;
-		}
+  .ulg-brand-bar .dropdown {
+    background: white;
+    border-radius: 8px;
+    padding: 0 7px;
+  }
 
 	.ulg-dropdown-logo {
 		max-height: 24px;
@@ -240,15 +238,14 @@
 		}
 	}
 
-		.ulg-brand-bar .dropdown-toggle::after {
-			color: black !important;
-		}
+  .ulg-brand-bar .dropdown-toggle::after {
+    color: black !important;
+  }
 
-		#ulgDropdown {
-			padding: 2px !important;
-			margin-bottom: 0 !important;
-
-		}
+  #ulgDropdown {
+    padding: 2px !important;
+    margin-bottom: 0 !important;
+  }
 
 
 	/*~~~~~~~~~~~~~~~~~~~~~
