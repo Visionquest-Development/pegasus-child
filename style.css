@@ -35,6 +35,27 @@
 
   .nocomments { display: none !important; }
 
+
+  
+  body.admin-bar .large-header.large-header-has-slider .sy-box {
+    margin: 0 !important;
+    height: calc(100vh - 133px);
+  }
+
+  .large-header.large-header-has-slider .sy-box {
+    margin: 0 !important;
+    height: calc(100vh - 101px);
+  }
+
+  .large-header.large-header-has-slider .sy-pager {
+    position: absolute;
+    bottom: 10px;
+    z-index: 99;
+    margin: 0 !important;
+  }
+
+
+
 	/* ================================
 	   GRADIENT HEADLINE
 	  ================================ */
