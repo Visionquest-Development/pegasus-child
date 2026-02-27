@@ -105,7 +105,7 @@
   }
 
 	body.admin-bar .the-default-third-nav #mega-menu.fixed-top {
-		    top: 78px !important;
+		    top: 50px !important; /* 78px is the height of the admin bar */
 	}
 
 	body.admin-bar .the-default-third-nav.on #mega-menu.fixed-top {
