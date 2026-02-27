@@ -263,7 +263,7 @@
     color: white;
   }
 
-  .pegasus-header-content .hero__content.container {
+  .hero__content.container {
     border: 6px solid white;
     padding: 7rem 0 !important;
   }
@@ -283,14 +283,14 @@
 
 
 
-  .pegasus-header-content h1 {
+  .hero__content h1 {
     font-family: "High Cruiser";
     font-size: 6.5rem;
     line-height: 1.1;
     font-weight: 500;
     text-transform: uppercase;
   }
-  .pegasus-header-content h1 small {
+  .hero__content h1 small {
     font-family: "Yesteryear";
     font-size: 3rem;
   }
