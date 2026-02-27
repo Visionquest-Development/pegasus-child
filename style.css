@@ -111,14 +111,14 @@
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   #logo {
-		width: 330px;
-	  }
+    width: 330px;
+  }
 
-		.ulg-brand-bar {
-			background: #0F172A;
-		}
+  .ulg-brand-bar {
+    background: #0F172A;
+  }
 
-    .ulg-brand-bar .dropdown-item { color: black !important; }
+  .ulg-brand-bar .dropdown-item { color: black !important; }
 
 	.ulg-brand-logo-img {
 		width: 200px;
@@ -128,32 +128,32 @@
     border-radius: 5px;
 	}
 
-		.ulg-brand-bar a {
-			text-decoration: none;
-		}
+  .ulg-brand-bar a {
+    text-decoration: none;
+  }
 
-		.ulg-brand-bar a:hover {
-			text-decoration: underline;
-		}
+  .ulg-brand-bar a:hover {
+    text-decoration: underline;
+  }
 
-		.brandbar-nav a::after {
-		  content: "|";
-		  color: white;
-		  /*margin-left: 10px; Adjusts space between text and pipe */
-      padding: 0 5px;
-		}
+  .brandbar-nav a::after {
+    content: "|";
+    color: white;
+    /*margin-left: 10px; Adjusts space between text and pipe */
+    padding: 0 5px;
+  }
 
-		.brandbar-nav a:last-child::after {
-		  content: "";
-		  color: white;
+  .brandbar-nav a:last-child::after {
+    content: "";
+    color: white;
 
-		}
+  }
 
-		.ulg-brand-bar .dropdown {
-			background: white;
-			border-radius: 8px;
-			padding: 0 7px;
-		}
+  .ulg-brand-bar .dropdown {
+    background: white;
+    border-radius: 8px;
+    padding: 0 7px;
+  }
 
 	.ulg-dropdown-logo {
 		max-height: 24px;
@@ -167,15 +167,14 @@
 		}
 	}
 
-		.ulg-brand-bar .dropdown-toggle::after {
-			color: black !important;
-		}
+  .ulg-brand-bar .dropdown-toggle::after {
+    color: black !important;
+  }
 
-		#ulgDropdown {
-			padding: 2px !important;
-			margin-bottom: 0 !important;
-
-		}
+  #ulgDropdown {
+    padding: 2px !important;
+    margin-bottom: 0 !important;
+  }
 
 
 	/*~~~~~~~~~~~~~~~~~~~~~
