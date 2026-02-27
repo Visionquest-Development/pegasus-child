@@ -69,6 +69,11 @@
     margin: 0 !important;
   }
 
+  @media (max-width: 991px) {
+    .large-header.large-header-has-slider .sy-box {
+      height: auto !important;
+    }
+  }
 
 
 	/* ================================
