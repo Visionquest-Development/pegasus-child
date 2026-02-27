@@ -1,0 +1,42 @@
+[slider]
+[slide class="testing"]
+<div class="p-relative slide-1">
+  <div class="home-slider-text">
+
+  </div>
+  <img class="alignnone size-full wp-image-12" src="/wp-content/themes/pegasus-child/images/tommygs_slider/slide1.png" />
+</div>
+[/slide]
+[slide]
+  <div class="p-relative slide-2">
+    <div class="home-slider-text pull-left">
+
+    </div>
+    <img class="alignnone size-full wp-image-12" src="/wp-content/themes/pegasus-child/images/tommygs_slider/slide2.png" />
+  </div>
+[/slide]
+[slide]
+  <div class="p-relative slide-3">
+    <div class="home-slider-text pull-left">
+
+    </div>
+    <img class="alignnone size-full wp-image-12" src="/wp-content/themes/pegasus-child/images/tommygs_slider/slide3.png" />
+  </div>
+[/slide]
+[slide]
+  <div class="p-relative slide-4">
+    <div class="home-slider-text pull-left">
+
+    </div>
+    <img class="alignnone size-full wp-image-12" src="/wp-content/themes/pegasus-child/images/tommygs_slider/slide3.png" />
+  </div>
+[/slide]
+[slide]
+  <div class="p-relative slide-5">
+    <div class="home-slider-text pull-left">
+
+    </div>
+    <img class="alignnone size-full wp-image-12" src="/wp-content/themes/pegasus-child/images/tommygs_slider/slide3.png" />
+  </div>
+[/slide]
+[/slider]
