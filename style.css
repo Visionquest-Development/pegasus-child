@@ -719,6 +719,9 @@
     .hero__content h1 small {
       font-size: 1rem !important;
     }
+    .home-slider-text {
+      top: 46%;
+    }
   }
 
 	@media only screen and (max-width: 980px) {
