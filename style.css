@@ -68,6 +68,24 @@
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+  :root {
+    --wpadmin-bar-height: 0px;
+    --ulg-brand-bar-height: 0px;
+    --site-header-height: 72px;
+
+    --global-offset-height: calc(
+      var(--ulg-brand-bar-height) +
+      var(--site-header-height)
+    );
+
+    --global-offset-height-with-admin: calc(
+      var(--wpadmin-bar-height) +
+      var(--ulg-brand-bar-height) +
+      var(--site-header-height)
+    );
+  }
+
+
   h1, h2, h3, h4, h5, h6, a {
     font-family: "Libre Baskerville", serif;
   }
@@ -127,16 +145,16 @@
 		text-transform: uppercase;
 	}
 
-  
-  
+
+
   body.admin-bar .large-header.large-header-has-slider .sy-box {
     margin: 0 !important;
-    height: calc(100vh - 133px);
+    height: calc(100vh - var(--global-offset-height-with-admin));
   }
 
   .large-header.large-header-has-slider .sy-box {
     margin: 0 !important;
-    height: calc(100vh - 101px);
+    height: calc(100vh - var(--global-offset-height));
   }
 
   .large-header.large-header-has-slider .sy-pager {
@@ -145,7 +163,7 @@
     z-index: 99;
     margin: 0 !important;
   }
-
+  .large-header.large-header-has-slider img { width: 100%; }
 
 
 	/*~~~~~~~~~~~~~~~~~~~~~
