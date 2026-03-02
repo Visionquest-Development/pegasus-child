@@ -288,7 +288,7 @@
 
 		</section>
 
-		<section id="cta" class="section-padding oak-section-dark oak-cta" style="background-image:url('https://34oakcontracting.com/wp-content/plugins/clever-fox/inc/conceptly/images/bg/cta-bg.jpg');background-attachment:scroll;">
+		<section id="cta" class="section-padding oak-section-dark oak-cta" >
 			<div class="container">
 				<div class="row cta">
 					<div id="cta-header" class="col-lg-9 col-md-12 col-12 text-lg-left text-center mb-lg-0 mb-4">
@@ -311,29 +311,50 @@
 						<div class="partner-grid">
 							<div class="single-partner">
 								<div class="inner-partner">
-									<a class="partner-link" href="https://csmithrealty.kw.com/" aria-label="C-Smith Realty">
+									<a class="partner-link" href="https://csmithrealty.kw.com/" target="_blank" aria-label="C-Smith Realty">
 										<div class="partner-logo" style="background-image:url('https://34oakcontracting.com/wp-content/uploads/2026/01/C-Smith-Realty_LOGO-G6-scaled.png');"></div>
 									</a>
 								</div>
 							</div>
-							<div class="single-partner">
+							<!-- <div class="single-partner">
 								<div class="inner-partner">
 									<a class="partner-link" href="#" aria-label="Beacon">
 										<div class="partner-logo" style="background-image:url('https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/beacon-500x500.png');"></div>
 									</a>
 								</div>
-							</div>
+							</div> -->
 							<div class="single-partner">
 								<div class="inner-partner">
-									<a class="partner-link" href="#" aria-label="Sherwin-Williams">
-										<div class="partner-logo" style="background-image:url('https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/Sherwin-Williams-logo-500x281.png');"></div>
+									<a class="partner-link" href="/services/exterior/#roswell-siding-windows" target="_blank" aria-label="James Hardie">
+										<div class="partner-logo" style="background-image:url('/wp-content/themes/pegasus-child/images/brands/JHlogo.jpg');"></div>
 									</a>
 								</div>
 							</div>
 							<div class="single-partner">
 								<div class="inner-partner">
-									<a class="partner-link" href="#" aria-label="ELD">
-										<div class="partner-logo" style="background-image:url('https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/eld_logo_white-300x70.png');"></div>
+									<a class="partner-link" href="/services/exterior/#roswell-siding-windows" target="_blank" aria-label="owens-corning">
+										<div class="partner-logo" style="background-image:url('/wp-content/themes/pegasus-child/images/brands/owens-corning-logo-vector-2022.svg');"></div>
+									</a>
+								</div>
+							</div>
+							<div class="single-partner">
+								<div class="inner-partner">
+									<a class="partner-link" href="https://www.flooranddecor.com/" target="_blank" aria-label="Floor and Decor">
+										<div class="partner-logo" style="background-image:url('/wp-content/themes/pegasus-child/images/brands/FND.png');"></div>
+									</a>
+								</div>
+							</div>
+							<div class="single-partner">
+								<div class="inner-partner">
+									<a class="partner-link" href="https://www.sherwin-williams.com/" target="_blank" aria-label="Sherwin-Williams">
+										<div class="partner-logo" style="background-image:url('/wp-content/themes/pegasus-child/images/brands/Sherwin-Williams-logo-500x281.png');"></div>
+									</a>
+								</div>
+							</div>
+							<div class="single-partner">
+								<div class="inner-partner">
+									<a class="partner-link" href="#" target="_blank" aria-label="ELD">
+										<div class="partner-logo" style="background-image:url('/wp-content/themes/pegasus-child/images/brands/eld_logo_white-300x70.png');"></div>
 									</a>
 								</div>
 							</div>

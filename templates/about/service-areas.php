@@ -2,6 +2,7 @@
 Our Service Areas
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <div class="container">
+	<h2 class="text-center">Service Areas</h2>
 	<div class="row g-4">
 		<div class="col-lg-4 col-md-6">
 			<figure class="wp-block-image size-large">

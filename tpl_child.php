@@ -129,12 +129,12 @@ if ( 'header-three' === $header_choice ) {
 		<div class="pegasus-image-diff" id="pegasus-image-diff-1">
 			<img
 				class="pegasus-image-diff__image pegasus-image-diff__image--before"
-				src="https://visionquestdev.com/34oak/wp-content/themes/pegasus-child/images/after.png"
+				src="/wp-content/themes/pegasus-child/images/after.png"
 				alt="Before"
 			>
 			<img
 				class="pegasus-image-diff__image pegasus-image-diff__image--after"
-				src="https://visionquestdev.com/34oak/wp-content/themes/pegasus-child/images/before.png"
+				src="/wp-content/themes/pegasus-child/images/before.png"
 				alt="After"
 			>
 			<div class="pegasus-image-diff__handle"></div>

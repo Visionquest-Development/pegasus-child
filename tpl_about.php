@@ -186,7 +186,7 @@
 						</div>
 					</div>
 
-					<?php get_template_part( 'templates/about/our-services' ); ?>
+					<?php //get_template_part( 'templates/about/our-services' ); ?>
 
 					<hr>
 					<h2 class="wp-block-heading mt-3 mb-5 has-text-align-center">Why Choose Us</h2>
