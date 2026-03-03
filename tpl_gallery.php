@@ -150,7 +150,7 @@ if ( 'header-three' === $header_choice ) {
 			<div class="container">
 				<div class="row g-4 align-items-center">
 					<div class="col-lg-6 order-1 order-lg-1">
-						<div class="make-ready-image" style="background-image: url('https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/56-300x200.webp');">
+						<div class="make-ready-image" style="background-image: url('/wp-content/uploads/2026/02/121.png');">
 							<span class="make-ready-image-overlay"></span>
 						</div>
 					</div>
@@ -241,7 +241,7 @@ if ( 'header-three' === $header_choice ) {
 			<div class="container">
 				<div class="row g-4 align-items-center">
 					<div class="col-lg-6 order-1 order-lg-2">
-						<div class="make-ready-image" style="background-image: url('https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/9u9u9u.webp');">
+						<div class="make-ready-image" style="background-image: url('/wp-content/uploads/2026/02/9u9u9u.webp');">
 							<span class="make-ready-image-overlay"></span>
 						</div>
 					</div>
@@ -332,7 +332,7 @@ if ( 'header-three' === $header_choice ) {
 			<div class="container">
 				<div class="row g-4 align-items-center">
 					<div class="col-lg-6 order-1 order-lg-1">
-						<div class="make-ready-image" style="background-image: url('https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/pexels-marianne-238377-500x295.jpg');">
+						<div class="make-ready-image" style="background-image: url('/wp-content/uploads/2026/02/pexels-marianne-238377-500x295-1.jpg');">
 							<span class="make-ready-image-overlay"></span>
 						</div>
 					</div>
@@ -386,7 +386,7 @@ if ( 'header-three' === $header_choice ) {
 			<div class="container">
 				<div class="row g-4 align-items-center">
 					<div class="col-lg-6 order-1 order-lg-2">
-						<div class="make-ready-image" style="background-image: url('https://h4p.c69.myftpupload.com/wp-content/uploads/2023/02/9u9u9u.webp');">
+						<div class="make-ready-image" style="background-image: url('/wp-content/uploads/2026/02/9u9u9u.webp');">
 							<span class="make-ready-image-overlay"></span>
 						</div>
 					</div>
