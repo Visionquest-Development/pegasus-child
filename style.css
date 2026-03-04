@@ -1079,7 +1079,9 @@
 
 
 
-
+  .fooevents-calendar-list .fooevents-calendar-list-item .fooevents-calendar-list-thumb {
+    float: initial !important;
+  }
 
 
 
