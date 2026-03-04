@@ -117,6 +117,7 @@
 							This event will be held only at our Mabella Midland location: 6835 Midland Commons Blvd, Columbus, GA.
 						</p>
 						<p class="mb-0">We look forward to sharing an immortal dinner with you.</p>
+						<a href="/product/immortal-estate-wine-dinner/" class="my-3 btn mabellas-btn mabellas-section-btn">Get Tickets</a>
 					</div>
 					<div class="col-lg-6 order-1 order-lg-2">
 						<img
