@@ -1084,6 +1084,33 @@
   }
 
 
+  .fooevents-calendar-list .fooevents-calendar-list-item {
+      margin-bottom: 20px;
+      display: block;
+      border: 1px solid white;
+      border-radius: 7px;
+      padding: 20px;
+  }
+
+  .fooevents-event-listing-list-content a {
+    color: #92712A;
+  }
+
+  .fooevents-event-listing-list-book-now .btn {
+    background-color: #92712A !important;
+    border-color: #92712A !important;
+    color: white !important;
+  }
+
+  .single_add_to_cart_button {
+    background-color: #92712A !important;
+    border-color: #92712A !important;
+    color: white !important;
+  }
+
+  .product_meta .posted_in { display: none; }
+
+
 
 
 
