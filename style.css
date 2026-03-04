@@ -759,6 +759,46 @@
 	}
 
 
+  .fooevents-event-listing-tiles-content {
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 7px;
+    margin-bottom: 1rem;
+  }
+
+  .fooevents-event-listing-tiles-content a {
+    color: black !important;
+  }
+
+  .fooevents-event-listing-tiles-datetime {
+    font-weight: 900;
+  }
+
+  .fooevents-event-listing-book-now {
+    font-family: "Aclonica" !important;
+    color: #F1EBE1 !important;
+    background-color: #237264 !important;
+    border-color: #237264 !important;
+    text-transform: uppercase !important;
+    width: 100%;
+    text-align: center !important;
+    font-weight: bold !important;
+  }
+
+  .fooevents-event-listing-book-now a {
+    color: white !important;
+    display: block;
+    padding: 8px 20px !important;
+  }
+
+  .fooevents-event-listing-book-now:hover {
+    background-color: black !important;
+  }
+
+  .fooevents-event-listing-tiles-location {
+    font-weight: initial !important;
+    font-size: 14px !important;
+  }
 
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~SITEMAP~~~~~~~~
