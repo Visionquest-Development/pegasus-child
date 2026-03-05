@@ -758,12 +758,14 @@
 	  margin-top: .6rem;
 	}
 
+  /* ~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~ FOOEVENTS ~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~*/
 
   .fooevents-event-listing-tiles-content {
     padding: 20px;
     border: 1px solid black;
     border-radius: 7px;
-    margin-bottom: 1rem;
   }
 
   .fooevents-event-listing-tiles-content a {
@@ -798,6 +800,61 @@
   .fooevents-event-listing-tiles-location {
     font-weight: initial !important;
     font-size: 14px !important;
+  }
+
+  /* -----------------------------------------
+    FooEvents Tiles: uniform thumbnail height
+    (background-image-like behavior via object-fit)
+  ------------------------------------------ */
+
+  #fooevents-event-listing-tiles {
+    /* makes all tiles equal height */
+    align-items: stretch;
+  }
+
+  #fooevents-event-listing-tiles .fooevents-event-listing-tiles-content {
+    /* ensure each tile is a column so the button sits consistently */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  /* thumbnail wrapper becomes the fixed "image frame" */
+  #fooevents-event-listing-tiles .event-thumbnail {
+    width: 100%;
+    margin: 0 0 1em;
+  }
+
+  /* make the anchor act like a block-level frame */
+  #fooevents-event-listing-tiles .event-thumbnail a {
+    display: block;
+    width: 100%;
+
+    /* pick the height you want for all thumbnails */
+    aspect-ratio: 3 / 4;      /* poster-ish */
+    /* OR instead of aspect-ratio, use: height: 320px; */
+
+    overflow: hidden;
+    border-radius: 10px;      /* optional */
+  }
+
+  /* the image fills the frame and crops like a background cover */
+  #fooevents-event-listing-tiles .event-thumbnail img {
+    width: 100%;
+    height: 100% !important;  /* override your current height:auto */
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: center;
+       object-position: center;
+    display: block;
+
+    margin: 0;                /* remove the old margin-bottom */
+    padding: 0;
+  }
+
+  /* optional: keep "Book ticket" pushed to bottom for nicer alignment */
+  #fooevents-event-listing-tiles .fooevents-event-listing-book-now {
+    margin-top: auto;
   }
 
 	/* ~~~~~~~~~~~~~~~~~~~~~~
