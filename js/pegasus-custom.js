@@ -49,7 +49,7 @@
 		  ]
 		});
 
-    $('.fooevents-event-listing-tiles-content .fooevents-event-listing-tiles-excerpt').matchHeight();
+    $('.fooevents-event-listing-tiles-excerpt').matchHeight();
 
 	}); //end document ready function
 
