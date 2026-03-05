@@ -68,7 +68,7 @@
     jQuery('.fooevents-event-listing-tiles-content').matchHeight();
 
 
-    var $grid = $('.packery-grid').imagesLoaded( function() {
+    var $grid = jQuery('.packery-grid').imagesLoaded( function() {
       // init Masonry after all images have loaded
       $grid.packery({
         // options...
