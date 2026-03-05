@@ -88,26 +88,48 @@
   (function($) {
     var $grid = $('#fooevents-event-listing-tiles');
     var resizeTimer;
+
     function initOrLayoutPackery() {
       if (!$grid.length) return;
-      // init once
+
       if (!$grid.data('packery')) {
         $grid.packery({
           itemSelector: '.fooevents-event-listing-tiles-content',
           gutter: 10
         });
       } else {
-        // relayout on resize
         $grid.packery('layout');
       }
     }
+
+    function relayoutAfterHeaderToggle() {
+      // immediate pass
+      initOrLayoutPackery();
+
+      // second pass after sidebar animation/margin shift settles
+      setTimeout(function() {
+        initOrLayoutPackery();
+      }, 350);
+    }
+
     $(window).on('load', function() {
       initOrLayoutPackery();
     });
+
     $(window).on('resize', function() {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(function() {
         initOrLayoutPackery();
       }, 150);
+    });
+
+    // Header Five nav toggle button (.navi-btn a)
+    $(document).on('click', '#header .navi-btn a, .navi-btn a', function() {
+      relayoutAfterHeaderToggle();
+    });
+
+    // Fallback: if #header open class changes by other logic
+    $(document).on('transitionend', '.mainbar, #header', function() {
+      initOrLayoutPackery();
     });
   })(jQuery);
