@@ -63,6 +63,7 @@
 		// executes when complete page is fully loaded, including all frames, objects and images
 		//alert("window is loaded");
 
+    jQuery('.fooevents-event-listing-tiles-content h3').matchHeight();
     jQuery('.fooevents-event-listing-tiles-excerpt').matchHeight();
     jQuery('.fooevents-event-listing-tiles-content').matchHeight();
 	});
