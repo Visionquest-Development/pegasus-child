@@ -260,7 +260,7 @@
 		</main>
 
 		<section class="container py-5 mb-5">
-			<?php echo do_shortcode( '[fooevents_events_list number="9" sort="ASC"]' ); ?>
+			<?php echo do_shortcode( '[fooevents_events_list sort="ASC"]' ); ?>
 		</section>
 
 		<?php /*

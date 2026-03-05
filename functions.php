@@ -170,3 +170,25 @@
 			return esc_url( $value );
 		}
 	}
+
+	/**
+	 * Disable WooCommerce product reviews completely
+	 */
+
+	 add_filter('woocommerce_product_tabs', function($tabs) {
+		unset($tabs['reviews']);
+		return $tabs;
+	}, 98);
+
+	add_filter('woocommerce_enable_reviews', '__return_false');
+	add_filter('woocommerce_enable_review_rating', '__return_false');
+
+	remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5);
+	remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10);
+
+	add_filter('comments_open', function($open, $post_id) {
+		if (get_post_type($post_id) === 'product') {
+			return false;
+		}
+		return $open;
+	}, 10, 2);
