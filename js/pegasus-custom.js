@@ -67,13 +67,13 @@
     jQuery('.fooevents-event-listing-tiles-excerpt').matchHeight();
     jQuery('.fooevents-event-listing-tiles-content').matchHeight();
 
-    /*jQuery('#fooevents-event-listing-tiles').packery({
+    jQuery('#fooevents-event-listing-tiles').packery({
       // options...
       //columnWidth: 200,
       itemSelector: '.fooevents-event-listing-tiles-content',
       gutter: 10
-    });*/
-    var $grid = jQuery('#fooevents-event-listing-tiles').imagesLoaded( function() {
+    });
+    /*var $grid = jQuery('#fooevents-event-listing-tiles').imagesLoaded( function() {
       // init Masonry after all images have loaded
       $grid.packery({
         // options...
@@ -81,6 +81,6 @@
         itemSelector: '.fooevents-event-listing-tiles-content',
         gutter: 10
       });
-    });
+    });*/
 
 	});
