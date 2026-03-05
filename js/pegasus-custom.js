@@ -49,7 +49,6 @@
 		  ]
 		});
 
-    $('.fooevents-event-listing-tiles-excerpt').matchHeight();
 
 	}); //end document ready function
 
@@ -63,4 +62,6 @@
 	jQuery(window).on( 'load', function($) {
 		// executes when complete page is fully loaded, including all frames, objects and images
 		//alert("window is loaded");
+
+    $('.fooevents-event-listing-tiles-excerpt').matchHeight();
 	});
