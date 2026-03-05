@@ -259,7 +259,7 @@
 
 		</main>
 
-		<section class="py-5 mb-5">
+		<section class="container py-5 mb-5">
 			<?php echo do_shortcode( '[fooevents_events_list sort="ASC"]' ); ?>
 		</section>
 

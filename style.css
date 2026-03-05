@@ -893,6 +893,60 @@
     margin-top: auto;
   }
 
+  /* FooEvents calendar-list shortcode styling (match event card look) */
+  .fooevents-calendar-list {
+    display: grid;
+    gap: 24px;
+  }
+  .fooevents-calendar-list .fooevents-calendar-list-item {
+    margin-bottom: 0;
+    display: block;
+    border: 1px solid black;
+    border-radius: 7px;
+    padding: 20px;
+  }
+  .fooevents-calendar-list .fooevents-shortcode-title {
+    margin: 0 0 8px;
+    font-weight: 700;
+  }
+  .fooevents-calendar-list .fooevents-shortcode-title a {
+    color: black !important;
+    text-decoration: none;
+  }
+  .fooevents-calendar-list .fooevents-shortcode-date {
+    font-weight: 900;
+    margin-bottom: 12px;
+  }
+  .fooevents-calendar-list .fooevents-calendar-list-thumb {
+    float: initial !important;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-radius: 10px;
+    margin: 0 0 12px;
+  }
+  .fooevents-calendar-list .fooevents-calendar-list-item a.button {
+    display: inline-block;
+    background-color: #237264 !important;
+    border: 1px solid #237264 !important;
+    color: #fff !important;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 8px 20px;
+    text-decoration: none;
+  }
+  .fooevents-calendar-list .fooevents-calendar-list-item a.button:hover {
+    background-color: black !important;
+    border-color: black !important;
+  }
+  /* hide plugin clear div artifacts for cleaner cards */
+  .fooevents-calendar-list .foo-clear,
+  .fooevents-calendar-list .fooevents-calendar-clearfix {
+    display: none;
+  }
+
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~SITEMAP~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
