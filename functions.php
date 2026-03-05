@@ -34,6 +34,7 @@
 		wp_enqueue_script( 'pegasus_child_custom_js', get_stylesheet_directory_uri() . '/js/pegasus-custom.js', array(), '', true );
 
 		//wp_enqueue_script( 'matchHeight_js', get_stylesheet_directory_uri() . '/js/matchHeight.js', array(), '', true );
+		wp_enqueue_script( 'pegasus_packery_js', get_stylesheet_directory_uri() . '/js/packery.js', array(), '', true );
 
 
 	} //end function
