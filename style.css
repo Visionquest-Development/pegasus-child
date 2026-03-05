@@ -808,15 +808,15 @@
   ------------------------------------------ */
 
   #fooevents-event-listing-tiles {
-    /* makes all tiles equal height */
-    align-items: stretch;
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 24px;               /* flex gap is fine */
+    align-items: flex-start; /* avoid stretching */
   }
 
   #fooevents-event-listing-tiles .fooevents-event-listing-tiles-content {
-    /* ensure each tile is a column so the button sits consistently */
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+    width: 280px;            /* “certain width” */
+    box-sizing: border-box;
   }
 
   /* thumbnail wrapper becomes the fixed "image frame" */
