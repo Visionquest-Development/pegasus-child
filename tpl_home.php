@@ -258,63 +258,10 @@
 			<?php endif; ?>
 
 		</main>
-		<?php
-		$events_path = get_stylesheet_directory() . '/data/events.json';
-		$json_data = file_exists( $events_path ) ? file_get_contents( $events_path ) : '[]';
 
-		// Option B: If pasting the JSON directly into PHP (remove comments if choosing this):
-		// $json_data = '[PASTE_JSON_DATA_HERE]';
-
-		$events = json_decode($json_data, true);
-		?>
-
-		<div class="container my-5">
-			<div class="row grid" id="events-grid wow fadeInUp">
-
-				<?php if (!empty($events)) : ?>
-					<?php foreach ($events as $event) : ?>
-
-						<div class="grid-item col-12 col-lg-3 mb-4">
-							<div class="card h-100 shadow-sm border-0 wow fadeInUp">
-
-								<?php if (!empty($event['image'])) : ?>
-									<a href="<?php echo esc_url($event['link']); ?>">
-										<img src="<?php echo esc_url($event['image']); ?>" class="card-img-top" alt="<?php echo esc_attr($event['title']); ?>">
-									</a>
-								<?php endif; ?>
-
-								<div class="card-body">
-									<h6 class="card-subtitle mb-2 text-muted small">
-										<?php echo esc_html($event['date']); ?>
-									</h6>
-
-									<h5 class="card-title">
-										<a href="<?php echo esc_url($event['link']); ?>" class="text-decoration-none text-dark">
-											<?php echo esc_html($event['title']); ?>
-										</a>
-									</h5>
-
-									<p class="card-text small text-secondary">
-										<?php echo esc_html($event['description']); ?>
-									</p>
-								</div>
-
-								<div class="card-footer bg-white border-top-0">
-									 <span class="badge bg-primary">
-										<?php echo esc_html($event['tag']); ?>
-									 </span>
-								</div>
-
-							</div>
-						</div>
-
-					<?php endforeach; ?>
-				<?php else : ?>
-					<p>No events found.</p>
-				<?php endif; ?>
-
-			</div>
-		</div>
+		<section class="py-5 mb-5">
+			<?php echo do_shortcode( '[fooevents_events_list sort="ASC"]' ); ?>
+		</section>
 
 		<?php /*
 		<section class="py-5 mb-5">

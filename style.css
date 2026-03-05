@@ -776,11 +776,39 @@
     font-weight: 900;
   }
 
-  .fooevents-event-listing-book-now {
-    font-family: "Aclonica" !important;
-    color: #F1EBE1 !important;
+  .fooevents-event-listing-tiles-location {
+    font-weight: initial !important;
+    font-size: 14px !important;
+  }
+
+  .fooevents-calendar-list .fooevents-calendar-list-item .fooevents-calendar-list-thumb {
+    float: initial !important;
+  }
+
+  .fooevents-calendar-list .fooevents-calendar-list-item {
+    margin-bottom: 20px;
+    display: block;
+    border: 1px solid black;
+    border-radius: 7px;
+    padding: 20px;
+  }
+
+  .fooevents-event-listing-list-content a {
+    color: #237264;
+  }
+
+  .fooevents-event-listing-book-now,
+  .fooevents-event-listing-list-book-now .btn,
+  .single_add_to_cart_button,
+  .checkout-button,
+  #place_order {
     background-color: #237264 !important;
     border-color: #237264 !important;
+    color: white !important;
+  }
+
+  .fooevents-event-listing-book-now {
+    font-family: "Aclonica" !important;
     text-transform: uppercase !important;
     width: 100%;
     text-align: center !important;
@@ -797,9 +825,17 @@
     background-color: black !important;
   }
 
-  .fooevents-event-listing-tiles-location {
-    font-weight: initial !important;
-    font-size: 14px !important;
+  .product_meta .posted_in {
+    display: none;
+  }
+
+  .woocommerce {
+    margin-bottom: 1rem;
+  }
+
+  .fooevents-event-listing-list .Label,
+  .woocommerce .Label {
+    color: black !important;
   }
 
   /* -----------------------------------------
