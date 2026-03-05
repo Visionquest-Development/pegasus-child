@@ -63,10 +63,6 @@
 		// executes when complete page is fully loaded, including all frames, objects and images
 		//alert("window is loaded");
 
-    jQuery('.fooevents-event-listing-tiles-content h3').matchHeight();
-    jQuery('.fooevents-event-listing-tiles-excerpt').matchHeight();
-    jQuery('.fooevents-event-listing-tiles-content').matchHeight();
-
     /*jQuery('#fooevents-event-listing-tiles').packery({
       // options...
       //columnWidth: 200,
@@ -93,6 +89,9 @@
       if (!$grid.length) return;
 
       if (!$grid.data('packery')) {
+        jQuery('.fooevents-event-listing-tiles-content h3').matchHeight();
+        jQuery('.fooevents-event-listing-tiles-excerpt').matchHeight();
+        jQuery('.fooevents-event-listing-tiles-content').matchHeight();
         $grid.packery({
           itemSelector: '.fooevents-event-listing-tiles-content',
           gutter: 10
@@ -131,5 +130,50 @@
     // Fallback: if #header open class changes by other logic
     $(document).on('transitionend', '.mainbar, #header', function() {
       initOrLayoutPackery();
+    });
+  })(jQuery);
+
+  // Packery grid for homepage FooEvents calendar list
+  (function($) {
+    var $calGrid = $('.fooevents-calendar-list');
+    var calResizeTimer;
+
+    function initOrLayoutCalendarPackery() {
+      if (!$calGrid.length) return;
+
+      if (!$calGrid.data('packery')) {
+        $calGrid.packery({
+          itemSelector: '.fooevents-calendar-list-item',
+          gutter: 10
+        });
+      } else {
+        $calGrid.packery('layout');
+      }
+    }
+
+    function calRelayoutAfterHeaderToggle() {
+      initOrLayoutCalendarPackery();
+      setTimeout(function() {
+        initOrLayoutCalendarPackery();
+      }, 350);
+    }
+
+    $(window).on('load', function() {
+      initOrLayoutCalendarPackery();
+    });
+
+    $(window).on('resize', function() {
+      clearTimeout(calResizeTimer);
+      calResizeTimer = setTimeout(function() {
+        initOrLayoutCalendarPackery();
+      }, 150);
+    });
+
+    $(document).on('click', '#header .navi-btn a, .navi-btn a', function() {
+      calRelayoutAfterHeaderToggle();
+    });
+
+    $(document).on('transitionend', '.mainbar, #header', function() {
+      initOrLayoutCalendarPackery();
     });
   })(jQuery);
