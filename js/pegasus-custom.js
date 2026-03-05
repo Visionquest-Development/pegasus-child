@@ -64,4 +64,5 @@
 		//alert("window is loaded");
 
     jQuery('.fooevents-event-listing-tiles-excerpt').matchHeight();
+    jQuery('.fooevents-event-listing-tiles-content').matchHeight();
 	});
