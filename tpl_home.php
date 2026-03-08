@@ -260,7 +260,9 @@
 		</main>
 
 		<section class="container py-5 mb-5">
+			<h2 class="text-center text-dark mb-4">Entertainment</h2>
 			<?php echo do_shortcode( '[fooevents_events_list sort="ASC"]' ); ?>
+			<a href="/entertainment" class="btn btn-primary">View All</a>
 		</section>
 
 		<?php /*
@@ -271,8 +273,9 @@
 
 		<section class=" py-5">
 			<div class="container">
-				<h2 class="text-center text-dark mb-4">Upcoming Events</h2>
+				<h2 class="text-center text-dark mb-4">ULG Upcoming Events</h2>
 				<?php echo do_shortcode( '[ulg_events]' ); ?>
+				<a href="https://events.uptownlifegroup.com/events" class="btn btn-primary" target="_blank">View All</a>
 			</div>
 		</section>
 
