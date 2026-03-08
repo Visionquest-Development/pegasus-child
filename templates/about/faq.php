@@ -24,15 +24,6 @@ Frequently Asked Questions
 
 		<div class="wp-block-coblocks-accordion-item">
 			<details>
-				<summary class="wp-block-coblocks-accordion-item__title"><strong><strong>Q: Are you licensed, bonded, and insured?</strong></strong></summary>
-				<div class="wp-block-coblocks-accordion-item__content">
-					<p>A: Absolutely, we are fully licensed, bonded, and insured to ensure your peace of mind and protect your property.</p>
-				</div>
-			</details>
-		</div>
-
-		<div class="wp-block-coblocks-accordion-item">
-			<details>
 				<summary class="wp-block-coblocks-accordion-item__title"><strong>Q: How do I schedule a consultation or inspection?</strong></summary>
 				<div class="wp-block-coblocks-accordion-item__content">
 					<p>A: You can schedule a consultation or inspection by contacting us through our website, calling our office, or sending us an email. We aim to respond promptly to all inquiries.</p>
@@ -80,7 +71,7 @@ Frequently Asked Questions
 			<details>
 				<summary class="wp-block-coblocks-accordion-item__title"><strong>Q: How experienced is your leadership team?</strong></summary>
 				<div class="wp-block-coblocks-accordion-item__content">
-					<p>A: Our leadership team has an average of 12+ years of industry experience, bringing extensive knowledge and expertise to every project.</p>
+					<p>A: Our leadership team has an average of 17+ years of industry experience, bringing extensive knowledge and expertise to every project.</p>
 				</div>
 			</details>
 		</div>

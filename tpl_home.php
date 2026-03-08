@@ -312,7 +312,7 @@
 							<div class="single-partner">
 								<div class="inner-partner">
 									<a class="partner-link" href="https://csmithrealty.kw.com/" target="_blank" aria-label="C-Smith Realty">
-										<div class="partner-logo" style="background-image:url('https://34oakcontracting.com/wp-content/uploads/2026/01/C-Smith-Realty_LOGO-G6-scaled.png');"></div>
+										<div class="partner-logo" style="background-image:url('http://34oakcontracting.com/wp-content/uploads/2026/03/C-Smith-Realty_Blue-Logo.jpg');"></div>
 									</a>
 								</div>
 							</div>
@@ -325,14 +325,14 @@
 							</div> -->
 							<div class="single-partner">
 								<div class="inner-partner">
-									<a class="partner-link" href="/services/exterior/#roswell-siding-windows" target="_blank" aria-label="James Hardie">
+									<a class="partner-link" href="https://www.jameshardie.com/" target="_blank" aria-label="James Hardie">
 										<div class="partner-logo" style="background-image:url('/wp-content/themes/pegasus-child/images/brands/JHlogo.jpg');"></div>
 									</a>
 								</div>
 							</div>
 							<div class="single-partner">
 								<div class="inner-partner">
-									<a class="partner-link" href="/services/exterior/#roswell-siding-windows" target="_blank" aria-label="owens-corning">
+									<a class="partner-link" href="https://www.owenscorning.com/en-us/roofing/shingles/trudefinition-duration" target="_blank" aria-label="owens-corning">
 										<div class="partner-logo" style="background-image:url('/wp-content/themes/pegasus-child/images/brands/owens-corning-logo-vector-2022.svg');"></div>
 									</a>
 								</div>
