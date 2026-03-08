@@ -78,6 +78,10 @@
 	~~~~~~ HOME PAGE ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
 
+  .slick-prev:before, .slick-next:before {
+    color: white !important;
+  }
+
   .pegasus-header-content {
     background: rgba(0, 0, 0, 0.5);
     border-radius: 10px;

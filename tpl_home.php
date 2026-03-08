@@ -304,6 +304,16 @@
 			</div>
 		</section>
 
+		<section id="our-testimonials" class="section-padding oak-section-light">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<?php echo do_shortcode( '[pegasus_testimonial_slider id="115"]' ); ?>
+					</div>
+				</div>
+			</div>
+		</section>
+
 		<section id="our-partners" class="partners-section oak-section-dark">
 			<div class="container">
 				<div class="row">

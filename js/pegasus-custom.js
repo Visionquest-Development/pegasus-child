@@ -53,6 +53,9 @@
     $('#our-service .service-card img').matchHeight();
     $('#feature-content .feature-card').matchHeight();
 
+    $('.testimonial-slider article blockquote').matchHeight();
+
+
     $('.partner-carousel .inner-partner').matchHeight();
     $('.contact-card').matchHeight();
 
