@@ -308,7 +308,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<?php echo do_shortcode( '[pegasus_testimonial_slider id="115"]' ); ?>
+						<?php echo do_shortcode( '[pegasus_testimonial_slider id="132"]' ); ?>
 					</div>
 				</div>
 			</div>
