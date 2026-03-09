@@ -327,7 +327,7 @@
             {
               "name": "Chicken",
               "description": "Flour tortilla, shredded chicken, Monterey Jack & cheddar cheese, pico de gallo, sour cream",
-              "price": "14",
+              "price": "15",
               "badges": [],
               "spicy_level": 0,
               "extras": []
@@ -383,6 +383,22 @@
               "price": "17",
               "badges": [],
               "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Gyro",
+              "description": "Beef & lamb gyro meat wrapped in warm wheat pita, lettuce, tomato, red onion, feta cheese, tzatziki sauce",
+              "price": "14",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Korean Pork Sliders",
+              "description": "Spicy pork bulgogi, bao bun, pickled vegetables",
+              "price": "14",
+              "badges": [],
+              "spicy_level": 1,
               "extras": []
             }
           ]
@@ -516,6 +532,16 @@
             {
               "name": "Smokey Smash",
               "description": "Smoked bacon, BBQ sauce, smoked Gouda cheese, dill pickle",
+              "price": "15",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": [
+                { "label": "Make it a triple", "price": "4" }
+              ]
+            },
+            {
+              "name": "Yum Yum",
+              "description": "Yum yum sauce, grilled red onion, American cheese",
               "price": "15",
               "badges": [],
               "spicy_level": 0,
