@@ -99,7 +99,7 @@
 					<div class="col-lg-6 order-2 order-lg-1">
 						<h2>Special Events</h2>
 						<h3 class="mb-3">Immortal Estate Wine Dinner at Mabella Midland</h3>
-						<p class="mb-2"><strong>Date:</strong> March 25th, 2026</p>
+						<p class="mb-2"><strong>Date:</strong> April 22nd, 2026</p>
 						<p class="mb-2"><strong>Time:</strong> 6:30pm</p>
 						<p class="mb-2"><strong>Where:</strong> Mabella Midland (6835 Midland Commons Blvd, Columbus, GA)</p>
 						<p class="mb-4"><strong>Tickets:</strong> $125 per person, tax &amp; gratuity included</p>
