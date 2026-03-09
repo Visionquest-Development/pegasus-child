@@ -236,7 +236,7 @@ get_header();
 						</div>
 
 
-						<div class="row g-4">
+						<div class="row g-4 d-none">
 
 							<!-- ══════════════ LEFT COLUMN ══════════════ -->
 							<div class="col-lg-8">
