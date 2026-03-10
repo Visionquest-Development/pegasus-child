@@ -17,7 +17,7 @@ $uptown_little_logo_url = '/wp-content/themes/pegasus-child/images/uptown_little
 				'ULG Events' => '//events.uptownlifegroup.com',
 				'The Loft'   => '//theloft.com',
 				'Mabellas'   => '//mabellas.com',
-				'Salt Cellar'=> '//saltcellar.com',
+				'Saltcellar'=> '//saltcellar.com',
 				'Mix Market' => '//themixmarket.com',
 				'Tommy G\'s' => '//tommygs.com',
 			];
