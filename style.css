@@ -848,12 +848,12 @@
   #fooevents-event-listing-tiles {
     display: grid !important;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 24px;               /* flex gap is fine */
-    align-items: flex-start; /* avoid stretching */
+    gap: 10px;
+
   }
 
   #fooevents-event-listing-tiles .fooevents-event-listing-tiles-content {
-    width: 280px;            /* “certain width” */
+
     box-sizing: border-box;
   }
 
