@@ -916,9 +916,18 @@
   .fooevents-calendar-list .fooevents-calendar-list-item {
     margin-bottom: 0;
     display: block;
-    border: 1px solid black;
-    border-radius: 7px;
+    border: 2px solid #237264;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    background: #fff;
+
+    border-radius: 10px;
     padding: 20px;
+  }
+  .fooevents-calendar-list .fooevents-calendar-list-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
   }
   .fooevents-calendar-list .fooevents-shortcode-title {
     margin: 0 0 8px;
