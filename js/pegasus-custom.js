@@ -95,7 +95,7 @@
 
 
 
-
+/*
 
   (function($) {
     var $grid = $('#fooevents-event-listing-tiles');
@@ -192,3 +192,4 @@
       initOrLayoutCalendarPackery();
     });
   })(jQuery);
+*/

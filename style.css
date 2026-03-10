@@ -845,8 +845,8 @@
   ------------------------------------------ */
 
   #fooevents-event-listing-tiles {
-    display: flex !important;
-    flex-wrap: wrap;
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 24px;               /* flex gap is fine */
     align-items: flex-start; /* avoid stretching */
   }
