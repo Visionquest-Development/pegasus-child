@@ -261,7 +261,7 @@
 
 		<section class="container py-5 mb-5 wow fadeInUp">
 			<h2 class="text-center text-dark mb-4">Entertainment</h2>
-			<?php echo do_shortcode( '[fooevents_events_list sort="ASC"]' ); ?>
+			<?php echo do_shortcode( '[fooevents_events_list sort="ASC" num="40"]' ); ?>
 			<a href="/entertainment" class="btn btn-primary mt-3 d-block w-100 text-center text-white px-5 py-3 mx-auto ulg-btn ulg-section-btn border-0">View All</a>
 		</section>
 
@@ -273,7 +273,7 @@
 
 		<section class=" py-5">
 			<div class="container">
-				<h2 class="text-center text-dark mb-4">ULG Upcoming Events</h2>
+				<h2 class="text-center text-dark mb-4">Uptown Life Group <br> Upcoming Events</h2>
 				<div class="wow fadeInUp">
 					<?php echo do_shortcode( '[ulg_events]' ); ?>
 				</div>

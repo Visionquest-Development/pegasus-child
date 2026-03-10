@@ -60,6 +60,18 @@
 
 
 	jQuery(window).on( 'load', function($) {
+
+    jQuery('.fooevents-event-listing-tiles-content h3 a').matchHeight();
+    jQuery('.fooevents-event-listing-tiles-content h3').matchHeight();
+
+    jQuery('.fooevents-event-listing-tiles-location').matchHeight();
+    jQuery('.fooevents-event-listing-tiles-content .event-date').matchHeight();
+    jQuery('.fooevents-event-listing-tiles-content .event-time').matchHeight();
+    jQuery('.fooevents-event-listing-tiles-content .event-excerpt').matchHeight();
+
+    jQuery('.fooevents-event-listing-tiles-content').matchHeight();
+
+
 		// executes when complete page is fully loaded, including all frames, objects and images
 		//alert("window is loaded");
 
@@ -81,22 +93,16 @@
 
 	});
 
+
+
+
+
   (function($) {
     var $grid = $('#fooevents-event-listing-tiles');
     var resizeTimer;
 
     function initOrLayoutPackery() {
       if (!$grid.length) return;
-
-      jQuery('.fooevents-event-listing-tiles-content h3 a').matchHeight();
-      jQuery('.fooevents-event-listing-tiles-content h3').matchHeight();
-
-      jQuery('.fooevents-event-listing-tiles-location').matchHeight();
-      jQuery('.fooevents-event-listing-tiles-content .event-date').matchHeight();
-      jQuery('.fooevents-event-listing-tiles-content .event-time').matchHeight();
-      jQuery('.fooevents-event-listing-tiles-content .event-excerpt').matchHeight();
-
-      jQuery('.fooevents-event-listing-tiles-content').matchHeight();
 
       if (!$grid.data('packery')) {
         $grid.packery({
@@ -106,6 +112,8 @@
       } else {
         $grid.packery('layout');
       }
+
+
     }
 
     function relayoutAfterHeaderToggle() {
