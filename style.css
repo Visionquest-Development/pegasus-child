@@ -783,7 +783,7 @@
 
   .fooevents-calendar-list .fooevents-calendar-list-item .fooevents-calendar-list-thumb {
     float: initial !important;
-    margin: 0 0 1rem !important;
+    margin: 0 auto 1rem !important;
   }
 
   .fooevents-calendar-list .fooevents-calendar-list-item {
@@ -792,6 +792,7 @@
     border: 1px solid black;
     border-radius: 7px;
     padding: 20px;
+    text-align: center;
   }
 
   .fooevents-event-listing-list-content a {
