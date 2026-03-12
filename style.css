@@ -107,6 +107,12 @@
     transform: translate(0, 0);
   }
 
+  .home .inner-content {
+    background: #dedede;
+    margin: 1rem 0 0;
+    padding: 1rem;
+  }
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -628,6 +634,63 @@
 	}
 
 
+
+	/* ─── Menu item images (with Lightbox2) ─── */
+	.vqmenu-card [data-lightbox],
+	.vqmenu-mobile-card [data-lightbox] {
+	  display: block;
+	  cursor: zoom-in;
+	  text-decoration: none;
+	  line-height: 0;
+	}
+
+	.vqmenu-card__img {
+	  width: 100%;
+	  height: 180px;
+	  -o-object-fit: cover;
+	     object-fit: cover;
+	  border-radius: var(--vqmenu-radius) var(--vqmenu-radius) 0 0;
+	  transition: opacity .2s ease;
+	}
+
+	.vqmenu-card [data-lightbox]:hover .vqmenu-card__img {
+	  opacity: .85;
+	}
+
+	.vqmenu-mobile-card__img {
+	  width: 100%;
+	  height: 160px;
+	  -o-object-fit: cover;
+	     object-fit: cover;
+	  border-radius: var(--vqmenu-radius) var(--vqmenu-radius) 0 0;
+	  margin: -1rem -1.1rem .75rem;
+	  width: calc(100% + 2.2rem);
+	}
+
+	/* ─── Out-of-stock items ─── */
+	.vqmenu-card--oos {
+	  opacity: .5;
+	  position: relative;
+	}
+
+	.vqmenu-card--oos .vqmenu-card__img {
+	  filter: grayscale(1);
+	}
+
+	.vqmenu-mobile-card--oos {
+	  opacity: .5;
+	}
+
+	.vqmenu-mobile-card--oos .vqmenu-mobile-card__img {
+	  filter: grayscale(1);
+	}
+
+	.vqmenu-oos-badge .badge {
+	  font-size: .7rem;
+	  font-weight: 600;
+	  letter-spacing: .03em;
+	  text-transform: uppercase;
+	}
 
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~SITEMAP~~~~~~~~
