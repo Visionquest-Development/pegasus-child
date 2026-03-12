@@ -94,9 +94,22 @@ if ( empty( $tabs ) || ! is_array( $tabs ) ) {
 				  $badges = is_array($item['badges'] ?? null) ? $item['badges'] : [];
 				  $spicy = (int)($item['spicy_level'] ?? 0);
 				  $extras = is_array($item['extras'] ?? null) ? $item['extras'] : [];
+				  $image = (string)($item['image'] ?? '');
+				  $is_oos = !empty($item['out_of_stock']);
+				  $oos_class = $is_oos ? ' vqmenu-card--oos' : '';
 				?>
 				  <div class="col-12 col-lg-6">
-					<article class="card vqmenu-card h-100">
+					<article class="card vqmenu-card h-100<?php echo esc_attr($oos_class); ?>">
+					  <?php if ($image) : ?>
+						<a href="<?php echo esc_url($image); ?>" data-lightbox="menu-<?php echo esc_attr($tab_id); ?>" data-title="<?php echo esc_attr($name); ?>">
+						  <img
+							class="card-img-top vqmenu-card__img"
+							src="<?php echo esc_url($image); ?>"
+							alt="<?php echo esc_attr($name); ?>"
+							loading="lazy"
+						  >
+						</a>
+					  <?php endif; ?>
 					  <div class="card-body">
 						<div class="vqmenu-itemtop">
 						  <h3 class="vqmenu-itemname mb-0">
@@ -109,6 +122,12 @@ if ( empty( $tabs ) || ! is_array( $tabs ) ) {
 							</div>
 						  <?php endif; ?>
 						</div>
+
+						<?php if ($is_oos) : ?>
+						  <div class="vqmenu-oos-badge mt-1">
+							<span class="badge bg-secondary">Currently Unavailable</span>
+						  </div>
+						<?php endif; ?>
 
 						<?php if (!empty($badges) || $spicy > 0) : ?>
 						  <div class="vqmenu-badges mt-2">
@@ -141,7 +160,7 @@ if ( empty( $tabs ) || ! is_array( $tabs ) ) {
 
 						<?php if (!empty($extras)) : ?>
 						  <div class="vqmenu-extras mt-3">
-							<div class="vqmenu-extraslabel">Add-ons</div>
+							<div class="vqmenu-extraslabel">Options</div>
 							<ul class="vqmenu-extraslist mb-0">
 							  <?php foreach ($extras as $ex) :
 								$ex_label = (string)($ex['label'] ?? '');

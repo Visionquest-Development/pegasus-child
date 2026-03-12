@@ -31,8 +31,9 @@
 
 		wp_enqueue_script( 'pegasus_child_custom_js', get_stylesheet_directory_uri() . '/js/pegasus-custom.js', array(), '', true );
 
-		//wp_enqueue_script( 'matchHeight_js', get_stylesheet_directory_uri() . '/js/jquery.matchHeight-min.js', array(), '', true );
-
+		// Lightbox2.
+		wp_enqueue_style( 'lightbox2-css', get_stylesheet_directory_uri() . '/css/lightbox.min.css', array(), '2.11.4' );
+		wp_enqueue_script( 'lightbox2-js', get_stylesheet_directory_uri() . '/js/lightbox.min.js', array( 'jquery' ), '2.11.4', true );
 
 	} //end function
 	add_action( 'wp_enqueue_scripts', 'pegasus_child_bootstrap_js' );
@@ -651,3 +652,329 @@
 		}
 		return $open;
 	}, 10, 2);
+
+	/*====================================================
+	 * Toast POS Menu Integration
+	 *
+	 * Fetches menu data from the Toast API via the vqdev-toast
+	 * plugin and transforms it into the format expected by the
+	 * theme's menu-tabs.php / menu-mobile.php templates.
+	 *===================================================*/
+
+	/**
+	 * Fetch out-of-stock item GUIDs from the Toast Stock API.
+	 *
+	 * Cached for 5 minutes (stock changes more frequently than menus).
+	 *
+	 * @return array Set of GUIDs that are OUT_OF_STOCK, keyed by GUID for fast lookup.
+	 */
+	function vqdev_toast_get_oos_guids() {
+
+		$cached = get_transient( 'vqdev_toast_oos_guids' );
+		if ( false !== $cached ) {
+			return $cached;
+		}
+
+		$result = vqdev_toast()->stock()->get_inventory();
+		$oos    = array();
+
+		if ( $result['success'] && is_array( $result['data'] ) ) {
+			foreach ( $result['data'] as $entry ) {
+				if ( 'OUT_OF_STOCK' === ( $entry['status'] ?? '' ) ) {
+					$oos[ $entry['guid'] ] = true;
+				}
+			}
+		}
+
+		set_transient( 'vqdev_toast_oos_guids', $oos, 5 * MINUTE_IN_SECONDS );
+
+		return $oos;
+	}
+
+	/**
+	 * Fetch and transform Toast menu data into the theme's tab/section/item format.
+	 *
+	 * Returns cached data when available (1-hour transient).
+	 * Skips the "Retail" menu. Resolves SIZE_PRICE items into extras.
+	 * Includes item images from the Toast API.
+	 * Marks out-of-stock items (or hides them, based on $hide_oos).
+	 *
+	 * @param array $skip_menus Menu names to exclude (default: ['Retail']).
+	 * @param bool  $hide_oos   If true, completely remove OOS items. If false, mark them.
+	 * @return array|null Theme-formatted menu data, or null on failure.
+	 */
+	function vqdev_toast_get_menu_data( $skip_menus = array( 'Retail' ), $hide_oos = false ) {
+
+		if ( ! function_exists( 'vqdev_toast' ) ) {
+			return null;
+		}
+
+		$cache_key = 'vqdev_toast_menu_data';
+		$cached    = get_transient( $cache_key );
+		if ( false !== $cached ) {
+			return $cached;
+		}
+
+		$result = vqdev_toast()->menus()->get_menus_v2();
+		if ( ! $result['success'] || empty( $result['data']['menus'] ) ) {
+			return null;
+		}
+
+		$api = $result['data'];
+
+		// Build lookup maps for modifier resolution.
+		$mod_groups  = array();
+		$mod_options = array();
+
+		if ( ! empty( $api['modifierGroupReferences'] ) ) {
+			foreach ( $api['modifierGroupReferences'] as $ref ) {
+				$mod_groups[ $ref['referenceId'] ] = $ref;
+			}
+		}
+		if ( ! empty( $api['modifierOptionReferences'] ) ) {
+			foreach ( $api['modifierOptionReferences'] as $ref ) {
+				$mod_options[ $ref['referenceId'] ] = $ref;
+			}
+		}
+
+		// Fetch out-of-stock GUIDs.
+		$oos_guids = vqdev_toast_get_oos_guids();
+
+		$tabs = array();
+
+		foreach ( $api['menus'] as $menu ) {
+			if ( in_array( $menu['name'], $skip_menus, true ) ) {
+				continue;
+			}
+
+			$tab = array(
+				'id'          => sanitize_title( $menu['name'] ),
+				'label'       => $menu['name'],
+				'description' => ! empty( $menu['description'] ) ? $menu['description'] : '',
+				'sections'    => array(),
+				'footnotes'   => array(),
+			);
+
+			foreach ( $menu['menuGroups'] as $group ) {
+				$has_subgroups = ! empty( $group['menuGroups'] );
+
+				// If the group itself has items, add it as a section.
+				if ( ! empty( $group['menuItems'] ) ) {
+					$tab['sections'][] = vqdev_toast_transform_group( $group, $mod_groups, $mod_options, $oos_guids, $hide_oos );
+				}
+
+				// Flatten nested subgroups into their own sections.
+				if ( $has_subgroups ) {
+					foreach ( $group['menuGroups'] as $sub ) {
+						if ( ! empty( $sub['menuItems'] ) ) {
+							$tab['sections'][] = vqdev_toast_transform_group( $sub, $mod_groups, $mod_options, $oos_guids, $hide_oos );
+						}
+					}
+				}
+			}
+
+			$tabs[] = $tab;
+		}
+
+		$last_updated = '';
+		if ( ! empty( $api['lastUpdated'] ) ) {
+			$ts = strtotime( $api['lastUpdated'] );
+			if ( $ts ) {
+				$last_updated = gmdate( 'Y-m-d', $ts );
+			}
+		}
+
+		$menu_data = array(
+			'restaurant_name' => 'Mabellas',
+			'updated'         => $last_updated,
+			'tabs'            => $tabs,
+		);
+
+		set_transient( $cache_key, $menu_data, HOUR_IN_SECONDS );
+
+		return $menu_data;
+	}
+
+	/**
+	 * Transform a Toast menuGroup into a theme section.
+	 *
+	 * @param array $group       Toast menuGroup object.
+	 * @param array $mod_groups  Modifier group refs keyed by referenceId.
+	 * @param array $mod_options Modifier option refs keyed by referenceId.
+	 * @param array $oos_guids   Out-of-stock GUIDs keyed by GUID.
+	 * @param bool  $hide_oos    Whether to hide OOS items entirely.
+	 * @return array Theme section.
+	 */
+	function vqdev_toast_transform_group( $group, $mod_groups, $mod_options, $oos_guids = array(), $hide_oos = false ) {
+
+		$items = array();
+
+		foreach ( $group['menuItems'] as $toast_item ) {
+			$is_oos = isset( $oos_guids[ $toast_item['guid'] ?? '' ] );
+
+			// Skip OOS items entirely if configured.
+			if ( $is_oos && $hide_oos ) {
+				continue;
+			}
+
+			$theme_item = vqdev_toast_transform_item( $toast_item, $mod_groups, $mod_options );
+
+			if ( $is_oos ) {
+				$theme_item['out_of_stock'] = true;
+			}
+
+			$items[] = $theme_item;
+		}
+
+		return array(
+			'title' => $group['name'] ?? '',
+			'note'  => $group['description'] ?? '',
+			'items' => $items,
+		);
+	}
+
+	/**
+	 * Transform a single Toast menuItem into a theme item.
+	 *
+	 * Resolves SIZE_PRICE items by looking up their size modifier group
+	 * and converting each size option into an "extra" with label + price.
+	 * Includes image URL when available from the Toast API.
+	 *
+	 * @param array $item        Toast menuItem object.
+	 * @param array $mod_groups  Modifier group refs keyed by referenceId.
+	 * @param array $mod_options Modifier option refs keyed by referenceId.
+	 * @return array Theme item.
+	 */
+	function vqdev_toast_transform_item( $item, $mod_groups, $mod_options ) {
+
+		$price  = '';
+		$extras = array();
+
+		if ( 'SIZE_PRICE' === ( $item['pricingStrategy'] ?? '' ) ) {
+			// Find the size modifier group via the sizeSpecificPricingGuid.
+			$size_guid = $item['pricingRules']['sizeSpecificPricingGuid'] ?? '';
+			if ( $size_guid ) {
+				foreach ( $item['modifierGroupReferences'] ?? array() as $ref_id ) {
+					if ( isset( $mod_groups[ $ref_id ] ) && $mod_groups[ $ref_id ]['guid'] === $size_guid ) {
+						foreach ( $mod_groups[ $ref_id ]['modifierOptionReferences'] as $opt_ref_id ) {
+							if ( isset( $mod_options[ $opt_ref_id ] ) ) {
+								$opt = $mod_options[ $opt_ref_id ];
+								$extras[] = array(
+									'label' => $opt['name'],
+									'price' => ( null !== $opt['price'] ) ? (string) $opt['price'] : '',
+								);
+							}
+						}
+						break;
+					}
+				}
+			}
+		} else {
+			$price = ( null !== $item['price'] ) ? (string) $item['price'] : '';
+		}
+
+		// Map allergens to badge labels.
+		$badges = array();
+		if ( ! empty( $item['allergens'] ) ) {
+			foreach ( $item['allergens'] as $allergen ) {
+				$badges[] = $allergen;
+			}
+		}
+
+		// Image URL from Toast (S3-hosted).
+		$image = ! empty( $item['image'] ) ? $item['image'] : '';
+
+		return array(
+			'name'         => $item['name'] ?? '',
+			'description'  => $item['description'] ?? '',
+			'price'        => $price,
+			'badges'       => $badges,
+			'spicy_level'  => 0,
+			'extras'       => $extras,
+			'image'        => $image,
+			'out_of_stock' => false,
+		);
+	}
+
+	/**
+	 * Shortcode: [toast_menu]
+	 *
+	 * Renders the full Toast POS menu using the theme's existing
+	 * menu-tabs (desktop) and menu-mobile templates.
+	 *
+	 * Usage: [toast_menu] or [toast_menu skip="Retail,Alcohol"]
+	 */
+	function vqdev_toast_menu_shortcode( $atts ) {
+
+		$atts = shortcode_atts( array(
+			'skip' => 'Retail',
+		), $atts, 'toast_menu' );
+
+		$skip_menus = array_map( 'trim', explode( ',', $atts['skip'] ) );
+		$menu_data  = vqdev_toast_get_menu_data( $skip_menus );
+
+		if ( ! $menu_data || empty( $menu_data['tabs'] ) ) {
+			return '<div class="alert alert-warning">Menu is currently unavailable. Please check back later.</div>';
+		}
+
+		// Format helpers (define once).
+		if ( ! function_exists( 'vqmenu_money' ) ) {
+			function vqmenu_money( $value ) {
+				$num = is_numeric( $value ) ? number_format( (float) $value, 2, '.', '' ) : $value;
+				if ( is_numeric( $value ) && fmod( (float) $value, 1.0 ) === 0.0 ) {
+					$num = number_format( (float) $value, 0, '.', '' );
+				}
+				return '$' . $num;
+			}
+		}
+
+		if ( ! function_exists( 'vqmenu_badge_class' ) ) {
+			function vqmenu_badge_class( $label ) {
+				$label = strtoupper( trim( (string) $label ) );
+				return match ( $label ) {
+					'V'     => 'vqmenu-badge vqmenu-badge--veg',
+					'GF'    => 'vqmenu-badge vqmenu-badge--gf',
+					'GF*'   => 'vqmenu-badge vqmenu-badge--gf',
+					default => 'vqmenu-badge',
+				};
+			}
+		}
+
+		// Enqueue the mobile menu JS.
+		$theme_dir = get_stylesheet_directory();
+		$theme_uri = get_stylesheet_directory_uri();
+		$js_rel    = '/assets/restaurant-menu/restaurant-menu.js';
+		if ( file_exists( $theme_dir . $js_rel ) ) {
+			wp_enqueue_script( 'vq-restaurant-menu', $theme_uri . $js_rel, array(), filemtime( $theme_dir . $js_rel ), true );
+		}
+
+		$tabs = $menu_data['tabs'];
+
+		ob_start();
+		?>
+		<div class="vqmenu">
+			<header class="vqmenu-header mb-4">
+				<?php if ( ! empty( $menu_data['restaurant_name'] ) ) : ?>
+					<h2 class="vqmenu-title mb-1"><?php echo esc_html( $menu_data['restaurant_name'] ); ?></h2>
+				<?php endif; ?>
+				<?php if ( ! empty( $menu_data['updated'] ) ) : ?>
+					<div class="vqmenu-meta text-muted">
+						Updated: <?php echo esc_html( $menu_data['updated'] ); ?>
+					</div>
+				<?php endif; ?>
+			</header>
+
+			<!-- Desktop: tabbed menu (hidden < 992px) -->
+			<div class="vqmenu-desktop">
+				<?php include get_stylesheet_directory() . '/templates/menu-tabs.php'; ?>
+			</div>
+
+			<!-- Mobile: long-scroll menu (hidden >= 992px) -->
+			<div class="vqmenu-mobile">
+				<?php include get_stylesheet_directory() . '/templates/menu-mobile.php'; ?>
+			</div>
+		</div>
+		<?php
+		return ob_get_clean();
+	}
+	add_shortcode( 'toast_menu', 'vqdev_toast_menu_shortcode' );

@@ -71,14 +71,33 @@ foreach ( $tabs as $ti => $tab ) {
 		  $badges      = is_array( $item['badges'] ?? null ) ? $item['badges'] : [];
 		  $spicy       = (int) ( $item['spicy_level'] ?? 0 );
 		  $extras      = is_array( $item['extras'] ?? null ) ? $item['extras'] : [];
+		  $image       = (string) ( $item['image'] ?? '' );
+		  $is_oos      = ! empty( $item['out_of_stock'] );
+		  $oos_class   = $is_oos ? ' vqmenu-mobile-card--oos' : '';
 		?>
-		  <article class="vqmenu-mobile-card">
+		  <article class="vqmenu-mobile-card<?php echo esc_attr( $oos_class ); ?>">
+			<?php if ( $image ) : ?>
+			  <a href="<?php echo esc_url( $image ); ?>" data-lightbox="menu-mobile" data-title="<?php echo esc_attr( $name ); ?>">
+				<img
+				  class="vqmenu-mobile-card__img"
+				  src="<?php echo esc_url( $image ); ?>"
+				  alt="<?php echo esc_attr( $name ); ?>"
+				  loading="lazy"
+				>
+			  </a>
+			<?php endif; ?>
 			<div class="vqmenu-mobile-card__top">
 			  <h3 class="vqmenu-mobile-card__name"><?php echo esc_html( $name ); ?></h3>
 			  <?php if ( $price !== '' ) : ?>
 				<span class="vqmenu-mobile-card__price"><?php echo esc_html( vqmenu_money( $price ) ); ?></span>
 			  <?php endif; ?>
 			</div>
+
+			<?php if ( $is_oos ) : ?>
+			  <div class="vqmenu-oos-badge mt-1">
+				<span class="badge bg-secondary">Currently Unavailable</span>
+			  </div>
+			<?php endif; ?>
 
 			<?php if ( ! empty( $badges ) || $spicy > 0 ) : ?>
 			  <div class="vqmenu-badges mt-1">
@@ -102,7 +121,7 @@ foreach ( $tabs as $ti => $tab ) {
 
 			<?php if ( ! empty( $extras ) ) : ?>
 			  <div class="vqmenu-mobile-card__extras">
-				<div class="vqmenu-extraslabel">Add-ons</div>
+				<div class="vqmenu-extraslabel">Options</div>
 				<ul class="vqmenu-extraslist mb-0">
 				  <?php foreach ( $extras as $ex ) :
 					$ex_label = (string) ( $ex['label'] ?? '' );
