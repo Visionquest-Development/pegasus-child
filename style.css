@@ -267,9 +267,6 @@
   justify-items: center;
 }
 
-  .single-partner {
-    padding: 20px;
-  }
 
   .inner-partner {
     background: rgba(255, 255, 255, 0.9);
@@ -292,6 +289,25 @@
     justify-content: center;
   }
 
+  .c-smith-realty {
+    background-color: #002D50;
+  }
+
+  .c-smith-realty .partner-logo {
+    position: relative;
+  }
+
+  .c-smith-realty .partner-logo svg {
+    /* height: 207px;
+    width: 200px; */
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 180%;
+  }
+
 
   @media (max-width: 991px) {
     .partner-grid {
@@ -302,6 +318,11 @@
     .partner-logo {
       width: 170px;
       height: 72px;
+    }
+
+    .c-smith-realty .partner-logo svg {
+      transform: translate(-50%, -46%);
+      width: 150%;
     }
   }
 
@@ -588,7 +609,33 @@
 }
 
 
+.service-areas-intro {
+  max-width: 900px;
+}
 
+.service-areas-eyebrow {
+  color: var(--oak-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+
+.service-areas-title {
+  font-weight: 800;
+  line-height: 1.15;
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  color: #fff;
+  text-wrap: balance;
+}
+
+.service-areas-subtitle {
+  max-width: 760px;
+  margin-inline: auto;
+  color: var(--oak-muted);
+  font-size: clamp(1rem, 1.4vw, 1.1rem);
+  line-height: 1.65;
+}
 
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~SITEMAP~~~~~~~~

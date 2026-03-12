@@ -321,8 +321,19 @@
 						<div class="partner-grid">
 							<div class="single-partner">
 								<div class="inner-partner">
-									<a class="partner-link" href="https://csmithrealty.kw.com/" target="_blank" aria-label="C-Smith Realty">
-										<div class="partner-logo" style="background-image:url('http://34oakcontracting.com/wp-content/uploads/2026/03/C-Smith-Realty_Blue-Logo.jpg');"></div>
+									<a class="partner-link c-smith-realty" href="https://csmithrealty.kw.com/" target="_blank" aria-label="C-Smith Realty">
+										<!--<div class="partner-logo" style="background-image:url('http://34oakcontracting.com/wp-content/uploads/2026/03/C-Smith-Realty_Blue-Logo.jpg');"></div>-->
+										<div class="partner-logo" >
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
+												<g fill="#FFFFFF">
+													<path d="M312.5 245.5v-78.2l87.5-62.5 87.5 62.5v78.2h-11.5v-71.5l-76-54.3-76 54.3v71.5h-11.5zM324 245.5v-70l76-54.3 76 54.3v70h-11.5v-63.4l-64.5-46-64.5 46v63.4H324z" />
+													<path d="M400 242.5c-20-18-35-30-35-45 0-10 7-17 17-17 6 0 12 3 18 8 6-5 12-8 18-8 10 0 17 7 17 17 0 15-15 27-35 45zm-6-35.5h4v4h-4v-4zm8 0h4v4h-4v-4zm-8 8h4v4h-4v-4zm8 0h4v4h-4v-4z" />
+
+													<text x="400" y="275" font-family="Arial, sans-serif" font-size="16" letter-spacing="6" text-anchor="middle" font-weight="400">CHRISTY@CSMITHREALTY.COM</text>
+													<text x="400" y="305" font-family="Arial, sans-serif" font-size="18" letter-spacing="8" text-anchor="middle" font-weight="400">678-848-9656</text>
+												</g>
+											</svg>
+										</div>
 									</a>
 								</div>
 							</div>
