@@ -29,17 +29,23 @@
     $loadBtn.prop('disabled', !this.value);
   });
 
-  // Build a check-in button
-  function checkinBtn(ticketId, status) {
-    var isCheckedIn = (status === 'Checked In');
-    var btnClass = isCheckedIn ? 'btn-success' : 'btn-outline-secondary';
-    var label = isCheckedIn ? 'Checked In' : 'Check In';
-    return '<button class="btn btn-sm ' + btnClass + ' tr-checkin-btn" ' +
-      'data-ticket-id="' + ticketId + '" data-status="' + escHtml(status) + '">' +
-      label + '</button>';
+  // Build check-in buttons for an array of tickets within an order
+  function checkinBtns(tickets) {
+    var html = '<div class="tr-checkin-group">';
+    $.each(tickets, function (i, t) {
+      var isCheckedIn = (t.status === 'Checked In');
+      var btnClass = isCheckedIn ? 'btn-success' : 'btn-outline-secondary';
+      var label = isCheckedIn ? 'Checked In' : 'Check In';
+      html += '<button class="btn btn-sm ' + btnClass + ' tr-checkin-btn me-1 mb-1" ' +
+        'data-ticket-id="' + t.ticket_id + '" data-status="' + escHtml(t.status) + '" ' +
+        'title="Ticket #' + t.ticket_id + '">' +
+        label + '</button>';
+    });
+    html += '</div>';
+    return html;
   }
 
-  // Handle check-in toggle (works for both tabs via event delegation)
+  // Handle check-in toggle
   $(document).on('click', '.tr-checkin-btn', function () {
     var $btn = $(this);
     var ticketId = $btn.data('ticket-id');
@@ -89,16 +95,16 @@
 
       var data = res.data;
 
-      // Summary
       $eventSummary
         .removeClass('d-none')
         .html(
           '<strong>' + escHtml(data.event_name) + '</strong> &mdash; ' +
+          data.total_orders + ' order(s), ' +
           data.total_tickets + ' ticket(s), ' +
           'Total Revenue: $' + data.total_revenue
         );
 
-      if (!data.tickets.length) {
+      if (!data.orders.length) {
         $eventResults.html('<p>No tickets found for this event.</p>');
         return;
       }
@@ -110,25 +116,25 @@
         '<th>Email</th>' +
         '<th>Purchaser</th>' +
         '<th>Type</th>' +
-        '<th>Price</th>' +
-        '<th>Status</th>' +
+        '<th>Qty</th>' +
+        '<th>Total</th>' +
+        '<th>Check In</th>' +
         '</tr></thead><tbody>';
 
-      $.each(data.tickets, function (i, t) {
+      $.each(data.orders, function (i, o) {
         html += '<tr>' +
-          '<td>#' + escHtml(t.order_id) + '</td>' +
-          '<td>' + escHtml(t.first_name) + ' ' + escHtml(t.last_name) + '</td>' +
-          '<td>' + escHtml(t.email) + '</td>' +
-          '<td>' + escHtml(t.purchaser_first) + ' ' + escHtml(t.purchaser_last) + '</td>' +
-          '<td>' + escHtml(t.ticket_type) + '</td>' +
-          '<td>$' + escHtml(t.price) + '</td>' +
-          '<td>' + checkinBtn(t.ticket_id, t.status) + '</td>' +
+          '<td>#' + escHtml(o.order_id) + '</td>' +
+          '<td>' + escHtml(o.first_name) + ' ' + escHtml(o.last_name) + '</td>' +
+          '<td>' + escHtml(o.email) + '</td>' +
+          '<td>' + escHtml(o.purchaser_first) + ' ' + escHtml(o.purchaser_last) + '</td>' +
+          '<td>' + escHtml(o.ticket_type) + '</td>' +
+          '<td>' + o.qty + '</td>' +
+          '<td>$' + escHtml(o.total_price) + '</td>' +
+          '<td>' + checkinBtns(o.tickets) + '</td>' +
           '</tr>';
       });
 
       html += '</tbody></table></div>';
-
-      // Export button
       html += '<button class="btn btn-secondary btn-sm mt-2" id="export-event-csv">Export CSV</button>';
 
       $eventResults.html(html);
@@ -182,20 +188,22 @@
         '<th>Email</th>' +
         '<th>Purchaser</th>' +
         '<th>Type</th>' +
-        '<th>Price</th>' +
-        '<th>Status</th>' +
+        '<th>Qty</th>' +
+        '<th>Total</th>' +
+        '<th>Check In</th>' +
         '</tr></thead><tbody>';
 
-      $.each(res.data, function (i, t) {
+      $.each(res.data, function (i, o) {
         html += '<tr>' +
-          '<td>#' + escHtml(t.order_id) + '</td>' +
-          '<td>' + escHtml(t.event_name) + '</td>' +
-          '<td>' + escHtml(t.first_name) + ' ' + escHtml(t.last_name) + '</td>' +
-          '<td>' + escHtml(t.email) + '</td>' +
-          '<td>' + escHtml(t.purchaser_first) + ' ' + escHtml(t.purchaser_last) + '</td>' +
-          '<td>' + escHtml(t.ticket_type) + '</td>' +
-          '<td>$' + escHtml(t.price) + '</td>' +
-          '<td>' + checkinBtn(t.ticket_id, t.status) + '</td>' +
+          '<td>#' + escHtml(o.order_id) + '</td>' +
+          '<td>' + escHtml(o.event_name) + '</td>' +
+          '<td>' + escHtml(o.first_name) + ' ' + escHtml(o.last_name) + '</td>' +
+          '<td>' + escHtml(o.email) + '</td>' +
+          '<td>' + escHtml(o.purchaser_first) + ' ' + escHtml(o.purchaser_last) + '</td>' +
+          '<td>' + escHtml(o.ticket_type) + '</td>' +
+          '<td>' + o.qty + '</td>' +
+          '<td>$' + escHtml(o.total_price) + '</td>' +
+          '<td>' + checkinBtns(o.tickets) + '</td>' +
           '</tr>';
       });
 

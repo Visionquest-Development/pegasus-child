@@ -328,12 +328,14 @@
 			ORDER BY order_id DESC, last_name ASC
 		", $product_id ) );
 
+		// Clean up individual tickets and group by order
 		$total_revenue = 0;
+		$grouped = array();
+
 		foreach ( $tickets as $ticket ) {
 			$ticket->price = tr_clean_price( $ticket->price );
 			$total_revenue += floatval( $ticket->price );
 
-			// Fall back to purchaser info when attendee fields are empty
 			if ( empty( $ticket->first_name ) ) {
 				$ticket->first_name = $ticket->purchaser_first;
 			}
@@ -343,12 +345,41 @@
 			if ( empty( $ticket->email ) ) {
 				$ticket->email = $ticket->purchaser_email;
 			}
+
+			$oid = $ticket->order_id;
+			if ( ! isset( $grouped[ $oid ] ) ) {
+				$grouped[ $oid ] = array(
+					'order_id'        => $oid,
+					'first_name'      => $ticket->first_name,
+					'last_name'       => $ticket->last_name,
+					'email'           => $ticket->email,
+					'purchaser_first' => $ticket->purchaser_first,
+					'purchaser_last'  => $ticket->purchaser_last,
+					'ticket_type'     => $ticket->ticket_type,
+					'qty'             => 0,
+					'total_price'     => 0,
+					'tickets'         => array(),
+				);
+			}
+			$grouped[ $oid ]['qty']++;
+			$grouped[ $oid ]['total_price'] += floatval( $ticket->price );
+			$grouped[ $oid ]['tickets'][] = array(
+				'ticket_id' => $ticket->ticket_id,
+				'status'    => $ticket->status,
+			);
+		}
+
+		// Re-index and format totals
+		$orders = array_values( $grouped );
+		foreach ( $orders as &$order ) {
+			$order['total_price'] = number_format( $order['total_price'], 2 );
 		}
 
 		wp_send_json_success( array(
 			'event_name'    => html_entity_decode( $event_name, ENT_QUOTES, 'UTF-8' ),
-			'tickets'       => $tickets,
+			'orders'        => $orders,
 			'total_tickets' => count( $tickets ),
+			'total_orders'  => count( $orders ),
 			'total_revenue' => number_format( $total_revenue, 2 ),
 		) );
 	}
@@ -429,8 +460,10 @@
 			ORDER BY last_name ASC, first_name ASC
 		", ...$ticket_ids ) );
 
-		// Resolve event names, clean prices, and fill in attendee from purchaser
-		foreach ( $tickets as &$ticket ) {
+		// Resolve event names, clean prices, fill in attendee, and group by order + event
+		$grouped = array();
+
+		foreach ( $tickets as $ticket ) {
 			$ticket->event_name = $ticket->product_id ? html_entity_decode( get_the_title( $ticket->product_id ), ENT_QUOTES, 'UTF-8' ) : '';
 			$ticket->price = tr_clean_price( $ticket->price );
 
@@ -443,9 +476,37 @@
 			if ( empty( $ticket->email ) ) {
 				$ticket->email = $ticket->purchaser_email;
 			}
+
+			$key = $ticket->order_id . '_' . $ticket->product_id;
+			if ( ! isset( $grouped[ $key ] ) ) {
+				$grouped[ $key ] = array(
+					'order_id'        => $ticket->order_id,
+					'event_name'      => $ticket->event_name,
+					'first_name'      => $ticket->first_name,
+					'last_name'       => $ticket->last_name,
+					'email'           => $ticket->email,
+					'purchaser_first' => $ticket->purchaser_first,
+					'purchaser_last'  => $ticket->purchaser_last,
+					'ticket_type'     => $ticket->ticket_type,
+					'qty'             => 0,
+					'total_price'     => 0,
+					'tickets'         => array(),
+				);
+			}
+			$grouped[ $key ]['qty']++;
+			$grouped[ $key ]['total_price'] += floatval( $ticket->price );
+			$grouped[ $key ]['tickets'][] = array(
+				'ticket_id' => $ticket->ticket_id,
+				'status'    => $ticket->status,
+			);
 		}
 
-		wp_send_json_success( $tickets );
+		$orders = array_values( $grouped );
+		foreach ( $orders as &$order ) {
+			$order['total_price'] = number_format( $order['total_price'], 2 );
+		}
+
+		wp_send_json_success( $orders );
 	}
 	add_action( 'wp_ajax_tr_search_customer', 'tr_search_customer' );
 
