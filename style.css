@@ -201,9 +201,6 @@
   #block-7 img {
 		width: 200px;
 	}
-	.ulg-logo-slider .logo-slide {
-    margin: 0 1rem;
-  }
 
   .logo-slide a {
     background-size: cover;
@@ -227,7 +224,7 @@
             filter: invert(100%) brightness(200%);
     background: rgba(255, 255, 255, 0.7);
     padding: 5px;
-    border-radius: 5px;
+
     position: absolute;
     bottom: 0;
     min-height: 72px;
@@ -674,7 +671,8 @@
 	}
 
 	.vqmenu-card--oos .vqmenu-card__img {
-	  filter: grayscale(1);
+	  -webkit-filter: grayscale(1);
+	          filter: grayscale(1);
 	}
 
 	.vqmenu-mobile-card--oos {
@@ -682,7 +680,8 @@
 	}
 
 	.vqmenu-mobile-card--oos .vqmenu-mobile-card__img {
-	  filter: grayscale(1);
+	  -webkit-filter: grayscale(1);
+	          filter: grayscale(1);
 	}
 
 	.vqmenu-oos-badge .badge {
