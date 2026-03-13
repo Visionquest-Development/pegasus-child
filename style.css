@@ -982,6 +982,42 @@
 	~~~~WOOCOMMERCE~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
 
+	/* ~~~~~~~~~~~~~~~~~~~~~~
+	~~~~ TICKET REPORT ~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~*/
+
+	#ticket-report-app {
+		padding: 1.5rem 0 3rem;
+	}
+
+	#ticket-report-app .nav-tabs .nav-link {
+		color: #237264;
+		font-weight: 600;
+	}
+
+	#ticket-report-app .nav-tabs .nav-link.active {
+		color: #0F172A;
+		border-color: #237264 #237264 #fff;
+	}
+
+	#ticket-report-app .table th {
+		background: #237264;
+		color: #fff;
+		font-size: .85rem;
+		white-space: nowrap;
+	}
+
+	#ticket-report-app .table td {
+		font-size: .85rem;
+		vertical-align: middle;
+	}
+
+	#ticket-report-app .alert-info {
+		background: #e8f5f1;
+		border-color: #237264;
+		color: #0F172A;
+	}
+
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~MEDIA QUERIES~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
