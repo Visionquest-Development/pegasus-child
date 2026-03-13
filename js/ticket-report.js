@@ -9,6 +9,43 @@
   var $searchBtn = $('#search-customer-btn');
   var $customerResults = $('#customer-results');
 
+  // ── Sortable table headers ──
+  // Click any <th> with data-sort-col to sort its table's <tbody> rows.
+  $(document).on('click', 'th[data-sort-col]', function () {
+    var $th = $(this);
+    var $table = $th.closest('table');
+    var colIdx = $th.data('sort-col');
+    var dir = $th.data('sort-dir') === 'asc' ? 'desc' : 'asc';
+
+    // Reset all headers in this table, then set active
+    $table.find('th[data-sort-col]').removeData('sort-dir').removeClass('tr-sort-asc tr-sort-desc');
+    $th.data('sort-dir', dir).addClass(dir === 'asc' ? 'tr-sort-asc' : 'tr-sort-desc');
+
+    var $tbody = $table.find('tbody');
+    var rows = $tbody.find('tr').get();
+
+    rows.sort(function (a, b) {
+      var aText = $(a).children('td').eq(colIdx).text().trim().toLowerCase();
+      var bText = $(b).children('td').eq(colIdx).text().trim().toLowerCase();
+
+      // Try numeric comparison (strip $ and #)
+      var aNum = parseFloat(aText.replace(/[$#,]/g, ''));
+      var bNum = parseFloat(bText.replace(/[$#,]/g, ''));
+
+      if (!isNaN(aNum) && !isNaN(bNum)) {
+        return dir === 'asc' ? aNum - bNum : bNum - aNum;
+      }
+      // Fall back to string comparison
+      if (aText < bText) return dir === 'asc' ? -1 : 1;
+      if (aText > bText) return dir === 'asc' ? 1 : -1;
+      return 0;
+    });
+
+    $.each(rows, function (i, row) {
+      $tbody.append(row);
+    });
+  });
+
   // Load events into dropdown on page load
   $.post(ticketReport.ajax_url, {
     action: 'tr_get_events',
@@ -28,6 +65,11 @@
   $eventSelect.on('change', function () {
     $loadBtn.prop('disabled', !this.value);
   });
+
+  // Build sortable header
+  function sortTh(label, colIdx) {
+    return '<th data-sort-col="' + colIdx + '">' + label + '</th>';
+  }
 
   // Build check-in buttons for an array of tickets within an order
   function checkinBtns(tickets) {
@@ -111,13 +153,13 @@
 
       var html = '<div class="table-responsive"><table class="table table-striped table-hover">' +
         '<thead><tr>' +
-        '<th>Order</th>' +
-        '<th>Attendee</th>' +
-        '<th>Email</th>' +
-        '<th>Purchaser</th>' +
-        '<th>Type</th>' +
-        '<th>Qty</th>' +
-        '<th>Total</th>' +
+        sortTh('Order', 0) +
+        sortTh('Attendee', 1) +
+        sortTh('Email', 2) +
+        sortTh('Purchaser', 3) +
+        sortTh('Type', 4) +
+        sortTh('Qty', 5) +
+        sortTh('Total', 6) +
         '<th>Check In</th>' +
         '</tr></thead><tbody>';
 
@@ -182,14 +224,14 @@
 
       var html = '<div class="table-responsive"><table class="table table-striped table-hover">' +
         '<thead><tr>' +
-        '<th>Order</th>' +
-        '<th>Event</th>' +
-        '<th>Attendee</th>' +
-        '<th>Email</th>' +
-        '<th>Purchaser</th>' +
-        '<th>Type</th>' +
-        '<th>Qty</th>' +
-        '<th>Total</th>' +
+        sortTh('Order', 0) +
+        sortTh('Event', 1) +
+        sortTh('Attendee', 2) +
+        sortTh('Email', 3) +
+        sortTh('Purchaser', 4) +
+        sortTh('Type', 5) +
+        sortTh('Qty', 6) +
+        sortTh('Total', 7) +
         '<th>Check In</th>' +
         '</tr></thead><tbody>';
 

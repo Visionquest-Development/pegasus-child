@@ -1007,6 +1007,38 @@
 		white-space: nowrap;
 	}
 
+	#ticket-report-app .table th[data-sort-col] {
+		cursor: pointer;
+		-webkit-user-select: none;
+		   -moz-user-select: none;
+		    -ms-user-select: none;
+		        user-select: none;
+		position: relative;
+		padding-right: 1.4em;
+	}
+
+	#ticket-report-app .table th[data-sort-col]:hover {
+		background: #1b5a4f;
+	}
+
+	#ticket-report-app .table th[data-sort-col]::after {
+		content: "\2195";
+		position: absolute;
+		right: .4em;
+		opacity: .4;
+		font-size: .75em;
+	}
+
+	#ticket-report-app .table th.tr-sort-asc::after {
+		content: "\2191";
+		opacity: 1;
+	}
+
+	#ticket-report-app .table th.tr-sort-desc::after {
+		content: "\2193";
+		opacity: 1;
+	}
+
 	#ticket-report-app .table td {
 		font-size: .85rem;
 		vertical-align: middle;
