@@ -71,17 +71,26 @@
     return '<th data-sort-col="' + colIdx + '">' + label + '</th>';
   }
 
-  // Build check-in buttons for an array of tickets within an order
+  // Build a link to the WooCommerce order edit screen
+  function orderLink(orderId) {
+    return '<a href="' + ticketReport.order_url + orderId + '" target="_blank" title="View order in WooCommerce">#' + escHtml(orderId) + '</a>';
+  }
+
+  // Build check-in buttons + ticket links for an array of tickets within an order
   function checkinBtns(tickets) {
     var html = '<div class="tr-checkin-group">';
     $.each(tickets, function (i, t) {
       var isCheckedIn = (t.status === 'Checked In');
       var btnClass = isCheckedIn ? 'btn-success' : 'btn-outline-secondary';
       var label = isCheckedIn ? 'Checked In' : 'Check In';
-      html += '<button class="btn btn-sm ' + btnClass + ' tr-checkin-btn me-1 mb-1" ' +
-        'data-ticket-id="' + t.ticket_id + '" data-status="' + escHtml(t.status) + '" ' +
-        'title="Ticket #' + t.ticket_id + '">' +
-        label + '</button>';
+      html += '<div class="tr-checkin-row d-flex align-items-center mb-1">' +
+        '<a href="' + ticketReport.ticket_url + t.ticket_id + '" target="_blank" ' +
+        'class="tr-ticket-link me-1" title="View ticket #' + t.ticket_id + '">' +
+        '#' + t.ticket_id + '</a>' +
+        '<button class="btn btn-sm ' + btnClass + ' tr-checkin-btn" ' +
+        'data-ticket-id="' + t.ticket_id + '" data-status="' + escHtml(t.status) + '">' +
+        label + '</button>' +
+        '</div>';
     });
     html += '</div>';
     return html;
@@ -165,7 +174,7 @@
 
       $.each(data.orders, function (i, o) {
         html += '<tr>' +
-          '<td>#' + escHtml(o.order_id) + '</td>' +
+          '<td>' + orderLink(o.order_id) + '</td>' +
           '<td>' + escHtml(o.order_date) + '</td>' +
           '<td>' + escHtml(o.first_name) + ' ' + escHtml(o.last_name) + '</td>' +
           '<td>' + escHtml(o.email) + '</td>' +
@@ -237,7 +246,7 @@
 
       $.each(res.data, function (i, o) {
         html += '<tr>' +
-          '<td>#' + escHtml(o.order_id) + '</td>' +
+          '<td>' + orderLink(o.order_id) + '</td>' +
           '<td>' + escHtml(o.order_date) + '</td>' +
           '<td>' + escHtml(o.event_name) + '</td>' +
           '<td>' + escHtml(o.first_name) + ' ' + escHtml(o.last_name) + '</td>' +

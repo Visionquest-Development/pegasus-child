@@ -228,8 +228,10 @@
 		);
 
 		wp_localize_script( 'ticket-report-js', 'ticketReport', array(
-			'ajax_url' => admin_url( 'admin-ajax.php' ),
-			'nonce'    => wp_create_nonce( 'ticket_report_nonce' ),
+			'ajax_url'  => admin_url( 'admin-ajax.php' ),
+			'nonce'     => wp_create_nonce( 'ticket_report_nonce' ),
+			'order_url' => admin_url( 'admin.php?page=wc-orders&action=edit&id=' ),
+			'ticket_url' => admin_url( 'post.php?action=edit&post=' ),
 		) );
 	}
 	add_action( 'wp_enqueue_scripts', 'tr_enqueue_ticket_report_assets' );

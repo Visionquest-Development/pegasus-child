@@ -1062,6 +1062,21 @@
 		vertical-align: middle;
 	}
 
+	#ticket-report-app .table td a {
+		color: #237264;
+		font-weight: 600;
+		text-decoration: none;
+	}
+
+	#ticket-report-app .table td a:hover {
+		text-decoration: underline;
+	}
+
+	#ticket-report-app .tr-ticket-link {
+		font-size: .75rem;
+		white-space: nowrap;
+	}
+
 	#ticket-report-app .alert-info {
 		background: #e8f5f1;
 		border-color: #237264;
