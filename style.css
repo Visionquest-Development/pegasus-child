@@ -258,9 +258,6 @@
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ FOOTER ~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-  .ulg-logo-slider .logo-slide {
-    margin: 0 1rem;
-  }
 
 
 	footer .menu-footer-menu-1-container ul,
@@ -296,7 +293,7 @@
 	background-repeat: no-repeat;
 	min-height: 250px;
 	position: relative;
-	border-radius: 5px;
+
 	display: block;
 }
 
