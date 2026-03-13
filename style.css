@@ -298,7 +298,6 @@
     background-repeat: no-repeat;
     min-height: 250px;
     position: relative;
-    border-radius: 5px;
     display: block;
   }
 
@@ -351,7 +350,7 @@
 	.ulg-brand-grid__row {
 		display: flex;
 		width: 100%;
-		min-height: 520px;
+		min-height: 750px;
 	}
 
 	.ulg-brand-grid__panel {
@@ -392,7 +391,8 @@
 		max-width: 170px;
 		width: 70%;
 		height: auto;
-		filter: brightness(0) invert(1);
+		-webkit-filter: brightness(0) invert(1);
+		        filter: brightness(0) invert(1);
 		transition: transform 0.4s ease;
 	}
 
