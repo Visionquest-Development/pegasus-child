@@ -308,7 +308,8 @@
 				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsPrice'                 THEN pm.meta_value END ) AS price,
 				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsOrderID'               THEN pm.meta_value END ) AS order_id,
 				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsStatus'                THEN pm.meta_value END ) AS status,
-				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsTicketType'            THEN pm.meta_value END ) AS ticket_type
+				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsTicketType'            THEN pm.meta_value END ) AS ticket_type,
+				o.date_created_gmt AS order_date
 			FROM {$wpdb->posts} t
 			INNER JOIN {$wpdb->postmeta} pm
 				ON t.ID = pm.post_id
@@ -348,6 +349,9 @@
 
 			$oid = $ticket->order_id;
 			if ( ! isset( $grouped[ $oid ] ) ) {
+				// Convert GMT to site timezone for display
+				$date_local = get_date_from_gmt( $ticket->order_date, 'M j, Y g:ia' );
+
 				$grouped[ $oid ] = array(
 					'order_id'        => $oid,
 					'first_name'      => $ticket->first_name,
@@ -356,6 +360,7 @@
 					'purchaser_first' => $ticket->purchaser_first,
 					'purchaser_last'  => $ticket->purchaser_last,
 					'ticket_type'     => $ticket->ticket_type,
+					'order_date'      => $date_local,
 					'qty'             => 0,
 					'total_price'     => 0,
 					'tickets'         => array(),
@@ -452,9 +457,15 @@
 				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsOrderID'               THEN pm.meta_value END ) AS order_id,
 				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsStatus'                THEN pm.meta_value END ) AS status,
 				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsTicketType'            THEN pm.meta_value END ) AS ticket_type,
-				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsProductID'             THEN pm.meta_value END ) AS product_id
+				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsProductID'             THEN pm.meta_value END ) AS product_id,
+				o.date_created_gmt AS order_date
 			FROM {$wpdb->posts} t
 			INNER JOIN {$wpdb->postmeta} pm ON t.ID = pm.post_id
+			INNER JOIN {$wpdb->postmeta} pm_ord
+				ON t.ID = pm_ord.post_id
+				AND pm_ord.meta_key = 'WooCommerceEventsOrderID'
+			INNER JOIN {$orders_table} o
+				ON pm_ord.meta_value = o.id
 			WHERE t.ID IN ($placeholders)
 			GROUP BY t.ID
 			ORDER BY last_name ASC, first_name ASC
@@ -479,6 +490,8 @@
 
 			$key = $ticket->order_id . '_' . $ticket->product_id;
 			if ( ! isset( $grouped[ $key ] ) ) {
+				$date_local = get_date_from_gmt( $ticket->order_date, 'M j, Y g:ia' );
+
 				$grouped[ $key ] = array(
 					'order_id'        => $ticket->order_id,
 					'event_name'      => $ticket->event_name,
@@ -488,6 +501,7 @@
 					'purchaser_first' => $ticket->purchaser_first,
 					'purchaser_last'  => $ticket->purchaser_last,
 					'ticket_type'     => $ticket->ticket_type,
+					'order_date'      => $date_local,
 					'qty'             => 0,
 					'total_price'     => 0,
 					'tickets'         => array(),

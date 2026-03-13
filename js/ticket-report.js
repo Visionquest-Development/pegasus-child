@@ -154,10 +154,10 @@
       var html = '<div class="table-responsive"><table class="table table-striped table-hover">' +
         '<thead><tr>' +
         sortTh('Order', 0) +
-        sortTh('Attendee', 1) +
-        sortTh('Email', 2) +
-        sortTh('Purchaser', 3) +
-        sortTh('Type', 4) +
+        sortTh('Date', 1) +
+        sortTh('Attendee', 2) +
+        sortTh('Email', 3) +
+        sortTh('Purchaser', 4) +
         sortTh('Qty', 5) +
         sortTh('Total', 6) +
         '<th>Check In</th>' +
@@ -166,10 +166,10 @@
       $.each(data.orders, function (i, o) {
         html += '<tr>' +
           '<td>#' + escHtml(o.order_id) + '</td>' +
+          '<td>' + escHtml(o.order_date) + '</td>' +
           '<td>' + escHtml(o.first_name) + ' ' + escHtml(o.last_name) + '</td>' +
           '<td>' + escHtml(o.email) + '</td>' +
           '<td>' + escHtml(o.purchaser_first) + ' ' + escHtml(o.purchaser_last) + '</td>' +
-          '<td>' + escHtml(o.ticket_type) + '</td>' +
           '<td>' + o.qty + '</td>' +
           '<td>$' + escHtml(o.total_price) + '</td>' +
           '<td>' + checkinBtns(o.tickets) + '</td>' +
@@ -225,11 +225,11 @@
       var html = '<div class="table-responsive"><table class="table table-striped table-hover">' +
         '<thead><tr>' +
         sortTh('Order', 0) +
-        sortTh('Event', 1) +
-        sortTh('Attendee', 2) +
-        sortTh('Email', 3) +
-        sortTh('Purchaser', 4) +
-        sortTh('Type', 5) +
+        sortTh('Date', 1) +
+        sortTh('Event', 2) +
+        sortTh('Attendee', 3) +
+        sortTh('Email', 4) +
+        sortTh('Purchaser', 5) +
         sortTh('Qty', 6) +
         sortTh('Total', 7) +
         '<th>Check In</th>' +
@@ -238,11 +238,11 @@
       $.each(res.data, function (i, o) {
         html += '<tr>' +
           '<td>#' + escHtml(o.order_id) + '</td>' +
+          '<td>' + escHtml(o.order_date) + '</td>' +
           '<td>' + escHtml(o.event_name) + '</td>' +
           '<td>' + escHtml(o.first_name) + ' ' + escHtml(o.last_name) + '</td>' +
           '<td>' + escHtml(o.email) + '</td>' +
           '<td>' + escHtml(o.purchaser_first) + ' ' + escHtml(o.purchaser_last) + '</td>' +
-          '<td>' + escHtml(o.ticket_type) + '</td>' +
           '<td>' + o.qty + '</td>' +
           '<td>$' + escHtml(o.total_price) + '</td>' +
           '<td>' + checkinBtns(o.tickets) + '</td>' +
