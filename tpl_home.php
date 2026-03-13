@@ -61,6 +61,8 @@
 			?>
 		</section>
 
+		<?php get_template_part( 'templates/brand_grid' ); ?>
+
 		<section class="upl-hero-intro wow fadeIn" data-wow-delay="0.5s">
 			<div class="container text-center">
 				<h2 class="ulg-gradient-heading">

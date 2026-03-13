@@ -339,6 +339,127 @@
 	}
 
 
+	/* ============================================
+	   BRAND GRID – Fifth Group-style hero panels
+	   ============================================ */
+
+	.ulg-brand-grid {
+		width: 100%;
+		overflow: hidden;
+	}
+
+	.ulg-brand-grid__row {
+		display: flex;
+		width: 100%;
+		min-height: 520px;
+	}
+
+	.ulg-brand-grid__panel {
+		flex: 1 1 0%;
+		position: relative;
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-decoration: none;
+		overflow: hidden;
+		transition: flex 0.4s ease;
+	}
+
+	.ulg-brand-grid__panel:hover {
+		flex: 1.35 1 0%;
+	}
+
+	/* Dark overlay for contrast */
+	.ulg-brand-grid__overlay {
+		position: absolute;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.3);
+		transition: background 0.4s ease;
+		pointer-events: none;
+	}
+
+	.ulg-brand-grid__panel:hover .ulg-brand-grid__overlay {
+		background: rgba(0, 0, 0, 0.15);
+	}
+
+	/* Logo */
+	.ulg-brand-grid__logo {
+		position: relative;
+		z-index: 2;
+		max-width: 170px;
+		width: 70%;
+		height: auto;
+		filter: brightness(0) invert(1);
+		transition: transform 0.4s ease;
+	}
+
+	.ulg-brand-grid__panel:hover .ulg-brand-grid__logo {
+		transform: scale(1.08);
+	}
+
+	/* Responsive */
+	@media (max-width: 991px) {
+		.ulg-brand-grid__row {
+			min-height: 400px;
+		}
+
+		.ulg-brand-grid__logo {
+			max-width: 120px;
+		}
+	}
+
+	@media (max-width: 767px) {
+		.ulg-brand-grid__row {
+			flex-wrap: wrap;
+			min-height: auto;
+		}
+
+		.ulg-brand-grid__panel {
+			flex: 1 1 50%;
+			min-height: 280px;
+			order: 1;
+		}
+
+		/* Mabellas (first panel) gets full width on its own row */
+		.ulg-brand-grid__panel:first-child {
+			flex: 1 1 100%;
+			min-height: 320px;
+			order: 0;
+		}
+
+		.ulg-brand-grid__panel:hover {
+			flex: 1 1 50%;
+		}
+
+		.ulg-brand-grid__panel:first-child:hover {
+			flex: 1 1 100%;
+		}
+
+		.ulg-brand-grid__logo {
+			max-width: 140px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.ulg-brand-grid__panel {
+			flex: 1 1 100%;
+			min-height: 240px;
+		}
+
+		.ulg-brand-grid__panel:first-child {
+			min-height: 300px;
+		}
+
+		.ulg-brand-grid__panel:hover,
+		.ulg-brand-grid__panel:first-child:hover {
+			flex: 1 1 100%;
+		}
+	}
+
+
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 	/*~~~~~~~~~~~~~~~~~~~~~
