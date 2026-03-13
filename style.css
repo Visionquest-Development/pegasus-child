@@ -298,9 +298,6 @@
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ FOOTER ~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-  .ulg-logo-slider .logo-slide {
-    margin: 0 1rem;
-  }
 
   .logo-slide a {
     background-size: cover;
@@ -324,7 +321,7 @@
             filter: invert(100%) brightness(200%);
     background: rgba(255, 255, 255, 0.7);
     padding: 5px;
-    border-radius: 5px;
+    
     position: absolute;
     bottom: 0;
     min-height: 72px;
@@ -1013,29 +1010,50 @@
 		   -moz-user-select: none;
 		    -ms-user-select: none;
 		        user-select: none;
+		padding-right: 1.6em;
 		position: relative;
-		padding-right: 1.4em;
 	}
 
 	#ticket-report-app .table th[data-sort-col]:hover {
 		background: #1b5a4f;
 	}
 
+	/* Stacked up/down chevrons (unsorted) */
+	#ticket-report-app .table th[data-sort-col]::before,
 	#ticket-report-app .table th[data-sort-col]::after {
-		content: "\2195";
 		position: absolute;
-		right: .4em;
-		opacity: .4;
-		font-size: .75em;
+		right: .45em;
+		font-size: .55em;
+		line-height: 1;
+		opacity: .35;
+		-webkit-font-smoothing: antialiased;
 	}
 
-	#ticket-report-app .table th.tr-sort-asc::after {
-		content: "\2191";
+	#ticket-report-app .table th[data-sort-col]::before {
+		content: "\25B2";
+		top: .7em;
+	}
+
+	#ticket-report-app .table th[data-sort-col]::after {
+		content: "\25BC";
+		bottom: .7em;
+	}
+
+	/* Active ASC: up chevron bright, down chevron hidden */
+	#ticket-report-app .table th.tr-sort-asc::before {
 		opacity: 1;
 	}
 
+	#ticket-report-app .table th.tr-sort-asc::after {
+		opacity: .15;
+	}
+
+	/* Active DESC: down chevron bright, up chevron hidden */
+	#ticket-report-app .table th.tr-sort-desc::before {
+		opacity: .15;
+	}
+
 	#ticket-report-app .table th.tr-sort-desc::after {
-		content: "\2193";
 		opacity: 1;
 	}
 
