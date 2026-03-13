@@ -692,9 +692,52 @@
 	}
 
 	/**
+	 * Check the Toast metadata endpoint to see if the menu has changed.
+	 *
+	 * Uses a lightweight API call (returns only restaurantGuid + lastUpdated)
+	 * instead of downloading the full 3MB menu payload. The lastUpdated
+	 * timestamp is cached for 10 minutes so we don't hit the API on every
+	 * page load, but still detect menu changes relatively quickly.
+	 *
+	 * @return bool True if the menu has changed since our last full fetch.
+	 */
+	function vqdev_toast_menu_has_changed() {
+
+		$stored_timestamp = get_option( 'vqdev_toast_menu_last_updated', '' );
+
+		// Throttle metadata checks to every 10 minutes.
+		$last_check = get_transient( 'vqdev_toast_metadata_checked' );
+		if ( false !== $last_check ) {
+			return false; // Already checked recently, assume no change.
+		}
+
+		$meta = vqdev_toast()->menus()->get_metadata_v2();
+
+		if ( ! $meta['success'] ) {
+			return false; // Can't reach API, keep using cached data.
+		}
+
+		$api_timestamp = $meta['data']['lastUpdated'] ?? '';
+
+		// Mark that we checked, regardless of result.
+		set_transient( 'vqdev_toast_metadata_checked', 1, 10 * MINUTE_IN_SECONDS );
+
+		if ( $api_timestamp !== $stored_timestamp ) {
+			// Menu has changed — store the new timestamp.
+			update_option( 'vqdev_toast_menu_last_updated', $api_timestamp, false );
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
 	 * Fetch and transform Toast menu data into the theme's tab/section/item format.
 	 *
-	 * Returns cached data when available (1-hour transient).
+	 * Uses smart cache invalidation via the metadata endpoint: a lightweight
+	 * API call checks if the menu has changed before re-fetching the full
+	 * 3MB menu payload. The metadata check is throttled to every 10 minutes.
+	 *
 	 * Skips the "Retail" menu. Resolves SIZE_PRICE items into extras.
 	 * Includes item images from the Toast API.
 	 * Marks out-of-stock items (or hides them, based on $hide_oos).
@@ -711,12 +754,21 @@
 
 		$cache_key = 'vqdev_toast_menu_data';
 		$cached    = get_transient( $cache_key );
+
+		// If we have cached data, check metadata to see if it's stale.
 		if ( false !== $cached ) {
-			return $cached;
+			if ( ! vqdev_toast_menu_has_changed() ) {
+				return $cached;
+			}
+			// Menu changed — fall through to re-fetch.
 		}
 
 		$result = vqdev_toast()->menus()->get_menus_v2();
 		if ( ! $result['success'] || empty( $result['data']['menus'] ) ) {
+			// If re-fetch fails but we have stale cache, return it anyway.
+			if ( false !== $cached ) {
+				return $cached;
+			}
 			return null;
 		}
 
@@ -790,7 +842,17 @@
 			'tabs'            => $tabs,
 		);
 
-		set_transient( $cache_key, $menu_data, HOUR_IN_SECONDS );
+		// Store the API's lastUpdated timestamp so the metadata check can
+		// compare against it on future requests. Also set the metadata
+		// throttle so we don't immediately re-check after a fresh fetch.
+		if ( ! empty( $api['lastUpdated'] ) ) {
+			update_option( 'vqdev_toast_menu_last_updated', $api['lastUpdated'], false );
+			set_transient( 'vqdev_toast_metadata_checked', 1, 10 * MINUTE_IN_SECONDS );
+		}
+
+		// Cache for 24 hours as a safety net. The metadata check (every 10 min)
+		// handles real invalidation when the menu changes in Toast.
+		set_transient( $cache_key, $menu_data, DAY_IN_SECONDS );
 
 		return $menu_data;
 	}
