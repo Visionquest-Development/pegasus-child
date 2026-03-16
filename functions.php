@@ -906,6 +906,190 @@
 	add_shortcode( 'toast_menu', 'vqdev_toast_menu_shortcode' );
 
 	/*------------------------------------------------------------------
+	 * Custom "Event Manager" role
+	 *
+	 * Access: WooCommerce Orders, FooEvents tickets, Ticket Report
+	 * template, and Products (for event management). Everything else
+	 * in the admin sidebar is hidden.
+	 *-----------------------------------------------------------------*/
+
+	/**
+	 * Register the Event Manager role on theme activation / upgrade.
+	 */
+	function ulg_register_event_manager_role() {
+		$version = '1.1';
+		if ( get_option( 'ulg_event_manager_role_version' ) === $version ) {
+			return;
+		}
+
+		// Remove old version so caps refresh cleanly.
+		remove_role( 'event_manager' );
+
+		add_role( 'event_manager', __( 'Event Manager', 'pegasus-bootstrap' ), array(
+			// Core
+			'read'                              => true,
+			'upload_files'                       => true,
+			'edit_posts'                         => true, // needed by FooEvents menus
+
+			// WooCommerce Orders (HPOS-aware caps)
+			'edit_shop_orders'                   => true,
+			'read_shop_orders'                   => true,
+			'edit_others_shop_orders'            => true,
+			'read_private_shop_orders'           => true,
+
+			// Products – view & edit (events are products)
+			'edit_products'                      => true,
+			'edit_others_products'               => true,
+			'publish_products'                   => true,
+			'read_private_products'              => true,
+			'edit_published_products'            => true,
+
+			// FooEvents tickets
+			'edit_event_magic_tickets'           => true,
+			'edit_event_magic_ticket'            => true,
+			'edit_others_event_magic_tickets'    => true,
+			'edit_published_event_magic_tickets' => true,
+			'edit_published_event_magic_ticket'  => true,
+			'publish_event_magic_tickets'        => true,
+			'publish_event_magic_ticket'         => true,
+			'read_private_event_magic_tickets'   => true,
+			'read_event_magic_ticket'            => true,
+			'delete_event_magic_tickets'         => true,
+			'delete_event_magic_ticket'          => true,
+			'app_event_magic_tickets'            => true,
+
+			// Ticket report template uses AJAX
+			'manage_woocommerce'                 => false,
+			'view_woocommerce_reports'           => false,
+
+			// Custom cap for the ticket report page
+			'view_ticket_report'                 => true,
+		) );
+
+		update_option( 'ulg_event_manager_role_version', $version );
+	}
+	add_action( 'admin_init', 'ulg_register_event_manager_role' );
+
+	/**
+	 * Hide admin menus that Event Managers should not see.
+	 */
+	function ulg_event_manager_hide_menus() {
+		$user = wp_get_current_user();
+		if ( ! in_array( 'event_manager', (array) $user->roles, true ) ) {
+			return;
+		}
+
+		global $menu, $submenu;
+
+		// Top-level menus to KEEP (everything else is removed).
+		$keep_top = array(
+			'index.php',                                     // Dashboard
+			'edit.php?post_type=shop_order',                 // Orders (legacy)
+			'woocommerce',                                   // WooCommerce (for HPOS orders)
+			'edit.php?post_type=product',                    // Products
+			'fooevents',                                     // FooEvents
+			'profile.php',                                   // Profile
+		);
+
+		foreach ( $menu as $key => $item ) {
+			$slug = $item[2] ?? '';
+			if ( ! in_array( $slug, $keep_top, true ) ) {
+				remove_menu_page( $slug );
+			}
+		}
+
+		// Under WooCommerce, keep only Orders.
+		if ( ! empty( $submenu['woocommerce'] ) ) {
+			foreach ( $submenu['woocommerce'] as $sub ) {
+				$sub_slug = $sub[2] ?? '';
+				if ( ! in_array( $sub_slug, array( 'wc-orders', 'edit.php?post_type=shop_order' ), true ) ) {
+					remove_submenu_page( 'woocommerce', $sub_slug );
+				}
+			}
+		}
+
+		// Under Products, keep only the product list (remove categories, tags, attributes, etc.).
+		if ( ! empty( $submenu['edit.php?post_type=product'] ) ) {
+			foreach ( $submenu['edit.php?post_type=product'] as $sub ) {
+				$sub_slug = $sub[2] ?? '';
+				if ( $sub_slug !== 'edit.php?post_type=product' ) {
+					remove_submenu_page( 'edit.php?post_type=product', $sub_slug );
+				}
+			}
+		}
+
+		// Under FooEvents, hide Settings and Getting Started.
+		remove_submenu_page( 'fooevents', 'fooevents-settings' );
+		remove_submenu_page( 'fooevents', 'fooevents-introduction' );
+		remove_submenu_page( 'fooevents', 'fooevents-ticket-themes' );
+	}
+	add_action( 'admin_menu', 'ulg_event_manager_hide_menus', 9999 );
+
+	/**
+	 * Redirect Event Managers away from disallowed admin pages.
+	 */
+	function ulg_event_manager_block_pages() {
+		$user = wp_get_current_user();
+		if ( ! in_array( 'event_manager', (array) $user->roles, true ) ) {
+			return;
+		}
+
+		global $pagenow;
+
+		// Allowed pages/screens.
+		$allowed = array(
+			'index.php',          // Dashboard
+			'profile.php',        // Profile
+			'edit.php',           // Post type lists (products, tickets)
+			'post.php',           // Edit single post
+			'post-new.php',       // New post
+			'admin.php',          // WooCommerce pages, FooEvents pages
+			'admin-ajax.php',     // AJAX
+			'upload.php',         // Media (for product images)
+			'media-new.php',
+			'async-upload.php',
+			'admin-post.php',
+		);
+
+		if ( ! in_array( $pagenow, $allowed, true ) ) {
+			wp_safe_redirect( admin_url() );
+			exit;
+		}
+	}
+	add_action( 'admin_init', 'ulg_event_manager_block_pages' );
+
+	/**
+	 * Allow Event Manager role to access the Ticket Report AJAX handlers.
+	 * The existing handlers check for manage_options — this filter lets
+	 * event_managers through when they have view_ticket_report cap.
+	 */
+	function ulg_event_manager_ticket_report_access( $allcaps, $caps, $args ) {
+		if ( ! isset( $args[0] ) || $args[0] !== 'manage_options' ) {
+			return $allcaps;
+		}
+
+		// Only grant during our ticket report AJAX actions.
+		if ( ! wp_doing_ajax() ) {
+			return $allcaps;
+		}
+
+		$action = $_REQUEST['action'] ?? '';
+		$ticket_report_actions = array(
+			'tr_get_events',
+			'tr_get_event_tickets',
+			'tr_search_customer',
+			'tr_toggle_checkin',
+		);
+
+		if ( in_array( $action, $ticket_report_actions, true ) && ! empty( $allcaps['view_ticket_report'] ) ) {
+			$allcaps['manage_options'] = true;
+		}
+
+		return $allcaps;
+	}
+	add_filter( 'user_has_cap', 'ulg_event_manager_ticket_report_access', 10, 3 );
+
+	/*------------------------------------------------------------------
 	 * WooCommerce Products list – FooEvents "Event Date" column
 	 *-----------------------------------------------------------------*/
 

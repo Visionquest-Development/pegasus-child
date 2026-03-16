@@ -3,8 +3,8 @@
 	Template Name: Ticket Report
 */
 
-// Restrict to admins only
-if ( ! current_user_can( 'manage_options' ) ) {
+// Restrict to admins and event managers
+if ( ! current_user_can( 'manage_options' ) && ! current_user_can( 'view_ticket_report' ) ) {
 	wp_redirect( home_url() );
 	exit;
 }
