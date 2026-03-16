@@ -904,3 +904,65 @@
 		return ob_get_clean();
 	}
 	add_shortcode( 'toast_menu', 'vqdev_toast_menu_shortcode' );
+
+	/*------------------------------------------------------------------
+	 * WooCommerce Products list – FooEvents "Event Date" column
+	 *-----------------------------------------------------------------*/
+
+	/**
+	 * Add "Event Date" column to WooCommerce Products admin list.
+	 */
+	function ulg_add_event_date_product_column( $columns ) {
+		$new_columns = [];
+		foreach ( $columns as $key => $label ) {
+			$new_columns[ $key ] = $label;
+			if ( $key === 'date' ) {
+				$new_columns['event_date'] = __( 'Event Date', 'pegasus-bootstrap' );
+			}
+		}
+		return $new_columns;
+	}
+	add_filter( 'manage_edit-product_columns', 'ulg_add_event_date_product_column' );
+
+	/**
+	 * Populate the "Event Date" column content.
+	 */
+	function ulg_render_event_date_product_column( $column, $post_id ) {
+		if ( $column !== 'event_date' ) {
+			return;
+		}
+
+		$event_date = get_post_meta( $post_id, 'WooCommerceEventsDate', true );
+
+		if ( ! empty( $event_date ) ) {
+			$timestamp = strtotime( $event_date );
+			echo esc_html( $timestamp ? date_i18n( 'M j, Y', $timestamp ) : $event_date );
+		} else {
+			echo '&mdash;';
+		}
+	}
+	add_action( 'manage_product_posts_custom_column', 'ulg_render_event_date_product_column', 10, 2 );
+
+	/**
+	 * Make the "Event Date" column sortable.
+	 */
+	function ulg_event_date_column_sortable( $columns ) {
+		$columns['event_date'] = 'event_date';
+		return $columns;
+	}
+	add_filter( 'manage_edit-product_sortable_columns', 'ulg_event_date_column_sortable' );
+
+	/**
+	 * Handle sorting by event date.
+	 */
+	function ulg_event_date_column_orderby( $query ) {
+		if ( ! is_admin() || ! $query->is_main_query() ) {
+			return;
+		}
+
+		if ( $query->get( 'orderby' ) === 'event_date' ) {
+			$query->set( 'meta_key', 'WooCommerceEventsDate' );
+			$query->set( 'orderby', 'meta_value' );
+		}
+	}
+	add_action( 'pre_get_posts', 'ulg_event_date_column_orderby' );
