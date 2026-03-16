@@ -43,7 +43,10 @@
 	} //end function
 	add_action( 'wp_enqueue_scripts', 'pegasus_child_bootstrap_js' );
 
-
+	function pegasus_child_admin_css() {
+		wp_enqueue_style( 'pegasus-child-admin-css', get_stylesheet_directory_uri() . '/admin.css', array(), '1.0.0' );
+	}
+	add_action( 'admin_enqueue_scripts', 'pegasus_child_admin_css' );
 
 	/**
 	 * Homepage Sections metabox (CMB2) – shown only on the static front page
@@ -576,3 +579,328 @@
 		) );
 	}
 	add_action( 'wp_ajax_tr_toggle_checkin', 'tr_toggle_checkin' );
+
+	/*------------------------------------------------------------------
+	 * Toast POS Menu – helper functions
+	 *-----------------------------------------------------------------*/
+
+	/**
+	 * Get out-of-stock item GUIDs from Toast Stock API (cached 5 min).
+	 */
+	function vqdev_toast_get_oos_guids() {
+		$cached = get_transient( 'vqdev_toast_oos_guids' );
+		if ( is_array( $cached ) ) {
+			return $cached;
+		}
+
+		$response = vqdev_toast()->stock()->get_inventory();
+		$guids    = [];
+		if ( ! empty( $response['success'] ) && ! empty( $response['data'] ) ) {
+			foreach ( $response['data'] as $stock_item ) {
+				if ( isset( $stock_item['status'] ) && $stock_item['status'] === 'OUT_OF_STOCK' ) {
+					$guids[] = $stock_item['guid'] ?? '';
+				}
+			}
+		}
+
+		set_transient( 'vqdev_toast_oos_guids', $guids, 5 * MINUTE_IN_SECONDS );
+		return $guids;
+	}
+
+	/**
+	 * Check if Toast menu metadata has changed (throttled to once per 10 min).
+	 * Returns true if the menu has changed since our last cached version.
+	 */
+	function vqdev_toast_menu_has_changed() {
+		$last_check = get_transient( 'vqdev_toast_menu_meta_check' );
+		if ( $last_check !== false ) {
+			return false; // throttled
+		}
+
+		$meta = vqdev_toast()->menus()->get_metadata_v2();
+		set_transient( 'vqdev_toast_menu_meta_check', time(), 10 * MINUTE_IN_SECONDS );
+
+		if ( empty( $meta['success'] ) ) {
+			return false;
+		}
+
+		$new_hash = md5( wp_json_encode( $meta['data'] ) );
+		$old_hash = get_option( 'vqdev_toast_menu_meta_hash', '' );
+
+		if ( $new_hash !== $old_hash ) {
+			update_option( 'vqdev_toast_menu_meta_hash', $new_hash, false );
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Get transformed menu data ready for theme templates.
+	 *
+	 * @param array  $skip_menus Array of menu names to skip (case-insensitive).
+	 * @param bool   $hide_oos   If true, OOS items are removed instead of flagged.
+	 * @return array|false
+	 */
+	function vqdev_toast_get_menu_data( $skip_menus = [], $hide_oos = false ) {
+		// Smart cache: invalidate if metadata changed.
+		if ( vqdev_toast_menu_has_changed() ) {
+			delete_transient( 'vqdev_toast_menu_data' );
+		}
+
+		$cached = get_transient( 'vqdev_toast_menu_data' );
+		if ( is_array( $cached ) ) {
+			return $cached;
+		}
+
+		$menus_response = vqdev_toast()->menus()->get_menus_v2();
+		if ( empty( $menus_response['success'] ) || empty( $menus_response['data'] ) ) {
+			return false;
+		}
+
+		$oos_guids = vqdev_toast_get_oos_guids();
+		// Handle both flat array and wrapper object {menus: [...]}.
+		$api_data  = $menus_response['data'];
+		$raw_menus = isset( $api_data['menus'] ) ? $api_data['menus'] : $api_data;
+		$tabs      = [];
+		$skip_lower = array_map( 'strtolower', $skip_menus );
+
+		// Build global lookup maps for modifier groups and options.
+		$mod_groups  = [];
+		$mod_options = [];
+		foreach ( $raw_menus as $menu ) {
+			if ( ! empty( $menu['modifierGroups'] ) ) {
+				foreach ( $menu['modifierGroups'] as $mg ) {
+					$mg_guid = $mg['guid'] ?? '';
+					if ( $mg_guid ) {
+						$mod_groups[ $mg_guid ] = $mg;
+					}
+				}
+			}
+			if ( ! empty( $menu['modifierOptions'] ) ) {
+				foreach ( $menu['modifierOptions'] as $mo ) {
+					$mo_guid = $mo['guid'] ?? '';
+					if ( $mo_guid ) {
+						$mod_options[ $mo_guid ] = $mo;
+					}
+				}
+			}
+		}
+
+		foreach ( $raw_menus as $menu ) {
+			$menu_name = $menu['name'] ?? 'Menu';
+			if ( in_array( strtolower( $menu_name ), $skip_lower, true ) ) {
+				continue;
+			}
+
+			$tab_id   = sanitize_title( $menu_name );
+			$sections = [];
+			$footnotes = [];
+
+			foreach ( $menu['menuGroups'] ?? [] as $group ) {
+				$section = vqdev_toast_transform_group( $group, $mod_groups, $mod_options, $oos_guids, $hide_oos );
+				if ( $section ) {
+					$sections[] = $section;
+				}
+			}
+
+			if ( empty( $sections ) ) {
+				continue;
+			}
+
+			$tabs[] = [
+				'id'          => $tab_id,
+				'label'       => $menu_name,
+				'description' => '',
+				'sections'    => $sections,
+				'footnotes'   => $footnotes,
+			];
+		}
+
+		if ( empty( $tabs ) ) {
+			return false;
+		}
+
+		$data = [
+			'restaurant_name' => 'The Loft',
+			'updated'         => gmdate( 'M j, Y g:ia' ),
+			'tabs'            => $tabs,
+		];
+
+		set_transient( 'vqdev_toast_menu_data', $data, DAY_IN_SECONDS );
+		return $data;
+	}
+
+	/**
+	 * Transform a Toast menuGroup into a theme section.
+	 */
+	function vqdev_toast_transform_group( $group, $mod_groups, $mod_options, $oos_guids, $hide_oos ) {
+		$title = $group['name'] ?? '';
+		$note  = $group['description'] ?? '';
+		$items = [];
+
+		foreach ( $group['menuItems'] ?? [] as $raw_item ) {
+			$item = vqdev_toast_transform_item( $raw_item, $mod_groups, $mod_options );
+			if ( ! $item ) {
+				continue;
+			}
+
+			$item_guid = $raw_item['guid'] ?? '';
+			$is_oos    = in_array( $item_guid, $oos_guids, true );
+
+			if ( $is_oos && $hide_oos ) {
+				continue;
+			}
+
+			$item['out_of_stock'] = $is_oos;
+			$items[] = $item;
+		}
+
+		if ( empty( $items ) ) {
+			return null;
+		}
+
+		return [
+			'title' => $title,
+			'note'  => $note,
+			'items' => $items,
+		];
+	}
+
+	/**
+	 * Transform a Toast menuItem into a theme item.
+	 */
+	function vqdev_toast_transform_item( $item, $mod_groups, $mod_options ) {
+		$name  = $item['name'] ?? '';
+		$desc  = $item['description'] ?? '';
+		$price = '';
+		$image = '';
+		$badges = [];
+		$spicy  = 0;
+		$extras = [];
+
+		// Price.
+		if ( isset( $item['price'] ) && $item['price'] !== '' && $item['price'] !== null ) {
+			$price = (string) $item['price'];
+		}
+
+		// Image.
+		if ( ! empty( $item['imagePath'] ) ) {
+			$image = 'https://cdn.toasttab.com/' . ltrim( $item['imagePath'], '/' );
+		} elseif ( ! empty( $item['imageUrl'] ) ) {
+			$image = $item['imageUrl'];
+		}
+
+		// SIZE_PRICE modifier groups → extras.
+		if ( ! empty( $item['modifierGroupReferences'] ) ) {
+			foreach ( $item['modifierGroupReferences'] as $mgr ) {
+				$mg_guid = $mgr['guid'] ?? '';
+				if ( ! $mg_guid || ! isset( $mod_groups[ $mg_guid ] ) ) {
+					continue;
+				}
+				$mg = $mod_groups[ $mg_guid ];
+				$pricing_mode = $mg['pricingMode'] ?? '';
+
+				if ( $pricing_mode === 'SIZE_PRICE' && ! empty( $mg['modifierOptionReferences'] ) ) {
+					foreach ( $mg['modifierOptionReferences'] as $mor ) {
+						$mo_guid = $mor['guid'] ?? '';
+						if ( ! $mo_guid || ! isset( $mod_options[ $mo_guid ] ) ) {
+							continue;
+						}
+						$mo = $mod_options[ $mo_guid ];
+						$extras[] = [
+							'label' => $mo['name'] ?? '',
+							'price' => isset( $mo['price'] ) ? (string) $mo['price'] : '',
+						];
+					}
+					// Clear the base price when SIZE_PRICE options exist.
+					if ( ! empty( $extras ) ) {
+						$price = '';
+					}
+				}
+			}
+		}
+
+		return [
+			'name'        => $name,
+			'description' => $desc,
+			'price'       => $price,
+			'image'       => $image,
+			'badges'      => $badges,
+			'spicy_level' => $spicy,
+			'extras'      => $extras,
+		];
+	}
+
+	/**
+	 * [toast_menu] shortcode.
+	 * Usage: [toast_menu skip="Retail,Catering"]
+	 */
+	function vqdev_toast_menu_shortcode( $atts ) {
+		$atts = shortcode_atts( [
+			'skip'     => '',
+			'hide_oos' => 'no',
+		], $atts, 'toast_menu' );
+
+		$skip_menus = array_filter( array_map( 'trim', explode( ',', $atts['skip'] ) ) );
+		$hide_oos   = in_array( strtolower( $atts['hide_oos'] ), [ 'yes', 'true', '1' ], true );
+		$menu_data  = vqdev_toast_get_menu_data( $skip_menus, $hide_oos );
+
+		if ( ! $menu_data || empty( $menu_data['tabs'] ) ) {
+			return '<div class="alert alert-warning">Menu is currently unavailable. Please check back later.</div>';
+		}
+
+		if ( ! function_exists( 'vqmenu_money' ) ) {
+			function vqmenu_money( $value ) {
+				$num = is_numeric( $value ) ? number_format( (float) $value, 2, '.', '' ) : $value;
+				if ( is_numeric( $value ) && fmod( (float) $value, 1.0 ) === 0.0 ) {
+					$num = number_format( (float) $value, 0, '.', '' );
+				}
+				return '$' . $num;
+			}
+		}
+
+		if ( ! function_exists( 'vqmenu_badge_class' ) ) {
+			function vqmenu_badge_class( $label ) {
+				$label = strtoupper( trim( (string) $label ) );
+				return match ( $label ) {
+					'V'     => 'vqmenu-badge vqmenu-badge--veg',
+					'GF'    => 'vqmenu-badge vqmenu-badge--gf',
+					'GF*'   => 'vqmenu-badge vqmenu-badge--gf',
+					default => 'vqmenu-badge',
+				};
+			}
+		}
+
+		$tabs = $menu_data['tabs'];
+		$theme_dir = get_stylesheet_directory();
+		$theme_uri = get_stylesheet_directory_uri();
+		$js_rel    = '/assets/restaurant-menu/restaurant-menu.js';
+		if ( file_exists( $theme_dir . $js_rel ) ) {
+			wp_enqueue_script( 'vq-restaurant-menu', $theme_uri . $js_rel, [], filemtime( $theme_dir . $js_rel ), true );
+		}
+
+		ob_start();
+		?>
+		<div class="vqmenu">
+			<header class="vqmenu-header mb-4">
+				<?php if ( ! empty( $menu_data['restaurant_name'] ) ) : ?>
+					<h1 class="vqmenu-title mb-1"><?php echo esc_html( $menu_data['restaurant_name'] ); ?></h1>
+				<?php endif; ?>
+				<?php if ( ! empty( $menu_data['updated'] ) ) : ?>
+					<div class="vqmenu-meta text-muted">Updated: <?php echo esc_html( $menu_data['updated'] ); ?></div>
+				<?php endif; ?>
+			</header>
+
+			<div class="vqmenu-desktop">
+				<?php include $theme_dir . '/templates/menu-tabs.php'; ?>
+			</div>
+
+			<div class="vqmenu-mobile">
+				<?php include $theme_dir . '/templates/menu-mobile.php'; ?>
+			</div>
+		</div>
+		<?php
+		return ob_get_clean();
+	}
+	add_shortcode( 'toast_menu', 'vqdev_toast_menu_shortcode' );
