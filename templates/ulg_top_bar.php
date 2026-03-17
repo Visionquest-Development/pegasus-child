@@ -20,6 +20,7 @@ $uptown_little_logo_url = '/wp-content/themes/pegasus-child/images/uptown_little
 				'Saltcellar'=> '//saltcellar.com',
 				'Mix Market' => '//themixmarket.com',
 				'Tommy G\'s' => '//tommygs.com',
+				'Sugar Pedaler' => 'https://sugar-pedaler.popmenu.com/'
 			];
 		?>
 		<nav class="brandbar-nav d-none d-lg-inline align-items-center  ms-auto">
