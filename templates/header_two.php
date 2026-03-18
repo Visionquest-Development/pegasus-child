@@ -59,7 +59,7 @@
 			//get_template_part( 'templates/top_bar', 'header' );
 			get_template_part( 'templates/ulg_top_bar', 'header' );
 			?>
-			
+
 			<?php
 		}
 		?>
@@ -71,7 +71,8 @@
 				<?php endif; ?>
 						<a class="navbar-brand <?php echo esc_attr( $centerLogo ); ?> " href="<?php echo esc_url( home_url( '/' ) ); ?>">
 							<?php if( ! empty( $logo ) ) : ?>
-								<img id="logo" src="<?php echo esc_url( $logo ); ?>" alt=""/>
+								<?php /* <img id="logo" src="<?php echo esc_url( $logo ); ?>" alt=""/> */ ?>
+								<?php get_template_part( 'templates/ulg_logo', 'header' ); ?>
 							<?php else: ?>
 								<h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
 							<?php endif; ?>
