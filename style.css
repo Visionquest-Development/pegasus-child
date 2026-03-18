@@ -35,7 +35,8 @@
 		 position: relative;
 		z-index: 0
 	}
-	body:after {
+	/*
+  body:after {
 		content: '';
 		background: url(https://images.getbento.com/accounts/35ee5eeeb5f36064ffc2a0eb43193b78/media/images/46797logo-2.png);
 		position: fixed;
@@ -48,6 +49,7 @@
 		z-index: -2;
 		opacity: .08
 	}
+    */
 
   .nocomments { display: none !important; }
 
@@ -198,6 +200,14 @@
     padding: 5px 7px;
     border-radius: 5px;
 	}
+
+  .ulg-svg {
+    width: 200px;
+    height: auto;
+    background: white;
+    padding: 5px 7px;
+    border-radius: 5px;
+  }
 
 		.ulg-brand-bar a {
 			text-decoration: none;
