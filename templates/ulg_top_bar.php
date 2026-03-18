@@ -4,11 +4,12 @@ $uptown_little_logo_url = '/wp-content/themes/pegasus-child/images/uptown_little
 <div class=" ulg-brand-bar py-2">
 	<div class="container d-flex align-items-center justify-content-between">
 		<a class="ulg-brand-logo d-none d-lg-flex align-items-center" href="https://uptownlifegroup.com" target="_blank">
-			<img
-				src="<?php echo $uptown_little_logo_url; ?>"
+			<!--<img
+				src="<?php //echo $uptown_little_logo_url; ?>"
 				alt="Uptown Life Group"
 				class="img-fluid ulg-brand-logo-img"
-			/>
+			/>-->
+			<?php get_template_part( 'templates/ulg_logo' ); ?>
 		</a>
 		<?php
 			$current_host = wp_parse_url( home_url(), PHP_URL_HOST );
