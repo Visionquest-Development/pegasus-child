@@ -200,6 +200,14 @@
     border-radius: 5px;
 	}
 
+  .ulg-svg {
+    width: 200px;
+    height: auto;
+    background: white;
+    padding: 5px 7px;
+    border-radius: 5px;
+  }
+
   .ulg-brand-bar a {
     text-decoration: none;
   }
