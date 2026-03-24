@@ -121,28 +121,6 @@ if ( 'header-three' === $header_choice ) {
 	</div><!-- end container -->
 
 
-	<section class="container d-none py-5 gallery-cta-grid">
-		<div class="row g-4">
-			<div class="col-lg-4 col-md-6">
-				<a class="gallery-cta-card" href="/services/interior-repairs/" style="background-image: url('https://34oakcontracting.com/wp-content/uploads/2024/07/images.jpeg');">
-					<span class="gallery-cta-overlay"></span>
-					<span class="gallery-cta-title">Interior</span>
-				</a>
-			</div>
-			<div class="col-lg-4 col-md-6">
-				<a class="gallery-cta-card" href="/services/exterior-repairs/" style="background-image: url('https://34oakcontracting.com/wp-content/uploads/2024/05/Copy-of-Copy-of-TOPHER-GALA-EXPERIMENT-1.png');">
-					<span class="gallery-cta-overlay"></span>
-					<span class="gallery-cta-title">Exterior</span>
-				</a>
-			</div>
-			<div class="col-lg-4 col-md-6">
-				<a class="gallery-cta-card" href="/services/make-ready-repairs/" style="background-image: url('https://34oakcontracting.com/wp-content/uploads/2024/05/BBB-Dynamic-Seal-4-2048x742.png');">
-					<span class="gallery-cta-overlay"></span>
-					<span class="gallery-cta-title">Make Ready</span>
-				</a>
-			</div>
-		</div>
-	</section>
 
 
 	<?php $interior_img_path = get_stylesheet_directory_uri() . '/images/Interior'; ?>
@@ -150,7 +128,7 @@ if ( 'header-three' === $header_choice ) {
 			<div class="container">
 				<div class="row g-4 align-items-center">
 					<div class="col-lg-6 order-1 order-lg-1">
-						<div class="make-ready-image" style="background-image: url('/wp-content/uploads/2026/02/121.png');">
+						<div class="make-ready-image" style="background-image: url('/wp-content/themes/pegasus-child/images/gallery/interior.jpg');">
 							<span class="make-ready-image-overlay"></span>
 						</div>
 					</div>
@@ -241,7 +219,7 @@ if ( 'header-three' === $header_choice ) {
 			<div class="container">
 				<div class="row g-4 align-items-center">
 					<div class="col-lg-6 order-1 order-lg-2">
-						<div class="make-ready-image" style="background-image: url('/wp-content/uploads/2026/02/9u9u9u.webp');">
+						<div class="make-ready-image" style="background-image: url('/wp-content/themes/pegasus-child/images/gallery/exterior.jpg');">
 							<span class="make-ready-image-overlay"></span>
 						</div>
 					</div>
@@ -332,14 +310,14 @@ if ( 'header-three' === $header_choice ) {
 			<div class="container">
 				<div class="row g-4 align-items-center">
 					<div class="col-lg-6 order-1 order-lg-1">
-						<div class="make-ready-image" style="background-image: url('/wp-content/uploads/2026/02/pexels-marianne-238377-500x295-1.jpg');">
+						<div class="make-ready-image" style="background-image: url('/wp-content/themes/pegasus-child/images/gallery/make-ready.jpeg');">
 							<span class="make-ready-image-overlay"></span>
 						</div>
 					</div>
 					<div class="col-lg-6 order-2 order-lg-2">
 						<div class="make-ready-content">
 							<div class="section-title">
-								<h2>Make Ready Repairs <span></span></h2>
+								<h2>Make Ready & Property Refresh Services <span></span></h2>
 								<p>Our bread-and-butter service for property managers, investors, and homeowners who need fast, dependable turnarounds.</p>
 							</div>
 							<p>We handle punch lists, minor repairs, paint touch-ups, flooring fixes, hardware replacements, and curb appeal upgrades so a property is ready to show, rent, or sell without delays.</p>
@@ -386,7 +364,7 @@ if ( 'header-three' === $header_choice ) {
 			<div class="container">
 				<div class="row g-4 align-items-center">
 					<div class="col-lg-6 order-1 order-lg-2">
-						<div class="make-ready-image" style="background-image: url('/wp-content/uploads/2026/02/9u9u9u.webp');">
+						<div class="make-ready-image" style="background-image: url('/wp-content/themes/pegasus-child/images/gallery/commercial.jpeg');">
 							<span class="make-ready-image-overlay"></span>
 						</div>
 					</div>
