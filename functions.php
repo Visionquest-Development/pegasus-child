@@ -756,23 +756,13 @@
 
 		$orders_table = $wpdb->prefix . 'wc_orders';
 
-		// Get per-event summary from FooEvents tickets.
-		$results = $wpdb->get_results( "
+		// Get per-ticket data from FooEvents tickets.
+		$tickets = $wpdb->get_results( "
 			SELECT
-				p.post_title                                  AS event_name,
-				COUNT( DISTINCT pm_order.meta_value )         AS order_count,
-				COUNT( t.ID )                                 AS ticket_count,
-				COALESCE( SUM(
-					CAST(
-						REPLACE(
-							REPLACE(
-								(SELECT pm_p.meta_value FROM {$wpdb->postmeta} pm_p WHERE pm_p.post_id = t.ID AND pm_p.meta_key = 'WooCommerceEventsPrice' LIMIT 1),
-								'$', ''
-							),
-							',', ''
-						) AS DECIMAL(10,2)
-					)
-				), 0 )                                        AS revenue
+				p.post_title   AS event_name,
+				pm.meta_value  AS product_id,
+				pm_order.meta_value AS order_id,
+				(SELECT pm_p.meta_value FROM {$wpdb->postmeta} pm_p WHERE pm_p.post_id = t.ID AND pm_p.meta_key = 'WooCommerceEventsPrice' LIMIT 1) AS raw_price
 			FROM {$wpdb->postmeta} pm
 			INNER JOIN {$wpdb->posts} t
 				ON pm.post_id = t.ID
@@ -787,14 +777,36 @@
 				ON pm_order.meta_value = o.id
 				AND o.status NOT IN ( 'wc-refunded', 'wc-cancelled', 'wc-failed' )
 			WHERE pm.meta_key = 'WooCommerceEventsProductID'
-			GROUP BY pm.meta_value, p.post_title
-			ORDER BY p.post_title ASC
 		" );
 
-		// Clean up the revenue values (strip HTML from WooCommerce price meta).
-		foreach ( $results as $row ) {
-			$row->revenue = floatval( $row->revenue );
+		// Aggregate in PHP so we can use tr_clean_price() for HTML price values.
+		$event_data = array();
+		foreach ( $tickets as $t ) {
+			$key = $t->product_id;
+			if ( ! isset( $event_data[ $key ] ) ) {
+				$event_data[ $key ] = (object) array(
+					'event_name'   => $t->event_name,
+					'order_count'  => 0,
+					'ticket_count' => 0,
+					'revenue'      => 0,
+					'order_ids'    => array(),
+				);
+			}
+			$event_data[ $key ]->ticket_count++;
+			$event_data[ $key ]->revenue += floatval( tr_clean_price( $t->raw_price ) );
+			$event_data[ $key ]->order_ids[ $t->order_id ] = true;
 		}
+
+		$results = array();
+		foreach ( $event_data as $row ) {
+			$row->order_count = count( $row->order_ids );
+			unset( $row->order_ids );
+			$results[] = $row;
+		}
+
+		usort( $results, function ( $a, $b ) {
+			return strcasecmp( $a->event_name, $b->event_name );
+		} );
 
 		// Index by lowercase event name for legacy merging.
 		$by_name = array();
