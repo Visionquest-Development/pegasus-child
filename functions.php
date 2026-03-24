@@ -206,6 +206,20 @@
 	 */
 
 	/**
+	 * Check if the legacy tickets table exists (result is cached per request).
+	 */
+	function tr_legacy_table_exists() {
+		static $exists = null;
+		if ( $exists !== null ) {
+			return $exists;
+		}
+		global $wpdb;
+		$table = $wpdb->prefix . 'ulg_legacy_tickets';
+		$exists = ( $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $table ) ) === $table );
+		return $exists;
+	}
+
+	/**
 	 * Strip WooCommerce HTML price markup down to a plain number.
 	 * e.g. '<span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>10.00</bdi></span>'  →  '10.00'
 	 */
@@ -279,6 +293,46 @@
 			ORDER BY p.post_title ASC
 		" );
 
+		// Merge legacy ticket counts if the table exists.
+		if ( tr_legacy_table_exists() ) {
+			$legacy_table = $wpdb->prefix . 'ulg_legacy_tickets';
+			$legacy = $wpdb->get_results( "
+				SELECT
+					event_name,
+					COUNT(*) AS ticket_count
+				FROM {$legacy_table}
+				GROUP BY event_name
+				ORDER BY event_name ASC
+			" );
+
+			// Index FooEvents results by lowercase event name for case-insensitive merging.
+			$by_name = array();
+			foreach ( $results as $row ) {
+				$decoded = html_entity_decode( $row->event_name, ENT_QUOTES, 'UTF-8' );
+				$by_name[ strtolower( $decoded ) ] = $row;
+			}
+
+			foreach ( $legacy as $leg ) {
+				$leg_key = strtolower( $leg->event_name );
+				if ( isset( $by_name[ $leg_key ] ) ) {
+					// Event exists in FooEvents — add legacy count.
+					$by_name[ $leg_key ]->ticket_count += (int) $leg->ticket_count;
+				} else {
+					// Legacy-only event — use "legacy_<name>" as a pseudo product_id.
+					$results[] = (object) array(
+						'product_id'   => 'legacy_' . sanitize_title( $leg->event_name ),
+						'event_name'   => $leg->event_name,
+						'ticket_count' => $leg->ticket_count,
+					);
+				}
+			}
+
+			// Re-sort alphabetically after merge.
+			usort( $results, function ( $a, $b ) {
+				return strcasecmp( $a->event_name, $b->event_name );
+			} );
+		}
+
 		wp_send_json_success( $results );
 	}
 	add_action( 'wp_ajax_tr_get_events', 'tr_get_events' );
@@ -293,96 +347,161 @@
 			wp_send_json_error( 'Unauthorized' );
 		}
 
-		$product_id = absint( $_POST['product_id'] );
-		if ( ! $product_id ) {
-			wp_send_json_error( 'Invalid product ID' );
+		$raw_product_id = sanitize_text_field( $_POST['product_id'] );
+
+		// Handle legacy-only events (product_id = "legacy_some-slug").
+		$is_legacy_only = ( strpos( $raw_product_id, 'legacy_' ) === 0 );
+
+		if ( ! $is_legacy_only ) {
+			$product_id = absint( $raw_product_id );
+			if ( ! $product_id ) {
+				wp_send_json_error( 'Invalid product ID' );
+			}
 		}
 
 		global $wpdb;
 
-		$event_name = get_the_title( $product_id );
-
-		$orders_table = $wpdb->prefix . 'wc_orders';
-
-		$tickets = $wpdb->get_results( $wpdb->prepare( "
-			SELECT
-				t.ID AS ticket_id,
-				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsAttendeeName'          THEN pm.meta_value END ) AS first_name,
-				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsAttendeeLastName'      THEN pm.meta_value END ) AS last_name,
-				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsAttendeeEmail'         THEN pm.meta_value END ) AS email,
-				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsPurchaserFirstName'    THEN pm.meta_value END ) AS purchaser_first,
-				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsPurchaserLastName'     THEN pm.meta_value END ) AS purchaser_last,
-				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsPurchaserEmail'        THEN pm.meta_value END ) AS purchaser_email,
-				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsPrice'                 THEN pm.meta_value END ) AS price,
-				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsOrderID'               THEN pm.meta_value END ) AS order_id,
-				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsStatus'                THEN pm.meta_value END ) AS status,
-				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsTicketType'            THEN pm.meta_value END ) AS ticket_type,
-				o.date_created_gmt AS order_date
-			FROM {$wpdb->posts} t
-			INNER JOIN {$wpdb->postmeta} pm
-				ON t.ID = pm.post_id
-			INNER JOIN {$wpdb->postmeta} pm_event
-				ON t.ID = pm_event.post_id
-				AND pm_event.meta_key   = 'WooCommerceEventsProductID'
-				AND pm_event.meta_value = %s
-			INNER JOIN {$wpdb->postmeta} pm_order
-				ON t.ID = pm_order.post_id
-				AND pm_order.meta_key = 'WooCommerceEventsOrderID'
-			INNER JOIN {$orders_table} o
-				ON pm_order.meta_value = o.id
-				AND o.status NOT IN ( 'wc-refunded', 'wc-cancelled', 'wc-failed' )
-			WHERE t.post_type   = 'event_magic_tickets'
-			  AND t.post_status = 'publish'
-			GROUP BY t.ID
-			ORDER BY order_id DESC, last_name ASC
-		", $product_id ) );
-
-		// Clean up individual tickets and group by order
+		$tickets       = array();
 		$total_revenue = 0;
-		$grouped = array();
+		$grouped       = array();
+		$event_name    = '';
 
-		foreach ( $tickets as $ticket ) {
-			$ticket->price = tr_clean_price( $ticket->price );
-			$total_revenue += floatval( $ticket->price );
+		// ── FooEvents tickets (skip for legacy-only events) ──
+		if ( ! $is_legacy_only ) {
+			$event_name   = get_the_title( $product_id );
+			$orders_table = $wpdb->prefix . 'wc_orders';
 
-			if ( empty( $ticket->first_name ) ) {
-				$ticket->first_name = $ticket->purchaser_first;
-			}
-			if ( empty( $ticket->last_name ) ) {
-				$ticket->last_name = $ticket->purchaser_last;
-			}
-			if ( empty( $ticket->email ) ) {
-				$ticket->email = $ticket->purchaser_email;
-			}
+			$tickets = $wpdb->get_results( $wpdb->prepare( "
+				SELECT
+					t.ID AS ticket_id,
+					MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsAttendeeName'          THEN pm.meta_value END ) AS first_name,
+					MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsAttendeeLastName'      THEN pm.meta_value END ) AS last_name,
+					MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsAttendeeEmail'         THEN pm.meta_value END ) AS email,
+					MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsPurchaserFirstName'    THEN pm.meta_value END ) AS purchaser_first,
+					MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsPurchaserLastName'     THEN pm.meta_value END ) AS purchaser_last,
+					MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsPurchaserEmail'        THEN pm.meta_value END ) AS purchaser_email,
+					MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsPrice'                 THEN pm.meta_value END ) AS price,
+					MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsOrderID'               THEN pm.meta_value END ) AS order_id,
+					MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsStatus'                THEN pm.meta_value END ) AS status,
+					MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsTicketType'            THEN pm.meta_value END ) AS ticket_type,
+					o.date_created_gmt AS order_date
+				FROM {$wpdb->posts} t
+				INNER JOIN {$wpdb->postmeta} pm
+					ON t.ID = pm.post_id
+				INNER JOIN {$wpdb->postmeta} pm_event
+					ON t.ID = pm_event.post_id
+					AND pm_event.meta_key   = 'WooCommerceEventsProductID'
+					AND pm_event.meta_value = %s
+				INNER JOIN {$wpdb->postmeta} pm_order
+					ON t.ID = pm_order.post_id
+					AND pm_order.meta_key = 'WooCommerceEventsOrderID'
+				INNER JOIN {$orders_table} o
+					ON pm_order.meta_value = o.id
+					AND o.status NOT IN ( 'wc-refunded', 'wc-cancelled', 'wc-failed' )
+				WHERE t.post_type   = 'event_magic_tickets'
+				  AND t.post_status = 'publish'
+				GROUP BY t.ID
+				ORDER BY order_id DESC, last_name ASC
+			", $product_id ) );
 
-			$oid = $ticket->order_id;
-			if ( ! isset( $grouped[ $oid ] ) ) {
-				// Convert GMT to site timezone for display
-				$date_local = get_date_from_gmt( $ticket->order_date, 'M j, Y g:ia' );
+			foreach ( $tickets as $ticket ) {
+				$ticket->price = tr_clean_price( $ticket->price );
+				$total_revenue += floatval( $ticket->price );
 
-				$grouped[ $oid ] = array(
-					'order_id'        => $oid,
-					'first_name'      => $ticket->first_name,
-					'last_name'       => $ticket->last_name,
-					'email'           => $ticket->email,
-					'purchaser_first' => $ticket->purchaser_first,
-					'purchaser_last'  => $ticket->purchaser_last,
-					'ticket_type'     => $ticket->ticket_type,
-					'order_date'      => $date_local,
-					'qty'             => 0,
-					'total_price'     => 0,
-					'tickets'         => array(),
+				if ( empty( $ticket->first_name ) ) {
+					$ticket->first_name = $ticket->purchaser_first;
+				}
+				if ( empty( $ticket->last_name ) ) {
+					$ticket->last_name = $ticket->purchaser_last;
+				}
+				if ( empty( $ticket->email ) ) {
+					$ticket->email = $ticket->purchaser_email;
+				}
+
+				$oid = $ticket->order_id;
+				if ( ! isset( $grouped[ $oid ] ) ) {
+					$date_local = get_date_from_gmt( $ticket->order_date, 'M j, Y g:ia' );
+
+					$grouped[ $oid ] = array(
+						'order_id'        => $oid,
+						'first_name'      => $ticket->first_name,
+						'last_name'       => $ticket->last_name,
+						'email'           => $ticket->email,
+						'purchaser_first' => $ticket->purchaser_first,
+						'purchaser_last'  => $ticket->purchaser_last,
+						'ticket_type'     => $ticket->ticket_type,
+						'order_date'      => $date_local,
+						'qty'             => 0,
+						'total_price'     => 0,
+						'tickets'         => array(),
+					);
+				}
+				$grouped[ $oid ]['qty']++;
+				$grouped[ $oid ]['total_price'] += floatval( $ticket->price );
+				$grouped[ $oid ]['tickets'][] = array(
+					'ticket_id' => $ticket->ticket_id,
+					'status'    => $ticket->status,
 				);
 			}
-			$grouped[ $oid ]['qty']++;
-			$grouped[ $oid ]['total_price'] += floatval( $ticket->price );
-			$grouped[ $oid ]['tickets'][] = array(
-				'ticket_id' => $ticket->ticket_id,
-				'status'    => $ticket->status,
-			);
 		}
 
-		// Re-index and format totals
+		// ── Legacy (BentoBox) tickets ──
+		$legacy_ticket_count = 0;
+		if ( tr_legacy_table_exists() ) {
+			$legacy_table = $wpdb->prefix . 'ulg_legacy_tickets';
+
+			if ( $is_legacy_only ) {
+				// Derive event name from the slug.
+				$slug      = substr( $raw_product_id, 7 );
+				$all_names = $wpdb->get_col( "SELECT DISTINCT event_name FROM {$legacy_table}" );
+				foreach ( $all_names as $name ) {
+					if ( sanitize_title( $name ) === $slug ) {
+						$event_name = $name;
+						break;
+					}
+				}
+				if ( empty( $event_name ) ) {
+					$event_name = ucwords( str_replace( '-', ' ', $slug ) );
+				}
+			}
+
+			$match_name  = html_entity_decode( $event_name, ENT_QUOTES, 'UTF-8' );
+			$legacy_rows = $wpdb->get_results( $wpdb->prepare(
+				"SELECT * FROM {$legacy_table} WHERE LOWER(event_name) = LOWER(%s) ORDER BY last_name ASC, first_name ASC",
+				$match_name
+			) );
+
+			foreach ( $legacy_rows as $lr ) {
+				$legacy_ticket_count++;
+				$total_revenue += floatval( $lr->price );
+
+				// Group legacy tickets by email within the event.
+				$key = 'bb_' . strtolower( $lr->email );
+				if ( ! isset( $grouped[ $key ] ) ) {
+					$grouped[ $key ] = array(
+						'order_id'        => 'BB',
+						'first_name'      => $lr->first_name,
+						'last_name'       => $lr->last_name,
+						'email'           => $lr->email,
+						'purchaser_first' => $lr->first_name,
+						'purchaser_last'  => $lr->last_name,
+						'ticket_type'     => $lr->ticket_type,
+						'order_date'      => date_i18n( 'M j, Y', strtotime( $lr->order_date ) ) . ' (BentoBox)',
+						'qty'             => 0,
+						'total_price'     => 0,
+						'tickets'         => array(),
+					);
+				}
+				$grouped[ $key ]['qty']++;
+				$grouped[ $key ]['total_price'] += floatval( $lr->price );
+				$grouped[ $key ]['tickets'][] = array(
+					'ticket_id' => 'bb-' . $lr->id,
+					'status'    => 'BentoBox',
+				);
+			}
+		}
+
+		// Re-index and format totals.
 		$orders = array_values( $grouped );
 		foreach ( $orders as &$order ) {
 			$order['total_price'] = number_format( $order['total_price'], 2 );
@@ -391,7 +510,7 @@
 		wp_send_json_success( array(
 			'event_name'    => html_entity_decode( $event_name, ENT_QUOTES, 'UTF-8' ),
 			'orders'        => $orders,
-			'total_tickets' => count( $tickets ),
+			'total_tickets' => count( $tickets ) + $legacy_ticket_count,
 			'total_orders'  => count( $orders ),
 			'total_revenue' => number_format( $total_revenue, 2 ),
 		) );
@@ -445,82 +564,124 @@
 			LIMIT 500
 		", $like ) );
 
-		if ( empty( $ticket_ids ) ) {
-			wp_send_json_success( array() );
-		}
-
-		$placeholders = implode( ',', array_fill( 0, count( $ticket_ids ), '%d' ) );
-
-		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-		$tickets = $wpdb->get_results( $wpdb->prepare( "
-			SELECT
-				t.ID AS ticket_id,
-				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsAttendeeName'          THEN pm.meta_value END ) AS first_name,
-				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsAttendeeLastName'      THEN pm.meta_value END ) AS last_name,
-				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsAttendeeEmail'         THEN pm.meta_value END ) AS email,
-				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsPurchaserFirstName'    THEN pm.meta_value END ) AS purchaser_first,
-				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsPurchaserLastName'     THEN pm.meta_value END ) AS purchaser_last,
-				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsPurchaserEmail'        THEN pm.meta_value END ) AS purchaser_email,
-				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsPrice'                 THEN pm.meta_value END ) AS price,
-				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsOrderID'               THEN pm.meta_value END ) AS order_id,
-				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsStatus'                THEN pm.meta_value END ) AS status,
-				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsTicketType'            THEN pm.meta_value END ) AS ticket_type,
-				MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsProductID'             THEN pm.meta_value END ) AS product_id,
-				o.date_created_gmt AS order_date
-			FROM {$wpdb->posts} t
-			INNER JOIN {$wpdb->postmeta} pm ON t.ID = pm.post_id
-			INNER JOIN {$wpdb->postmeta} pm_ord
-				ON t.ID = pm_ord.post_id
-				AND pm_ord.meta_key = 'WooCommerceEventsOrderID'
-			INNER JOIN {$orders_table} o
-				ON pm_ord.meta_value = o.id
-			WHERE t.ID IN ($placeholders)
-			GROUP BY t.ID
-			ORDER BY last_name ASC, first_name ASC
-		", ...$ticket_ids ) );
-
-		// Resolve event names, clean prices, fill in attendee, and group by order + event
+		// ── FooEvents tickets ──
 		$grouped = array();
 
-		foreach ( $tickets as $ticket ) {
-			$ticket->event_name = $ticket->product_id ? html_entity_decode( get_the_title( $ticket->product_id ), ENT_QUOTES, 'UTF-8' ) : '';
-			$ticket->price = tr_clean_price( $ticket->price );
+		if ( ! empty( $ticket_ids ) ) {
+			$placeholders = implode( ',', array_fill( 0, count( $ticket_ids ), '%d' ) );
 
-			if ( empty( $ticket->first_name ) ) {
-				$ticket->first_name = $ticket->purchaser_first;
-			}
-			if ( empty( $ticket->last_name ) ) {
-				$ticket->last_name = $ticket->purchaser_last;
-			}
-			if ( empty( $ticket->email ) ) {
-				$ticket->email = $ticket->purchaser_email;
-			}
+			// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+			$tickets = $wpdb->get_results( $wpdb->prepare( "
+				SELECT
+					t.ID AS ticket_id,
+					MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsAttendeeName'          THEN pm.meta_value END ) AS first_name,
+					MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsAttendeeLastName'      THEN pm.meta_value END ) AS last_name,
+					MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsAttendeeEmail'         THEN pm.meta_value END ) AS email,
+					MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsPurchaserFirstName'    THEN pm.meta_value END ) AS purchaser_first,
+					MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsPurchaserLastName'     THEN pm.meta_value END ) AS purchaser_last,
+					MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsPurchaserEmail'        THEN pm.meta_value END ) AS purchaser_email,
+					MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsPrice'                 THEN pm.meta_value END ) AS price,
+					MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsOrderID'               THEN pm.meta_value END ) AS order_id,
+					MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsStatus'                THEN pm.meta_value END ) AS status,
+					MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsTicketType'            THEN pm.meta_value END ) AS ticket_type,
+					MAX( CASE WHEN pm.meta_key = 'WooCommerceEventsProductID'             THEN pm.meta_value END ) AS product_id,
+					o.date_created_gmt AS order_date
+				FROM {$wpdb->posts} t
+				INNER JOIN {$wpdb->postmeta} pm ON t.ID = pm.post_id
+				INNER JOIN {$wpdb->postmeta} pm_ord
+					ON t.ID = pm_ord.post_id
+					AND pm_ord.meta_key = 'WooCommerceEventsOrderID'
+				INNER JOIN {$orders_table} o
+					ON pm_ord.meta_value = o.id
+				WHERE t.ID IN ($placeholders)
+				GROUP BY t.ID
+				ORDER BY last_name ASC, first_name ASC
+			", ...$ticket_ids ) );
 
-			$key = $ticket->order_id . '_' . $ticket->product_id;
-			if ( ! isset( $grouped[ $key ] ) ) {
-				$date_local = get_date_from_gmt( $ticket->order_date, 'M j, Y g:ia' );
+			foreach ( $tickets as $ticket ) {
+				$ticket->event_name = $ticket->product_id ? html_entity_decode( get_the_title( $ticket->product_id ), ENT_QUOTES, 'UTF-8' ) : '';
+				$ticket->price = tr_clean_price( $ticket->price );
 
-				$grouped[ $key ] = array(
-					'order_id'        => $ticket->order_id,
-					'event_name'      => $ticket->event_name,
-					'first_name'      => $ticket->first_name,
-					'last_name'       => $ticket->last_name,
-					'email'           => $ticket->email,
-					'purchaser_first' => $ticket->purchaser_first,
-					'purchaser_last'  => $ticket->purchaser_last,
-					'ticket_type'     => $ticket->ticket_type,
-					'order_date'      => $date_local,
-					'qty'             => 0,
-					'total_price'     => 0,
-					'tickets'         => array(),
+				if ( empty( $ticket->first_name ) ) {
+					$ticket->first_name = $ticket->purchaser_first;
+				}
+				if ( empty( $ticket->last_name ) ) {
+					$ticket->last_name = $ticket->purchaser_last;
+				}
+				if ( empty( $ticket->email ) ) {
+					$ticket->email = $ticket->purchaser_email;
+				}
+
+				$key = $ticket->order_id . '_' . $ticket->product_id;
+				if ( ! isset( $grouped[ $key ] ) ) {
+					$date_local = get_date_from_gmt( $ticket->order_date, 'M j, Y g:ia' );
+
+					$grouped[ $key ] = array(
+						'order_id'        => $ticket->order_id,
+						'event_name'      => $ticket->event_name,
+						'first_name'      => $ticket->first_name,
+						'last_name'       => $ticket->last_name,
+						'email'           => $ticket->email,
+						'purchaser_first' => $ticket->purchaser_first,
+						'purchaser_last'  => $ticket->purchaser_last,
+						'ticket_type'     => $ticket->ticket_type,
+						'order_date'      => $date_local,
+						'qty'             => 0,
+						'total_price'     => 0,
+						'tickets'         => array(),
+					);
+				}
+				$grouped[ $key ]['qty']++;
+				$grouped[ $key ]['total_price'] += floatval( $ticket->price );
+				$grouped[ $key ]['tickets'][] = array(
+					'ticket_id' => $ticket->ticket_id,
+					'status'    => $ticket->status,
 				);
 			}
-			$grouped[ $key ]['qty']++;
-			$grouped[ $key ]['total_price'] += floatval( $ticket->price );
-			$grouped[ $key ]['tickets'][] = array(
-				'ticket_id' => $ticket->ticket_id,
-				'status'    => $ticket->status,
-			);
+		}
+
+		// ── Legacy (BentoBox) tickets matching search ──
+		if ( tr_legacy_table_exists() ) {
+			$legacy_table = $wpdb->prefix . 'ulg_legacy_tickets';
+			$legacy_rows  = $wpdb->get_results( $wpdb->prepare(
+				"SELECT * FROM {$legacy_table}
+				 WHERE first_name LIKE %s
+				    OR last_name  LIKE %s
+				    OR email      LIKE %s
+				 ORDER BY last_name ASC, first_name ASC
+				 LIMIT 500",
+				$like, $like, $like
+			) );
+
+			foreach ( $legacy_rows as $lr ) {
+				$key = 'bb_' . strtolower( $lr->email ) . '_' . sanitize_title( $lr->event_name );
+				if ( ! isset( $grouped[ $key ] ) ) {
+					$grouped[ $key ] = array(
+						'order_id'        => 'BB',
+						'event_name'      => $lr->event_name,
+						'first_name'      => $lr->first_name,
+						'last_name'       => $lr->last_name,
+						'email'           => $lr->email,
+						'purchaser_first' => $lr->first_name,
+						'purchaser_last'  => $lr->last_name,
+						'ticket_type'     => $lr->ticket_type,
+						'order_date'      => date_i18n( 'M j, Y', strtotime( $lr->order_date ) ) . ' (BentoBox)',
+						'qty'             => 0,
+						'total_price'     => 0,
+						'tickets'         => array(),
+					);
+				}
+				$grouped[ $key ]['qty']++;
+				$grouped[ $key ]['total_price'] += floatval( $lr->price );
+				$grouped[ $key ]['tickets'][] = array(
+					'ticket_id' => 'bb-' . $lr->id,
+					'status'    => 'BentoBox',
+				);
+			}
+		}
+
+		if ( empty( $grouped ) ) {
+			wp_send_json_success( array() );
 		}
 
 		$orders = array_values( $grouped );

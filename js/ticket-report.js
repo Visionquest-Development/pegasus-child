@@ -71,8 +71,11 @@
     return '<th data-sort-col="' + colIdx + '">' + label + '</th>';
   }
 
-  // Build a link to the WooCommerce order edit screen
+  // Build a link to the WooCommerce order edit screen (or a plain label for legacy)
   function orderLink(orderId) {
+    if (orderId === 'BB') {
+      return '<span class="badge bg-secondary" title="BentoBox import">BentoBox</span>';
+    }
     return '<a href="' + ticketReport.order_url + orderId + '" target="_blank" title="View order in WooCommerce">#' + escHtml(orderId) + '</a>';
   }
 
@@ -80,6 +83,14 @@
   function checkinBtns(tickets) {
     var html = '<div class="tr-checkin-group">';
     $.each(tickets, function (i, t) {
+      // Legacy BentoBox tickets — no check-in or WP link
+      if (t.status === 'BentoBox') {
+        html += '<div class="tr-checkin-row d-flex align-items-center mb-1">' +
+          '<span class="text-muted me-1">#' + escHtml(t.ticket_id) + '</span>' +
+          '<span class="badge bg-info">BentoBox</span>' +
+          '</div>';
+        return;
+      }
       var isCheckedIn = (t.status === 'Checked In');
       var btnClass = isCheckedIn ? 'btn-success' : 'btn-outline-secondary';
       var label = isCheckedIn ? 'Checked In' : 'Check In';
