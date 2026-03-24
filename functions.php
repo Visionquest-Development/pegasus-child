@@ -741,6 +741,131 @@
 	}
 	add_action( 'wp_ajax_tr_toggle_checkin', 'tr_toggle_checkin' );
 
+	/**
+	 * AJAX: Get summary data for all events (used by "All Results" tab).
+	 * Returns one row per event with order count, ticket count, and revenue.
+	 */
+	function tr_get_all_summaries() {
+		check_ajax_referer( 'ticket_report_nonce', 'nonce' );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( 'Unauthorized' );
+		}
+
+		global $wpdb;
+
+		$orders_table = $wpdb->prefix . 'wc_orders';
+
+		// Get per-event summary from FooEvents tickets.
+		$results = $wpdb->get_results( "
+			SELECT
+				p.post_title                                  AS event_name,
+				COUNT( DISTINCT pm_order.meta_value )         AS order_count,
+				COUNT( t.ID )                                 AS ticket_count,
+				COALESCE( SUM(
+					CAST(
+						REPLACE(
+							REPLACE(
+								(SELECT pm_p.meta_value FROM {$wpdb->postmeta} pm_p WHERE pm_p.post_id = t.ID AND pm_p.meta_key = 'WooCommerceEventsPrice' LIMIT 1),
+								'$', ''
+							),
+							',', ''
+						) AS DECIMAL(10,2)
+					)
+				), 0 )                                        AS revenue
+			FROM {$wpdb->postmeta} pm
+			INNER JOIN {$wpdb->posts} t
+				ON pm.post_id = t.ID
+				AND t.post_type   = 'event_magic_tickets'
+				AND t.post_status = 'publish'
+			INNER JOIN {$wpdb->posts} p
+				ON pm.meta_value = p.ID
+			INNER JOIN {$wpdb->postmeta} pm_order
+				ON t.ID = pm_order.post_id
+				AND pm_order.meta_key = 'WooCommerceEventsOrderID'
+			INNER JOIN {$orders_table} o
+				ON pm_order.meta_value = o.id
+				AND o.status NOT IN ( 'wc-refunded', 'wc-cancelled', 'wc-failed' )
+			WHERE pm.meta_key = 'WooCommerceEventsProductID'
+			GROUP BY pm.meta_value, p.post_title
+			ORDER BY p.post_title ASC
+		" );
+
+		// Clean up the revenue values (strip HTML from WooCommerce price meta).
+		foreach ( $results as $row ) {
+			$row->revenue = floatval( $row->revenue );
+		}
+
+		// Index by lowercase event name for legacy merging.
+		$by_name = array();
+		foreach ( $results as $row ) {
+			$decoded = html_entity_decode( $row->event_name, ENT_QUOTES, 'UTF-8' );
+			$by_name[ strtolower( $decoded ) ] = $row;
+		}
+
+		// Merge legacy (BentoBox) data if available.
+		if ( tr_legacy_table_exists() ) {
+			$legacy_table = $wpdb->prefix . 'ulg_legacy_tickets';
+			$legacy = $wpdb->get_results( "
+				SELECT
+					event_name,
+					COUNT( DISTINCT email ) AS order_count,
+					COUNT(*)               AS ticket_count,
+					COALESCE( SUM( CAST( price AS DECIMAL(10,2) ) ), 0 ) AS revenue
+				FROM {$legacy_table}
+				GROUP BY event_name
+				ORDER BY event_name ASC
+			" );
+
+			foreach ( $legacy as $leg ) {
+				$leg_key = strtolower( $leg->event_name );
+				if ( isset( $by_name[ $leg_key ] ) ) {
+					$by_name[ $leg_key ]->order_count  += (int) $leg->order_count;
+					$by_name[ $leg_key ]->ticket_count += (int) $leg->ticket_count;
+					$by_name[ $leg_key ]->revenue      += floatval( $leg->revenue );
+				} else {
+					$results[] = (object) array(
+						'event_name'   => $leg->event_name,
+						'order_count'  => (int) $leg->order_count,
+						'ticket_count' => (int) $leg->ticket_count,
+						'revenue'      => floatval( $leg->revenue ),
+					);
+				}
+			}
+
+			usort( $results, function ( $a, $b ) {
+				return strcasecmp( $a->event_name, $b->event_name );
+			} );
+		}
+
+		// Compute grand totals.
+		$grand_orders  = 0;
+		$grand_tickets = 0;
+		$grand_revenue = 0;
+
+		$rows = array();
+		foreach ( $results as $row ) {
+			$grand_orders  += (int) $row->order_count;
+			$grand_tickets += (int) $row->ticket_count;
+			$grand_revenue += $row->revenue;
+
+			$rows[] = array(
+				'event_name'   => html_entity_decode( $row->event_name, ENT_QUOTES, 'UTF-8' ),
+				'order_count'  => (int) $row->order_count,
+				'ticket_count' => (int) $row->ticket_count,
+				'revenue'      => number_format( $row->revenue, 2 ),
+			);
+		}
+
+		wp_send_json_success( array(
+			'events'         => $rows,
+			'grand_orders'   => $grand_orders,
+			'grand_tickets'  => $grand_tickets,
+			'grand_revenue'  => number_format( $grand_revenue, 2 ),
+		) );
+	}
+	add_action( 'wp_ajax_tr_get_all_summaries', 'tr_get_all_summaries' );
+
 	/*------------------------------------------------------------------
 	 * Toast POS Menu – helper functions
 	 *-----------------------------------------------------------------*/
@@ -1240,6 +1365,7 @@
 			'tr_get_event_tickets',
 			'tr_search_customer',
 			'tr_toggle_checkin',
+			'tr_get_all_summaries',
 		);
 
 		if ( in_array( $action, $ticket_report_actions, true ) && ! empty( $allcaps['view_ticket_report'] ) ) {
@@ -1249,6 +1375,226 @@
 		return $allcaps;
 	}
 	add_filter( 'user_has_cap', 'ulg_event_manager_ticket_report_access', 10, 3 );
+
+	/*------------------------------------------------------------------
+	 * Custom "Marketing Team" role
+	 *
+	 * Access: Pegasus Options, Settings, Appearance, WooCommerce Marketing,
+	 * WooCommerce Analytics, Products, Pages, Media, Posts, and a custom
+	 * "Orders" link to the frontend ticket/order report.
+	 *-----------------------------------------------------------------*/
+
+	/**
+	 * Register the Marketing Team role on theme activation / upgrade.
+	 */
+	function ulg_register_marketing_team_role() {
+		$version = '1.0';
+		if ( get_option( 'ulg_marketing_team_role_version' ) === $version ) {
+			return;
+		}
+
+		remove_role( 'marketing_team' );
+
+		add_role( 'marketing_team', __( 'Marketing Team', 'pegasus-bootstrap' ), array(
+			// Core.
+			'read'                           => true,
+			'upload_files'                   => true,
+
+			// Posts.
+			'edit_posts'                     => true,
+			'edit_others_posts'              => true,
+			'publish_posts'                  => true,
+			'read_private_posts'             => true,
+			'edit_published_posts'           => true,
+			'delete_posts'                   => true,
+			'delete_others_posts'            => true,
+			'delete_published_posts'         => true,
+
+			// Pages.
+			'edit_pages'                     => true,
+			'edit_others_pages'              => true,
+			'publish_pages'                  => true,
+			'read_private_pages'             => true,
+			'edit_published_pages'           => true,
+			'delete_pages'                   => true,
+			'delete_others_pages'            => true,
+			'delete_published_pages'         => true,
+
+			// Products.
+			'edit_products'                  => true,
+			'edit_others_products'           => true,
+			'publish_products'               => true,
+			'read_private_products'          => true,
+			'edit_published_products'        => true,
+			'delete_products'                => true,
+			'delete_others_products'         => true,
+			'delete_published_products'      => true,
+
+			// Media.
+			'edit_files'                     => true,
+			'delete_others_posts'            => true,
+
+			// Appearance (Customizer, menus, widgets).
+			'edit_theme_options'             => true,
+
+			// WooCommerce Analytics & Marketing.
+			'view_woocommerce_reports'       => true,
+			'manage_woocommerce'             => true,
+
+			// Pegasus Options & WP Settings – granted contextually via filter below.
+			'view_pegasus_options'           => true,
+
+			// Order report page access.
+			'view_ticket_report'             => true,
+		) );
+
+		update_option( 'ulg_marketing_team_role_version', $version );
+	}
+	add_action( 'admin_init', 'ulg_register_marketing_team_role' );
+
+	/**
+	 * Grant Marketing Team manage_options only on specific admin pages
+	 * (Pegasus Options, WP Settings) so it does not unlock everything.
+	 */
+	function ulg_marketing_team_cap_filter( $allcaps, $caps, $args ) {
+		if ( ! isset( $args[0] ) || 'manage_options' !== $args[0] ) {
+			return $allcaps;
+		}
+
+		if ( empty( $allcaps['view_pegasus_options'] ) ) {
+			return $allcaps;
+		}
+
+		// Grant manage_options on allowed admin screens.
+		$allowed_pages = array( 'pegasus_options', 'options-general.php', 'options-writing.php', 'options-reading.php', 'options-discussion.php', 'options-media.php', 'options-permalink.php', 'options-privacy.php' );
+
+		$page    = isset( $_GET['page'] ) ? sanitize_text_field( $_GET['page'] ) : '';
+		$pagenow = isset( $GLOBALS['pagenow'] ) ? $GLOBALS['pagenow'] : '';
+
+		if ( in_array( $page, $allowed_pages, true ) || in_array( $pagenow, $allowed_pages, true ) ) {
+			$allcaps['manage_options'] = true;
+		}
+
+		// Also grant during admin menu build so the items appear.
+		if ( doing_action( 'admin_menu' ) || doing_action( '_admin_menu' ) || did_action( 'admin_menu' ) && ! did_action( 'admin_init' ) ) {
+			$allcaps['manage_options'] = true;
+		}
+
+		return $allcaps;
+	}
+	add_filter( 'user_has_cap', 'ulg_marketing_team_cap_filter', 10, 3 );
+
+	/**
+	 * Add custom "Orders" menu item for Marketing Team pointing to frontend report.
+	 */
+	function ulg_marketing_team_orders_menu() {
+		$user = wp_get_current_user();
+		if ( ! in_array( 'marketing_team', (array) $user->roles, true ) ) {
+			return;
+		}
+
+		add_menu_page(
+			__( 'Orders', 'pegasus-bootstrap' ),
+			__( 'Orders', 'pegasus-bootstrap' ),
+			'view_ticket_report',
+			'ulg-order-report',
+			'ulg_marketing_team_orders_redirect',
+			'dashicons-list-view',
+			56
+		);
+	}
+	add_action( 'admin_menu', 'ulg_marketing_team_orders_menu' );
+
+	/**
+	 * Redirect the Orders admin page to the frontend order report.
+	 */
+	function ulg_marketing_team_orders_redirect() {
+		$report_url = home_url( '/test/' );
+		wp_redirect( $report_url );
+		exit;
+	}
+
+	/**
+	 * Hide admin menus that Marketing Team should not see.
+	 */
+	function ulg_marketing_team_hide_menus() {
+		$user = wp_get_current_user();
+		if ( ! in_array( 'marketing_team', (array) $user->roles, true ) ) {
+			return;
+		}
+
+		global $menu;
+
+		$keep_top = array(
+			'index.php',                              // Dashboard
+			'edit.php',                                // Posts
+			'upload.php',                              // Media
+			'edit.php?post_type=page',                 // Pages
+			'edit.php?post_type=product',              // Products
+			'themes.php',                              // Appearance
+			'options-general.php',                     // Settings
+			'pegasus_options',                         // Pegasus Options
+			'wc-admin&path=/marketing',                // Marketing
+			'ulg-order-report',                        // Orders (frontend report)
+			'profile.php',                             // Profile
+		);
+
+		foreach ( $menu as $key => $item ) {
+			$slug = $item[2] ?? '';
+			if ( ! in_array( $slug, $keep_top, true ) ) {
+				remove_menu_page( $slug );
+			}
+		}
+	}
+	add_action( 'admin_menu', 'ulg_marketing_team_hide_menus', 9999 );
+
+
+	/**
+	 * Redirect Marketing Team away from disallowed admin pages.
+	 */
+	function ulg_marketing_team_block_pages() {
+		$user = wp_get_current_user();
+		if ( ! in_array( 'marketing_team', (array) $user->roles, true ) ) {
+			return;
+		}
+
+		global $pagenow;
+
+		$allowed = array(
+			'index.php',            // Dashboard
+			'profile.php',          // Profile
+			'edit.php',             // Post type lists
+			'post.php',             // Edit single post
+			'post-new.php',         // New post
+			'upload.php',           // Media
+			'media-new.php',        // Upload media
+			'async-upload.php',     // Async upload
+			'admin.php',            // WC pages, Pegasus Options
+			'admin-ajax.php',       // AJAX
+			'admin-post.php',       // Admin post handler
+			'themes.php',           // Appearance
+			'customize.php',        // Customizer
+			'widgets.php',          // Widgets
+			'nav-menus.php',        // Menus
+			'theme-editor.php',     // Theme editor
+			'options-general.php',  // Settings > General
+			'options-writing.php',  // Settings > Writing
+			'options-reading.php',  // Settings > Reading
+			'options-discussion.php', // Settings > Discussion
+			'options-media.php',    // Settings > Media
+			'options-permalink.php', // Settings > Permalinks
+			'options-privacy.php',  // Settings > Privacy
+			'options.php',          // Settings save handler
+			'edit-tags.php',        // Categories/Tags
+			'term.php',             // Edit term
+		);
+
+		if ( ! in_array( $pagenow, $allowed, true ) ) {
+			wp_safe_redirect( admin_url() );
+			exit;
+		}
+	}
+	add_action( 'admin_init', 'ulg_marketing_team_block_pages' );
 
 	/*------------------------------------------------------------------
 	 * WooCommerce Products list – FooEvents "Event Date" column
@@ -1306,8 +1652,62 @@
 		}
 
 		if ( $query->get( 'orderby' ) === 'event_date' ) {
-			$query->set( 'meta_key', 'WooCommerceEventsDate' );
-			$query->set( 'orderby', 'meta_value' );
+			$query->set( 'meta_key', 'WooCommerceEventsDateTimestamp' );
+			$query->set( 'orderby', 'meta_value_num' );
 		}
 	}
 	add_action( 'pre_get_posts', 'ulg_event_date_column_orderby' );
+
+	/**
+	 * Auto-set FooEvents expiration timestamp to 30 minutes after event start time.
+	 * Runs on product save so no manual expiration date entry is needed.
+	 */
+	function ulg_auto_set_event_expiration( $post_id ) {
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return;
+		}
+
+		if ( get_post_type( $post_id ) !== 'product' ) {
+			return;
+		}
+
+		$is_event = get_post_meta( $post_id, 'WooCommerceEventsEvent', true );
+		if ( $is_event !== 'Event' ) {
+			return;
+		}
+
+		$event_date = get_post_meta( $post_id, 'WooCommerceEventsDate', true );
+		if ( empty( $event_date ) ) {
+			return;
+		}
+
+		$hour    = get_post_meta( $post_id, 'WooCommerceEventsHour', true );
+		$minutes = get_post_meta( $post_id, 'WooCommerceEventsMinutes', true );
+		$period  = get_post_meta( $post_id, 'WooCommerceEventsPeriod', true );
+
+		// Build a time string, default to 11:59 PM if no start time set.
+		if ( ! empty( $hour ) && $minutes !== '' ) {
+			$time_str = $hour . ':' . $minutes;
+			if ( ! empty( $period ) ) {
+				// Normalize period (e.g. "p.m." -> "PM").
+				$period_clean = strtoupper( str_replace( '.', '', $period ) );
+				$time_str    .= ' ' . $period_clean;
+			}
+		} else {
+			$time_str = '11:59 PM';
+		}
+
+		$datetime_str = $event_date . ' ' . $time_str;
+		$timestamp    = strtotime( $datetime_str );
+
+		if ( ! $timestamp ) {
+			return;
+		}
+
+		// Add 30 minutes after event start.
+		$expire_timestamp = $timestamp + ( 30 * 60 );
+
+		update_post_meta( $post_id, 'WooCommerceEventsExpireTimestamp', $expire_timestamp );
+		update_post_meta( $post_id, 'WooCommerceEventsExpire', gmdate( 'Y-m-d H:i:s', $expire_timestamp ) );
+	}
+	add_action( 'save_post', 'ulg_auto_set_event_expiration', 20 );

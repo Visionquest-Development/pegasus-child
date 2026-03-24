@@ -290,6 +290,85 @@
     downloadCSV(rows.join('\n'), 'customer-tickets.csv');
   });
 
+  // ── All Results tab ──
+  var $allResults = $('#all-results');
+  var $allSummary = $('#all-results-summary');
+  var allResultsLoaded = false;
+
+  // Load data when the tab is first shown.
+  $(document).on('shown.bs.tab', 'a[href="#tab-all-results"]', function () {
+    if (allResultsLoaded) return;
+    loadAllResults();
+  });
+
+  function loadAllResults() {
+    $allResults.html('<p class="text-muted">Loading...</p>');
+    $allSummary.addClass('d-none');
+
+    $.post(ticketReport.ajax_url, {
+      action: 'tr_get_all_summaries',
+      nonce: ticketReport.nonce
+    }, function (res) {
+      if (!res.success) {
+        $allResults.html('<p class="text-danger">Error loading summaries.</p>');
+        return;
+      }
+
+      allResultsLoaded = true;
+      var data = res.data;
+
+      $allSummary
+        .removeClass('d-none')
+        .html(
+          '<strong>All Events</strong> &mdash; ' +
+          data.grand_orders + ' total order(s), ' +
+          data.grand_tickets + ' total ticket(s), ' +
+          'Grand Total Revenue: $' + data.grand_revenue
+        );
+
+      if (!data.events.length) {
+        $allResults.html('<p>No events found.</p>');
+        return;
+      }
+
+      var html = '<div class="table-responsive"><table class="table table-striped table-hover">' +
+        '<thead><tr>' +
+        sortTh('Event', 0) +
+        sortTh('Orders', 1) +
+        sortTh('Tickets', 2) +
+        sortTh('Revenue', 3) +
+        '</tr></thead><tbody>';
+
+      $.each(data.events, function (i, ev) {
+        html += '<tr>' +
+          '<td>' + escHtml(ev.event_name) + '</td>' +
+          '<td>' + ev.order_count + '</td>' +
+          '<td>' + ev.ticket_count + '</td>' +
+          '<td>$' + escHtml(ev.revenue) + '</td>' +
+          '</tr>';
+      });
+
+      html += '</tbody></table></div>';
+      html += '<button class="btn btn-secondary btn-sm mt-2" id="export-all-csv">Export CSV</button>';
+
+      $allResults.html(html);
+    });
+  }
+
+  // Export All Results CSV
+  $(document).on('click', '#export-all-csv', function () {
+    var rows = [];
+    var $table = $allResults.find('table');
+    $table.find('tr').each(function () {
+      var row = [];
+      $(this).find('th, td').each(function () {
+        row.push('"' + $(this).text().replace(/"/g, '""') + '"');
+      });
+      rows.push(row.join(','));
+    });
+    downloadCSV(rows.join('\n'), 'all-events-summary.csv');
+  });
+
   function escHtml(str) {
     if (!str) return '';
     return $('<span>').text(str).html();

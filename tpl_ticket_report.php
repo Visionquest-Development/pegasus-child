@@ -31,6 +31,9 @@ get_header();
 						<li class="nav-item">
 							<a class="nav-link" data-bs-toggle="tab" href="#tab-by-customer" role="tab">By Customer</a>
 						</li>
+						<li class="nav-item">
+							<a class="nav-link" data-bs-toggle="tab" href="#tab-all-results" role="tab">All Results</a>
+						</li>
 					</ul>
 
 					<div class="tab-content">
@@ -70,6 +73,14 @@ get_header();
 
 							<div id="customer-results">
 								<p class="text-muted">Enter a name or email to search for ticket purchases.</p>
+							</div>
+						</div>
+
+					<!-- ALL RESULTS TAB -->
+						<div class="tab-pane fade" id="tab-all-results" role="tabpanel">
+							<div id="all-results-summary" class="alert alert-info d-none"></div>
+							<div id="all-results">
+								<p class="text-muted">Loading all event summaries...</p>
 							</div>
 						</div>
 
