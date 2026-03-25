@@ -334,14 +334,16 @@
       var html = '<div class="table-responsive"><table class="table table-striped table-hover">' +
         '<thead><tr>' +
         sortTh('Event', 0) +
-        sortTh('Orders', 1) +
-        sortTh('Tickets', 2) +
-        sortTh('Revenue', 3) +
+        sortTh('Event Date', 1) +
+        sortTh('Orders', 2) +
+        sortTh('Tickets', 3) +
+        sortTh('Revenue', 4) +
         '</tr></thead><tbody>';
 
       $.each(data.events, function (i, ev) {
         html += '<tr>' +
           '<td>' + escHtml(ev.event_name) + '</td>' +
+          '<td>' + escHtml(ev.event_date) + '</td>' +
           '<td>' + ev.order_count + '</td>' +
           '<td>' + ev.ticket_count + '</td>' +
           '<td>$' + escHtml(ev.revenue) + '</td>' +

@@ -784,8 +784,12 @@
 		foreach ( $tickets as $t ) {
 			$key = $t->product_id;
 			if ( ! isset( $event_data[ $key ] ) ) {
+				$event_date_raw = get_post_meta( $t->product_id, 'WooCommerceEventsDate', true );
+				$event_date_ts  = strtotime( $event_date_raw );
 				$event_data[ $key ] = (object) array(
 					'event_name'   => $t->event_name,
+					'event_date'   => $event_date_ts ? date_i18n( 'M j, Y', $event_date_ts ) : $event_date_raw,
+					'event_date_ts' => $event_date_ts ? $event_date_ts : 0,
 					'order_count'  => 0,
 					'ticket_count' => 0,
 					'revenue'      => 0,
@@ -863,6 +867,7 @@
 
 			$rows[] = array(
 				'event_name'   => html_entity_decode( $row->event_name, ENT_QUOTES, 'UTF-8' ),
+				'event_date'   => isset( $row->event_date ) ? $row->event_date : '',
 				'order_count'  => (int) $row->order_count,
 				'ticket_count' => (int) $row->ticket_count,
 				'revenue'      => number_format( $row->revenue, 2 ),
