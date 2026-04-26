@@ -1,0 +1,1114 @@
+{
+  "categories": [
+    {
+      "name": "Popular",
+      "libraries": [
+        {
+          "name": "jQuery",
+          "description": "A JavaScript library designed to simplify HTML DOM tree traversal and manipulation, as well as event handling, CSS animation, and Ajax.",
+          "type": "Library",
+		  "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "Bootstrap",
+          "description": "A free and open-source CSS framework directed at responsive, mobile-first front-end web development. Contains CSS- and JavaScript-based design templates for typography, forms, buttons, navigation, and other interface components.",
+          "type": "Library",
+		  "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "React.js",
+          "description": "A declarative, efficient, and flexible JavaScript library for building user interfaces.",
+          "type": "Library",
+		  "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "Require.js",
+          "description": "A JavaScript file and module loader optimized for in-browser use, also compatible with other environments like Rhino and Node.",
+          "type": "Library",
+		  "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "Modernizr",
+          "description": "A JavaScript library that detects HTML5 and CSS3 features in the user's browser.",
+          "type": "Library",
+		  "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "socket.io",
+          "description": "A realtime application framework (Node.js server).",
+          "type": "Framework",
+		  "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "jQuery UI",
+          "description": "The official jQuery user interface library.",
+          "type": "Library",
+		  "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "Next.js",
+          "description": "A library offering hybrid static & server rendering, TypeScript support, smart bundling, and route pre-fetching for production-level apps.",
+          "type": "Library",
+		  "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "Babel",
+          "description": "A JavaScript transcompiler used to convert ECMAScript 2015+ code into a backwards compatible version for older engines.",
+          "type": "Library",
+		  "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "Gatsby",
+          "description": "A React-based open source framework for creating websites and apps.",
+          "type": "Framework",
+		  "used_by_vqdev": false,
+          "favorite": true
+        },
+        {
+          "name": "express.js",
+          "description": "A minimal and flexible Node.js web application framework.",
+          "type": "Framework",
+		  "used_by_vqdev": true,
+          "favorite": true
+        }
+      ]
+    },
+    {
+      "name": "DOM Manipulation",
+      "libraries": [
+        {
+          "name": "jQuery",
+          "description": "A JavaScript library designed to simplify HTML DOM tree traversal and manipulation, as well as event handling, CSS animation, and Ajax.",
+          "type": "Library",
+		  "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "Prototype Javascript Framework",
+          "description": "Adds useful extensions to the browser scripting environment and provides elegant APIs around Ajax and the Document Object Model.",
+          "type": "Framework",
+		  "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "Moo Tools",
+          "description": "A collection of JavaScript utilities designed for the intermediate to advanced JavaScript developer.",
+          "type": "Library",
+		  "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "midori",
+          "description": "A library for animating image backgrounds in websites.",
+          "type": "Library",
+		  "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "Dojo Toolkit",
+          "description": "A JavaScript toolkit that saves time and scales with your development process.",
+          "type": "Library",
+		  "used_by_vqdev": false,
+          "favorite": false
+        }
+      ]
+    },
+    {
+      "name": "Template Systems",
+      "libraries": [
+        {
+          "name": "Jade/Jade Runtime",
+          "description": "A robust, elegant, feature rich template engine for Node.js.",
+          "type": "Library",
+		  "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "Handlebars",
+          "description": "Minimal templating on steroids.",
+          "type": "Library",
+		  "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "Mustache",
+          "description": "Minimal templating with {{mustaches}} in JavaScript.",
+          "type": "Library",
+		  "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "Jinja/Nunjucks",
+          "description": "A rich and powerful templating language for JavaScript.",
+          "type": "Library",
+		  "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "Twig.js",
+          "description": "A pure JavaScript implementation of the Twig PHP templating language.",
+          "type": "Library",
+		  "used_by_vqdev": false,
+          "favorite": false
+        },
+		{
+          "name": "EJS",
+          "description": "Embedded JavaScript templating.",
+          "type": "Library",
+		  "used_by_vqdev": false,
+          "favorite": false
+        },
+		{
+          "name": "Pug",
+          "description": "Pug is a high-performance template engine heavily influenced by Haml and implemented with JavaScript for Node.js and browsers.",
+          "type": "Library",
+		  "used_by_vqdev": false,
+          "favorite": false
+        }
+      ]
+    },
+    {
+      "name": "Loaders",
+      "libraries": [
+        {
+          "name": "requireJS",
+          "description": "A JavaScript file and module loader optimized for in-browser use.",
+          "type": "Library",
+		  "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "browserify",
+          "description": "An open-source JavaScript tool allowing Node.js-style modules to compile for browser use.",
+          "type": "Library",
+		  "used_by_vqdev": false,
+          "favorite": false
+        },
+		{
+          "name": "lazyload",
+          "description": "An open-source JavaScript tool allowing Node.js-style modules to compile for browser use.",
+          "type": "Library",
+		  "used_by_vqdev": false,
+          "favorite": false
+        },
+		{
+          "name": "systemJS ",
+          "description": "Configurable module loader, running System modules at almost-native speed, and enabling ES module semantics and features such as top-level await, dynamic import, and import maps with full compatibility for older browsers. Similar to webpack.",
+          "type": "Library",
+		  "used_by_vqdev": false,
+          "favorite": false
+        }
+      ]
+    },
+    {
+      "name": "Bundlers",
+      "libraries": [
+        {
+          "name": "Webpack",
+          "description": "A static module bundler for modern JavaScript applications.",
+          "type": "Library",
+		  "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "Parcel",
+          "description": "A blazing fast, zero configuration web application bundler.",
+          "type": "Library",
+		  "used_by_vqdev": true,
+          "favorite": true
+        }
+      ]
+    },
+    {
+      "name": "Type Checkers",
+      "libraries": [
+        {
+          "name": "typescript",
+          "description": "An open-source language that builds on JavaScript by adding static type definitions.",
+          "type": "Library",
+		  "used_by_vqdev": true,
+          "favorite": true
+        }
+      ]
+    },
+    {
+      "name": "Runner",
+      "libraries": [
+        {
+          "name": "phantomJS",
+          "description": "A headless web browser scriptable with JavaScript.",
+          "type": "Library",
+		  "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "Karma JS",
+          "description": "A test runner for JavaScript designed to create a productive testing environment.",
+          "type": "Library",
+		  "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "puppeteer",
+          "description": "A Node library that provides a high-level API to control Chrome or Chromium.",
+          "type": "Library",
+		  "used_by_vqdev": true,
+          "favorite": true
+        }
+      ]
+    },
+	{
+      "name": "Pure JavaScript / Ajax / Functional programming",
+      "libraries": [
+        {
+          "name": "Socket.io",
+          "description": "Socket.IO is a JavaScript library for realtime web applications. It enables realtime, bi-directional communication between web clients and servers.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "Underscore.js",
+          "description": "JavaScript's utility _belt. Underscore.js is a JavaScript library which provides utility functions for common programming tasks.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        }
+      ]
+    },
+    {
+      "name": "Touch Libraries / Mobile UI Libraries",
+      "libraries": [
+        {
+          "name": "Slideout.js",
+          "description": "A touch slideout navigation menu for your mobile web apps.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "hammer.js",
+          "description": "Multi-touch JavaScript library.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "touch swipe",
+          "description": "A jQuery plugin for touch devices.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "iconate.js",
+          "description": "Transform your icons with trendy animations.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "Onsen UI",
+          "description": "Custom Elements-Based HTML5 UI Framework for Building Your Mobile Front End.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "Ratchet",
+          "description": "Build mobile apps with simple HTML, CSS, and JavaScript components.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": true
+        }
+      ]
+    },
+    {
+      "name": "Animation Libraries",
+      "libraries": [
+        {
+          "name": "WOW.js",
+          "description": "Reveal CSS animation as you scroll down a page.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "Move.js",
+          "description": "CSS3 backed JavaScript animation framework.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "bxSlider",
+          "description": "Responsive CSS animation framework for creating sliders, presentations, banners, and more.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "AniJS",
+          "description": "A Library to Raise your Web Design without Coding.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "Greensock",
+          "description": "GSAP is an industry standard JavaScript animation library from GreenSock that lets you craft high-performance animations that work in every major browser.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": true
+        },
+        {
+          "name": "Tweenmax",
+          "description": "TweenMax lets you animate literally any property of any object that JavaScript can touch (CSS, SVG, React, Vue, Three.js, canvas, motion paths, generic objects, etc.). Before the release of GSAP 3, TweenMax was the most feature-packed (and popular) animation tool in the GSAP arsenal.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": true
+        }
+      ]
+    },
+    {
+      "name": "Parallax Libraries",
+      "libraries": [
+        {
+          "name": "skrollr.js",
+          "description": "Stand-alone parallax scrolling library for mobile and desktop.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "scrollMagic",
+          "description": "The javascript library for magical scroll interactions.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": true
+        },
+        {
+          "name": "stellar.js",
+          "description": "Parallax scrolling made easy.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "Parallax.js",
+          "description": "Parallax Engine that reacts to the orientation of a smart device.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": true
+        },
+        {
+          "name": "scrollReveal.js",
+          "description": "Easily reveal elements as they enter the viewport.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "onepage-scroll",
+          "description": "Create an Apple-like one page scroll website.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": true
+        }
+      ]
+    },
+	{
+      "name": "Graphical/Visualization (Canvas or SVG related)",
+      "libraries": [
+        {
+          "name": "D3.js",
+          "description": "A JavaScript visualization library for HTML and SVG.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "SWFObject",
+          "description": "SWFObject is an open-source JavaScript library used to embed Adobe Flash content onto Web pages and to protect the flash game against piracy.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "Three.js",
+          "description": "JavaScript 3D library.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "velocity.js",
+          "description": "Accelerated JavaScript animation.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": true
+        },
+        {
+          "name": "Phaser",
+          "description": "A fun, free and fast 2D game framework for making HTML5 games for desktop and mobile web browsers.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "Crafty JS",
+          "description": "JavaScript Game Engine.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "Leaflet",
+          "description": "JavaScript library for mobile-friendly interactive maps.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "Pixi.js",
+          "description": "Super fast HTML 5 2D rendering engine that uses WebGL with canvas fallback.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "Epoch",
+          "description": "A general purpose, real-time visualization library.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "SVG.js",
+          "description": "A lightweight library for manipulating and animating SVG.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        }
+      ]
+    },
+    {
+      "name": "Chart Libraries / Data Visualization",
+      "libraries": [
+        {
+          "name": "Chartist.js",
+          "description": "Simple responsive charts.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "Flot",
+          "description": "Attractive JavaScript charts for jQuery.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "paper.js",
+          "description": "Paper.js is an open-source vector graphics scripting framework that runs on top of the HTML5 Canvas.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "raphael",
+          "description": "Raphaël is a small JavaScript library that simplifies your work with vector graphics on the web.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": true
+        },
+        {
+          "name": "heatmap.js",
+          "description": "A lightweight, easy-to-use JavaScript library to help you visualize your three-dimensional data.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "babylon JS",
+          "description": "A real-time 3D engine using a JavaScript library for displaying 3D graphics in a web browser via HTML5.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": true
+        }
+      ]
+    },
+    {
+      "name": "Slider Libraries",
+      "libraries": [
+        {
+          "name": "FlexSlider",
+          "description": "An awesome, fully responsive jQuery slider plugin.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "OwlCarousel",
+          "description": "Touch-enabled jQuery plugin that lets you create beautiful responsive carousel sliders.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "Slick.js",
+          "description": "Sliders library.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "slippry.js",
+          "description": "Carousel library.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "bespoke",
+          "description": "Bespoke.js is a super minimal, modular presentation library for modern browsers.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": false
+        },
+        {
+          "name": "reveal.js",
+          "description": "An open-source HTML presentation framework.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "Flickity",
+          "description": "Touch, responsive, flickable galleries.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "Swiper",
+          "description": "Most modern mobile touch slider with hardware-accelerated transitions.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        }
+      ]
+    },
+	{
+      "name": "Lightbox Libraries",
+      "libraries": [
+        {
+          "name": "Magnific Popup",
+          "description": "Light and responsive lightbox script with focus on performance.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "Lightbox2",
+          "description": "The original lightbox script, now on Github!",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "luidbox",
+          "description": "Replicating and improving the lightbox module seen on Medium with fluid transitions.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "Colorbox",
+          "description": "A light-weight, customizable lightbox plugin for jQuery.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "Fluidbox",
+          "description": "Replicating and improving the lightbox module seen on Medium with fluid transitions.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "Swipebox",
+          "description": "A touchable jQuery lightbox.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "Sweetalert",
+          "description": "A beautiful replacement for success messages.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": true
+        },
+        {
+          "name": "fancyBox",
+          "description": "FancyBox is a tool for displaying images, HTML content, and multi-media in a Mac-style lightbox.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        }
+      ]
+    },
+    {
+      "name": "Unit Testing / Testing Frameworks",
+      "libraries": [
+        {
+          "name": "Mocha",
+          "description": "Mocha is a feature-rich JavaScript test framework running on Node.js and in the browser, making asynchronous testing simple and fun.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": true
+        },
+        {
+          "name": "Jest",
+          "description": "Jest is a JavaScript testing framework designed to ensure correctness of any JavaScript codebase.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": true
+        },
+        {
+          "name": "Istanbul",
+          "description": "Istanbul instruments your ES5 and ES2015+ JavaScript code with line counters, so that you can track how well your unit-tests exercise your codebase.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": true
+        }
+      ]
+    },
+    {
+      "name": "QA Tools",
+      "libraries": [
+        {
+          "name": "prettier",
+          "description": "An opinionated code formatter.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "ESlint",
+          "description": "ESLint is a static code analysis tool for identifying problematic patterns found in JavaScript code.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "JShint",
+          "description": "JSHint is a static code analysis tool used in software development for checking if JavaScript source code complies with coding rules.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "JS Beautifier",
+          "description": "This little beautifier will reformat and re-indent bookmarklets, ugly JavaScript, unpack scripts packed by Dean Edward’s popular packer, as well as partly deobfuscate scripts processed by the npm package javascript-obfuscator.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": true
+        },
+        {
+          "name": "husky",
+          "description": "Git hooks made easy.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": true
+        }
+      ]
+    },
+	{
+      "name": "Web-Application related MVC",
+      "libraries": [
+        {
+          "name": "Angular.js",
+          "description": "AngularJS is a JavaScript-based open-source front-end web framework mainly maintained by Google and by a community of individuals and corporations to address many of the challenges encountered in developing single-page applications.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "Backbone.js",
+          "description": "Give your JS App some Backbone with Models, Views, Collections, and Events.",
+          "type": "Framework",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "Ember.js",
+          "description": "A JavaScript framework for creating ambitious web applications.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "Knockout",
+          "description": "Knockout makes it easier to create rich, responsive UIs with JavaScript. Knockout is a JavaScript library that helps you to create rich, responsive display and editor user interfaces with a clean underlying data model. Any time you have sections of UI that update dynamically (e.g., changing depending on the user's actions or when an external data source changes), KO can help you implement it more simply and maintainably.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": false
+        },
+        {
+          "name": "Meteor",
+          "description": "Meteor, or MeteorJS, is a free and open-source isomorphic JavaScript web framework written using Node.js.",
+          "type": "Framework",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "React.js",
+          "description": "A declarative, efficient, and flexible JavaScript library for building user interfaces.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "Riot JS",
+          "description": "Simple and elegant component-based UI library.",
+          "type": "Framework",
+          "used_by_vqdev": false,
+          "favorite": true
+        },
+        {
+          "name": "Svelte",
+          "description": "Svelte is a radical new approach to building user interfaces. Whereas traditional frameworks like React and Vue do the bulk of their work in the browser, Svelte shifts that work into a compile step that happens when you build your app.",
+          "type": "Framework",
+          "used_by_vqdev": false,
+          "favorite": true
+        },
+        {
+          "name": "Vue JS",
+          "description": "Vue.js is an open-source model–view–viewmodel front end JavaScript framework for building user interfaces and single-page applications.",
+          "type": "Framework",
+          "used_by_vqdev": false,
+          "favorite": true
+        }
+      ]
+    },
+	{
+      "name": "Other",
+      "libraries": [
+        {
+          "name": "eyeballs.js",
+          "description": "A slim javascript library designed to sit on top of a javascript framework, such as jQuery or Prototype.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "batman.js",
+          "description": "A full-stack microframework designed to maximize developer and designer happiness.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "impress.js",
+          "description": "A presentation framework based on CSS3 transforms and transitions.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "DataTables",
+          "description": "Add advanced interaction controls to your HTML tables the free & easy way.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "dropzone.js",
+          "description": "An open-source library providing drag'n'drop file uploads with image previews.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "typeahead.js",
+          "description": "A fast and fully-featured autocomplete library.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "popper.js",
+          "description": "Positioning tooltips and popovers for Bootstrap.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "qtip2.js",
+          "description": "HTML and Javascript Tooltips.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "forkit.js",
+          "description": "Adds a unique pull-down menu to your site, mimicking the GitHub ribbon.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "Zepto.js",
+          "description": "A minimalist JavaScript library for modern browsers with a jQuery-compatible API.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "MixItUp",
+          "description": "A library for sorting and filtering.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "Masonry",
+          "description": "A cascading grid layout library.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "Packery",
+          "description": "A cascading grid layout library.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "Isotope",
+          "description": "A magical layout filtering and sorting library.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "Headroom.js",
+          "description": "Hide your header until needed.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "Highlight.js",
+          "description": "A JavaScript syntax highlighter.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": true
+        },
+        {
+          "name": "Gridster.js",
+          "description": "A jQuery plugin for intuitive draggable layouts.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "CodeMirror",
+          "description": "An in-browser code editor.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "Moment.js",
+          "description": "Parse, validate, manipulate, and display dates in JavaScript.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": true
+        },
+        {
+          "name": "html2canvas",
+          "description": "Take screenshots with JavaScript.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "FullCalendar",
+          "description": "A full-sized drag-and-drop event calendar.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "Sortable",
+          "description": "A minimalist library for reorderable drag-and-drop lists.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "FitVids.js",
+          "description": "A jQuery plugin for fluid-width video embeds.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "jPlayer",
+          "description": "HTML5 Audio & Video for jQuery.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "SoundManager 2",
+          "description": "A JavaScript Sound API supporting MP3, MPEG4, and HTML5 audio.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "Jcrop",
+          "description": "Image cropping plugin for jQuery.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "jQuery Timepicker/Datepicker",
+          "description": "Adds a timepicker to jQueryUI Datepicker.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "jQuery validation library",
+          "description": "Form validation in JavaScript.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "PhysicsJS",
+          "description": "A modular and extendable physics engine for JavaScript.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "Device.js",
+          "description": "Write conditional CSS and JavaScript based on device operating system.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "AngularJS Touch Carousel",
+          "description": "A mobile-friendly AngularJS carousel.",
+          "type": "Framework",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "proto.io",
+          "description": "Create interactive high-fidelity prototypes.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "matchHeight",
+          "description": "Make a row of columns match each other's height.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "NSFW.js",
+          "description": "Protect your site from showing NSFW content powered by AI.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": true
+        },
+        {
+          "name": "HTML5 Shiv",
+          "description": "Enable use of HTML5 sectioning elements in legacy Internet Explorer.",
+          "type": "Library",
+          "used_by_vqdev": true,
+          "favorite": true
+        },
+        {
+          "name": "lodash",
+          "description": "A JavaScript utility library delivering consistency, modularity, performance, and extras.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": true
+        },
+        {
+          "name": "URI.js",
+          "description": "JavaScript URL mutation library.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "jQuery Mobile",
+          "description": "A touch-optimized web framework developed by the jQuery project team.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+		{
+          "name": "cascade Framework",
+          "description": "A CSS framework for creating websites and web apps, similar to Bootstrap.",
+          "type": "Library",
+          "used_by_vqdev": false,
+			"favorite": false
+		},
+		{
+          "name": "Polymer",
+          "description": "An efficient, expressive, extensible HTML templating library for JavaScript. Material Web Components.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "MathJax",
+          "description": "Beautiful and accessible math in all browsers.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        },
+        {
+          "name": "clipboard.js",
+          "description": "Copy to clipboard without Flash.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": true
+        },
+        {
+          "name": "Foundation",
+          "description": "A responsive front-end framework providing a responsive grid and HTML and CSS UI components, templates, and code snippets, including typography, forms, buttons, navigation, and other interface elements, as well as optional functionality provided by JavaScript extensions.",
+          "type": "Library",
+          "used_by_vqdev": false,
+          "favorite": false
+        }
+      ]
+	}
+  ]
+}
