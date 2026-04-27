@@ -1,0 +1,1020 @@
+/* ==========================================================================
+   Resume Page — Pixel-Futurism Design System
+   visionquestdevelopment.com · Pegasus Child Theme
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   CSS Custom Properties — Light Theme (default)
+   -------------------------------------------------------------------------- */
+
+#vq-resume {
+  --rv-bg: #fff;
+  --rv-bg-2: #f4f5f9;
+  --rv-bg-card: #fff;
+  --rv-text: #1a1835;
+  --rv-text-dim: #4a4870;
+  --rv-text-faint: #9896b0;
+  --rv-border: #e5e3f0;
+  --rv-accent: #241F60;
+  --rv-accent-2: #21648B;
+  --rv-accent-3: #1A8D85;
+  --rv-accent-4: #2BB673;
+  --rv-accent-5: #8BC644;
+  --rv-shadow: 0 1px 3px rgba(0,0,0,.08), 0 4px 16px rgba(0,0,0,.05);
+  --rv-font-head: 'Space Grotesk';
+  --rv-font-mono: 'JetBrains Mono';
+  --rv-font-pixel: 'Press Start 2P';
+}
+
+/* --------------------------------------------------------------------------
+   CSS Custom Properties — Dark Mode Overrides
+   -------------------------------------------------------------------------- */
+
+#vq-resume.rv-dark {
+  --rv-bg: #0A0820;
+  --rv-bg-2: rgba(255,255,255,.03);
+  --rv-bg-card: rgba(255,255,255,.04);
+  --rv-text: #E9E6FF;
+  --rv-text-dim: #9d9bc0;
+  --rv-text-faint: rgba(255,255,255,.28);
+  --rv-border: rgba(255,255,255,.08);
+  --rv-accent: #8BC644;
+  --rv-accent-2: #2BB673;
+  --rv-accent-3: #1A8D85;
+  --rv-accent-4: #21648B;
+  --rv-accent-5: #241F60;
+  --rv-shadow: 0 1px 3px rgba(0,0,0,.3), 0 4px 24px rgba(0,0,0,.2);
+}
+
+/* --------------------------------------------------------------------------
+   Keyframe Animations
+   -------------------------------------------------------------------------- */
+
+@keyframes rv-aurora {
+  0% {
+    opacity: .55;
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    opacity: .8;
+    transform: scale(1.04) translateY(-12px);
+  }
+  100% {
+    opacity: .55;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes rv-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* --------------------------------------------------------------------------
+   Root Wrapper
+   -------------------------------------------------------------------------- */
+
+#vq-resume {
+  position: relative;
+  background: var(--rv-bg);
+  color: var(--rv-text);
+  min-height: 100vh;
+  transition: background 0.4s, color 0.4s;
+}
+
+/* --------------------------------------------------------------------------
+   Background: Aurora + Starfield (dark mode canvas)
+   -------------------------------------------------------------------------- */
+
+.rv-bg-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.rv-dark .rv-bg-wrap {
+  opacity: 1;
+}
+
+.rv-aurora {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 20% 30%, rgba(36,31,96,.55) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 45% at 75% 20%, rgba(33,100,139,.45) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 55% at 55% 70%, rgba(26,141,133,.38) 0%, transparent 60%),
+    radial-gradient(ellipse 45% 40% at 85% 75%, rgba(43,182,115,.28) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 35% at 10% 80%, rgba(139,198,68,.22) 0%, transparent 55%);
+  animation: rv-aurora 12s ease-in-out infinite alternate;
+}
+
+#rv-starfield {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.rv-bg-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 220px;
+  background: linear-gradient(to bottom, transparent 0%, var(--rv-bg) 100%);
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Scroll Progress Bar
+   -------------------------------------------------------------------------- */
+
+#rv-scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 9999;
+  background: rgba(255,255,255,.06);
+  pointer-events: none;
+}
+
+#rv-scroll-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(
+    90deg,
+    #241F60  0%,
+    #21648B  25%,
+    #1A8D85  50%,
+    #2BB673  75%,
+    #8BC644  100%
+  );
+  transition: width 0.08s linear;
+  will-change: width;
+}
+
+/* --------------------------------------------------------------------------
+   Content Z-Index
+   -------------------------------------------------------------------------- */
+
+.rv-header,
+.rv-options,
+.rv-body {
+  position: relative;
+  z-index: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Header
+   -------------------------------------------------------------------------- */
+
+.rv-header {
+  padding: 60px 0 48px;
+  border-bottom: 1px solid var(--rv-border);
+  background: var(--rv-bg);
+  transition: background 0.4s;
+}
+
+.rv-dark .rv-header {
+  background: transparent;
+}
+
+.rv-header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.rv-kicker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--rv-font-mono), monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  color: var(--rv-accent);
+  margin-bottom: 16px;
+}
+
+.rv-kicker-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--rv-accent);
+  animation: rv-blink 1.4s step-start infinite;
+  flex-shrink: 0;
+}
+
+.rv-name {
+  font-family: var(--rv-font-head), sans-serif;
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
+  color: var(--rv-text);
+  transition: color 0.4s;
+}
+
+.rv-dark .rv-name {
+  font-family: var(--rv-font-pixel), monospace;
+  font-size: 28px;
+  letter-spacing: -0.01em;
+  background: linear-gradient(135deg, #E9E6FF 0%, #8BC644 50%, #2BB673 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.rv-contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.rv-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--rv-text-dim);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.rv-contact-item:hover {
+  color: var(--rv-accent);
+  text-decoration: none;
+}
+
+.rv-contact-item i {
+  font-size: 13px;
+  color: var(--rv-accent);
+  flex-shrink: 0;
+}
+
+.rv-download-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.rv-updated {
+  font-family: var(--rv-font-mono), monospace;
+  font-size: 11px;
+  color: var(--rv-text-faint);
+  letter-spacing: .05em;
+}
+
+/* --------------------------------------------------------------------------
+   Buttons
+   -------------------------------------------------------------------------- */
+
+.rv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: 1px solid var(--rv-border);
+  background: transparent;
+  font-family: var(--rv-font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: .06em;
+  text-decoration: none;
+  color: var(--rv-text);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s, opacity 0.2s;
+  line-height: 1;
+}
+
+.rv-btn:hover {
+  border-color: var(--rv-accent);
+  color: var(--rv-accent);
+  text-decoration: none;
+}
+
+.rv-btn--primary {
+  background: var(--rv-accent);
+  border-color: var(--rv-accent);
+  color: #fff;
+}
+
+.rv-btn--primary:hover {
+  opacity: .88;
+  color: #fff;
+  border-color: var(--rv-accent);
+}
+
+.rv-btn--ghost {
+  color: var(--rv-text-faint);
+  font-size: 10px;
+  border-color: transparent;
+}
+
+.rv-btn--ghost:hover {
+  color: var(--rv-accent);
+  border-color: var(--rv-accent);
+}
+
+/* --------------------------------------------------------------------------
+   Body Layout
+   -------------------------------------------------------------------------- */
+
+.rv-body {
+  padding: 48px 0 80px;
+}
+
+.rv-body-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* --------------------------------------------------------------------------
+   Sidebar Cards
+   -------------------------------------------------------------------------- */
+
+.rv-card {
+  background: var(--rv-bg-card);
+  border: 1px solid var(--rv-border);
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: var(--rv-shadow);
+  transition: background 0.4s, border-color 0.4s;
+}
+
+.rv-card-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--rv-font-mono), monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--rv-accent);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--rv-border);
+}
+
+.rv-summary-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--rv-text-dim);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Skill Bars
+   -------------------------------------------------------------------------- */
+
+.rv-skill {
+  margin-bottom: 14px;
+}
+
+.rv-skill-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.rv-skill-name {
+  font-size: 13px;
+  color: var(--rv-text);
+  font-weight: 500;
+}
+
+.rv-skill-pct {
+  font-family: var(--rv-font-mono), monospace;
+  font-size: 11px;
+  color: var(--rv-accent);
+  font-weight: 600;
+}
+
+.rv-skill-bar {
+  position: relative;
+  height: 20px;
+  background: var(--rv-border);
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.rv-skill-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--rv-accent) 0%, var(--rv-accent-2) 100%);
+  transition: width 1.2s cubic-bezier(.4,0,.2,1) .3s;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-radius: 2px;
+}
+
+/* Percentage label inside the fill bar, appears after animation */
+.rv-skill-fill::after {
+  content: attr(data-pct);
+  font-family: var(--rv-font-mono), monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: #fff;
+  padding-right: 7px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.4s ease 1.3s;
+}
+
+.rv-skills.animated .rv-skill-fill {
+  width: var(--skill-pct);
+}
+
+.rv-skills.animated .rv-skill-fill::after {
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   List and Pills
+   -------------------------------------------------------------------------- */
+
+.rv-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.rv-list li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 13px;
+  color: var(--rv-text-dim);
+  margin-bottom: 6px;
+  line-height: 1.6;
+}
+
+.rv-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--rv-accent);
+  font-size: 11px;
+  top: 2px;
+}
+
+.rv-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.rv-pill {
+  font-family: var(--rv-font-mono), monospace;
+  font-size: 10px;
+  padding: 4px 10px;
+  border: 1px solid var(--rv-border);
+  color: var(--rv-text-dim);
+  background: transparent;
+  text-transform: lowercase;
+  letter-spacing: .03em;
+  cursor: default;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.rv-pill:hover {
+  border-color: var(--rv-accent);
+  color: var(--rv-accent);
+}
+
+/* --------------------------------------------------------------------------
+   Sections (Main Column)
+   -------------------------------------------------------------------------- */
+
+.rv-section {
+  margin-bottom: 48px;
+}
+
+.rv-section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 28px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--rv-border);
+  transition: border-color 0.4s;
+}
+
+.rv-section-num {
+  font-family: var(--rv-font-mono), monospace;
+  font-size: 11px;
+  color: var(--rv-accent);
+  letter-spacing: .1em;
+  flex-shrink: 0;
+}
+
+.rv-section-title {
+  font-family: var(--rv-font-head), sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--rv-text);
+  transition: color 0.4s;
+}
+
+.rv-dark .rv-section-title {
+  font-family: var(--rv-font-pixel), monospace;
+  font-size: 13px;
+  letter-spacing: -0.01em;
+}
+
+/* --------------------------------------------------------------------------
+   Job Entries
+   -------------------------------------------------------------------------- */
+
+.rv-job {
+  padding: 24px;
+  background: var(--rv-bg-card);
+  border: 1px solid var(--rv-border);
+  margin-bottom: 16px;
+  box-shadow: var(--rv-shadow);
+  transition: background 0.4s, border-color 0.2s;
+}
+
+.rv-job:hover {
+  border-color: var(--rv-accent-3);
+}
+
+.rv-job-header {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 12px;
+  align-items: flex-start;
+}
+
+.rv-job-logo {
+  width: 52px;
+  height: 40px;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: var(--rv-bg-2);
+  border: 1px solid var(--rv-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rv-job-logo img {
+  max-width: 100%;
+  max-height: 36px;
+  object-fit: contain;
+}
+
+.rv-job-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.rv-job-company {
+  font-family: var(--rv-font-head), sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 2px;
+  color: var(--rv-text);
+}
+
+.rv-job-dates {
+  font-family: var(--rv-font-mono), monospace;
+  font-size: 11px;
+  color: var(--rv-text-faint);
+  letter-spacing: .05em;
+}
+
+.rv-job-badge {
+  font-family: var(--rv-font-mono), monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  padding: 3px 8px;
+  border: 1px solid var(--rv-accent-4);
+  color: var(--rv-accent-4);
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.rv-job-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--rv-accent);
+  margin: 0 0 10px;
+}
+
+.rv-job-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--rv-text-dim);
+  margin: 0;
+}
+
+.rv-job-details {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--rv-border);
+}
+
+.rv-job-details p {
+  font-size: 13px;
+  color: var(--rv-text-faint);
+  margin: 0 0 6px;
+  line-height: 1.6;
+}
+
+.rv-job-details p:last-child {
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Education
+   -------------------------------------------------------------------------- */
+
+.rv-edu {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 24px;
+  padding: 20px 24px;
+  background: var(--rv-bg-card);
+  border: 1px solid var(--rv-border);
+  margin-bottom: 12px;
+  box-shadow: var(--rv-shadow);
+  transition: background 0.4s, border-color 0.4s;
+  align-items: start;
+}
+
+.rv-edu-school {
+  font-family: var(--rv-font-head), sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 6px;
+  color: var(--rv-text);
+}
+
+.rv-edu-dates {
+  font-family: var(--rv-font-mono), monospace;
+  font-size: 11px;
+  color: var(--rv-text-faint);
+  letter-spacing: .04em;
+}
+
+.rv-edu-degree {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--rv-accent);
+  margin-bottom: 6px;
+}
+
+.rv-edu-desc {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--rv-text-dim);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Technical Grid
+   -------------------------------------------------------------------------- */
+
+.rv-tech-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.rv-tech-block {
+  padding: 20px;
+  background: var(--rv-bg-card);
+  border: 1px solid var(--rv-border);
+  box-shadow: var(--rv-shadow);
+  transition: background 0.4s, border-color 0.4s;
+}
+
+.rv-tech-title {
+  font-family: var(--rv-font-mono), monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--rv-accent);
+  margin: 0 0 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--rv-border);
+}
+
+.rv-tech-block p {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--rv-text-dim);
+  margin: 0 0 8px;
+}
+
+.rv-tech-block p:last-child {
+  margin-bottom: 0;
+}
+
+.rv-tech-block p b,
+.rv-tech-block p strong {
+  color: var(--rv-text);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   References Grid
+   -------------------------------------------------------------------------- */
+
+.rv-refs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.rv-ref-card {
+  padding: 20px;
+  background: var(--rv-bg-card);
+  border: 1px solid var(--rv-border);
+  box-shadow: var(--rv-shadow);
+  transition: background 0.4s, border-color 0.2s;
+}
+
+.rv-ref-card:hover {
+  border-color: var(--rv-accent-3);
+}
+
+.rv-ref-type {
+  font-family: var(--rv-font-mono), monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--rv-accent-3);
+  margin-bottom: 6px;
+}
+
+.rv-ref-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--rv-text);
+  margin-bottom: 4px;
+}
+
+.rv-ref-title {
+  font-size: 12px;
+  color: var(--rv-text-dim);
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.rv-ref-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: var(--rv-font-mono), monospace;
+  font-size: 11px;
+  color: var(--rv-text-faint);
+}
+
+.rv-ref-contact a {
+  color: var(--rv-text-faint);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.rv-ref-contact a:hover {
+  color: var(--rv-accent);
+}
+
+/* --------------------------------------------------------------------------
+   Options Widget (Fixed Bottom-Right)
+   -------------------------------------------------------------------------- */
+
+.rv-options {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.rv-options-toggle-btn {
+  width: 44px;
+  height: 44px;
+  background: var(--rv-accent);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  font-size: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.25);
+  transition: background 0.2s, transform 0.2s;
+  flex-shrink: 0;
+}
+
+.rv-options-toggle-btn:hover {
+  background: var(--rv-accent-2);
+  transform: scale(1.05);
+}
+
+.rv-options-panel {
+  background: var(--rv-bg-card);
+  border: 1px solid var(--rv-border);
+  padding: 16px 20px;
+  min-width: 180px;
+  box-shadow: var(--rv-shadow);
+  display: none;
+  margin-bottom: 8px;
+  transition: background 0.4s, border-color 0.4s;
+}
+
+.rv-options-panel.rv-opts-open {
+  display: block;
+}
+
+.rv-opt-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rv-border);
+}
+
+.rv-opt-row:last-child {
+  border-bottom: none;
+}
+
+.rv-opt-label {
+  font-family: var(--rv-font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--rv-text-dim);
+}
+
+/* --------------------------------------------------------------------------
+   Toggle Switch
+   -------------------------------------------------------------------------- */
+
+.rv-switch {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.rv-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.rv-slider {
+  position: absolute;
+  inset: 0;
+  background: var(--rv-border);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.rv-slider::before {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  left: 3px;
+  bottom: 3px;
+  background: var(--rv-text-faint);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.rv-switch input:checked + .rv-slider {
+  background: var(--rv-accent);
+}
+
+.rv-switch input:checked + .rv-slider::before {
+  transform: translateX(16px);
+  background: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   Expand Section
+   -------------------------------------------------------------------------- */
+
+.rv-expand-wrap {
+  margin-top: 12px;
+}
+
+.rv-expand-body {
+  margin-top: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive — 960px (tablet, 2-col body collapses)
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 960px) {
+  .rv-body-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .rv-sidebar {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .rv-sidebar .rv-card {
+    margin-bottom: 0;
+  }
+
+  .rv-refs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive — 700px
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 700px) {
+  .rv-name {
+    font-size: 36px;
+  }
+
+  .rv-dark .rv-name {
+    font-size: 20px;
+  }
+
+  .rv-edu {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .rv-tech-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rv-refs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rv-sidebar {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive — 480px (mobile)
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 480px) {
+  .rv-name {
+    font-size: 28px;
+  }
+
+  .rv-dark .rv-name {
+    font-size: 16px;
+  }
+
+  .rv-header {
+    padding: 36px 0 28px;
+  }
+
+  .rv-header-inner {
+    padding: 0 20px;
+  }
+
+  .rv-body-inner {
+    padding: 0 20px;
+  }
+
+  .rv-options {
+    bottom: 16px;
+    right: 16px;
+  }
+}
