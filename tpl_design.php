@@ -1,209 +1,218 @@
 <?php
-/* 
-	Template Name: Design Template
+/*
+    Template Name: Design Template
 */
 ?>
-	<?php get_header(); ?>
-	
-	<div class="container ">
-		<h2 class="mb-3">How VisionQuest Elevates Your Web Design Experience</h2>
+<?php get_header(); ?>
 
-		<div class="row mb-3">
-			<div class="col-md-6"> 
-				<img class="mb-3 wow fadeInRight" src="<?php echo get_stylesheet_directory_uri(); ?>/images/Design1.png" />
-			</div>
-			<div class="col-md-6">
-				
-				<b>UI &amp; UX:</b> <p>At VisionQuest, we understand the critical role that both UI (User Interface) and UX (User Experience) play in the success of your website. 
-				We focus on creating designs that not only look great but are intuitive and user-friendly, ensuring your visitors have a seamless experience. 
-				Since your website is built for your customers, it’s essential that every aspect, from navigation to content presentation, is tailored to their needs. 
-				We provide expert guidance on optimizing your website’s usability, such as suggesting accordion-style functionality for FAQ pages on mobile, to enhance your users’ experience and engagement.
-				</p>
-			</div>
-		</div>
+<div id="vq-design-page">
 
-		<h3>What we outsource:</h3>
-		<p>
-		At VisionQuest, we typically outsource tasks like typography, color scheme, logo design and creation, marketing, print jobs, style guides, and brand to specialized designers. 
-		However, if you're using a theme, we can customize the website to match the existing style of the theme. 
-		Our focus is on the technical aspects, ensuring your site’s functionality, such as integrating your bank with your e-commerce platform and solving complex back-end challenges.
-		</p>
+  <!-- ===================== PAGE HERO ===================== -->
+  <section class="vq-page-hero">
+    <div class="vq-page-hero-aurora"></div>
+    <div class="vq-page-hero-inner">
+      <div class="vq-kicker"><span style="color:var(--vq-quinary)">&#9656;</span> [SERVICES] &mdash; Design</div>
+      <h1 class="vq-page-hero-title">
+        <span class="vq-page-hero-brand">DESIGN</span>
+        <span class="vq-grad-1">Elevating your brand.</span>
+      </h1>
+      <p class="vq-sub" style="margin-top:20px;max-width:640px">UI &amp; UX design, prototyping, and brand strategy &mdash; built for your customers, not just your stakeholders.</p>
+      <div class="vq-hero-ctas" style="margin-top:36px">
+        <a href="/get-started" class="vq-btn vq-btn--primary">&#9658; Get Started</a>
+        <a href="/contact" class="vq-btn">Contact Us</a>
+      </div>
+      <span class="vq-hud-corner vq-hud-tl">&#9484;</span>
+      <span class="vq-hud-corner vq-hud-tr">&#9488;</span>
+    </div>
+    <div class="vq-page-hero-fade"></div>
+  </section>
 
-		<p>In design, it takes an effort and a creativity to create a flow and feel to a site. 
-		Visionquest has the resources you need to find good designers and we have ways of outsourcing the design so that you get a result that is aesthetically pleasing to you and your customers.</p>
-	
-		<!--How it works: 
+  <!-- ===================== UI / UX INTRO ===================== -->
+  <section class="vq-section">
+    <div class="vq-section-inner">
+      <div class="vq-design-intro">
+        <div class="vq-design-intro-img">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/Design1.png" alt="UI/UX Design">
+        </div>
+        <div class="vq-design-intro-text">
+          <div class="vq-kicker"><span style="color:var(--vq-quinary)">&#9656;</span> [01] &mdash; UI &amp; UX</div>
+          <h2 class="vq-h2" style="font-size:38px">How VisionQuest Elevates Your Design Experience</h2>
+          <p style="font-size:16px;line-height:1.75;color:var(--vq-ink-dim);margin-top:20px">
+            At VisionQuest, we understand the critical role that both UI (User Interface) and UX (User Experience) play in the success of your website.
+            We focus on creating designs that not only look great but are intuitive and user-friendly, ensuring your visitors have a seamless experience.
+          </p>
+          <p style="font-size:16px;line-height:1.75;color:var(--vq-ink-dim);margin-top:16px">
+            Since your website is built for your customers, every aspect &mdash; from navigation to content presentation &mdash; is tailored to their needs.
+            We provide expert guidance on optimizing usability, like suggesting accordion-style functionality for FAQ pages on mobile to boost engagement.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-		1.) Tight budget quick fix - If you want a site that is strictly informational and simple in design, I recommend basing the design on a theme/template that way we can probably negotiate on price, because the use for a designer will not necessarily be needed to get the project done.
+  <!-- ===================== SCOPE: OUTSOURCE VS BUILD ===================== -->
+  <section class="vq-section vq-section--dark-grad">
+    <div class="vq-section-inner">
+      <div class="vq-section-head">
+        <div class="vq-kicker"><span style="color:var(--vq-quinary)">&#9656;</span> [02] &mdash; Our Scope</div>
+        <h2 class="vq-h2">What we handle vs. outsource</h2>
+        <p class="vq-sub">We're developers first. Here's how we split design work and who owns what.</p>
+      </div>
+      <div class="vq-outsource-grid">
+        <div class="vq-outsource-card">
+          <div class="vq-outsource-label" style="color:var(--vq-tertiary)">
+            <span class="vq-font-pixel" style="font-size:9px">&#9671;</span> We Outsource
+          </div>
+          <ul class="vq-outsource-list">
+            <li>Typography &amp; type selection</li>
+            <li>Color scheme creation</li>
+            <li>Logo design &amp; brand identity</li>
+            <li>Marketing &amp; print collateral</li>
+            <li>Style guides &amp; brand books</li>
+          </ul>
+        </div>
+        <div class="vq-outsource-card vq-outsource-card--highlight">
+          <div class="vq-outsource-label" style="color:var(--vq-quinary)">
+            <span class="vq-font-pixel" style="font-size:9px">&#9671;</span> We Build
+          </div>
+          <ul class="vq-outsource-list">
+            <li>Technical implementation</li>
+            <li>Theme customization to match your brand</li>
+            <li>E-commerce &amp; payment integration</li>
+            <li>Complex back-end functionality</li>
+            <li>Responsive, accessible code</li>
+          </ul>
+        </div>
+      </div>
+      <p class="vq-outsource-note">
+        In design, it takes effort and creativity to create flow and feel. VisionQuest has the resources to find great designers and the relationships to outsource
+        effectively &mdash; so you get an aesthetically pleasing result without managing multiple vendors.
+      </p>
+    </div>
+  </section>
 
-		2.) Outsource the design to designer of your choice - If you choose to use your own designer and work with them to come up with a design you approve to be made for the website then we can make it. Our development process is fast and only takes about 2 weeks to produce a full product from start to finish. Visionquest will be available for consultation on how much outsourcing should cost, and you can also rely on us having some connection or resource to refer you to that can provide this service.
+  <!-- ===================== THREE METHODS ===================== -->
+  <section class="vq-section">
+    <div class="vq-section-inner">
+      <div class="vq-section-head">
+        <div class="vq-kicker"><span style="color:var(--vq-quinary)">&#9656;</span> [03] &mdash; Design Methods</div>
+        <h2 class="vq-h2">Three ways to get it done.</h2>
+        <p class="vq-sub">Every budget. Every complexity level. Pick the track that fits your project.</p>
+      </div>
+      <div class="vq-services-grid">
+        <?php
+        $methods = [
+            [
+                '01', 'Tight Budget Quick Fix',
+                'If you\'re looking for a simple, informational website, basing the design on a theme or template reduces costs significantly — a custom designer may not be necessary, allowing us to negotiate a more budget-friendly price.',
+                [ 'Theme-based', 'Template', 'Fast turnaround' ],
+                'var(--vq-quarternary)',
+            ],
+            [
+                '02', 'Outsource to Your Designer',
+                'If you decide to work with your own designer to create a mockup, we handle the development once the design is finalized. VisionQuest is available for consultation to estimate outsourcing costs and refer trusted design contacts.',
+                [ 'PSD to WP', 'Figma', 'Your designer' ],
+                'var(--vq-tertiary)',
+            ],
+            [
+                '03', 'Custom Build',
+                'For eCommerce and custom WordPress websites with advanced functionality, a designer mock-up phase is essential. We recommend at least two rounds of revisions to ensure you\'re fully satisfied before the build begins.',
+                [ 'E-commerce', 'Custom WP', 'Mock-up phase' ],
+                'var(--vq-secondary)',
+            ],
+        ];
+        foreach ( $methods as [ $id, $name, $desc, $tags, $color ] ) :
+        ?>
+        <div class="vq-svc" style="--svc-color:<?php echo $color; ?>">
+          <div class="vq-svc-inner">
+            <?php foreach ( [ 'tl', 'tr', 'bl', 'br' ] as $pos ) : ?>
+              <div class="vq-svc-corner vq-svc-corner--<?php echo $pos; ?>" style="background:<?php echo $color; ?>"></div>
+            <?php endforeach; ?>
+            <div class="vq-svc-top">
+              <span class="vq-font-pixel" style="font-size:10px;color:<?php echo $color; ?>;letter-spacing:.1em"><?php echo $id; ?></span>
+            </div>
+            <h3 class="vq-svc-name"><?php echo esc_html( $name ); ?></h3>
+            <p class="vq-svc-desc"><?php echo esc_html( $desc ); ?></p>
+            <div class="vq-svc-tags">
+              <?php foreach ( $tags as $tag ) echo '<span class="vq-tag">' . esc_html( $tag ) . '</span>'; ?>
+            </div>
+          </div>
+        </div>
+        <?php endforeach; ?>
+      </div>
+    </div>
+  </section>
 
-		3.) Custom e-commerce and WordPress: These websites are required to have a designer mock-up phase, and we advise at least two revisions to make sure you are happy with the layout.
-		-->
+  <!-- ===================== DESIGN PROCESS ===================== -->
+  <section class="vq-section vq-section--dark-grad">
+    <div class="vq-section-inner">
+      <div class="vq-section-head">
+        <div class="vq-kicker"><span style="color:var(--vq-quinary)">&#9656;</span> [04] &mdash; Design Process</div>
+        <h2 class="vq-h2">Four stages. No surprises.</h2>
+        <p class="vq-sub">From napkin sketch to launch &mdash; a clear process you can follow every step of the way.</p>
+      </div>
 
-		<!--
-		Web Design Process:
-		1.) Sitemap
-		2.) Wireframe
-		3.) Mock-up
-		4.) Build.
-		-->
-	
-	</div>
-	
-	<section id="design" class="pt-5 pb-2  text-center vqdev-section">
-		<h2 class="mb-5 text-center color-white">Design</h2>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4">
-					<div class="card mb-4 pt-2 p-3 box-shadow wow fadeInUp" >
-						<h3 class="text-center">Method 1</h3>
-						<h4 class="text-center">Tight budget quick fix</h4>
-						<div class="card-body">
-							<p class="text-left">If you're looking for a simple, informational website, I suggest using a theme or template. This can help reduce costs, as a custom designer may not be necessary, allowing us to potentially negotiate a more budget-friendly price for the project.</p>
-							
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="card mb-4 pt-2 p-3 box-shadow wow fadeInUp" data-wow-delay=".3s">
-						<h3 class="text-center">Method 2</h3>
-						<h4 class="text-center">Outsource the design to designer of your choice</h4>
-						<div class="card-body">
-							<p class="text-left">If you decide to work with your own designer to create a design for your website, we can handle the development once the design is finalized. Visionquest is also available for consultation to help estimate the costs of outsourcing design work.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="card mb-4 pt-2 p-3 box-shadow wow fadeInUp" data-wow-delay=".6s">
-						<h3 class="text-center">Method 3</h3>
-						<h4 class="text-center">Custom e-commerce and WordPress themes</h4>
-						<div class="card-body">
-							<p class="text-left">For eCommerce and custom websites with advanced functionality, a designer mock-up phase is essential. We recommend going through at least two rounds of revisions to ensure you're fully satisfied with the layout and design.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-	</section>
+      <?php
+      $process = [
+          [
+              '01', 'Sitemap', 25, 'var(--vq-quinary)',
+              'https://visionquestdevelopment.com/wp-content/uploads/2016/03/2016-03-13_17-42-29.png',
+              'A list of all pages, navigation links, and hierarchy &mdash; parent pages, child pages, footer links. This helps estimate cost (roughly $100 per page), determines full scope, and identifies custom functionality needs like staff pages, portfolios, or sortable listings.',
+          ],
+          [
+              '02', 'Wireframe', 50, 'var(--vq-quarternary)',
+              'https://visionquestdevelopment.com/wp-content/uploads/2016/03/20140709_1049391.jpg',
+              'A rough sketch of the site layout &mdash; no imagery, color, or movement, just structure. This is the best time to involve the developer so they can flag what\'s feasible within your timeline and budget before any design polish happens.',
+          ],
+          [
+              '03', 'Mockup', 75, 'var(--vq-tertiary)',
+              'https://visionquestdevelopment.com/wp-content/uploads/2016/03/final-liberty-2.jpg',
+              'A high-fidelity prototype view of your website &mdash; sometimes interactive, sometimes a pixel-perfect image. It includes typography, color, logo, imagery, and full layout. You see and approve this before a single line of code is written.',
+          ],
+          [
+              '04', 'Build', 100, 'var(--vq-secondary)',
+              'https://visionquestdevelopment.com/wp-content/uploads/2014/03/Untitled-11.png',
+              'This is where VisionQuest excels. Over 5+ years of building websites for companies across Atlanta and beyond. Weekly demos, staging access from day one, and a clean handoff with documentation when the project ships.',
+          ],
+      ];
 
-	
-	<section class="p-3 vqdev-bg-light">
-		<h2 class="mb-3 text-center  ">Sitemap</h2>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6">
-					<img class="aligncenter size-full wp-image-2525 mb-3 wow " src="https://visionquestdevelopment.com/wp-content/uploads/2016/03/2016-03-13_17-42-29.png" alt="2016-03-13_17-42-29" />
-				</div>
-				<div class="col-md-6">
-					<div class=" wow " data-wow-delay=".3s">
-						<p><strong>Sitemap</strong> - usually a list of the links to pages that will be listed in the navigation or header, and/or listing of all pages on the website. This includes listing of all child and parent pages in a hierarchy fashion. </p>
-					
-						<p>This gives us an idea of how many pages will need to have on the website, in the navigation, and maybe even links in the footer. This also helps us estimate the price of the website, it is safe to assume that is costs about $100 a page if not more depending on functionality. This will also help determine what custom functionality is needed for each page like a staff page, portfolio page, calendar page, or custom sort and filter page.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	
-	<section class="p-3 ">
-		<h2 class="mb-3 text-center ">Wireframe</h2>
-		<div class="container">
-			<div class="row">
-				
-				<div class="col-md-6 order-2  order-md-1">
-					<div class=" wow "  data-wow-delay=".3s">
-						<p><strong>Wireframe</strong> - provides a cock-tail napkin sketch of the rough outlines of the site and does not include any imagery, color, or movement. It is usually just lines on paper or a whiteboard. This is usually a good time to include the developer in the conversation because they can provide insight on what can or cannot be done in a timely or cost effective fashion. </p>
-					</div>
-					
-				</div>
-				
-				<div class="col-md-6 order-1  order-md-2"> 
-					<img class="aligncenter size-full wp-image-2521 mb-3 wow " src="https://visionquestdevelopment.com/wp-content/uploads/2016/03/20140709_1049391.jpg" alt="20140709_104939(1)" />
-				</div>
-			</div>
-		</div>
-	</section>
-	
-	<section class="p-3 vqdev-bg-light">
-		<h2 class="mb-3 text-center ">Mockup</h2>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6">
-					<img class="aligncenter size-full wp-image-2526 mb-3 wow " src="https://visionquestdevelopment.com/wp-content/uploads/2016/03/final-liberty-2.jpg" alt="final-liberty (2)" />
-				</div>
-				<div class="col-md-6">
-					<div class=" wow "  data-wow-delay=".3s">
-						<p><strong>Mockup</strong> - this is a prototype view of your website. Sometimes it can come in a system that will let you test out your website a little bit before the build, other times it could be a picture of what the final product will look like. It usually includes design skills like typography, logo creation, color scheming, imagery, a little bit of strategy, and artwork. </p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	
-	<section class="p-3 ">
-		<h2 class="mb-3 text-center ">Build</h2>
-		<div class="container">
-			<div class="row">
-				
-				<div class="col-md-6 order-2 order-md-1">
-					<div class=" wow "  data-wow-delay=".3s">
-						<p>
-							<strong>Build</strong> - This is where Visionquest can help you best. We have been building websites for companies for over 5+ years now, and know how to give you an online presence.
+      foreach ( $process as $i => [ $n, $t, $pct, $color, $img, $d ] ) :
+          $flip = ( $i % 2 === 1 ) ? ' vq-design-step--flip' : '';
+      ?>
+      <div class="vq-design-step<?php echo $flip; ?>">
+        <div class="vq-design-step-meta">
+          <div class="vq-process-num" style="color:<?php echo $color; ?>"><?php echo $n; ?></div>
+          <div class="vq-process-bar"><div class="vq-process-fill" style="width:<?php echo $pct; ?>%;background:<?php echo $color; ?>"></div></div>
+          <h3 class="vq-process-title"><?php echo esc_html( $t ); ?></h3>
+          <p class="vq-process-desc"><?php echo esc_html( $d ); ?></p>
+        </div>
+        <div class="vq-design-step-img">
+          <img src="<?php echo esc_url( $img ); ?>" alt="<?php echo esc_attr( $t ); ?>">
+        </div>
+      </div>
+      <?php endforeach; ?>
 
-							If you want a site strictly to be informational, I recommend basing the design on a template that way we can probably negotiate on price because the use for a designer will probably not be needed.
+    </div>
+  </section>
 
-							Otherwise you can find a designer and work with them to come up with a design you approve to be made for the website. Visionquest will be available for consultation on how much that should cost and you can also rely on us having some sort of connection to a resource or contact that you can use for that service.
+  <!-- ===================== CTA ===================== -->
+  <section class="vq-cta-wrap">
+    <div class="vq-cta-inner">
+      <div class="vq-font-pixel" style="font-size:12px;color:var(--vq-quinary);letter-spacing:.1em;margin-bottom:24px">&#9658; PRESS START</div>
+      <h2 class="vq-cta-title">
+        Ready to start<br>
+        <span class="vq-grad-3">your project?</span>
+      </h2>
+      <p style="font-size:17px;color:var(--vq-ink-dim);max-width:560px;margin:0 auto 36px;line-height:1.6">
+        Book a 30-minute discovery call. We'll walk through your vision, give you a realistic scope, and you decide where to go from there.
+      </p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+        <a href="/get-started" class="vq-btn vq-btn--primary">&#9658; Get started</a>
+        <a href="/contact" class="vq-btn">Contact us</a>
+      </div>
+    </div>
+  </section>
 
-							Custom e-commerce and WordPress websites are required to get a designer mock-up, and we advise at least two revisions to make sure you are happy with the layout.
-						</p>
-					</div>
-					
-				</div>
-				
-				<div class="col-md-6 order-1 order-md-2">
-					<img class="aligncenter size-full wp-image-227 mb-3 wow " src="https://visionquestdevelopment.com/wp-content/uploads/2014/03/Untitled-11.png" alt="Untitled 11" />
-				</div>
-			</div>
-		</div>
-	</section>
-	
-	<section class="jumbotron text-center mb-0">
-		<div class="container">
-			<h2 class="jumbotron-heading">Lets get started!</h2>
-			<p class="lead text-muted">Ready to bring your software vision to life? Visit our Getting Started page to see how we can turn your ideas into reality. Let's kick off your project today!</p>
-			<p>
-				<a href="/get-started" class="btn btn-primary my-2">Get Started!</a>
-				<!--<a href="#" class="btn btn-secondary my-2">Secondary action</a>-->
-			</p>
-		</div>
-	</section>
+</div><!-- #vq-design-page -->
 
-	<?php /*
-	<div id="page-wrap">
-		<div class="container">
-		  <!-- Example row of columns -->
-		  <div class="row">
-				<div class="col-md-12">
-					<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-						
-						
-						
-						<?php the_content(); ?>
-					
-					<?php endwhile; else: ?>
-						
-						<div class="page-header">
-							<h1>Oh no!</h1>
-						</div>
-						<p>No content is appearing for this page!</p>
-					<?php endif; ?>
-				</div>
-				
-		   
-		  </div>
-		</div>
-	</div>
-	*/ ?>
-      <?php get_footer(); ?>
+<?php get_footer(); ?>
