@@ -31,10 +31,10 @@
   <section class="vq-section">
     <div class="vq-section-inner">
       <div class="vq-design-intro">
-        <div class="vq-design-intro-img">
+        <div class="vq-design-intro-img wow fadeInLeft">
           <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/Design1.png" alt="UI/UX Design">
         </div>
-        <div class="vq-design-intro-text">
+        <div class="vq-design-intro-text wow fadeInRight">
           <div class="vq-kicker"><span style="color:var(--vq-quinary)">&#9656;</span> [01] &mdash; UI &amp; UX</div>
           <h2 class="vq-h2" style="font-size:38px">How VisionQuest Elevates Your Design Experience</h2>
           <p style="font-size:16px;line-height:1.75;color:var(--vq-ink-dim);margin-top:20px">
@@ -53,13 +53,13 @@
   <!-- ===================== SCOPE: OUTSOURCE VS BUILD ===================== -->
   <section class="vq-section vq-section--dark-grad">
     <div class="vq-section-inner">
-      <div class="vq-section-head">
+      <div class="vq-section-head wow fadeInUp">
         <div class="vq-kicker"><span style="color:var(--vq-quinary)">&#9656;</span> [02] &mdash; Our Scope</div>
         <h2 class="vq-h2">What we handle vs. outsource</h2>
         <p class="vq-sub">We're developers first. Here's how we split design work and who owns what.</p>
       </div>
       <div class="vq-outsource-grid">
-        <div class="vq-outsource-card">
+        <div class="vq-outsource-card wow fadeInLeft">
           <div class="vq-outsource-label" style="color:var(--vq-tertiary)">
             <span class="vq-font-pixel" style="font-size:9px">&#9671;</span> We Outsource
           </div>
@@ -71,7 +71,7 @@
             <li>Style guides &amp; brand books</li>
           </ul>
         </div>
-        <div class="vq-outsource-card vq-outsource-card--highlight">
+        <div class="vq-outsource-card vq-outsource-card--highlight wow fadeInRight">
           <div class="vq-outsource-label" style="color:var(--vq-quinary)">
             <span class="vq-font-pixel" style="font-size:9px">&#9671;</span> We Build
           </div>
@@ -94,7 +94,7 @@
   <!-- ===================== THREE METHODS ===================== -->
   <section class="vq-section">
     <div class="vq-section-inner">
-      <div class="vq-section-head">
+      <div class="vq-section-head wow fadeInUp">
         <div class="vq-kicker"><span style="color:var(--vq-quinary)">&#9656;</span> [03] &mdash; Design Methods</div>
         <h2 class="vq-h2">Three ways to get it done.</h2>
         <p class="vq-sub">Every budget. Every complexity level. Pick the track that fits your project.</p>
@@ -121,9 +121,11 @@
                 'var(--vq-secondary)',
             ],
         ];
+        $mi = 0;
         foreach ( $methods as [ $id, $name, $desc, $tags, $color ] ) :
+            $mdelay = number_format( $mi * 0.15, 2 ) . 's';
         ?>
-        <div class="vq-svc" style="--svc-color:<?php echo $color; ?>">
+        <div class="vq-svc wow fadeInUp" data-wow-delay="<?php echo $mdelay; ?>" style="--svc-color:<?php echo $color; ?>">
           <div class="vq-svc-inner">
             <?php foreach ( [ 'tl', 'tr', 'bl', 'br' ] as $pos ) : ?>
               <div class="vq-svc-corner vq-svc-corner--<?php echo $pos; ?>" style="background:<?php echo $color; ?>"></div>
@@ -138,7 +140,7 @@
             </div>
           </div>
         </div>
-        <?php endforeach; ?>
+        <?php $mi++; endforeach; ?>
       </div>
     </div>
   </section>
@@ -146,7 +148,7 @@
   <!-- ===================== DESIGN PROCESS ===================== -->
   <section class="vq-section vq-section--dark-grad">
     <div class="vq-section-inner">
-      <div class="vq-section-head">
+      <div class="vq-section-head wow fadeInUp">
         <div class="vq-kicker"><span style="color:var(--vq-quinary)">&#9656;</span> [04] &mdash; Design Process</div>
         <h2 class="vq-h2">Four stages. No surprises.</h2>
         <p class="vq-sub">From napkin sketch to launch &mdash; a clear process you can follow every step of the way.</p>
@@ -177,16 +179,18 @@
       ];
 
       foreach ( $process as $i => [ $n, $t, $pct, $color, $img, $d ] ) :
-          $flip = ( $i % 2 === 1 ) ? ' vq-design-step--flip' : '';
+          $flip      = ( $i % 2 === 1 ) ? ' vq-design-step--flip' : '';
+          $meta_anim = ( $i % 2 === 0 ) ? 'fadeInLeft' : 'fadeInRight';
+          $img_anim  = ( $i % 2 === 0 ) ? 'fadeInRight' : 'fadeInLeft';
       ?>
       <div class="vq-design-step<?php echo $flip; ?>">
-        <div class="vq-design-step-meta">
+        <div class="vq-design-step-meta wow <?php echo $meta_anim; ?>">
           <div class="vq-process-num" style="color:<?php echo $color; ?>"><?php echo $n; ?></div>
           <div class="vq-process-bar"><div class="vq-process-fill" style="width:<?php echo $pct; ?>%;background:<?php echo $color; ?>"></div></div>
           <h3 class="vq-process-title"><?php echo esc_html( $t ); ?></h3>
           <p class="vq-process-desc"><?php echo esc_html( $d ); ?></p>
         </div>
-        <div class="vq-design-step-img">
+        <div class="vq-design-step-img wow <?php echo $img_anim; ?>">
           <img src="<?php echo esc_url( $img ); ?>" alt="<?php echo esc_attr( $t ); ?>">
         </div>
       </div>
@@ -197,7 +201,7 @@
 
   <!-- ===================== CTA ===================== -->
   <section class="vq-cta-wrap">
-    <div class="vq-cta-inner">
+    <div class="vq-cta-inner wow fadeInUp">
       <div class="vq-font-pixel" style="font-size:12px;color:var(--vq-quinary);letter-spacing:.1em;margin-bottom:24px">&#9658; PRESS START</div>
       <h2 class="vq-cta-title">
         Ready to start<br>

@@ -11,12 +11,12 @@
   <section class="vq-page-hero">
     <div class="vq-page-hero-aurora"></div>
     <div class="vq-page-hero-inner">
-      <div class="vq-kicker"><span style="color:var(--vq-quinary)">&#9656;</span> [03] &mdash; Recent Work</div>
-      <h1 class="vq-page-hero-title">
+      <div class="vq-kicker wow fadeInUp"><span style="color:var(--vq-quinary)">&#9656;</span> [03] &mdash; Recent Work</div>
+      <h1 class="vq-page-hero-title wow fadeInUp" data-wow-delay="0.1s">
         <span class="vq-page-hero-brand">PORTFOLIO</span>
         <span class="vq-grad-1">Work we've shipped.</span>
       </h1>
-      <p class="vq-sub" style="margin-top:20px;max-width:640px">A slice of what we've built for clients across Atlanta and beyond &mdash; use the controls drawer to filter by category or technology.</p>
+      <p class="vq-sub wow fadeInUp" data-wow-delay="0.2s" style="margin-top:20px;max-width:640px">A slice of what we've built for clients across Atlanta and beyond &mdash; use the controls drawer to filter by category or technology.</p>
       <span class="vq-hud-corner vq-hud-tl">&#9484;</span>
       <span class="vq-hud-corner vq-hud-tr">&#9488;</span>
     </div>

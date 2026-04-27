@@ -31,7 +31,7 @@
   <section class="vq-section">
     <div class="vq-section-inner">
       <div class="vq-design-intro">
-        <div class="vq-design-intro-text">
+        <div class="vq-design-intro-text wow fadeInLeft">
           <div class="vq-kicker"><span style="color:var(--vq-quinary)">&#9656;</span> [01] &mdash; Our Approach</div>
           <h2 class="vq-h2" style="font-size:38px">How VisionQuest Can Help</h2>
           <p style="font-size:16px;line-height:1.75;color:var(--vq-ink-dim);margin-top:20px">
@@ -41,7 +41,7 @@
             I pride myself on not just being a web coder &mdash; I take the time to understand your business needs and help you make decisions that enable your website to fulfill the requirements you need to grow. From concept to content, graphics, e-commerce, social media, and SEO, VisionQuest is your metro Atlanta development specialist.
           </p>
         </div>
-        <div class="vq-design-intro-img">
+        <div class="vq-design-intro-img wow fadeInRight">
           <img src="https://visionquestdevelopment.com/wp-content/uploads/2024/09/Hero.png" alt="VisionQuest Development">
         </div>
       </div>
@@ -51,14 +51,14 @@
   <!-- ===================== CAPABILITIES ===================== -->
   <section class="vq-section vq-section--dark-grad">
     <div class="vq-section-inner">
-      <div class="vq-section-head">
+      <div class="vq-section-head wow fadeInUp">
         <div class="vq-kicker"><span style="color:var(--vq-quinary)">&#9656;</span> [02] &mdash; What We Do</div>
         <h2 class="vq-h2">Full-cycle development capability.</h2>
         <p class="vq-sub">From marketing strategy to deployment &mdash; every layer of the stack covered.</p>
       </div>
       <div class="vq-services-grid">
 
-        <div class="vq-svc" style="--svc-color:var(--vq-quarternary)">
+        <div class="vq-svc wow fadeInUp" data-wow-delay="0.1s" style="--svc-color:var(--vq-quarternary)">
           <div class="vq-svc-inner">
             <?php foreach ( [ 'tl', 'tr', 'bl', 'br' ] as $pos ) : ?>
               <div class="vq-svc-corner vq-svc-corner--<?php echo $pos; ?>" style="background:var(--vq-quarternary)"></div>
@@ -74,7 +74,7 @@
           </div>
         </div>
 
-        <div class="vq-svc" style="--svc-color:var(--vq-tertiary)">
+        <div class="vq-svc wow fadeInUp" data-wow-delay="0.2s" style="--svc-color:var(--vq-tertiary)">
           <div class="vq-svc-inner">
             <?php foreach ( [ 'tl', 'tr', 'bl', 'br' ] as $pos ) : ?>
               <div class="vq-svc-corner vq-svc-corner--<?php echo $pos; ?>" style="background:var(--vq-tertiary)"></div>
@@ -90,7 +90,7 @@
           </div>
         </div>
 
-        <div class="vq-svc" style="--svc-color:var(--vq-secondary)">
+        <div class="vq-svc wow fadeInUp" data-wow-delay="0.3s" style="--svc-color:var(--vq-secondary)">
           <div class="vq-svc-inner">
             <?php foreach ( [ 'tl', 'tr', 'bl', 'br' ] as $pos ) : ?>
               <div class="vq-svc-corner vq-svc-corner--<?php echo $pos; ?>" style="background:var(--vq-secondary)"></div>
@@ -113,7 +113,7 @@
   <!-- ===================== WEBSITE PRICING ===================== -->
   <section class="vq-section">
     <div class="vq-section-inner">
-      <div class="vq-section-head">
+      <div class="vq-section-head wow fadeInUp">
         <div class="vq-kicker"><span style="color:var(--vq-quinary)">&#9656;</span> [03] &mdash; Website Pricing</div>
         <h2 class="vq-h2">Transparent pricing. Five tiers.</h2>
         <p class="vq-sub">Hourly rate $100/hr. Every website comes with training and all source files.</p>
@@ -127,9 +127,11 @@
             [ 'IV',  '$2,500', 'Large',    'Up to 20 WP Pages', 'Up to 40 hrs', [ 'Social Media', 'SEO', 'Mobile', 'Blog', 'Gallery', 'Forum' ],    'var(--vq-quarternary)'],
             [ 'V',   '$3,500', 'Ultimate', 'Up to 30 WP Pages', 'Up to 60 hrs', [ 'Social Media', 'SEO', 'Mobile', 'Blog', 'Gallery', 'Forum', 'Shopping' ], 'var(--vq-quinary)' ],
         ];
+        $ti = 0;
         foreach ( $tiers as [ $level, $price, $label, $pages, $hours, $addons, $color ] ) :
+            $tdelay = number_format( $ti * 0.1, 1 ) . 's';
         ?>
-        <div class="vq-pricing-card" style="--tier-color:<?php echo $color; ?>">
+        <div class="vq-pricing-card wow fadeInUp" data-wow-delay="<?php echo $tdelay; ?>" style="--tier-color:<?php echo $color; ?>">
           <div class="vq-pricing-card-top">
             <span class="vq-font-pixel" style="font-size:9px;color:<?php echo $color; ?>;letter-spacing:.1em">LEVEL <?php echo $level; ?></span>
             <div class="vq-pricing-price"><?php echo $price; ?></div>
@@ -150,7 +152,7 @@
           </div>
           <a href="/get-started" class="vq-pricing-cta" style="border-top-color:<?php echo $color; ?>">Get Started &#8594;</a>
         </div>
-        <?php endforeach; ?>
+        <?php $ti++; endforeach; ?>
       </div>
       <p class="vq-outsource-note" style="margin-top:32px">
         * All websites include training and all source files delivered via zip or cloud storage.
@@ -161,7 +163,7 @@
   <!-- ===================== RETAINER AGREEMENTS ===================== -->
   <section class="vq-section vq-section--dark-grad">
     <div class="vq-section-inner">
-      <div class="vq-section-head">
+      <div class="vq-section-head wow fadeInUp">
         <div class="vq-kicker"><span style="color:var(--vq-quinary)">&#9656;</span> [04] &mdash; Retainer Agreements</div>
         <h2 class="vq-h2">Maintenance &amp; ongoing support.</h2>
         <p class="vq-sub">Monthly plans that keep your site secure, updated, and running. Cancel any time.</p>
@@ -209,10 +211,12 @@
                 ],
             ],
         ];
+        $ri = 0;
         foreach ( $plans as [ $name, $price, $period, $color, $featured, $features ] ) :
             $feat_class = $featured ? ' vq-retainer-card--featured' : '';
+            $rdelay     = number_format( $ri * 0.15, 2 ) . 's';
         ?>
-        <div class="vq-retainer-card<?php echo $feat_class; ?>" style="--plan-color:<?php echo $color; ?>">
+        <div class="vq-retainer-card<?php echo $feat_class; ?> wow fadeInUp" data-wow-delay="<?php echo $rdelay; ?>" style="--plan-color:<?php echo $color; ?>">
           <?php if ( $featured ) : ?>
             <div class="vq-retainer-badge">&#9733; Most Popular</div>
           <?php endif; ?>
@@ -233,14 +237,14 @@
           </ul>
           <a href="/contact" class="vq-btn<?php echo $featured ? ' vq-btn--primary' : ''; ?>" style="width:100%;text-align:center;display:block;font-size:9px">Sign Up &#9658;</a>
         </div>
-        <?php endforeach; ?>
+        <?php $ri++; endforeach; ?>
       </div>
     </div>
   </section>
 
   <!-- ===================== CTA ===================== -->
   <section class="vq-cta-wrap">
-    <div class="vq-cta-inner">
+    <div class="vq-cta-inner wow fadeInUp">
       <div class="vq-font-pixel" style="font-size:12px;color:var(--vq-quinary);letter-spacing:.1em;margin-bottom:24px">&#9658; PRESS START</div>
       <h2 class="vq-cta-title">
         Ready to build<br>

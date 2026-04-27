@@ -112,7 +112,7 @@ if ( ! function_exists( 'vq_mountain_row' ) ) {
   <!-- ===================== SERVICES ===================== -->
   <section id="services" class="vq-section">
     <div class="vq-section-inner">
-      <div class="vq-section-head">
+      <div class="vq-section-head wow fadeInUp">
         <div class="vq-kicker"><span style="color:var(--vq-quinary)">&#9656;</span> [01] &mdash; What We Build</div>
         <h2 class="vq-h2">Full-stack capability. Boutique attention.</h2>
         <p class="vq-sub">Six disciplines, one team. We scope, design, build, and ship.</p>
@@ -121,7 +121,7 @@ if ( ! function_exists( 'vq_mountain_row' ) ) {
       <div class="vq-services-grid">
 
         <!-- Agentic AI — featured, spans 2 columns -->
-        <div class="vq-svc vq-svc--featured">
+        <div class="vq-svc vq-svc--featured wow zoomIn">
           <div class="vq-svc-inner vq-svc-inner--featured">
             <div class="vq-svc-blob-1"></div>
             <div class="vq-svc-blob-2"></div>
@@ -148,8 +148,10 @@ if ( ! function_exists( 'vq_mountain_row' ) ) {
             [ '05', 'Software Development','Custom internal tools, integrations, and APIs built to your workflow — not shoehorned into someone else\'s.',                    [ 'Typescript', 'Next.js', 'REST APIs' ],         'var(--vq-tertiary)'    ],
             [ '06', 'DevOps &amp; Cloud', 'CI/CD, infrastructure-as-code, observability. Ship on Friday without breaking a sweat.',                                         [ 'AWS', 'Docker', 'Terraform' ],           'var(--vq-primary)'     ],
         ];
+        $si = 0;
         foreach ( $services as [ $id, $name, $desc, $tags, $color ] ) {
-            echo '<div class="vq-svc" style="--svc-color:' . $color . '">';
+            $delay = number_format( 0.1 + $si * 0.1, 1 ) . 's';
+            echo '<div class="vq-svc wow fadeInUp" data-wow-delay="' . $delay . '" style="--svc-color:' . $color . '">';
             echo '  <div class="vq-svc-inner">';
             foreach ( [ 'tl', 'tr', 'bl', 'br' ] as $pos ) {
                 echo '<div class="vq-svc-corner vq-svc-corner--' . $pos . '" style="background:' . $color . '"></div>';
@@ -162,6 +164,7 @@ if ( ! function_exists( 'vq_mountain_row' ) ) {
             echo '  </div>';
             echo '  </div>';
             echo '</div>';
+            $si++;
         }
         ?>
 
@@ -185,7 +188,7 @@ if ( ! function_exists( 'vq_mountain_row' ) ) {
       <div class="vq-ai-grid">
 
         <!-- Left: copy -->
-        <div>
+        <div class="wow fadeInLeft">
           <div class="vq-ai-badge">
             <span class="vq-blink" style="color:var(--vq-quinary)">&#9679;</span>
             <span>AI EVANGELIST &middot; ATLANTA</span>
@@ -219,7 +222,7 @@ if ( ! function_exists( 'vq_mountain_row' ) ) {
         </div>
 
         <!-- Right: live agent mesh terminal -->
-        <div class="vq-ai-panel">
+        <div class="vq-ai-panel wow fadeInRight">
           <div class="vq-ai-panel-head">
             <div style="display:flex;gap:6px;align-items:center">
               <span style="width:10px;height:10px;background:#ff5f56;display:inline-block"></span>
@@ -279,7 +282,7 @@ if ( ! function_exists( 'vq_mountain_row' ) ) {
   <!-- ===================== PROCESS ===================== -->
   <section id="process" class="vq-section vq-section--dark-grad">
     <div class="vq-section-inner">
-      <div class="vq-section-head">
+      <div class="vq-section-head wow fadeInUp">
         <div class="vq-kicker"><span style="color:var(--vq-quinary)">&#9656;</span> [02] &mdash; Our Process</div>
         <h2 class="vq-h2">Four stages. No surprises.</h2>
         <p class="vq-sub">The same rhythm for a $10k landing page and a $500k platform. It just scales.</p>
@@ -292,13 +295,16 @@ if ( ! function_exists( 'vq_mountain_row' ) ) {
             [ '03', 'Build',    'Sprints with weekly demos. Staging access from day one.',                        75  ],
             [ '04', 'Launch',   'QA, monitoring, handoff docs. We stick around.',                                100  ],
         ];
+        $pi = 0;
         foreach ( $process_steps as [ $n, $t, $d, $pct ] ) {
-            echo '<div class="vq-process-step">';
+            $pdelay = number_format( $pi * 0.15, 2 ) . 's';
+            echo '<div class="vq-process-step wow fadeInUp" data-wow-delay="' . $pdelay . '">';
             echo '  <div class="vq-process-num">' . $n . '</div>';
             echo '  <div class="vq-process-bar"><div class="vq-process-fill" style="width:' . $pct . '%"></div></div>';
             echo '  <h3 class="vq-process-title">' . $t . '</h3>';
             echo '  <p class="vq-process-desc">' . $d . '</p>';
             echo '</div>';
+            $pi++;
         }
         ?>
       </div>
@@ -308,7 +314,7 @@ if ( ! function_exists( 'vq_mountain_row' ) ) {
   <!-- ===================== WORK ===================== -->
   <section id="work" class="vq-section">
     <div class="vq-section-inner">
-      <div class="vq-section-head">
+      <div class="vq-section-head wow fadeInUp">
         <div class="vq-kicker"><span style="color:var(--vq-quinary)">&#9656;</span> [03] &mdash; Recent Work</div>
         <h2 class="vq-h2">Our work</h2>
         <p class="vq-sub">A slice of what we've shipped for clients across the Southeast and beyond.</p>
@@ -345,8 +351,9 @@ if ( ! function_exists( 'vq_mountain_row' ) ) {
 
             $thumb_url = get_the_post_thumbnail_url( get_the_ID(), 'medium_large' );
             $num_str   = str_pad( $wi + 1, 2, '0', STR_PAD_LEFT );
+            $wdelay    = number_format( $wi * 0.1, 1 ) . 's';
         ?>
-        <a href="<?php the_permalink(); ?>" class="vq-work-card">
+        <a href="<?php the_permalink(); ?>" class="vq-work-card wow fadeInUp" data-wow-delay="<?php echo $wdelay; ?>">
           <div class="vq-work-img<?php echo $thumb_url ? ' vq-work-img--photo' : ' ph'; ?>">
             <?php if ( $thumb_url ) : ?>
               <img src="<?php echo esc_url( $thumb_url ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>">
@@ -381,7 +388,7 @@ if ( ! function_exists( 'vq_mountain_row' ) ) {
   <section id="pegasus" class="vq-section">
     <div class="vq-section-inner">
       <div class="vq-pegasus-card">
-        <div class="vq-pegasus-left">
+        <div class="vq-pegasus-left wow fadeInLeft">
           <div class="vq-font-pixel" style="font-size:10px;color:var(--vq-quinary);letter-spacing:.12em;margin-bottom:16px">&#9733; FEATURED PRODUCT</div>
           <h2 style="font-size:52px;margin:0 0 16px;font-weight:700;letter-spacing:-0.02em;color:var(--vq-ink)">Pegasus Theme</h2>
           <p style="font-size:16px;color:var(--vq-ink-dim);line-height:1.6;margin:0 0 24px;max-width:480px">The WordPress + Bootstrap 5 theme we built and open-sourced. Hundreds of sites run on it. Suite of plugins, active community, free forever.</p>
@@ -390,7 +397,7 @@ if ( ! function_exists( 'vq_mountain_row' ) ) {
             <a href="https://pegasustheme.com/docs" class="vq-btn" style="font-size:9px" target="_blank" rel="noopener">Docs</a>
           </div>
         </div>
-        <div class="vq-pegasus-right">
+        <div class="vq-pegasus-right wow fadeInRight">
           <div class="ph vq-pegasus-img"><img src="https://visionquestdevelopment.com/wp-content/uploads/2025/06/pegasus.png" alt="Pegasus Horse"></div>
           <div class="vq-pegasus-stats">
             <div>
@@ -413,7 +420,7 @@ if ( ! function_exists( 'vq_mountain_row' ) ) {
 
   <!-- ===================== CTA / CONTACT ===================== -->
   <section id="contact" class="vq-cta-wrap">
-    <div class="vq-cta-inner">
+    <div class="vq-cta-inner wow fadeInUp">
       <div class="vq-font-pixel" style="font-size:12px;color:var(--vq-quinary);letter-spacing:.1em;margin-bottom:24px">&#9658; PRESS START</div>
       <h2 class="vq-cta-title">
         Ready to start<br>
@@ -423,17 +430,17 @@ if ( ! function_exists( 'vq_mountain_row' ) ) {
         Book a 30-minute discovery call. We'll walk through your goals, give you a realistic scope, and you decide where to go from there.
       </p>
       <div class="vq-start-steps">
-        <div class="vq-start-step">
+        <div class="vq-start-step wow fadeInUp" data-wow-delay="0.1s">
           <div class="vq-font-pixel" style="font-size:11px;color:var(--vq-quinary)">01</div>
           <div style="font-size:15px;font-weight:600;margin-top:10px;color:var(--vq-ink)">Tell us your idea</div>
           <div style="font-size:13px;color:var(--vq-ink-dim);margin-top:4px">Quick form or a 30-min call.</div>
         </div>
-        <div class="vq-start-step">
+        <div class="vq-start-step wow fadeInUp" data-wow-delay="0.2s">
           <div class="vq-font-pixel" style="font-size:11px;color:var(--vq-quinary)">02</div>
           <div style="font-size:15px;font-weight:600;margin-top:10px;color:var(--vq-ink)">Get a plan + quote</div>
           <div style="font-size:13px;color:var(--vq-ink-dim);margin-top:4px">Within 3 business days.</div>
         </div>
-        <div class="vq-start-step">
+        <div class="vq-start-step wow fadeInUp" data-wow-delay="0.3s">
           <div class="vq-font-pixel" style="font-size:11px;color:var(--vq-quinary)">03</div>
           <div style="font-size:15px;font-weight:600;margin-top:10px;color:var(--vq-ink)">We build &amp; ship</div>
           <div style="font-size:13px;color:var(--vq-ink-dim);margin-top:4px">Weekly demos, staging access.</div>
