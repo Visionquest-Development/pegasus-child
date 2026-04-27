@@ -55,6 +55,8 @@
 		
 		if(is_page( '131' )) wp_enqueue_script( 'mix_it_up_js', get_stylesheet_directory_uri() . '/js/mixitup.js', array(), '', true );
 		if(is_page( '131' )) wp_enqueue_script( 'masonry');
+		if(is_page( '131' )) wp_enqueue_style(  'portfolio_drawer_css', get_stylesheet_directory_uri() . '/css/portfolio-drawer.css', array(), null );
+		if(is_page( '131' )) wp_enqueue_script( 'portfolio_drawer_js',  get_stylesheet_directory_uri() . '/js/portfolio-drawer.js',  array( 'jquery', 'mix_it_up_js' ), null, true );
 		
 		wp_enqueue_script( 'slick-js', get_stylesheet_directory_uri() . '/js/slick.js', array( 'jquery' ), null, true );
 		
