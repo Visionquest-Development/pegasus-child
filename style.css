@@ -113,7 +113,7 @@
 	~~~~~~~~~~~~~~~~~~~~~*/
 
   footer .footer-social-container {
-    margin-top: 1rem;
+    padding-top: 1rem;
   }
 
 	.footer-social-container .card {
