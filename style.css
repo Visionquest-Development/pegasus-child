@@ -112,6 +112,8 @@
 	~~~~~~~~ FOOTER ~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
 
+  .widget-title { color: white; }
+
   footer .footer-social-container {
     padding-top: 1rem;
   }
