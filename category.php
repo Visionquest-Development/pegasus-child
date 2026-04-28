@@ -1,9 +1,11 @@
-<?php
-/*
-    Template Name: Blog Template
-*/
-?>
 <?php get_header(); ?>
+
+<?php
+  $cat          = get_queried_object();
+  $cat_name     = $cat ? $cat->name : 'Category';
+  $cat_desc     = $cat ? $cat->description : '';
+  $accent_colors = [ 'var(--vq-secondary)', 'var(--vq-quarternary)', 'var(--vq-tertiary)', 'var(--vq-quinary)' ];
+?>
 
 <div id="vq-blog-page">
 
@@ -11,51 +13,30 @@
   <section class="vq-page-hero">
     <div class="vq-page-hero-aurora"></div>
     <div class="vq-page-hero-inner">
-      <div class="vq-kicker wow fadeInUp"><span style="color:var(--vq-quinary)">&#9656;</span> [02] &mdash; Latest Posts</div>
+      <div class="vq-kicker wow fadeInUp">
+        <span style="color:var(--vq-quinary)">&#9656;</span>
+        <a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>" style="color:inherit;text-decoration:none">BLOG</a>
+        &nbsp;&mdash;&nbsp; Category
+      </div>
       <h1 class="vq-page-hero-title wow fadeInUp" data-wow-delay="0.1s">
-        <span class="vq-page-hero-brand">BLOG</span>
-        <span class="vq-grad-1">Thoughts, tutorials &amp; tech.</span>
+        <span class="vq-page-hero-brand"><?php echo esc_html( strtoupper( $cat_name ) ); ?></span>
+        <?php if ( $cat_desc ) : ?>
+          <span class="vq-grad-1"><?php echo esc_html( $cat_desc ); ?></span>
+        <?php endif; ?>
       </h1>
-      <p class="vq-sub wow fadeInUp" data-wow-delay="0.2s" style="margin-top:20px;max-width:600px">Writing about web development, DevOps, WordPress, and whatever else is on the workbench.</p>
+      <p class="vq-sub wow fadeInUp" data-wow-delay="0.2s" style="margin-top:20px;max-width:600px">
+        Posts filed under <strong><?php echo esc_html( $cat_name ); ?></strong>.
+      </p>
       <span class="vq-hud-corner vq-hud-tl">&#9484;</span>
       <span class="vq-hud-corner vq-hud-tr">&#9488;</span>
     </div>
     <div class="vq-page-hero-fade"></div>
   </section>
 
-  <!-- ===================== BLOG SECTION ===================== -->
+  <!-- ===================== POSTS GRID ===================== -->
   <section class="vq-section">
     <div class="vq-section-inner">
 
-      <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-
-        <!-- Category filter -->
-        <div class="vq-blog-cats-wrap wow fadeInUp">
-          <ul id="blog-categories">
-            <li class="cat-item"><a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>">All</a></li>
-            <?php
-            wp_list_categories( [
-              'orderby'            => 'name',
-              'order'              => 'ASC',
-              'style'              => 'list',
-              'show_count'         => 0,
-              'hide_empty'         => 1,
-              'use_desc_for_title' => 0,
-              'hierarchical'       => 0,
-              'title_li'           => 0,
-              'taxonomy'           => 'category',
-            ] );
-            ?>
-          </ul>
-        </div>
-
-        <?php if ( get_the_content() ) : ?>
-          <div class="vq-blog-intro wow fadeInUp"><?php the_content(); ?></div>
-        <?php endif; ?>
-
-      <?php endwhile; endif; wp_reset_query(); ?>
-
-      <!-- View switcher + grid -->
       <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
 
         <div class="cbp-vm-options wow fadeInUp">
@@ -66,19 +47,16 @@
 
         <ul id="octane-blog-list">
           <?php
-          $blog_q = new WP_Query( [ 'post_type' => 'post', 'posts_per_page' => -1 ] );
           $bi = 0;
-          $accent_colors = [ 'var(--vq-secondary)', 'var(--vq-quarternary)', 'var(--vq-tertiary)', 'var(--vq-quinary)' ];
-          while ( $blog_q->have_posts() ) : $blog_q->the_post();
+          if ( have_posts() ) : while ( have_posts() ) : the_post();
             $bi++;
-            $accent = $accent_colors[ ( $bi - 1 ) % 4 ];
-            $ex     = get_the_excerpt();
+            $accent   = $accent_colors[ ( $bi - 1 ) % 4 ];
+            $ex       = get_the_excerpt();
             $ex_short = $ex ? substr( strip_tags( $ex ), 0, 130 ) . '...' : '';
           ?>
           <li class="blog-item-container">
             <article class="article-<?php the_ID(); ?> block-inner">
 
-              <!-- Image -->
               <a class="cbp-vm-image" href="<?php the_permalink(); ?>">
                 <?php if ( has_post_thumbnail() ) :
                   the_post_thumbnail( 'medium_large', [ 'alt' => esc_attr( get_the_title() ) ] );
@@ -89,29 +67,38 @@
                 <div class="vq-blog-num" style="color:<?php echo $accent; ?>">&#9679; <?php echo str_pad( $bi, 2, '0', STR_PAD_LEFT ); ?></div>
               </a>
 
-              <!-- Title -->
               <a href="<?php the_permalink(); ?>">
                 <h3 class="cbp-vm-title"><?php the_title(); ?></h3>
               </a>
 
-              <!-- Categories -->
               <div class="cbp-vm-price"><?php the_category( ' &middot; ' ); ?></div>
 
-              <!-- Excerpt -->
               <div class="octane-blog-content cbp-vm-details">
                 <?php if ( $ex_short ) echo '<p>' . esc_html( $ex_short ) . '</p>'; ?>
               </div>
 
-              <!-- Read more -->
               <a class="cbp-vm-add" href="<?php the_permalink(); ?>">Read More &rarr;</a>
 
               <div class="clearfix"></div>
             </article>
           </li>
-          <?php endwhile; wp_reset_postdata(); ?>
+          <?php endwhile; endif; ?>
         </ul>
 
       </div><!-- #cbp-vm -->
+
+      <!-- Pagination -->
+      <?php
+      $big = 999999999;
+      echo paginate_links( [
+        'base'    => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+        'format'  => '?paged=%#%',
+        'current' => max( 1, get_query_var( 'paged' ) ),
+        'total'   => $wp_query->max_num_pages,
+        'prev_text' => '&larr;',
+        'next_text' => '&rarr;',
+      ] );
+      ?>
 
     </div><!-- .vq-section-inner -->
   </section>

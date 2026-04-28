@@ -79,7 +79,7 @@
           <p class="rv-summary-text">Looking for a DevOps or Full-Stack software engineering position. Senior Technical lead and mentor. Teacher attitude but student approach. Problem solver and troubleshooting master.</p>
         </div>
 
-        <div class="rv-card rv-skills wow fadeInLeft" data-wow-delay="0.1s">
+        <div class="rv-card rv-skills">
           <div class="rv-card-head"><span class="rv-section-num">01</span> Skills</div>
           <div class="rv-skill-list">
             <?php

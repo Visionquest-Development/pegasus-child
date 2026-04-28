@@ -10,6 +10,7 @@ on:
       - saltcellar_theme
       - mixmarket_theme
       - tommygs_theme
+      - vqdev_theme
   workflow_dispatch: {}
 
 jobs:
@@ -55,6 +56,11 @@ jobs:
             host: gvam1248.siteground.biz
             user: u1929-p96clzjdofva
             remote_path: /home/u1929-p96clzjdofva/www/tommygs.com/public_html/wp-content/themes/pegasus-child
+          - name: VisionQuest Development
+            branch: vqdev_theme
+            host: ssh.visionquestdevelopment.com
+            user: u795-gsjmrktis7i1
+            remote_path: /home/u795-gsjmrktis7i1/www/visionquestdevelopment.com/public_html/wp-content/themes/pegasus-child
     steps:
       - name: Deploy via SSH
         if: github.ref_name == matrix.site.branch

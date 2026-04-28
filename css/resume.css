@@ -70,6 +70,16 @@
   50% { opacity: 0; }
 }
 
+@keyframes rv-bar-fill {
+  from { width: 0; }
+  to   { width: var(--skill-pct); }
+}
+
+@keyframes rv-bar-pct-show {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
 /* --------------------------------------------------------------------------
    Root Wrapper
    -------------------------------------------------------------------------- */
@@ -138,9 +148,19 @@
   left: 0;
   right: 0;
   height: 3px;
-  z-index: 9999;
+  z-index: 100000;
   background: rgba(255,255,255,.06);
   pointer-events: none;
+}
+
+/* Sit just below the WP admin bar when logged in */
+body.admin-bar #rv-scroll-progress {
+  top: 32px;
+}
+@media screen and (max-width: 782px) {
+  body.admin-bar #rv-scroll-progress {
+    top: 46px;
+  }
 }
 
 #rv-scroll-bar {
@@ -420,14 +440,14 @@
   height: 100%;
   width: 0;
   background: linear-gradient(90deg, var(--rv-accent) 0%, var(--rv-accent-2) 100%);
-  transition: width 1.2s cubic-bezier(.4,0,.2,1) .3s;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   border-radius: 2px;
+  animation: rv-bar-fill 1.2s cubic-bezier(.4,0,.2,1) 0.5s forwards;
 }
 
-/* Percentage label inside the fill bar, appears after animation */
+/* Percentage label inside the fill bar */
 .rv-skill-fill::after {
   content: attr(data-pct);
   font-family: var(--rv-font-mono), monospace;
@@ -438,15 +458,7 @@
   padding-right: 7px;
   white-space: nowrap;
   opacity: 0;
-  transition: opacity 0.4s ease 1.3s;
-}
-
-.rv-skills.animated .rv-skill-fill {
-  width: var(--skill-pct);
-}
-
-.rv-skills.animated .rv-skill-fill::after {
-  opacity: 1;
+  animation: rv-bar-pct-show 0.4s ease 1.6s forwards;
 }
 
 /* --------------------------------------------------------------------------
