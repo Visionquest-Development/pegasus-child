@@ -29,6 +29,10 @@
       var(--ulg-brand-bar-height) +
       var(--site-header-height)
     );
+    --primary-color: #237264;
+    --secondary-color: #92712A;
+    --tertiary-color: #F1EBE1;
+    --quaternary-color: #222;
   }
 
 	.theloft-tan {
@@ -98,7 +102,7 @@
 
   .home-slider-text {
     position: absolute;
-    top: 30%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
