@@ -1171,8 +1171,10 @@
 
 	@media only screen and ( max-width: 767px ) {
     .home-slider-text h1 {
-      font-size: 2rem;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      font-size: 1.25rem;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 7px;
+      padding: 10px;
     }
 
 	}
