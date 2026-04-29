@@ -1170,7 +1170,7 @@
 	}
 
 	@media only screen and ( max-width: 767px ) {
-    .home-slider-text h2 {
+    .home-slider-text h1 {
       font-size: 2rem;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
