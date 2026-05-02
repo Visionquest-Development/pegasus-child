@@ -117,6 +117,45 @@
 			</div><!--end row -->
 		</div><!-- end container -->
 
+		<!-- Special Events Section -->
+		<section id="special-events" class="section-padding py-5">
+			<div class="container">
+				<div class="row align-items-center g-4">
+					<div class="col-lg-6 order-2 order-lg-1">
+						<h2>Special Events</h2>
+						<h3 class="mb-3">Mother&apos;s Day at Saltcellar</h3>
+						<p class="mb-2"><strong>Date:</strong> Sunday, May 10</p>
+						<p class="mb-2"><strong>Brunch:</strong> 10am-3pm</p>
+						<p class="mb-4"><strong>Dinner:</strong> 4-9pm</p>
+
+						<p class="mb-0">
+							Celebrate Mother&apos;s Day with extended hours at Saltcellar. Join us for a special brunch
+							from 10am-3pm, then gather with family for dinner from 4-9pm as we help make the day
+							memorable for Mom.
+						</p>
+					</div>
+					<div class="col-lg-6 order-1 order-lg-2">
+						<div class="row g-3">
+							<div class="col-md-6">
+								<img
+									src="<?php echo esc_url( get_stylesheet_directory_uri() . '/images/MothersdaySaltBrunch.png' ); ?>"
+									alt="Saltcellar Mother's Day brunch flyer"
+									class="img-fluid w-100"
+								>
+							</div>
+							<div class="col-md-6">
+								<img
+									src="<?php echo esc_url( get_stylesheet_directory_uri() . '/images/MothersdaySaltDinner.png' ); ?>"
+									alt="Saltcellar Mother's Day dinner flyer"
+									class="img-fluid w-100"
+								>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
 
 		<main id="primary" class="site-main ulg-home">
 

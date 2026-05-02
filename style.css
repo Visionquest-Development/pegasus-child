@@ -27,6 +27,10 @@
       var(--ulg-brand-bar-height) +
       var(--site-header-height)
     );
+    --primary-color: #4a6682;
+    --secondary-color: #C9AC7A;
+    --tertiary-color: #e3eaf4;
+    --quaternary-color: #222;
   }
 
   .menu-heading {
