@@ -25,6 +25,10 @@
     var(--ulg-brand-bar-height) +
     var(--site-header-height)
   );
+  --primary-color: ##ce5e3e;
+  --secondary-color: #C9AC7A;
+  --tertiary-color: #F5F5F5;
+  --quaternary-color: #b4bcb4;
 }
 
 	.ulg-gradient-heading
