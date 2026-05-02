@@ -33,6 +33,10 @@
     var(--ulg-brand-bar-height) +
     var(--site-header-height)
   );
+  --primary-color: #2b3e47;
+  --secondary-color: #C9AC7A;
+  --tertiary-color: #F5F5F5;
+  --quaternary-color: #0C0C0C;
 }
 
   .inner-content {
