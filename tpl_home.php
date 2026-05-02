@@ -98,31 +98,17 @@
 				<div class="row align-items-center g-4">
 					<div class="col-lg-6 order-2 order-lg-1">
 						<h2>Special Events</h2>
-						<h3 class="mb-3">Immortal Estate Wine Dinner at Mabella Midland</h3>
-						<p class="mb-2"><strong>Date:</strong> April 22nd, 2026</p>
-						<p class="mb-2"><strong>Time:</strong> 6:30pm</p>
-						<p class="mb-2"><strong>Where:</strong> Mabella Midland (6835 Midland Commons Blvd, Columbus, GA)</p>
-						<p class="mb-4"><strong>Tickets:</strong> $125 per person, tax &amp; gratuity included</p>
+						<h3 class="mb-3">Mother&apos;s Day at Mabella's</h3>
+						<p class="mb-2"><strong>Date:</strong> Sunday, May 10</p>
 
-						<p class="mb-3">
-							Rooted in Stone, Bound by Time: Dinner So Good It&apos;s Immortal
+						<p class="mb-0">
+							Make Mother&apos;s Day feel extra special with extended hours for both brunch and dinner. We&apos;d love to help you treat Mom to a memorable meal.
 						</p>
-						<p class="mb-3">
-							Join us at Mabella Midland for one night that will be etched in immortality.
-							Experience a menu carefully crafted by our Chef and paired with wines from Immortal Estate.
-							Tickets are $125 per person.
-						</p>
-						<p class="mb-3">
-							The wine dinner is only for patrons aged 21 or older.
-							This event will be held only at our Mabella Midland location: 6835 Midland Commons Blvd, Columbus, GA.
-						</p>
-						<p class="mb-0">We look forward to sharing an immortal dinner with you.</p>
-						<a href="/product/immortal-estate-wine-dinner/" class="my-3 btn mabellas-btn mabellas-section-btn">Get Tickets</a>
 					</div>
 					<div class="col-lg-6 order-1 order-lg-2">
 						<img
-							src="https://mabellas.com/wp-content/uploads/2026/03/Immortal-Dinner-422.png"
-							alt="Immortal Estate Wine Dinner at Mabella Midland"
+							src="<?php echo esc_url( get_stylesheet_directory_uri() . '/images/Mothersday.png' ); ?>"
+							alt="Mabella Mother's Day flyer"
 							class="img-fluid w-100"
 						>
 					</div>
