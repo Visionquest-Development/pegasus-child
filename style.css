@@ -9,43 +9,276 @@
 */
 
 /*@import url("../pegasus/style.css");*/
-	
-	
+
+:root {
+	--rc-navy: rgb(22, 36, 62);
+}
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
+
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ HEADER ~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	
+	.navbar-brand {
+    width: 25%;
+    /* max-width: 230px; */
+  }
+
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ NAVIGATION ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
 
-	
+  .contact-button-container {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    margin-left: 12px;
+  }
+
+  #menu-main-nav li a {
+    text-transform: uppercase;
+  }
+
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ FOOTER ~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
+
+  footer a { color: white !important; }
+
+  .rcf-footer-contact {
+    background-color: #ffffff;
+    border-top: 1px solid rgba(22, 36, 62, 0.08);
+    border-bottom: 1px solid rgba(22, 36, 62, 0.08);
+    color: var(--rc-navy);
+    padding: 14px 0;
+  }
+
+  .rcf-footer-contact__inner {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    gap: 34px;
+  }
+
+  .rcf-footer-contact__item {
+    align-items: center;
+    color: var(--rc-navy) !important;
+    display: inline-flex;
+    gap: 11px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .rcf-footer-contact__item:not(:last-child)::after {
+    background-color: rgba(22, 36, 62, 0.35);
+    content: "";
+    display: block;
+    height: 20px;
+    position: absolute;
+    right: -18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+  }
+
+  .rcf-footer-contact__item .fa {
+    color: var(--rc-navy);
+    font-size: 13px;
+  }
+
+  a.rcf-footer-contact__item:hover,
+  a.rcf-footer-contact__item:focus {
+    color: var(--rc-navy);
+    opacity: 0.75;
+    text-decoration: none;
+  }
+
+
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ HOME PAGE ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	
-	
+
+  .rcf-hero-text {
+    max-width: 300px;
+  }
+
+  .rcf-hero-text h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+
+  .rcf-hero-text b {
+    font-size: 11px;
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    display: block;
+    margin-bottom: 14px;
+  }
+
+  .rcf-hero-text p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.7;
+    margin-bottom: 0;
+  }
+
+  .rcf-hero-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+  }
+
+  .btn-rcf-outline {
+    display: inline-block;
+    padding: 9px 18px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ffffff;
+    background-color: transparent;
+    border: 1px solid rgb(217, 220, 227);
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .rcf-hero-buttons .btn-rcf-outline:first-child {
+    color: var(--rc-navy);
+    background-color: #ffffff;
+    border-color: #ffffff;
+  }
+
+  .rcf-hero-buttons .btn-rcf-outline:nth-child(2) {
+    color: #ffffff;
+    background-color: var(--rc-navy);
+    border-color: var(--rc-navy);
+  }
+
+  .btn-rcf-outline:hover,
+  .btn-rcf-outline:focus {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #ffffff;
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .rcf-hero-buttons .btn-rcf-outline:first-child:hover,
+  .rcf-hero-buttons .btn-rcf-outline:first-child:focus {
+    color: var(--rc-navy);
+    background-color: rgb(217, 220, 227);
+    border-color: rgb(217, 220, 227);
+  }
+
+  .rcf-hero-buttons .btn-rcf-outline:nth-child(2):hover,
+  .rcf-hero-buttons .btn-rcf-outline:nth-child(2):focus {
+    color: #ffffff;
+    background-color: rgb(32, 49, 82);
+    border-color: rgb(32, 49, 82);
+  }
+
+	.home-pillars-section {
+		background-color: var(--rc-navy);
+		padding: 60px 0;
+		color: #ffffff;
+	}
+
+	.home-pillar {
+		text-align: center;
+		padding: 30px 20px;
+	}
+
+	.home-pillar-icon {
+		margin-bottom: 20px;
+	}
+
+	.home-pillar-icon .fa {
+		font-size: 48px;
+		color: #ffffff;
+	}
+
+	.home-pillars-section h3 {
+		font-size: 16px;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		margin-bottom: 15px;
+		color: #ffffff;
+	}
+
+	.home-pillars-section p {
+		font-size: 14px;
+		line-height: 1.7;
+		color: rgba(255, 255, 255, 0.8);
+		margin-bottom: 0;
+	}
+
+
+
+
+	/*~~~~~~~~~~~~~~~~~~~~~
+	~~~~~ BUTTONS ~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~*/
+
+	.btn-ricecap-ext {
+		background-color: var(--rc-navy);
+		color: #ffffff;
+		border: 1px solid rgb(54, 68, 92);
+		border-radius: 4px;
+		padding: 10px 20px;
+		font-size: 13px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 1.5px;
+		text-decoration: none;
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		transition: background-color 0.2s ease, border-color 0.2s ease;
+	}
+
+	.btn-ricecap-ext:hover,
+	.btn-ricecap-ext:focus {
+		background-color: rgb(32, 49, 82);
+		border-color: rgb(80, 95, 120);
+		color: #ffffff;
+		text-decoration: none;
+	}
+
+	.btn-ricecap-ext .fa {
+		font-size: 12px;
+	}
+
+  .btn-ricecap-ext--client-login .fa {
+    margin-left: 2px;
+  }
+
+
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~SITEMAP~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
-	
+
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~WOOCOMMERCE~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -54,21 +287,28 @@
 	~~~~~MEDIA QUERIES~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 	@media only screen and ( min-width: 1100px ) and ( max-width: 1405px) {
-		
+
 	}
-	
+
 	@media only screen and ( min-width: 981px ) {
-		
+
 	}
-		
+
 	@media only screen and (max-width: 980px) {
-		
+
 	}
-	
+
 	@media only screen and ( max-width: 767px ) {
-		
+    .rcf-footer-contact__inner {
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .rcf-footer-contact__item:not(:last-child)::after {
+      display: none;
+    }
 	}
-	
+
 	@media only screen and (max-width: 479px) {
-		
+
 	}
