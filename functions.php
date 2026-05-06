@@ -1737,7 +1737,7 @@
 	 * external ticketing URL with target=_blank and a Font Awesome 4 icon.
 	 */
 	function ulg_manual_event_listings() {
-		return array(
+		$events = array(
 			array(
 				'slug'     => 'gotta-sing-broadway-2026-05-29',
 				'title'    => 'Gotta Sing Broadway',
@@ -1749,7 +1749,19 @@
 				'image'    => get_stylesheet_directory_uri() . '/images/gotta_sing_broadway_052926.png',
 				'url'      => 'https://www.eventbrite.com/e/gotta-sing-broadway-tickets-1988641117114',
 				'cta'      => 'Buy tickets',
+				// Hide from listings 4 hours after start time.
+				'expires'  => strtotime( 'May 29, 2026 6:30 PM' ) + ( 4 * HOUR_IN_SECONDS ),
 			),
+		);
+
+		$now = current_time( 'timestamp' );
+		return array_values(
+			array_filter(
+				$events,
+				function ( $event ) use ( $now ) {
+					return empty( $event['expires'] ) || $now < $event['expires'];
+				}
+			)
 		);
 	}
 
