@@ -169,6 +169,23 @@
 				  Updated: <?php echo esc_html($menu_data['updated']); ?>
 				</div>
 			  <?php endif; ?>
+
+			  <div class="vqmenu-pdf-links mt-3">
+				<?php if (!empty($menu_data['pdf_url'])) : ?>
+				  <a class="btn btn-outline-primary me-2"
+					 href="<?php echo esc_url( get_stylesheet_directory_uri() . '/' . ltrim($menu_data['pdf_url'], '/') ); ?>"
+					 target="_blank" rel="noopener">
+					Download Main Menu (PDF)
+				  </a>
+				<?php endif; ?>
+				<?php if (!empty($menu_data['brunch_pdf_url'])) : ?>
+				  <a class="btn btn-outline-primary"
+					 href="<?php echo esc_url( get_stylesheet_directory_uri() . '/' . ltrim($menu_data['brunch_pdf_url'], '/') ); ?>"
+					 target="_blank" rel="noopener">
+					Download Brunch Menu (PDF)
+				  </a>
+				<?php endif; ?>
+			  </div>
 			</header>
 
 			<!-- Desktop: tabbed menu (hidden < 992px) -->
