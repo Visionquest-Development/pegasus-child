@@ -1728,3 +1728,149 @@
 		update_post_meta( $post_id, 'WooCommerceEventsExpire', gmdate( 'Y-m-d H:i:s', $expire_timestamp ) );
 	}
 	add_action( 'save_post', 'ulg_auto_set_event_expiration', 20 );
+
+	/**
+	 * Manually-injected events that don't have a FooEvents product.
+	 * Each entry is rendered into the FooEvents listing block (tiles layout)
+	 * and the [fooevents_events_list] shortcode (calendar list layout) at the
+	 * correct chronological position. The "buy tickets" button links to an
+	 * external ticketing URL with target=_blank and a Font Awesome 4 icon.
+	 */
+	function ulg_manual_event_listings() {
+		return array(
+			array(
+				'slug'     => 'gotta-sing-broadway-2026-05-29',
+				'title'    => 'Gotta Sing Broadway',
+				'date'     => 'May 29, 2026',
+				'time'     => '6:30 p.m.',
+				'location' => '1032 Broadway Columbus, GA 31901',
+				'price'    => '$18 in advance / $28 at the door',
+				'desc'     => 'A musical theatre sing-along party for Gen-Xers, Boomers and Beyond! Doors open at 6:00 p.m.',
+				'image'    => get_stylesheet_directory_uri() . '/images/gotta_sing_broadway_052926.png',
+				'url'      => 'https://www.eventbrite.com/e/gotta-sing-broadway-tickets-1988641117114',
+				'cta'      => 'Buy tickets',
+			),
+		);
+	}
+
+	function ulg_render_manual_event_tile( $event ) {
+		$url   = esc_url( $event['url'] );
+		$image = esc_url( $event['image'] );
+		ob_start();
+		?>
+		<div id="fooevents-event-listing-tiles-post-id-<?php echo esc_attr( $event['slug'] ); ?>" class="fooevents-event-listing-tiles-content fooevents-event-listing-tiles-single">
+			<div class="event-thumbnail"><a href="<?php echo $url; ?>" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="<?php echo $image; ?>" class="attachment-medium size-medium wp-post-image img-fluid" alt="<?php echo esc_attr( $event['title'] ); ?>"></a></div>
+			<h3><a href="<?php echo $url; ?>" target="_blank" rel="noopener"><?php echo esc_html( $event['title'] ); ?></a></h3>
+			<div class="fooevents-event-listing-tiles-location"><?php echo esc_html( $event['location'] ); ?></div>
+			<p class="fooevents-event-listing-tiles-datetime">
+				<span class="event-icon event-icon-calendar"></span>
+				<span class="event-date"><?php echo esc_html( $event['date'] ); ?></span><br>
+				<span class="event-icon event-icon-single"></span>
+				<span class="event-time"><?php echo esc_html( $event['time'] ); ?></span>
+			</p>
+			<div class="fooevents-event-listing-tiles-stock">
+				<p class="fooevents-event-listing-tiles-price"><?php echo esc_html( $event['price'] ); ?></p>
+			</div>
+			<p class="fooevents-event-listing-book-now"><a href="<?php echo $url; ?>" class="button btn btn-primary" target="_blank" rel="noopener"><?php echo esc_html( $event['cta'] ); ?> <i class="fa fa-external-link" aria-hidden="true"></i></a></p>
+		</div>
+		<?php
+		return ob_get_clean();
+	}
+
+	function ulg_render_manual_event_list_item( $event ) {
+		$url   = esc_url( $event['url'] );
+		$image = esc_url( $event['image'] );
+		ob_start();
+		?>
+		<div class="fooevents-calendar-list-item">
+			<h3 class="fooevents-shortcode-title">
+				<a href="<?php echo $url; ?>" target="_blank" rel="noopener"><?php echo esc_html( $event['title'] ); ?></a>
+			</h3>
+			<p class="fooevents-shortcode-date"><?php echo esc_html( $event['date'] ); ?> <?php echo esc_html( $event['time'] ); ?></p>
+			<img src="<?php echo $image; ?>" class="fooevents-calendar-list-thumb img-fluid" alt="<?php echo esc_attr( $event['title'] ); ?>">
+			<p class="fooevents-calendar-list-desc"><?php echo esc_html( $event['desc'] ); ?> <?php echo esc_html( $event['price'] ); ?>.</p>
+			<p>
+				<a class="button" href="<?php echo $url; ?>" target="_blank" rel="noopener"><?php echo esc_html( $event['cta'] ); ?> <i class="fa fa-external-link" aria-hidden="true"></i></a>
+			</p>
+			<div class="foo-clear"></div>
+		</div>
+		<div class="fooevents-calendar-clearfix"></div>
+		<?php
+		return ob_get_clean();
+	}
+
+	/**
+	 * Inserts a manual event card into already-rendered FooEvents listing HTML
+	 * at the first existing event whose date is on or after the manual event,
+	 * preserving the ASC chronological order. If nothing is later, appends.
+	 */
+	function ulg_inject_manual_event( $html, $event, $item_open_pattern, $date_pattern, $card_html ) {
+		$event_ts = strtotime( $event['date'] );
+		if ( ! $event_ts ) {
+			return $html;
+		}
+
+		if ( ! preg_match_all( $item_open_pattern, $html, $matches, PREG_OFFSET_CAPTURE ) ) {
+			return $html;
+		}
+
+		$insert_pos = null;
+		foreach ( $matches[0] as $match ) {
+			$item_pos = $match[1];
+			if ( preg_match( $date_pattern, $html, $date_match, 0, $item_pos ) ) {
+				$item_ts = strtotime( trim( $date_match[1] ) );
+				if ( $item_ts && $item_ts >= $event_ts ) {
+					$insert_pos = $item_pos;
+					break;
+				}
+			}
+		}
+
+		if ( null === $insert_pos ) {
+			// All existing events are earlier — insert after the last one's container.
+			$last = end( $matches[0] );
+			// Find the matching wrapper close by scanning from last item start.
+			$tail_pos = strrpos( $html, '</div>' );
+			$insert_pos = $tail_pos !== false ? $tail_pos : strlen( $html );
+		}
+
+		return substr_replace( $html, $card_html, $insert_pos, 0 );
+	}
+
+	add_filter( 'render_block', function( $block_content, $block ) {
+		if ( empty( $block['blockName'] ) || $block['blockName'] !== 'woocommerce-events/fooevents-event-listing' ) {
+			return $block_content;
+		}
+		$layout = isset( $block['attrs']['eventListingLayout'] ) ? $block['attrs']['eventListingLayout'] : 'list';
+		if ( $layout !== 'tiles' ) {
+			return $block_content;
+		}
+		foreach ( ulg_manual_event_listings() as $event ) {
+			$card = ulg_render_manual_event_tile( $event );
+			$block_content = ulg_inject_manual_event(
+				$block_content,
+				$event,
+				'#<div id="fooevents-event-listing-tiles-post-id-[^"]+"#',
+				'#<span class="event-date">([^<]+)</span>#',
+				$card
+			);
+		}
+		return $block_content;
+	}, 10, 2 );
+
+	add_filter( 'do_shortcode_tag', function( $output, $tag ) {
+		if ( $tag !== 'fooevents_events_list' ) {
+			return $output;
+		}
+		foreach ( ulg_manual_event_listings() as $event ) {
+			$card = ulg_render_manual_event_list_item( $event );
+			$output = ulg_inject_manual_event(
+				$output,
+				$event,
+				'#<div class="fooevents-calendar-list-item">#',
+				'#<p class="fooevents-shortcode-date">([^<]+?)\s*</p>#s',
+				$card
+			);
+		}
+		return $output;
+	}, 10, 2 );
