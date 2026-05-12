@@ -1,5 +1,5 @@
 /*
- Theme Name:     Pegasus Child
+ Theme Name:     Iconic Entertainment Group
  Theme URI:      http://visionquestdevelopment.com
  Description:    Pegasus Child Theme
  Author:         Jim O'Brien
@@ -8,67 +8,288 @@
  Version:        0.0.1
 */
 
-/*@import url("../pegasus/style.css");*/
-	
-	
+/*@import url(" ../pegasus/style.css\);*/
+
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	/*~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~ HEADER ~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	
-	/*~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~ NAVIGATION ~~~~~
-	~~~~~~~~~~~~~~~~~~~~~*/
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/ 
 
-	
-	/*~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~ FOOTER ~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
 
-	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
-	/*~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~ HOME PAGE ~~~~~
-	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	
-	
-	/* ~~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~~SITEMAP~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~*/
-	
-	/* ~~~~~~~~~~~~~~~~~~~~~~
-	~~~~WOOCOMMERCE~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~*/
+ /*~~~~~~~~~~~~~~~~~~~~~
+ ~~~~~~~~ HEADER ~~~~~~
+ ~~~~~~~~~~~~~~~~~~~~~*/
 
-	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	~~~~~MEDIA QUERIES~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	@media only screen and ( min-width: 1100px ) and ( max-width: 1405px) {
-		
-	}
-	
-	@media only screen and ( min-width: 981px ) {
-		
-	}
-		
-	@media only screen and (max-width: 980px) {
-		
-	}
-	
-	@media only screen and ( max-width: 767px ) {
-		
-	}
-	
-	@media only screen and (max-width: 479px) {
-		
-	}
+
+
+ /*~~~~~~~~~~~~~~~~~~~~~
+ ~~~~~~ NAVIGATION ~~~~~
+ ~~~~~~~~~~~~~~~~~~~~~*/
+
+
+ /*~~~~~~~~~~~~~~~~~~~~~
+ ~~~~~~~~ FOOTER ~~~~~~~
+ ~~~~~~~~~~~~~~~~~~~~~*/
+
+
+
+ /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/ 
+
+ /*~~~~~~~~~~~~~~~~~~~~~
+ ~~~~~~ HOME PAGE ~~~~~
+ ~~~~~~~~~~~~~~~~~~~~~*/
+
+
+
+
+ /* ~~~~~~~~~~~~~~~~~~~~~~
+ ~~~~~~~~~SITEMAP~~~~~~~~
+ ~~~~~~~~~~~~~~~~~~~~~~~*/
+
+ /* ~~~~~~~~~~~~~~~~~~~~~~
+ ~~~~WOOCOMMERCE~~~~~
+ ~~~~~~~~~~~~~~~~~~~~~~~*/
+
+ /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ ~~~~~MEDIA QUERIES~~~~
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+ @media only screen and ( min-width: 1100px ) and ( max-width: 1405px) {
+
+ }
+
+ @media only screen and ( min-width: 981px ) {
+
+ }
+
+ @media only screen and (max-width: 980px) {
+
+ }
+
+ @media only screen and ( max-width: 767px ) {
+
+ }
+
+ @media only screen and (max-width: 479px) {
+
+ }
+
+/* --- Iconic Entertainment Group - Sleek Professional Design --- */
+
+:root {
+ --iconic-primary: #0a2540; /* Deep Navy */
+ --iconic-secondary: #c1a461; /* Subtle Gold/Champagne */
+ --iconic-text: #425466;
+ --iconic-heading: #0a2540;
+ --iconic-bg-light: #f6f9fc;
+}
+
+body {
+ font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+ color: var(--iconic-text);
+ line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+ color: var(--iconic-heading);
+ font-weight: 700;
+ letter-spacing: -0.02em;
+}
+
+/* Hero Section */
+.home-hero {
+ padding: 100px 0;
+ background: linear-gradient(135deg, #0a2540 0%, #1a3a5a 100%);
+ color: #ffffff;
+ text-align: center;
+}
+
+.home-hero h1 {
+ color: #ffffff;
+ font-size: 3.5rem;
+ margin-bottom: 20px;
+}
+
+.home-hero p {
+ font-size: 1.25rem;
+ opacity: 0.9;
+ max-width: 800px;
+ margin: 0 auto 30px;
+}
+
+/* Service Cards */
+.service-card {
+ background: #ffffff;
+ padding: 40px;
+ border-radius: 8px;
+ box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
+ height: 100%;
+ border-top: 4px solid var(--iconic-secondary);
+}
+
+.service-card:hover {
+ transform: translateY(-5px);
+ box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25), 0 8px 16px -8px rgba(0, 0, 0, 0.3);
+}
+
+.service-card h3 {
+ margin-top: 0;
+}
+
+/* Section Spacing */
+.section-padding {
+ padding: 80px 0;
+}
+
+.bg-light {
+ background-color: var(--iconic-bg-light);
+}
+
+/* Buttons */
+.btn-iconic {
+ background-color: var(--iconic-secondary);
+ color: #0a2540;
+ padding: 12px 30px;
+ border-radius: 5px;
+ font-weight: 600;
+ text-transform: uppercase;
+ letter-spacing: 0.05em;
+ transition: all 0.3s ease;
+ border: none;
+}
+
+.btn-iconic:hover {
+ background-color: #b09350;
+ color: #0a2540;
+ text-decoration: none;
+}
+
+/* Remove default padding for home page content wrap to allow full-width hero */
+.home-page-content {
+ margin-top: -1px; /* Avoid tiny gaps */
+}
+
+/* Ensure container class in home template doesn't constrain the hero if it's meant to be full-width */
+/* However, we used the existing container structure, so we might need to adjust tpl_home.php further if we want a true full-width hero across the whole screen. */
+
+/* Home Template Specifics */
+.home-template #page-wrap {
+ padding: 0;
+}
+
+.home-template .container {
+ max-width: 1200px;
+}
+
+/* Typography Upgrades */
+h1, .navbar-brand {
+ font-family: 'Montserrat', sans-serif;
+ font-weight: 800;
+}
+
+h2, h3 {
+ font-family: 'Playfair Display', serif;
+ font-weight: 700;
+}
+
+p, .nav-link {
+ font-family: 'Montserrat', sans-serif;
+ font-weight: 400;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ VIBRANT HEADER & FOOTER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* --- HEADER POP --- */
+#header {
+    background: #ffffff; /* Clean white base */
+    border-bottom: 3px solid var(--iconic-secondary); /* Gold  pop underline */
+    padding: 15px 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.site-title a {
+    color: var(--iconic-primary) !important;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Pegasus Navigation Refinement */
+.the-default-nav {
+    background: transparent !important;
+}
+
+.the-default-nav .nav-link {
+    color: var(--iconic-primary) !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    padding: 10px 15px !important;
+    transition: all 0.3s ease;
+}
+
+.the-default-nav .nav-link:hover {
+    color: var(--iconic-secondary) !important;
+}
+
+/* --- FOOTER POP --- */
+.pegasus-footer {
+    background: var(--iconic-primary); /* Deep Navy Anchor */
+    color: #ffffff;
+    padding: 60px 0 0;
+    border-top: 5px solid var(--iconic-secondary); /* Gold high-contrast border */
+}
+
+#footer-widgets {
+    padding-bottom: 40px;
+}
+
+.footer-widget-area h2.widget-title {
+    color: var(--iconic-secondary); /* Gold titles in footer */
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+}
+
+.footer-widget-area ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-widget-area li {
+    margin-bottom: 12px;
+}
+
+.footer-widget-area a {
+    color: rgba(255,255,255,0.7);
+    transition: color 0.3s ease;
+}
+
+.footer-widget-area a:hover {
+    color: var(--iconic-secondary);
+    text-decoration: none;
+}
+
+/* Colophon (Bottom Bar) */
+.colophon-container {
+    background: #06192b; /* Even deeper navy */
+    padding: 25px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.site-info {
+    text-align: center;
+}
+
+.site-info p, .site-info a {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.site-info a:hover {
+    color: var(--iconic-secondary);
+}
