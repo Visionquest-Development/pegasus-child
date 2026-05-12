@@ -1,5 +1,5 @@
 <?php
-	
+
 	/**
 	 * Plugin requirements (TGMPA) & Bootstrap CMB2
 	 */
@@ -10,16 +10,29 @@
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 	function theme_enqueue_styles() {
-		wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
-		
+		wp_enqueue_style(
+			'parent-style',
+			get_template_directory_uri() . '/style.css',
+			array(),
+			wp_get_theme()->get('Version')
+		);
+
+		wp_enqueue_style( 'child-style',
+			get_stylesheet_directory_uri() . '/style.css',
+			array( 'parent-style' ),
+			wp_get_theme()->get('Version') // Or filemtime( get_stylesheet_directory() . '/style.css' )
+		);
+
 		/* qTip CSS */
 		//wp_enqueue_style('twentytwenty-css', get_stylesheet_directory_uri() . '/css/twentytwenty.css', null, false, false);
-		
+
+
+
 	}
 	add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
-		
+
 	/**
-	* Proper way to enqueue JS 
+	* Proper way to enqueue JS
 	*/
 	function pegasus_child_bootstrap_js() {
 		//Clients / Success Stories Portfolio Page with sort/filter grid
@@ -33,8 +46,8 @@
 			wp_enqueue_script( 'pegasus_isotope_js', get_stylesheet_directory_uri() . '/js/isotope.js', array(), '', true );
 		}
 		//wp_enqueue_script( 'matchHeight_js', get_stylesheet_directory_uri() . '/js/jquery.matchHeight-min.js', array(), '', true );
-		
-		
+
+
 	} //end function
 	add_action( 'wp_enqueue_scripts', 'pegasus_child_bootstrap_js' );
 
