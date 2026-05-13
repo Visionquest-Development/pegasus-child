@@ -825,3 +825,103 @@
 			width: calc(50vw - 20px);
 		}
 }
+
+/*~~~~~~~~~~~~~~~~~~~~~
+~~~ LANDING TEMPLATE ~~
+~~~~~~~~~~~~~~~~~~~~~*/
+
+.oak-landing {
+	font-family: Arial, sans-serif;
+	background: #050505;
+}
+
+.oak-landing .oak-gold {
+	color: #d99a18;
+}
+
+.oak-landing .oak-gradient-text {
+	background: linear-gradient(90deg, #f5c14c, #d98b12);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	color: transparent;
+}
+
+.oak-landing .oak-btn {
+	background: linear-gradient(90deg, #f5c14c, #d98b12);
+	color: #000;
+	font-weight: 800;
+	border: none;
+	padding: 14px 28px;
+	border-radius: 4px;
+	text-transform: uppercase;
+}
+
+.oak-landing .oak-btn:hover {
+	background: linear-gradient(90deg, #d98b12, #f5c14c);
+	color: #000;
+}
+
+.oak-landing .oak-card {
+	background: #111;
+	border: 1px solid rgba(217, 154, 24, .35);
+	border-radius: 10px;
+	height: 100%;
+}
+
+.oak-landing .oak-card ul {
+	padding-left: 1.1rem;
+}
+
+.oak-landing .oak-card ul li {
+	color: rgba(255, 255, 255, .8);
+	margin-bottom: .25rem;
+}
+
+.oak-landing .oak-hero {
+	background:
+		linear-gradient(rgba(0, 0, 0, .72), rgba(0, 0, 0, .92)),
+		var(--oak-hero-bg) center/cover no-repeat;
+	min-height: 650px;
+	display: flex;
+	align-items: center;
+}
+
+.oak-landing .oak-divider {
+	height: 2px;
+	background: linear-gradient(90deg, transparent, #d99a18, transparent);
+	margin: 22px auto;
+	max-width: 520px;
+}
+
+.oak-landing .oak-icon {
+	font-size: 2.25rem;
+	color: #d99a18;
+	margin-bottom: 12px;
+	line-height: 1;
+}
+
+.oak-landing h1,
+.oak-landing h2,
+.oak-landing h3 {
+	color: inherit;
+}
+
+.oak-landing .oak-landing-logo img {
+	/* max-width: 220px; */
+  /* width: 50%; */
+	height: auto;
+}
+
+.oak-landing .oak-landing-marks img {
+	max-width: 100%;
+	height: auto;
+}
+
+.oak-landing .oak-landing-house {
+	/* max-height: 220px; */
+}
+
+.oak-landing .oak-landing-free-estimates {
+	/* max-height: 160px; */
+}

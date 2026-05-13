@@ -14,89 +14,16 @@ if ( 'header-three' === $header_choice ) {
 <div id="page-wrap">
 	<div class="page-header-spacer"></div>
 
-	<section class="oak-landing bg-black text-white">
-		<style>
-			.oak-landing {
-				font-family: Arial, sans-serif;
-				background: #050505;
-			}
-
-			.oak-landing .oak-gold {
-				color: #d99a18;
-			}
-
-			.oak-landing .oak-gradient-text {
-				background: linear-gradient(90deg, #f5c14c, #d98b12);
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-				background-clip: text;
-				color: transparent;
-			}
-
-			.oak-landing .oak-btn {
-				background: linear-gradient(90deg, #f5c14c, #d98b12);
-				color: #000;
-				font-weight: 800;
-				border: none;
-				padding: 14px 28px;
-				border-radius: 4px;
-				text-transform: uppercase;
-			}
-
-			.oak-landing .oak-btn:hover {
-				background: linear-gradient(90deg, #d98b12, #f5c14c);
-				color: #000;
-			}
-
-			.oak-landing .oak-card {
-				background: #111;
-				border: 1px solid rgba(217, 154, 24, .35);
-				border-radius: 10px;
-				height: 100%;
-			}
-
-			.oak-landing .oak-card ul {
-				padding-left: 1.1rem;
-			}
-
-			.oak-landing .oak-card ul li {
-				color: rgba(255, 255, 255, .8);
-				margin-bottom: .25rem;
-			}
-
-			.oak-landing .oak-hero {
-				background:
-					linear-gradient(rgba(0, 0, 0, .72), rgba(0, 0, 0, .92)),
-					url('<?php echo esc_url( content_url( '/uploads/roofing-construction-hero.jpg' ) ); ?>') center/cover no-repeat;
-				min-height: 650px;
-				display: flex;
-				align-items: center;
-			}
-
-			.oak-landing .oak-divider {
-				height: 2px;
-				background: linear-gradient(90deg, transparent, #d99a18, transparent);
-				margin: 22px auto;
-				max-width: 520px;
-			}
-
-			.oak-landing .oak-icon {
-				font-size: 2.25rem;
-				color: #d99a18;
-				margin-bottom: 12px;
-				line-height: 1;
-			}
-
-			.oak-landing h1,
-			.oak-landing h2,
-			.oak-landing h3 {
-				color: inherit;
-			}
-		</style>
+	<?php $oak_hero_bg = content_url( '/uploads/roofing-construction-hero.jpg' ); ?>
+	<section class="oak-landing bg-black text-white" style="--oak-hero-bg: url('<?php echo esc_url( $oak_hero_bg ); ?>');">
 
 		<!-- HERO -->
 		<div class="oak-hero">
 			<div class="container text-center py-5">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="oak-landing-logo d-inline-block mb-4">
+					<img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/images/34oak-contracting-logo-only.png' ); ?>" alt="34 Oak Contracting">
+				</a>
+
 				<h1 class="display-3 fw-bold text-uppercase oak-gradient-text">
 					Roofing and Construction
 				</h1>
@@ -119,6 +46,9 @@ if ( 'header-three' === $header_choice ) {
 				<a href="tel:6783839503" class="btn btn-outline-light mb-2">Call or Text 678-383-9503</a>
 			</div>
 		</div>
+
+		<img class="oak-landing-house d-block mx-auto mb-3" src="<?php echo esc_url( get_stylesheet_directory_uri() . '/images/house-only.png' ); ?>" alt="Home upgrades">
+
 
 		<!-- SERVICES -->
 		<div class="container py-5">
@@ -213,6 +143,9 @@ if ( 'header-three' === $header_choice ) {
 				</div>
 			</div>
 		</div>
+
+		<img class="oak-landing-free-estimates d-block mx-auto" src="<?php echo esc_url( get_stylesheet_directory_uri() . '/images/free-estimates-banner-only.png' ); ?>" alt="Free Estimates">
+
 
 		<!-- TRUST SECTION -->
 		<div class="container py-5">
