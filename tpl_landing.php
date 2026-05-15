@@ -43,7 +43,7 @@ if ( 'header-three' === $header_choice ) {
 				</p>
 
 				<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="btn oak-btn me-2 mb-2">Request a Free Estimate</a>
-				<a href="tel:6783839503" class="btn btn-outline-light mb-2">Call or Text 678-383-9503</a>
+				<a href="tel:16785057663" class="btn btn-outline-light mb-2">Call or Text 678-505-ROOF</a>
 			</div>
 		</div>
 
@@ -180,8 +180,8 @@ if ( 'header-three' === $header_choice ) {
 					<div class="oak-card p-4">
 						<h3 class="fw-bold">Get Your Free Estimate</h3>
 						<p class="text-white-50">Call, text, or submit a request online.</p>
-						<a href="tel:6783839503" class="display-6 fw-bold text-white text-decoration-none">
-							678-383-9503
+						<a href="tel:16785057663" class="display-6 fw-bold text-white text-decoration-none">
+							678-505-ROOF
 						</a>
 						<div class="mt-4">
 							<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="btn oak-btn">Contact Us Today</a>
