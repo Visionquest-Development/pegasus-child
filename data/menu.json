@@ -1,8 +1,8 @@
 {
   "restaurant_name": "Salt Cellar",
-  "updated": "2026-05-06",
-  "pdf_url": "assets/saltcellar-menu.pdf",
-  "brunch_pdf_url": "assets/saltcellar-brunch-menu.pdf",
+  "updated": "2026-05-21",
+  "pdf_url": "assets/saltcellar-summer-menu-2026.pdf",
+  "brunch_pdf_url": "assets/saltcellar-brunch-menu-2026.pdf",
   "tabs": [
     {
       "id": "starters",
@@ -46,14 +46,6 @@
               "extras": []
             },
             {
-              "name": "Hamachi Crudo",
-              "description": "Strawberry tiger milk, jalapeño, green grapes, celery, orange segments, pickled shallots, annatto oil, mint oil.",
-              "price": "21.95",
-              "badges": [],
-              "spicy_level": 0,
-              "extras": []
-            },
-            {
               "name": "Appetizer Trio",
               "description": "Mini crab cakes, coconut shrimp, pan-seared sea scallops.",
               "price": "Market Price",
@@ -63,7 +55,7 @@
             },
             {
               "name": "Jumbo Lump 4 oz. Crab Cake",
-              "description": "Spicy creamed corn, lemon wedge, topped with micro greens.",
+              "description": "Spicy creamed corn, grilled lemon, topped with micro greens.",
               "price": "23.95",
               "badges": [],
               "spicy_level": 0,
@@ -148,7 +140,7 @@
           "items": [
             {
               "name": "Grilled Lamb Chop",
-              "description": "Mushroom risotto, lamb demi.",
+              "description": "Mushroom risotto, savory granola, lamb demi.",
               "price": "43.95",
               "badges": [],
               "spicy_level": 0,
@@ -156,7 +148,7 @@
             },
             {
               "name": "Chicken Ballotine",
-              "description": "Bacon wrapped chicken breast, mushroom and spinach duxelles, beet purée, grilled asparagus, bordelaise sauce.",
+              "description": "Bacon wrapped chicken breast, mushroom duxelles, spinach, beet purée, truffle jus gras.",
               "price": "34.95",
               "badges": [],
               "spicy_level": 0,
@@ -226,7 +218,7 @@
             },
             {
               "name": "Pan-Seared Sea Scallops & Jumbo Shrimp",
-              "description": "Parsnip and carrot purée, lemon butter sauce.",
+              "description": "Parsnip and carrot purée.",
               "price": "39.95",
               "badges": [],
               "spicy_level": 0,
@@ -234,7 +226,7 @@
             },
             {
               "name": "Chilean Sea Bass",
-              "description": "Miso broth, sesame ginger roasted baby bok choy, shiitake mushrooms.",
+              "description": "Miso broth, sesame ginger roasted baby bok choy, leek confit, shiitake mushrooms.",
               "price": "42.95",
               "badges": [],
               "spicy_level": 0,
@@ -477,16 +469,6 @@
               ]
             },
             {
-              "name": "Saltcellar Salad",
-              "description": "Mixed greens, chickpeas, hearts of palm, roasted tomatoes, smoked blue cheese, red onion, creamy lemon herb dressing.",
-              "price": "14.95",
-              "badges": [],
-              "spicy_level": 0,
-              "extras": [
-                { "label": "Add grilled chicken", "price": "9" }
-              ]
-            },
-            {
               "name": "Greek Bowl",
               "description": "Greek yogurt, clover honey, fresh fruit, granola.",
               "price": "15.95",
@@ -512,14 +494,6 @@
               "name": "Smoked Salmon Eggs Benedict",
               "description": "Toasted English muffin, smoked salmon, poached egg, hollandaise sauce.",
               "price": "16.95",
-              "badges": [],
-              "spicy_level": 0,
-              "extras": []
-            },
-            {
-              "name": "Short Rib Benedict",
-              "description": "Toasted English muffin, braised BBQ short rib, poached egg.",
-              "price": "19.95",
               "badges": [],
               "spicy_level": 0,
               "extras": []
@@ -609,14 +583,6 @@
           "note": "",
           "items": [
             {
-              "name": "Chocolate Chip Pancakes",
-              "description": "Chocolate syrup, whipped cream.",
-              "price": "13.95",
-              "badges": [],
-              "spicy_level": 0,
-              "extras": []
-            },
-            {
               "name": "Vanilla Pancakes",
               "description": "Fresh fruit, maple syrup.",
               "price": "12.95",
@@ -671,7 +637,7 @@
               "extras": []
             },
             {
-              "name": "Sausage",
+              "name": "Sausage Patties",
               "description": "",
               "price": "4.75",
               "badges": [],
@@ -730,6 +696,14 @@
               "name": "Toast",
               "description": "",
               "price": "2.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Simple Salad",
+              "description": "",
+              "price": "4.25",
               "badges": [],
               "spicy_level": 0,
               "extras": []
