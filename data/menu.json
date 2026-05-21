@@ -1,24 +1,24 @@
 {
   "restaurant_name": "Mabellas - Uptown Columbus",
-  "updated": "2026-02-18",
+  "updated": "2026-05-21",
   "tabs": [
     {
       "id": "food-uptown-columbus",
       "label": "Menu",
       "description": "",
       "download": {
-        "href": "",
-        "text": "",
+        "href": "/wp-content/themes/pegasus-child/assets/menus/mabellas-uptown-summer-menu-2026.pdf",
+        "text": "Download Menu (PDF)",
         "target": "_blank"
       },
       "sections": [
         {
-          "title": "Antipasta",
+          "title": "Antipasto",
           "note": "",
           "items": [
             {
               "name": "MB’s Mussels",
-              "description": "PEI mussels seasoned with house-made Italian sausage, fresh basil, garlic,\nand peppadew peppers, steamed in roasted tomato-white wine broth. MGF",
+              "description": "PEI mussels seasoned with house-made Italian sausage, fresh basil, garlic, peppadew peppers, steamed in a roasted tomato-white wine broth. MGF",
               "price": "15.00",
               "badges": [],
               "spicy_level": 0,
@@ -35,39 +35,31 @@
             {
               "name": "Prosciutto Wrapped Dates",
               "description": "Medjool dates, whipped goat cheese, peppered honey, lemon zest.",
-              "price": "12.00",
-              "badges": [],
-              "spicy_level": 0,
-              "extras": []
-            },
-            {
-              "name": "Bruschetta Dip",
-              "description": "Oven roasted tomatoes, garlic, Calabrian pepper infused EVOO, fresh basil, stracciatella cheese.",
-              "price": "14.00",
+              "price": "13.00",
               "badges": ["V"],
               "spicy_level": 0,
               "extras": []
             },
             {
-              "name": "Arancini",
-              "description": "Fried risotto with parmesan and mozzarella, arrabbiata sauce and micro basil.",
+              "name": "Salmon Crudo",
+              "description": "Orange segments, citrus marinade, radish, raspberries.",
               "price": "15.00",
               "badges": [],
               "spicy_level": 0,
               "extras": []
             },
             {
-              "name": "Charred Shishito Peppers",
-              "description": "Sundried tomato, walnut, garlic, Parmesan, basil pesto",
-              "price": "12.00",
-              "badges": [],
+              "name": "Arancini",
+              "description": "Fried risotto, Parmesan, mozzarella, arrabbiata sauce, micro basil.",
+              "price": "15.00",
+              "badges": ["V"],
               "spicy_level": 0,
               "extras": []
             },
             {
               "name": "Soup di Giorno",
               "description": "Your server will inform you of the chef’s creation.",
-              "price": "7.00",
+              "price": "6.00",
               "badges": [],
               "spicy_level": 0,
               "extras": []
@@ -79,10 +71,18 @@
           "note": "",
           "items": [
             {
+              "name": "Grilled Peach & Burrata",
+              "description": "Arugula, grilled peaches, burrata cheese, toasted pistachios, peach-balsamic vinaigrette.",
+              "price": "14.00",
+              "badges": ["V"],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
               "name": "Wedge Salad",
-              "description": "Iceberg wedge, golden peppadews, roasted tomatoes, pancetta lardons, creamy gorgonzola dressing. MGF\n\nOrganic grilled chicken 9 | jumbo Gulf shrimp 14",
+              "description": "Iceberg wedge, golden peppadew peppers, roasted tomatoes, pancetta lardons, creamy Gorgonzola dressing. GF\n\nOrganic grilled chicken 9 | jumbo Gulf shrimp 14",
               "price": "12.00",
-              "badges": [],
+              "badges": ["GF"],
               "spicy_level": 0,
               "extras": [
                 { "label": "Add organic grilled chicken", "price": "9.00" },
@@ -91,9 +91,9 @@
             },
             {
               "name": "Caesar Salad",
-              "description": "Chopped romaine hearts, wood-grilled croutons, parmesan cheese, cracked pepper, creamy Caesar dressing. MGF\n\nOrganic grilled chicken 9 | jumbo Gulf shrimp 14\n\nMGF",
+              "description": "Chopped romaine hearts, wood-grilled croutons, Parmesan cheese, cracked pepper, creamy Caesar dressing. MGF\n\nOrganic grilled chicken 9 | jumbo Gulf shrimp 14",
               "price": "12.00",
-              "badges": ["V"],
+              "badges": [],
               "spicy_level": 0,
               "extras": [
                 { "label": "Add organic grilled chicken", "price": "9.00" },
@@ -101,21 +101,21 @@
               ]
             },
             {
-              "name": "Poached Pear",
-              "description": "Stracciatella cheese, candied lemon, walnuts, Tuscan kale, olive oil",
-              "price": "13.00",
-              "badges": ["GF", "V"],
+              "name": "Watermelon & Proscuitto",
+              "description": "Fresh watermelon, sliced proscuitto, shaved Parmesan, fresh mint, lemon-honey vinaigrette.",
+              "price": "14.00",
+              "badges": [],
               "spicy_level": 0,
               "extras": []
             }
           ]
         },
         {
-          "title": "Pasta",
-          "note": "All pastas are served with house salad.",
+          "title": "Primi",
+          "note": "Served with house salad.",
           "items": [
             {
-              "name": "Classic Spaghetti",
+              "name": "Spaghetti with Sunday Gravy",
               "description": "Choice of house-made meatballs or Italian sausage, tomato sauce.",
               "price": "24.00",
               "badges": [],
@@ -123,17 +123,9 @@
               "extras": []
             },
             {
-              "name": "Tuscan Shrimp",
-              "description": "Sautèed shrimp, sun-dried tomato cream sauce, fresh basil, Parmesan cheese, bucatini pasta.",
+              "name": "Tuscan Shrimp Bucatini",
+              "description": "Shrimp, sun-dried tomato cream, basil, Parmesan cheese.",
               "price": "32.00",
-              "badges": [],
-              "spicy_level": 0,
-              "extras": []
-            },
-            {
-              "name": "Sugo alla Genovese",
-              "description": "Red wine braised beef, carrots, celery, onion ragu, micro basil, paccheri pasta.",
-              "price": "29.00",
               "badges": [],
               "spicy_level": 0,
               "extras": []
@@ -142,10 +134,10 @@
         },
         {
           "title": "Stuffed Pasta",
-          "note": "All pastas are served with house salad.",
+          "note": "Served with house salad.",
           "items": [
             {
-              "name": "Lasagna Alla Villa Nova",
+              "name": "Lasagna alla Villa Nova",
               "description": "Italian sausage, ground beef, mozzarella cheese, ricotta cheese, tomato sauce.",
               "price": "25.00",
               "badges": [],
@@ -161,23 +153,15 @@
               "extras": []
             },
             {
-              "name": "Truffle & Cheese Stuffed Saccheti",
-              "description": "Truffle cream sauce, balsamic-fig reduction, micro greens.\n\nOrganic grilled chicken 9 | jumbo Gulf shrimp 14",
+              "name": "Truffle & Cheese Sacchetti",
+              "description": "Truffle cream sauce, balsamic-fig reduction.\n\nAdd organic chicken breast 9 | jumbo Gulf shrimp 14",
               "price": "25.00",
               "badges": ["V"],
               "spicy_level": 0,
               "extras": [
-                { "label": "Add organic grilled chicken", "price": "9.00" },
+                { "label": "Add organic chicken breast", "price": "9.00" },
                 { "label": "Add jumbo Gulf shrimp", "price": "14.00" }
               ]
-            },
-            {
-              "name": "Veal & Beef Tortelloni",
-              "description": "Parmesan brodo, micro basil",
-              "price": "30.00",
-              "badges": [],
-              "spicy_level": 0,
-              "extras": []
             }
           ]
         },
@@ -186,7 +170,7 @@
           "note": "",
           "items": [
             {
-              "name": "Spicy Honey Salmon",
+              "name": "Spicy Honey Glazed Salmon",
               "description": "Calabrian pepper infused honey, roasted garlic mashed potatoes, grilled broccolini.",
               "price": "36.00",
               "badges": [],
@@ -194,23 +178,23 @@
               "extras": []
             },
             {
-              "name": "Pistachio Crusted Grouper",
-              "description": "Shaved Brussels sprouts with smoked bacon and Medjool dates, roasted garlic mashed potatoes, Amaretto butter sauce.",
+              "name": "Pistachio Crusted Alaskan Halibut",
+              "description": "Shaved Brussels sprouts with smoked bacon, Medjool dates, mashed potatoes, amaretto butter sauce.",
               "price": "44.00",
               "badges": [],
               "spicy_level": 0,
               "extras": []
             },
             {
-              "name": "Cola Braised Short Rib",
-              "description": "Risotto parmesan, grilled broccolini.",
-              "price": "39.00",
-              "badges": [],
+              "name": "Roasted Eggplant",
+              "description": "Basil, black garlic, tomato sauce, toasted citrus-herbed breadcrumbs.",
+              "price": "29.00",
+              "badges": ["V"],
               "spicy_level": 0,
               "extras": []
             },
             {
-              "name": "Chicken Parmigiana with Spicy Vodka Sauce",
+              "name": "Chicken Parmigiana alla Spicy Vodka Sauce",
               "description": "Linguini pasta, spicy vodka sauce, mozzarella cheese.",
               "price": "29.00",
               "badges": [],
@@ -219,40 +203,40 @@
             },
             {
               "name": "Grilled Chicken Marsala",
-              "description": "Organic chicken breast, roasted garlic mashed potatoes, grilled broccolini, Marsala and cremini mushroom sauce.",
+              "description": "Grilled organic chicken breast, garlic mashed potatoes, grilled broccolini, Marsala reduction, roasted cremini mushroom sauce.",
               "price": "31.00",
               "badges": [],
               "spicy_level": 0,
               "extras": []
             },
             {
-              "name": "*Steak and Frites",
-              "description": "Grilled New York strip, Gorgonzola cheese, sun-dried tomato butter, walnuts, fresh cut garlic fries.",
-              "price": "50.00",
-              "badges": [],
-              "spicy_level": 0,
-              "extras": []
-            },
-            {
-              "name": "*Mabella's Filet",
-              "description": "Wood-grilled center-cut Angus filet, fried garlic, herbed butter sauce, roasted garlic mashed potatoes, grilled broccolini.",
-              "price": "51.00",
-              "badges": [],
-              "spicy_level": 0,
-              "extras": []
-            },
-            {
-              "name": "Charred Cauliflower",
-              "description": "Braised cannellini beans, spicy rapini, red pesto",
-              "price": "28.00",
-              "badges": ["V"],
-              "spicy_level": 0,
-              "extras": []
-            },
-            {
-              "name": "Chopped Steak au Poivre",
-              "description": "Chopped New York sirloin, roasted garlic mashed potatoes, sautéed spinach, spicy peppercorn sauce.",
+              "name": "*Chopped Steak au Poivre",
+              "description": "Chopped New York sirloin, mashed potatoes, sautéed spinach, spicy peppercorn sauce.",
               "price": "32.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Grilled Shrimp & Charred Corn Risotto",
+              "description": "Charred corn and mascarpone risotto, grilled shrimp, smoked paprika infused olive oil.",
+              "price": "35.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "*Steak and Frites",
+              "description": "Grilled New York strip, Gorgonzola cheese, sun-dried tomato butter, walnuts, fresh-cut garlic fries.",
+              "price": "48.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "*Mabella’s Filet",
+              "description": "Center cut Angus filet, fried garlic, herbed butter sauce, roasted garlic mashed potatoes, grilled broccolini.",
+              "price": "51.00",
               "badges": [],
               "spicy_level": 0,
               "extras": []
@@ -264,17 +248,17 @@
           "note": "All grill selections are served with your choice of two sides.",
           "items": [
             {
-              "name": "From our Wood Fired Grill",
-              "description": "All steaks are USDA choice aged Angus beef.",
+              "name": "From our Wood-Fired Grill",
+              "description": "All steaks are USDA Choice aged Angus beef.",
               "price": "",
               "badges": [],
               "spicy_level": 0,
               "extras": []
             },
             {
-              "name": "Center Cut Filet (8 oz)",
+              "name": "*Center Cut Filet (8 oz)",
               "description": "",
-              "price": "49.00",
+              "price": "51.00",
               "badges": [],
               "spicy_level": 0,
               "extras": []
@@ -290,21 +274,29 @@
             {
               "name": "*Center Cut N.Y. Strip Steak (14 oz)",
               "description": "",
+              "price": "46.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "*Bourbon-Marinated Ribeye (16 oz)",
+              "description": "",
               "price": "48.00",
               "badges": [],
               "spicy_level": 0,
               "extras": []
             },
             {
-              "name": "Bourbon Marinated Ribeye",
-              "description": "Limited availability.",
+              "name": "*Veal Chop (16 oz)",
+              "description": "",
               "price": "48.00",
               "badges": [],
               "spicy_level": 0,
               "extras": []
             },
             {
-              "name": "*Coleman Organic Chicken Breast",
+              "name": "Coleman Organic Chicken Breast",
               "description": "",
               "price": "28.00",
               "badges": [],
@@ -313,7 +305,7 @@
             },
             {
               "name": "*New Zealand Lamb Chops",
-              "description": "Balsamic-hot honey glaze.",
+              "description": "Balsamic - hot honey glaze.",
               "price": "43.00",
               "badges": [],
               "spicy_level": 0,
@@ -329,17 +321,17 @@
             { "name": "Medium Rare", "description": "Warm red center.", "price": "", "badges": [], "spicy_level": 0, "extras": [] },
             { "name": "Medium", "description": "Pink center.", "price": "", "badges": [], "spicy_level": 0, "extras": [] },
             { "name": "Medium Well", "description": "Slight pink center.", "price": "", "badges": [], "spicy_level": 0, "extras": [] },
-            { "name": "Well Done", "description": "No pink, we cannot guarantee well-done steaks, all sales are final.", "price": "", "badges": [], "spicy_level": 0, "extras": [] }
+            { "name": "Well Done", "description": "No pink, not recommended. We cannot guarantee well done steaks, all sales are final.", "price": "", "badges": [], "spicy_level": 0, "extras": [] }
           ]
         },
         {
           "title": "Contorni",
-          "note": "(sides)",
+          "note": "(sides) – $6 each unless noted",
           "items": [
             {
               "name": "Salt Crusted Baked Potato",
               "description": "Condiments served on the side.",
-              "price": "5.00",
+              "price": "6.00",
               "badges": [],
               "spicy_level": 0,
               "extras": []
@@ -347,7 +339,7 @@
             {
               "name": "Roasted Garlic Mashed Potatoes",
               "description": "",
-              "price": "5.00",
+              "price": "6.00",
               "badges": [],
               "spicy_level": 0,
               "extras": []
@@ -355,7 +347,7 @@
             {
               "name": "Fresh Cut Fries",
               "description": "Garlic, sea salt.",
-              "price": "5.00",
+              "price": "6.00",
               "badges": [],
               "spicy_level": 0,
               "extras": []
@@ -363,7 +355,7 @@
             {
               "name": "Spaghetti with Tomato Sauce",
               "description": "",
-              "price": "5.00",
+              "price": "6.00",
               "badges": [],
               "spicy_level": 0,
               "extras": []
@@ -371,7 +363,7 @@
             {
               "name": "Roasted Cremini Mushrooms",
               "description": "",
-              "price": "5.00",
+              "price": "6.00",
               "badges": [],
               "spicy_level": 0,
               "extras": []
@@ -379,7 +371,7 @@
             {
               "name": "Sautéed Spinach",
               "description": "",
-              "price": "5.00",
+              "price": "6.00",
               "badges": [],
               "spicy_level": 0,
               "extras": []
@@ -387,47 +379,115 @@
             {
               "name": "Shaved Brussels Sprouts with Bacon and Medjool Dates",
               "description": "",
-              "price": "5.00",
+              "price": "6.00",
               "badges": [],
               "spicy_level": 0,
               "extras": []
             },
             {
               "name": "Risotto Parmesan",
-              "description": "",
-              "price": "8.00",
+              "description": "Add 3.",
+              "price": "9.00",
               "badges": [],
               "spicy_level": 0,
               "extras": []
             },
             {
               "name": "Grilled Broccolini",
-              "description": "",
-              "price": "8.00",
+              "description": "Add 3.",
+              "price": "9.00",
               "badges": [],
               "spicy_level": 0,
               "extras": []
             },
             {
               "name": "MB’s House Salad",
-              "description": "",
-              "price": "7.00",
-              "badges": [],
-              "spicy_level": 0,
-              "extras": []
-            },
-            {
-              "name": "Caesar Salad",
-              "description": "",
+              "description": "Add 2.",
               "price": "8.00",
               "badges": [],
               "spicy_level": 0,
               "extras": []
             },
             {
-              "name": "Wedge Salad",
-              "description": "",
+              "name": "Caesar Salad",
+              "description": "Add 3.",
               "price": "9.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Wedge Salad",
+              "description": "Add 4.",
+              "price": "10.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Add Ons",
+          "note": "",
+          "items": [
+            {
+              "name": "Grilled Shrimp",
+              "description": "",
+              "price": "14.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Crabmeat Oscar",
+              "description": "",
+              "price": "14.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Sauces",
+          "note": "",
+          "items": [
+            {
+              "name": "Bearnaise",
+              "description": "",
+              "price": "4.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Horseradish Cream",
+              "description": "",
+              "price": "4.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Red Wine Demi-Glace",
+              "description": "",
+              "price": "4.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Marsala Reduction",
+              "description": "",
+              "price": "4.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Au Poivre",
+              "description": "",
+              "price": "4.00",
               "badges": [],
               "spicy_level": 0,
               "extras": []
@@ -437,7 +497,8 @@
       ],
       "footnotes": [
         "*These items can be cooked to order. Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness.",
-        "20% automatic gratuity will be added to parties of 8 or more."
+        "20% automatic gratuity will be added to parties of 8 or more.",
+        "Gift cards available for purchase. Valid at any of our Uptown Life Group restaurants: The Loft, Saltcellar, The Mix Market, TommyG’s, and Mabella Midland."
       ]
     }
   ]
