@@ -126,15 +126,15 @@ function ulg_get_venues() {
 	return array(
 		'mabellas' => array(
 			'name'    => "Mabella's Italian Steakhouse",
-			'address' => '14 West 11th Street, Columbus, GA',
+			'address' => '14 West 11th Street, Columbus, GA 31901',
 			'phone'   => '(706) 940-0070',
 			'website' => 'https://mabellas.com',
 		),
 		'mabellas-midland' => array(
 			'name'    => "Mabella's Midland",
-			'address' => 'Midland, GA',
-			'phone'   => '',
-			'website' => 'https://mabellas.com',
+			'address' => '6835 Midland Commons Blvd Ste. E, Columbus, GA 31909',
+			'phone'   => '(706) 478-5285',
+			'website' => 'https://mabellas.com/locations/midland/',
 		),
 		'the-loft' => array(
 			'name'    => 'The Loft',
@@ -150,9 +150,15 @@ function ulg_get_venues() {
 		),
 		'tommy-gs' => array(
 			'name'    => "Tommy G's",
-			'address' => 'Columbus, GA',
-			'phone'   => '',
+			'address' => '6835 Midland Commons Blvd, Columbus, GA 31909',
+			'phone'   => '(762) 583-1919',
 			'website' => 'https://tommygs.com',
+		),
+		'saltcellar' => array(
+			'name'    => 'Saltcellar',
+			'address' => '1039 1st Avenue, Columbus, GA 31901',
+			'phone'   => '(706) 507-1308',
+			'website' => 'https://saltcellar.com',
 		),
 	);
 }
