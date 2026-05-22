@@ -505,3 +505,15 @@ function vqdev_toast_menu_shortcode( $atts ) {
 	return ob_get_clean();
 }
 add_shortcode( 'toast_menu', 'vqdev_toast_menu_shortcode' );
+
+/**
+ * Delete the theme-side Toast transients when the plugin's flush action fires.
+ *
+ * The vqdev-toast plugin owns the admin-bar "Refresh Toast Menu" button and
+ * fires this action; the theme is responsible for clearing its own caches.
+ */
+add_action( 'vqdev_toast_flush_cache', function () {
+	delete_transient( 'vqdev_toast_menu_data' );
+	delete_transient( 'vqdev_toast_metadata_checked' );
+	delete_transient( 'vqdev_toast_oos_guids' );
+} );
