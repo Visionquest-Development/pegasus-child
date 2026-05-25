@@ -8,67 +8,599 @@
  Version:        0.0.1
 */
 
-/*@import url("../pegasus/style.css");*/
-	
-	
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	/*~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~ HEADER ~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	
-	/*~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~ NAVIGATION ~~~~~
-	~~~~~~~~~~~~~~~~~~~~~*/
+/* ==========================================================================
+   Gen2 Automation — design system
+   Ported from Claude Design handoff (B · Technical Schematic homepage +
+   Services inner page). All design styles live here.
+   ========================================================================== */
 
-	
-	/*~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~ FOOTER ~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
+/* ----- Tokens ------------------------------------------------------------ */
+.gen2 {
+	--teal-900: #0A1B2E;
+	--teal-800: #0F2A44;
+	--teal:     #24577F;
+	--teal-700: #2D6798;
+	--teal-600: #3D78AB;
+	--copper:     #E89A2E;
+	--copper-700: #C47E18;
+	--copper-300: #F2B962;
+	--warm:     #FFFFFF;
+	--warm-200: #F4F5F7;
+	--warm-300: #E5E7EB;
+	--ink:      #0C0C0C;
+	--line:         rgba(12,12,12,0.10);
+	--line-on-dark: rgba(255,255,255,0.14);
+	color: var(--ink);
+	background: var(--warm);
+	width: 100%;
+}
+.gen2,
+.gen2 *,
+.gen2 *::before,
+.gen2 *::after { box-sizing: border-box; }
+.gen2 h1, .gen2 h2, .gen2 h3, .gen2 h4, .gen2 p { margin: 0; }
+.gen2 a { color: inherit; text-decoration: none; }
 
-	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
-	/*~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~ HOME PAGE ~~~~~
-	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	
-	
-	/* ~~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~~SITEMAP~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~*/
-	
-	/* ~~~~~~~~~~~~~~~~~~~~~~
-	~~~~WOOCOMMERCE~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~*/
+/* ----- Typography utilities ---------------------------------------------- */
+.gen2 .mono   { font-family: "JetBrains Mono", ui-monospace, monospace; letter-spacing: 0.01em; }
+.gen2 .sans   { font-family: "Archivo", "Helvetica Neue", sans-serif; }
+.gen2 .news   { font-family: "Newsreader", Georgia, serif; }
+.gen2 .anton  { font-family: "Anton", "Archivo Narrow", sans-serif; letter-spacing: -0.005em; }
+.gen2 .narrow { font-family: "Archivo Narrow", "Archivo", sans-serif; }
 
-	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	~~~~~MEDIA QUERIES~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	@media only screen and ( min-width: 1100px ) and ( max-width: 1405px) {
-		
-	}
-	
-	@media only screen and ( min-width: 981px ) {
-		
-	}
-		
-	@media only screen and (max-width: 980px) {
-		
-	}
-	
-	@media only screen and ( max-width: 767px ) {
-		
-	}
-	
-	@media only screen and (max-width: 479px) {
-		
-	}
+/* ----- Placeholder block ------------------------------------------------- */
+.gen2-ph {
+	position: relative; overflow: hidden; isolation: isolate;
+	background:
+		repeating-linear-gradient(135deg, rgba(12,12,12,0.05) 0 2px, transparent 2px 14px),
+		linear-gradient(180deg, #d8dde3 0%, #c4cbd3 100%);
+	color: rgba(12,12,12,0.55);
+	display: flex; align-items: flex-end; justify-content: flex-start;
+	font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.04em;
+	text-transform: uppercase; padding: 14px;
+}
+.gen2-ph--dark {
+	background:
+		repeating-linear-gradient(135deg, rgba(255,255,255,0.05) 0 2px, transparent 2px 14px),
+		linear-gradient(180deg, #133252 0%, #0c1e34 100%);
+	color: rgba(255,255,255,0.55);
+}
+.gen2-ph::before {
+	content: ""; position: absolute; inset: 10px;
+	border: 1px dashed currentColor; opacity: 0.35; pointer-events: none;
+}
+.gen2-ph__tag { position: relative; z-index: 1; }
+
+/* contextual placeholder modifiers */
+.gen2-ph--fill       { position: absolute; inset: 0; }
+.gen2-ph--hero-case  { height: 480px; margin-top: 32px; }
+.gen2-ph--portrait   { aspect-ratio: 1 / 1; }
+
+/* ----- Background grid --------------------------------------------------- */
+.gen2-grid-bg {
+	background-image:
+		linear-gradient(to right, rgba(12,12,12,0.05) 1px, transparent 1px),
+		linear-gradient(to bottom, rgba(12,12,12,0.05) 1px, transparent 1px);
+	background-size: 40px 40px;
+}
+.gen2-grid-bg--dark {
+	background-image:
+		linear-gradient(to right, rgba(232,154,46,0.14) 1px, transparent 1px),
+		linear-gradient(to bottom, rgba(232,154,46,0.14) 1px, transparent 1px);
+}
+
+/* ----- Schematic SVGs ---------------------------------------------------- */
+.gen2-svg            { width: 100%; height: auto; display: block; --svg-stroke: #0C0C0C; --svg-accent: #E89A2E; }
+.gen2-svg--on-light  { --svg-stroke: #0C0C0C; --svg-accent: var(--copper); }
+.gen2-svg--on-dark   { --svg-stroke: rgba(244,242,236,0.85); --svg-accent: var(--copper); }
+.gen2-svg--on-dark-300 { --svg-stroke: rgba(244,242,236,0.85); --svg-accent: var(--copper-300); }
+.gen2-svg--codesys   { --svg-stroke: rgba(244,242,236,0.78); --svg-accent: var(--copper); }
+
+/* ----- Gen2 brand mark --------------------------------------------------- */
+.gen2-mark { display: inline-flex; align-items: center; gap: 12px; }
+.gen2-mark__img  { height: 36px; width: auto; display: block; }
+.gen2-mark__text { display: flex; flex-direction: column; line-height: 1; }
+.gen2-mark__name { font-family: Archivo, sans-serif; font-weight: 700; font-size: 17px; letter-spacing: -0.005em; }
+.gen2-mark__tag  { font-family: "JetBrains Mono", monospace; font-size: 9px; margin-top: 4px; letter-spacing: 0.18em; text-transform: uppercase; }
+.gen2-mark--light .gen2-mark__name { color: #0C0C0C; }
+.gen2-mark--light .gen2-mark__tag  { color: rgba(12,12,12,0.55); }
+.gen2-mark--dark  .gen2-mark__name { color: #FFFFFF; }
+.gen2-mark--dark  .gen2-mark__tag  { color: rgba(255,255,255,0.55); }
+/* discrete size modifiers (multipliers on base 36px / 17px / 9px / 12px gap) */
+.gen2-mark--xs { gap: 7.2px; }   .gen2-mark--xs .gen2-mark__img { height: 21.6px; } .gen2-mark--xs .gen2-mark__name { font-size: 10.2px; } .gen2-mark--xs .gen2-mark__tag { font-size: 5.4px; }
+.gen2-mark--sm { gap: 11.4px; }  .gen2-mark--sm .gen2-mark__img { height: 34.2px; } .gen2-mark--sm .gen2-mark__name { font-size: 16.15px; } .gen2-mark--sm .gen2-mark__tag { font-size: 8.55px; }
+.gen2-mark--md { gap: 12.6px; }  .gen2-mark--md .gen2-mark__img { height: 37.8px; } .gen2-mark--md .gen2-mark__name { font-size: 17.85px; } .gen2-mark--md .gen2-mark__tag { font-size: 9.45px; }
+.gen2-mark--lg { gap: 14.4px; }  .gen2-mark--lg .gen2-mark__img { height: 43.2px; } .gen2-mark--lg .gen2-mark__name { font-size: 20.4px; }  .gen2-mark--lg .gen2-mark__tag { font-size: 10.8px; }
+.gen2-mark--xl { gap: 15.6px; }  .gen2-mark--xl .gen2-mark__img { height: 46.8px; } .gen2-mark--xl .gen2-mark__name { font-size: 22.1px; }  .gen2-mark--xl .gen2-mark__tag { font-size: 11.7px; }
+
+/* ----- CODESYS partner mark --------------------------------------------- */
+.gen2-codesys-mark { display: inline-flex; align-items: center; gap: 14px; }
+.gen2-codesys-mark__icon {
+	width: 60px; height: 60px; position: relative;
+	border: 2px solid #FFFFFF;
+	display: flex; align-items: center; justify-content: center;
+}
+.gen2-codesys-mark--light .gen2-codesys-mark__icon { border-color: #FFFFFF; }
+.gen2-codesys-mark--dark  .gen2-codesys-mark__icon { border-color: #0C0C0C; }
+.gen2-codesys-mark__brace { font-family: "JetBrains Mono", monospace; color: var(--copper); font-weight: 700; font-size: 22px; line-height: 1; }
+.gen2-codesys-mark__corner { position: absolute; width: 8px; height: 8px; }
+.gen2-codesys-mark__corner--tl { top: -1px; left: -1px;  border-top: 2px solid var(--copper); border-left: 2px solid var(--copper); }
+.gen2-codesys-mark__corner--br { bottom: -1px; right: -1px; border-bottom: 2px solid var(--copper); border-right: 2px solid var(--copper); }
+.gen2-codesys-mark__caption { font-family: "JetBrains Mono", monospace; font-size: 10px; opacity: 0.55; letter-spacing: 0.2em; display: block; }
+.gen2-codesys-mark__word    { font-family: "Anton", "Archivo Narrow", sans-serif; font-size: 28px; line-height: 1; letter-spacing: 0.02em; display: block; }
+.gen2-codesys-mark--light .gen2-codesys-mark__caption,
+.gen2-codesys-mark--light .gen2-codesys-mark__word { color: #FFFFFF; }
+.gen2-codesys-mark--dark  .gen2-codesys-mark__caption,
+.gen2-codesys-mark--dark  .gen2-codesys-mark__word { color: #0C0C0C; }
+.gen2-codesys-mark__reg { color: var(--copper); }
+/* size modifiers (scales icon + text proportionally) */
+.gen2-codesys-mark--xs { gap: 8.4px; }
+.gen2-codesys-mark--xs .gen2-codesys-mark__icon  { width: 36px; height: 36px; }
+.gen2-codesys-mark--xs .gen2-codesys-mark__brace { font-size: 13.2px; }
+.gen2-codesys-mark--xs .gen2-codesys-mark__corner{ width: 4.8px; height: 4.8px; }
+.gen2-codesys-mark--xs .gen2-codesys-mark__caption{ font-size: 6px; }
+.gen2-codesys-mark--xs .gen2-codesys-mark__word   { font-size: 16.8px; }
+
+.gen2-codesys-mark--md { gap: 18.2px; }
+.gen2-codesys-mark--md .gen2-codesys-mark__icon  { width: 78px; height: 78px; }
+.gen2-codesys-mark--md .gen2-codesys-mark__brace { font-size: 28.6px; }
+.gen2-codesys-mark--md .gen2-codesys-mark__corner{ width: 10.4px; height: 10.4px; }
+.gen2-codesys-mark--md .gen2-codesys-mark__caption{ font-size: 13px; }
+.gen2-codesys-mark--md .gen2-codesys-mark__word   { font-size: 36.4px; }
+
+.gen2-codesys-mark--lg { gap: 19.6px; }
+.gen2-codesys-mark--lg .gen2-codesys-mark__icon  { width: 84px; height: 84px; }
+.gen2-codesys-mark--lg .gen2-codesys-mark__brace { font-size: 30.8px; }
+.gen2-codesys-mark--lg .gen2-codesys-mark__corner{ width: 11.2px; height: 11.2px; }
+.gen2-codesys-mark--lg .gen2-codesys-mark__caption{ font-size: 14px; }
+.gen2-codesys-mark--lg .gen2-codesys-mark__word   { font-size: 39.2px; }
+
+/* ----- Client logos strip ----------------------------------------------- */
+.gen2-clients { display: grid; grid-template-columns: repeat(6, 1fr); align-items: center; }
+.gen2-clients--dark  { border-top: 1px solid var(--line-on-dark); border-bottom: 1px solid var(--line-on-dark); }
+.gen2-clients--light { border-top: 1px solid var(--line);         border-bottom: 1px solid var(--line); }
+.gen2-clients__item {
+	height: 100px; display: flex; align-items: center; justify-content: center;
+	font-size: 18px; letter-spacing: 0.02em;
+}
+.gen2-clients--dark .gen2-clients__item  { color: rgba(244,242,236,0.55); }
+.gen2-clients--light .gen2-clients__item { color: rgba(12,12,12,0.45); }
+.gen2-clients--dark  .gen2-clients__item:not(:last-child) { border-right: 1px solid var(--line-on-dark); }
+.gen2-clients--light .gen2-clients__item:not(:last-child) { border-right: 1px solid var(--line); }
+.gen2-clients__item--archivo       { font-family: "Archivo", sans-serif; font-weight: 700; }
+.gen2-clients__item--news-it       { font-family: "Newsreader", serif; font-weight: 500; font-style: italic; }
+.gen2-clients__item--narrow        { font-family: "Archivo Narrow", sans-serif; font-weight: 700; }
+.gen2-clients__item--archivo-med   { font-family: "Archivo", sans-serif; font-weight: 500; }
+.gen2-clients__item--mono          { font-family: "JetBrains Mono", monospace; font-weight: 600; letter-spacing: 0.04em; }
+
+/* CMB2-driven logos variant — accepts uploaded images or text wordmarks. */
+.gen2-clients--cmb { grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); grid-template-columns: none; }
+.gen2-clients__link { display: inline-flex; align-items: center; justify-content: center; }
+.gen2-clients__img  { max-height: 60px; max-width: 80%; width: auto; height: auto; display: block; opacity: 0.85; -webkit-filter: brightness(0) invert(1); filter: brightness(0) invert(1); }
+.gen2-clients--light .gen2-clients__img { -webkit-filter: none; filter: none; opacity: 0.85; }
+.gen2-clients__wordmark { font-family: "Archivo", sans-serif; font-weight: 700; font-size: 18px; letter-spacing: 0.02em; color: inherit; }
+
+/* ==========================================================================
+   B · TECHNICAL SCHEMATIC HOMEPAGE — tpl_schematic.php
+   ========================================================================== */
+
+.gen2-schematic { background: var(--ink); color: var(--warm); }
+
+/* ----- Schematic page nav ----------------------------------------------- */
+.gen2-schem-nav {
+	display: grid; grid-template-columns: 240px 1fr 240px; align-items: stretch;
+	border-bottom: 1px solid rgba(244,242,236,0.18);
+	background: var(--ink); color: var(--warm);
+}
+.gen2-schem-nav__brand {
+	padding: 16px 24px;
+	border-right: 1px solid rgba(244,242,236,0.18);
+	display: flex; align-items: center;
+}
+.gen2-schem-nav__menu { display: flex; }
+.gen2-schem-nav__link {
+	flex: 1; padding: 20px 24px;
+	display: flex; align-items: center; justify-content: center;
+	font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+	border-right: 1px solid rgba(244,242,236,0.18); color: var(--warm);
+}
+.gen2-schem-nav__link-num { color: var(--copper-300); margin-right: 8px; }
+.gen2-schem-nav__cta-wrap {
+	padding: 20px 24px;
+	display: flex; align-items: center; justify-content: flex-end;
+}
+.gen2-schem-nav__cta {
+	background: var(--copper); color: var(--ink);
+	padding: 10px 16px; font-size: 11px; font-weight: 600;
+	letter-spacing: 0.1em; text-transform: uppercase;
+}
+
+/* ----- Hero ------------------------------------------------------------- */
+.gen2-schem-hero { background: var(--teal-900); color: var(--warm); position: relative; overflow: hidden; }
+.gen2-schem-hero__grid { position: absolute; inset: 0; opacity: 0.7; }
+.gen2-schem-hero__corner { position: absolute; width: 18px; height: 18px; }
+.gen2-schem-hero__corner--tl { top: 16px;    left: 16px;  border-top:    1.5px solid var(--copper); border-left:  1.5px solid var(--copper); }
+.gen2-schem-hero__corner--tr { top: 16px;    right: 16px; border-top:    1.5px solid var(--copper); border-right: 1.5px solid var(--copper); }
+.gen2-schem-hero__corner--bl { bottom: 16px; left: 16px;  border-bottom: 1.5px solid var(--copper); border-left:  1.5px solid var(--copper); }
+.gen2-schem-hero__corner--br { bottom: 16px; right: 16px; border-bottom: 1.5px solid var(--copper); border-right: 1.5px solid var(--copper); }
+.gen2-schem-hero__inner { position: relative; padding: 80px 56px 48px; }
+.gen2-schem-hero__doc {
+	display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+	font-size: 10px; opacity: 0.55; letter-spacing: 0.2em;
+	border-bottom: 1px solid rgba(244,242,236,0.14);
+	padding-bottom: 16px; margin-bottom: 36px;
+}
+.gen2-schem-hero__main { display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: flex-end; }
+.gen2-schem-hero__eyebrow { font-size: 12px; color: var(--copper-300); letter-spacing: 0.18em; margin-bottom: 18px; }
+.gen2-schem-hero__title   { margin: 0; font-size: 156px; line-height: 0.9; font-weight: 400; letter-spacing: -0.005em; }
+.gen2-schem-hero__title-accent { color: var(--copper-300); }
+.gen2-schem-hero__intro   { font-size: 16px; line-height: 1.6; color: rgba(244,242,236,0.78); margin: 0 0 24px; max-width: 460px; }
+.gen2-schem-hero__cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.gen2-btn-primary { background: var(--copper); color: var(--ink); padding: 14px 20px; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+.gen2-btn-ghost   { border: 1px solid rgba(244,242,236,0.3); color: var(--warm); padding: 14px 20px; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+.gen2-schem-hero__split { position: relative; display: grid; grid-template-columns: 1.2fr 1fr; border-top: 1px solid rgba(244,242,236,0.18); }
+.gen2-schem-hero__schem { border-right: 1px solid rgba(244,242,236,0.18); padding: 32px 56px; background: rgba(12,12,12,0.3); }
+.gen2-schem-hero__schem-label { font-size: 10px; opacity: 0.55; letter-spacing: 0.2em; margin-bottom: 12px; color: var(--copper-300); }
+.gen2-schem-hero__photo-wrap { position: relative; min-height: 480px; }
+.gen2-schem-hero__stats {
+	display: grid; grid-template-columns: repeat(5, 1fr);
+	border-top: 1px solid rgba(244,242,236,0.18);
+	background: var(--ink); color: var(--warm);
+}
+.gen2-schem-hero__stat {
+	padding: 20px 24px; display: flex; align-items: baseline; gap: 12px;
+}
+.gen2-schem-hero__stat:not(:last-child) { border-right: 1px solid rgba(244,242,236,0.18); }
+.gen2-schem-hero__stat-num   { font-size: 32px; color: var(--copper-300); }
+.gen2-schem-hero__stat-label { font-size: 10px; opacity: 0.6; letter-spacing: 0.16em; text-transform: uppercase; }
+
+/* ----- Services (three disciplines) ------------------------------------- */
+.gen2-schem-services { padding: 100px 56px; background: var(--warm); color: var(--ink); }
+.gen2-schem-services__doc {
+	display: flex; justify-content: space-between; font-size: 10px;
+	opacity: 0.55; letter-spacing: 0.2em;
+	border-bottom: 1px solid var(--line); padding-bottom: 14px;
+}
+.gen2-schem-services__head {
+	padding: 32px 0 56px;
+	border-bottom: 1px solid var(--line);
+}
+.gen2-schem-services__title  { margin: 0; font-size: 96px; line-height: 0.95; font-weight: 400; }
+.gen2-schem-services__title-accent { color: var(--copper); }
+.gen2-schem-services__logo   { display: block; width: 100%;  height: auto; margin-bottom: 24px; }
+.gen2-schem-services__intro  { font-size: 16px; line-height: 1.55; margin: 0; color: rgba(12,12,12,0.7);  }
+.gen2-schem-services__intro p:last-child { margin-bottom: 0; }
+.gen2-schem-services__grid   { display: grid; grid-template-columns: repeat(3, 1fr); }
+.gen2-schem-services__card   { padding: 32px 28px; border-bottom: 1px solid var(--line); position: relative; }
+.gen2-schem-services__card:not(:last-child) { border-right: 1px solid var(--line); }
+.gen2-schem-services__card-head {
+	display: flex; justify-content: space-between;
+	font-size: 10px; opacity: 0.55; letter-spacing: 0.18em; margin-bottom: 32px;
+}
+.gen2-schem-services__card-title { margin: 0; font-size: 38px; line-height: 1.05; font-weight: 400; letter-spacing: -0.005em; }
+.gen2-schem-services__card-desc  { font-size: 14px; line-height: 1.55; margin-top: 16px; color: rgba(12,12,12,0.7); }
+.gen2-schem-services__bullets { margin-top: 24px; }
+.gen2-schem-services__bullet  {
+	font-size: 11px; padding: 10px 0;
+	border-bottom: 1px solid var(--line);
+	display: flex; justify-content: space-between; letter-spacing: 0.04em;
+}
+.gen2-schem-services__bullet:first-child { border-top: 1px solid var(--line); }
+.gen2-schem-services__bullet-plus { color: var(--copper); margin-right: 8px; }
+.gen2-schem-services__bullet-num  { opacity: 0.45; }
+
+/* WYSIWYG-driven bullets — when content is entered via CMB2 as a UL list,
+   restyle the <ul>/<li> to match the static .gen2-schem-services__bullet
+   layout above (+ prefix in copper, leading-zero counter on the right). */
+.gen2-schem-services__bullets ul,
+.gen2-schem-services__bullets ol {
+	list-style: none;
+	padding: 0;
+	margin: 24px 0 0;
+	counter-reset: gen2-bullet;
+}
+.gen2-schem-services__bullets li {
+	counter-increment: gen2-bullet;
+	font-family: "JetBrains Mono", monospace;
+	font-size: 11px;
+	letter-spacing: 0.04em;
+	padding: 10px 0;
+	display: flex; align-items: center;
+	border-bottom: 1px solid var(--line);
+}
+.gen2-schem-services__bullets li:first-child { border-top: 1px solid var(--line); }
+.gen2-schem-services__bullets li::before {
+	content: "+";
+	color: var(--copper);
+	margin-right: 8px;
+}
+.gen2-schem-services__bullets li::after {
+	content: counter(gen2-bullet, decimal-leading-zero);
+	opacity: 0.45;
+	margin-left: auto;
+}
+/* Drop wpautop's wrapping <p> tags inside the bullets container. */
+.gen2-schem-services__bullets p { margin: 0; }
+
+/* ----- CODESYS partner section ------------------------------------------ */
+.gen2-schem-codesys { background: var(--ink); color: var(--warm); position: relative; }
+.gen2-schem-codesys__grid { position: absolute; inset: 0; opacity: 0.4; }
+.gen2-schem-codesys__inner { position: relative; padding: 80px 56px 0; }
+.gen2-schem-codesys__doc {
+	display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+	font-size: 10px; opacity: 0.55; letter-spacing: 0.2em;
+	border-bottom: 1px solid rgba(244,242,236,0.18); padding-bottom: 14px;
+	margin-bottom: 56px;
+}
+.gen2-schem-codesys__main { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: flex-start; padding-bottom: 64px; }
+.gen2-schem-codesys__logo   { display: block; height: 84px; width: auto; max-width: 100%; }
+.gen2-schem-codesys__title  { margin: 40px 0 20px; font-size: 88px; line-height: 0.92; font-weight: 400; letter-spacing: -0.01em; }
+.gen2-schem-codesys__title-accent { color: var(--copper-300); }
+.gen2-schem-codesys__intro  { font-size: 16px; line-height: 1.6; color: rgba(244,242,236,0.78); max-width: 540px; }
+.gen2-schem-codesys__pills  { margin-top: 32px; font-size: 11px; opacity: 0.6; letter-spacing: 0.18em; }
+.gen2-schem-codesys__schem-label {
+	display: flex; justify-content: space-between; margin-top: 14px;
+	font-size: 10px; opacity: 0.55; letter-spacing: 0.18em;
+}
+.gen2-schem-codesys__cells {
+	position: relative; display: grid; grid-template-columns: repeat(4, 1fr);
+	border-top: 1px solid rgba(244,242,236,0.18);
+	border-bottom: 1px solid rgba(244,242,236,0.18);
+}
+.gen2-schem-codesys__cell { padding: 28px 22px; min-height: 200px; }
+.gen2-schem-codesys__cell:not(:nth-child(4n)) { border-right: 1px solid rgba(244,242,236,0.18); }
+.gen2-schem-codesys__cell:nth-child(n+5)     { border-top:   1px solid rgba(244,242,236,0.18); }
+.gen2-schem-codesys__cell-num   { font-size: 10px; color: var(--copper-300); letter-spacing: 0.2em; margin-bottom: 12px; }
+.gen2-schem-codesys__cell-title { margin: 0; font-size: 22px; font-weight: 400; letter-spacing: 0.005em; }
+.gen2-schem-codesys__cell-desc  { font-size: 13px; line-height: 1.55; margin-top: 12px; color: rgba(244,242,236,0.7); }
+
+/* ----- Amazon case study ------------------------------------------------ */
+.gen2-schem-case { padding: 100px 56px; background: var(--warm-200); color: var(--ink); }
+.gen2-schem-case__doc {
+	display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+	font-size: 10px; opacity: 0.55; letter-spacing: 0.2em;
+	border-bottom: 1px solid var(--line); padding-bottom: 14px; margin-bottom: 40px;
+}
+.gen2-schem-case__main  { display: grid; grid-template-columns: 1.6fr 1fr; gap: 48px; }
+.gen2-schem-case__eyebrow { font-size: 12px; color: var(--copper); letter-spacing: 0.18em; margin-bottom: 14px; }
+.gen2-schem-case__title { margin: 0; font-size: 110px; line-height: 0.92; font-weight: 400; letter-spacing: -0.005em; }
+.gen2-schem-case__title-accent { color: var(--copper); }
+.gen2-schem-case__intro { font-size: 16px; line-height: 1.6; color: rgba(12,12,12,0.78); margin-top: 24px; max-width: 720px; }
+.gen2-schem-case__hero-img   { display: block; width: 100%; height: 480px; -o-object-fit: cover; object-fit: cover; margin-top: 32px; }
+.gen2-schem-case__hero-video { display: block; width: 100%; height: 480px; -o-object-fit: cover; object-fit: cover; margin-top: 32px; background: var(--ink); }
+.gen2-schem-case__hero-embed { position: relative; width: 100%; padding-top: 56.25%; margin-top: 32px; background: var(--ink); }
+.gen2-schem-case__hero-embed iframe,
+.gen2-schem-case__hero-embed embed,
+.gen2-schem-case__hero-embed object,
+.gen2-schem-case__hero-embed video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.gen2-schem-case__stats { display: flex; flex-direction: column; gap: 16px; }
+.gen2-schem-case__stat  { padding: 16px 18px; border: 1px solid var(--line); background: var(--warm); }
+.gen2-schem-case__stat-label { font-size: 9px; opacity: 0.55; letter-spacing: 0.2em; }
+.gen2-schem-case__stat-value { font-size: 28px; margin-top: 4px; line-height: 1; }
+
+/* ----- Process / flow --------------------------------------------------- */
+.gen2-schem-process { padding: 100px 56px; background: var(--teal); color: var(--warm); }
+.gen2-schem-process__doc {
+	display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+	font-size: 10px; opacity: 0.55; letter-spacing: 0.2em;
+	border-bottom: 1px solid rgba(244,242,236,0.18); padding-bottom: 14px; margin-bottom: 40px;
+}
+.gen2-schem-process__title { margin: 0 0 40px; font-size: 88px; line-height: 0.95; font-weight: 400; }
+.gen2-schem-process__title-accent { color: var(--copper-300); }
+.gen2-schem-process__flow { background: rgba(12,12,12,0.3); padding: 40px 24px; border: 1px solid rgba(244,242,236,0.18); }
+.gen2-schem-process__grid { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); margin-top: 24px; }
+.gen2-schem-process__step { padding: 24px 18px; }
+.gen2-schem-process__step:not(:last-child) { border-right: 1px solid rgba(244,242,236,0.18); }
+.gen2-schem-process__step-num { font-size: 10px; color: var(--copper-300); letter-spacing: 0.2em; margin-bottom: 8px; }
+.gen2-schem-process__step-desc { font-size: 12px; line-height: 1.55; color: rgba(244,242,236,0.7); margin: 0; }
+
+/* ----- Logos strip ------------------------------------------------------ */
+.gen2-schem-logos { padding: 60px 56px; background: var(--ink); color: var(--warm); }
+.gen2-schem-logos__label { font-size: 10px; opacity: 0.55; letter-spacing: 0.2em; text-align: center; margin-bottom: 24px; }
+
+/* ----- Leadership ------------------------------------------------------- */
+.gen2-schem-team { padding: 100px 56px; background: var(--warm); color: var(--ink); }
+.gen2-schem-team__doc {
+	display: flex; justify-content: space-between; font-size: 10px;
+	opacity: 0.55; letter-spacing: 0.2em;
+	border-bottom: 1px solid var(--line); padding-bottom: 14px; margin-bottom: 40px;
+}
+.gen2-schem-team__head { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: flex-end; margin-bottom: 48px; }
+.gen2-schem-team__title { margin: 0; font-size: 88px; line-height: 0.95; font-weight: 400; }
+.gen2-schem-team__title-accent { color: var(--copper); }
+.gen2-schem-team__intro { font-size: 16px; line-height: 1.6; color: rgba(12,12,12,0.7); margin: 0; max-width: 460px; }
+.gen2-schem-team__grid { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); }
+.gen2-schem-team__member-photo { display: block; width: 100%; aspect-ratio: 1 / 1; -o-object-fit: cover; object-fit: cover; }
+.gen2-schem-team__member:not(:last-child) { border-right: 1px solid var(--line); }
+.gen2-schem-team__member-body { padding: 20px 18px; border-top: 1px solid var(--line); }
+.gen2-schem-team__member-name { font-size: 22px; letter-spacing: 0.005em; }
+.gen2-schem-team__member-role { font-size: 10px; opacity: 0.6; letter-spacing: 0.14em; margin-top: 4px; }
+.gen2-schem-team__member-creds { font-size: 10px; color: var(--copper); letter-spacing: 0.14em; margin-top: 8px; }
+
+/* ----- Big CTA ---------------------------------------------------------- */
+.gen2-schem-cta { padding: 120px 56px; background: var(--copper); color: var(--ink); position: relative; }
+.gen2-schem-cta__grid { position: absolute; inset: 0; opacity: 0.4; }
+.gen2-schem-cta__main { position: relative; display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: flex-end; }
+.gen2-schem-cta__title { margin: 0; font-size: 132px; line-height: 0.9; font-weight: 400; letter-spacing: -0.01em; }
+.gen2-schem-cta__title-underline { border-bottom: 6px solid var(--ink); }
+.gen2-schem-cta__lead { font-size: 16px; line-height: 1.6; margin-top: 0; }
+.gen2-schem-cta__btn { display: inline-block; margin-top: 24px; background: var(--ink); color: var(--copper); padding: 18px 28px; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+.gen2-schem-cta__phone { margin-top: 24px; font-size: 11px; letter-spacing: 0.18em; }
+
+/* ----- Footer ----------------------------------------------------------- */
+.gen2-schem-footer { background: var(--ink); color: var(--warm); }
+.gen2-schem-footer__cols { padding: 48px 56px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; border-bottom: 1px solid rgba(244,242,236,0.18); }
+.gen2-schem-footer__about { font-size: 13px; line-height: 1.6; color: rgba(244,242,236,0.6); margin-top: 16px; max-width: 380px; }
+.gen2-schem-footer__codesys { margin-top: 20px; }
+.gen2-schem-footer__col-title { font-size: 10px; color: var(--copper-300); letter-spacing: 0.2em; margin-bottom: 14px; }
+.gen2-schem-footer__col-item  { font-size: 13px; color: rgba(244,242,236,0.78); line-height: 1.9; }
+.gen2-schem-footer__legal { padding: 16px 56px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 9px; opacity: 0.45; letter-spacing: 0.16em; }
+
+/* ==========================================================================
+   SERVICES INNER PAGE — tpl_services.php
+   ========================================================================== */
+
+.gen2-services-page { background: var(--warm); color: var(--ink); }
+
+/* ----- Services page nav ------------------------------------------------ */
+.gen2-svc-nav {
+	display: flex; align-items: center; justify-content: space-between;
+	padding: 26px 56px; border-bottom: 1px solid var(--line);
+	background: var(--warm); gap: 32px; flex-wrap: wrap;
+}
+.gen2-svc-nav__menu { display: flex; gap: 36px; font-size: 13px; font-weight: 500; }
+.gen2-svc-nav__link { color: var(--ink); }
+.gen2-svc-nav__cta {
+	background: var(--ink); color: var(--warm);
+	padding: 10px 18px; font-size: 12px; font-weight: 600;
+	letter-spacing: 0.06em; text-transform: uppercase;
+}
+
+/* ----- Services hero ---------------------------------------------------- */
+.gen2-svc-hero { padding: 80px 56px 64px; }
+.gen2-svc-hero__eyebrow { font-size: 11px; opacity: 0.55; letter-spacing: 0.2em; margin-bottom: 18px; }
+.gen2-svc-hero__main { display: grid; grid-template-columns: 2fr 1fr; gap: 48px; align-items: flex-end; }
+.gen2-svc-hero__title { margin: 0; font-size: 132px; line-height: 0.95; font-weight: 400; letter-spacing: -0.02em; }
+.gen2-svc-hero__title em { color: var(--copper); font-style: italic; }
+.gen2-svc-hero__intro { font-size: 16px; line-height: 1.6; color: rgba(12,12,12,0.7); margin: 0; }
+
+/* ----- Anchor menu ------------------------------------------------------ */
+.gen2-svc-anchor { padding: 0 56px 32px; }
+.gen2-svc-anchor__row { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.gen2-svc-anchor__link { padding: 20px 24px; display: flex; align-items: center; gap: 14px; color: var(--ink); }
+.gen2-svc-anchor__link:not(:last-child) { border-right: 1px solid var(--line); }
+.gen2-svc-anchor__num   { font-size: 11px; color: var(--copper); letter-spacing: 0.16em; }
+.gen2-svc-anchor__label { font-size: 14px; font-weight: 600; }
+.gen2-svc-anchor__arrow { margin-left: auto; opacity: 0.45; }
+
+/* ----- Service block ---------------------------------------------------- */
+.gen2-svc-block { padding: 100px 56px; }
+.gen2-svc-block--even { background: var(--warm); }
+.gen2-svc-block--odd  { background: var(--warm-200); }
+.gen2-svc-block + .gen2-svc-block { border-top: 1px solid var(--line); }
+.gen2-svc-block__head { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; margin-bottom: 56px; }
+.gen2-svc-block__doc  { font-size: 11px; color: var(--copper); letter-spacing: 0.18em; margin-bottom: 12px; }
+.gen2-svc-block__title { margin: 0; font-size: 84px; line-height: 0.95; font-weight: 400; letter-spacing: -0.015em; }
+.gen2-svc-block__lead  { font-size: 26px; line-height: 1.4; font-weight: 300; font-style: italic; margin: 0; color: rgba(12,12,12,0.85); }
+.gen2-svc-block__body { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; }
+.gen2-svc-block__bullets { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
+
+/* WYSIWYG ul-driven variant — used on the Services inner page where the
+   bullets come from gen2_services_cards.card_bullets (shared with the
+   homepage). Single-column counter list. */
+.gen2-svc-block__bullets--list { display: block; grid-template-columns: none; border-top: 0; }
+.gen2-svc-block__bullets--list ul,
+.gen2-svc-block__bullets--list ol { list-style: none; margin: 0; padding: 0; counter-reset: svc-bullet; }
+.gen2-svc-block__bullets--list li {
+	counter-increment: svc-bullet;
+	display: flex; align-items: baseline; gap: 16px;
+	padding: 14px 0;
+	border-bottom: 1px solid var(--line);
+	font-family: "Archivo", sans-serif; font-size: 16px;
+}
+.gen2-svc-block__bullets--list li:first-child { border-top: 1px solid var(--line); }
+.gen2-svc-block__bullets--list li::before {
+	content: counter(svc-bullet, decimal-leading-zero);
+	font-family: "JetBrains Mono", monospace;
+	font-size: 11px; letter-spacing: 0.18em;
+	color: var(--copper);
+	min-width: 28px;
+}
+.gen2-svc-block__bullets--list p { margin: 0; }
+.gen2-svc-block__bullet { padding: 24px 28px; border-bottom: 1px solid var(--line); }
+.gen2-svc-block__bullet:nth-child(odd) { border-right: 1px solid var(--line); }
+.gen2-svc-block__bullet-num { font-size: 10px; color: var(--copper); letter-spacing: 0.2em; margin-bottom: 8px; }
+.gen2-svc-block__bullet-title { margin: 0; font-size: 17px; font-weight: 600; }
+.gen2-svc-block__bullet-desc  { font-size: 13px; line-height: 1.55; margin-top: 8px; color: rgba(12,12,12,0.7); }
+.gen2-svc-block__media { background: var(--ink); padding: 24px; color: var(--warm); display: flex; align-items: center; }
+.gen2-svc-block__media--codesys { flex-direction: column; gap: 24px; width: 100%; justify-content: center; padding: 48px; }
+.gen2-svc-block__media-caption { font-size: 11px; opacity: 0.55; letter-spacing: 0.2em; text-align: center; }
+
+/* ----- Services CTA ----------------------------------------------------- */
+.gen2-svc-cta { padding: 120px 56px; background: var(--teal); color: var(--warm); }
+.gen2-svc-cta__main { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: flex-end; }
+.gen2-svc-cta__title { font-size: 84px; line-height: 0.96; font-weight: 400; letter-spacing: -0.02em; margin: 0; }
+.gen2-svc-cta__title em { color: var(--copper-300); font-style: italic; }
+.gen2-svc-cta__lead { font-size: 16px; line-height: 1.6; color: rgba(244,242,236,0.78); margin-top: 0; }
+.gen2-svc-cta__btn { display: inline-block; margin-top: 24px; background: var(--copper); color: var(--ink); padding: 16px 24px; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* ----- Services footer (shared layout, lighter rule) ------------------- */
+.gen2-svc-footer { padding: 56px 56px 32px; background: var(--ink); color: var(--warm); }
+.gen2-svc-footer__cols { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; padding-bottom: 40px; border-bottom: 1px solid var(--line-on-dark); }
+.gen2-svc-footer__about { font-size: 13px; line-height: 1.6; color: rgba(244,242,236,0.6); margin-top: 16px; max-width: 380px; }
+.gen2-svc-footer__col-title { font-size: 10px; opacity: 0.5; letter-spacing: 0.2em; margin-bottom: 14px; }
+.gen2-svc-footer__col-item  { font-size: 13px; color: rgba(244,242,236,0.78); line-height: 1.9; }
+.gen2-svc-footer__legal { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 24px; font-size: 10px; opacity: 0.45; letter-spacing: 0.16em; }
+
+/* ==========================================================================
+   Media queries
+   ========================================================================== */
+@media (max-width: 1100px) {
+	.gen2-schem-nav { grid-template-columns: 1fr; }
+	.gen2-schem-nav__brand,
+	.gen2-schem-nav__menu,
+	.gen2-schem-nav__cta-wrap { border-right: none; }
+	.gen2-schem-hero__title  { font-size: 96px; }
+	.gen2-schem-cta__title   { font-size: 88px; }
+	.gen2-schem-case__title  { font-size: 76px; }
+	.gen2-svc-hero__title    { font-size: 88px; }
+	.gen2-svc-block__title   { font-size: 56px; }
+	.gen2-svc-cta__title     { font-size: 56px; }
+}
+@media (max-width: 900px) {
+	.gen2-schem-hero__main,
+	.gen2-schem-codesys__main,
+	.gen2-schem-case__main,
+	.gen2-schem-team__head,
+	.gen2-schem-cta__main,
+	.gen2-svc-hero__main,
+	.gen2-svc-cta__main,
+	.gen2-svc-block__head,
+	.gen2-svc-block__body { grid-template-columns: 1fr; gap: 32px; }
+	.gen2-schem-hero__split,
+	.gen2-schem-hero__stats,
+	.gen2-schem-services__grid,
+	.gen2-schem-codesys__cells,
+	.gen2-schem-process__grid,
+	.gen2-clients,
+	.gen2-schem-team__grid,
+	.gen2-svc-anchor__row,
+	.gen2-svc-block__bullets,
+	.gen2-schem-footer__cols,
+	.gen2-svc-footer__cols { grid-template-columns: 1fr 1fr; }
+	.gen2-schem-hero__schem { border-right: none; }
+}
+@media (max-width: 600px) {
+	.gen2-schem-hero__inner,
+	.gen2-schem-services,
+	.gen2-schem-case,
+	.gen2-schem-process,
+	.gen2-schem-team,
+	.gen2-schem-cta,
+	.gen2-schem-footer__cols,
+	.gen2-schem-footer__legal,
+	.gen2-svc-hero,
+	.gen2-svc-anchor,
+	.gen2-svc-block,
+	.gen2-svc-cta,
+	.gen2-svc-footer { padding-left: 20px; padding-right: 20px; }
+	.gen2-schem-hero__title   { font-size: 64px; }
+	.gen2-schem-cta__title    { font-size: 56px; }
+	.gen2-schem-case__title   { font-size: 48px; }
+	.gen2-schem-services__title,
+	.gen2-schem-codesys__title,
+	.gen2-schem-process__title,
+	.gen2-schem-team__title { font-size: 56px; }
+	.gen2-svc-hero__title { font-size: 56px; }
+}
+
+
+
+#logo {
+  width: 200px;
+  padding: 12px 10px 10px 10px;
+}
+
+.gen2-schem-cta .gen2-schem-cta__main a {
+  color: white !important;
+}
