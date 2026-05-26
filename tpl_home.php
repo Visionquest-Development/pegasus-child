@@ -118,6 +118,7 @@
 		</div><!-- end container -->
 
 		<!-- Special Events Section -->
+		<?php /*
 		<section id="special-events" class="section-padding py-5">
 			<div class="container">
 				<div class="row align-items-center g-4">
@@ -155,7 +156,7 @@
 				</div>
 			</div>
 		</section>
-
+		*/ ?>
 
 		<main id="primary" class="site-main ulg-home">
 
