@@ -96,10 +96,13 @@ get_header();
 			$venue_url  = ! empty( $venue_info['website'] ) ? $venue_info['website'] : '';
 			$venue_phone = ! empty( $venue_info['phone'] )  ? $venue_info['phone']   : '';
 
-			// Featured image fallback
-			$hero_image = $banner_url;
+			// Hero image hierarchy: featured image → CMB2 banner → hardcoded default.
+			$hero_image = get_the_post_thumbnail_url( $event_id, 'full' );
 			if ( empty( $hero_image ) ) {
-				$hero_image = get_the_post_thumbnail_url( $event_id, 'full' );
+				$hero_image = $banner_url;
+			}
+			if ( empty( $hero_image ) ) {
+				$hero_image = 'https://events.uptownlifegroup.com/wp-content/uploads/2026/05/05_champagne-tower.jpg';
 			}
 
 			// Taxonomies
@@ -121,7 +124,7 @@ get_header();
 				 HERO BANNER
 				 ══════════════════════════════════════ -->
 			<?php if ( $hero_image ) : ?>
-				<div class="ulg-single-event-hero" >
+				<div class="ulg-single-event-hero" style="background-image: url('<?php echo esc_url( $hero_image ); ?>');">
 					<div class="ulg-single-event-hero-overlay">
 						<div class="container">
 							<?php if ( $event_type ) : ?>
