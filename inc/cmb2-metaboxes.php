@@ -108,14 +108,18 @@ function gen2_register_homepage_metaboxes() {
 		'type' => 'text',
 	) );
 
-	/* ───── 2 — SERVICES SECTION ─────────────────────────────────────── */
+	/* ───── SERVICES CATALOGUE (lives on tpl_services.php, drives both the
+	   Services inner page AND the Homepage's section 2) ─────────────── */
 	$services = new_cmb2_box( array(
 		'id'           => 'gen2_services_metabox',
-		'title'        => esc_html__( '2 — Services Section', 'pegasus-child' ),
+		'title'        => esc_html__( 'Services Catalogue (drives Services page &amp; Homepage §2)', 'pegasus-child' ),
 		'object_types' => array( 'page' ),
 		'context'      => 'normal',
 		'priority'     => 'high',
-		'show_on'      => $show_on,
+		'show_on'      => array(
+			'key'   => 'page-template',
+			'value' => 'tpl_services.php',
+		),
 	) );
 
 	$services->add_field( array(
@@ -187,10 +191,75 @@ function gen2_register_homepage_metaboxes() {
 		'options' => array( 'media_buttons' => false, 'textarea_rows' => 6 ),
 	) );
 
-	/* ───── 3 — CODESYS PARTNER SECTION ──────────────────────────────── */
+	/* ───── 3 — INDUSTRIES SECTION ───────────────────────────────────── */
+	$industries = new_cmb2_box( array(
+		'id'           => 'gen2_industries_metabox',
+		'title'        => esc_html__( '3 — Industries Section', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+		'show_on'      => $show_on,
+	) );
+
+	$industries->add_field( array(
+		'name' => 'Subtitle / Eyebrow',
+		'desc' => 'Doc-strip label (e.g. "§ 03 · INDUSTRIES").',
+		'id'   => 'gen2_industries_subtitle',
+		'type' => 'text',
+	) );
+
+	$industries->add_field( array(
+		'name' => 'Title — Before Accent',
+		'desc' => 'Lines above the copper accent. Use line breaks for stacked lines.',
+		'id'   => 'gen2_industries_title_before',
+		'type' => 'textarea_small',
+	) );
+
+	$industries->add_field( array(
+		'name' => 'Title Accent',
+		'desc' => 'Copper-coloured tail of the title.',
+		'id'   => 'gen2_industries_title_accent',
+		'type' => 'text',
+	) );
+
+	$industries->add_field( array(
+		'name'    => 'Intro (WYSIWYG)',
+		'desc'    => 'Optional paragraph below the title.',
+		'id'      => 'gen2_industries_intro',
+		'type'    => 'wysiwyg',
+		'options' => array( 'media_buttons' => false, 'textarea_rows' => 4 ),
+	) );
+
+	$industries_group = $industries->add_field( array(
+		'id'          => 'gen2_industries_list',
+		'type'        => 'group',
+		'description' => 'Industries served. Each row is one labeled cell in the grid.',
+		'options'     => array(
+			'group_title'   => 'Industry {#}',
+			'add_button'    => 'Add Industry',
+			'remove_button' => 'Remove Industry',
+			'sortable'      => true,
+		),
+	) );
+
+	$industries->add_group_field( $industries_group, array(
+		'name' => 'Name',
+		'desc' => 'e.g. "Aerospace", "Food &amp; Beverage"',
+		'id'   => 'industry_name',
+		'type' => 'text',
+	) );
+
+	$industries->add_group_field( $industries_group, array(
+		'name' => 'Detail (optional)',
+		'desc' => 'Optional short note rendered under the industry name (e.g. "Mills / Lumber" for Forestry).',
+		'id'   => 'industry_detail',
+		'type' => 'text',
+	) );
+
+	/* ───── 4 — CODESYS PARTNER SECTION ──────────────────────────────── */
 	$codesys = new_cmb2_box( array(
 		'id'           => 'gen2_codesys_metabox',
-		'title'        => esc_html__( '3 — CODESYS Partner Section', 'pegasus-child' ),
+		'title'        => esc_html__( '4 — CODESYS Partner Section', 'pegasus-child' ),
 		'object_types' => array( 'page' ),
 		'context'      => 'normal',
 		'priority'     => 'high',
@@ -279,10 +348,10 @@ function gen2_register_homepage_metaboxes() {
 		'type' => 'textarea_small',
 	) );
 
-	/* ───── 4 — CASE STUDY SECTION (Amazon) ──────────────────────────── */
+	/* ───── 5 — CASE STUDY SECTION (Amazon) ──────────────────────────── */
 	$case = new_cmb2_box( array(
 		'id'           => 'gen2_case_metabox',
-		'title'        => esc_html__( '4 — Case Study Section', 'pegasus-child' ),
+		'title'        => esc_html__( '5 — Case Study Section', 'pegasus-child' ),
 		'object_types' => array( 'page' ),
 		'context'      => 'normal',
 		'priority'     => 'high',
@@ -383,10 +452,10 @@ function gen2_register_homepage_metaboxes() {
 		'type' => 'text',
 	) );
 
-	/* ───── 5 — PROCESS SECTION ──────────────────────────────────────── */
+	/* ───── 6 — PROCESS SECTION ──────────────────────────────────────── */
 	$process = new_cmb2_box( array(
 		'id'           => 'gen2_process_metabox',
-		'title'        => esc_html__( '5 — Process Section', 'pegasus-child' ),
+		'title'        => esc_html__( '6 — Process Section', 'pegasus-child' ),
 		'object_types' => array( 'page' ),
 		'context'      => 'normal',
 		'priority'     => 'high',
@@ -441,10 +510,10 @@ function gen2_register_homepage_metaboxes() {
 		'type' => 'textarea_small',
 	) );
 
-	/* ───── MANUFACTURERS / CLIENT LOGOS ─────────────────────────────── */
+	/* ───── 7 — MANUFACTURERS / CLIENT LOGOS ─────────────────────────── */
 	$mfg = new_cmb2_box( array(
 		'id'           => 'gen2_manufacturers_metabox',
-		'title'        => esc_html__( 'Manufacturers / Client Logos Strip', 'pegasus-child' ),
+		'title'        => esc_html__( '7 — Manufacturers / Client Logos Strip', 'pegasus-child' ),
 		'object_types' => array( 'page' ),
 		'context'      => 'normal',
 		'priority'     => 'high',
@@ -495,10 +564,10 @@ function gen2_register_homepage_metaboxes() {
 		'default' => '',
 	) );
 
-	/* ───── 6 — LEADERSHIP / TEAM SECTION ───────────────────────────── */
+	/* ───── 8 — LEADERSHIP / TEAM SECTION ───────────────────────────── */
 	$team = new_cmb2_box( array(
 		'id'           => 'gen2_team_metabox',
-		'title'        => esc_html__( '6 — Leadership Section', 'pegasus-child' ),
+		'title'        => esc_html__( '8 — Leadership Section', 'pegasus-child' ),
 		'object_types' => array( 'page' ),
 		'context'      => 'normal',
 		'priority'     => 'high',
@@ -576,10 +645,10 @@ function gen2_register_homepage_metaboxes() {
 		'type' => 'text',
 	) );
 
-	/* ───── 7 — CALL-TO-ACTION SECTION ───────────────────────────────── */
+	/* ───── 9 — CALL-TO-ACTION SECTION ───────────────────────────────── */
 	$cta = new_cmb2_box( array(
 		'id'           => 'gen2_cta_metabox',
-		'title'        => esc_html__( '7 — Call-to-Action Section', 'pegasus-child' ),
+		'title'        => esc_html__( '9 — Call-to-Action Section', 'pegasus-child' ),
 		'object_types' => array( 'page' ),
 		'context'      => 'normal',
 		'priority'     => 'high',
@@ -655,12 +724,129 @@ function gen2_register_homepage_metaboxes() {
 		'options' => array( 'media_buttons' => false, 'textarea_rows' => 5 ),
 	) );
 
-	$svc_page->add_field( array(
-		'name'        => 'Service Cards Source',
-		'desc'        => 'The service list shown below is pulled from the homepage\'s "2 — Services Section" repeater. To edit which services appear here, edit the page that uses the <strong>Homepage</strong> (tpl_schematic.php) template.',
-		'id'          => 'gen2_svc_page_source_note',
-		'type'        => 'title',
+	/* ═════════════════════════════════════════════════════════════════════
+	   EXPERIENCE PAGE  (tpl_experience.php)
+	   ═════════════════════════════════════════════════════════════════════ */
+	$exp_show_on = array(
+		'key'   => 'page-template',
+		'value' => 'tpl_experience.php',
+	);
+
+	/* ───── EXP 1 — HERO ──────────────────────────────────────────────── */
+	$exp_hero = new_cmb2_box( array(
+		'id'           => 'gen2_exp_hero_metabox',
+		'title'        => esc_html__( 'Experience — 1 · Hero', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+		'show_on'      => $exp_show_on,
 	) );
+	$exp_hero->add_field( array( 'name' => 'Subtitle / Eyebrow', 'id' => 'gen2_exp_hero_subtitle',     'type' => 'text' ) );
+	$exp_hero->add_field( array( 'name' => 'Title — Before Accent', 'desc' => 'Use line breaks for stacked lines.', 'id' => 'gen2_exp_hero_title_before', 'type' => 'textarea_small' ) );
+	$exp_hero->add_field( array( 'name' => 'Title Accent', 'id' => 'gen2_exp_hero_title_accent', 'type' => 'text' ) );
+	$exp_hero->add_field( array( 'name' => 'Intro (WYSIWYG)', 'id' => 'gen2_exp_hero_intro', 'type' => 'wysiwyg', 'options' => array( 'media_buttons' => false, 'textarea_rows' => 4 ) ) );
+
+	/* ───── EXP 2 — PROJECTS & SHOWCASES ─────────────────────────────── */
+	$exp_proj = new_cmb2_box( array(
+		'id'           => 'gen2_exp_projects_metabox',
+		'title'        => esc_html__( 'Experience — 2 · Projects &amp; Showcases', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+		'show_on'      => $exp_show_on,
+	) );
+	$exp_proj->add_field( array( 'name' => 'Subtitle / Eyebrow', 'id' => 'gen2_exp_projects_subtitle',     'type' => 'text' ) );
+	$exp_proj->add_field( array( 'name' => 'Title — Before Accent', 'id' => 'gen2_exp_projects_title_before', 'type' => 'textarea_small' ) );
+	$exp_proj->add_field( array( 'name' => 'Title Accent', 'id' => 'gen2_exp_projects_title_accent', 'type' => 'text' ) );
+	$exp_proj->add_field( array( 'name' => 'Intro (WYSIWYG)', 'id' => 'gen2_exp_projects_intro', 'type' => 'wysiwyg', 'options' => array( 'media_buttons' => false, 'textarea_rows' => 4 ) ) );
+
+	$exp_proj_group = $exp_proj->add_field( array(
+		'id'          => 'gen2_exp_projects_items',
+		'type'        => 'group',
+		'description' => 'Repeatable showcase cards. Each item renders a card with image, title, client, and short description.',
+		'options'     => array(
+			'group_title'   => 'Project / Showcase {#}',
+			'add_button'    => 'Add Project',
+			'remove_button' => 'Remove Project',
+			'sortable'      => true,
+		),
+	) );
+	$exp_proj->add_group_field( $exp_proj_group, array(
+		'name'       => 'Image',
+		'desc'       => 'Optional. Falls back to a striped placeholder when empty.',
+		'id'         => 'project_image',
+		'type'       => 'file',
+		'options'    => array( 'url' => false ),
+		'text'       => array( 'add_upload_file_text' => 'Upload Project Image' ),
+		'query_args' => array( 'type' => array( 'image/jpeg', 'image/jpg', 'image/png', 'image/webp' ) ),
+	) );
+	$exp_proj->add_group_field( $exp_proj_group, array( 'name' => 'Title',           'id' => 'project_title',       'type' => 'text' ) );
+	$exp_proj->add_group_field( $exp_proj_group, array( 'name' => 'Client / Tag',    'desc' => 'Small line above the title (e.g. "AMAZON ROBOTICS · 2024").', 'id' => 'project_client', 'type' => 'text' ) );
+	$exp_proj->add_group_field( $exp_proj_group, array( 'name' => 'Description',     'id' => 'project_description', 'type' => 'textarea_small' ) );
+	$exp_proj->add_group_field( $exp_proj_group, array( 'name' => 'Link URL (opt.)', 'id' => 'project_link_url',    'type' => 'text_url' ) );
+	$exp_proj->add_group_field( $exp_proj_group, array( 'name' => 'Link Label (opt.)','id' => 'project_link_label',  'type' => 'text' ) );
+
+	/* ───── EXP 3 — PLATFORMS WE HAVE EXPERIENCE ON ──────────────────── */
+	$exp_plat = new_cmb2_box( array(
+		'id'           => 'gen2_exp_platforms_metabox',
+		'title'        => esc_html__( 'Experience — 3 · Platforms', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+		'show_on'      => $exp_show_on,
+	) );
+	$exp_plat->add_field( array( 'name' => 'Subtitle / Eyebrow', 'id' => 'gen2_exp_platforms_subtitle',     'type' => 'text' ) );
+	$exp_plat->add_field( array( 'name' => 'Title — Before Accent', 'id' => 'gen2_exp_platforms_title_before', 'type' => 'textarea_small' ) );
+	$exp_plat->add_field( array( 'name' => 'Title Accent', 'id' => 'gen2_exp_platforms_title_accent', 'type' => 'text' ) );
+	$exp_plat->add_field( array( 'name' => 'Intro (WYSIWYG)', 'id' => 'gen2_exp_platforms_intro', 'type' => 'wysiwyg', 'options' => array( 'media_buttons' => false, 'textarea_rows' => 4 ) ) );
+
+	$exp_plat_group = $exp_plat->add_field( array(
+		'id'          => 'gen2_exp_platforms_categories',
+		'type'        => 'group',
+		'description' => 'Platform categories (Controllers, Robotic Arms, HMI / SCADA, …). Each renders a card; items within each card are entered as a single textarea — <strong>one item per line</strong> — and rendered as styled chips.',
+		'options'     => array(
+			'group_title'   => 'Category {#}',
+			'add_button'    => 'Add Category',
+			'remove_button' => 'Remove Category',
+			'sortable'      => true,
+		),
+	) );
+	$exp_plat->add_group_field( $exp_plat_group, array( 'name' => 'Category Title',    'desc' => 'e.g. "Controllers", "Robotic Arms", "HMI / SCADA"', 'id' => 'category_title',    'type' => 'text' ) );
+	$exp_plat->add_group_field( $exp_plat_group, array( 'name' => 'Category Subtitle (opt.)', 'id' => 'category_subtitle', 'type' => 'text' ) );
+	$exp_plat->add_group_field( $exp_plat_group, array(
+		'name' => 'Items (one per line)',
+		'desc' => 'List of brands / software / tools — one per line. Each becomes a styled chip in the card.',
+		'id'   => 'category_items',
+		'type' => 'textarea_small',
+	) );
+
+	/* ───── EXP 4 — CODESYS CALLOUT ──────────────────────────────────── */
+	$exp_cod = new_cmb2_box( array(
+		'id'           => 'gen2_exp_codesys_metabox',
+		'title'        => esc_html__( 'Experience — 4 · CODESYS Callout', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+		'show_on'      => $exp_show_on,
+	) );
+	$exp_cod->add_field( array( 'name' => 'Subtitle / Eyebrow', 'id' => 'gen2_exp_codesys_subtitle',     'type' => 'text' ) );
+	$exp_cod->add_field( array( 'name' => 'Title — Before Accent', 'id' => 'gen2_exp_codesys_title_before', 'type' => 'textarea_small' ) );
+	$exp_cod->add_field( array( 'name' => 'Title Accent', 'id' => 'gen2_exp_codesys_title_accent', 'type' => 'text' ) );
+	$exp_cod->add_field( array( 'name' => 'Body (WYSIWYG)', 'id' => 'gen2_exp_codesys_body', 'type' => 'wysiwyg', 'options' => array( 'media_buttons' => false, 'textarea_rows' => 6 ) ) );
+
+	/* ───── EXP 5 — PROJECT MANAGEMENT ───────────────────────────────── */
+	$exp_pm = new_cmb2_box( array(
+		'id'           => 'gen2_exp_pm_metabox',
+		'title'        => esc_html__( 'Experience — 5 · Project Management', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+		'show_on'      => $exp_show_on,
+	) );
+	$exp_pm->add_field( array( 'name' => 'Subtitle / Eyebrow', 'id' => 'gen2_exp_pm_subtitle',     'type' => 'text' ) );
+	$exp_pm->add_field( array( 'name' => 'Title — Before Accent', 'id' => 'gen2_exp_pm_title_before', 'type' => 'textarea_small' ) );
+	$exp_pm->add_field( array( 'name' => 'Title Accent', 'id' => 'gen2_exp_pm_title_accent', 'type' => 'text' ) );
+	$exp_pm->add_field( array( 'name' => 'Body (WYSIWYG)', 'desc' => 'Use a bulleted list if you want chip-style highlights below the paragraph.', 'id' => 'gen2_exp_pm_body', 'type' => 'wysiwyg', 'options' => array( 'media_buttons' => false, 'textarea_rows' => 6 ) ) );
 }
 
 /**
@@ -699,24 +885,20 @@ function gen2_render_wysiwyg( $html ) {
 }
 }
 
-if ( ! function_exists( 'gen2_get_homepage_id' ) ) {
+if ( ! function_exists( 'gen2_get_page_by_template' ) ) {
 /**
- * Locate the page that holds the Gen2 homepage CMB2 data so other templates
- * (e.g. tpl_services.php) can pull from the same single source of truth.
- *
- * Order:
- *   1. WordPress's static front-page setting (Settings → Reading).
- *   2. The first published page assigned to tpl_schematic.php.
- *
- * Cached per request to avoid repeating the meta query.
+ * Generic helper: find the first published page assigned to a given Page
+ * Template file. Results are cached per request per template.
  */
-function gen2_get_homepage_id() {
-	static $cache = null;
-	if ( null !== $cache ) { return $cache; }
+function gen2_get_page_by_template( $template_file ) {
+	static $cache = array();
+	if ( isset( $cache[ $template_file ] ) ) { return $cache[ $template_file ]; }
 
+	// Prefer WordPress's static front-page setting when it matches the
+	// requested template (covers the common Homepage case).
 	$front = (int) get_option( 'page_on_front' );
-	if ( $front && 'tpl_schematic.php' === get_page_template_slug( $front ) ) {
-		return $cache = $front;
+	if ( $front && $template_file === get_page_template_slug( $front ) ) {
+		return $cache[ $template_file ] = $front;
 	}
 
 	$pages = get_posts( array(
@@ -727,11 +909,39 @@ function gen2_get_homepage_id() {
 		'meta_query'     => array(
 			array(
 				'key'   => '_wp_page_template',
-				'value' => 'tpl_schematic.php',
+				'value' => $template_file,
 			),
 		),
 	) );
 
-	return $cache = ! empty( $pages ) ? (int) $pages[0] : 0;
+	return $cache[ $template_file ] = ! empty( $pages ) ? (int) $pages[0] : 0;
+}
+}
+
+if ( ! function_exists( 'gen2_get_homepage_id' ) ) {
+function gen2_get_homepage_id() { return gen2_get_page_by_template( 'tpl_schematic.php' ); }
+}
+
+if ( ! function_exists( 'gen2_get_services_page_id' ) ) {
+/** Locate the page that holds the Services CMB2 data (the canonical
+ *  services catalogue, shared by tpl_schematic.php §2 and tpl_services.php). */
+function gen2_get_services_page_id() { return gen2_get_page_by_template( 'tpl_services.php' ); }
+}
+
+if ( ! function_exists( 'gen2_meta_from' ) ) {
+/** Read a meta value from a specific page id, with a fallback. */
+function gen2_meta_from( $key, $page_id, $fallback = '' ) {
+	if ( ! $page_id ) { return $fallback; }
+	$value = get_post_meta( $page_id, $key, true );
+	return ( '' === $value || null === $value ) ? $fallback : $value;
+}
+}
+
+if ( ! function_exists( 'gen2_meta_group_from' ) ) {
+/** Read a group field from a specific page id, with a fallback. */
+function gen2_meta_group_from( $key, $page_id, $fallback = array() ) {
+	if ( ! $page_id ) { return $fallback; }
+	$value = get_post_meta( $page_id, $key, true );
+	return ( is_array( $value ) && ! empty( $value ) ) ? $value : $fallback;
 }
 }

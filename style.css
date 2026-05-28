@@ -322,6 +322,32 @@
 /* Drop wpautop's wrapping <p> tags inside the bullets container. */
 .gen2-schem-services__bullets p { margin: 0; }
 
+/* ----- Industries section (homepage section 3) -------------------------- */
+.gen2-schem-industries { padding: 100px 56px; background: var(--warm-200); color: var(--ink); }
+.gen2-schem-industries__doc {
+	display: flex; justify-content: space-between; font-size: 10px;
+	opacity: 0.55; letter-spacing: 0.2em;
+	border-bottom: 1px solid var(--line); padding-bottom: 14px;
+}
+.gen2-schem-industries__head {
+	display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: flex-end;
+	padding: 32px 0 56px; border-bottom: 1px solid var(--line);
+}
+.gen2-schem-industries__title { margin: 0; font-size: 88px; line-height: 0.95; font-weight: 400; }
+.gen2-schem-industries__title-accent { color: var(--copper); }
+.gen2-schem-industries__intro { font-size: 16px; line-height: 1.55; margin: 0; color: rgba(12,12,12,0.7); max-width: 480px; }
+.gen2-schem-industries__intro p:last-child { margin-bottom: 0; }
+.gen2-schem-industries__grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+.gen2-schem-industries__cell {
+	padding: 28px 22px; min-height: 140px;
+	display: flex; flex-direction: column; justify-content: flex-end;
+	border-bottom: 1px solid var(--line);
+}
+.gen2-schem-industries__cell:not(:nth-child(4n)) { border-right: 1px solid var(--line); }
+.gen2-schem-industries__cell-num { font-size: 10px; color: var(--copper); letter-spacing: 0.2em; margin-bottom: 16px; }
+.gen2-schem-industries__cell-name { margin: 0; font-size: 28px; font-weight: 400; line-height: 1.05; letter-spacing: 0.005em; }
+.gen2-schem-industries__cell-detail { font-size: 10px; opacity: 0.55; letter-spacing: 0.16em; margin-top: 6px; text-transform: uppercase; }
+
 /* ----- CODESYS partner section ------------------------------------------ */
 .gen2-schem-codesys { background: var(--ink); color: var(--warm); position: relative; }
 .gen2-schem-codesys__grid { position: absolute; inset: 0; opacity: 0.4; }
@@ -533,6 +559,117 @@
 .gen2-svc-footer__legal { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 24px; font-size: 10px; opacity: 0.45; letter-spacing: 0.16em; }
 
 /* ==========================================================================
+   EXPERIENCE PAGE — tpl_experience.php
+   ========================================================================== */
+
+.gen2-experience { background: var(--warm); color: var(--ink); }
+
+/* --- Section docs / shared --- */
+.gen2-exp-hero,
+.gen2-exp-projects,
+.gen2-exp-platforms,
+.gen2-exp-codesys,
+.gen2-exp-pm { padding: 100px 56px; }
+.gen2-exp-hero      { padding-top: 80px; padding-bottom: 64px; background: var(--warm); }
+.gen2-exp-projects  { background: var(--warm-200); }
+.gen2-exp-platforms { background: var(--ink); color: var(--warm); }
+.gen2-exp-codesys   { background: var(--warm); }
+.gen2-exp-pm        { background: var(--teal); color: var(--warm); }
+
+.gen2-exp-hero__doc,
+.gen2-exp-projects__doc,
+.gen2-exp-platforms__doc,
+.gen2-exp-codesys__doc,
+.gen2-exp-pm__doc {
+	display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+	font-size: 10px; opacity: 0.55; letter-spacing: 0.2em;
+	padding-bottom: 14px; border-bottom: 1px solid var(--line);
+}
+.gen2-exp-platforms__doc,
+.gen2-exp-pm__doc { border-bottom-color: rgba(244,242,236,0.18); }
+
+/* --- 1. Hero --- */
+.gen2-exp-hero__main { display: grid; grid-template-columns: 2fr 1fr; gap: 48px; align-items: flex-end; padding-top: 32px; }
+.gen2-exp-hero__title { margin: 0; font-size: 132px; line-height: 0.92; font-weight: 400; letter-spacing: -0.01em; }
+.gen2-exp-hero__title-accent { color: var(--copper); }
+.gen2-exp-hero__intro { font-size: 16px; line-height: 1.6; color: rgba(12,12,12,0.7); margin: 0; }
+.gen2-exp-hero__intro p:last-child { margin-bottom: 0; }
+
+/* --- 2. Projects & Showcases --- */
+.gen2-exp-projects__head { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: flex-end; padding: 32px 0 56px; border-bottom: 1px solid var(--line); }
+.gen2-exp-projects__title { margin: 0; font-size: 88px; line-height: 0.95; font-weight: 400; }
+.gen2-exp-projects__title-accent { color: var(--copper); }
+.gen2-exp-projects__intro { font-size: 16px; line-height: 1.55; margin: 0; color: rgba(12,12,12,0.7); max-width: 480px; }
+.gen2-exp-projects__intro p:last-child { margin-bottom: 0; }
+.gen2-exp-projects__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; padding-top: 56px; }
+
+.gen2-exp-project { background: var(--warm); border: 1px solid var(--line); display: flex; flex-direction: column; }
+.gen2-exp-project__media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
+.gen2-exp-project__media .gen2-ph { position: absolute; inset: 0; }
+.gen2-exp-project__img { display: block; width: 100%; height: 100%; -o-object-fit: cover; object-fit: cover; }
+.gen2-exp-project__body { padding: 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.gen2-exp-project__num { font-size: 10px; color: var(--copper); letter-spacing: 0.2em; }
+.gen2-exp-project__client { font-size: 10px; opacity: 0.55; letter-spacing: 0.18em; text-transform: uppercase; }
+.gen2-exp-project__title { margin: 0; font-size: 26px; line-height: 1.05; font-weight: 400; letter-spacing: 0.005em; }
+.gen2-exp-project__desc { font-size: 14px; line-height: 1.55; color: rgba(12,12,12,0.7); margin: 0; }
+.gen2-exp-project__link { margin-top: auto; align-self: flex-start; padding-top: 12px; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--copper); border-top: 1px solid var(--line); }
+
+/* placeholder modifier for project tiles (dimensions come from .gen2-ph base) */
+.gen2-ph--project { height: 100%; }
+
+/* --- 3. Platforms (dark) --- */
+.gen2-exp-platforms__head { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: flex-end; padding: 32px 0 56px; border-bottom: 1px solid rgba(244,242,236,0.18); }
+.gen2-exp-platforms__title { margin: 0; font-size: 88px; line-height: 0.95; font-weight: 400; }
+.gen2-exp-platforms__title-accent { color: var(--copper-300); }
+.gen2-exp-platforms__intro { font-size: 16px; line-height: 1.55; margin: 0; color: rgba(244,242,236,0.78); max-width: 480px; }
+.gen2-exp-platforms__intro p:last-child { margin-bottom: 0; }
+.gen2-exp-platforms__grid { display: grid; grid-template-columns: repeat(3, 1fr); padding-top: 56px; border-top: 1px solid rgba(244,242,236,0.18); }
+
+.gen2-exp-platform { padding: 32px 28px; }
+.gen2-exp-platform:not(:nth-child(3n)) { border-right: 1px solid rgba(244,242,236,0.18); }
+.gen2-exp-platform__head { display: flex; justify-content: space-between; font-size: 10px; opacity: 0.55; letter-spacing: 0.18em; margin-bottom: 16px; }
+.gen2-exp-platform__num { color: var(--copper-300); }
+.gen2-exp-platform__title { margin: 0; font-size: 36px; line-height: 1.05; font-weight: 400; letter-spacing: -0.005em; }
+.gen2-exp-platform__subtitle { font-size: 10px; opacity: 0.55; letter-spacing: 0.18em; text-transform: uppercase; margin-top: 6px; }
+.gen2-exp-platform__chips { list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.gen2-exp-platform__chip {
+	font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.06em;
+	padding: 8px 12px;
+	border: 1px solid rgba(244,242,236,0.3);
+	color: var(--warm);
+	background: transparent;
+	position: relative;
+}
+.gen2-exp-platform__chip::before {
+	content: "+ "; color: var(--copper-300); margin-right: 2px;
+}
+
+/* --- 4. CODESYS callout --- */
+.gen2-exp-codesys__main { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: flex-start; padding-top: 56px; }
+.gen2-exp-codesys__logo { display: block; height: 72px; width: auto; max-width: 100%; margin-bottom: 24px; }
+.gen2-exp-codesys__title { margin: 0; font-size: 88px; line-height: 0.92; font-weight: 400; letter-spacing: -0.01em; }
+.gen2-exp-codesys__title-accent { color: var(--copper); }
+.gen2-exp-codesys__body { font-size: 16px; line-height: 1.6; color: rgba(12,12,12,0.78); }
+.gen2-exp-codesys__body p { margin: 0 0 16px; }
+.gen2-exp-codesys__body p:last-child { margin-bottom: 0; }
+
+/* --- 5. Project Management --- */
+.gen2-exp-pm__doc { border-bottom-color: rgba(244,242,236,0.18); }
+.gen2-exp-pm__main { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: flex-start; padding-top: 56px; }
+.gen2-exp-pm__title { margin: 0; font-size: 88px; line-height: 0.92; font-weight: 400; letter-spacing: -0.01em; }
+.gen2-exp-pm__title-accent { color: var(--copper-300); }
+.gen2-exp-pm__body { font-size: 16px; line-height: 1.6; color: rgba(244,242,236,0.85); }
+.gen2-exp-pm__body p { margin: 0 0 16px; }
+.gen2-exp-pm__body ul { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 8px; }
+.gen2-exp-pm__body li {
+	font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: 0.06em;
+	padding: 10px 14px;
+	border: 1px solid rgba(244,242,236,0.22);
+	color: var(--warm);
+}
+.gen2-exp-pm__body li::before { content: "+ "; color: var(--copper-300); }
+
+/* ==========================================================================
    Media queries
    ========================================================================== */
 @media (max-width: 1100px) {
@@ -551,23 +688,36 @@
 	.gen2-schem-hero__main,
 	.gen2-schem-codesys__main,
 	.gen2-schem-case__main,
+	.gen2-schem-industries__head,
 	.gen2-schem-team__head,
 	.gen2-schem-cta__main,
 	.gen2-svc-hero__main,
 	.gen2-svc-cta__main,
 	.gen2-svc-block__head,
-	.gen2-svc-block__body { grid-template-columns: 1fr; gap: 32px; }
+	.gen2-svc-block__body,
+	.gen2-exp-hero__main,
+	.gen2-exp-projects__head,
+	.gen2-exp-platforms__head,
+	.gen2-exp-codesys__main,
+	.gen2-exp-pm__main { grid-template-columns: 1fr; gap: 32px; }
 	.gen2-schem-hero__split,
 	.gen2-schem-hero__stats,
 	.gen2-schem-services__grid,
 	.gen2-schem-codesys__cells,
+	.gen2-schem-industries__grid,
 	.gen2-schem-process__grid,
 	.gen2-clients,
 	.gen2-schem-team__grid,
 	.gen2-svc-anchor__row,
 	.gen2-svc-block__bullets,
 	.gen2-schem-footer__cols,
-	.gen2-svc-footer__cols { grid-template-columns: 1fr 1fr; }
+	.gen2-svc-footer__cols,
+	.gen2-exp-projects__grid,
+	.gen2-exp-platforms__grid { grid-template-columns: 1fr 1fr; }
+	.gen2-exp-platform:not(:nth-child(3n))    { border-right: none; }
+	.gen2-exp-platform:nth-child(odd)         { border-right: 1px solid rgba(244,242,236,0.18); }
+	.gen2-schem-industries__cell:not(:nth-child(4n)) { border-right: none; }
+	.gen2-schem-industries__cell:nth-child(odd)      { border-right: 1px solid var(--line); }
 	.gen2-schem-hero__schem { border-right: none; }
 }
 @media (max-width: 600px) {
@@ -604,3 +754,10 @@
 .gen2-schem-cta .gen2-schem-cta__main a {
   color: white !important;
 }
+
+ /* Small Devices, Tablets */
+ @media only screen and (max-width : 768px) {
+  .gen2-schem-process__grid {
+    flex-direction: row;
+  }
+ }

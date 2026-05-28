@@ -57,7 +57,7 @@ get_header(); ?>
 			<div class="gen2-schem-hero__doc mono">
 				<span>DOC-A &middot; GEN2-HOMEPAGE-2026.04</span>
 				<span>SCALE 1:1</span>
-				<span>SHEET 01 / 06</span>
+				<span>SHEET 01 / 07</span>
 				<span>REV C &middot; 2026.04.18</span>
 				<span>TIGARD, OR &middot; ESTABLISHED 2008</span>
 			</div>
@@ -125,37 +125,64 @@ get_header(); ?>
 
 	<!-- ────────── SERVICES ────────── -->
 	<?php
-	$svc_subtitle     = gen2_meta( 'gen2_services_subtitle',     '&sect; 02 &middot; WHAT WE DO' );
-	$svc_title        = gen2_meta( 'gen2_services_title',        'THREE DISCIPLINES.' );
-	$svc_title_accent = gen2_meta( 'gen2_services_title_accent', 'ONE TEAM.' );
-	$svc_intro        = gen2_meta( 'gen2_services_intro',        "We don't subcontract. The same engineers who design your control system wire the panel and stand on your plant floor at run-off." );
+	// Services data now lives on the Services page (tpl_services.php). Read
+	// it from there so the homepage and the inner page share a single source.
+	$svc_source_id    = gen2_get_services_page_id();
+	$svc_subtitle     = gen2_meta_from( 'gen2_services_subtitle',     $svc_source_id, '&sect; 02 &middot; WHAT WE DO' );
+	$svc_title        = gen2_meta_from( 'gen2_services_title',        $svc_source_id, 'THREE DISCIPLINES.' );
+	$svc_title_accent = gen2_meta_from( 'gen2_services_title_accent', $svc_source_id, 'ONE TEAM.' );
+	$svc_intro        = gen2_meta_from( 'gen2_services_intro',        $svc_source_id, "We don't subcontract. The same engineers who design your control system wire the panel and stand on your plant floor at run-off." );
 
 	$cards_fallback = array(
 		array(
+			'card_code'        => 'S-ROB',
+			'card_title'       => 'Robotics',
+			'card_description' => 'Robotic cells and integration — pick-and-place, assembly, palletizing.',
+			'card_bullets'     => '',
+		),
+		array(
+			'card_code'        => 'S-MOT',
+			'card_title'       => 'Motion Control',
+			'card_description' => 'Coordinated multi-axis motion, kinematics, and servo systems.',
+			'card_bullets'     => '',
+		),
+		array(
 			'card_code'        => 'S-AUT',
-			'card_title'       => 'Automation Consulting',
-			'card_description' => 'Concept systems, ROI modeling, throughput audits. We start by listening.',
-			'card_bullets'     => "<ul><li>Concept Systems</li><li>Level-2 Type Systems</li><li>Feasibility Studies</li><li>Plant-Floor Audits</li></ul>",
+			'card_title'       => 'Automation',
+			'card_description' => 'Factory, warehouse, and ecommerce automation — concept to commissioning.',
+			'card_bullets'     => "<ul><li>Factory Automatic Process Control</li><li>Warehouse Automation</li><li>Ecommerce Automation</li><li>Battery Assembly</li></ul>",
 		),
 		array(
-			'card_code'        => 'S-CTL',
-			'card_title'       => 'Process Control',
-			'card_description' => 'CODESYS-native control systems written in object-oriented structured text.',
-			'card_bullets'     => "<ul><li>CODESYS · OOP/ST</li><li>PLC Architecture</li><li>Motion Control</li><li>HMI / SCADA</li></ul>",
+			'card_code'        => 'S-EDF',
+			'card_title'       => 'Electrical Design &amp; Fabrication',
+			'card_description' => 'UL-508A / ETL listed control panels designed and built in-house.',
+			'card_bullets'     => '',
 		),
 		array(
-			'card_code'        => 'S-PNL',
-			'card_title'       => 'Panel Fabrication',
-			'card_description' => 'UL-508A panels designed, built, and tested in our Tigard, Oregon shop.',
-			'card_bullets'     => "<ul><li>UL-508A Listed</li><li>MCC / Distribution</li><li>VFD Integration</li><li>Wire &amp; Test</li></ul>",
+			'card_code'        => 'S-SSD',
+			'card_title'       => 'Safety System Design',
+			'card_description' => 'Risk assessments, safety circuits, light curtains, and interlocks.',
+			'card_bullets'     => '',
+		),
+		array(
+			'card_code'        => 'S-HMI',
+			'card_title'       => 'HMI / SCADA',
+			'card_description' => 'Operator interfaces, supervisory control, databases, and software.',
+			'card_bullets'     => '',
+		),
+		array(
+			'card_code'        => 'S-TRN',
+			'card_title'       => 'Training',
+			'card_description' => 'Hands-on CODESYS and controls training for your maintenance and engineering teams.',
+			'card_bullets'     => '',
 		),
 	);
-	$cards = gen2_meta_group( 'gen2_services_cards', $cards_fallback );
+	$cards = gen2_meta_group_from( 'gen2_services_cards', $svc_source_id, $cards_fallback );
 	?>
 	<section class="gen2-schem-services">
 		<div class="gen2-schem-services__doc mono">
 			<span><?php echo wp_kses_post( $svc_subtitle ); ?></span>
-			<span>SHEET 02 / 06</span>
+			<span>SHEET 02 / 07</span>
 		</div>
 		<div class="gen2-schem-services__head row align-items-lg-end g-4">
 			<div class="col-12 col-lg-6 order-2 order-lg-1">
@@ -201,9 +228,67 @@ get_header(); ?>
 		</div>
 	</section>
 
+	<!-- ────────── INDUSTRIES ────────── -->
+	<?php
+	$ind_subtitle     = gen2_meta( 'gen2_industries_subtitle',     '&sect; 03 &middot; INDUSTRIES' );
+	$ind_title_before = gen2_meta( 'gen2_industries_title_before', 'INDUSTRIES' );
+	$ind_title_accent = gen2_meta( 'gen2_industries_title_accent', 'WE SERVE.' );
+	$ind_intro        = gen2_meta( 'gen2_industries_intro',        '' );
+
+	$ind_fallback = array(
+		array( 'industry_name' => 'Aerospace',          'industry_detail' => '' ),
+		array( 'industry_name' => 'Ecommerce',          'industry_detail' => '' ),
+		array( 'industry_name' => 'Consumer Products',  'industry_detail' => '' ),
+		array( 'industry_name' => 'Automotive',         'industry_detail' => '' ),
+		array( 'industry_name' => 'Food &amp; Beverage','industry_detail' => '' ),
+		array( 'industry_name' => 'Forestry',           'industry_detail' => 'Mills / Lumber' ),
+		array( 'industry_name' => 'Cranes',             'industry_detail' => '' ),
+		array( 'industry_name' => 'Material Handling',  'industry_detail' => '' ),
+	);
+	$ind_list = gen2_meta_group( 'gen2_industries_list', $ind_fallback );
+	$ind_list = array_values( array_filter( $ind_list, function( $i ) {
+		return isset( $i['industry_name'] ) && '' !== trim( (string) $i['industry_name'] );
+	} ) );
+	$ind_total = str_pad( (string) max( 1, count( $ind_list ) ), 2, '0', STR_PAD_LEFT );
+	?>
+	<section class="gen2-schem-industries">
+		<div class="gen2-schem-industries__doc mono">
+			<span><?php echo wp_kses_post( $ind_subtitle ); ?></span>
+			<span>SHEET 03 / 07</span>
+		</div>
+		<div class="gen2-schem-industries__head">
+			<h2 class="gen2-schem-industries__title anton">
+				<?php gen2_render_lines( $ind_title_before ); ?>
+				<?php if ( $ind_title_accent ) : ?>
+					<br><span class="gen2-schem-industries__title-accent"><?php echo esc_html( $ind_title_accent ); ?></span>
+				<?php endif; ?>
+			</h2>
+			<?php if ( $ind_intro ) : ?>
+				<div class="gen2-schem-industries__intro sans">
+					<?php gen2_render_wysiwyg( $ind_intro ); ?>
+				</div>
+			<?php endif; ?>
+		</div>
+		<div class="gen2-schem-industries__grid">
+			<?php foreach ( $ind_list as $i => $item ) :
+				$name   = isset( $item['industry_name'] )   ? $item['industry_name']   : '';
+				$detail = isset( $item['industry_detail'] ) ? $item['industry_detail'] : '';
+				$num    = str_pad( (string) ( $i + 1 ), 2, '0', STR_PAD_LEFT );
+				?>
+				<div class="gen2-schem-industries__cell">
+					<div class="gen2-schem-industries__cell-num mono"><?php echo esc_html( $num ); ?> / <?php echo esc_html( $ind_total ); ?></div>
+					<h4 class="gen2-schem-industries__cell-name anton"><?php echo wp_kses_post( $name ); ?></h4>
+					<?php if ( $detail ) : ?>
+						<div class="gen2-schem-industries__cell-detail mono"><?php echo wp_kses_post( $detail ); ?></div>
+					<?php endif; ?>
+				</div>
+			<?php endforeach; ?>
+		</div>
+	</section>
+
 	<!-- ────────── CODESYS ────────── -->
 	<?php
-	$cod_subtitle     = gen2_meta( 'gen2_codesys_subtitle',      '&sect; 03 &middot; STRATEGIC PARTNERSHIP' );
+	$cod_subtitle     = gen2_meta( 'gen2_codesys_subtitle',      '&sect; 04 &middot; STRATEGIC PARTNERSHIP' );
 	$cod_partner      = gen2_meta( 'gen2_codesys_partner_label', 'CODESYS &middot; GMBH &middot; KEMPTEN, DE' );
 	$cod_title_before = gen2_meta( 'gen2_codesys_title_before',  'AUTHORIZED' );
 	$cod_title_accent = gen2_meta( 'gen2_codesys_title_accent',  'APPLICATION' );
@@ -243,7 +328,7 @@ get_header(); ?>
 			<div class="gen2-schem-codesys__doc mono">
 				<span><?php echo wp_kses_post( $cod_subtitle ); ?></span>
 				<span><?php echo wp_kses_post( $cod_partner ); ?></span>
-				<span>SHEET 03 / 06</span>
+				<span>SHEET 04 / 07</span>
 			</div>
 			<div class="gen2-schem-codesys__main">
 				<div>
@@ -298,7 +383,7 @@ get_header(); ?>
 
 	<!-- ────────── AMAZON CASE STUDY ────────── -->
 	<?php
-	$case_subtitle       = gen2_meta( 'gen2_case_subtitle',      '&sect; 04 &middot; CASE STUDY' );
+	$case_subtitle       = gen2_meta( 'gen2_case_subtitle',      '&sect; 05 &middot; CASE STUDY' );
 	$case_client_label   = gen2_meta( 'gen2_case_client_label',  'CLIENT: AMAZON ROBOTICS &middot; 2024' );
 	$case_eyebrow        = gen2_meta( 'gen2_case_eyebrow',       '&#9656; FEATURED PROJECT &middot; BFI4 / SACRAMENTO' );
 	$case_title_template = gen2_meta( 'gen2_case_title_template', "18 ASSEMBLY ROBOTS\nBUILDING {{accent}}\nNEXT-GEN SORTERS." );
@@ -342,7 +427,7 @@ get_header(); ?>
 		<div class="gen2-schem-case__doc mono">
 			<span><?php echo wp_kses_post( $case_subtitle ); ?></span>
 			<span><?php echo wp_kses_post( $case_client_label ); ?></span>
-			<span>SHEET 04 / 06</span>
+			<span>SHEET 05 / 07</span>
 		</div>
 		<div class="gen2-schem-case__main">
 			<div>
@@ -389,7 +474,7 @@ get_header(); ?>
 
 	<!-- ────────── PROCESS ────────── -->
 	<?php
-	$proc_subtitle     = gen2_meta( 'gen2_process_subtitle',     '&sect; 05 &middot; PROCESS &middot; CONCEPT &rarr; COMMISSION' );
+	$proc_subtitle     = gen2_meta( 'gen2_process_subtitle',     '&sect; 06 &middot; PROCESS &middot; CONCEPT &rarr; COMMISSION' );
 	$proc_title_before = gen2_meta( 'gen2_process_title_before', 'A REPEATABLE' );
 	$proc_title_accent = gen2_meta( 'gen2_process_title_accent', 'SIX-STEP DELIVERY.' );
 
@@ -415,7 +500,7 @@ get_header(); ?>
 	<section class="gen2-schem-process">
 		<div class="gen2-schem-process__doc mono">
 			<span><?php echo wp_kses_post( $proc_subtitle ); ?></span>
-			<span>SHEET 05 / 06</span>
+			<span>SHEET 06 / 07</span>
 		</div>
 		<h2 class="gen2-schem-process__title anton">
 			<?php gen2_render_lines( $proc_title_before ); ?>
@@ -481,7 +566,7 @@ get_header(); ?>
 
 	<!-- ────────── TEAM / LEADERSHIP ────────── -->
 	<?php
-	$team_subtitle     = gen2_meta( 'gen2_team_subtitle',     '&sect; 06 &middot; LEADERSHIP' );
+	$team_subtitle     = gen2_meta( 'gen2_team_subtitle',     '&sect; 07 &middot; LEADERSHIP' );
 	$team_title_before = gen2_meta( 'gen2_team_title_before', 'ENGINEERS' );
 	$team_title_accent = gen2_meta( 'gen2_team_title_accent', 'ON THE FLOOR.' );
 	$team_intro        = gen2_meta( 'gen2_team_intro',        "Every Gen2 project is led by someone who's spent the day in safety glasses, rope-tagged a panel, or argued with a kinematic transform at 2 AM." );
@@ -503,7 +588,7 @@ get_header(); ?>
 	<section class="gen2-schem-team">
 		<div class="gen2-schem-team__doc mono">
 			<span><?php echo wp_kses_post( $team_subtitle ); ?></span>
-			<span>SHEET 06 / 06</span>
+			<span>SHEET 07 / 07</span>
 		</div>
 		<div class="gen2-schem-team__head">
 			<h2 class="gen2-schem-team__title anton">

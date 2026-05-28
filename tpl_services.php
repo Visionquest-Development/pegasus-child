@@ -45,18 +45,19 @@ if ( 'header-three' === $header_choice ) {
 	$svc_page_title = gen2_meta( 'gen2_svc_page_title', "We design it.<br>We build it.<br><em>We make it run.</em>" );
 	$svc_page_intro = gen2_meta( 'gen2_svc_page_intro', "Four practice areas. One team that doesn't subcontract. The same engineer who designs your control system signs off on the panel and stands on your plant floor at run-off." );
 
-	// Pull the services list from the homepage's CMB2 repeater so the client
-	// edits services in one place. Falls back to a small static set if no
-	// homepage has been configured yet (e.g. fresh install).
-	$svc_source_id = gen2_get_homepage_id();
-	$svc_cards     = $svc_source_id ? get_post_meta( $svc_source_id, 'gen2_services_cards', true ) : array();
-	if ( ! is_array( $svc_cards ) || empty( $svc_cards ) ) {
-		$svc_cards = array(
-			array( 'card_code' => 'S-AUT', 'card_title' => 'Automation Consulting', 'card_description' => 'Concept systems, ROI modeling, throughput audits.', 'card_bullets' => "<ul><li>Concept Systems</li><li>Level-2 Type Systems</li><li>Feasibility Studies</li><li>Plant-Floor Audits</li></ul>" ),
-			array( 'card_code' => 'S-CTL', 'card_title' => 'Process Control',       'card_description' => 'CODESYS-native control systems in OOP/ST.',         'card_bullets' => "<ul><li>CODESYS · OOP/ST</li><li>PLC Architecture</li><li>Motion Control</li><li>HMI / SCADA</li></ul>" ),
-			array( 'card_code' => 'S-PNL', 'card_title' => 'Panel Fabrication',     'card_description' => 'UL-508A panels designed and built in Tigard.',      'card_bullets' => "<ul><li>UL-508A Listed</li><li>MCC / Distribution</li><li>VFD Integration</li><li>Wire &amp; Test</li></ul>" ),
-		);
-	}
+	// The services catalogue (gen2_services_cards) now lives on this page —
+	// the Services Catalogue metabox in the admin sidebar. Read locally;
+	// the Homepage also reads from this same source.
+	$svc_fallback = array(
+		array( 'card_code' => 'S-ROB', 'card_title' => 'Robotics',                          'card_description' => 'Robotic cells and integration — pick-and-place, assembly, palletizing.',          'card_bullets' => '' ),
+		array( 'card_code' => 'S-MOT', 'card_title' => 'Motion Control',                    'card_description' => 'Coordinated multi-axis motion, kinematics, and servo systems.',                  'card_bullets' => '' ),
+		array( 'card_code' => 'S-AUT', 'card_title' => 'Automation',                        'card_description' => 'Factory, warehouse, and ecommerce automation — concept to commissioning.',      'card_bullets' => "<ul><li>Factory Automatic Process Control</li><li>Warehouse Automation</li><li>Ecommerce Automation</li><li>Battery Assembly</li></ul>" ),
+		array( 'card_code' => 'S-EDF', 'card_title' => 'Electrical Design &amp; Fabrication','card_description' => 'UL-508A / ETL listed control panels designed and built in-house.',              'card_bullets' => '' ),
+		array( 'card_code' => 'S-SSD', 'card_title' => 'Safety System Design',              'card_description' => 'Risk assessments, safety circuits, light curtains, and interlocks.',           'card_bullets' => '' ),
+		array( 'card_code' => 'S-HMI', 'card_title' => 'HMI / SCADA',                       'card_description' => 'Operator interfaces, supervisory control, databases, and software.',          'card_bullets' => '' ),
+		array( 'card_code' => 'S-TRN', 'card_title' => 'Training',                          'card_description' => 'Hands-on CODESYS and controls training for your maintenance and engineering teams.', 'card_bullets' => '' ),
+	);
+	$svc_cards = gen2_meta_group( 'gen2_services_cards', $svc_fallback );
 	$svc_cards = array_values( array_filter( $svc_cards, function( $c ) {
 		$t = isset( $c['card_title'] ) ? trim( (string) $c['card_title'] ) : '';
 		$c2 = isset( $c['card_code'] )  ? trim( (string) $c['card_code'] )  : '';
