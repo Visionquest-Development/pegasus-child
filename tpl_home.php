@@ -95,37 +95,54 @@
 
 	</div><!-- end page wrap -->
 
+	<?php
+		$home_pillars = get_post_meta( get_the_ID(), 'rcf_home_pillars_group', true );
+
+		if ( empty( $home_pillars ) || ! is_array( $home_pillars ) ) {
+			$home_pillars = array(
+				array(
+					'title'   => 'Focused Strategy',
+					'icon'    => 'bar-chart',
+					'content' => '<p>A disciplined, opportunistic multi-strategy approach focused on generating superior risk-adjusted returns.</p>',
+				),
+				array(
+					'title'   => 'Risk Management',
+					'icon'    => 'shield',
+					'content' => '<p>Risk management is integrated throughout our investment process with a focus on capital preservation.</p>',
+				),
+				array(
+					'title'   => 'Alignment of Interests',
+					'icon'    => 'handshake-o',
+					'content' => '<p>We are partners with our investors and committed to delivering strong, consistent results.</p>',
+				),
+				array(
+					'title'   => 'Investor Partnership',
+					'icon'    => 'users',
+					'content' => '<p>We believe in building long-term partnerships based on trust, transparency and performance.</p>',
+				),
+			);
+		}
+	?>
 	<section class="home-pillars-section">
 		<div class="container">
 			<div class="row">
-				<div class="col-12 col-sm-6 col-lg-3 home-pillar">
-					<div class="home-pillar-icon">
-						<i class="fa fa-bar-chart" aria-hidden="true"></i>
+				<?php foreach ( $home_pillars as $pillar ) :
+					$pillar_title   = isset( $pillar['title'] )   ? $pillar['title']   : '';
+					$pillar_icon    = isset( $pillar['icon'] )    ? trim( $pillar['icon'] ) : '';
+					$pillar_content = isset( $pillar['content'] ) ? $pillar['content'] : '';
+				?>
+					<div class="col-12 col-sm-6 col-lg-3 home-pillar">
+						<?php if ( $pillar_icon ) : ?>
+							<div class="home-pillar-icon">
+								<i class="fa fa-<?php echo esc_attr( $pillar_icon ); ?>" aria-hidden="true"></i>
+							</div>
+						<?php endif; ?>
+						<?php if ( $pillar_title ) : ?>
+							<h3><?php echo esc_html( $pillar_title ); ?></h3>
+						<?php endif; ?>
+						<?php echo apply_filters( 'the_content', $pillar_content ); ?>
 					</div>
-					<h3>Focused Strategy</h3>
-					<p>A disciplined, opportunistic multi-strategy approach focused on generating superior risk-adjusted returns.</p>
-				</div>
-				<div class="col-12 col-sm-6 col-lg-3 home-pillar">
-					<div class="home-pillar-icon">
-						<i class="fa fa-shield" aria-hidden="true"></i>
-					</div>
-					<h3>Risk Management</h3>
-					<p>Risk management is integrated throughout our investment process with a focus on capital preservation.</p>
-				</div>
-				<div class="col-12 col-sm-6 col-lg-3 home-pillar">
-					<div class="home-pillar-icon">
-						<i class="fa fa-handshake-o" aria-hidden="true"></i>
-					</div>
-					<h3>Alignment of Interests</h3>
-					<p>We are partners with our investors and committed to delivering strong, consistent results.</p>
-				</div>
-				<div class="col-12 col-sm-6 col-lg-3 home-pillar">
-					<div class="home-pillar-icon">
-						<i class="fa fa-users" aria-hidden="true"></i>
-					</div>
-					<h3>Investor Partnership</h3>
-					<p>We believe in building long-term partnerships based on trust, transparency and performance.</p>
-				</div>
+				<?php endforeach; ?>
 			</div>
 		</div>
 	</section>
