@@ -267,20 +267,23 @@
 }
 .gen2-schem-services__title  { margin: 0; font-size: 96px; line-height: 0.95; font-weight: 400; }
 .gen2-schem-services__title-accent { color: var(--copper); }
-.gen2-schem-services__logo   { display: block; width: 100%;  height: auto; margin-bottom: 24px; }
-.gen2-schem-services__intro  { font-size: 16px; line-height: 1.55; margin: 0; color: rgba(12,12,12,0.7);  }
+/* Logo lives in its own full-width row at the top of .gen2-schem-services__head */
+.gen2-schem-services__logo-row { margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+.gen2-schem-services__logo     { display: block; width: 100%; max-width: 420px; height: auto; }
+.gen2-schem-services__head-row { /* second row: heading | video+intro */ }
+.gen2-schem-services__intro    { font-size: 16px; line-height: 1.55; margin: 0; color: rgba(12,12,12,0.7); }
 .gen2-schem-services__intro p:last-child { margin-bottom: 0; }
 
-/* Optional video rendered under the .gen2-schem-services__logo (CMB2 field
-   "Logo Video URL" on the Homepage's 2 — Services Section metabox). */
+/* Optional video rendered in the right column (CMB2 field "Logo Video URL"
+   on the Homepage's 2 — Services Section metabox). Fills the column width. */
 .gen2-schem-services__video {
-	display: block; width: 100%; max-width: 360px; height: auto; aspect-ratio: 16 / 9;
+	display: block; width: 100%; height: auto; aspect-ratio: 16 / 9;
 	-o-object-fit: cover; object-fit: cover;
-	margin: 24px 0; background: var(--ink);
+	margin: 0 0 24px; background: var(--ink);
 }
 .gen2-schem-services__embed {
-	position: relative; width: 100%; max-width: 360px;
-	padding-top: 56.25%; margin: 24px 0; background: var(--ink);
+	position: relative; width: 100%;
+	padding-top: 56.25%; margin: 0 0 24px; background: var(--ink);
 }
 .gen2-schem-services__embed iframe,
 .gen2-schem-services__embed embed,
@@ -467,15 +470,8 @@
 .gen2-schem-team__member-role { font-size: 10px; opacity: 0.6; letter-spacing: 0.14em; margin-top: 4px; }
 .gen2-schem-team__member-creds { font-size: 10px; color: var(--copper); letter-spacing: 0.14em; margin-top: 8px; }
 
-/* ----- Dedicated Staff page (tpl_staff.php) ----------------------------
-   Reuses the .gen2-schem-team__* classes but widens to a 3-up grid for
-   readability on a full page, and styles the optional per-member bio. */
-.gen2-staff-page .gen2-schem-team__head h1 { font-size: 96px; }
-.gen2-staff-grid { grid-template-columns: repeat(3, 1fr); }
-.gen2-staff-member .gen2-schem-team__member-body { padding: 24px 22px; }
-.gen2-staff-member__bio { font-size: 14px; line-height: 1.65; color: rgba(12,12,12,0.72); margin-top: 16px; }
-.gen2-staff-member__bio p { margin: 0 0 12px; }
-.gen2-staff-member__bio p:last-child { margin-bottom: 0; }
+/* Staff page (tpl_staff.php) was retired — its roster moved to the About
+   page (tpl_about.php), edited via the "About — 4 · Team Members" metabox. */
 
 /* ----- Big CTA ---------------------------------------------------------- */
 .gen2-schem-cta { padding: 120px 56px; background: var(--copper); color: var(--ink); position: relative; }
@@ -870,7 +866,6 @@
 	.gen2-svc-footer__cols,
 	.gen2-exp-projects__grid,
 	.gen2-exp-platforms__grid,
-	.gen2-staff-grid,
 	.gen2-contact-info { grid-template-columns: 1fr 1fr; }
 	.gen2-contact-info__cell:not(:last-child) { border-right: 1px solid rgba(244,242,236,0.18); }
 	.gen2-contact-info__cell:nth-child(2n) { border-right: none; }

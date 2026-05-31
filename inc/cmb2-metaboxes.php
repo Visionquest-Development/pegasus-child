@@ -600,7 +600,7 @@ function gen2_register_homepage_metaboxes() {
 
 	$team->add_field( array(
 		'name'        => 'Team Members Source',
-		'desc'        => 'The leadership cards rendered in this section are pulled from the <strong>Staff page</strong> (tpl_staff.php). To edit which members appear here, edit the Staff page\'s "Staff — Team Members" metabox.',
+		'desc'        => 'The leadership cards rendered in this section are pulled from the <strong>About page</strong> (tpl_about.php). To edit which members appear here, edit the About page\'s "About — 4 · Team Members" metabox.',
 		'id'          => 'gen2_team_members_source_note',
 		'type'        => 'title',
 	) );
@@ -752,117 +752,6 @@ function gen2_register_homepage_metaboxes() {
 	) );
 
 	/* ═════════════════════════════════════════════════════════════════════
-	   STAFF PAGE  (tpl_staff.php)
-	   ═════════════════════════════════════════════════════════════════════ */
-	$staff_show_on = array(
-		'key'   => 'page-template',
-		'value' => 'tpl_staff.php',
-	);
-
-	/* ───── STAFF PAGE — HERO (chrome for the dedicated staff page) ─── */
-	$staff_hero = new_cmb2_box( array(
-		'id'           => 'gen2_staff_hero_metabox',
-		'title'        => esc_html__( 'Staff Page — Top Section', 'pegasus-child' ),
-		'object_types' => array( 'page' ),
-		'context'      => 'normal',
-		'priority'     => 'high',
-		'closed'       => true,
-		'show_on'      => $staff_show_on,
-	) );
-
-	$staff_hero->add_field( array(
-		'name' => 'Subtitle / Eyebrow',
-		'desc' => 'Doc-strip label (e.g. "&sect; STAFF").',
-		'id'   => 'gen2_staff_subtitle',
-		'type' => 'text',
-	) );
-
-	$staff_hero->add_field( array(
-		'name' => 'Title — Before Accent',
-		'desc' => 'Lines above the copper accent (e.g. "THE PEOPLE").',
-		'id'   => 'gen2_staff_title_before',
-		'type' => 'textarea_small',
-	) );
-
-	$staff_hero->add_field( array(
-		'name' => 'Title Accent',
-		'desc' => 'Copper-coloured tail of the title (e.g. "ON THE FLOOR.").',
-		'id'   => 'gen2_staff_title_accent',
-		'type' => 'text',
-	) );
-
-	$staff_hero->add_field( array(
-		'name'    => 'Intro Body (WYSIWYG)',
-		'desc'    => 'Paragraph beside the title.',
-		'id'      => 'gen2_staff_intro',
-		'type'    => 'wysiwyg',
-		'options' => array( 'media_buttons' => false, 'textarea_rows' => 4 ),
-	) );
-
-	/* ───── STAFF — TEAM MEMBERS (the repeatable roster — lives on the
-	   Staff page, shared by tpl_home.php §8 and tpl_staff.php) ───────── */
-	$staff_team = new_cmb2_box( array(
-		'id'           => 'gen2_staff_team_metabox',
-		'title'        => esc_html__( 'Staff — Team Members (shared with Homepage §8)', 'pegasus-child' ),
-		'object_types' => array( 'page' ),
-		'context'      => 'normal',
-		'priority'     => 'high',
-		'closed'       => true,
-		'show_on'      => $staff_show_on,
-	) );
-
-	$team_members_group = $staff_team->add_field( array(
-		'id'          => 'gen2_team_members',
-		'type'        => 'group',
-		'description' => 'Team / leadership cards. Drives both the dedicated Staff page and the Homepage section 8 grid.',
-		'options'     => array(
-			'group_title'   => 'Member {#}',
-			'add_button'    => 'Add Member',
-			'remove_button' => 'Remove Member',
-			'sortable'      => true,
-			'closed'        => true,
-		),
-	) );
-
-	$staff_team->add_group_field( $team_members_group, array(
-		'name'       => 'Portrait Photo',
-		'desc'       => 'Optional. Square crop works best. Falls back to a striped placeholder when empty.',
-		'id'         => 'member_photo',
-		'type'       => 'file',
-		'options'    => array( 'url' => false ),
-		'text'       => array( 'add_upload_file_text' => 'Upload Portrait' ),
-		'query_args' => array( 'type' => array( 'image/jpeg', 'image/jpg', 'image/png', 'image/webp' ) ),
-	) );
-
-	$staff_team->add_group_field( $team_members_group, array(
-		'name' => 'Name',
-		'id'   => 'member_name',
-		'type' => 'text',
-	) );
-
-	$staff_team->add_group_field( $team_members_group, array(
-		'name' => 'Role',
-		'desc' => 'e.g. "Founder · Principal Controls"',
-		'id'   => 'member_role',
-		'type' => 'text',
-	) );
-
-	$staff_team->add_group_field( $team_members_group, array(
-		'name' => 'Credentials',
-		'desc' => 'Small copper line beneath the role (e.g. "M.Sc EECS · 22 yrs").',
-		'id'   => 'member_credentials',
-		'type' => 'text',
-	) );
-
-	$staff_team->add_group_field( $team_members_group, array(
-		'name'    => 'Bio (optional, WYSIWYG)',
-		'desc'    => 'Longer biography shown on the dedicated Staff page. Not used on the Homepage section 8 grid.',
-		'id'      => 'member_bio',
-		'type'    => 'wysiwyg',
-		'options' => array( 'media_buttons' => false, 'textarea_rows' => 5 ),
-	) );
-
-	/* ═════════════════════════════════════════════════════════════════════
 	   ABOUT PAGE  (tpl_about.php)
 	   ═════════════════════════════════════════════════════════════════════ */
 	$about_show_on = array(
@@ -923,9 +812,72 @@ function gen2_register_homepage_metaboxes() {
 	$about_team->add_field( array( 'name' => 'Intro (WYSIWYG)', 'id' => 'gen2_about_team_intro', 'type' => 'wysiwyg', 'options' => array( 'media_buttons' => false, 'textarea_rows' => 4 ) ) );
 	$about_team->add_field( array(
 		'name' => 'Team Members Source',
-		'desc' => 'The principals shown below are pulled from the <strong>Staff page</strong> (tpl_staff.php). To edit which people appear here, edit the Staff page\'s "Staff — Team Members" metabox.',
+		'desc' => 'The principals shown below are managed in the <strong>About — 4 · Team Members</strong> metabox immediately below this section. They also drive the Homepage section 8 leadership grid.',
 		'id'   => 'gen2_about_team_source_note',
 		'type' => 'title',
+	) );
+
+	/* ───── ABOUT 4 — TEAM MEMBERS (repeatable roster — single source of
+	   truth for the About page Team section AND the Homepage section 8) ─ */
+	$about_team_members = new_cmb2_box( array(
+		'id'           => 'gen2_about_team_members_metabox',
+		'title'        => esc_html__( 'About — 4 · Team Members (shared with Homepage §8)', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+		'closed'       => true,
+		'show_on'      => $about_show_on,
+	) );
+
+	$team_members_group = $about_team_members->add_field( array(
+		'id'          => 'gen2_team_members',
+		'type'        => 'group',
+		'description' => 'Team / leadership cards. Drives both the About page Team section and the Homepage section 8 grid.',
+		'options'     => array(
+			'group_title'   => 'Member {#}',
+			'add_button'    => 'Add Member',
+			'remove_button' => 'Remove Member',
+			'sortable'      => true,
+			'closed'        => true,
+		),
+	) );
+
+	$about_team_members->add_group_field( $team_members_group, array(
+		'name'       => 'Portrait Photo',
+		'desc'       => 'Optional. Square crop works best. Falls back to a striped placeholder when empty.',
+		'id'         => 'member_photo',
+		'type'       => 'file',
+		'options'    => array( 'url' => false ),
+		'text'       => array( 'add_upload_file_text' => 'Upload Portrait' ),
+		'query_args' => array( 'type' => array( 'image/jpeg', 'image/jpg', 'image/png', 'image/webp' ) ),
+	) );
+
+	$about_team_members->add_group_field( $team_members_group, array(
+		'name' => 'Name',
+		'id'   => 'member_name',
+		'type' => 'text',
+	) );
+
+	$about_team_members->add_group_field( $team_members_group, array(
+		'name' => 'Role',
+		'desc' => 'e.g. "Founder · Principal Controls"',
+		'id'   => 'member_role',
+		'type' => 'text',
+	) );
+
+	$about_team_members->add_group_field( $team_members_group, array(
+		'name' => 'Credentials',
+		'desc' => 'Small copper line beneath the role (e.g. "M.Sc EECS · 22 yrs").',
+		'id'   => 'member_credentials',
+		'type' => 'text',
+	) );
+
+	$about_team_members->add_group_field( $team_members_group, array(
+		'name'    => 'Bio (optional, WYSIWYG)',
+		'desc'    => 'Longer biography. Not currently rendered on the Homepage section 8 grid.',
+		'id'      => 'member_bio',
+		'type'    => 'wysiwyg',
+		'options' => array( 'media_buttons' => false, 'textarea_rows' => 5 ),
 	) );
 
 	/* ═════════════════════════════════════════════════════════════════════
@@ -1225,10 +1177,16 @@ if ( ! function_exists( 'gen2_get_services_page_id' ) ) {
 function gen2_get_services_page_id() { return gen2_get_page_by_template( 'tpl_services.php' ); }
 }
 
+if ( ! function_exists( 'gen2_get_about_page_id' ) ) {
+/** Locate the page that holds the About CMB2 data (the canonical
+ *  team / leadership roster, shared by tpl_home.php §8 and tpl_about.php). */
+function gen2_get_about_page_id() { return gen2_get_page_by_template( 'tpl_about.php' ); }
+}
+
 if ( ! function_exists( 'gen2_get_staff_page_id' ) ) {
-/** Locate the page that holds the Staff CMB2 data (the canonical
- *  team / leadership roster, shared by tpl_home.php §8 and tpl_staff.php). */
-function gen2_get_staff_page_id() { return gen2_get_page_by_template( 'tpl_staff.php' ); }
+/** Back-compat alias — the staff template was retired; the roster now
+ *  lives on the About page. */
+function gen2_get_staff_page_id() { return gen2_get_about_page_id(); }
 }
 
 if ( ! function_exists( 'gen2_meta_from' ) ) {

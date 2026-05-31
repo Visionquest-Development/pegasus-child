@@ -86,8 +86,9 @@ if ( 'header-three' === $header_choice ) {
 		array( 'member_name' => 'DALE WHITFORD', 'member_role' => 'Director, Panel Shop',          'member_credentials' => 'UL-508A · 24 yrs',       'member_photo' => '' ),
 		array( 'member_name' => 'SARA LEHMANN',  'member_role' => 'Lead CODESYS Architect',        'member_credentials' => 'CODESYS Cert. · 11 yrs', 'member_photo' => '' ),
 	);
-	$team_source_id = gen2_get_staff_page_id();
-	$team_members   = gen2_meta_group_from( 'gen2_team_members', $team_source_id, $team_fallback );
+	// Team members now live on this page (About — 4 metabox). The Homepage
+	// section 8 reads from here via gen2_get_about_page_id().
+	$team_members   = gen2_meta_group( 'gen2_team_members', $team_fallback );
 	$team_members   = array_values( array_filter( $team_members, function( $m ) {
 		$n = isset( $m['member_name'] ) ? trim( (string) $m['member_name'] ) : '';
 		$r = isset( $m['member_role'] ) ? trim( (string) $m['member_role'] ) : '';

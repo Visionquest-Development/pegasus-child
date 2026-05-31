@@ -47,7 +47,7 @@ get_header(); ?>
 		$hero_subtitle     = gen2_meta( 'gen2_hero_subtitle',     '&#9656; AUTOMATION &middot; CONTROL SYSTEMS &middot; PANEL FAB' );
 		$hero_title        = gen2_meta( 'gen2_hero_title',        "ENGINEERED\nFROM" );
 		$hero_title_accent = gen2_meta( 'gen2_hero_title_accent', 'FIRST PRINCIPLES.' );
-		$hero_intro        = gen2_meta( 'gen2_hero_intro',        'Gen2 Automation builds the robots, the panels, and the code that runs modern manufacturing. CODESYS Application Partner since 2014. UL-508A shop in Tigard, Oregon.' );
+		$hero_intro        = gen2_meta( 'gen2_hero_intro',        'Gen2 Automation builds the robots, the panels, and the code that runs modern manufacturing. CODESYS Application Partner.' );
 		$hero_btn1_text    = gen2_meta( 'gen2_hero_btn_primary_text',   '+ Start a Project' );
 		$hero_btn1_url     = gen2_meta( 'gen2_hero_btn_primary_url',    '#' );
 		$hero_btn2_text    = gen2_meta( 'gen2_hero_btn_secondary_text', '&#8600; Capabilities Deck' );
@@ -59,7 +59,7 @@ get_header(); ?>
 				<span>SCALE 1:1</span>
 				<span>SHEET 01 / 07</span>
 				<span>REV C &middot; 2026.04.18</span>
-				<span>TIGARD, OR &middot; ESTABLISHED 2008</span>
+
 			</div>
 			<div class="gen2-schem-hero__main">
 				<div>
@@ -193,35 +193,47 @@ get_header(); ?>
 			<span><?php echo wp_kses_post( $svc_subtitle ); ?></span>
 			<span>SHEET 02 / 07</span>
 		</div>
-		<div class="gen2-schem-services__head row align-items-lg-end g-4">
-			<div class="col-12 col-lg-6 order-2 order-lg-1">
-				<h2 class="gen2-schem-services__title anton">
-					<?php gen2_render_lines( $svc_title ); ?>
-					<?php if ( $svc_title_accent ) : ?>
-						<br><span class="gen2-schem-services__title-accent"><?php echo esc_html( $svc_title_accent ); ?></span>
-					<?php endif; ?>
-				</h2>
-			</div>
-			<div class="col-12 col-lg-6 order-1 order-lg-2">
-				<img class="gen2-schem-services__logo"
-					src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/gen2-automation-logo.svg' ); ?>"
-					alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" />
-				<?php if ( $svc_logo_video && $svc_video_is_direct ) : ?>
-					<video class="gen2-schem-services__video" autoplay muted loop playsinline preload="metadata">
-						<source src="<?php echo esc_url( $svc_logo_video ); ?>" type="video/<?php echo esc_attr( $svc_video_mime ); ?>" />
-					</video>
-				<?php elseif ( $svc_logo_video ) : ?>
-					<div class="gen2-schem-services__embed">
-						<?php
-						$svc_embed_html = wp_oembed_get( $svc_logo_video );
-						echo $svc_embed_html ? $svc_embed_html : '<a href="' . esc_url( $svc_logo_video ) . '" target="_blank" rel="noopener">' . esc_html( $svc_logo_video ) . '</a>';
-						?>
-					</div>
-				<?php endif; ?>
-				<div class="gen2-schem-services__intro sans">
-					<?php gen2_render_wysiwyg( $svc_intro ); ?>
+		<div class="gen2-schem-services__head">
+
+			<!-- Row 1 — logo full-width on top -->
+			<div class="row gen2-schem-services__logo-row">
+				<div class="col-12">
+					<img class="gen2-schem-services__logo mx-auto"
+						src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/gen2-automation-logo.svg' ); ?>"
+						alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" />
 				</div>
 			</div>
+
+			<!-- Row 2 — heading left | video + intro right (desktop)
+			     stacks to heading → video → intro on mobile -->
+			<div class="row align-items-lg-start g-4 gen2-schem-services__head-row">
+				<div class="col-12 col-lg-6">
+					<h2 class="gen2-schem-services__title anton">
+						<?php gen2_render_lines( $svc_title ); ?>
+						<?php if ( $svc_title_accent ) : ?>
+							<br><span class="gen2-schem-services__title-accent"><?php echo esc_html( $svc_title_accent ); ?></span>
+						<?php endif; ?>
+					</h2>
+				</div>
+				<div class="col-12 col-lg-6">
+					<?php if ( $svc_logo_video && $svc_video_is_direct ) : ?>
+						<video class="gen2-schem-services__video" autoplay muted loop playsinline preload="metadata">
+							<source src="<?php echo esc_url( $svc_logo_video ); ?>" type="video/<?php echo esc_attr( $svc_video_mime ); ?>" />
+						</video>
+					<?php elseif ( $svc_logo_video ) : ?>
+						<div class="gen2-schem-services__embed">
+							<?php
+							$svc_embed_html = wp_oembed_get( $svc_logo_video );
+							echo $svc_embed_html ? $svc_embed_html : '<a href="' . esc_url( $svc_logo_video ) . '" target="_blank" rel="noopener">' . esc_html( $svc_logo_video ) . '</a>';
+							?>
+						</div>
+					<?php endif; ?>
+					<div class="gen2-schem-services__intro sans">
+						<?php gen2_render_wysiwyg( $svc_intro ); ?>
+					</div>
+				</div>
+			</div>
+
 		</div>
 		<div class="gen2-schem-services__grid">
 			<?php foreach ( $cards as $i => $card ) :
@@ -414,7 +426,7 @@ get_header(); ?>
 	$case_eyebrow        = gen2_meta( 'gen2_case_eyebrow',       '&#9656; FEATURED PROJECT &middot; BFI4 / SACRAMENTO' );
 	$case_title_template = gen2_meta( 'gen2_case_title_template', "18 ASSEMBLY ROBOTS\nBUILDING {{accent}}\nNEXT-GEN SORTERS." );
 	$case_title_accent   = gen2_meta( 'gen2_case_title_accent',  "AMAZON'S" );
-	$case_intro          = gen2_meta( 'gen2_case_intro',         "Amazon Robotics needed a partner who could move from concept to FAT in six months — without compromising on the CODESYS architecture they'd standardized on. Gen2 delivered eighteen identical assembly cells, panel-fabricated and programmed in Tigard, commissioned on-site with zero post-FAT redlines." );
+	$case_intro          = gen2_meta( 'gen2_case_intro',         "Amazon Robotics needed a partner who could move from concept to FAT in six months — without compromising on the CODESYS architecture they'd standardized on. Gen2 delivered eighteen identical assembly cells, panel-fabricated and programmed, commissioned on-site with zero post-FAT redlines." );
 	$case_hero_image     = gen2_meta( 'gen2_case_hero_image',    '' );
 	$case_hero_video     = gen2_meta( 'gen2_case_hero_video_url', '' );
 	$case_hero_ph_label  = gen2_meta( 'gen2_case_hero_placeholder_label', 'CASE STUDY HERO · ASSEMBLY CELL OPERATING · 16:9' );
@@ -507,7 +519,7 @@ get_header(); ?>
 	$proc_steps_fallback = array(
 		array( 'step_name' => 'DISCOVERY', 'step_description' => 'Plant-floor audits, throughput targets, and team interviews.' ),
 		array( 'step_name' => 'DESIGN',    'step_description' => 'P&amp;IDs, panel layouts, cell envelopes, controls architecture.' ),
-		array( 'step_name' => 'FABRICATE', 'step_description' => 'UL-508A panels built, wired, and bench-tested in Tigard.' ),
+		array( 'step_name' => 'FABRICATE', 'step_description' => 'UL-508A panels built, wired, and bench-tested in the USA.' ),
 		array( 'step_name' => 'PROGRAM',   'step_description' => 'CODESYS structured text. Object-oriented from day one.' ),
 		array( 'step_name' => 'INTEGRATE', 'step_description' => 'FAT, SAT, and on-site run-off alongside your team.' ),
 		array( 'step_name' => 'SUPPORT',   'step_description' => 'Remote diagnostics, training, optimization, and uptime.' ),
@@ -607,7 +619,7 @@ get_header(); ?>
 		array( 'member_name' => 'DALE WHITFORD', 'member_role' => 'Director, Panel Shop',          'member_credentials' => 'UL-508A · 24 yrs',       'member_photo' => '' ),
 		array( 'member_name' => 'SARA LEHMANN',  'member_role' => 'Lead CODESYS Architect',        'member_credentials' => 'CODESYS Cert. · 11 yrs', 'member_photo' => '' ),
 	);
-	$team_source_id = gen2_get_staff_page_id();
+	$team_source_id = gen2_get_about_page_id();
 	$team_members   = gen2_meta_group_from( 'gen2_team_members', $team_source_id, $team_fallback );
 	$team_members = array_values( array_filter( $team_members, function( $m ) {
 		$n = isset( $m['member_name'] ) ? trim( (string) $m['member_name'] ) : '';
@@ -689,39 +701,7 @@ get_header(); ?>
 			</div>
 		</div>
 	</section>
-    <?php /*
-	<!-- ────────── FOOTER ────────── -->
-	<footer class="gen2-schem-footer">
-		<div class="gen2-schem-footer__cols">
-			<div>
-				<?php gen2_mark( 'dark', 1.3 ); ?>
-				<p class="gen2-schem-footer__about sans">
-					Industrial automation, control systems, and panel fabrication for modern manufacturing.
-				</p>
-				<div class="gen2-schem-footer__codesys"><?php gen2_codesys_mark( 'light', 0.6 ); ?></div>
-			</div>
-			<?php
-			$cols = array(
-				array( 'SERVICES', array( 'Automation Consulting', 'Process Control', 'Panel Fabrication', 'CODESYS Training' ) ),
-				array( 'COMPANY',  array( 'About', 'Work', 'Careers', 'Contact' ) ),
-				array( 'OFFICE',   array( '7124 SW Hampton St', 'Tigard, OR 97223', '(503) 555-0142', 'hello@gen2automation.com' ) ),
-			);
-			foreach ( $cols as $col ) : ?>
-				<div>
-					<div class="gen2-schem-footer__col-title mono"><?php echo esc_html( $col[0] ); ?></div>
-					<?php foreach ( $col[1] as $line ) : ?>
-						<div class="gen2-schem-footer__col-item sans"><?php echo esc_html( $line ); ?></div>
-					<?php endforeach; ?>
-				</div>
-			<?php endforeach; ?>
-		</div>
-		<div class="gen2-schem-footer__legal mono">
-			<span>&copy; <?php echo date( 'Y' ); ?> GEN2 AUTOMATION LLC &middot; ALL RIGHTS RESERVED</span>
-			<span>UL-508A &middot; CODESYS APPLICATION PARTNER &middot; OREGON</span>
-			<span>GEN2AUTOMATION.COM</span>
-		</div>
-	</footer>
-	*/ ?>
+
 </div>
 
 <?php get_footer(); ?>
