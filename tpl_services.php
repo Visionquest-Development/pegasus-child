@@ -49,13 +49,13 @@ if ( 'header-three' === $header_choice ) {
 	// the Services Catalogue metabox in the admin sidebar. Read locally;
 	// the Homepage also reads from this same source.
 	$svc_fallback = array(
-		array( 'card_code' => 'S-ROB', 'card_title' => 'Robotics',                          'card_description' => 'Robotic cells and integration — pick-and-place, assembly, palletizing.',          'card_bullets' => '' ),
-		array( 'card_code' => 'S-MOT', 'card_title' => 'Motion Control',                    'card_description' => 'Coordinated multi-axis motion, kinematics, and servo systems.',                  'card_bullets' => '' ),
-		array( 'card_code' => 'S-AUT', 'card_title' => 'Automation',                        'card_description' => 'Factory, warehouse, and ecommerce automation — concept to commissioning.',      'card_bullets' => "<ul><li>Factory Automatic Process Control</li><li>Warehouse Automation</li><li>Ecommerce Automation</li><li>Battery Assembly</li></ul>" ),
-		array( 'card_code' => 'S-EDF', 'card_title' => 'Electrical Design &amp; Fabrication','card_description' => 'UL-508A / ETL listed control panels designed and built in-house.',              'card_bullets' => '' ),
-		array( 'card_code' => 'S-SSD', 'card_title' => 'Safety System Design',              'card_description' => 'Risk assessments, safety circuits, light curtains, and interlocks.',           'card_bullets' => '' ),
-		array( 'card_code' => 'S-HMI', 'card_title' => 'HMI / SCADA',                       'card_description' => 'Operator interfaces, supervisory control, databases, and software.',          'card_bullets' => '' ),
-		array( 'card_code' => 'S-TRN', 'card_title' => 'Training',                          'card_description' => 'Hands-on CODESYS and controls training for your maintenance and engineering teams.', 'card_bullets' => '' ),
+		array( 'card_code' => 'S-ROB', 'card_title' => 'Robotics',                                          'card_description' => 'Robotic cells and integration — pick-and-place, assembly, palletizing.',          'card_bullets' => '' ),
+		array( 'card_code' => 'S-MOT', 'card_title' => 'Motion Control',                                    'card_description' => 'Coordinated multi-axis motion, kinematics, and servo systems.',                  'card_bullets' => '' ),
+		array( 'card_code' => 'S-AUT', 'card_title' => 'Automation',                                        'card_description' => 'Factory, warehouse, and ecommerce automation — concept to commissioning.',      'card_bullets' => "<ul><li>Factory Automatic Process Control</li><li>Warehouse Automation</li><li>Ecommerce Automation</li><li>Battery Assembly</li></ul>" ),
+		array( 'card_code' => 'S-EDF', 'card_title' => 'Electrical Design and Fabrication (UL508A/ETL)',    'card_description' => 'UL-508A / ETL listed control panels designed and built in-house.',              'card_bullets' => '' ),
+		array( 'card_code' => 'S-SSD', 'card_title' => 'Safety System Design',                              'card_description' => 'Risk assessments, safety circuits, light curtains, and interlocks.',           'card_bullets' => '' ),
+		array( 'card_code' => 'S-HMI', 'card_title' => 'HMI SCADA databases and software',                  'card_description' => 'Operator interfaces, supervisory control, databases, and software.',          'card_bullets' => '' ),
+		array( 'card_code' => 'S-TRN', 'card_title' => 'Training',                                          'card_description' => 'Hands-on CODESYS and controls training for your maintenance and engineering teams.', 'card_bullets' => '' ),
 	);
 	$svc_cards = gen2_meta_group( 'gen2_services_cards', $svc_fallback );
 	$svc_cards = array_values( array_filter( $svc_cards, function( $c ) {
@@ -98,14 +98,17 @@ if ( 'header-three' === $header_choice ) {
 
 	<!-- ────────── SERVICE BLOCKS ────────── -->
 	<?php foreach ( $svc_cards as $idx => $c ) :
-		$num       = str_pad( (string) ( $idx + 1 ), 2, '0', STR_PAD_LEFT );
-		$code      = isset( $c['card_code'] )        ? $c['card_code']        : '';
-		$title     = isset( $c['card_title'] )       ? $c['card_title']       : '';
-		$lead      = isset( $c['card_description'] ) ? $c['card_description'] : '';
-		$bullets   = isset( $c['card_bullets'] )     ? $c['card_bullets']     : '';
-		$block_mod = ( 0 === $idx % 2 ) ? 'gen2-svc-block--even' : 'gen2-svc-block--odd';
+		$num         = str_pad( (string) ( $idx + 1 ), 2, '0', STR_PAD_LEFT );
+		$code        = isset( $c['card_code'] )         ? $c['card_code']         : '';
+		$title       = isset( $c['card_title'] )        ? $c['card_title']        : '';
+		$lead        = isset( $c['card_description'] )  ? $c['card_description']  : '';
+		$bullets     = isset( $c['card_bullets'] )      ? $c['card_bullets']      : '';
+		$media_image = isset( $c['card_media_image'] )  ? trim( (string) $c['card_media_image'] ) : '';
+		$block_mod   = ( 0 === $idx % 2 ) ? 'gen2-svc-block--even' : 'gen2-svc-block--odd';
 		// Cycle through the four schematic illustrations regardless of count.
-		$media_idx = $idx % 4;
+		$media_idx   = $idx % 4;
+		// Image upload wins over the default cycling schematic.
+		$use_image   = ( '' !== $media_image );
 		?>
 		<section id="svc-<?php echo esc_attr( $num ); ?>" class="gen2-svc-block <?php echo esc_attr( $block_mod ); ?>">
 			<div class="gen2-svc-block__head">
@@ -125,19 +128,20 @@ if ( 'header-three' === $header_choice ) {
 				<div class="gen2-svc-block__bullets gen2-svc-block__bullets--list">
 					<?php gen2_render_wysiwyg( $bullets ); ?>
 				</div>
-				<div class="gen2-svc-block__media <?php echo ( 3 === $media_idx ) ? 'gen2-svc-block__media--codesys' : ''; ?>">
-					<?php
-					if ( 0 === $media_idx ) {
+				<div class="gen2-svc-block__media <?php echo $use_image ? 'gen2-svc-block__media--image' : ( ( 3 === $media_idx ) ? 'gen2-svc-block__media--codesys' : '' ); ?>">
+					<?php if ( $use_image ) : ?>
+						<img class="gen2-svc-block__media-img" src="<?php echo esc_url( $media_image ); ?>" alt="<?php echo esc_attr( $title ); ?>" />
+					<?php elseif ( 0 === $media_idx ) :
 						gen2_schematic_flow( 'gen2-svg--on-dark-300' );
-					} elseif ( 1 === $media_idx ) {
+					elseif ( 1 === $media_idx ) :
 						gen2_schematic_arm( 'gen2-svg--on-dark-300' );
-					} elseif ( 2 === $media_idx ) {
+					elseif ( 2 === $media_idx ) :
 						gen2_schematic_panel( 'gen2-svg--on-dark-300' );
-					} else {
+					else :
 						gen2_codesys_mark( 'light', 1.3 );
 						?>
 						<div class="gen2-svc-block__media-caption mono">AUTHORIZED APPLICATION PARTNER &middot; SINCE 2014</div>
-					<?php } ?>
+					<?php endif; ?>
 				</div>
 			</div>
 		</section>

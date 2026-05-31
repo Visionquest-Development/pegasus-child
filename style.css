@@ -270,6 +270,22 @@
 .gen2-schem-services__logo   { display: block; width: 100%;  height: auto; margin-bottom: 24px; }
 .gen2-schem-services__intro  { font-size: 16px; line-height: 1.55; margin: 0; color: rgba(12,12,12,0.7);  }
 .gen2-schem-services__intro p:last-child { margin-bottom: 0; }
+
+/* Optional video rendered under the .gen2-schem-services__logo (CMB2 field
+   "Logo Video URL" on the Homepage's 2 — Services Section metabox). */
+.gen2-schem-services__video {
+	display: block; width: 100%; max-width: 360px; height: auto; aspect-ratio: 16 / 9;
+	-o-object-fit: cover; object-fit: cover;
+	margin: 24px 0; background: var(--ink);
+}
+.gen2-schem-services__embed {
+	position: relative; width: 100%; max-width: 360px;
+	padding-top: 56.25%; margin: 24px 0; background: var(--ink);
+}
+.gen2-schem-services__embed iframe,
+.gen2-schem-services__embed embed,
+.gen2-schem-services__embed object,
+.gen2-schem-services__embed video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .gen2-schem-services__grid   { display: grid; grid-template-columns: repeat(3, 1fr); }
 .gen2-schem-services__card   { padding: 32px 28px; border-bottom: 1px solid var(--line); position: relative; }
 .gen2-schem-services__card:not(:last-child) { border-right: 1px solid var(--line); }
@@ -364,6 +380,14 @@
 .gen2-schem-codesys__title-accent { color: var(--copper-300); }
 .gen2-schem-codesys__intro  { font-size: 16px; line-height: 1.6; color: rgba(244,242,236,0.78); max-width: 540px; }
 .gen2-schem-codesys__pills  { margin-top: 32px; font-size: 11px; opacity: 0.6; letter-spacing: 0.18em; }
+/* Drop-in replacement for the panel schematic SVG when an image is uploaded
+   via the CMB2 "Schematic Image" field. Matches the 3:2 viewBox of the SVG. */
+.gen2-schem-codesys__schem-img {
+	display: block; width: 100%; height: auto; aspect-ratio: 3 / 2;
+	-o-object-fit: cover; object-fit: cover;
+	border: 1px solid rgba(244,242,236,0.18);
+	background: rgba(12,12,12,0.3);
+}
 .gen2-schem-codesys__schem-label {
 	display: flex; justify-content: space-between; margin-top: 14px;
 	font-size: 10px; opacity: 0.55; letter-spacing: 0.18em;
@@ -443,6 +467,16 @@
 .gen2-schem-team__member-role { font-size: 10px; opacity: 0.6; letter-spacing: 0.14em; margin-top: 4px; }
 .gen2-schem-team__member-creds { font-size: 10px; color: var(--copper); letter-spacing: 0.14em; margin-top: 8px; }
 
+/* ----- Dedicated Staff page (tpl_staff.php) ----------------------------
+   Reuses the .gen2-schem-team__* classes but widens to a 3-up grid for
+   readability on a full page, and styles the optional per-member bio. */
+.gen2-staff-page .gen2-schem-team__head h1 { font-size: 96px; }
+.gen2-staff-grid { grid-template-columns: repeat(3, 1fr); }
+.gen2-staff-member .gen2-schem-team__member-body { padding: 24px 22px; }
+.gen2-staff-member__bio { font-size: 14px; line-height: 1.65; color: rgba(12,12,12,0.72); margin-top: 16px; }
+.gen2-staff-member__bio p { margin: 0 0 12px; }
+.gen2-staff-member__bio p:last-child { margin-bottom: 0; }
+
 /* ----- Big CTA ---------------------------------------------------------- */
 .gen2-schem-cta { padding: 120px 56px; background: var(--copper); color: var(--ink); position: relative; }
 .gen2-schem-cta__grid { position: absolute; inset: 0; opacity: 0.4; }
@@ -516,21 +550,31 @@
    homepage). Single-column counter list. */
 .gen2-svc-block__bullets--list { display: block; grid-template-columns: none; border-top: 0; }
 .gen2-svc-block__bullets--list ul,
-.gen2-svc-block__bullets--list ol { list-style: none; margin: 0; padding: 0; counter-reset: svc-bullet; }
+.gen2-svc-block__bullets--list ol { list-style: none; margin: 0; padding: 0; }
 .gen2-svc-block__bullets--list li {
-	counter-increment: svc-bullet;
-	display: flex; align-items: baseline; gap: 16px;
-	padding: 14px 0;
-	border-bottom: 1px solid var(--line);
-	font-family: "Archivo", sans-serif; font-size: 16px;
+	display: flex; align-items: baseline; gap: 14px;
+	padding: 12px 0;
+	font-family: "Archivo", sans-serif; font-size: 17px; line-height: 1.45;
+	color: rgba(12,12,12,0.85);
 }
-.gen2-svc-block__bullets--list li:first-child { border-top: 1px solid var(--line); }
+.gen2-svc-block__bullets--list li + li { border-top: 1px solid var(--line); }
 .gen2-svc-block__bullets--list li::before {
-	content: counter(svc-bullet, decimal-leading-zero);
-	font-family: "JetBrains Mono", monospace;
-	font-size: 11px; letter-spacing: 0.18em;
-	color: var(--copper);
-	min-width: 28px;
+	content: "";
+	display: inline-block;
+	width: 8px; height: 8px;
+	background: var(--copper);
+	border-radius: 50%;
+	flex: 0 0 auto;
+	transform: translateY(-2px);
+}
+/* Nested lists (third-level items, if the wysiwyg has them) — slightly
+   indented and use an open ring marker to distinguish from the parent row. */
+.gen2-svc-block__bullets--list li ul { margin-top: 8px; padding-left: 22px; width: 100%; }
+.gen2-svc-block__bullets--list li ul li { font-size: 15px; padding: 6px 0; border-top: 0; color: rgba(12,12,12,0.65); }
+.gen2-svc-block__bullets--list li ul li::before {
+	background: transparent;
+	border: 1.5px solid var(--copper);
+	width: 7px; height: 7px;
 }
 .gen2-svc-block__bullets--list p { margin: 0; }
 .gen2-svc-block__bullet { padding: 24px 28px; border-bottom: 1px solid var(--line); }
@@ -541,6 +585,13 @@
 .gen2-svc-block__media { background: var(--ink); padding: 24px; color: var(--warm); display: flex; align-items: center; }
 .gen2-svc-block__media--codesys { flex-direction: column; gap: 24px; width: 100%; justify-content: center; padding: 48px; }
 .gen2-svc-block__media-caption { font-size: 11px; opacity: 0.55; letter-spacing: 0.2em; text-align: center; }
+/* CMB2 image-override variant — the uploaded photo replaces the cycling
+   schematic and fills the entire dark media container edge-to-edge. */
+.gen2-svc-block__media--image  { padding: 0; }
+.gen2-svc-block__media-img {
+	display: block; width: 100%; height: 100%; min-height: 320px;
+	-o-object-fit: cover; object-fit: cover;
+}
 
 /* ----- Services CTA ----------------------------------------------------- */
 .gen2-svc-cta { padding: 120px 56px; background: var(--teal); color: var(--warm); }
@@ -670,6 +721,104 @@
 .gen2-exp-pm__body li::before { content: "+ "; color: var(--copper-300); }
 
 /* ==========================================================================
+   ABOUT PAGE — tpl_about.php
+   ========================================================================== */
+
+.gen2-about-page { background: var(--warm); color: var(--ink); }
+
+.gen2-about-hero,
+.gen2-about-mission { padding: 100px 56px; }
+.gen2-about-hero    { padding-top: 80px; padding-bottom: 64px; }
+.gen2-about-mission { background: var(--ink); color: var(--warm); }
+
+.gen2-about-hero__doc,
+.gen2-about-mission__doc {
+	display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+	font-size: 10px; opacity: 0.55; letter-spacing: 0.2em;
+	padding-bottom: 14px; border-bottom: 1px solid var(--line);
+}
+.gen2-about-mission__doc { border-bottom-color: rgba(244,242,236,0.18); }
+
+.gen2-about-hero__main    { display: grid; grid-template-columns: 2fr 1fr; gap: 48px; align-items: flex-end; padding-top: 32px; }
+.gen2-about-hero__title   { margin: 0; font-size: 132px; line-height: 0.92; font-weight: 400; letter-spacing: -0.01em; }
+.gen2-about-hero__title-accent { color: var(--copper); }
+.gen2-about-hero__intro   { font-size: 16px; line-height: 1.6; color: rgba(12,12,12,0.7); margin: 0; }
+.gen2-about-hero__intro p:last-child { margin-bottom: 0; }
+
+.gen2-about-mission__main { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: flex-start; padding-top: 56px; }
+.gen2-about-mission__title { margin: 0; font-size: 96px; line-height: 0.92; font-weight: 400; letter-spacing: -0.01em; }
+.gen2-about-mission__title-accent { color: var(--copper-300); }
+.gen2-about-mission__body { font-size: 24px; line-height: 1.45; color: rgba(244,242,236,0.92); font-style: italic; }
+.gen2-about-mission__body p { margin: 0 0 24px; }
+.gen2-about-mission__body p:last-child { margin-bottom: 0; }
+
+/* About team section reuses .gen2-schem-team__* — no overrides needed. */
+
+/* ==========================================================================
+   CONTACT PAGE — tpl_contact.php
+   ========================================================================== */
+
+.gen2-contact-page { background: var(--warm); color: var(--ink); }
+
+.gen2-contact-hero,
+.gen2-contact-form-section,
+.gen2-contact-resume { padding: 100px 56px; }
+.gen2-contact-hero   { padding-top: 80px; padding-bottom: 64px; }
+.gen2-contact-resume { background: var(--warm-200); }
+
+.gen2-contact-hero__doc,
+.gen2-contact-form-section__doc,
+.gen2-contact-resume__doc {
+	display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+	font-size: 10px; opacity: 0.55; letter-spacing: 0.2em;
+	padding-bottom: 14px; border-bottom: 1px solid var(--line);
+}
+
+.gen2-contact-hero__main  { display: grid; grid-template-columns: 2fr 1fr; gap: 48px; align-items: flex-end; padding-top: 32px; }
+.gen2-contact-hero__title { margin: 0; font-size: 132px; line-height: 0.92; font-weight: 400; letter-spacing: -0.01em; }
+.gen2-contact-hero__title-accent { color: var(--copper); }
+.gen2-contact-hero__intro { font-size: 16px; line-height: 1.6; color: rgba(12,12,12,0.7); margin: 0; }
+.gen2-contact-hero__intro p:last-child { margin-bottom: 0; }
+
+/* Contact info strip — 4-up cells with dividers, like the homepage hero stats */
+.gen2-contact-info {
+	display: grid; grid-template-columns: repeat(4, 1fr);
+	background: var(--ink); color: var(--warm);
+}
+.gen2-contact-info__cell { padding: 28px 24px; min-height: 140px; display: flex; flex-direction: column; gap: 10px; }
+.gen2-contact-info__cell:not(:last-child) { border-right: 1px solid rgba(244,242,236,0.18); }
+.gen2-contact-info__label { font-size: 10px; color: var(--copper-300); letter-spacing: 0.2em; text-transform: uppercase; }
+.gen2-contact-info__value { font-size: 16px; line-height: 1.5; color: var(--warm); }
+.gen2-contact-info__value a { color: inherit; border-bottom: 1px solid rgba(244,242,236,0.3); }
+.gen2-contact-info__value a:hover { color: var(--copper-300); border-bottom-color: var(--copper-300); }
+
+/* Contact form + Resume — shared section layout */
+.gen2-contact-form-section__main,
+.gen2-contact-resume__main { display: grid; grid-template-columns: 1fr 1.6fr; gap: 64px; padding-top: 56px; align-items: flex-start; }
+.gen2-contact-form-section__head,
+.gen2-contact-resume__head { position: sticky; top: 32px; }
+.gen2-contact-form-section__title,
+.gen2-contact-resume__title { margin: 0; font-size: 72px; line-height: 0.95; font-weight: 400; letter-spacing: -0.005em; }
+.gen2-contact-form-section__title-accent,
+.gen2-contact-resume__title-accent { color: var(--copper); }
+.gen2-contact-form-section__intro,
+.gen2-contact-resume__intro { font-size: 16px; line-height: 1.55; color: rgba(12,12,12,0.7); margin-top: 20px; }
+.gen2-contact-form-section__intro p:last-child,
+.gen2-contact-resume__intro p:last-child { margin-bottom: 0; }
+
+.gen2-contact-form-section__form,
+.gen2-contact-resume__form { background: var(--warm); padding: 32px; border: 1px solid var(--line); }
+.gen2-contact-resume__form { background: var(--warm); }
+.gen2-contact-form-section__empty,
+.gen2-contact-resume__empty { font-size: 12px; color: rgba(12,12,12,0.55); letter-spacing: 0.08em; margin: 0; }
+.gen2-contact-resume__mailto {
+	display: inline-block; background: var(--ink); color: var(--copper);
+	padding: 18px 28px; font-size: 12px; font-weight: 600;
+	letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none;
+}
+.gen2-contact-resume__mailto:hover { background: var(--copper); color: var(--ink); }
+
+/* ==========================================================================
    Media queries
    ========================================================================== */
 @media (max-width: 1100px) {
@@ -699,7 +848,14 @@
 	.gen2-exp-projects__head,
 	.gen2-exp-platforms__head,
 	.gen2-exp-codesys__main,
-	.gen2-exp-pm__main { grid-template-columns: 1fr; gap: 32px; }
+	.gen2-exp-pm__main,
+	.gen2-about-hero__main,
+	.gen2-about-mission__main,
+	.gen2-contact-hero__main,
+	.gen2-contact-form-section__main,
+	.gen2-contact-resume__main { grid-template-columns: 1fr; gap: 32px; }
+	.gen2-contact-form-section__head,
+	.gen2-contact-resume__head { position: static; }
 	.gen2-schem-hero__split,
 	.gen2-schem-hero__stats,
 	.gen2-schem-services__grid,
@@ -713,7 +869,11 @@
 	.gen2-schem-footer__cols,
 	.gen2-svc-footer__cols,
 	.gen2-exp-projects__grid,
-	.gen2-exp-platforms__grid { grid-template-columns: 1fr 1fr; }
+	.gen2-exp-platforms__grid,
+	.gen2-staff-grid,
+	.gen2-contact-info { grid-template-columns: 1fr 1fr; }
+	.gen2-contact-info__cell:not(:last-child) { border-right: 1px solid rgba(244,242,236,0.18); }
+	.gen2-contact-info__cell:nth-child(2n) { border-right: none; }
 	.gen2-exp-platform:not(:nth-child(3n))    { border-right: none; }
 	.gen2-exp-platform:nth-child(odd)         { border-right: 1px solid rgba(244,242,236,0.18); }
 	.gen2-schem-industries__cell:not(:nth-child(4n)) { border-right: none; }

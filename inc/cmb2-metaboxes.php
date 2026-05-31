@@ -1,7 +1,7 @@
 <?php
 /**
  * CMB2 metabox registrations for the Gen2 Automation homepage
- * (tpl_schematic.php / "Homepage" template).
+ * (tpl_home.php / "Homepage" template).
  *
  * Requires the CMB2 plugin to be active. If CMB2 is not loaded the
  * registration silently no-ops and the template falls back to its
@@ -18,7 +18,7 @@ function gen2_register_homepage_metaboxes() {
 	// Only show these boxes on pages assigned to the Homepage template.
 	$show_on = array(
 		'key'   => 'page-template',
-		'value' => 'tpl_schematic.php',
+		'value' => 'tpl_home.php',
 	);
 
 	/* ───── 1 — HERO SECTION ─────────────────────────────────────────── */
@@ -28,6 +28,7 @@ function gen2_register_homepage_metaboxes() {
 		'object_types' => array( 'page' ),
 		'context'      => 'normal',
 		'priority'     => 'high',
+		'closed'       => true,
 		'show_on'      => $show_on,
 	) );
 
@@ -91,6 +92,7 @@ function gen2_register_homepage_metaboxes() {
 			'add_button'    => 'Add Stat',
 			'remove_button' => 'Remove Stat',
 			'sortable'      => true,
+			'closed'        => true,
 		),
 	) );
 
@@ -108,18 +110,16 @@ function gen2_register_homepage_metaboxes() {
 		'type' => 'text',
 	) );
 
-	/* ───── SERVICES CATALOGUE (lives on tpl_services.php, drives both the
-	   Services inner page AND the Homepage's section 2) ─────────────── */
+	/* ───── 2 — SERVICES SECTION (homepage chrome only — the repeatable
+	   service catalogue itself lives on the Services page, see below) ─ */
 	$services = new_cmb2_box( array(
 		'id'           => 'gen2_services_metabox',
-		'title'        => esc_html__( 'Services Catalogue (drives Services page &amp; Homepage §2)', 'pegasus-child' ),
+		'title'        => esc_html__( '2 — Services Section', 'pegasus-child' ),
 		'object_types' => array( 'page' ),
 		'context'      => 'normal',
 		'priority'     => 'high',
-		'show_on'      => array(
-			'key'   => 'page-template',
-			'value' => 'tpl_services.php',
-		),
+		'closed'       => true,
+		'show_on'      => $show_on, // tpl_home.php
 	) );
 
 	$services->add_field( array(
@@ -151,44 +151,18 @@ function gen2_register_homepage_metaboxes() {
 		'options' => array( 'media_buttons' => false, 'textarea_rows' => 4 ),
 	) );
 
-	// Repeatable service cards — maps to .gen2-schem-services__grid
-	$cards_group = $services->add_field( array(
-		'id'          => 'gen2_services_cards',
-		'type'        => 'group',
-		'description' => 'Service cards. Maps to .gen2-schem-services__grid',
-		'options'     => array(
-			'group_title'   => 'Service {#}',
-			'add_button'    => 'Add Service Card',
-			'remove_button' => 'Remove Service Card',
-			'sortable'      => true,
-		),
+	$services->add_field( array(
+		'name' => 'Logo Video URL (optional)',
+		'desc' => 'Optional video rendered directly beneath the Gen2 logo in the right column. Accepts a direct video URL (<code>.mp4 / .webm / .mov</code>) or a YouTube / Vimeo URL.',
+		'id'   => 'gen2_services_logo_video_url',
+		'type' => 'text_url',
 	) );
 
-	$services->add_group_field( $cards_group, array(
-		'name' => 'Code',
-		'desc' => 'Short code (e.g. "S-AUT")',
-		'id'   => 'card_code',
-		'type' => 'text',
-	) );
-
-	$services->add_group_field( $cards_group, array(
-		'name' => 'Card Title',
-		'id'   => 'card_title',
-		'type' => 'text',
-	) );
-
-	$services->add_group_field( $cards_group, array(
-		'name' => 'Description',
-		'id'   => 'card_description',
-		'type' => 'textarea_small',
-	) );
-
-	$services->add_group_field( $cards_group, array(
-		'name'    => 'Bullets (WYSIWYG — use a UL list)',
-		'desc'    => 'Add a bulleted list. Each &lt;li&gt; renders as one styled bullet row.',
-		'id'      => 'card_bullets',
-		'type'    => 'wysiwyg',
-		'options' => array( 'media_buttons' => false, 'textarea_rows' => 6 ),
+	$services->add_field( array(
+		'name'        => 'Service Cards Source',
+		'desc'        => 'The cards rendered in this section are pulled from the <strong>Services page</strong> (tpl_services.php). To edit which services appear here, edit the Services page\'s "Services Catalogue" metabox.',
+		'id'          => 'gen2_services_cards_source_note',
+		'type'        => 'title',
 	) );
 
 	/* ───── 3 — INDUSTRIES SECTION ───────────────────────────────────── */
@@ -198,6 +172,7 @@ function gen2_register_homepage_metaboxes() {
 		'object_types' => array( 'page' ),
 		'context'      => 'normal',
 		'priority'     => 'high',
+		'closed'       => true,
 		'show_on'      => $show_on,
 	) );
 
@@ -239,6 +214,7 @@ function gen2_register_homepage_metaboxes() {
 			'add_button'    => 'Add Industry',
 			'remove_button' => 'Remove Industry',
 			'sortable'      => true,
+			'closed'        => true,
 		),
 	) );
 
@@ -263,6 +239,7 @@ function gen2_register_homepage_metaboxes() {
 		'object_types' => array( 'page' ),
 		'context'      => 'normal',
 		'priority'     => 'high',
+		'closed'       => true,
 		'show_on'      => $show_on,
 	) );
 
@@ -323,6 +300,16 @@ function gen2_register_homepage_metaboxes() {
 		'type' => 'text',
 	) );
 
+	$codesys->add_field( array(
+		'name'       => 'Schematic Image (replaces the panel SVG)',
+		'desc'       => 'Optional. When set, this image replaces the right-column schematic illustration. Leave blank to keep the default <code>.gen2-svg--codesys</code> panel diagram.',
+		'id'         => 'gen2_codesys_schem_image',
+		'type'       => 'file',
+		'options'    => array( 'url' => false ),
+		'text'       => array( 'add_upload_file_text' => 'Upload Schematic Image' ),
+		'query_args' => array( 'type' => array( 'image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/svg+xml' ) ),
+	) );
+
 	// Repeatable capability cells — maps to .gen2-schem-codesys__cells
 	$cod_cells_group = $codesys->add_field( array(
 		'id'          => 'gen2_codesys_cells',
@@ -333,6 +320,7 @@ function gen2_register_homepage_metaboxes() {
 			'add_button'    => 'Add Cell',
 			'remove_button' => 'Remove Cell',
 			'sortable'      => true,
+			'closed'        => true,
 		),
 	) );
 
@@ -355,6 +343,7 @@ function gen2_register_homepage_metaboxes() {
 		'object_types' => array( 'page' ),
 		'context'      => 'normal',
 		'priority'     => 'high',
+		'closed'       => true,
 		'show_on'      => $show_on,
 	) );
 
@@ -435,6 +424,7 @@ function gen2_register_homepage_metaboxes() {
 			'add_button'    => 'Add Stat',
 			'remove_button' => 'Remove Stat',
 			'sortable'      => true,
+			'closed'        => true,
 		),
 	) );
 
@@ -459,6 +449,7 @@ function gen2_register_homepage_metaboxes() {
 		'object_types' => array( 'page' ),
 		'context'      => 'normal',
 		'priority'     => 'high',
+		'closed'       => true,
 		'show_on'      => $show_on,
 	) );
 
@@ -494,6 +485,7 @@ function gen2_register_homepage_metaboxes() {
 			'add_button'    => 'Add Step',
 			'remove_button' => 'Remove Step',
 			'sortable'      => true,
+			'closed'        => true,
 		),
 	) );
 
@@ -517,6 +509,7 @@ function gen2_register_homepage_metaboxes() {
 		'object_types' => array( 'page' ),
 		'context'      => 'normal',
 		'priority'     => 'high',
+		'closed'       => true,
 		'show_on'      => $show_on,
 	) );
 
@@ -536,6 +529,7 @@ function gen2_register_homepage_metaboxes() {
 			'add_button'    => 'Add Logo',
 			'remove_button' => 'Remove Logo',
 			'sortable'      => true,
+			'closed'        => true,
 		),
 	) );
 
@@ -571,6 +565,7 @@ function gen2_register_homepage_metaboxes() {
 		'object_types' => array( 'page' ),
 		'context'      => 'normal',
 		'priority'     => 'high',
+		'closed'       => true,
 		'show_on'      => $show_on,
 	) );
 
@@ -603,46 +598,11 @@ function gen2_register_homepage_metaboxes() {
 		'options' => array( 'media_buttons' => false, 'textarea_rows' => 4 ),
 	) );
 
-	$team_members_group = $team->add_field( array(
-		'id'          => 'gen2_team_members',
-		'type'        => 'group',
-		'description' => 'Team / leadership cards. 4 members look best in the row.',
-		'options'     => array(
-			'group_title'   => 'Member {#}',
-			'add_button'    => 'Add Member',
-			'remove_button' => 'Remove Member',
-			'sortable'      => true,
-		),
-	) );
-
-	$team->add_group_field( $team_members_group, array(
-		'name'       => 'Portrait Photo',
-		'desc'       => 'Optional. Square crop works best. Falls back to a striped placeholder when empty.',
-		'id'         => 'member_photo',
-		'type'       => 'file',
-		'options'    => array( 'url' => false ),
-		'text'       => array( 'add_upload_file_text' => 'Upload Portrait' ),
-		'query_args' => array( 'type' => array( 'image/jpeg', 'image/jpg', 'image/png', 'image/webp' ) ),
-	) );
-
-	$team->add_group_field( $team_members_group, array(
-		'name' => 'Name',
-		'id'   => 'member_name',
-		'type' => 'text',
-	) );
-
-	$team->add_group_field( $team_members_group, array(
-		'name' => 'Role',
-		'desc' => 'e.g. "Founder · Principal Controls"',
-		'id'   => 'member_role',
-		'type' => 'text',
-	) );
-
-	$team->add_group_field( $team_members_group, array(
-		'name' => 'Credentials',
-		'desc' => 'Small copper line beneath the role (e.g. "M.Sc EECS · 22 yrs").',
-		'id'   => 'member_credentials',
-		'type' => 'text',
+	$team->add_field( array(
+		'name'        => 'Team Members Source',
+		'desc'        => 'The leadership cards rendered in this section are pulled from the <strong>Staff page</strong> (tpl_staff.php). To edit which members appear here, edit the Staff page\'s "Staff — Team Members" metabox.',
+		'id'          => 'gen2_team_members_source_note',
+		'type'        => 'title',
 	) );
 
 	/* ───── 9 — CALL-TO-ACTION SECTION ───────────────────────────────── */
@@ -652,6 +612,7 @@ function gen2_register_homepage_metaboxes() {
 		'object_types' => array( 'page' ),
 		'context'      => 'normal',
 		'priority'     => 'high',
+		'closed'       => true,
 		'show_on'      => $show_on,
 	) );
 
@@ -703,6 +664,7 @@ function gen2_register_homepage_metaboxes() {
 		'object_types' => array( 'page' ),
 		'context'      => 'normal',
 		'priority'     => 'high',
+		'closed'       => true,
 		'show_on'      => array(
 			'key'   => 'page-template',
 			'value' => 'tpl_services.php',
@@ -724,6 +686,334 @@ function gen2_register_homepage_metaboxes() {
 		'options' => array( 'media_buttons' => false, 'textarea_rows' => 5 ),
 	) );
 
+	/* ───── SERVICES CATALOGUE (the repeatable card list — lives on the
+	   Services page, shared by tpl_home.php §2 and tpl_services.php) ── */
+	$services_catalogue = new_cmb2_box( array(
+		'id'           => 'gen2_services_catalogue_metabox',
+		'title'        => esc_html__( 'Services Catalogue (shared with Homepage §2)', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+		'closed'       => true,
+		'show_on'      => array(
+			'key'   => 'page-template',
+			'value' => 'tpl_services.php',
+		),
+	) );
+
+	$cards_group = $services_catalogue->add_field( array(
+		'id'          => 'gen2_services_cards',
+		'type'        => 'group',
+		'description' => 'Service cards. Drives both the Services page detailed blocks and the Homepage\'s section 2 grid.',
+		'options'     => array(
+			'group_title'   => 'Service {#}',
+			'add_button'    => 'Add Service Card',
+			'remove_button' => 'Remove Service Card',
+			'sortable'      => true,
+			'closed'        => true,
+		),
+	) );
+
+	$services_catalogue->add_group_field( $cards_group, array(
+		'name' => 'Code',
+		'desc' => 'Short code (e.g. "S-AUT")',
+		'id'   => 'card_code',
+		'type' => 'text',
+	) );
+
+	$services_catalogue->add_group_field( $cards_group, array(
+		'name' => 'Card Title',
+		'id'   => 'card_title',
+		'type' => 'text',
+	) );
+
+	$services_catalogue->add_group_field( $cards_group, array(
+		'name' => 'Description',
+		'id'   => 'card_description',
+		'type' => 'textarea_small',
+	) );
+
+	$services_catalogue->add_group_field( $cards_group, array(
+		'name'    => 'Bullets (WYSIWYG — use a UL list)',
+		'desc'    => 'Add a bulleted list. Each &lt;li&gt; renders as one styled bullet row. Nest a second &lt;ul&gt; inside an &lt;li&gt; to get sub-bullets.',
+		'id'      => 'card_bullets',
+		'type'    => 'wysiwyg',
+		'options' => array( 'media_buttons' => false, 'textarea_rows' => 6 ),
+	) );
+
+	$services_catalogue->add_group_field( $cards_group, array(
+		'name'       => 'Media Image (replaces the schematic illustration on the Services page)',
+		'desc'       => 'Optional. When set, this image replaces the dark schematic illustration in the right column of the service block on the Services page. Leave blank to keep the default cycling schematic (flow / arm / panel / CODESYS mark).',
+		'id'         => 'card_media_image',
+		'type'       => 'file',
+		'options'    => array( 'url' => false ),
+		'text'       => array( 'add_upload_file_text' => 'Upload Media Image' ),
+		'query_args' => array( 'type' => array( 'image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/svg+xml' ) ),
+	) );
+
+	/* ═════════════════════════════════════════════════════════════════════
+	   STAFF PAGE  (tpl_staff.php)
+	   ═════════════════════════════════════════════════════════════════════ */
+	$staff_show_on = array(
+		'key'   => 'page-template',
+		'value' => 'tpl_staff.php',
+	);
+
+	/* ───── STAFF PAGE — HERO (chrome for the dedicated staff page) ─── */
+	$staff_hero = new_cmb2_box( array(
+		'id'           => 'gen2_staff_hero_metabox',
+		'title'        => esc_html__( 'Staff Page — Top Section', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+		'closed'       => true,
+		'show_on'      => $staff_show_on,
+	) );
+
+	$staff_hero->add_field( array(
+		'name' => 'Subtitle / Eyebrow',
+		'desc' => 'Doc-strip label (e.g. "&sect; STAFF").',
+		'id'   => 'gen2_staff_subtitle',
+		'type' => 'text',
+	) );
+
+	$staff_hero->add_field( array(
+		'name' => 'Title — Before Accent',
+		'desc' => 'Lines above the copper accent (e.g. "THE PEOPLE").',
+		'id'   => 'gen2_staff_title_before',
+		'type' => 'textarea_small',
+	) );
+
+	$staff_hero->add_field( array(
+		'name' => 'Title Accent',
+		'desc' => 'Copper-coloured tail of the title (e.g. "ON THE FLOOR.").',
+		'id'   => 'gen2_staff_title_accent',
+		'type' => 'text',
+	) );
+
+	$staff_hero->add_field( array(
+		'name'    => 'Intro Body (WYSIWYG)',
+		'desc'    => 'Paragraph beside the title.',
+		'id'      => 'gen2_staff_intro',
+		'type'    => 'wysiwyg',
+		'options' => array( 'media_buttons' => false, 'textarea_rows' => 4 ),
+	) );
+
+	/* ───── STAFF — TEAM MEMBERS (the repeatable roster — lives on the
+	   Staff page, shared by tpl_home.php §8 and tpl_staff.php) ───────── */
+	$staff_team = new_cmb2_box( array(
+		'id'           => 'gen2_staff_team_metabox',
+		'title'        => esc_html__( 'Staff — Team Members (shared with Homepage §8)', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+		'closed'       => true,
+		'show_on'      => $staff_show_on,
+	) );
+
+	$team_members_group = $staff_team->add_field( array(
+		'id'          => 'gen2_team_members',
+		'type'        => 'group',
+		'description' => 'Team / leadership cards. Drives both the dedicated Staff page and the Homepage section 8 grid.',
+		'options'     => array(
+			'group_title'   => 'Member {#}',
+			'add_button'    => 'Add Member',
+			'remove_button' => 'Remove Member',
+			'sortable'      => true,
+			'closed'        => true,
+		),
+	) );
+
+	$staff_team->add_group_field( $team_members_group, array(
+		'name'       => 'Portrait Photo',
+		'desc'       => 'Optional. Square crop works best. Falls back to a striped placeholder when empty.',
+		'id'         => 'member_photo',
+		'type'       => 'file',
+		'options'    => array( 'url' => false ),
+		'text'       => array( 'add_upload_file_text' => 'Upload Portrait' ),
+		'query_args' => array( 'type' => array( 'image/jpeg', 'image/jpg', 'image/png', 'image/webp' ) ),
+	) );
+
+	$staff_team->add_group_field( $team_members_group, array(
+		'name' => 'Name',
+		'id'   => 'member_name',
+		'type' => 'text',
+	) );
+
+	$staff_team->add_group_field( $team_members_group, array(
+		'name' => 'Role',
+		'desc' => 'e.g. "Founder · Principal Controls"',
+		'id'   => 'member_role',
+		'type' => 'text',
+	) );
+
+	$staff_team->add_group_field( $team_members_group, array(
+		'name' => 'Credentials',
+		'desc' => 'Small copper line beneath the role (e.g. "M.Sc EECS · 22 yrs").',
+		'id'   => 'member_credentials',
+		'type' => 'text',
+	) );
+
+	$staff_team->add_group_field( $team_members_group, array(
+		'name'    => 'Bio (optional, WYSIWYG)',
+		'desc'    => 'Longer biography shown on the dedicated Staff page. Not used on the Homepage section 8 grid.',
+		'id'      => 'member_bio',
+		'type'    => 'wysiwyg',
+		'options' => array( 'media_buttons' => false, 'textarea_rows' => 5 ),
+	) );
+
+	/* ═════════════════════════════════════════════════════════════════════
+	   ABOUT PAGE  (tpl_about.php)
+	   ═════════════════════════════════════════════════════════════════════ */
+	$about_show_on = array(
+		'key'   => 'page-template',
+		'value' => 'tpl_about.php',
+	);
+
+	/* ───── ABOUT 1 — HERO ─────────────────────────────────────────── */
+	$about_hero = new_cmb2_box( array(
+		'id'           => 'gen2_about_hero_metabox',
+		'title'        => esc_html__( 'About — 1 · Hero', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+		'closed'       => true,
+		'show_on'      => $about_show_on,
+	) );
+	$about_hero->add_field( array( 'name' => 'Subtitle / Eyebrow', 'id' => 'gen2_about_subtitle',     'type' => 'text' ) );
+	$about_hero->add_field( array( 'name' => 'Title — Before Accent', 'desc' => 'Use line breaks for stacked lines.', 'id' => 'gen2_about_title_before', 'type' => 'textarea_small' ) );
+	$about_hero->add_field( array( 'name' => 'Title Accent', 'id' => 'gen2_about_title_accent', 'type' => 'text' ) );
+	$about_hero->add_field( array( 'name' => 'Intro (WYSIWYG)', 'id' => 'gen2_about_intro', 'type' => 'wysiwyg', 'options' => array( 'media_buttons' => false, 'textarea_rows' => 4 ) ) );
+
+	/* ───── ABOUT 2 — MISSION STATEMENT ───────────────────────────── */
+	$about_mission = new_cmb2_box( array(
+		'id'           => 'gen2_about_mission_metabox',
+		'title'        => esc_html__( 'About — 2 · Mission Statement', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+		'closed'       => true,
+		'show_on'      => $about_show_on,
+	) );
+	$about_mission->add_field( array( 'name' => 'Subtitle / Eyebrow', 'id' => 'gen2_about_mission_subtitle',     'type' => 'text' ) );
+	$about_mission->add_field( array( 'name' => 'Title — Before Accent', 'id' => 'gen2_about_mission_title_before', 'type' => 'textarea_small' ) );
+	$about_mission->add_field( array( 'name' => 'Title Accent', 'id' => 'gen2_about_mission_title_accent', 'type' => 'text' ) );
+	$about_mission->add_field( array(
+		'name'    => 'Mission Body (WYSIWYG)',
+		'desc'    => 'The full mission statement.',
+		'id'      => 'gen2_about_mission_body',
+		'type'    => 'wysiwyg',
+		'options' => array( 'media_buttons' => false, 'textarea_rows' => 8 ),
+	) );
+
+	/* ───── ABOUT 3 — TEAM SECTION (chrome only; members come from
+	   the Staff page so the team is edited in one place) ───────────── */
+	$about_team = new_cmb2_box( array(
+		'id'           => 'gen2_about_team_metabox',
+		'title'        => esc_html__( 'About — 3 · Team / Our Principals', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+		'closed'       => true,
+		'show_on'      => $about_show_on,
+	) );
+	$about_team->add_field( array( 'name' => 'Subtitle / Eyebrow', 'id' => 'gen2_about_team_subtitle',     'type' => 'text' ) );
+	$about_team->add_field( array( 'name' => 'Title — Before Accent', 'id' => 'gen2_about_team_title_before', 'type' => 'textarea_small' ) );
+	$about_team->add_field( array( 'name' => 'Title Accent', 'id' => 'gen2_about_team_title_accent', 'type' => 'text' ) );
+	$about_team->add_field( array( 'name' => 'Intro (WYSIWYG)', 'id' => 'gen2_about_team_intro', 'type' => 'wysiwyg', 'options' => array( 'media_buttons' => false, 'textarea_rows' => 4 ) ) );
+	$about_team->add_field( array(
+		'name' => 'Team Members Source',
+		'desc' => 'The principals shown below are pulled from the <strong>Staff page</strong> (tpl_staff.php). To edit which people appear here, edit the Staff page\'s "Staff — Team Members" metabox.',
+		'id'   => 'gen2_about_team_source_note',
+		'type' => 'title',
+	) );
+
+	/* ═════════════════════════════════════════════════════════════════════
+	   CONTACT PAGE  (tpl_contact.php)
+	   ═════════════════════════════════════════════════════════════════════ */
+	$contact_show_on = array(
+		'key'   => 'page-template',
+		'value' => 'tpl_contact.php',
+	);
+
+	/* ───── CONTACT 1 — HERO ──────────────────────────────────────── */
+	$contact_hero = new_cmb2_box( array(
+		'id'           => 'gen2_contact_hero_metabox',
+		'title'        => esc_html__( 'Contact — 1 · Hero', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+		'closed'       => true,
+		'show_on'      => $contact_show_on,
+	) );
+	$contact_hero->add_field( array( 'name' => 'Subtitle / Eyebrow', 'id' => 'gen2_contact_subtitle',     'type' => 'text' ) );
+	$contact_hero->add_field( array( 'name' => 'Title — Before Accent', 'id' => 'gen2_contact_title_before', 'type' => 'textarea_small' ) );
+	$contact_hero->add_field( array( 'name' => 'Title Accent', 'id' => 'gen2_contact_title_accent', 'type' => 'text' ) );
+	$contact_hero->add_field( array( 'name' => 'Intro (WYSIWYG)', 'id' => 'gen2_contact_intro', 'type' => 'wysiwyg', 'options' => array( 'media_buttons' => false, 'textarea_rows' => 4 ) ) );
+
+	/* ───── CONTACT 2 — CONTACT INFO STRIP ────────────────────────── */
+	$contact_info = new_cmb2_box( array(
+		'id'           => 'gen2_contact_info_metabox',
+		'title'        => esc_html__( 'Contact — 2 · Contact Info', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+		'closed'       => true,
+		'show_on'      => $contact_show_on,
+	) );
+	$contact_info->add_field( array( 'name' => 'Address',  'desc' => 'Street + city. Use line breaks for stacked lines.', 'id' => 'gen2_contact_address', 'type' => 'textarea_small' ) );
+	$contact_info->add_field( array( 'name' => 'Phone',    'id' => 'gen2_contact_phone',  'type' => 'text' ) );
+	$contact_info->add_field( array( 'name' => 'Email',    'id' => 'gen2_contact_email',  'type' => 'text_email' ) );
+	$contact_info->add_field( array( 'name' => 'Hours',    'desc' => 'Operating hours (optional).', 'id' => 'gen2_contact_hours', 'type' => 'textarea_small' ) );
+
+	/* ───── CONTACT 3 — CONTACT FORM ──────────────────────────────── */
+	$contact_form = new_cmb2_box( array(
+		'id'           => 'gen2_contact_form_metabox',
+		'title'        => esc_html__( 'Contact — 3 · Contact Form', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+		'closed'       => true,
+		'show_on'      => $contact_show_on,
+	) );
+	$contact_form->add_field( array( 'name' => 'Subtitle / Eyebrow', 'id' => 'gen2_contact_form_subtitle',     'type' => 'text' ) );
+	$contact_form->add_field( array( 'name' => 'Title — Before Accent', 'id' => 'gen2_contact_form_title_before', 'type' => 'textarea_small' ) );
+	$contact_form->add_field( array( 'name' => 'Title Accent', 'id' => 'gen2_contact_form_title_accent', 'type' => 'text' ) );
+	$contact_form->add_field( array( 'name' => 'Intro (WYSIWYG)', 'id' => 'gen2_contact_form_intro', 'type' => 'wysiwyg', 'options' => array( 'media_buttons' => false, 'textarea_rows' => 4 ) ) );
+	$contact_form->add_field( array(
+		'name' => 'Form Shortcode',
+		'desc' => 'Paste your form plugin\'s shortcode here (e.g. <code>[contact-form-7 id="123"]</code>, <code>[gravityform id="1"]</code>, <code>[wpforms id="123"]</code>). Leave blank to hide the form.',
+		'id'   => 'gen2_contact_form_shortcode',
+		'type' => 'textarea_small',
+	) );
+
+	/* ───── CONTACT 4 — SUBMIT RESUME ─────────────────────────────── */
+	$contact_resume = new_cmb2_box( array(
+		'id'           => 'gen2_contact_resume_metabox',
+		'title'        => esc_html__( 'Contact — 4 · Submit Resume', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+		'closed'       => true,
+		'show_on'      => $contact_show_on,
+	) );
+	$contact_resume->add_field( array( 'name' => 'Subtitle / Eyebrow', 'id' => 'gen2_contact_resume_subtitle',     'type' => 'text' ) );
+	$contact_resume->add_field( array( 'name' => 'Title — Before Accent', 'id' => 'gen2_contact_resume_title_before', 'type' => 'textarea_small' ) );
+	$contact_resume->add_field( array( 'name' => 'Title Accent', 'id' => 'gen2_contact_resume_title_accent', 'type' => 'text' ) );
+	$contact_resume->add_field( array( 'name' => 'Intro (WYSIWYG)', 'id' => 'gen2_contact_resume_intro', 'type' => 'wysiwyg', 'options' => array( 'media_buttons' => false, 'textarea_rows' => 4 ) ) );
+	$contact_resume->add_field( array(
+		'name' => 'Resume Form Shortcode',
+		'desc' => 'Paste a form-plugin shortcode for resume submissions. Leave blank to render only the email fallback below.',
+		'id'   => 'gen2_contact_resume_shortcode',
+		'type' => 'textarea_small',
+	) );
+	$contact_resume->add_field( array(
+		'name' => 'Fallback Email',
+		'desc' => 'Email rendered as a mailto link when no shortcode is provided. Defaults to the Contact Info email when blank.',
+		'id'   => 'gen2_contact_resume_email',
+		'type' => 'text_email',
+	) );
+
 	/* ═════════════════════════════════════════════════════════════════════
 	   EXPERIENCE PAGE  (tpl_experience.php)
 	   ═════════════════════════════════════════════════════════════════════ */
@@ -739,6 +1029,7 @@ function gen2_register_homepage_metaboxes() {
 		'object_types' => array( 'page' ),
 		'context'      => 'normal',
 		'priority'     => 'high',
+		'closed'       => true,
 		'show_on'      => $exp_show_on,
 	) );
 	$exp_hero->add_field( array( 'name' => 'Subtitle / Eyebrow', 'id' => 'gen2_exp_hero_subtitle',     'type' => 'text' ) );
@@ -753,6 +1044,7 @@ function gen2_register_homepage_metaboxes() {
 		'object_types' => array( 'page' ),
 		'context'      => 'normal',
 		'priority'     => 'high',
+		'closed'       => true,
 		'show_on'      => $exp_show_on,
 	) );
 	$exp_proj->add_field( array( 'name' => 'Subtitle / Eyebrow', 'id' => 'gen2_exp_projects_subtitle',     'type' => 'text' ) );
@@ -769,6 +1061,7 @@ function gen2_register_homepage_metaboxes() {
 			'add_button'    => 'Add Project',
 			'remove_button' => 'Remove Project',
 			'sortable'      => true,
+			'closed'        => true,
 		),
 	) );
 	$exp_proj->add_group_field( $exp_proj_group, array(
@@ -793,6 +1086,7 @@ function gen2_register_homepage_metaboxes() {
 		'object_types' => array( 'page' ),
 		'context'      => 'normal',
 		'priority'     => 'high',
+		'closed'       => true,
 		'show_on'      => $exp_show_on,
 	) );
 	$exp_plat->add_field( array( 'name' => 'Subtitle / Eyebrow', 'id' => 'gen2_exp_platforms_subtitle',     'type' => 'text' ) );
@@ -809,6 +1103,7 @@ function gen2_register_homepage_metaboxes() {
 			'add_button'    => 'Add Category',
 			'remove_button' => 'Remove Category',
 			'sortable'      => true,
+			'closed'        => true,
 		),
 	) );
 	$exp_plat->add_group_field( $exp_plat_group, array( 'name' => 'Category Title',    'desc' => 'e.g. "Controllers", "Robotic Arms", "HMI / SCADA"', 'id' => 'category_title',    'type' => 'text' ) );
@@ -827,6 +1122,7 @@ function gen2_register_homepage_metaboxes() {
 		'object_types' => array( 'page' ),
 		'context'      => 'normal',
 		'priority'     => 'high',
+		'closed'       => true,
 		'show_on'      => $exp_show_on,
 	) );
 	$exp_cod->add_field( array( 'name' => 'Subtitle / Eyebrow', 'id' => 'gen2_exp_codesys_subtitle',     'type' => 'text' ) );
@@ -841,6 +1137,7 @@ function gen2_register_homepage_metaboxes() {
 		'object_types' => array( 'page' ),
 		'context'      => 'normal',
 		'priority'     => 'high',
+		'closed'       => true,
 		'show_on'      => $exp_show_on,
 	) );
 	$exp_pm->add_field( array( 'name' => 'Subtitle / Eyebrow', 'id' => 'gen2_exp_pm_subtitle',     'type' => 'text' ) );
@@ -919,13 +1216,19 @@ function gen2_get_page_by_template( $template_file ) {
 }
 
 if ( ! function_exists( 'gen2_get_homepage_id' ) ) {
-function gen2_get_homepage_id() { return gen2_get_page_by_template( 'tpl_schematic.php' ); }
+function gen2_get_homepage_id() { return gen2_get_page_by_template( 'tpl_home.php' ); }
 }
 
 if ( ! function_exists( 'gen2_get_services_page_id' ) ) {
 /** Locate the page that holds the Services CMB2 data (the canonical
- *  services catalogue, shared by tpl_schematic.php §2 and tpl_services.php). */
+ *  services catalogue, shared by tpl_home.php §2 and tpl_services.php). */
 function gen2_get_services_page_id() { return gen2_get_page_by_template( 'tpl_services.php' ); }
+}
+
+if ( ! function_exists( 'gen2_get_staff_page_id' ) ) {
+/** Locate the page that holds the Staff CMB2 data (the canonical
+ *  team / leadership roster, shared by tpl_home.php §8 and tpl_staff.php). */
+function gen2_get_staff_page_id() { return gen2_get_page_by_template( 'tpl_staff.php' ); }
 }
 
 if ( ! function_exists( 'gen2_meta_from' ) ) {
