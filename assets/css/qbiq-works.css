@@ -1,0 +1,202 @@
+/* ==========================================================================
+   QBIQ How It Works — page-scoped styles
+   Scoped under .qb-works so they don't leak.
+   ========================================================================== */
+
+.qb-works { background: var(--qb-ink); color: #fff; }
+
+/* Hero ------------------------------------------------------------------- */
+.qb-works .pg-hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(4rem, 8vw, 6.5rem) clamp(3rem, 6vw, 5rem);
+  background:
+    radial-gradient(900px 600px at 80% -20%, rgba(233,131,24,.16), transparent 60%),
+    linear-gradient(180deg, #0a0b0e 0%, #0c0d10 100%);
+}
+.qb-works .pg-hero::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: repeating-linear-gradient(180deg, transparent 0 80px, rgba(255,255,255,.025) 80px 81px);
+}
+.qb-works .pg-hero h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+}
+.qb-works .pg-hero > .container { position: relative; z-index: 1; }
+
+/* Methodology cards */
+.qb-works .pg-method {
+  background: var(--qb-ink-2);
+  border: 1px solid var(--qb-ink-4);
+  border-radius: var(--qb-radius);
+  padding: 2rem;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.qb-works .pg-method::before {
+  content: "";
+  position: absolute; top: 0; left: 0; height: 4px; width: 100%;
+  background: var(--qb-accent);
+  opacity: .6;
+}
+.qb-works .pg-method .pg-method-num {
+  font-family: var(--qb-display);
+  font-weight: 900;
+  color: var(--qb-accent);
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+.qb-works .pg-method h3 {
+  font-family: var(--qb-display);
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  letter-spacing: .02em;
+  margin-bottom: .75rem;
+}
+
+/* Curriculum chapter list */
+.qb-works .pg-chapter {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--qb-ink-2);
+  border: 1px solid var(--qb-ink-4);
+  border-radius: var(--qb-radius);
+  transition: border-color .15s ease, transform .15s ease;
+}
+.qb-works .pg-chapter:hover { border-color: var(--qb-accent); transform: translateX(4px); }
+.qb-works .pg-chapter-num {
+  font-family: var(--qb-display);
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--qb-fog);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.qb-works .pg-chapter-title {
+  font-family: var(--qb-display);
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  letter-spacing: .02em;
+}
+.qb-works .pg-chapter-meta { color: var(--qb-mist); font-size: .85rem; margin-top: .15rem; }
+.qb-works .pg-chapter-tag {
+  font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 700;
+  background: var(--qb-accent); color: #fff;
+  padding: .3rem .65rem; border-radius: 999px;
+}
+
+/* Weekly cadence */
+.qb-works .pg-week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: .75rem;
+}
+.qb-works .pg-day {
+  background: var(--qb-ink-2);
+  border: 1px solid var(--qb-ink-4);
+  border-radius: var(--qb-radius);
+  padding: 1rem .75rem;
+  text-align: center;
+}
+.qb-works .pg-day .pg-day-name {
+  font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--qb-mist);
+}
+.qb-works .pg-day .pg-day-task {
+  font-family: var(--qb-display);
+  text-transform: uppercase;
+  font-size: .85rem;
+  letter-spacing: .02em;
+  margin-top: .5rem;
+  line-height: 1.2;
+}
+.qb-works .pg-day .pg-day-time {
+  font-size: .7rem;
+  color: var(--qb-accent);
+  margin-top: .5rem;
+  font-weight: 700;
+}
+.qb-works .pg-day.pg-day-rest { background: transparent; border-style: dashed; }
+.qb-works .pg-day.pg-day-rest .pg-day-task { color: var(--qb-fog); }
+@media (max-width: 767.98px) {
+  .qb-works .pg-week { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Outcome stats */
+.qb-works .pg-outcome {
+  text-align: center;
+  padding: 1.5rem 1rem;
+}
+.qb-works .pg-outcome-num {
+  font-family: var(--qb-display);
+  font-weight: 900;
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
+  line-height: 1;
+  color: var(--qb-accent);
+}
+.qb-works .pg-outcome-label {
+  font-size: .82rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: .75rem;
+}
+.qb-works .pg-outcome-desc { color: var(--qb-mist); font-size: .9rem; margin-top: .5rem; }
+
+/* Pricing plans */
+.qb-works .pg-priceplan {
+  background: var(--qb-ink-2);
+  border: 1px solid var(--qb-ink-4);
+  border-radius: var(--qb-radius-lg);
+  padding: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.qb-works .pg-priceplan.pg-pricefeatured {
+  border-color: var(--qb-accent);
+  background:
+    radial-gradient(circle at 90% 0%, rgba(233,131,24,.18), transparent 60%),
+    var(--qb-ink-2);
+  position: relative;
+}
+.qb-works .pg-priceplan.pg-pricefeatured::before {
+  content: "Most popular";
+  position: absolute; top: -12px; right: 16px;
+  background: var(--qb-accent); color: #fff;
+  font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  padding: .25rem .65rem; border-radius: 999px;
+}
+.qb-works .pg-priceplan .pg-price-name {
+  font-family: var(--qb-display);
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: .14em;
+  color: var(--qb-mist);
+}
+.qb-works .pg-priceplan .pg-price-amount {
+  font-family: var(--qb-display);
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-block: .75rem;
+}
+.qb-works .pg-priceplan .pg-price-amount .pg-pa-suffix {
+  font-size: 1rem;
+  color: var(--qb-mist);
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: lowercase;
+}
+.qb-works .pg-priceplan ul { list-style: none; padding: 0; margin: 1.5rem 0; }
+.qb-works .pg-priceplan ul li {
+  padding: .4rem 0;
+  color: var(--qb-mist);
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+}
+.qb-works .pg-priceplan ul li i { color: var(--qb-accent); }

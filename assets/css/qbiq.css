@@ -1,0 +1,295 @@
+/* ==========================================================================
+   QBIQ System — shared design tokens + base overrides
+   Extends Bootstrap 5. Load after bootstrap.min.css so these win.
+   ========================================================================== */
+
+:root {
+  /* Brand palette — orange family */
+  --qb-orange-50:  #fff7ee;
+  --qb-orange-100: #fde9cf;
+  --qb-orange-200: #fbd29f;
+  --qb-orange-300: #f8b466;
+  --qb-orange-400: #f59a3c;
+  --qb-orange-500: #e98318;
+  --qb-orange-600: #d36c10;
+  --qb-orange-700: #a8540e;
+  --qb-orange-800: #7a3d0c;
+
+  /* Neutrals */
+  --qb-ink:        #0c0d10;
+  --qb-ink-2:      #15171c;
+  --qb-ink-3:      #1f232a;
+  --qb-ink-4:      #2a2f38;
+  --qb-fog:        #6b7280;
+  --qb-mist:       #b5bac3;
+  --qb-paper:      #f6f5f1;
+  --qb-paper-2:    #ecebe5;
+  --qb-line:       #e5e3dc;
+
+  /* Semantic tokens */
+  --qb-accent:        var(--qb-orange-500);
+  --qb-accent-strong: var(--qb-orange-600);
+  --qb-accent-soft:   var(--qb-orange-100);
+  --qb-accent-ink:    #1a0f04;
+
+  /* Type */
+  --qb-display: "Archivo", "Inter Tight", system-ui, sans-serif;
+  --qb-sans:    "Inter", system-ui, -apple-system, sans-serif;
+  --qb-mono:    "JetBrains Mono", ui-monospace, monospace;
+
+  /* Radii */
+  --qb-radius-sm: 6px;
+  --qb-radius:    12px;
+  --qb-radius-lg: 20px;
+
+  /* Bootstrap overrides */
+  --bs-primary: var(--qb-accent);
+  --bs-primary-rgb: 233, 131, 24;
+}
+
+.qb-page {
+  font-family: var(--qb-sans);
+  font-feature-settings: "ss01", "cv11";
+  color: #1a1d24;
+  background: var(--qb-paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Display type */
+.qb-display, h1.qb-display, h2.qb-display, h3.qb-display {
+  font-family: var(--qb-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 0.98;
+  text-transform: uppercase;
+}
+.qb-eyebrow {
+  font-family: var(--qb-sans);
+  font-weight: 700;
+  font-size: .78rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--qb-accent);
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+}
+.qb-eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+}
+
+/* Buttons */
+.btn-qb {
+  --bs-btn-padding-y: .85rem;
+  --bs-btn-padding-x: 1.6rem;
+  --bs-btn-font-weight: 700;
+  --bs-btn-font-family: var(--qb-sans);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-size: .82rem;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  transition: transform .15s ease, background .15s ease, color .15s ease, border-color .15s ease;
+}
+.btn-qb:hover { transform: translateY(-1px); }
+.btn-qb:active { transform: translateY(0); }
+
+.btn-qb-primary {
+  background: var(--qb-accent);
+  color: #fff;
+  border-color: var(--qb-accent);
+}
+.btn-qb-primary:hover {
+  background: var(--qb-accent-strong);
+  border-color: var(--qb-accent-strong);
+  color: #fff;
+}
+
+.btn-qb-dark {
+  background: var(--qb-ink);
+  color: #fff;
+  border-color: var(--qb-ink);
+}
+.btn-qb-dark:hover { background: #000; border-color: #000; color: #fff; }
+
+.btn-qb-outline-light {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255,255,255,.65);
+}
+.btn-qb-outline-light:hover { background: #fff; color: var(--qb-ink); border-color: #fff; }
+
+.btn-qb-outline-dark {
+  background: transparent;
+  color: var(--qb-ink);
+  border-color: var(--qb-ink);
+}
+.btn-qb-outline-dark:hover { background: var(--qb-ink); color: #fff; }
+
+.btn-qb-ghost {
+  background: transparent;
+  color: var(--qb-accent);
+  border-color: transparent;
+  padding-left: .25rem;
+  padding-right: .25rem;
+}
+.btn-qb-ghost:hover { color: var(--qb-accent-strong); }
+
+/* Logo lockup (kept for reuse in custom blocks) */
+.qb-logo {
+  font-family: var(--qb-display);
+  font-weight: 900;
+  letter-spacing: .02em;
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  text-decoration: none;
+}
+.qb-logo .qb-logo-mark {
+  border: 2px solid currentColor;
+  padding: .25rem .55rem;
+  border-radius: 6px;
+  font-size: 1.05rem;
+  line-height: 1;
+  letter-spacing: .02em;
+}
+.qb-logo .qb-logo-mark .iq { color: var(--qb-accent); }
+.qb-logo .qb-logo-word { font-size: .85rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; opacity: .85; }
+
+/* Pill / chip */
+.qb-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .35rem .8rem;
+  border-radius: 999px;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.qb-pill-dark   { background: rgba(255,255,255,.08); color: #fff; border: 1px solid rgba(255,255,255,.14); }
+.qb-pill-light  { background: var(--qb-paper-2); color: var(--qb-ink); }
+.qb-pill-accent { background: var(--qb-accent-soft); color: var(--qb-orange-700); }
+.qb-pill-dot::before {
+  content: "";
+  width: 6px; height: 6px; border-radius: 999px;
+  background: var(--qb-accent);
+}
+
+/* Section helpers */
+.qb-section { padding-block: clamp(4rem, 9vw, 7rem); }
+.qb-section-tight { padding-block: clamp(3rem, 6vw, 4.5rem); }
+.qb-bg-dark { background: var(--qb-ink); color: #fff; }
+.qb-bg-ink2 { background: var(--qb-ink-2); color: #fff; }
+.qb-bg-paper { background: var(--qb-paper); color: var(--qb-ink); }
+.qb-bg-accent { background: var(--qb-accent); color: #fff; }
+
+.qb-bg-dark .text-muted, .qb-bg-ink2 .text-muted { color: var(--qb-mist) !important; }
+
+/* Stat band (orange) */
+.qb-stat-band {
+  background: var(--qb-accent);
+  color: #fff;
+}
+.qb-stat-band .qb-stat-num {
+  font-family: var(--qb-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 3.6vw, 2.75rem);
+  line-height: 1;
+}
+.qb-stat-band .qb-stat-label {
+  font-size: .72rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  opacity: .92;
+  font-weight: 600;
+}
+
+/* Feature card on dark */
+.qb-feature {
+  background: var(--qb-ink-2);
+  border: 1px solid var(--qb-ink-4);
+  border-radius: var(--qb-radius);
+  padding: 1.75rem;
+  height: 100%;
+  transition: transform .2s ease, border-color .2s ease, background .2s ease;
+}
+.qb-feature:hover { transform: translateY(-2px); border-color: var(--qb-accent); background: #1a1d24; }
+.qb-feature .qb-feature-icon {
+  width: 48px; height: 48px;
+  border-radius: 999px;
+  background: var(--qb-accent);
+  color: #fff;
+  display: inline-grid;
+  place-items: center;
+  margin-bottom: 1rem;
+}
+.qb-feature h3 { font-family: var(--qb-display); text-transform: uppercase; font-size: 1.05rem; letter-spacing: .04em; margin: 0 0 .5rem; }
+.qb-feature p  { color: var(--qb-mist); font-size: .92rem; margin: 0; line-height: 1.55; }
+
+/* Step (numbered) */
+.qb-step-num {
+  width: 56px; height: 56px;
+  border-radius: 999px;
+  background: var(--qb-accent);
+  color: #fff;
+  display: inline-grid;
+  place-items: center;
+  font-family: var(--qb-display);
+  font-weight: 800;
+  font-size: 1.5rem;
+  border: 3px solid rgba(255,255,255,.08);
+}
+
+/* Testimonial card */
+.qb-quote {
+  background: var(--qb-ink-2);
+  border-radius: var(--qb-radius);
+  padding: 1.75rem;
+  border-left: 3px solid var(--qb-accent);
+  height: 100%;
+}
+.qb-quote p { color: #d8dbe2; font-style: italic; line-height: 1.55; }
+.qb-quote .qb-quote-name { color: #fff; font-weight: 700; margin-top: 1rem; }
+.qb-quote .qb-quote-role { color: var(--qb-accent); font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 700; margin-top: .15rem; }
+
+/* Image placeholder helper */
+.qb-imgph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: var(--qb-ink-3);
+  color: var(--qb-mist);
+  border-radius: var(--qb-radius);
+  overflow: hidden;
+  isolation: isolate;
+  text-align: center;
+  font-size: .8rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.qb-imgph::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(135deg, rgba(255,255,255,.04) 0 50%, transparent 50% 100%);
+  background-size: 18px 18px;
+  z-index: -1;
+}
+
+/* Accent underline link */
+.qb-link {
+  color: var(--qb-accent);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid currentColor;
+  padding-bottom: 1px;
+}
+.qb-link:hover { color: var(--qb-accent-strong); }

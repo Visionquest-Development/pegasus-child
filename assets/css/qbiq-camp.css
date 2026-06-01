@@ -1,0 +1,295 @@
+/* ==========================================================================
+   QBIQ Camps & Training Centers — page-scoped styles
+   Scoped under .qb-camp so they don't leak.
+   ========================================================================== */
+
+.qb-camp { background: var(--qb-ink); color: #fff; }
+
+/* Hero ------------------------------------------------------------------- */
+.qb-camp .cp-hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(4rem, 8vw, 6.5rem) clamp(3rem, 6vw, 5rem);
+  background:
+    radial-gradient(900px 600px at 50% -20%, rgba(233,131,24,.16), transparent 60%),
+    linear-gradient(180deg, #0a0b0e 0%, #0c0d10 100%);
+}
+.qb-camp .cp-hero::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: repeating-linear-gradient(180deg, transparent 0 80px, rgba(255,255,255,.025) 80px 81px);
+}
+.qb-camp .cp-hero > .container { position: relative; z-index: 1; }
+
+/* Filter chips */
+.qb-camp .cp-filters {
+  display: flex; flex-wrap: wrap; gap: .5rem;
+}
+.qb-camp .cp-filter {
+  padding: .55rem 1rem;
+  border-radius: 999px;
+  background: var(--qb-ink-2);
+  border: 1px solid var(--qb-ink-4);
+  color: #d8dbe2;
+  font-size: .82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .15s ease;
+}
+.qb-camp .cp-filter.active {
+  background: var(--qb-accent);
+  border-color: var(--qb-accent);
+  color: #fff;
+}
+.qb-camp .cp-filter:hover {
+  border-color: var(--qb-accent);
+  color: #fff;
+}
+
+/* Camp cards */
+.qb-camp .cp-camp {
+  background: var(--qb-ink-2);
+  border: 1px solid var(--qb-ink-4);
+  border-radius: var(--qb-radius-lg);
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform .2s ease, border-color .2s ease;
+}
+.qb-camp .cp-camp:hover {
+  transform: translateY(-3px);
+  border-color: var(--qb-accent);
+}
+.qb-camp .cp-camp-vis {
+  aspect-ratio: 16/9;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1c5230 0%, #0e2a17 100%);
+}
+.qb-camp .cp-camp-vis::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(180deg, transparent 0 28px, rgba(255,255,255,.08) 28px 29px);
+}
+.qb-camp .cp-camp-vis-green  { background: linear-gradient(135deg, #1c5230 0%, #0e2a17 100%); }
+.qb-camp .cp-camp-vis-orange { background: linear-gradient(135deg, var(--qb-orange-600) 0%, var(--qb-orange-800) 100%); }
+.qb-camp .cp-camp-vis-blue   { background: linear-gradient(135deg, #1e3a5f 0%, #0c1a2e 100%); }
+.qb-camp .cp-camp-vis-night  { background: linear-gradient(135deg, #2a2f38 0%, #0e1014 100%); }
+.qb-camp .cp-camp-vis-red    { background: linear-gradient(135deg, #5a1a1a 0%, #2c0808 100%); }
+.qb-camp .cp-camp-vis-purple { background: linear-gradient(135deg, #3a1f5e 0%, #1a0e2c 100%); }
+
+.qb-camp .cp-camp-date {
+  position: absolute;
+  top: 1rem; left: 1rem;
+  background: var(--qb-ink);
+  color: #fff;
+  border-radius: 8px;
+  padding: .5rem .75rem;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,.4);
+}
+.qb-camp .cp-camp-date .cp-camp-date-mo {
+  font-size: .65rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--qb-accent);
+}
+.qb-camp .cp-camp-date .cp-camp-date-d {
+  font-family: var(--qb-display);
+  font-size: 1.5rem;
+  line-height: 1;
+  font-weight: 800;
+}
+.qb-camp .cp-camp-vis-svg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+}
+.qb-camp .cp-camp-pos {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  background: rgba(255,255,255,.18);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: .7rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: .35rem .65rem;
+  border-radius: 999px;
+}
+.qb-camp .cp-camp-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.qb-camp .cp-camp-loc {
+  font-size: .72rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--qb-accent);
+  font-weight: 700;
+  margin-bottom: .4rem;
+}
+.qb-camp .cp-camp-title {
+  font-family: var(--qb-display);
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  letter-spacing: .02em;
+  margin-bottom: .65rem;
+}
+.qb-camp .cp-camp-meta {
+  display: flex; flex-wrap: wrap; gap: .75rem;
+  color: var(--qb-mist); font-size: .85rem;
+  margin-bottom: 1rem;
+}
+.qb-camp .cp-camp-meta i {
+  color: var(--qb-accent);
+  margin-right: .25rem;
+}
+.qb-camp .cp-camp-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--qb-ink-4);
+}
+.qb-camp .cp-camp-price {
+  font-family: var(--qb-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+.qb-camp .cp-camp-price small {
+  color: var(--qb-mist);
+  font-size: .65rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-left: .15rem;
+}
+.qb-camp .cp-camp-spots {
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--qb-mist);
+  font-weight: 700;
+}
+.qb-camp .cp-camp-spots .cp-camp-dot {
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 999px;
+  background: #27c93f;
+  margin-right: .35rem;
+}
+.qb-camp .cp-camp-spots.cp-camp-low  .cp-camp-dot { background: var(--qb-accent); }
+.qb-camp .cp-camp-spots.cp-camp-full .cp-camp-dot { background: #d83a3a; }
+
+/* Schedule list */
+.qb-camp .cp-schedule {
+  background: var(--qb-ink-2);
+  border: 1px solid var(--qb-ink-4);
+  border-radius: var(--qb-radius);
+  overflow: hidden;
+}
+.qb-camp .cp-sched-item {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 1.25rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--qb-ink-4);
+  align-items: center;
+}
+.qb-camp .cp-sched-item:last-child { border-bottom: 0; }
+.qb-camp .cp-sched-time {
+  font-family: var(--qb-display);
+  font-weight: 800;
+  font-size: .95rem;
+  letter-spacing: .04em;
+  color: var(--qb-accent);
+}
+.qb-camp .cp-sched-title { font-weight: 700; }
+.qb-camp .cp-sched-desc {
+  color: var(--qb-mist);
+  font-size: .85rem;
+  margin-top: .15rem;
+}
+
+/* Training centers map mock */
+.qb-camp .cp-map {
+  background: var(--qb-ink-2);
+  border: 1px solid var(--qb-ink-4);
+  border-radius: var(--qb-radius);
+  aspect-ratio: 16/10;
+  position: relative;
+  overflow: hidden;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(233,131,24,.05), transparent 30%),
+    radial-gradient(circle at 70% 60%, rgba(233,131,24,.06), transparent 30%),
+    linear-gradient(135deg, #1a1d24 0%, #0e1014 100%);
+}
+.qb-camp .cp-map-pin {
+  position: absolute;
+  width: 14px; height: 14px;
+  border-radius: 999px;
+  background: var(--qb-accent);
+  box-shadow: 0 0 0 4px rgba(233,131,24,.2), 0 0 0 10px rgba(233,131,24,.1);
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+.qb-camp .cp-map-pin-label {
+  position: absolute;
+  transform: translate(-50%, -180%);
+  background: var(--qb-ink);
+  border: 1px solid var(--qb-ink-4);
+  padding: .25rem .55rem;
+  border-radius: 6px;
+  font-size: .72rem;
+  color: #fff;
+  white-space: nowrap;
+  font-weight: 600;
+}
+.qb-camp .cp-map-graticule {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Center cards */
+.qb-camp .cp-center {
+  background: var(--qb-ink-2);
+  border: 1px solid var(--qb-ink-4);
+  border-radius: var(--qb-radius);
+  padding: 1.25rem;
+  height: 100%;
+}
+.qb-camp .cp-center .cp-center-city {
+  font-size: .72rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--qb-accent);
+  font-weight: 700;
+}
+.qb-camp .cp-center h4 {
+  font-family: var(--qb-display);
+  text-transform: uppercase;
+  font-size: 1.05rem;
+  letter-spacing: .02em;
+  margin-block: .3rem .5rem;
+}
+.qb-camp .cp-center .cp-center-meta {
+  color: var(--qb-mist);
+  font-size: .85rem;
+  margin-bottom: 1rem;
+}
+.qb-camp .cp-center a {
+  color: var(--qb-accent);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: .82rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
