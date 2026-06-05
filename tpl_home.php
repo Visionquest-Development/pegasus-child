@@ -92,30 +92,6 @@
 			</div>
 		</div>
 
-		<!-- Special Events Section -->
-		<section id="special-events" class="section-padding py-5 mabellas-section-light">
-			<div class="container">
-				<div class="row align-items-center g-4">
-					<div class="col-lg-6 order-2 order-lg-1">
-						<h2>Special Events</h2>
-						<h3 class="mb-3">Mother&apos;s Day at Mabella's</h3>
-						<p class="mb-2"><strong>Date:</strong> Sunday, May 10</p>
-
-						<p class="mb-0">
-							Make Mother&apos;s Day feel extra special with extended hours for both brunch and dinner. We&apos;d love to help you treat Mom to a memorable meal.
-						</p>
-					</div>
-					<div class="col-lg-6 order-1 order-lg-2">
-						<img
-							src="<?php echo esc_url( get_stylesheet_directory_uri() . '/images/Mothersday.png' ); ?>"
-							alt="Mabella Mother's Day flyer"
-							class="img-fluid w-100"
-						>
-					</div>
-				</div>
-			</div>
-		</section>
-
 		<hr>
 
 		<main id="primary" class="site-main mabellas-home">
