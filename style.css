@@ -8,67 +8,319 @@
  Version:        0.0.1
 */
 
-/*@import url("../pegasus/style.css");*/
-	
-	
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	/*~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~ HEADER ~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	
-	/*~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~ NAVIGATION ~~~~~
-	~~~~~~~~~~~~~~~~~~~~~*/
+/* Sugarpeddler — Bistro & Bakery
+   Shared styles for all page mockups.
+   Each mockup is a fixed 1440px-wide artboard.
+*/
 
-	
-	/*~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~ FOOTER ~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
+:root {
+	/* Core brand */
+	--sp-wood:        #3D2817;  /* deep cocoa — wordmark, headings, dark sections */
+	--sp-sage:        #8FA47B;  /* sage — tagline, flanking lines, accents */
+	/* --sp-paper:       #FAF7F2;  off-white — page background */
+	--sp-paper:       #fffaf3;  /* off-white — page background */
 
-	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
-	/*~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~ HOME PAGE ~~~~~
-	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	
-	
-	/* ~~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~~SITEMAP~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~*/
-	
-	/* ~~~~~~~~~~~~~~~~~~~~~~
-	~~~~WOOCOMMERCE~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~*/
+	/* Supporting shades */
+	--sp-cream:       #F1E8DC;
+	--sp-brown:       #5A3D29;
+	--sp-brown-mid:   #8C6B53;
+	--sp-ink:         #1A1410;
 
-	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	~~~~~MEDIA QUERIES~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	@media only screen and ( min-width: 1100px ) and ( max-width: 1405px) {
-		
-	}
-	
-	@media only screen and ( min-width: 981px ) {
-		
-	}
-		
-	@media only screen and (max-width: 980px) {
-		
-	}
-	
-	@media only screen and ( max-width: 767px ) {
-		
-	}
-	
-	@media only screen and (max-width: 479px) {
-		
-	}
+	--sp-sage-soft:   #C2CFB4;
+	--sp-sage-wash:   #E8EDDF;
+	--sp-sage-deep:   #5E6E4D;
+
+	/* Pink accent */
+	--sp-pink:        #D17F7C;
+	--sp-pink-soft:   #F0D4D0;
+	--sp-pink-wash:   #F8E6E2;
+
+	--sp-line:        rgba(143,164,123,.32);
+	--sp-line-dark:   rgba(255,245,232,.16);
+
+	--sp-display: "Cormorant Garamond", "Cormorant", serif;
+	--sp-body: "Outfit", system-ui, sans-serif;
+	--sp-script: "Caveat", cursive;
+}
+
+/* Reset just inside the artboards. */
+.sp { color: var(--sp-ink); font-family: var(--sp-body); -webkit-font-smoothing: antialiased; line-height: 1.5; }
+.sp *, .sp *::before, .sp *::after { box-sizing: border-box; }
+.sp h1, .sp h2, .sp h3, .sp h4, .sp h5 { margin: 0; font-family: var(--sp-display); font-weight: 500; letter-spacing: -0.01em; line-height: 1.05; }
+.sp p { margin: 0; }
+.sp a { color: inherit; text-decoration: none; }
+.sp button { font: inherit; cursor: pointer; }
+.sp img { display: block; max-width: 100%; }
+
+/* ── Page width ─────────────────────────────────────────────────────── */
+.sp-page { background: var(--sp-paper); overflow: hidden; margin: 0 auto; }
+.sp-container { max-width: 1280px; margin: 0 auto; padding: 0 56px; }
+
+/* ── Buttons ────────────────────────────────────────────────────────── */
+.sp-btn {
+	display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+	padding: 14px 26px; border-radius: 999px; border: none;
+	font-family: var(--sp-body); font-size: 13.5px; font-weight: 500;
+	letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer;
+	transition: transform .15s ease, background .15s ease, color .15s ease;
+}
+.sp-btn--primary { background: var(--sp-pink); color: #fff; }
+.sp-btn--primary:hover { background: #c97976; }
+.sp-btn--dark    { background: var(--sp-wood); color: var(--sp-cream); }
+.sp-btn--ghost   { background: transparent; color: var(--sp-wood); border: 1px solid var(--sp-wood); }
+.sp-btn--ghost-light { background: transparent; color: var(--sp-cream); border: 1px solid rgba(245,237,228,.45); }
+.sp-btn--sm      { padding: 10px 18px; font-size: 11.5px; }
+
+/* ── Eyebrow / kicker ───────────────────────────────────────────────── */
+.sp-eyebrow {
+	font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase;
+	color: var(--sp-brown); font-weight: 500;
+}
+.sp-script {
+	font-family: var(--sp-script); font-weight: 500; font-size: 32px;
+	color: var(--sp-pink); line-height: 1;
+}
+
+/* ── Section heading ────────────────────────────────────────────────── */
+.sp-section-head { display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
+.sp-section-head h2 { font-size: 56px; font-weight: 400; }
+.sp-section-head h2 em { font-style: italic; color: var(--sp-pink); }
+
+/* ── Divider with sprig ─────────────────────────────────────────────── */
+.sp-divider { display: flex; align-items: center; justify-content: center; gap: 18px; color: var(--sp-brown); }
+.sp-divider::before, .sp-divider::after { content: ""; height: 1px; background: var(--sp-line); width: 80px; }
+
+/* ── Placeholder photo blocks ───────────────────────────────────────── */
+.sp-photo {
+	position: relative; overflow: hidden; border-radius: 4px;
+	background: var(--sp-pink-wash);
+	background-image:
+		linear-gradient(135deg, rgba(255,255,255,.25), rgba(0,0,0,.05) 60%, rgba(0,0,0,.12)),
+		radial-gradient(circle at 30% 30%, rgba(255,255,255,.4), transparent 60%);
+}
+.sp-photo::after {
+	content: "";
+	position: absolute; top: 50%; left: 50%; width: 44px; height: 44px;
+	transform: translate(-50%, -50%);
+	background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-opacity='0.55' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 8a2 2 0 0 1 2-2h2.5l1.5-2h6l1.5 2H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/><circle cx='12' cy='13' r='4'/></svg>");
+	background-repeat: no-repeat; background-position: center; background-size: contain;
+	pointer-events: none;
+}
+.sp-photo--cream::after {
+	background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235B3F32' stroke-opacity='0.32' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 8a2 2 0 0 1 2-2h2.5l1.5-2h6l1.5 2H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/><circle cx='12' cy='13' r='4'/></svg>");
+}
+.sp-photo--dark { background: var(--sp-wood); background-image:
+		linear-gradient(135deg, rgba(255,255,255,.06), rgba(0,0,0,.4) 70%),
+		radial-gradient(circle at 70% 30%, rgba(217,142,139,.35), transparent 55%);
+}
+.sp-photo--brown { background: var(--sp-brown); background-image:
+		linear-gradient(160deg, rgba(255,255,255,.07), rgba(0,0,0,.3) 70%),
+		radial-gradient(circle at 30% 70%, rgba(217,142,139,.25), transparent 60%);
+}
+.sp-photo--cream { background: var(--sp-cream); background-image:
+		linear-gradient(135deg, rgba(255,255,255,.5), rgba(91,63,50,.08) 80%),
+		radial-gradient(circle at 70% 30%, rgba(217,142,139,.28), transparent 55%);
+}
+.sp-photo--sage  { background: var(--sp-sage); background-image:
+		linear-gradient(135deg, rgba(255,255,255,.18), rgba(0,0,0,.2) 70%),
+		radial-gradient(circle at 30% 30%, rgba(255,255,255,.3), transparent 55%);
+}
+.sp-photo__label {
+	position: absolute; inset: auto 14px 14px 14px;
+	font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase;
+	color: rgba(255,255,255,.78); font-weight: 500;
+	display: flex; align-items: center; gap: 8px;
+}
+.sp-photo--cream .sp-photo__label { color: rgba(91,63,50,.65); }
+.sp-photo__label::before { content: ""; width: 16px; height: 1px; background: currentColor; }
+
+/* ── Chalkboard panel ───────────────────────────────────────────────── */
+.sp-chalk {
+	background:
+		radial-gradient(ellipse at 30% 20%, rgba(255,255,255,.06), transparent 60%),
+		radial-gradient(ellipse at 70% 80%, rgba(217,142,139,.08), transparent 60%),
+		#1F1612;
+	color: #F2E6D6;
+	border: 8px solid #6B4A37;
+	border-radius: 6px;
+	box-shadow:
+		0 0 0 2px #3D2A1F inset,
+		0 24px 60px rgba(0,0,0,.18);
+	position: relative;
+	font-family: var(--sp-display);
+}
+.sp-chalk::before {
+	content: ""; position: absolute; inset: 14px;
+	border: 1px solid rgba(242,230,214,.18); pointer-events: none;
+}
+
+/* ── Header (design reference; WP header is rendered separately) ────── */
+.sp-header { background: var(--sp-paper); border-bottom: 1px solid var(--sp-line); position: relative; }
+.sp-header__util {
+	background: var(--sp-wood); color: var(--sp-cream);
+	font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase;
+}
+.sp-header__util-inner { max-width: 1280px; margin: 0 auto; padding: 9px 56px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.sp-header__util-left, .sp-header__util-right { display: flex; align-items: center; gap: 22px; }
+.sp-header__main { max-width: 1280px; margin: 0 auto; padding: 22px 56px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px; }
+.sp-nav { display: flex; gap: 34px; justify-content: center; }
+.sp-nav a {
+	font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase;
+	color: var(--sp-wood); font-weight: 500; padding: 8px 0;
+	border-bottom: 1.5px solid transparent;
+}
+.sp-nav a.is-active { border-bottom-color: var(--sp-pink); color: var(--sp-pink); }
+.sp-header__right { display: flex; align-items: center; gap: 22px; justify-content: flex-end; color: var(--sp-wood); }
+.sp-header__right .sp-iconbtn { position: relative; }
+.sp-header__cartbadge {
+	position: absolute; top: -6px; right: -8px; min-width: 18px; height: 18px;
+	border-radius: 999px; background: var(--sp-pink); color: #fff;
+	font-size: 10.5px; font-weight: 600; display: flex; align-items: center; justify-content: center;
+	padding: 0 5px;
+}
+
+/* ── Footer (design reference; WP footer is rendered separately) ────── */
+.sp-footer { background: var(--sp-wood); color: var(--sp-cream); padding: 80px 0 0; position: relative; overflow: hidden; }
+.sp-footer__grid {
+	max-width: 1280px; margin: 0 auto; padding: 0 56px;
+	display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 56px; align-items: start;
+}
+.sp-footer h4 {
+	font-family: var(--sp-body); font-size: 11.5px; letter-spacing: 0.28em; text-transform: uppercase;
+	color: var(--sp-pink-soft); margin-bottom: 22px; font-weight: 500;
+}
+.sp-footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.sp-footer a, .sp-footer p { color: rgba(245,237,228,.78); font-size: 14px; }
+.sp-footer__newsletter { display: flex; gap: 8px; margin-top: 16px; }
+.sp-footer__newsletter input {
+	flex: 1; background: transparent; border: 1px solid var(--sp-line-dark);
+	padding: 12px 14px; border-radius: 999px; font: inherit; color: var(--sp-cream);
+}
+.sp-footer__newsletter input::-webkit-input-placeholder { color: rgba(245,237,228,.45); }
+.sp-footer__newsletter input::-moz-placeholder { color: rgba(245,237,228,.45); }
+.sp-footer__newsletter input:-ms-input-placeholder { color: rgba(245,237,228,.45); }
+.sp-footer__newsletter input::-ms-input-placeholder { color: rgba(245,237,228,.45); }
+.sp-footer__newsletter input::placeholder { color: rgba(245,237,228,.45); }
+.sp-footer__bottom {
+	margin-top: 60px; padding: 22px 56px; border-top: 1px solid var(--sp-line-dark);
+	max-width: 1280px; margin-left: auto; margin-right: auto;
+	display: flex; justify-content: space-between; align-items: center;
+	font-size: 12px; color: rgba(245,237,228,.5);
+}
+
+/* ── Product card (Woo-style) ───────────────────────────────────────── */
+.sp-card { display: flex; flex-direction: column; gap: 14px; }
+.sp-card__img { aspect-ratio: 4 / 5; }
+.sp-card__cat { font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sp-brown-mid); }
+.sp-card__title { font-family: var(--sp-display); font-size: 22px; font-weight: 500; color: var(--sp-wood); line-height: 1.15; }
+.sp-card__row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.sp-card__price { font-family: var(--sp-display); font-size: 19px; color: var(--sp-pink); font-weight: 500; }
+.sp-card__price s { color: var(--sp-brown-mid); margin-right: 8px; font-size: 15px; }
+.sp-card__add {
+	background: transparent; border: 1px solid var(--sp-wood); color: var(--sp-wood);
+	padding: 7px 14px; border-radius: 999px;
+	font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500;
+}
+.sp-card__add:hover { background: var(--sp-wood); color: var(--sp-cream); }
+.sp-badge {
+	position: absolute; top: 14px; left: 14px; z-index: 2;
+	background: var(--sp-pink); color: #fff;
+	padding: 5px 10px; border-radius: 999px;
+	font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600;
+}
+.sp-badge--cream { background: var(--sp-cream); color: var(--sp-wood); }
+.sp-badge--gf { background: var(--sp-sage); }
+.sp-badge--sage { background: var(--sp-sage); }
+
+/* ── Floral sprig: rotatable corner accents ─────────────────────────── */
+.sp-sprig { position: absolute; pointer-events: none; opacity: 0.55; }
+
+/* ── Misc utilities ─────────────────────────────────────────────────── */
+.sp-rule { height: 1px; background: var(--sp-line); border: 0; margin: 0; }
+.sp-rule--light { background: var(--sp-line-dark); }
+
+
+
+.navbar-brand { width: 300px; }
+
+
+.ulg-brand-bar {
+  background: #0F172A;
+  height: 42px;
+}
+
+
+
+.ulg-brand-logo-img {
+  width: 200px;
+  height: auto;
+  background: white;
+  padding: 5px 7px;
+  border-radius: 5px;
+}
+
+.ulg-svg {
+  width: 250px;
+  height: auto;
+  background: white;
+  padding: 5px 7px;
+  border-radius: 5px;
+}
+
+.ulg-brand-bar a {
+  text-decoration: none;
+}
+
+.ulg-brand-bar a:hover {
+  text-decoration: underline;
+}
+
+.brandbar-nav a::after {
+  content: "|";
+  color: white;
+  /*margin-left: 10px; Adjusts space between text and pipe */
+  padding: 0 5px;
+}
+
+.brandbar-nav a:last-child::after {
+  content: "";
+  color: white;
+}
+
+.ulg-brand-bar .dropdown {
+  background: white;
+  border-radius: 8px;
+  padding: 0 7px;
+}
+
+.ulg-dropdown-logo {
+  max-height: 23px;
+  width: auto;
+  display: inline-block;
+}
+
+@media (max-width: 767px) {
+  .ulg-brand-logo {
+    display: none;
+  }
+}
+
+@media only screen and ( max-width: 990px ) {
+  .ulg-svg {
+    padding: 0 5px;
+  }
+}
+
+.ulg-brand-bar .dropdown-toggle::after {
+  color: black !important;
+  margin-left: 0 !important;
+}
+
+#ulgDropdown {
+  padding: 2px !important;
+  margin-bottom: 0 !important;
+}
+
+#header {
+  border-bottom: 1px solid #3d281729;
+}
