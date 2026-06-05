@@ -183,11 +183,13 @@
 		.ulg-brand-logo {
 			display: none;
 		}
+	}
 
-    .ulg_svg {
+  @media only screen and ( max-width: 767px ) {
+    .ulg-svg {
       padding: 0 5px;
     }
-	}
+  }
 
   .ulg-brand-bar .dropdown-toggle::after {
     color: black !important;
