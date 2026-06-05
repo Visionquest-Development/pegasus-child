@@ -187,6 +187,7 @@
 
   .ulg-brand-bar .dropdown-toggle::after {
     color: black !important;
+    margin-left: 0 !important;
   }
 
   #ulgDropdown {
