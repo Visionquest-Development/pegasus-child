@@ -9,7 +9,7 @@ $uptown_little_logo_url = '/wp-content/themes/pegasus-child/images/uptown_little
 				alt="Uptown Life Group"
 				class="img-fluid ulg-brand-logo-img"
 			/>-->
-			<?php get_template_part( 'templates/ulg_logo' ); ?>
+			<?php get_template_part( 'templates/ulg_logo', null, [ 'id_suffix' => 'desktop' ] ); ?>
 		</a>
 		<?php
 			$current_host = wp_parse_url( home_url(), PHP_URL_HOST );
@@ -21,7 +21,7 @@ $uptown_little_logo_url = '/wp-content/themes/pegasus-child/images/uptown_little
 				'Saltcellar'=> '//saltcellar.com',
 				'Mix Market' => '//themixmarket.com',
 				'Tommy G\'s' => '//tommygs.com',
-				'Sugar Pedaler' => 'https://sugar-pedaler.popmenu.com/'
+				'Sugar Peddler' => '//sugarpeddler.com'
 			];
 		?>
 		<nav class="brandbar-nav d-none d-lg-inline align-items-center  ms-auto">
@@ -42,11 +42,14 @@ $uptown_little_logo_url = '/wp-content/themes/pegasus-child/images/uptown_little
 		</nav>
 		<div class="dropdown d-block d-lg-none mx-auto">
 			<button class="btn btn-link ulg-gradient-heading text-decoration-none dropdown-toggle " type="button" id="ulgDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+				<?php /*
 				<img
 					src="<?php echo $uptown_little_logo_url; ?>"
 					alt="Uptown Life Group"
 					class="ulg-dropdown-logo"
 				/>
+				*/ ?>
+				<?php get_template_part( 'templates/ulg_logo', null, [ 'id_suffix' => 'mobile' ] ); ?>
 				<span class="visually-hidden">Uptown Life Group</span>
 			</button>
 			<ul class="dropdown-menu dropdown-menu-end text-white" aria-labelledby="ulgDropdown">
