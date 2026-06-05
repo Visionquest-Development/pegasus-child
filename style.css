@@ -205,7 +205,7 @@
 	}
 
   .ulg-svg {
-    width: 200px;
+    width: 250px;
     height: auto;
     background: white;
     padding: 5px 7px;
@@ -250,8 +250,15 @@
 		}
 	}
 
+  @media only screen and ( max-width: 990px ) {
+    .ulg-svg {
+      padding: 0 5px;
+    }
+  }
+
   .ulg-brand-bar .dropdown-toggle::after {
     color: black !important;
+    margin-left: 0 !important;
   }
 
   #ulgDropdown {
