@@ -69,24 +69,26 @@ get_header();
 	</section>
 
 	<?php /* ── MARQUEE / VALUE STRIP ──────────────────────────────────── */ ?>
+	<?php
+		$sp_marquee = array(
+			'Sourdough fired at 5am',
+			'French butter, local cream',
+			'Wine list curated weekly',
+			'Saltcellar family of restaurants',
+			'Open six days a week',
+		);
+		ob_start();
+		foreach ( $sp_marquee as $sp_i => $sp_phrase ) :
+			$tone = ( $sp_i % 2 === 0 ) ? 'sage' : 'pink'; ?>
+			<span><?php echo esc_html( $sp_phrase ); ?></span>
+			<span class="sp-marquee__star sp-marquee__star--<?php echo esc_attr( $tone ); ?>" aria-hidden="true">&#10022;</span>
+		<?php endforeach;
+		$sp_marquee_set = ob_get_clean();
+	?>
 	<section class="sp-marquee overflow-hidden py-3">
-		<div class="sp-marquee__inner d-flex flex-wrap justify-content-center align-items-center text-uppercase">
-			<?php
-			$sp_marquee = array(
-				'Sourdough fired at 5am',
-				'French butter, local cream',
-				'Wine list curated weekly',
-				'Saltcellar family of restaurants',
-				'Open six days a week',
-			);
-			$sp_marquee_last = count( $sp_marquee ) - 1;
-			foreach ( $sp_marquee as $sp_i => $sp_phrase ) : ?>
-				<span><?php echo esc_html( $sp_phrase ); ?></span>
-				<?php if ( $sp_i < $sp_marquee_last ) :
-					$tone = ( $sp_i % 2 === 0 ) ? 'sage' : 'pink'; ?>
-					<span class="sp-marquee__star sp-marquee__star--<?php echo esc_attr( $tone ); ?>">&#10022;</span>
-				<?php endif; ?>
-			<?php endforeach; ?>
+		<div class="sp-marquee__track">
+			<div class="sp-marquee__inner d-flex align-items-center text-uppercase"><?php echo $sp_marquee_set; ?></div>
+			<div class="sp-marquee__inner d-flex align-items-center text-uppercase" aria-hidden="true"><?php echo $sp_marquee_set; ?></div>
 		</div>
 	</section>
 

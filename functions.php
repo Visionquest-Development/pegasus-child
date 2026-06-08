@@ -38,49 +38,6 @@
 	} //end function
 	add_action( 'wp_enqueue_scripts', 'pegasus_child_bootstrap_js' );
 
-	/**
-	 * Sugarpeddler floral sprig (line-art SVG).
-	 * Used as decorative corner accents in the home page template.
-	 *
-	 * @param array $args size, tone, flip, rotate, style.
-	 * @return string SVG markup.
-	 */
-	function sp_sprig( $args = array() ) {
-		$a = array_merge( array(
-			'size'   => 60,
-			'tone'   => 'currentColor',
-			'flip'   => false,
-			'rotate' => 0,
-			'style'  => '',
-		), $args );
-
-		$transform  = sprintf( 'transform: scaleX(%d) rotate(%ddeg);', $a['flip'] ? -1 : 1, (int) $a['rotate'] );
-		$full_style = $transform . ' ' . $a['style'];
-
-		ob_start();
-		?>
-		<svg width="<?php echo (int) $a['size']; ?>" height="<?php echo (int) $a['size']; ?>" viewBox="0 0 120 120"
-			 fill="none" stroke="<?php echo esc_attr( $a['tone'] ); ?>" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"
-			 style="<?php echo esc_attr( $full_style ); ?>" aria-hidden="true">
-			<path d="M14 106 C 32 86, 48 70, 62 54 S 88 26, 108 14" />
-			<path d="M30 90 C 22 88, 16 92, 14 100 C 22 102, 28 98, 30 90 Z" />
-			<path d="M46 72 C 38 70, 32 74, 30 82 C 38 84, 44 80, 46 72 Z" />
-			<path d="M62 54 C 54 52, 48 56, 46 64 C 54 66, 60 62, 62 54 Z" />
-			<path d="M52 80 C 60 78, 66 82, 68 90 C 60 92, 54 88, 52 80 Z" />
-			<path d="M68 62 C 76 60, 82 64, 84 72 C 76 74, 70 70, 68 62 Z" />
-			<path d="M84 44 C 92 42, 98 46, 100 54 C 92 56, 86 52, 84 44 Z" />
-			<circle cx="98" cy="26" r="2.6" />
-			<circle cx="92" cy="20" r="1.8" />
-			<circle cx="104" cy="20" r="1.8" />
-			<g transform="translate(14,106)">
-				<circle cx="0" cy="0" r="2" />
-				<path d="M-4 -2 q -3 -1 -4 -4 q 3 -1 5 1" />
-				<path d="M-2 -4 q -1 -3 1 -5 q 3 1 3 4" />
-			</g>
-		</svg>
-		<?php
-		return ob_get_clean();
-	}
 
 	/**
 	 * Read a Home Page hero CMB2 value with a fallback.
@@ -181,4 +138,35 @@
 			'options'      => array( 'url' => false ),
 			'preview_size' => 'medium',
 		) );
+	}
+
+	/**
+	 * Format a price value with leading $.
+	 * Whole-dollar values render without decimals; otherwise two-decimal.
+	 */
+	if ( ! function_exists( 'vqmenu_money' ) ) {
+		function vqmenu_money( $value ) {
+			if ( ! is_numeric( $value ) ) {
+				return $value;
+			}
+			$f = (float) $value;
+			$num = ( fmod( $f, 1.0 ) === 0.0 )
+				? number_format( $f, 0, '.', '' )
+				: number_format( $f, 2, '.', '' );
+			return '$' . $num;
+		}
+	}
+
+	/**
+	 * Map a menu badge label (V, GF, GF*) to its CSS class.
+	 */
+	if ( ! function_exists( 'vqmenu_badge_class' ) ) {
+		function vqmenu_badge_class( $label ) {
+			$label = strtoupper( trim( (string) $label ) );
+			return match ( $label ) {
+				'V'         => 'sp-menu-badge sp-menu-badge--veg',
+				'GF', 'GF*' => 'sp-menu-badge sp-menu-badge--gf',
+				default     => 'sp-menu-badge',
+			};
+		}
 	}
