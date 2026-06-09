@@ -11,6 +11,26 @@ on:
       - mixmarket_theme
       - tommygs_theme
       - vqdev_theme
+      - sugarpeddler_theme
+      - visionquestdev_theme
+      - avena_theme
+      - meowweretalkin_theme
+      - pegasustheme_child
+      - vqgoods_theme
+      - sagescnc_theme
+      - chrishixson_theme
+      - qbiqcamp_theme
+      - qbiqsystem_theme
+      - qbroundtable_theme
+      - advcompany_theme
+      - theshootout_theme
+      - vineandvision_theme
+      - 34oak_theme
+      - top100proday_theme
+      - russellcontracting_theme
+      - ricecapital_theme
+      - gentwo_theme
+      - osps26_theme
   workflow_dispatch: {}
 
 jobs:
@@ -61,6 +81,106 @@ jobs:
             host: ssh.visionquestdevelopment.com
             user: u795-gsjmrktis7i1
             remote_path: /home/u795-gsjmrktis7i1/www/visionquestdevelopment.com/public_html/wp-content/themes/pegasus-child
+          - name: Sugarpeddler
+            branch: sugarpeddler_theme
+            host: gvam1168.siteground.biz
+            user: u2821-kszudcgjgqwe
+            remote_path: /home/u2821-kszudcgjgqwe/www/sugarpeddler.com/public_html/wp-content/themes/pegasus-child
+          - name: VisionQuest Dev
+            branch: visionquestdev_theme
+            host: ssh.visionquestdev.com
+            user: u137-u0edzwblljc1
+            remote_path: /home/u137-u0edzwblljc1/www/visionquestdev.com/public_html/wp-content/themes/pegasus-child
+          - name: Avena Family Photos
+            branch: avena_theme
+            host: ssh.avenafamilyphotos.com
+            user: u2668-1czijvloaqmy
+            remote_path: /home/u2668-1czijvloaqmy/www/avenafamilyphotos.com/public_html/wp-content/themes/pegasus-child
+          - name: Meow We're Talkin
+            branch: meowweretalkin_theme
+            host: ssh.meowweretalkin.com
+            user: u2373-whpzjvnzbcyl
+            remote_path: /home/u2373-whpzjvnzbcyl/www/meowweretalkin.com/public_html/wp-content/themes/pegasus-child
+          - name: Pegasus Theme
+            branch: pegasustheme_child
+            host: ssh.pegasustheme.com
+            user: u2375-bnxmykzebbol
+            remote_path: /home/u2375-bnxmykzebbol/www/pegasustheme.com/public_html/wp-content/themes/pegasus-child
+          - name: VisionQuest Goods
+            branch: vqgoods_theme
+            host: gvam1224.siteground.biz
+            user: u1448-xyecwpzvlm05
+            remote_path: /home/u1448-xyecwpzvlm05/www/visionquestgoods.com/public_html/wp-content/themes/pegasus-child
+          - name: Sage's CNC
+            branch: sagescnc_theme
+            host: ssh.sagescnc.com
+            user: u1896-o95aamxni69r
+            remote_path: /home/u1896-o95aamxni69r/www/sagescnc.com/public_html/wp-content/themes/pegasus-child
+          - name: Chris Hixson
+            branch: chrishixson_theme
+            host: gvam1007.siteground.biz
+            user: u869-geq9wwrhqrna
+            remote_path: /home/u869-geq9wwrhqrna/www/chrishixson.com/public_html/wp-content/themes/pegasus-child
+          - name: QBIQ Camp
+            branch: qbiqcamp_theme
+            host: ssh.qbiqcamp.com
+            user: u3018-28ezo8zzg2yz
+            remote_path: /home/u3018-28ezo8zzg2yz/www/qbiqcamp.com/public_html/wp-content/themes/pegasus-child
+          - name: QBIQ System
+            branch: qbiqsystem_theme
+            host: gvam1008.siteground.biz
+            user: u436-ep3uiws3fvge
+            remote_path: /home/u436-ep3uiws3fvge/www/qbiqsystem.com/public_html/wp-content/themes/pegasus-child
+          - name: QB Roundtable
+            branch: qbroundtable_theme
+            host: ssh.qbroundtable.com
+            user: u1153-di2xlglhg6jr
+            remote_path: /home/u1153-di2xlglhg6jr/www/qbroundtable.com/public_html/wp-content/themes/pegasus-child
+          - name: The ADV Company
+            branch: advcompany_theme
+            host: gvam1008.siteground.biz
+            user: u592-x2l2hh9agfst
+            remote_path: /home/u592-x2l2hh9agfst/www/theadvcompany.com/public_html/wp-content/themes/pegasus-child
+          - name: The Shootout
+            branch: theshootout_theme
+            host: ssh.theshootout.camp
+            user: u1059-lbxrgueukvoh
+            remote_path: /home/u1059-lbxrgueukvoh/www/theshootout.camp/public_html/wp-content/themes/pegasus-child
+          - name: Vine and Vision Consulting
+            branch: vineandvision_theme
+            host: ssh.vineandvisionconsulting.com
+            user: u2017-qcevdn2ytb46
+            remote_path: /home/u2017-qcevdn2ytb46/www/vineandvisionconsulting.com/public_html/wp-content/themes/pegasus-child
+          - name: 34 Oak Contracting
+            branch: 34oak_theme
+            host: gvam1082.siteground.biz
+            user: u3139-as2zskfuqrlw
+            remote_path: /home/u3139-as2zskfuqrlw/www/34oakcontracting.com/public_html/wp-content/themes/pegasus-child
+          - name: Top 100 Pro Day
+            branch: top100proday_theme
+            host: ssh.top100proday.com
+            user: u2547-1s1cfrj9bp8f
+            remote_path: /home/u2547-1s1cfrj9bp8f/www/top100proday.com/public_html/wp-content/themes/pegasus-child
+          - name: Russell Contracting
+            branch: russellcontracting_theme
+            host: ssh.russellcontracting.org
+            user: u2186-ihxeklzicf7p
+            remote_path: /home/u2186-ihxeklzicf7p/www/russellcontracting.org/public_html/wp-content/themes/pegasus-child
+          - name: Rice Capital Fund
+            branch: ricecapital_theme
+            host: gvam1137.siteground.biz
+            user: u3053-bxgyinhxxknr
+            remote_path: /home/u3053-bxgyinhxxknr/www/ricecapitalfund.com/public_html/wp-content/themes/pegasus-child
+          - name: Gen2 Automation
+            branch: gentwo_theme
+            host: gtxm1263.siteground.biz
+            user: u2607-33glsnvdafav
+            remote_path: /home/u2607-33glsnvdafav/www/gen2automation.com/public_html/wp-content/themes/pegasus-child
+          - name: OSPS26
+            branch: osps26_theme
+            host: gtxm1338.siteground.biz
+            user: u899-mruelycumg2h
+            remote_path: /home/u899-mruelycumg2h/www/osps26.com/public_html/wp-content/themes/pegasus-child
     steps:
       - name: Deploy via SSH
         if: github.ref_name == matrix.site.branch
