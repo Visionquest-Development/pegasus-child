@@ -141,17 +141,17 @@ $home_url = esc_url( home_url( '/' ) );
 	<header class="page-hero">
 		<span class="glow"></span>
 		<div class="grid-deco"></div>
-		<div class="container position-relative" style="padding-top:4rem;padding-bottom:4rem;">
+		<div class="container position-relative py-5">
 			<div class="row">
 				<div class="col-lg-8">
-					<div class="crumbs mb-3"><a href="<?php echo $home_url; ?>">Home</a> &nbsp;/&nbsp; <span style="color:#fff;"><?php echo esc_html( get_the_title() ); ?></span></div>
+					<div class="crumbs mb-3"><a href="<?php echo $home_url; ?>">Home</a> &nbsp;/&nbsp; <span class="text-white"><?php echo esc_html( get_the_title() ); ?></span></div>
 					<span class="eyebrow on-dark mb-3"><?php echo esc_html( $hero_eyebrow ); ?></span>
 					<h1 class="display mb-4" style="font-size:clamp(2.4rem,4.6vw,3.6rem);"><?php echo esc_html( $hero_h1 ); ?></h1>
 					<p class="lead-xl mb-0 pe-lg-5"><?php echo esc_html( $hero_lead ); ?></p>
 				</div>
 			</div>
 			<div class="row g-3 mt-4 pt-3">
-				<?php foreach ( $hero_chips as $chip ) : ?>
+				<?php foreach ( $hero_chips as $chip ) : $chip = wp_parse_args( (array) $chip, array( 'label' => '', 'anchor' => '' ) ); ?>
 					<div class="col-6 col-md-auto"><a href="<?php echo esc_url( $chip['anchor'] ); ?>" class="btn btn-ghost on-dark btn-sm"><?php echo esc_html( $chip['label'] ); ?></a></div>
 				<?php endforeach; ?>
 			</div>
@@ -160,11 +160,12 @@ $home_url = esc_url( home_url( '/' ) );
 
 	<!-- ===================== SECTION 02 — SERVICE DETAIL BLOCKS ===================== -->
 	<?php foreach ( $blocks as $i => $b ) :
+		$b           = wp_parse_args( (array) $b, array( 'anchor' => '', 'num' => '', 'heading' => '', 'desc' => '', 'features' => array(), 'tags' => array(), 'visual' => 'check', 'scheme' => 'teal-blue', 'reverse' => '', 'mist' => '' ) );
 		$reverse_cls = ( 'on' === $b['reverse'] ) ? ' flex-lg-row-reverse' : '';
 		$mist_cls    = ( 'on' === $b['mist'] ) ? ' section mist' : '';
 		$gradient    = osps_visual_gradient( $b['scheme'] );
 		?>
-		<section id="<?php echo esc_attr( $b['anchor'] ); ?>" class="svc-detail<?php echo esc_attr( $mist_cls ); ?>" style="border:none;">
+		<section id="<?php echo esc_attr( $b['anchor'] ); ?>" class="svc-detail border-0<?php echo esc_attr( $mist_cls ); ?>">
 			<div class="container">
 				<div class="row g-5 align-items-center<?php echo esc_attr( $reverse_cls ); ?>">
 					<div class="col-lg-6 fade-up">
@@ -205,7 +206,7 @@ $home_url = esc_url( home_url( '/' ) );
 				<h2 class="sec-title"><?php echo esc_html( $proc_title ); ?></h2>
 			</div>
 			<div class="row g-4">
-				<?php foreach ( $proc_steps as $st ) : ?>
+				<?php foreach ( $proc_steps as $st ) : $st = wp_parse_args( (array) $st, array( 'number' => '', 'title' => '', 'desc' => '' ) ); ?>
 					<div class="col-md-6 col-lg-3 fade-up">
 						<div class="step">
 							<div class="step-n"><?php echo esc_html( $st['number'] ); ?></div>
@@ -219,7 +220,7 @@ $home_url = esc_url( home_url( '/' ) );
 	</section>
 
 	<!-- ===================== SECTION 04 — CTA ===================== -->
-	<section class="section pt-0" id="contact" style="padding-top:4rem;">
+	<section class="section pt-5" id="contact">
 		<div class="container">
 			<div class="cta-band p-4 p-lg-5">
 				<svg class="trefoil-bg" viewBox="0 0 100 100"><g fill="currentColor"><path d="M 57.5 37.0 A 15 15 0 0 1 42.5 37.0 L 29.0 13.6 A 42 42 0 0 1 71.0 13.6 Z"/><path transform="rotate(120 50 50)" d="M 57.5 37.0 A 15 15 0 0 1 42.5 37.0 L 29.0 13.6 A 42 42 0 0 1 71.0 13.6 Z"/><path transform="rotate(240 50 50)" d="M 57.5 37.0 A 15 15 0 0 1 42.5 37.0 L 29.0 13.6 A 42 42 0 0 1 71.0 13.6 Z"/><circle cx="50" cy="50" r="7.5"/></g></svg>
@@ -227,7 +228,7 @@ $home_url = esc_url( home_url( '/' ) );
 					<div class="col-lg-7">
 						<span class="eyebrow on-dark mb-3"><?php echo esc_html( $cta_eyebrow ); ?></span>
 						<h2 class="sec-title mb-2"><?php echo esc_html( $cta_heading ); ?></h2>
-						<p class="lead-xl mb-0" style="color:rgba(255,255,255,.85);"><?php echo esc_html( $cta_lead ); ?></p>
+						<p class="lead-xl mb-0 text-white-50"><?php echo esc_html( $cta_lead ); ?></p>
 					</div>
 					<div class="col-lg-5 text-lg-end">
 						<div class="d-flex flex-column flex-sm-row gap-3 justify-content-lg-end">

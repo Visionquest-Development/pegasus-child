@@ -22,7 +22,7 @@
 		//wp_enqueue_style('twentytwenty-css', get_stylesheet_directory_uri() . '/css/twentytwenty.css', null, false, false);
 
 		// Only load the OSPS26 design assets on the two new templates.
-		if ( is_page_template( 'tpl_home.php' ) || is_page_template( 'tpl_services.php' ) ) {
+		if ( is_page_template( 'tpl_home.php' ) || is_page_template( 'tpl_services.php' ) || is_page_template( 'tpl_contact.php' ) ) {
 			wp_enqueue_style(
 				'osps26-fonts',
 				'https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Public+Sans:wght@400;500;600;700&display=swap',
@@ -32,7 +32,7 @@
 			wp_enqueue_style(
 				'osps26-design',
 				get_stylesheet_directory_uri() . '/css/osps26-design.css',
-				array( 'parent-style' ),
+				array( 'bootstrap-style', 'parent-style' ),
 				filemtime( get_stylesheet_directory() . '/css/osps26-design.css' )
 			);
 		}
@@ -48,7 +48,7 @@
 
 		//wp_enqueue_script( 'matchHeight_js', get_stylesheet_directory_uri() . '/js/jquery.matchHeight-min.js', array(), '', true );
 
-		if ( is_page_template( 'tpl_home.php' ) || is_page_template( 'tpl_services.php' ) ) {
+		if ( is_page_template( 'tpl_home.php' ) || is_page_template( 'tpl_services.php' ) || is_page_template( 'tpl_contact.php' ) ) {
 			wp_enqueue_script(
 				'osps26-design',
 				get_stylesheet_directory_uri() . '/js/osps26-design.js',

@@ -39,8 +39,11 @@ if ( empty( $trust_chips ) || ! is_array( $trust_chips ) ) {
 $mod_eyebrow = get_post_meta( $pid, $prefix . 'mod_eyebrow', true ) ?: 'What we test';
 $mod_title   = get_post_meta( $pid, $prefix . 'mod_title', true ) ?: 'Physics support for every imaging modality';
 $mod_intro   = get_post_meta( $pid, $prefix . 'mod_intro', true ) ?: 'Annual surveys, equipment evaluations, and ongoing QC — performed by board-certified physicists.';
-$mod_items   = get_post_meta( $pid, $prefix . 'mod_items', true );
-if ( empty( $mod_items ) || ! is_array( $mod_items ) ) {
+$mod_items = array_values( array_filter( (array) get_post_meta( $pid, $prefix . 'mod_items', true ), function ( $row ) {
+	$row = (array) $row;
+	return ! empty( $row['title'] ) || ! empty( $row['desc'] );
+} ) );
+if ( empty( $mod_items ) ) {
 	$mod_items = array(
 		array( 'icon' => 'mammography', 'title' => 'Mammography', 'desc' => 'MQSA & ACR surveys, ADM evaluations, breast tomosynthesis.' ),
 		array( 'icon' => 'ct',          'title' => 'CT',          'desc' => 'Dose optimization, CTDI, image quality & ACR phantom analysis.' ),
@@ -55,8 +58,11 @@ $svc_eyebrow   = get_post_meta( $pid, $prefix . 'svc_eyebrow', true ) ?: 'Core s
 $svc_title     = get_post_meta( $pid, $prefix . 'svc_title', true ) ?: 'One partner for compliance, safety & design';
 $svc_link_text = get_post_meta( $pid, $prefix . 'svc_link_text', true ) ?: 'View all services';
 $svc_link_url  = get_post_meta( $pid, $prefix . 'svc_link_url', true ) ?: '/services/';
-$svc_items     = get_post_meta( $pid, $prefix . 'svc_items', true );
-if ( empty( $svc_items ) || ! is_array( $svc_items ) ) {
+$svc_items = array_values( array_filter( (array) get_post_meta( $pid, $prefix . 'svc_items', true ), function ( $row ) {
+	$row = (array) $row;
+	return ! empty( $row['title'] ) || ! empty( $row['desc'] );
+} ) );
+if ( empty( $svc_items ) ) {
 	$svc_items = array(
 		array( 'icon' => 'accreditation', 'title' => 'Accreditation Guidance',     'desc' => 'End-to-end support for ACR, TJC, IAC and RadSite — applications, testing, documentation and on-site survey prep.', 'tag' => 'ACR · TJC · IAC · RadSite', 'url' => '/services/#accreditation' ),
 		array( 'icon' => 'mri-safety',    'title' => 'MRI Safety',                 'desc' => 'MRI implant safety evaluations, Zone signage, screening protocols and MRSO/MRSE program support.',                       'tag' => 'MRSO / MRSE',              'url' => '/services/#mri-safety' ),
@@ -126,7 +132,7 @@ $cta_btn2_u  = get_post_meta( $pid, $prefix . 'cta_btn2_url', true ) ?: 'mailto:
 	<!-- ===================== SECTION 01 — HERO ===================== -->
 	<header class="hero">
 		<div class="hero-grid"></div>
-		<div class="container position-relative py-5 py-lg-6" style="padding-top:4.5rem;padding-bottom:5rem;">
+		<div class="container position-relative py-5">
 			<div class="row align-items-center g-5">
 				<div class="col-lg-6">
 					<span class="eyebrow mb-3"><?php echo esc_html( $hero_eyebrow ); ?></span>
@@ -137,10 +143,10 @@ $cta_btn2_u  = get_post_meta( $pid, $prefix . 'cta_btn2_url', true ) ?: 'mailto:
 						<a href="<?php echo esc_url( $hero_btn2_url ); ?>" class="btn btn-ghost btn-lg"><?php echo esc_html( $hero_btn2_label ); ?></a>
 					</div>
 					<div class="hero-stats">
-						<?php foreach ( $hero_stats as $stat ) : ?>
+						<?php foreach ( (array) $hero_stats as $stat ) : $stat = (array) $stat; ?>
 							<div>
-								<div class="n"><?php echo esc_html( $stat['number'] ); ?></div>
-								<div class="l"><?php echo esc_html( $stat['label'] ); ?></div>
+								<div class="n"><?php echo esc_html( $stat['number'] ?? '' ); ?></div>
+								<div class="l"><?php echo esc_html( $stat['label'] ?? '' ); ?></div>
 							</div>
 						<?php endforeach; ?>
 					</div>
@@ -180,19 +186,12 @@ $cta_btn2_u  = get_post_meta( $pid, $prefix . 'cta_btn2_url', true ) ?: 'mailto:
 								</g>
 							</svg>
 						</div>
-						<div class="position-absolute text-white" style="left:1.6rem;bottom:1.4rem;z-index:3;">
-							<div style="font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;opacity:.7;">Live QC reading</div>
-							<div style="font-family:var(--font-head);font-weight:700;font-size:1.05rem;">CT · WW 400 / WL 0 — Within tolerance</div>
+						<div class="position-absolute bottom-0 start-0 text-white ms-4 mb-4" style="z-index:3;">
+							<div class="text-uppercase small opacity-75" style="letter-spacing:.18em;font-size:.72rem;">Live QC reading</div>
+							<div class="fw-bold" style="font-family:var(--font-head);font-size:1.05rem;">CT · WW 400 / WL 0 — Within tolerance</div>
 						</div>
 					</div>
-					<div class="float-card" style="top:1.4rem;right:-0.6rem;">
-						<span class="fc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg></span>
-						<div><div class="fc-n">ACR Pass</div><div class="fc-l">Annual survey complete</div></div>
-					</div>
-					<div class="float-card" style="bottom:1.2rem;left:-0.8rem;">
-						<span class="fc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
-						<div><div class="fc-n">MRI Safe</div><div class="fc-l">Implant cleared in 24h</div></div>
-					</div>
+
 				</div>
 			</div>
 		</div>
@@ -227,12 +226,12 @@ $cta_btn2_u  = get_post_meta( $pid, $prefix . 'cta_btn2_url', true ) ?: 'mailto:
 				</div>
 			</div>
 			<div class="row g-4">
-				<?php foreach ( $mod_items as $m ) : ?>
+				<?php foreach ( (array) $mod_items as $m ) : $m = (array) $m; ?>
 					<div class="col-6 col-lg-4 col-xl-2 fade-up">
 						<div class="modality">
-							<span class="m-ico"><?php echo osps_modality_icon( $m['icon'] ); ?></span>
-							<h3><?php echo esc_html( $m['title'] ); ?></h3>
-							<p><?php echo esc_html( $m['desc'] ); ?></p>
+							<span class="m-ico"><?php echo osps_modality_icon( $m['icon'] ?? '' ); ?></span>
+							<h3><?php echo esc_html( $m['title'] ?? '' ); ?></h3>
+							<p><?php echo esc_html( $m['desc'] ?? '' ); ?></p>
 						</div>
 					</div>
 				<?php endforeach; ?>
@@ -255,12 +254,12 @@ $cta_btn2_u  = get_post_meta( $pid, $prefix . 'cta_btn2_url', true ) ?: 'mailto:
 				</div>
 			</div>
 			<div class="row g-4">
-				<?php foreach ( $svc_items as $s ) : ?>
+				<?php foreach ( (array) $svc_items as $s ) : $s = (array) $s; ?>
 					<div class="col-md-6 col-lg-4 fade-up">
-						<a href="<?php echo esc_url( $s['url'] ); ?>" class="text-reset svc-card d-block">
-							<span class="s-ico"><?php echo osps_service_icon( $s['icon'] ); ?></span>
-							<h3><?php echo esc_html( $s['title'] ); ?></h3>
-							<p><?php echo esc_html( $s['desc'] ); ?></p>
+						<a href="<?php echo esc_url( $s['url'] ?? '' ); ?>" class="text-reset svc-card d-block">
+							<span class="s-ico"><?php echo osps_service_icon( $s['icon'] ?? '' ); ?></span>
+							<h3><?php echo esc_html( $s['title'] ?? '' ); ?></h3>
+							<p><?php echo esc_html( $s['desc'] ?? '' ); ?></p>
 							<?php if ( ! empty( $s['tag'] ) ) : ?>
 								<span class="tag"><?php echo esc_html( $s['tag'] ); ?></span>
 							<?php endif; ?>
@@ -268,9 +267,9 @@ $cta_btn2_u  = get_post_meta( $pid, $prefix . 'cta_btn2_url', true ) ?: 'mailto:
 					</div>
 				<?php endforeach; ?>
 				<div class="col-md-6 col-lg-4 fade-up">
-					<div class="svc-card d-flex flex-column justify-content-center" style="background:linear-gradient(150deg,var(--teal),var(--blue-700));border:none;">
-						<h3 style="color:#fff;"><?php echo esc_html( $svc_cta_title ); ?></h3>
-						<p style="color:rgba(255,255,255,.82);"><?php echo esc_html( $svc_cta_desc ); ?></p>
+					<div class="svc-card d-flex flex-column justify-content-center border-0" style="background:linear-gradient(150deg,var(--teal),var(--blue-700));">
+						<h3 class="text-white"><?php echo esc_html( $svc_cta_title ); ?></h3>
+						<p class="text-white-50"><?php echo esc_html( $svc_cta_desc ); ?></p>
 						<a href="<?php echo esc_url( $svc_cta_btn_u ); ?>" class="btn btn-cyan align-self-start mt-1"><?php echo esc_html( $svc_cta_btn_l ); ?></a>
 					</div>
 				</div>
@@ -286,17 +285,17 @@ $cta_btn2_u  = get_post_meta( $pid, $prefix . 'cta_btn2_url', true ) ?: 'mailto:
 			<div class="row g-5 align-items-center">
 				<div class="col-lg-5">
 					<span class="eyebrow on-dark mb-3"><?php echo esc_html( $why_eyebrow ); ?></span>
-					<h2 class="sec-sub mb-3" style="font-family:var(--font-head);font-weight:800;"><?php echo esc_html( $why_heading ); ?></h2>
+					<h2 class="sec-sub mb-3 fw-bolder" style="font-family:var(--font-head);"><?php echo esc_html( $why_heading ); ?></h2>
 					<p class="lead-xl mb-4"><?php echo esc_html( $why_lead ); ?></p>
 					<a href="<?php echo esc_url( $why_btn_u ); ?>" class="btn btn-cyan"><?php echo esc_html( $why_btn_l ); ?></a>
 				</div>
 				<div class="col-lg-7">
 					<div class="row g-4">
-						<?php foreach ( $why_stats as $st ) : ?>
+						<?php foreach ( (array) $why_stats as $st ) : $st = (array) $st; ?>
 							<div class="col-sm-6">
 								<div class="bigstat">
-									<div class="n"><?php echo esc_html( $st['number'] ); ?><?php if ( ! empty( $st['unit'] ) ) : ?><span class="u"><?php echo esc_html( $st['unit'] ); ?></span><?php endif; ?></div>
-									<div class="l"><?php echo esc_html( $st['label'] ); ?></div>
+									<div class="n"><?php echo esc_html( $st['number'] ?? '' ); ?><?php if ( ! empty( $st['unit'] ) ) : ?><span class="u"><?php echo esc_html( $st['unit'] ); ?></span><?php endif; ?></div>
+									<div class="l"><?php echo esc_html( $st['label'] ?? '' ); ?></div>
 								</div>
 							</div>
 						<?php endforeach; ?>
@@ -315,10 +314,10 @@ $cta_btn2_u  = get_post_meta( $pid, $prefix . 'cta_btn2_url', true ) ?: 'mailto:
 					<h2 class="sec-title mb-3"><?php echo esc_html( $cert_title ); ?></h2>
 					<p class="text-secondary mb-4"><?php echo esc_html( $cert_intro ); ?></p>
 					<div>
-						<?php foreach ( $cert_rows as $cr ) : ?>
+						<?php foreach ( (array) $cert_rows as $cr ) : $cr = (array) $cr; ?>
 							<div class="cert-row">
 								<span class="badge-ico"><?php echo osps_badge_icon(); ?></span>
-								<div><b><?php echo esc_html( $cr['title'] ); ?></b><span><?php echo esc_html( $cr['sub'] ); ?></span></div>
+								<div><b><?php echo esc_html( $cr['title'] ?? '' ); ?></b><span><?php echo esc_html( $cr['sub'] ?? '' ); ?></span></div>
 							</div>
 						<?php endforeach; ?>
 					</div>
@@ -326,23 +325,23 @@ $cta_btn2_u  = get_post_meta( $pid, $prefix . 'cta_btn2_url', true ) ?: 'mailto:
 				<div class="col-lg-7">
 					<div class="row g-3 align-items-stretch">
 						<div class="col-12">
-							<p class="label trust-strip border-0 p-0 mb-2" style="background:none;"><?php echo esc_html( $accr_label ); ?></p>
+							<p class="label trust-strip border-0 p-0 mb-2 bg-transparent"><?php echo esc_html( $accr_label ); ?></p>
 						</div>
-						<?php foreach ( $accr_tiles as $tile ) : ?>
+						<?php foreach ( (array) $accr_tiles as $tile ) : $tile = (array) $tile; ?>
 							<div class="col-4 col-md-3">
 								<div class="accr-tile">
-									<span class="mono"><?php echo esc_html( $tile['mono'] ); ?></span>
-									<span class="full"><?php echo esc_html( $tile['full'] ); ?></span>
+									<span class="mono"><?php echo esc_html( $tile['mono'] ?? '' ); ?></span>
+									<span class="full"><?php echo esc_html( $tile['full'] ?? '' ); ?></span>
 								</div>
 							</div>
 						<?php endforeach; ?>
 						<div class="col-12">
-							<div class="svc-card mt-2" style="background:var(--cream);border-color:transparent;">
+							<div class="svc-card mt-2 border-0" style="background:var(--cream);">
 								<div class="d-flex align-items-start gap-3">
-									<span class="m-ico" style="flex:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg></span>
+									<span class="m-ico flex-shrink-0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg></span>
 									<div>
-										<h3 style="font-size:1.12rem;margin:0 0 .3rem;"><?php echo esc_html( $cert_card_title ); ?></h3>
-										<p style="margin:0;font-size:.95rem;color:var(--slate);"><?php echo esc_html( $cert_card_desc ); ?></p>
+										<h3 class="fs-6 mt-0 mb-1"><?php echo esc_html( $cert_card_title ); ?></h3>
+										<p class="m-0 small" style="color:var(--slate);"><?php echo esc_html( $cert_card_desc ); ?></p>
 									</div>
 								</div>
 							</div>
@@ -362,7 +361,7 @@ $cta_btn2_u  = get_post_meta( $pid, $prefix . 'cta_btn2_url', true ) ?: 'mailto:
 					<div class="col-lg-7">
 						<span class="eyebrow on-dark mb-3"><?php echo esc_html( $cta_eyebrow ); ?></span>
 						<h2 class="sec-title mb-2"><?php echo esc_html( $cta_heading ); ?></h2>
-						<p class="lead-xl mb-0" style="color:rgba(255,255,255,.85);"><?php echo esc_html( $cta_lead ); ?></p>
+						<p class="lead-xl mb-0 text-white-50"><?php echo esc_html( $cta_lead ); ?></p>
 					</div>
 					<div class="col-lg-5 text-lg-end">
 						<div class="d-flex flex-column flex-sm-row gap-3 justify-content-lg-end">

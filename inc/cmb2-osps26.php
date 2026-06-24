@@ -25,6 +25,7 @@ if ( ! function_exists( 'osps_register_home_metaboxes' ) ) {
 			'show_on'      => $show,
 			'context'      => 'normal',
 			'priority'     => 'high',
+			'closed'       => true,
 		) );
 		$hero->add_field( array(
 			'name'    => __( 'Eyebrow', 'pegasus-child' ),
@@ -84,6 +85,7 @@ if ( ! function_exists( 'osps_register_home_metaboxes' ) ) {
 				'add_button'    => __( 'Add stat', 'pegasus-child' ),
 				'remove_button' => __( 'Remove stat', 'pegasus-child' ),
 				'sortable'      => true,
+				'closed'        => true,
 			),
 		) );
 		$hero->add_group_field( $hero_stat, array(
@@ -103,6 +105,7 @@ if ( ! function_exists( 'osps_register_home_metaboxes' ) ) {
 			'title'        => __( 'Section 02 — Trust Strip', 'pegasus-child' ),
 			'object_types' => array( 'page' ),
 			'show_on'      => $show,
+			'closed'       => true,
 		) );
 		$trust->add_field( array(
 			'name'    => __( 'Label', 'pegasus-child' ),
@@ -126,6 +129,7 @@ if ( ! function_exists( 'osps_register_home_metaboxes' ) ) {
 			'title'        => __( 'Section 03 — Modalities', 'pegasus-child' ),
 			'object_types' => array( 'page' ),
 			'show_on'      => $show,
+			'closed'       => true,
 		) );
 		$mods->add_field( array(
 			'name'    => __( 'Eyebrow', 'pegasus-child' ),
@@ -154,6 +158,7 @@ if ( ! function_exists( 'osps_register_home_metaboxes' ) ) {
 				'add_button'    => __( 'Add modality', 'pegasus-child' ),
 				'remove_button' => __( 'Remove modality', 'pegasus-child' ),
 				'sortable'      => true,
+				'closed'        => true,
 			),
 		) );
 		$mods->add_group_field( $mod_item, array(
@@ -180,6 +185,7 @@ if ( ! function_exists( 'osps_register_home_metaboxes' ) ) {
 			'title'        => __( 'Section 04 — Services Overview', 'pegasus-child' ),
 			'object_types' => array( 'page' ),
 			'show_on'      => $show,
+			'closed'       => true,
 		) );
 		$svc->add_field( array(
 			'name'    => __( 'Eyebrow', 'pegasus-child' ),
@@ -214,6 +220,7 @@ if ( ! function_exists( 'osps_register_home_metaboxes' ) ) {
 				'add_button'    => __( 'Add service', 'pegasus-child' ),
 				'remove_button' => __( 'Remove service', 'pegasus-child' ),
 				'sortable'      => true,
+				'closed'        => true,
 			),
 		) );
 		$svc->add_group_field( $svc_item, array(
@@ -275,6 +282,7 @@ if ( ! function_exists( 'osps_register_home_metaboxes' ) ) {
 			'title'        => __( 'Section 05 — Why Us / Stats Band', 'pegasus-child' ),
 			'object_types' => array( 'page' ),
 			'show_on'      => $show,
+			'closed'       => true,
 		) );
 		$why->add_field( array(
 			'name'    => __( 'Eyebrow', 'pegasus-child' ),
@@ -315,6 +323,7 @@ if ( ! function_exists( 'osps_register_home_metaboxes' ) ) {
 				'add_button'    => __( 'Add stat', 'pegasus-child' ),
 				'remove_button' => __( 'Remove stat', 'pegasus-child' ),
 				'sortable'      => true,
+				'closed'        => true,
 			),
 		) );
 		$why->add_group_field( $big_stat, array(
@@ -339,6 +348,7 @@ if ( ! function_exists( 'osps_register_home_metaboxes' ) ) {
 			'title'        => __( 'Section 06 — Certifications', 'pegasus-child' ),
 			'object_types' => array( 'page' ),
 			'show_on'      => $show,
+			'closed'       => true,
 		) );
 		$cert->add_field( array(
 			'name'    => __( 'Eyebrow', 'pegasus-child' ),
@@ -367,6 +377,7 @@ if ( ! function_exists( 'osps_register_home_metaboxes' ) ) {
 				'add_button'    => __( 'Add cert', 'pegasus-child' ),
 				'remove_button' => __( 'Remove cert', 'pegasus-child' ),
 				'sortable'      => true,
+				'closed'        => true,
 			),
 		) );
 		$cert->add_group_field( $cert_row, array(
@@ -395,6 +406,7 @@ if ( ! function_exists( 'osps_register_home_metaboxes' ) ) {
 				'add_button'    => __( 'Add tile', 'pegasus-child' ),
 				'remove_button' => __( 'Remove tile', 'pegasus-child' ),
 				'sortable'      => true,
+				'closed'        => true,
 			),
 		) );
 		$cert->add_group_field( $accr_tile, array(
@@ -427,6 +439,7 @@ if ( ! function_exists( 'osps_register_home_metaboxes' ) ) {
 			'title'        => __( 'Section 07 — CTA', 'pegasus-child' ),
 			'object_types' => array( 'page' ),
 			'show_on'      => $show,
+			'closed'       => true,
 		) );
 		$cta->add_field( array(
 			'name'    => __( 'Eyebrow', 'pegasus-child' ),
@@ -487,6 +500,7 @@ if ( ! function_exists( 'osps_register_services_metaboxes' ) ) {
 			'title'        => __( 'Section 01 — Page Hero', 'pegasus-child' ),
 			'object_types' => array( 'page' ),
 			'show_on'      => $show,
+			'closed'       => true,
 		) );
 		$hero->add_field( array(
 			'name'    => __( 'Eyebrow', 'pegasus-child' ),
@@ -515,6 +529,7 @@ if ( ! function_exists( 'osps_register_services_metaboxes' ) ) {
 				'add_button'    => __( 'Add chip', 'pegasus-child' ),
 				'remove_button' => __( 'Remove chip', 'pegasus-child' ),
 				'sortable'      => true,
+				'closed'        => true,
 			),
 		) );
 		$hero->add_group_field( $chip, array(
@@ -534,6 +549,7 @@ if ( ! function_exists( 'osps_register_services_metaboxes' ) ) {
 			'title'        => __( 'Section 02 — Service Detail Blocks', 'pegasus-child' ),
 			'object_types' => array( 'page' ),
 			'show_on'      => $show,
+			'closed'       => true,
 		) );
 		$block = $detail->add_field( array(
 			'id'      => $prefix . 'blocks',
@@ -544,6 +560,7 @@ if ( ! function_exists( 'osps_register_services_metaboxes' ) ) {
 				'add_button'    => __( 'Add block', 'pegasus-child' ),
 				'remove_button' => __( 'Remove block', 'pegasus-child' ),
 				'sortable'      => true,
+				'closed'        => true,
 			),
 		) );
 		$detail->add_group_field( $block, array(
@@ -621,6 +638,7 @@ if ( ! function_exists( 'osps_register_services_metaboxes' ) ) {
 			'title'        => __( 'Section 03 — Process', 'pegasus-child' ),
 			'object_types' => array( 'page' ),
 			'show_on'      => $show,
+			'closed'       => true,
 		) );
 		$proc->add_field( array(
 			'name'    => __( 'Eyebrow', 'pegasus-child' ),
@@ -643,6 +661,7 @@ if ( ! function_exists( 'osps_register_services_metaboxes' ) ) {
 				'add_button'    => __( 'Add step', 'pegasus-child' ),
 				'remove_button' => __( 'Remove step', 'pegasus-child' ),
 				'sortable'      => true,
+				'closed'        => true,
 			),
 		) );
 		$proc->add_group_field( $step, array(
@@ -667,6 +686,7 @@ if ( ! function_exists( 'osps_register_services_metaboxes' ) ) {
 			'title'        => __( 'Section 04 — CTA', 'pegasus-child' ),
 			'object_types' => array( 'page' ),
 			'show_on'      => $show,
+			'closed'       => true,
 		) );
 		$cta->add_field( array(
 			'name'    => __( 'Eyebrow', 'pegasus-child' ),
@@ -712,6 +732,282 @@ if ( ! function_exists( 'osps_register_services_metaboxes' ) ) {
 		) );
 	}
 	add_action( 'cmb2_admin_init', 'osps_register_services_metaboxes' );
+}
+
+if ( ! function_exists( 'osps_register_contact_metaboxes' ) ) {
+
+	function osps_register_contact_metaboxes() {
+
+		$prefix = 'osps_contact_';
+		$show   = array( 'key' => 'page-template', 'value' => 'tpl_contact.php' );
+
+		/* ----- Section 01 — Page Hero ----- */
+		$hero = new_cmb2_box( array(
+			'id'           => $prefix . 'sec01_hero',
+			'title'        => __( 'Section 01 — Page Hero', 'pegasus-child' ),
+			'object_types' => array( 'page' ),
+			'show_on'      => $show,
+			'closed'       => true,
+		) );
+		$hero->add_field( array(
+			'name'    => __( 'Eyebrow', 'pegasus-child' ),
+			'id'      => $prefix . 'hero_eyebrow',
+			'type'    => 'text',
+			'default' => 'Get in touch',
+		) );
+		$hero->add_field( array(
+			'name'    => __( 'Headline', 'pegasus-child' ),
+			'id'      => $prefix . 'hero_h1',
+			'type'    => 'text',
+			'default' => "Let's talk about your imaging program",
+		) );
+		$hero->add_field( array(
+			'name'    => __( 'Lead paragraph', 'pegasus-child' ),
+			'id'      => $prefix . 'hero_lead',
+			'type'    => 'textarea',
+			'default' => "Share your equipment and timelines and we'll respond with a clear scope, schedule and quote — usually within one business day.",
+		) );
+
+		/* ----- Section 02 — Contact Details + Form ----- */
+		$contact = new_cmb2_box( array(
+			'id'           => $prefix . 'sec02_contact',
+			'title'        => __( 'Section 02 — Contact Details + Form', 'pegasus-child' ),
+			'object_types' => array( 'page' ),
+			'show_on'      => $show,
+			'closed'       => true,
+		) );
+		$contact->add_field( array(
+			'name'    => __( 'Eyebrow', 'pegasus-child' ),
+			'id'      => $prefix . 'sec_eyebrow',
+			'type'    => 'text',
+			'default' => 'How to contact us',
+		) );
+		$contact->add_field( array(
+			'name'    => __( 'Section title', 'pegasus-child' ),
+			'id'      => $prefix . 'sec_title',
+			'type'    => 'text',
+			'default' => 'Multiple ways to connect',
+		) );
+		$contact->add_field( array(
+			'name'    => __( 'Intro paragraph', 'pegasus-child' ),
+			'id'      => $prefix . 'sec_intro',
+			'type'    => 'textarea_small',
+			'default' => 'Pick the channel that works best — we respond promptly to all inquiries.',
+		) );
+
+		$method = $contact->add_field( array(
+			'id'      => $prefix . 'methods',
+			'type'    => 'group',
+			'name'    => __( 'Contact cards', 'pegasus-child' ),
+			'options' => array(
+				'group_title'   => __( 'Card {#}', 'pegasus-child' ),
+				'add_button'    => __( 'Add card', 'pegasus-child' ),
+				'remove_button' => __( 'Remove card', 'pegasus-child' ),
+				'sortable'      => true,
+				'closed'        => true,
+			),
+		) );
+		$contact->add_group_field( $method, array(
+			'name'    => __( 'Icon', 'pegasus-child' ),
+			'id'      => 'icon',
+			'type'    => 'select',
+			'options' => osps_contact_icon_options(),
+			'default' => 'email',
+		) );
+		$contact->add_group_field( $method, array(
+			'name' => __( 'Card title', 'pegasus-child' ),
+			'id'   => 'title',
+			'type' => 'text',
+		) );
+		$contact->add_group_field( $method, array(
+			'name' => __( 'Line 1 — label (e.g. "Primary")', 'pegasus-child' ),
+			'id'   => 'line1_label',
+			'type' => 'text',
+		) );
+		$contact->add_group_field( $method, array(
+			'name' => __( 'Line 1 — value', 'pegasus-child' ),
+			'id'   => 'line1_value',
+			'type' => 'text',
+		) );
+		$contact->add_group_field( $method, array(
+			'name'        => __( 'Line 1 — link (e.g. mailto:, tel:, https://)', 'pegasus-child' ),
+			'id'          => 'line1_url',
+			'type'        => 'text',
+			'description' => __( 'Leave blank for plain text.', 'pegasus-child' ),
+		) );
+		$contact->add_group_field( $method, array(
+			'name' => __( 'Line 2 — label (optional)', 'pegasus-child' ),
+			'id'   => 'line2_label',
+			'type' => 'text',
+		) );
+		$contact->add_group_field( $method, array(
+			'name' => __( 'Line 2 — value (optional)', 'pegasus-child' ),
+			'id'   => 'line2_value',
+			'type' => 'text',
+		) );
+		$contact->add_group_field( $method, array(
+			'name' => __( 'Line 2 — link (optional)', 'pegasus-child' ),
+			'id'   => 'line2_url',
+			'type' => 'text',
+		) );
+
+		$contact->add_field( array(
+			'name'    => __( 'Form card — eyebrow', 'pegasus-child' ),
+			'id'      => $prefix . 'form_eyebrow',
+			'type'    => 'text',
+			'default' => 'Send a message',
+		) );
+		$contact->add_field( array(
+			'name'    => __( 'Form card — heading', 'pegasus-child' ),
+			'id'      => $prefix . 'form_heading',
+			'type'    => 'text',
+			'default' => 'Request a consultation',
+		) );
+		$contact->add_field( array(
+			'name'    => __( 'Form card — intro', 'pegasus-child' ),
+			'id'      => $prefix . 'form_intro',
+			'type'    => 'textarea_small',
+			'default' => "Fill out the form below and we'll respond within one business day.",
+		) );
+		$contact->add_field( array(
+			'name'        => __( 'Gravity Forms shortcode', 'pegasus-child' ),
+			'id'          => $prefix . 'form_shortcode',
+			'type'        => 'textarea_small',
+			'description' => __( 'e.g. [gravityform id="1" title="false" description="false"]', 'pegasus-child' ),
+		) );
+
+		/* ----- Section 03 — Payment Information ----- */
+		$pay = new_cmb2_box( array(
+			'id'           => $prefix . 'sec03_payments',
+			'title'        => __( 'Section 03 — Payment Information', 'pegasus-child' ),
+			'object_types' => array( 'page' ),
+			'show_on'      => $show,
+			'closed'       => true,
+		) );
+		$pay->add_field( array(
+			'name'    => __( 'Eyebrow', 'pegasus-child' ),
+			'id'      => $prefix . 'pay_eyebrow',
+			'type'    => 'text',
+			'default' => 'Billing & payment',
+		) );
+		$pay->add_field( array(
+			'name'    => __( 'Section title', 'pegasus-child' ),
+			'id'      => $prefix . 'pay_title',
+			'type'    => 'text',
+			'default' => 'How we accept payment',
+		) );
+		$pay->add_field( array(
+			'name'    => __( 'Intro paragraph', 'pegasus-child' ),
+			'id'      => $prefix . 'pay_intro',
+			'type'    => 'textarea_small',
+			'default' => 'One Stop Physics Service accepts a variety of payment methods.',
+		) );
+
+		$pay_method = $pay->add_field( array(
+			'id'      => $prefix . 'pay_methods',
+			'type'    => 'group',
+			'name'    => __( 'Payment cards', 'pegasus-child' ),
+			'options' => array(
+				'group_title'   => __( 'Method {#}', 'pegasus-child' ),
+				'add_button'    => __( 'Add method', 'pegasus-child' ),
+				'remove_button' => __( 'Remove method', 'pegasus-child' ),
+				'sortable'      => true,
+				'closed'        => true,
+			),
+		) );
+		$pay->add_group_field( $pay_method, array(
+			'name'    => __( 'Icon', 'pegasus-child' ),
+			'id'      => 'icon',
+			'type'    => 'select',
+			'options' => osps_payment_icon_options(),
+			'default' => 'cards',
+		) );
+		$pay->add_group_field( $pay_method, array(
+			'name' => __( 'Title', 'pegasus-child' ),
+			'id'   => 'title',
+			'type' => 'text',
+		) );
+		$pay->add_group_field( $pay_method, array(
+			'name' => __( 'Description', 'pegasus-child' ),
+			'id'   => 'desc',
+			'type' => 'textarea_small',
+		) );
+
+		/* ----- Section 04 — CTA ----- */
+		$cta = new_cmb2_box( array(
+			'id'           => $prefix . 'sec04_cta',
+			'title'        => __( 'Section 04 — CTA', 'pegasus-child' ),
+			'object_types' => array( 'page' ),
+			'show_on'      => $show,
+			'closed'       => true,
+		) );
+		$cta->add_field( array(
+			'name'    => __( 'Eyebrow', 'pegasus-child' ),
+			'id'      => $prefix . 'cta_eyebrow',
+			'type'    => 'text',
+			'default' => 'Prefer to talk?',
+		) );
+		$cta->add_field( array(
+			'name'    => __( 'Heading', 'pegasus-child' ),
+			'id'      => $prefix . 'cta_heading',
+			'type'    => 'text',
+			'default' => 'Call us — we pick up.',
+		) );
+		$cta->add_field( array(
+			'name'    => __( 'Lead paragraph', 'pegasus-child' ),
+			'id'      => $prefix . 'cta_lead',
+			'type'    => 'textarea',
+			'default' => "Have a tight deadline or a complex question? A board-certified physicist is just a phone call away.",
+		) );
+		$cta->add_field( array(
+			'name'    => __( 'Primary button label', 'pegasus-child' ),
+			'id'      => $prefix . 'cta_btn1_label',
+			'type'    => 'text',
+			'default' => 'Call (813) 743-2373',
+		) );
+		$cta->add_field( array(
+			'name'    => __( 'Primary button URL', 'pegasus-child' ),
+			'id'      => $prefix . 'cta_btn1_url',
+			'type'    => 'text',
+			'default' => 'tel:+18137432373',
+		) );
+		$cta->add_field( array(
+			'name'    => __( 'Secondary button label', 'pegasus-child' ),
+			'id'      => $prefix . 'cta_btn2_label',
+			'type'    => 'text',
+			'default' => 'Email Lei',
+		) );
+		$cta->add_field( array(
+			'name'    => __( 'Secondary button URL', 'pegasus-child' ),
+			'id'      => $prefix . 'cta_btn2_url',
+			'type'    => 'text',
+			'default' => 'mailto:Lei@osps26.com',
+		) );
+	}
+	add_action( 'cmb2_admin_init', 'osps_register_contact_metaboxes' );
+}
+
+/**
+ * Icon-key options for the contact card select.
+ */
+function osps_contact_icon_options() {
+	return array(
+		'email'    => __( 'Email (envelope)', 'pegasus-child' ),
+		'phone'    => __( 'Phone (handset)', 'pegasus-child' ),
+		'location' => __( 'Location (map pin)', 'pegasus-child' ),
+		'hours'    => __( 'Hours (clock)', 'pegasus-child' ),
+	);
+}
+
+/**
+ * Icon-key options for the payment-method select.
+ */
+function osps_payment_icon_options() {
+	return array(
+		'cards' => __( 'Cards (credit/debit)', 'pegasus-child' ),
+		'bank'  => __( 'Bank (ACH / Wire)', 'pegasus-child' ),
+		'check' => __( 'Check', 'pegasus-child' ),
+	);
 }
 
 /**
