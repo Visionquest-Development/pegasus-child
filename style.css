@@ -1,74 +1,788 @@
 /*
  Theme Name:     Pegasus Child
  Theme URI:      http://visionquestdevelopment.com
- Description:    Pegasus Child Theme
+ Description:    Pegasus Child Theme — Russell Contracting
  Author:         Jim O'Brien
  Author URI:     http://visionquestdevelopment.com
  Template:       pegasus
- Version:        0.0.1
+ Version:        0.0.2
 */
 
-/*@import url("../pegasus/style.css");*/
-	
-	
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	/*~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~ HEADER ~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	
-	/*~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~ NAVIGATION ~~~~~
-	~~~~~~~~~~~~~~~~~~~~~*/
+/* ==========================================================================
+   Russell Contracting — brand tokens
+   ========================================================================== */
+:root {
+	--rc-gold: #E9A100;
+	--rc-gold-2: #F6C244;
+	--rc-ink: #131313;
+	--rc-ink-2: #0c0c0c;
+	--rc-ink-3: #1c1c1c;
+	--rc-muted: #9a9a9a;
+	--rc-muted-2: #cfcfcf;
+	--rc-card-body: #555;
+}
 
-	
-	/*~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~ FOOTER ~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
+#top-bar a {
+  font-weight: bold;
+}
 
-	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
-	/*~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~ HOME PAGE ~~~~~
-	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	
-	
-	/* ~~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~~SITEMAP~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~*/
-	
-	/* ~~~~~~~~~~~~~~~~~~~~~~
-	~~~~WOOCOMMERCE~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~*/
+.navbar {
+  border-bottom: 3px solid var(--rc-gold);
+}
 
-	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	~~~~~MEDIA QUERIES~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	@media only screen and ( min-width: 1100px ) and ( max-width: 1405px) {
-		
-	}
-	
-	@media only screen and ( min-width: 981px ) {
-		
-	}
-		
-	@media only screen and (max-width: 980px) {
-		
-	}
-	
-	@media only screen and ( max-width: 767px ) {
-		
-	}
-	
-	@media only screen and (max-width: 479px) {
-		
-	}
+.navbar .nav-link {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+@media only screen and ( min-width: 981px ) {
+  .contact-button-container {
+    padding-left: 20px;
+  }
+}
+
+.navbar-brand {
+  width: 100px;
+}
+
+/* Wordmark brand block (templates/header_two.php): logo on the left,
+   RUSSELL / CONTRACTING on the right — matching the Claude Design layout.
+   Override the fixed 100px width above so the text has room to sit next
+   to the logo without wrapping or clipping. */
+.rc-navbar-brand {
+  width: auto;
+  gap: .65rem;
+}
+.rc-navbar-brand > img,
+.rc-navbar-brand > #logo {
+  flex: 0 0 auto;
+  max-width: 100px;
+  height: auto;
+}
+.rc-navbar-brand .rc-brand-text {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--rc-ink);
+  font-size: 1.15rem;
+  white-space: nowrap;
+}
+.rc-navbar-brand .rc-brand-text__sub {
+  display: block;
+  font-weight: 500;
+  letter-spacing: .18em;
+  font-size: .72rem;
+  color: var(--rc-gold);
+  margin-top: .15rem;
+}
+@media (max-width: 400px) {
+  /* On very narrow phones, drop the wordmark so the logo + hamburger
+     still fit in the navbar without wrapping. */
+  .rc-navbar-brand .rc-brand-text { display: none; }
+}
+
+footer img {
+  -webkit-filter: brightness(0);
+    filter: brightness(0);
+}
+
+footer a { color: black !important; }
+
+footer #menu-main-nav-1, footer #menu-footer-menu-1 {
+  flex-direction: column;
+}
+
+/* ==========================================================================
+   Base typography
+   ========================================================================== */
+body.rc-theme,
+.rc-theme {
+	font-family: 'Source Sans 3', system-ui, sans-serif;
+	color: var(--rc-ink);
+	background: var(--rc-ink);
+}
+.rc-theme h1,
+.rc-theme h2,
+.rc-theme h3,
+.rc-theme h4,
+.rc-theme h5,
+.rc-head {
+	font-family: 'Oswald', sans-serif;
+}
+.rc-theme a {
+	color: var(--rc-gold);
+	text-decoration: none;
+}
+.rc-theme a:hover {
+	color: var(--rc-gold-2);
+}
+
+/* ==========================================================================
+   Section framing
+   ========================================================================== */
+.rc-page-wrap { background: var(--rc-ink); }
+
+.rc-eyebrow {
+	font-family: 'Oswald', sans-serif;
+	text-transform: uppercase;
+	letter-spacing: .06em;
+	font-weight: 600;
+	font-size: 1.9rem;
+}
+.rc-eyebrow::after {
+	content: "";
+	display: inline-block;
+	width: 42px;
+	height: 3px;
+	background: var(--rc-gold);
+	vertical-align: middle;
+	margin-left: 16px;
+}
+.rc-section-subtitle {
+	color: var(--rc-muted);
+	margin-bottom: 2.6rem;
+}
+
+/* ==========================================================================
+   Buttons
+   Selectors are prefixed with .rc-theme to out-specify the global .rc-theme a
+   color rule (0,1,1) — otherwise anchor buttons inherit the gold link color.
+   ========================================================================== */
+.rc-theme .rc-btn-gold {
+	background: var(--rc-gold);
+	color: var(--rc-ink);
+	font-family: 'Oswald', sans-serif;
+	text-transform: uppercase;
+	letter-spacing: .05em;
+	font-weight: 600;
+	border: none;
+	border-radius: 3px;
+	padding: .6rem 1.4rem;
+	transition: .18s;
+	display: inline-block;
+}
+.rc-theme .rc-btn-gold:hover {
+	background: var(--rc-gold-2);
+	color: var(--rc-ink);
+	transform: translateY(-1px);
+}
+.rc-btn-gold--lg {
+	padding: .75rem 1.9rem;
+	font-size: 1.05rem;
+}
+.rc-btn-gold--xl {
+	padding: .9rem 2rem;
+	font-size: 1.1rem;
+}
+.rc-btn-gold--sm {
+	font-size: .85rem;
+}
+.rc-theme .rc-btn-outline {
+	padding: .75rem 1.9rem;
+	border: 2px solid rgba(255, 255, 255, .35);
+	color: #fff;
+	font-family: 'Oswald', sans-serif;
+	text-transform: uppercase;
+	letter-spacing: .05em;
+	border-radius: 3px;
+	display: inline-block;
+}
+.rc-theme .rc-btn-outline:hover { color: #fff; }
+
+/* ==========================================================================
+   Top bar (gold contact strip)
+   ========================================================================== */
+.rc-topbar {
+	background: var(--rc-gold);
+}
+.rc-topbar__inner {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	padding: .5rem 0;
+	font-size: .9rem;
+	gap: .5rem;
+}
+.rc-topbar__contact {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 1.4rem;
+}
+.rc-topbar__social {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	font-size: 1rem;
+}
+.rc-topbar a {
+	color: var(--rc-ink);
+	font-weight: 600;
+}
+.rc-topbar a:hover { color: #fff; }
+
+/* ==========================================================================
+   Navbar
+   ========================================================================== */
+.rc-navbar {
+	border-bottom: 3px solid var(--rc-gold);
+	box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
+}
+.rc-navbar .navbar-brand { gap: .65rem; }
+.rc-brand-badge {
+	height: 58px;
+	width: 58px;
+	-o-object-fit: cover;
+	   object-fit: cover;
+	border-radius: 50%;
+}
+.rc-brand-text {
+	font-family: 'Oswald', sans-serif;
+	font-weight: 700;
+	line-height: 1;
+	color: var(--rc-ink);
+	font-size: 1.15rem;
+}
+.rc-brand-text__sub {
+	display: block;
+	font-weight: 500;
+	letter-spacing: .18em;
+	font-size: .72rem;
+	color: var(--rc-gold);
+}
+.rc-navbar .navbar-nav { gap: .35rem; }
+.rc-nav-link {
+	font-family: 'Oswald', sans-serif;
+	text-transform: uppercase;
+	letter-spacing: .04em;
+	font-weight: 500;
+	color: var(--rc-ink) !important;
+	font-size: .98rem;
+}
+.rc-nav-link:hover,
+.rc-nav-link.active {
+	color: var(--rc-gold) !important;
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+.rc-hero {
+	background: radial-gradient(circle at 30% 20%, #242424 0%, #131313 55%, #0a0a0a 100%);
+  background-image: url('/wp-content/themes/pegasus-child/assets/images/hero-slider/finished-kitchen-white-quartz-pendant-01.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+	padding: 5.5rem 0 5rem;
+	overflow: hidden;
+	position: relative;
+	color: #fff;
+	text-align: center;
+}
+.rc-hero__pattern {
+	position: absolute;
+	inset: 0;
+	background-image: radial-gradient(rgba(233, 161, 0, .10) 1px, transparent 1px);
+	background-size: 26px 26px;
+	opacity: .5;
+}
+.rc-hero__inner {
+  position: relative;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  
+}
+@media (max-width: 768px) {
+  .rc-hero__inner {
+    max-width: 300px;
+  }
+}
+
+.rc-hero__badge {
+	width: 190px;
+	height: 190px;
+	-o-object-fit: cover;
+	   object-fit: cover;
+	border-radius: 50%;
+	box-shadow: 0 0 0 6px rgba(233, 161, 0, .25), 0 18px 50px rgba(0, 0, 0, .6);
+	margin-bottom: 1.75rem;
+}
+.rc-hero__title {
+	font-weight: 700;
+	font-size: clamp(2.2rem, 5vw, 3.6rem);
+	text-transform: uppercase;
+	letter-spacing: .02em;
+	margin-bottom: .5rem;
+}
+.rc-hero__title-alt { color: var(--rc-gold); }
+.rc-hero__subhead {
+	max-width: 620px;
+	margin-left: auto;
+	margin-right: auto;
+	color: var(--rc-muted-2);
+	font-size: 1.15rem;
+}
+.rc-hero__actions {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: .85rem;
+	margin-top: 1.5rem;
+}
+
+/* ==========================================================================
+   Home — services grid
+   ========================================================================== */
+.rc-services {
+	background: var(--rc-ink);
+	padding: 4.5rem 0;
+}
+.rc-service-card {
+	background: #fff;
+	border-radius: 6px;
+	overflow: hidden;
+	transition: .2s;
+	box-shadow: 0 2px 18px rgba(0, 0, 0, .35);
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+.rc-service-card:hover {
+	transform: translateY(-6px);
+	box-shadow: 0 14px 34px rgba(0, 0, 0, .5);
+}
+.rc-service-card__ring-wrap {
+	display: flex;
+	justify-content: center;
+	padding: 2rem 1rem 0;
+}
+.rc-ring {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	border: 5px solid var(--rc-gold);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: linear-gradient(135deg, #1c1c1c, #2b2b2b);
+	color: var(--rc-gold);
+	font-size: 3.4rem;
+}
+.rc-service-card__body {
+	padding: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+.rc-service-card__title {
+	font-size: 1.25rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: .02em;
+	margin-bottom: .6rem;
+}
+.rc-service-card__blurb {
+	color: var(--rc-card-body);
+	font-size: .95rem;
+	flex-grow: 1;
+}
+
+/* ==========================================================================
+   Home — why choose us
+   ========================================================================== */
+.rc-why {
+	background: var(--rc-ink-2);
+	padding: 4.5rem 0;
+}
+.rc-why-tile {
+	background: var(--rc-ink-3);
+	border: 1px solid rgba(233, 161, 0, .18);
+	border-radius: 6px;
+	padding: 1.15rem 1.25rem;
+	height: 100%;
+	display: flex;
+	gap: .9rem;
+}
+.rc-why-ico {
+	width: 44px;
+	height: 44px;
+	border-radius: 6px;
+	background: rgba(233, 161, 0, .14);
+	color: var(--rc-gold);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.3rem;
+	flex: 0 0 auto;
+}
+.rc-why-tile__title {
+	color: #fff;
+	font-size: 1.08rem;
+	font-weight: 600;
+	margin-bottom: .25rem;
+}
+.rc-why-tile__text {
+	color: var(--rc-muted);
+	font-size: .92rem;
+	margin: 0;
+}
+
+/* ==========================================================================
+   CTA band
+   ========================================================================== */
+.rc-cta {
+	background: linear-gradient(90deg, #0a0a0a, #1e1e1e 50%, #0a0a0a);
+	padding: 3rem 0;
+	border-top: 1px solid rgba(233, 161, 0, .2);
+	border-bottom: 1px solid rgba(233, 161, 0, .2);
+}
+.rc-cta--no-bottom-border { border-bottom: 0; }
+.rc-cta__title {
+	color: #fff;
+	font-weight: 600;
+	font-size: 1.8rem;
+	margin-bottom: .35rem;
+}
+.rc-cta__subhead {
+	color: #bdbdbd;
+	margin: 0;
+}
+
+/* ==========================================================================
+   Services page — sections
+   ========================================================================== */
+.rc-svc-title-block {
+	background: var(--rc-ink-2);
+	padding: 2.6rem 0;
+	border-bottom: 3px solid var(--rc-gold);
+}
+.rc-svc-title {
+	color: #fff;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: .02em;
+	margin: 0;
+	font-size: 2.4rem;
+}
+.rc-svc-subtitle {
+	color: var(--rc-muted);
+	margin: .35rem 0 0;
+}
+
+.rc-svc {
+	scroll-margin-top: 90px;
+	padding: 4.5rem 0;
+	background: var(--rc-ink);
+}
+/* Alternating band: evens get the lighter ink-3 tone so the stripe is
+   visible against the base --rc-ink. #131313 → #1c1c1c is a clearer
+   contrast than the previous #131313 → #0c0c0c pairing. */
+.rc-svc:nth-of-type(even) { background: var(--rc-ink-3); }
+/* Hairline gold-tinted divider between every consecutive pair of service
+   sections — adds a bit of definition without a heavy border. The
+   " + " combinator skips the first .rc-svc so it doesn't collide with
+   the gold border-bottom on .rc-svc-title-block. */
+.rc-svc + .rc-svc { border-top: 1px solid rgba(233, 161, 0, .18); }
+@media (min-width: 992px) {
+	.rc-svc:nth-of-type(even) .rc-svc-row { flex-direction: row-reverse; }
+}
+.rc-svc__lead {
+	color: var(--rc-muted-2);
+	font-size: 1.08rem;
+	margin-top: 1rem;
+}
+.rc-svc__body { color: var(--rc-muted); }
+.rc-svc__sub-heading {
+	color: #fff;
+	font-size: 1.15rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: .03em;
+	margin: 2.8rem 0 1.1rem;
+}
+.rc-svc__sub-heading--projects { margin-top: 2.4rem; }
+.rc-svc__project-tag {
+	display: inline-flex;
+	align-items: center;
+	background: rgba(233, 161, 0, .12);
+	color: var(--rc-muted-2);
+	border: 1px solid rgba(233, 161, 0, .28);
+	border-radius: 999px;
+	padding: .3rem .8rem;
+	font-size: .85rem;
+	font-family: 'Oswald', sans-serif;
+	text-transform: uppercase;
+	letter-spacing: .04em;
+}
+.rc-svc__project-tag i { color: var(--rc-gold); }
+
+/* ==========================================================================
+   Masonry gallery inside .rc-svc — sized to match the 34oak masonry pattern
+   ([masonry] shortcode wraps <a><img></a>; without this the raw <img> tags
+   render at their source resolution and blow out the tile grid).
+   ========================================================================== */
+.rc-svc .masonry-grid { margin: 0 -8px; }
+
+.rc-svc .masonry-grid a {
+	display: inline-block;
+	margin: 8px;
+	overflow: hidden;
+	border-radius: 8px;
+	max-width: 425px;
+	vertical-align: top;
+	/* No transition / :hover transform / entrance animation here — earlier
+	   attempts (WOW.js .wow.fadeIn + CSS transforms) left some tiles hidden
+	   until the user tapped them, so all animation was stripped. */
+}
+
+.rc-svc .masonry-grid img {
+	display: block;
+	width: 100%;
+	max-width: 425px;
+	height: auto;
+	border-radius: 8px;
+}
+
+@media (max-width: 980px) {
+	.rc-svc .masonry-grid a,
+	.rc-svc .masonry-grid img { max-width: 300px; }
+}
+@media (max-width: 575.98px) {
+	.rc-svc .masonry-grid a,
+	.rc-svc .masonry-grid img { max-width: 100%; }
+	.rc-svc .masonry-grid a { margin: 6px 0; display: block; }
+}
+.rc-svc__sub-heading .rc-arrow { color: var(--rc-gold); }
+
+/* Tiles (feature image placeholder + sub-service + project tiles) */
+.rc-tile {
+	background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+	border: 1px solid rgba(233, 161, 0, .15);
+	border-radius: 6px;
+	position: relative;
+	overflow: hidden;
+	display: block;
+	transition: .2s;
+}
+.rc-tile:hover {
+	transform: translateY(-4px);
+	border-color: rgba(233, 161, 0, .5);
+}
+.rc-tile--feature { aspect-ratio: 16 / 10; }
+.rc-tile--sub { aspect-ratio: 3 / 2; }
+.rc-tile--project { aspect-ratio: 4 / 3; }
+.rc-tile__image {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	-o-object-fit: cover;
+	   object-fit: cover;
+}
+.rc-tile-ico {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -65%);
+	font-size: 2.4rem;
+	color: rgba(233, 161, 0, .5);
+}
+.rc-tile--feature .rc-tile-ico {
+	font-size: 4rem;
+	transform: translate(-50%, -50%);
+}
+.rc-tile-label {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: .7rem 1rem;
+	background: linear-gradient(transparent, rgba(0, 0, 0, .88));
+	color: #fff;
+	font-family: 'Oswald', sans-serif;
+	text-transform: uppercase;
+	letter-spacing: .03em;
+	font-weight: 600;
+	font-size: .9rem;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.rc-footer {
+	background: var(--rc-gold);
+	color: var(--rc-ink);
+	padding: 3.2rem 0 1.5rem;
+}
+.rc-footer a { color: var(--rc-ink); }
+.rc-footer a:hover { color: #fff; }
+.rc-footer__logo {
+	height: 52px;
+	margin-bottom: 1rem;
+	-webkit-filter: brightness(0);
+	        filter: brightness(0);
+}
+.rc-footer__blurb {
+	max-width: 340px;
+	font-size: .95rem;
+}
+.rc-footer__meta { margin: .15rem 0; }
+.rc-footer__col-head {
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: .05em;
+	margin-bottom: 1rem;
+}
+.rc-footer__links { line-height: 2; }
+.rc-footer__rule {
+	border-color: rgba(0, 0, 0, .2);
+	margin: 2rem 0 1rem;
+}
+.rc-footer__copy {
+	font-size: .85rem;
+	margin: 0;
+}
+
+/* ==========================================================================
+   Media queries
+   ========================================================================== */
+@media (max-width: 991.98px) {
+	.rc-hero { padding: 4rem 0 3.5rem; }
+	.rc-services,
+	.rc-why,
+	.rc-svc { padding: 3.5rem 0; }
+}
+@media (max-width: 575.98px) {
+	.rc-eyebrow { font-size: 1.5rem; }
+	.rc-svc-title { font-size: 1.8rem; }
+	.rc-cta__title { font-size: 1.4rem; }
+}
+
+/* ==========================================================================
+   Contact page (tpl_contact.php)
+   Reuses .rc-svc / .rc-svc-title-block / .rc-cta scaffolding from services.
+   .rc-contact-tile is just .rc-why-tile with tuned margins so links inside
+   the value paragraph inherit the theme link colour.
+   ========================================================================== */
+.rc-contact-tile { min-height: 96px; }
+.rc-contact-tile .rc-why-tile__text { line-height: 1.35; }
+.rc-contact-tile .rc-why-tile__text a { color: var(--rc-gold); }
+.rc-contact-tile .rc-why-tile__text a:hover { color: var(--rc-gold-2); }
+
+/* Form column card — sits on the same dark section background as .rc-svc,
+   so we lift it slightly with a lighter fill + gold hairline to match the
+   .rc-why-tile / .rc-service-card family. */
+.rc-contact-form-wrap {
+	background: var(--rc-ink-3);
+	border: 1px solid rgba(233, 161, 0, .18);
+	border-radius: 8px;
+	padding: 1.75rem 1.5rem;
+	height: 100%;
+}
+.rc-contact-form-body {
+	color: var(--rc-muted-2);
+	margin-top: 1rem;
+}
+/* Form plugins (CF7, Gravity Forms, WPForms) all render label/input pairs.
+   Nudge the inputs to be legible on the dark card without heavy overrides
+   — keep specificity low so the plugin's own styles win when opinionated. */
+.rc-contact-form-body label {
+	color: #fff;
+	font-family: 'Oswald', sans-serif;
+	text-transform: uppercase;
+	letter-spacing: .04em;
+	font-size: .85rem;
+	font-weight: 500;
+	display: block;
+	margin-bottom: .35rem;
+}
+.rc-contact-form-body input[type="text"],
+.rc-contact-form-body input[type="email"],
+.rc-contact-form-body input[type="tel"],
+.rc-contact-form-body input[type="url"],
+.rc-contact-form-body input[type="number"],
+.rc-contact-form-body select,
+.rc-contact-form-body textarea {
+	width: 100%;
+	background: #0e0e0e;
+	color: #fff;
+	border: 1px solid rgba(255, 255, 255, .12);
+	border-radius: 4px;
+	padding: .55rem .75rem;
+	margin-bottom: 1rem;
+	font-family: 'Source Sans 3', system-ui, sans-serif;
+}
+.rc-contact-form-body input:focus,
+.rc-contact-form-body select:focus,
+.rc-contact-form-body textarea:focus {
+	outline: none;
+	border-color: var(--rc-gold);
+	box-shadow: 0 0 0 3px rgba(233, 161, 0, .18);
+}
+.rc-contact-form-body textarea { min-height: 140px; resize: vertical; }
+.rc-contact-form-body input[type="submit"],
+.rc-contact-form-body button[type="submit"] {
+	background: var(--rc-gold);
+	color: var(--rc-ink);
+	font-family: 'Oswald', sans-serif;
+	text-transform: uppercase;
+	letter-spacing: .05em;
+	font-weight: 600;
+	border: none;
+	border-radius: 3px;
+	padding: .65rem 1.6rem;
+	cursor: pointer;
+	transition: .18s;
+}
+.rc-contact-form-body input[type="submit"]:hover,
+.rc-contact-form-body button[type="submit"]:hover {
+	background: var(--rc-gold-2);
+	transform: translateY(-1px);
+}
+
+@media (max-width: 991.98px) {
+	.rc-contact-form-wrap { margin-top: 1.5rem; }
+}
+
+/* --- Gravity Forms specific selectors -----------------------------------
+   Gravity Forms wraps every form in .gform_wrapper > .gform_body etc. and
+   uses .gform_button for the submit. Keep these tuned to the dark card. */
+.rc-contact-form-body .gform_wrapper { color: var(--rc-muted-2); }
+.rc-contact-form-body .gform_wrapper .gfield_label,
+.rc-contact-form-body .gform_wrapper legend {
+	color: #fff;
+	font-family: 'Oswald', sans-serif;
+	text-transform: uppercase;
+	letter-spacing: .04em;
+	font-size: .85rem;
+	font-weight: 500;
+}
+.rc-contact-form-body .gform_wrapper .gfield_description { color: var(--rc-muted); font-size: .82rem; }
+.rc-contact-form-body .gform_wrapper .gform_button {
+	background: var(--rc-gold);
+	color: var(--rc-ink);
+	font-family: 'Oswald', sans-serif;
+	text-transform: uppercase;
+	letter-spacing: .05em;
+	font-weight: 600;
+	border: none;
+	border-radius: 3px;
+	padding: .65rem 1.6rem;
+	cursor: pointer;
+	transition: .18s;
+}
+.rc-contact-form-body .gform_wrapper .gform_button:hover {
+	background: var(--rc-gold-2);
+	transform: translateY(-1px);
+}
+.rc-contact-form-body .gform_wrapper .validation_error,
+.rc-contact-form-body .gform_wrapper .gfield_error .gfield_label { color: #ff9d9d; }
+.rc-contact-form-body .gform_confirmation_message {
+	background: rgba(233, 161, 0, .12);
+	border: 1px solid rgba(233, 161, 0, .4);
+	border-radius: 6px;
+	padding: 1rem 1.25rem;
+	color: #fff;
+}
