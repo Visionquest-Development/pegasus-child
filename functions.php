@@ -1,12 +1,31 @@
 <?php
 
 /**
+ * Homepage CMB2 fields + render helpers (Outlaw Coffee home template).
+ */
+require_once get_stylesheet_directory() . '/inc/outlaw-home-fields.php';
+
+/**
  * Enqueue parent CSS.
  */
 function theme_enqueue_styles() {
 	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
 }
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
+
+/**
+ * Enqueue the Google fonts used by the Outlaw Coffee homepage design.
+ */
+function pegasus_child_home_fonts() {
+	wp_enqueue_style( 'pegasus-child-gfonts-preconnect', 'https://fonts.googleapis.com', array(), null );
+	wp_enqueue_style(
+		'pegasus-child-outlaw-fonts',
+		'https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;600;700;800;900&family=Oswald:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600;700&display=swap',
+		array(),
+		null
+	);
+}
+add_action( 'wp_enqueue_scripts', 'pegasus_child_home_fonts' );
 
 /**
  * Enqueue JS properly
