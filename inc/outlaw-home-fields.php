@@ -73,42 +73,6 @@ function och_home_defaults() {
 		'shop' => array(
 			'eyebrow' => 'The lineup',
 			'title'   => 'Shop the roasts',
-			'filters' => array( 'All', 'Dark', 'Medium', 'Light' ),
-		),
-
-		'products' => array(
-			array(
-				'badge'       => 'MEDIUM-DARK',
-				'name'        => 'Campfire Gold',
-				'notes'       => 'Dark chocolate, toasted walnut, caramelized sugar',
-				'price'       => '$19',
-				'button_text' => 'Add',
-				'button_url'  => '/online-shop/',
-			),
-			array(
-				'badge'       => 'DARK',
-				'name'        => 'Six-Shooter',
-				'notes'       => 'Smoky, molasses, black cherry, bold finish',
-				'price'       => '$18',
-				'button_text' => 'Add',
-				'button_url'  => '/online-shop/',
-			),
-			array(
-				'badge'       => 'MEDIUM',
-				'name'        => 'High Noon',
-				'notes'       => 'Caramel, orange peel, cocoa, clean body',
-				'price'       => '$18',
-				'button_text' => 'Add',
-				'button_url'  => '/online-shop/',
-			),
-			array(
-				'badge'       => 'LIGHT',
-				'name'        => 'Sunrise Ride',
-				'notes'       => 'Floral, honey, stone fruit, bright acidity',
-				'price'       => '$19',
-				'button_text' => 'Add',
-				'button_url'  => '/online-shop/',
-			),
 		),
 
 		'featured' => array(
@@ -347,6 +311,7 @@ function och_register_home_metaboxes() {
 		'context'      => 'normal',
 		'priority'     => 'high',
 		'show_on_cb'   => $show_on,
+		'closed'       => true, // Collapse the metabox by default.
 	);
 
 	/* ---------------------------------- Hero ---------------------------- */
@@ -389,6 +354,7 @@ function och_register_home_metaboxes() {
 				'add_button'    => 'Add value prop',
 				'remove_button' => 'Remove value prop',
 				'sortable'      => true,
+				'closed'        => true, // Collapse each repeatable row by default.
 			),
 		)
 	);
@@ -408,34 +374,8 @@ function och_register_home_metaboxes() {
 	);
 	$shop->add_field( array( 'name' => 'Eyebrow', 'id' => OCH_PREFIX . 'shop_eyebrow', 'type' => 'text', 'default' => $d['shop']['eyebrow'] ) );
 	$shop->add_field( array( 'name' => 'Title', 'id' => OCH_PREFIX . 'shop_title', 'type' => 'text', 'default' => $d['shop']['title'] ) );
-	$shop->add_field(
-		array(
-			'name'        => 'Filter chips',
-			'id'          => OCH_PREFIX . 'shop_filters',
-			'type'        => 'text',
-			'repeatable'  => true,
-			'options'     => array( 'add_row_text' => 'Add filter' ),
-		)
-	);
-	$prod_group = $shop->add_field(
-		array(
-			'id'      => OCH_PREFIX . 'products',
-			'type'    => 'group',
-			'options' => array(
-				'group_title'   => 'Product {#}',
-				'add_button'    => 'Add product',
-				'remove_button' => 'Remove product',
-				'sortable'      => true,
-			),
-		)
-	);
-	$shop->add_group_field( $prod_group, array( 'name' => 'Image', 'id' => 'image', 'type' => 'file', 'options' => array( 'url' => false ), 'query_args' => array( 'type' => 'image' ) ) );
-	$shop->add_group_field( $prod_group, array( 'name' => 'Roast badge', 'id' => 'badge', 'type' => 'text' ) );
-	$shop->add_group_field( $prod_group, array( 'name' => 'Name', 'id' => 'name', 'type' => 'text' ) );
-	$shop->add_group_field( $prod_group, array( 'name' => 'Tasting notes', 'id' => 'notes', 'type' => 'text' ) );
-	$shop->add_group_field( $prod_group, array( 'name' => 'Price', 'id' => 'price', 'type' => 'text' ) );
-	$shop->add_group_field( $prod_group, array( 'name' => 'Button label', 'id' => 'button_text', 'type' => 'text', 'default' => 'Add' ) );
-	$shop->add_group_field( $prod_group, array( 'name' => 'Button URL', 'id' => 'button_url', 'type' => 'text_url', 'default' => '/online-shop/' ) );
+	// The grid itself is driven by the WooCommerce [featured_products] shortcode
+	// in tpl_home.php — mark products as Featured in WooCommerce to control it.
 
 	/* ------------------------------ Featured --------------------------- */
 	$feat = new_cmb2_box(
@@ -460,6 +400,7 @@ function och_register_home_metaboxes() {
 				'add_button'    => 'Add spec',
 				'remove_button' => 'Remove spec',
 				'sortable'      => true,
+				'closed'        => true, // Collapse each repeatable row by default.
 			),
 		)
 	);

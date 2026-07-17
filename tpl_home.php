@@ -81,50 +81,11 @@ $och_star = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" foc
 						<p class="och-eyebrow och-eyebrow--plain"><?php echo esc_html( och_field( 'shop_eyebrow', $d['shop']['eyebrow'] ) ); ?></p>
 						<h2 class="och-h2"><?php echo esc_html( och_field( 'shop_title', $d['shop']['title'] ) ); ?></h2>
 					</div>
-					<?php $filters = och_group( 'shop_filters', $d['shop']['filters'] ); ?>
-					<?php if ( ! empty( $filters ) ) : ?>
-						<div class="och-chips d-none">
-							<?php foreach ( $filters as $i => $filter ) : ?>
-								<span class="os-chip och-chip<?php echo ( 0 === $i ) ? ' och-chip--active' : ''; ?>"><?php echo esc_html( $filter ); ?></span>
-							<?php endforeach; ?>
-						</div>
-					<?php endif; ?>
 				</div>
 
-				<?php
-					// Real WooCommerce featured products drive the grid; the CMB2 /
-					// Claude Design default cards show as a fallback when none are featured.
-					$featured_html = do_shortcode( '[featured_products per_page="4" columns="4"]' );
-					$has_featured  = ( false !== strpos( $featured_html, 'woocommerce-loop-product' ) );
-				?>
-				<?php if ( $has_featured ) : ?>
-					<div class="och-shop__products">
-						<?php echo $featured_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- WooCommerce-generated markup. ?>
-					</div>
-				<?php else : ?>
-					<div class="row row-cols-2 row-cols-lg-4 g-3 g-lg-4">
-						<?php foreach ( och_group( 'products', $d['products'], array( 'name', 'notes', 'price', 'image' ) ) as $i => $p ) : ?>
-							<div class="col">
-								<div class="och-card">
-									<div class="och-card__media">
-										<?php och_img_markup( isset( $p['image'] ) ? $p['image'] : '', 'och-card__img', 'Bag photo', ( isset( $p['name'] ) ? $p['name'] : 'Product' ) ); ?>
-										<?php if ( ! empty( $p['badge'] ) ) : ?>
-											<span class="och-card__badge"><?php echo esc_html( $p['badge'] ); ?></span>
-										<?php endif; ?>
-									</div>
-									<div class="och-card__body">
-										<h3 class="och-card__title"><?php echo esc_html( isset( $p['name'] ) ? $p['name'] : '' ); ?></h3>
-										<p class="och-card__notes"><?php echo esc_html( isset( $p['notes'] ) ? $p['notes'] : '' ); ?></p>
-										<div class="och-card__foot">
-											<span class="och-card__price"><?php echo esc_html( isset( $p['price'] ) ? $p['price'] : '' ); ?></span>
-											<a class="och-btn och-btn--rust och-btn--sm" href="<?php echo esc_url( ! empty( $p['button_url'] ) ? $p['button_url'] : '#' ); ?>"><?php echo esc_html( ! empty( $p['button_text'] ) ? $p['button_text'] : 'Add' ); ?></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						<?php endforeach; ?>
-					</div>
-				<?php endif; ?>
+				<div class="och-shop__products">
+					<?php echo do_shortcode( '[featured_products per_page="4" columns="4"]' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- WooCommerce-generated markup. ?>
+				</div>
 			</div>
 		</section>
 
