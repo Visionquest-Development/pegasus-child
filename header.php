@@ -67,7 +67,7 @@
 			<?php  if( 'on' === $page_loader_choice ) { ?>
 				<div class="page-loader">
 					<img src="<?php echo get_template_directory_uri(); ?>/images/loader.gif" alt="">
-				</div> 
+				</div>
 			<?php }  ?>
 			<div class="mainbar">
 
@@ -164,7 +164,7 @@
 					<?php }
 				?>
 
-				<?php get_template_part( 'templates/additional_header' ); ?>
+				<?php //get_template_part( 'templates/additional_header' ); ?>
 
 			 	<?php
 					$breadcrumbs_check =  pegasus_get_option( 'bread_chk' );

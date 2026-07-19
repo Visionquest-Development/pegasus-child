@@ -174,9 +174,16 @@
 		  target: '#dotnav'
 		});
 	}
-    var scrollSpy2 = new bootstrap.ScrollSpy(document.body, {
-      target: '#menu-main-nav-2'
-    });
+    // Sidebar section nav: spy the whole sidebar widget so the active
+    // highlight works regardless of the assigned menu's id/name.
+    var pgSidebarTarget = document.querySelector('#header .nav-sidebar-widget')
+        ? '#header .nav-sidebar-widget'
+        : ( document.querySelector('#menu-main-nav-2') ? '#menu-main-nav-2' : null );
+    if ( pgSidebarTarget ) {
+      var scrollSpy2 = new bootstrap.ScrollSpy(document.body, {
+        target: pgSidebarTarget
+      });
+    }
 
 
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -184,6 +191,114 @@
       return new bootstrap.Tooltip(tooltipTriggerEl, {
         placement: 'left',
       })
+    });
+
+    // Copy-to-clipboard buttons on the .ph-terminal cards.
+    // Uses the async Clipboard API when available (secure contexts) and falls
+    // back to execCommand('copy') for insecure origins like http://*.test.
+    function pgCopyToClipboard(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        return navigator.clipboard.writeText(text);
+      }
+      return new Promise(function (resolve, reject) {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'absolute';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand('copy') ? resolve() : reject();
+        } catch (err) {
+          reject(err);
+        } finally {
+          document.body.removeChild(ta);
+        }
+      });
+    }
+
+    document.querySelectorAll('.ph-copy').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var terminal = btn.closest('.ph-terminal');
+        var cmd = terminal ? terminal.querySelector('.ph-terminal-cmd') : null;
+        var text = cmd ? cmd.textContent.trim() : '';
+        if (!text) { return; }
+
+        var label = btn.querySelector('.ph-copy-label');
+        var original = label ? label.textContent : '';
+
+        pgCopyToClipboard(text).then(function () {
+          btn.classList.add('is-copied');
+          if (label) { label.textContent = 'Copied!'; }
+        }).catch(function () {
+          if (label) { label.textContent = 'Press Ctrl+C'; }
+        }).then(function () {
+          if (btn._pgCopyTimer) { clearTimeout(btn._pgCopyTimer); }
+          btn._pgCopyTimer = setTimeout(function () {
+            btn.classList.remove('is-copied');
+            if (label) { label.textContent = original || 'Copy'; }
+          }, 1600);
+        });
+      });
+    });
+
+    // HTTPS / SSH toggle on any .ph-terminal whose command is a GitHub `git clone`.
+    // The two protocol forms are derived from each other, so no stored data is
+    // needed. Toggling rewrites the command text; the copy button then copies
+    // whichever protocol is currently active.
+    function pgGitToHttps(cmd) { return cmd.replace(/git@github\.com:/g, 'https://github.com/'); }
+    function pgGitToSsh(cmd) { return cmd.replace(/https:\/\/github\.com\//g, 'git@github.com:'); }
+    function pgIsGithubClone(cmd) {
+      return /git\s+clone/.test(cmd) && /(https:\/\/github\.com\/|git@github\.com:)/.test(cmd);
+    }
+
+    document.querySelectorAll('.ph-terminal').forEach(function (terminal) {
+      var cmdEl = terminal.querySelector('.ph-terminal-cmd');
+      var bar = terminal.querySelector('.ph-terminal-bar');
+      if (!cmdEl || !bar) { return; }
+
+      var original = cmdEl.textContent.trim();
+      if (!pgIsGithubClone(original)) { return; }
+
+      var httpsCmd = pgGitToHttps(original);
+      var sshCmd = pgGitToSsh(original);
+      var startProto = /git@github\.com:/.test(original) ? 'ssh' : 'https';
+
+      var toggle = document.createElement('div');
+      toggle.className = 'ph-proto';
+      toggle.setAttribute('role', 'group');
+      toggle.setAttribute('aria-label', 'Clone protocol');
+
+      var btnHttps = document.createElement('button');
+      btnHttps.type = 'button';
+      btnHttps.className = 'ph-proto-btn';
+      btnHttps.textContent = 'HTTPS';
+
+      var btnSsh = document.createElement('button');
+      btnSsh.type = 'button';
+      btnSsh.className = 'ph-proto-btn';
+      btnSsh.textContent = 'SSH';
+
+      toggle.appendChild(btnHttps);
+      toggle.appendChild(btnSsh);
+
+      function setProto(proto) {
+        var isSsh = proto === 'ssh';
+        cmdEl.textContent = isSsh ? sshCmd : httpsCmd;
+        btnHttps.classList.toggle('is-active', !isSsh);
+        btnSsh.classList.toggle('is-active', isSsh);
+        btnHttps.setAttribute('aria-pressed', String(!isSsh));
+        btnSsh.setAttribute('aria-pressed', String(isSsh));
+      }
+      btnHttps.addEventListener('click', function () { setProto('https'); });
+      btnSsh.addEventListener('click', function () { setProto('ssh'); });
+
+      // Place the toggle just before the copy button (both sit on the right).
+      var copyBtn = bar.querySelector('.ph-copy');
+      if (copyBtn) { bar.insertBefore(toggle, copyBtn); } else { bar.appendChild(toggle); }
+
+      setProto(startProto);
     });
 
 		// $(function () {

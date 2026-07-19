@@ -5,6 +5,24 @@
 	 */
 	//require_once get_template_directory_uri() . 'inc/class-tgm-plugin-activation.php';
 
+	/**
+	 * Pegasus Home page template CMB2 fields.
+	 * Registers the meta boxes that power tpl_home_pegasus.php.
+	 */
+	require_once get_stylesheet_directory() . '/inc/cmb2-homepage-fields.php';
+
+	/**
+	 * Landing-page section nav: swaps the theme's primary menu links for
+	 * on-page section anchors on the Home (and future Docs) templates.
+	 */
+	require_once get_stylesheet_directory() . '/inc/section-nav.php';
+
+	/**
+	 * Shared loader for the plugin data (inc/demo-content.json) used by both
+	 * the Demo template and the Home page plugin grid.
+	 */
+	require_once get_stylesheet_directory() . '/inc/demo-data.php';
+
 	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~PROPER WAY OF ADDING CHILD THEME CSS FILE ~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -17,6 +35,9 @@
 
 		wp_enqueue_style('prism-css', 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css', null, false, false );
 		wp_enqueue_style('lightbox-css', get_stylesheet_directory_uri() . '/css/lightbox.min.css', null, false, false);
+
+		/* Google fonts used by the Pegasus Home template (synthwave design) */
+		wp_enqueue_style('pegasus-home-fonts', 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Press+Start+2P&display=swap', null, false, false);
 
 		
 	}
@@ -68,6 +89,7 @@
 			'id'            => $prefix . 'metabox',
 			'title'         => __('Pegasus Theme Child Metabox', 'cmb2'),
 			'object_types'  => array('page'), // Post type
+			'closed'        => true, // Metabox collapsed by default.
 		));
 
 		$cmb->add_field(array(
@@ -86,7 +108,7 @@
 				'add_button'        => __('Add Another Entry', 'cmb2'),
 				'remove_button'     => __('Remove Entry', 'cmb2'),
 				//'sortable'          => true,
-				//'closed'            => false, // true to have the groups closed by default
+				'closed'            => true, // Groups collapsed by default.
 			),
 		));
 

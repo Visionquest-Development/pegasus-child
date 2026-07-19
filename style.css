@@ -32,20 +32,20 @@
 	  .page-id-146 .post-listing li .content-container {
 		text-align: left;
 	  }
-	  
-	  
+
+
 	  .pegasus-logo-slider-wrapper .pegasus-logo-slider-container .logo-details .text-center a {
 		  color: black;
 	  }
-	  
+
 	  .pegasus-logo-slider-wrapper .pegasus-logo-slider-container:hover {
 		  opacity: 0.7;
 	  }
-  
-  
 
-	  
-	.home .pegasus-image-container { 
+
+
+
+	.home .pegasus-image-container {
 			border: 10px solid black;
 		border-radius: 7px;
 		position: relative;
@@ -64,34 +64,40 @@
 		left: 0;
 		border-bottom-right-radius: 7px;
 	}
-	
+
 	.pegasus-header-content {
 		border-radius: 15px;
 		background: rgba(255, 255, 255, 0.8); /* white */
 		/* background: rgba(0, 0, 0, 0.3);	 black */
 	}
 
-		.vqdev-text {	
+		.vqdev-text {
 			font-family: 'Press Start 2P', 'Orbitron', monospace;
-			
+
 			  /* Gradient fill */
 			  background: linear-gradient(to right, #241F60, #21648B, #1A8D85, #2BB673, #8BC644);
 			  -webkit-background-clip: text;
 			  -webkit-text-fill-color: transparent;
 
 			  /* 3D Drop shadow effect */
-			  filter: drop-shadow(1px 1px 0 #120F30);
+			  -webkit-filter: drop-shadow(1px 1px 0 #120F30);
+			          filter: drop-shadow(1px 1px 0 #120F30);
 			  /* filter: drop-shadow(2px 2px 1px #ffffff); */
-			  
-			  image-rendering: pixelated;
+
+			  -ms-interpolation-mode: nearest-neighbor;
+
+			      image-rendering: -moz-crisp-edges;
+
+			      image-rendering: pixelated;
 			  text-transform: uppercase;
 			  position: relative;
 			  padding: 50px;
 			  line-height: 1.5;
-			  
+
 		}
-		
-		
+
+
+
 
 
 	/*~~~~~~~~~~~~~~~~~~~~~
@@ -103,24 +109,116 @@
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ NAVIGATION ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-  .site-title a {
-    color: white;
+  /* Pegasus wordmark — synthwave gradient to match the new theme (size unchanged) */
+  .site-title a,
+  .site-title a:hover,
+  .site-title a:focus {
+    font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    background: linear-gradient(100deg, #8BC644, #2BB673 45%, #1A8D85 78%, #21648B);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #2BB673; /* fallback for non-clipping browsers */
+    text-decoration: none;
   }
 
   #header {
-    background: #512DA8 !important;
+    /* background: #512DA8 !important; */
+    background: rgb(18, 14, 53) !important;
   }
 
-  #header .nav-link { color: white !important; }
-  
-  .current-menu-item:hover > a {
-	 background: #361483;
+  /* ~~~ Sidebar section nav: numbered list, grey highlight + green left accent on the active item ~~~ */
+  #header ul {
+    counter-reset: pg-navcount;
+    list-style: none;
+    margin: 0;
+    padding: 8px 0;
   }
-  
-  #menu-main-nav-2 .nav-link.active { 
-	  background: #361483;
+  #header li { margin: 0; }
+
+  #header li > a {
+    counter-increment: pg-navcount;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 22px;
+    color: #9A95C8 !important;
+    font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    text-align: left;
+    text-transform: none;
+    text-decoration: none;
+    transition: background .15s ease, color .15s ease;
   }
-	  
+
+  /* Leading number (01, 02, …) */
+  #header li > a::before {
+    content: counter(pg-navcount, decimal-leading-zero);
+    position: static;
+    width: auto;
+    height: auto;
+    background: none;
+    flex: 0 0 auto;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    line-height: 1;
+    color: #5B568A;
+    opacity: .85;
+  }
+
+  /* Hover */
+  #header li > a:hover {
+    background: rgba(255, 255, 255, .03) !important;
+    color: #E9E6FF !important;
+  }
+
+  /* Active section — grey highlight, white label, green left accent */
+  #header li > a.active,
+  #header li.current-menu-item > a,
+  #header li.current_page_item > a {
+    background: rgba(233, 230, 255, .06) !important;
+    color: #E9E6FF !important;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    /* Keep the active link the same size/weight as the rest so the green
+       accent bar matches height on both the home and demo sidebars
+       (overrides the parent header_five.css .nav-link.active 20px/bold). */
+    font-size: 17px;
+    font-weight: 500;
+    text-transform: none;
+  }
+  #header li > a.active::before,
+  #header li.current-menu-item > a::before,
+  #header li.current_page_item > a::before {
+    color: #B9B4E0;
+    opacity: 1;
+  }
+  #header li > a.active::after,
+  #header li.current-menu-item > a::after,
+  #header li.current_page_item > a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: #2BB673;
+    border-top: none !important;
+    border-left: none !important;
+  }
+
+  .sidebar-nav .navi-btn a i {
+    background: #2BB673 !important;
+  }
+
+
+  #dotnav {
+    padding: 0 !important;
+  }
+
 
   .keegans-header-menu li:hover .sub-menu a {
     color: white !important;
@@ -144,6 +242,35 @@
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ FOOTER ~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
+
+  /* Pegasus footer logo (sits above the footer widgets, below the social section) */
+  .pegasus-footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 0;
+  }
+  .pegasus-footer-logo-mark {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgb(43, 182, 115), rgb(33, 100, 139));
+  }
+  .pegasus-footer-logo-mark span {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 11px;
+    color: rgb(18, 14, 53);
+  }
+  .pegasus-footer-logo-name {
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .pegasus-footer-logo-sub {
+    font-size: 12px;
+    color: rgb(154, 149, 200);
+  }
 
   table .scrollable { -webkit-overflow-scrolling: touch; /* lets it scroll lazy */ z-index: 0; }
 
@@ -201,7 +328,8 @@
 	~~~~~~ HOME PAGE ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
   .home #page-wrap section:nth-child(even) {
-      background: #dedede;
+      /* background: #dedede; */
+
   }
 
 
@@ -308,7 +436,7 @@
 	@media only screen and ( min-width: 1100px ) and ( max-width: 1405px) {
 
 	}
-	
+
 	@media only screen and ( max-width: 1100px ) {
 		.pegasus-header-content { width: 75% !important; }
 	}
@@ -328,3 +456,552 @@
 	@media only screen and (max-width: 479px) {
 
 	}
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ PEGASUS HOME TEMPLATE (tpl_home_pegasus.php) ~~~~~~~~~~~~~~~~~~~~~~
+	Synthwave Bootstrap 5 landing page. All markup uses the Bootstrap grid; these rules only add
+	the retro theming. Everything is scoped under .pegasus-home so nothing leaks into other pages.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+.pegasus-home {
+	--ph-bg:        #0A0820;
+	--ph-bg-mid:    #120E35;
+	--ph-bg-card:   #1A1448;
+	--ph-bg-term:   #060417;
+	--ph-text:      #E9E6FF;
+	--ph-muted:     #9A95C8;
+	--ph-dim:       #5B568A;
+	--ph-green:     #2BB673;
+	--ph-lime:      #8BC644;
+	--ph-teal:      #1A8D85;
+	--ph-blue:      #21648B;
+	--ph-border:    rgba(255,255,255,.08);
+	--ph-border-2:  rgba(255,255,255,.12);
+	--ph-mono:      'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+	--ph-pixel:     'Press Start 2P', 'Orbitron', monospace;
+	--ph-sans:      'Space Grotesk', system-ui, -apple-system, sans-serif;
+
+	background: var(--ph-bg);
+	color: var(--ph-text);
+	font-family: var(--ph-sans);
+	overflow-x: hidden;
+}
+
+.pegasus-home *,
+.pegasus-home *::before,
+.pegasus-home *::after { box-sizing: border-box; }
+
+.pegasus-home a { text-decoration: none; }
+.pegasus-home h1,
+.pegasus-home h2,
+.pegasus-home h3 { font-family: var(--ph-sans); }
+.pegasus-home ::-moz-selection { background: var(--ph-green); color: var(--ph-bg); }
+.pegasus-home ::selection { background: var(--ph-green); color: var(--ph-bg); }
+
+/* Accent helpers */
+.pegasus-home .ph-accent-green { color: var(--ph-green); }
+.pegasus-home .ph-accent-lime  { color: var(--ph-lime); }
+.pegasus-home .ph-accent-teal  { color: var(--ph-teal); }
+.pegasus-home .ph-accent-blue  { color: var(--ph-blue); }
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HERO ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.pegasus-home .ph-hero {
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	min-height: 100vh;
+	background: linear-gradient(180deg,#160C3A 0%,#241F60 34%,#1A1448 62%,#0A0820 100%);
+}
+.pegasus-home .ph-hero-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.pegasus-home .ph-hero-bg > span { position: absolute; display: block; }
+
+.pegasus-home .ph-hero-aurora {
+	inset: 0;
+	background:
+		radial-gradient(ellipse 60% 50% at 18% 22%, rgba(139,198,68,.30) 0%, transparent 60%),
+		radial-gradient(ellipse 55% 45% at 82% 18%, rgba(43,182,115,.34) 0%, transparent 62%),
+		radial-gradient(ellipse 70% 55% at 62% 78%, rgba(26,141,133,.34) 0%, transparent 60%),
+		radial-gradient(ellipse 50% 40% at 88% 68%, rgba(33,100,139,.32) 0%, transparent 60%);
+	-webkit-filter: blur(14px);
+	        filter: blur(14px);
+}
+.pegasus-home .ph-hero-sun {
+	right: 4%; top: 12%;
+	width: 250px; height: 250px;
+	border-radius: 50%;
+	background: linear-gradient(180deg,#FFE86E 0%,#FFC24C 20%,#FF8A4C 42%,#F2534E 60%,#D23A6D 76%,#8E2E8E 90%,#4A2170 100%);
+	box-shadow: 0 0 70px rgba(242,105,78,.5), 0 0 140px rgba(139,198,68,.18), inset 0 -26px 60px rgba(36,31,96,.45);
+	overflow: hidden;
+}
+.pegasus-home .ph-hero-sun::before {
+	content: ""; position: absolute; inset: 0;
+	background:
+		repeating-linear-gradient(180deg,
+			transparent 0 52%,
+			#160C3A 52% 53.2%,
+			transparent 53.2% 62%,
+			#160C3A 62% 63.6%,
+			transparent 63.6% 71%,
+			#160C3A 71% 73.2%,
+			transparent 73.2% 80%,
+			#160C3A 80% 82.6%,
+			transparent 82.6% 90%,
+			#160C3A 90% 93.4%,
+			transparent 93.4% 100%);
+}
+.pegasus-home .ph-hero-grid {
+	bottom: 0; left: 0; right: 0; height: 42%;
+	background-image:
+		linear-gradient(to right, rgba(43,182,115,.35) 1px, transparent 1px),
+		linear-gradient(to bottom, rgba(139,198,68,.35) 1px, transparent 1px);
+	background-size: 56px 56px;
+	transform: perspective(520px) rotateX(64deg);
+	transform-origin: 50% 100%;
+	-webkit-mask-image: linear-gradient(to top, #000 0%, transparent 85%);
+	        mask-image: linear-gradient(to top, #000 0%, transparent 85%);
+}
+.pegasus-home .ph-hero-stars {
+	inset: 0;
+	background-image:
+		radial-gradient(1.5px 1.5px at 20px 30px,#fff,transparent),
+		radial-gradient(1.5px 1.5px at 140px 90px,#bcd,transparent),
+		radial-gradient(1px 1px at 300px 50px,#fff,transparent),
+		radial-gradient(2px 2px at 420px 160px,#8BC644,transparent),
+		radial-gradient(1.5px 1.5px at 520px 200px,#2BB673,transparent),
+		radial-gradient(1px 1px at 560px 30px,#fff,transparent),
+		radial-gradient(2px 2px at 640px 70px,#8BC644,transparent),
+		radial-gradient(1.5px 1.5px at 680px 120px,#fff,transparent);
+	background-repeat: repeat;
+	background-size: 700px 300px;
+	opacity: .75;
+	-webkit-animation: ph-twinkle 4s ease-in-out infinite;
+	        animation: ph-twinkle 4s ease-in-out infinite;
+}
+@-webkit-keyframes ph-twinkle { 0%,100% { opacity: .35; } 50% { opacity: .85; } }
+@keyframes ph-twinkle { 0%,100% { opacity: .35; } 50% { opacity: .85; } }
+@-webkit-keyframes ph-floaty  { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+@keyframes ph-floaty  { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+
+.pegasus-home .ph-hero-inner { position: relative; z-index: 1; padding-top: 120px; padding-bottom: 90px; }
+
+.pegasus-home .ph-badge {
+	display: inline-flex; align-items: center; gap: 9px;
+	padding: 7px 13px; margin-bottom: 26px;
+	border: 1px solid rgba(139,198,68,.35);
+	background: rgba(139,198,68,.07);
+}
+.pegasus-home .ph-badge-star { color: var(--ph-green); font-size: 13px; }
+.pegasus-home .ph-badge-text { font-family: var(--ph-pixel); font-size: 8px; color: #B7E88C; letter-spacing: .06em; line-height: 1.6; }
+
+.pegasus-home .ph-hero-title {
+	font-size: clamp(38px, 5vw, 60px);
+	line-height: 1.03; font-weight: 700; letter-spacing: -.03em;
+	margin-bottom: 22px; color: var(--ph-text);
+}
+.pegasus-home .ph-gradient {
+	background: linear-gradient(100deg,#8BC644,#2BB673 45%,#1A8D85 78%,#21648B);
+	-webkit-background-clip: text; background-clip: text;
+	-webkit-text-fill-color: transparent; color: transparent;
+}
+.pegasus-home .ph-hero-lead {
+	font-size: clamp(16px, 2vw, 19px); line-height: 1.6;
+	color: var(--ph-muted); max-width: 520px; margin-bottom: 34px;
+}
+.pegasus-home .ph-hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 34px; }
+
+.pegasus-home .ph-btn {
+	display: inline-flex; align-items: center; gap: 10px;
+	padding: 15px 26px; font-weight: 700; font-size: 15px;
+	transition: transform .15s ease, background .15s ease, color .15s ease;
+}
+.pegasus-home .ph-btn i { font-size: 1.1em; }
+.pegasus-home .ph-btn-primary {
+	background: var(--ph-green); color: #041810;
+	box-shadow: 0 8px 30px -8px rgba(139,198,68,.6);
+}
+.pegasus-home .ph-btn-primary:hover { background: var(--ph-lime); color: #041810; transform: translateY(-2px); }
+.pegasus-home .ph-btn-ghost {
+	border: 1px solid rgba(255,255,255,.18); color: var(--ph-text); font-weight: 600;
+}
+.pegasus-home .ph-btn-ghost:hover { border-color: var(--ph-green); color: var(--ph-lime); }
+
+.pegasus-home .ph-hero-stats { gap: 30px 0; margin: 0; }
+.pegasus-home .ph-hero-stats .col { padding-right: 30px; }
+.pegasus-home .ph-stat-num { font-size: 24px; font-weight: 700; line-height: 1.1; }
+.pegasus-home .ph-stat-label { font-size: 12px; color: var(--ph-muted); letter-spacing: .02em; }
+
+.pegasus-home .ph-hero-art-col { display: flex; justify-content: center; }
+.pegasus-home .ph-hero-art { position: relative; -webkit-animation: ph-floaty 6s ease-in-out infinite; animation: ph-floaty 6s ease-in-out infinite; }
+.pegasus-home .ph-hero-art-box {
+	position: relative;
+	width: min(320px, 74vw); height: min(320px, 74vw);
+	border: 1px solid var(--ph-border-2);
+	background: var(--ph-bg-term);
+	display: flex; align-items: center; justify-content: center;
+	overflow: hidden;
+}
+.pegasus-home .ph-hero-art-box::before {
+	content: ""; position: absolute; inset: -20px; z-index: 0;
+	background: radial-gradient(circle,rgba(139,198,68,.25),transparent 65%);
+	-webkit-filter: blur(10px);
+	        filter: blur(10px);
+}
+.pegasus-home .ph-hero-img { position: relative; z-index: 1; width: 100%; height: 100%; -o-object-fit: cover; object-fit: cover; }
+.pegasus-home .ph-hero-img-placeholder {
+	position: relative; z-index: 1;
+	font-family: var(--ph-pixel); font-size: 14px; color: var(--ph-dim); letter-spacing: .1em;
+}
+.pegasus-home .ph-hero-art-caption {
+	position: absolute; bottom: -14px; left: 50%; transform: translateX(-50%);
+	white-space: nowrap;
+	font-family: var(--ph-pixel); font-size: 8px; color: var(--ph-dim);
+	background: var(--ph-bg); padding: 6px 12px; border: 1px solid var(--ph-border-2);
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SECTIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.pegasus-home .ph-section { padding: clamp(64px, 9vw, 110px) 0; }
+.pegasus-home .ph-section--mid  { background: var(--ph-bg-mid); }
+.pegasus-home .ph-section--dark { background: var(--ph-bg); }
+
+.pegasus-home .ph-section-head { max-width: 640px; margin: 0 auto clamp(40px,6vw,64px); }
+.pegasus-home .ph-eyebrow {
+	font-family: var(--ph-pixel); font-size: 9px; letter-spacing: .1em; margin-bottom: 18px;
+}
+.pegasus-home .ph-h2 {
+	font-size: clamp(30px, 4vw, 42px); font-weight: 700; letter-spacing: -.025em; color: var(--ph-text);
+}
+.pegasus-home .ph-h2--left { text-align: left; line-height: 1.1; margin-bottom: 18px; }
+.pegasus-home .ph-section-lead {
+	font-size: clamp(16px,1.8vw,18px); color: var(--ph-muted); line-height: 1.6; margin: 16px 0 0;
+}
+.pegasus-home .ph-section-lead--left { text-align: left; margin-bottom: 28px; max-width: none; }
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ OVERVIEW CARDS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.pegasus-home .ph-card {
+	position: relative; overflow: hidden; height: 100%;
+	padding: 38px; background: var(--ph-bg-card); border: 1px solid var(--ph-border);
+}
+.pegasus-home .ph-card-topbar { position: absolute; top: 0; left: 0; width: 100%; height: 3px; }
+.pegasus-home .ph-card.ph-accent-green .ph-card-topbar { background: linear-gradient(90deg,var(--ph-green),transparent); }
+.pegasus-home .ph-card.ph-accent-lime  .ph-card-topbar { background: linear-gradient(90deg,var(--ph-lime),transparent); }
+.pegasus-home .ph-card.ph-accent-teal  .ph-card-topbar { background: linear-gradient(90deg,var(--ph-teal),transparent); }
+.pegasus-home .ph-card.ph-accent-blue  .ph-card-topbar { background: linear-gradient(90deg,var(--ph-blue),transparent); }
+.pegasus-home .ph-card-eyebrow { font-family: var(--ph-pixel); font-size: 9px; margin-bottom: 20px; }
+.pegasus-home .ph-card.ph-accent-green .ph-card-eyebrow { color: var(--ph-green); }
+.pegasus-home .ph-card.ph-accent-lime  .ph-card-eyebrow { color: var(--ph-lime); }
+.pegasus-home .ph-card.ph-accent-teal  .ph-card-eyebrow { color: var(--ph-teal); }
+.pegasus-home .ph-card.ph-accent-blue  .ph-card-eyebrow { color: var(--ph-blue); }
+.pegasus-home .ph-card-title { font-size: 26px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 14px; color: var(--ph-text); }
+.pegasus-home .ph-card-desc  { color: var(--ph-muted); line-height: 1.65; margin-bottom: 24px; }
+.pegasus-home .ph-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.pegasus-home .ph-pill {
+	padding: 6px 12px; font-size: 12px; color: #B7E88C;
+	background: rgba(139,198,68,.1); border: 1px solid rgba(139,198,68,.25);
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ INSTALL / TERMINAL ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.pegasus-home .ph-terminal { height: 100%; background: var(--ph-bg-term); border: 1px solid var(--ph-border); }
+.pegasus-home .ph-terminal-bar {
+	display: flex; align-items: center; gap: 8px; flex-wrap: wrap; row-gap: 8px;
+	padding: 14px 18px; border-bottom: 1px solid rgba(255,255,255,.07);
+}
+.pegasus-home .ph-dot { width: 11px; height: 11px; border-radius: 50%; }
+.pegasus-home .ph-dot--blue  { background: var(--ph-blue); }
+.pegasus-home .ph-dot--lime  { background: var(--ph-lime); }
+.pegasus-home .ph-dot--green { background: var(--ph-green); }
+.pegasus-home .ph-terminal-label { margin-left: 8px; font-family: var(--ph-pixel); font-size: 7px; color: var(--ph-dim); line-height: 1.6; }
+/* Copy-to-clipboard button (sits at the right of the terminal bar) */
+.pegasus-home .ph-copy {
+	margin-left: auto;
+	display: inline-flex; align-items: center; gap: 6px;
+	padding: 5px 10px;
+	background: rgba(255,255,255,.04);
+	border: 1px solid var(--ph-border-2);
+	color: var(--ph-muted);
+	font-family: var(--ph-mono); font-size: 11px; font-weight: 600; line-height: 1;
+	cursor: pointer;
+	transition: background .15s ease, color .15s ease, border-color .15s ease;
+}
+.pegasus-home .ph-copy:hover { background: rgba(139,198,68,.1); border-color: rgba(139,198,68,.4); color: var(--ph-lime); }
+.pegasus-home .ph-copy:focus-visible { outline: 2px solid var(--ph-green); outline-offset: 2px; }
+.pegasus-home .ph-copy-icon { flex: 0 0 auto; }
+.pegasus-home .ph-copy.is-copied { background: rgba(43,182,115,.15); border-color: var(--ph-green); color: var(--ph-green); }
+/* HTTPS / SSH protocol toggle (injected on git-clone terminals) */
+.pegasus-home .ph-proto {
+	margin-left: auto;
+	display: inline-flex; align-items: stretch;
+	border: 1px solid var(--ph-border-2);
+}
+.pegasus-home .ph-proto ~ .ph-copy { margin-left: 0; } /* group toggle + copy on the right */
+.pegasus-home .ph-proto-btn {
+	padding: 5px 10px; background: transparent; border: 0; cursor: pointer;
+	color: var(--ph-dim); font-family: var(--ph-mono); font-size: 11px; font-weight: 600; line-height: 1;
+	transition: background .15s ease, color .15s ease;
+}
+.pegasus-home .ph-proto-btn + .ph-proto-btn { border-left: 1px solid var(--ph-border-2); }
+.pegasus-home .ph-proto-btn:hover:not(.is-active) { color: var(--ph-lime); }
+.pegasus-home .ph-proto-btn.is-active { background: rgba(43,182,115,.15); color: var(--ph-green); }
+.pegasus-home .ph-proto-btn:focus-visible { outline: 2px solid var(--ph-green); outline-offset: 2px; }
+.pegasus-home .ph-terminal-body { padding: 22px; font-family: var(--ph-mono); font-size: 13.5px; line-height: 1.8; color: var(--ph-text); }
+.pegasus-home .ph-terminal-comment { display: block; color: var(--ph-dim); }
+.pegasus-home .ph-terminal-cmd { font-family: var(--ph-mono); color: var(--ph-text); word-break: break-word; }
+.pegasus-home .ph-note {
+	margin-top: 28px; text-align: center; padding: 20px;
+	border: 1px dashed var(--ph-border-2); background: rgba(255,255,255,.02);
+	color: var(--ph-muted); font-size: 15px;
+}
+.pegasus-home .ph-note code { font-family: var(--ph-mono); color: var(--ph-green); }
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ PLUGINS GRID ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.pegasus-home .ph-plugin {
+	display: flex; flex-direction: column; height: 100%;
+	padding: 24px; background: var(--ph-bg-card); border: 1px solid var(--ph-border);
+	transition: transform .18s ease, background .18s ease, border-color .18s ease;
+}
+.pegasus-home a.ph-plugin:hover { transform: translateY(-4px); background: #241F60; }
+.pegasus-home a.ph-plugin.ph-accent-green:hover { border-color: var(--ph-green); }
+.pegasus-home a.ph-plugin.ph-accent-lime:hover  { border-color: var(--ph-lime); }
+.pegasus-home a.ph-plugin.ph-accent-teal:hover  { border-color: var(--ph-teal); }
+.pegasus-home a.ph-plugin.ph-accent-blue:hover  { border-color: var(--ph-blue); }
+.pegasus-home .ph-plugin-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.pegasus-home .ph-plugin-icon {
+	width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center;
+	font-size: 18px; border: 1px solid;
+}
+.pegasus-home .ph-plugin.ph-accent-green .ph-plugin-icon { color: var(--ph-green); background: rgba(43,182,115,.12); border-color: rgba(43,182,115,.33); }
+.pegasus-home .ph-plugin.ph-accent-lime  .ph-plugin-icon { color: var(--ph-lime);  background: rgba(139,198,68,.12); border-color: rgba(139,198,68,.33); }
+.pegasus-home .ph-plugin.ph-accent-teal  .ph-plugin-icon { color: var(--ph-teal);  background: rgba(26,141,133,.12); border-color: rgba(26,141,133,.33); }
+.pegasus-home .ph-plugin.ph-accent-blue  .ph-plugin-icon { color: var(--ph-blue);  background: rgba(33,100,139,.12); border-color: rgba(33,100,139,.33); }
+.pegasus-home .ph-plugin-slug { font-family: var(--ph-mono); font-size: 10px; color: var(--ph-dim); }
+.pegasus-home .ph-plugin-name { font-size: 18px; font-weight: 700; letter-spacing: -.01em; margin-bottom: 7px; color: var(--ph-text); }
+.pegasus-home .ph-plugin-desc { font-size: 13.5px; color: var(--ph-muted); line-height: 1.55; margin-bottom: 14px; }
+.pegasus-home .ph-plugin-demo { margin-top: auto; font-family: var(--ph-mono); font-size: 12px; font-weight: 600; color: var(--ph-dim); transition: color .18s ease; }
+.pegasus-home a.ph-plugin.ph-accent-green:hover .ph-plugin-demo { color: var(--ph-green); }
+.pegasus-home a.ph-plugin.ph-accent-lime:hover  .ph-plugin-demo { color: var(--ph-lime); }
+.pegasus-home a.ph-plugin.ph-accent-teal:hover  .ph-plugin-demo { color: var(--ph-teal); }
+.pegasus-home a.ph-plugin.ph-accent-blue:hover  .ph-plugin-demo { color: var(--ph-blue); }
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DOCS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.pegasus-home .ph-doc-list { display: grid; gap: 12px; }
+.pegasus-home .ph-doc-item {
+	display: flex; align-items: center; gap: 16px;
+	padding: 18px 20px; background: var(--ph-bg-card); border: 1px solid var(--ph-border);
+	transition: border-color .18s ease, transform .18s ease;
+}
+.pegasus-home .ph-doc-item:hover { border-color: rgba(43,182,115,.5); transform: translateX(4px); }
+.pegasus-home .ph-doc-num { font-family: var(--ph-pixel); font-size: 10px; color: var(--ph-green); }
+.pegasus-home .ph-doc-body { flex: 1; display: flex; flex-direction: column; }
+.pegasus-home .ph-doc-title { font-size: 15px; font-weight: 600; color: var(--ph-text); }
+.pegasus-home .ph-doc-sub { font-size: 13px; color: var(--ph-muted); }
+.pegasus-home .ph-doc-arrow { color: var(--ph-dim); }
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ RESPONSIVE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+@media (max-width: 991.98px) {
+	.pegasus-home .ph-hero { min-height: auto; }
+	.pegasus-home .ph-hero-inner { padding-top: 96px; padding-bottom: 72px; }
+	.pegasus-home .ph-hero-lead { margin-left: auto; margin-right: auto; }
+	.pegasus-home .ph-hero-sun { width: 190px; height: 190px; right: auto; left: 62%; top: 6%; }
+}
+@media (max-width: 575.98px) {
+	.pegasus-home .ph-card { padding: 28px; }
+	.pegasus-home .ph-hero-stats .col { padding-right: 22px; }
+}
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ PEGASUS DEMO TEMPLATE (tpl_demo.php) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Plugin showcase driven by inc/demo-content.json. Synthwave Bootstrap 5 styling to match the
+	Pegasus Home page. Everything scoped under .pegasus-demo. No inline styles.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+.pegasus-demo {
+	--pd-bg:       #0A0820;
+	--pd-bg-mid:   #120E35;
+	--pd-bg-card:  #1A1448;
+	--pd-bg-term:  #060417;
+	--pd-text:     #E9E6FF;
+	--pd-muted:    #9A95C8;
+	--pd-dim:      #5B568A;
+	--pd-green:    #2BB673;
+	--pd-lime:     #8BC644;
+	--pd-teal:     #1A8D85;
+	--pd-blue:     #21648B;
+	--pd-border:   rgba(255,255,255,.08);
+	--pd-border-2: rgba(255,255,255,.12);
+	--pd-mono:     'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+	--pd-pixel:    'Press Start 2P', 'Orbitron', monospace;
+	--pd-sans:     'Space Grotesk', system-ui, -apple-system, sans-serif;
+	--pd-accent:   #2BB673;
+
+	background: var(--pd-bg);
+	color: var(--pd-text);
+	font-family: var(--pd-sans);
+	overflow-x: hidden;
+}
+.pegasus-demo *,
+.pegasus-demo *::before,
+.pegasus-demo *::after { box-sizing: border-box; }
+.pegasus-demo a { text-decoration: none; }
+.pegasus-demo ::-moz-selection { background: var(--pd-green); color: var(--pd-bg); }
+.pegasus-demo ::selection { background: var(--pd-green); color: var(--pd-bg); }
+.pegasus-demo img { max-width: 100%; height: auto; }
+
+/* Accent cycling (class set per plugin in PHP — no inline styles) */
+.pegasus-demo .pd-accent-green { --pd-accent: #2BB673; }
+.pegasus-demo .pd-accent-lime  { --pd-accent: #8BC644; }
+.pegasus-demo .pd-accent-teal  { --pd-accent: #1A8D85; }
+.pegasus-demo .pd-accent-blue  { --pd-accent: #21648B; }
+
+/*~~~~~~~~~~~~~~~~~~~ SECTION SHELL ~~~~~~~~~~~~~~~~~~~*/
+.pegasus-demo .pd-section { padding: clamp(56px, 8vw, 88px) 0; border-bottom: 1px solid rgba(255,255,255,.05); }
+.pegasus-demo .pd-section--dark { background: var(--pd-bg); }
+.pegasus-demo .pd-section--mid  { background: var(--pd-bg-mid); }
+
+.pegasus-demo .pd-eyebrow-row { display: flex; align-items: baseline; gap: 14px; margin-bottom: 12px; }
+.pegasus-demo .pd-num  { font-family: var(--pd-pixel); font-size: 11px; color: var(--pd-accent); }
+.pegasus-demo .pd-slug { font-family: var(--pd-mono); font-size: 12px; color: var(--pd-dim); }
+.pegasus-demo .pd-title { font-size: clamp(26px, 3.4vw, 34px); font-weight: 700; letter-spacing: -.02em; margin-bottom: 16px; color: var(--pd-text); }
+.pegasus-demo .pd-subhead {
+	font-family: var(--pd-pixel); font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+	color: var(--pd-accent); margin: 30px 0 14px;
+}
+.pegasus-demo .pd-lead { font-size: 16px; color: var(--pd-muted); line-height: 1.65; margin-bottom: 20px; }
+
+/*~~~~~~~~~~~~~~~~~~~ INTRO (theme + suite) ~~~~~~~~~~~~~~~~~~~*/
+.pegasus-demo .pd-intro {
+	position: relative; overflow: hidden;
+	background: radial-gradient(110% 100% at 85% -20%, #241F60 0%, #1A1448 45%, #0A0820 82%);
+	border-bottom: 1px solid rgba(255,255,255,.07);
+}
+.pegasus-demo .pd-intro::before {
+	content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .55;
+	background-image:
+		radial-gradient(1.5px 1.5px at 40px 40px,#fff,transparent),
+		radial-gradient(1px 1px at 220px 90px,#8BC644,transparent),
+		radial-gradient(1.5px 1.5px at 480px 50px,#fff,transparent),
+		radial-gradient(1px 1px at 700px 120px,#fff,transparent);
+	background-size: 760px 220px;
+	-webkit-animation: pd-twinkle 4s ease-in-out infinite;
+	        animation: pd-twinkle 4s ease-in-out infinite;
+}
+@-webkit-keyframes pd-twinkle { 0%,100% { opacity: .35; } 50% { opacity: .8; } }
+@keyframes pd-twinkle { 0%,100% { opacity: .35; } 50% { opacity: .8; } }
+.pegasus-demo .pd-intro > .container,
+.pegasus-demo .pd-intro > .container-fluid { position: relative; z-index: 1; }
+.pegasus-demo .pd-intro-col { text-align: center; }
+.pegasus-demo .pd-intro-col h3 { font-size: 24px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 18px; }
+.pegasus-demo .pd-intro-img { width: 50%; margin: 0 auto 18px; }
+.pegasus-demo .pd-intro-lead { font-weight: 700; color: #B7E88C; margin-bottom: 12px; }
+.pegasus-demo .pd-intro-body { color: var(--pd-muted); line-height: 1.7; }
+.pegasus-demo .pd-intro-body a { color: var(--pd-green); }
+.pegasus-demo .pd-intro-body a:hover { color: var(--pd-lime); }
+
+/*~~~~~~~~~~~~~~~~~~~ CHILD THEMES ~~~~~~~~~~~~~~~~~~~*/
+.pegasus-demo .pd-childcard { text-align: center; padding: 20px 0; }
+.pegasus-demo .pd-childcard h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+.pegasus-demo .pd-childcard p { color: var(--pd-muted); line-height: 1.65; margin-bottom: 20px; }
+
+/*~~~~~~~~~~~~~~~~~~~ TERMINAL / SHORTCODE CARD ~~~~~~~~~~~~~~~~~~~*/
+.pegasus-demo .pd-terminal { background: var(--pd-bg-term); border: 1px solid var(--pd-border-2); margin: 0 0 18px; }
+.pegasus-demo .pd-terminal-bar {
+	display: flex; align-items: center; gap: 7px;
+	padding: 11px 15px; border-bottom: 1px solid rgba(255,255,255,.07);
+}
+.pegasus-demo .pd-dot { width: 10px; height: 10px; border-radius: 50%; }
+.pegasus-demo .pd-dot--blue  { background: var(--pd-blue); }
+.pegasus-demo .pd-dot--lime  { background: var(--pd-lime); }
+.pegasus-demo .pd-dot--green { background: var(--pd-green); }
+.pegasus-demo .pd-terminal-label { margin-left: 6px; font-family: var(--pd-pixel); font-size: 6px; color: var(--pd-dim); letter-spacing: .05em; line-height: 1.6; }
+.pegasus-demo .pd-terminal-body { padding: 16px 20px; overflow-x: auto; }
+.pegasus-demo .pd-terminal-body pre { margin: 0; padding: 0; background: transparent; }
+.pegasus-demo .pd-terminal-body code[class*="language-"],
+.pegasus-demo .pd-terminal-body code {
+	background: transparent; color: #C7E9A8; text-shadow: none;
+	font-family: var(--pd-mono); font-size: 13px; line-height: 1.7;
+	white-space: pre-wrap; word-break: break-word;
+}
+/* Prism token colors tuned for the dark terminal.
+   Prism's default theme puts a translucent white background box behind
+   operator/entity tokens (the : / . - in a URL) and colors them brown, which
+   mangles git-clone URLs on the dark terminal. Neutralize every token's
+   background + text-shadow first, then apply a coherent green palette. */
+.pegasus-demo .pd-terminal-body .token {
+	background: none !important;
+	text-shadow: none;
+	color: #C7E9A8; /* default: same as surrounding code so URLs read as one string */
+}
+.pegasus-demo .pd-terminal-body .token.comment,
+.pegasus-demo .pd-terminal-body .token.prolog,
+.pegasus-demo .pd-terminal-body .token.doctype,
+.pegasus-demo .pd-terminal-body .token.cdata { color: var(--pd-dim); }
+.pegasus-demo .pd-terminal-body .token.operator,
+.pegasus-demo .pd-terminal-body .token.punctuation,
+.pegasus-demo .pd-terminal-body .token.url,
+.pegasus-demo .pd-terminal-body .token.number { color: #C7E9A8; }
+.pegasus-demo .pd-terminal-body .token.tag { color: var(--pd-muted); }
+.pegasus-demo .pd-terminal-body .token.attr-name { color: var(--pd-lime); }
+.pegasus-demo .pd-terminal-body .token.attr-value,
+.pegasus-demo .pd-terminal-body .token.string { color: var(--pd-green); }
+
+/*~~~~~~~~~~~~~~~~~~~ PREVIEW FRAME ~~~~~~~~~~~~~~~~~~~*/
+.pegasus-demo .pd-preview { position: relative; margin: 0 auto 18px; max-width: 760px; }
+.pegasus-demo .pd-preview::before {
+	content: ""; position: absolute; inset: -14px; z-index: 0;
+	background: radial-gradient(var(--pd-accent) 0%, transparent 65%); opacity: .16; -webkit-filter: blur(8px); filter: blur(8px);
+}
+.pegasus-demo .pd-preview-inner {
+	position: relative; z-index: 1;
+	background: var(--pd-bg-mid); border: 1px solid var(--pd-border-2);
+	padding: 14px; text-align: center;
+}
+.pegasus-demo .pd-preview-inner img { display: block; margin: 0 auto; }
+.pegasus-demo .pd-preview-tag {
+	position: absolute; top: 10px; left: 10px; z-index: 2;
+	font-family: var(--pd-pixel); font-size: 7px; color: #B7E88C;
+	background: rgba(6,4,23,.8); padding: 5px 9px; border: 1px solid rgba(139,198,68,.3);
+}
+
+/*~~~~~~~~~~~~~~~~~~~ BUTTONS ~~~~~~~~~~~~~~~~~~~*/
+.pegasus-demo .pd-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+.pegasus-demo .pd-btn {
+	display: inline-flex; align-items: center; gap: 8px;
+	padding: 13px 22px; font-weight: 700; font-size: 14px;
+	transition: transform .15s ease, background .15s ease, color .15s ease, border-color .15s ease;
+}
+.pegasus-demo .pd-btn-primary { background: var(--pd-accent); color: #041810; }
+.pegasus-demo .pd-btn-primary:hover { color: #041810; transform: translateY(-2px); -webkit-filter: brightness(1.08); filter: brightness(1.08); }
+.pegasus-demo .pd-btn-ghost { border: 1px solid rgba(255,255,255,.18); color: var(--pd-text); font-weight: 600; }
+.pegasus-demo .pd-btn-ghost:hover { border-color: var(--pd-accent); color: var(--pd-text); }
+.pegasus-demo .pd-btn svg { flex: 0 0 auto; }
+
+/*~~~~~~~~~~~~~~~~~~~ INSTALL BLOCK ~~~~~~~~~~~~~~~~~~~*/
+.pegasus-demo .pd-install { margin-top: 34px; }
+.pegasus-demo .pd-install-intro { color: var(--pd-muted); text-align: center; margin-bottom: 18px; }
+.pegasus-demo .pd-install-label { font-family: var(--pd-pixel); font-size: 8px; color: var(--pd-lime); letter-spacing: .06em; display: block; margin-bottom: 8px; }
+
+/*~~~~~~~~~~~~~~~~~~~ RESPONSIVE ~~~~~~~~~~~~~~~~~~~*/
+@media (max-width: 767.98px) {
+	.pegasus-demo .pd-intro-img { width: 70%; }
+	.pegasus-demo .pd-title { font-size: 26px; }
+}
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~ PEGASUS LANDING-PAGE DOT-NAV (Home / Demo templates) ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Recolors the theme's scrollspy dot-nav to the synthwave green on these pages.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+.pg-dotnav .dotnav > li > a { border-color: rgba(43,182,115,.55); }
+.pg-dotnav .dotnav > li > a:hover,
+.pg-dotnav .dotnav > li > a:focus,
+.pg-dotnav .dotnav .active,
+.pg-dotnav .dotnav > li.active > a {
+	background: #2BB673; border-color: #2BB673; box-shadow: 0 0 12px rgba(139,198,68,.65);
+}
+
+/* Hide the dot-nav on small screens */
+@media (max-width: 991.98px) {
+	.pg-dotnav { display: none; }
+}

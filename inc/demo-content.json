@@ -1,0 +1,398 @@
+{
+	"meta": {
+		"title": "Pegasus Demo",
+		"description": "Structured content for the plugin-showcase demo page (tpl_demo.php).",
+		"github_org": "Visionquest-Development",
+		"notes": [
+			"Section `type` values: intro, child-themes, plugin.",
+			"`hidden: true` hides a section EVERYWHERE — the demo showcase, its dot-nav entry, and the home-page plugin grid. Omit the property (or set it false) to show the section. Sections that were commented out in the original HTML are marked hidden here.",
+			"Plugin sections carry `icon`, `blurb` and `accent` used by the home-page summary grid (tpl_home_pegasus.php). The demo page ignores these and cycles its own accent.",
+			"`code.content` is stored DECODED (real < and > characters). When rendering inside <pre><code>, the template must run it through htmlspecialchars()/esc_html() so shortcodes and sample HTML display literally.",
+			"`blocks` render in array order. Block `type` values: subheading, text, image, code.",
+			"Image `container_class` preserves the original wrapper classes; `lightbox` true means wrap the <img> in an anchor with data-lightbox/data-title."
+		]
+	},
+	"sections": [
+		{
+			"id": "home-top-section",
+			"type": "intro",
+			"hidden": true,
+			"section_class": "py-5",
+			"background_color": "#231e61",
+			"text_color": "white",
+			"columns": [
+				{
+					"heading": "WordPress Bootstrap Theme",
+					"image": { "src": "https://visionquestdevelopment.com/wp-content/uploads/2025/06/pegasus.png", "class": "w-50 mb-3 img-fluid", "alt": "" },
+					"lead": "Free for the Community",
+					"body": "When creating custom themes for clients at various jobs, I ended up doing the same thing repeatedly. Therefore, I decided to build a theme that I could always use as a base for my clients' websites and then build upon. This is a custom Bootstrap Theme for WordPress made with CMB2 and various JS libraries."
+				},
+				{
+					"heading": "Pegasus Suite of Plugins",
+					"image": { "src": "https://visionquestdevelopment.com/wp-content/uploads/2025/06/raw5.png", "class": "w-50 mb-3 img-fluid", "alt": "" },
+					"lead": "It comes with a suite of plugins that are separately installed to add functionality to a site.",
+					"body": "WordPress theme for free based on Twitter Bootstrap 5 for front-end markup, CMB2 for theme settings and custom fields, and Woocommerce for online shopping. I developed it to help my build process for custom bootstrap themes, and I want to put it out there for free for the open-source community and the WordPress community. Made with love from ",
+					"body_link": { "text": "http://visionquestdevelopment.com", "url": "http://visionquestdevelopment.com", "target": "_blank", "suffix": "." }
+				}
+			],
+			"install": {
+				"intro": "Installation can be done by running the following code in the terminal while in the wp-content/themes directory:",
+				"commands": [
+					{ "label": "HTTPS", "language": "javascript", "content": "git clone https://github.com/Visionquest-Development/pegasus.git pegasus" },
+					{ "label": "SSH", "language": "javascript", "content": "git clone git@github.com:Visionquest-Development/pegasus.git pegasus" }
+				]
+			},
+			"buttons": [
+				{ "text": "Pegasus Github", "url": "https://github.com/Visionquest-Development/pegasus", "style": "primary", "target": "_blank" }
+			]
+		},
+		{
+			"id": "child-theme-row",
+			"type": "child-themes",
+      "hidden": true,
+			"section_class": "",
+			"columns": [
+				{
+					"heading": "Pegasus Child",
+					"body": "For customizations, the Pegasus Child Theme is the best way to get started.",
+					"button": { "text": "Pegasus Child Theme Github", "url": "https://github.com/Visionquest-Development/pegasus-child", "style": "primary", "target": "_blank" }
+				},
+				{
+					"heading": "Timeline Child",
+					"body": "Custom Timeline Child theme can be used for displaying a timeline",
+					"button": { "text": "Timeline Child Theme Github", "url": "https://github.com/Visionquest-Development/timeline-child", "style": "primary", "target": "_blank" }
+				}
+			],
+			"install": {
+				"intro": "Installation can be done by running the following code in the terminal while in the wp-content/themes directory:",
+				"commands": [
+					{ "label": "HTTPS", "language": "javascript", "content": "git clone https://github.com/Visionquest-Development/pegasus-child.git pegasus-child" },
+					{ "label": "SSH", "language": "javascript", "content": "git clone git@github.com:Visionquest-Development/pegasus-child.git pegasus-child" }
+				]
+			}
+		},
+		{
+			"id": "pegasus-blog",
+			"type": "plugin",
+			"section_class": "py-5",
+			"title": "Blog",
+			"icon": "📰", "blurb": "Post grids and blog layouts with categories, excerpts and read-more.", "accent": "green",
+			"blocks": [
+				{ "type": "image", "src": "/wp-content/themes/pegasus-child/screenshots/blog_screenshot.png", "alt": "placeholder image", "img_class": "img-fluid", "container_class": "text-center pegasus-image-container", "lightbox": true, "lightbox_group": "image-1", "lightbox_title": "Blog Shortcode" },
+				{ "type": "code", "language": "javascript", "content": "[blog the_query=\"post_type=post&order_by=title&order=ASC\" ][/blog]" }
+			],
+			"buttons": [
+				{ "text": "Pegasus Blog Github", "url": "https://github.com/Visionquest-Development/pegasus-blog", "style": "primary", "target": "_blank" },
+				{ "text": "Blog Example Page", "url": "/pegasus-blog", "style": "secondary", "target": "_self" }
+			]
+		},
+		{
+			"id": "pegasus-blurb",
+			"type": "plugin",
+			"hidden": true,
+			"section_class": "py-5",
+			"title": "Blurb",
+			"icon": "💬", "blurb": "Titled blurb blocks with a subtitle and body content.", "accent": "teal",
+			"blocks": [
+				{ "type": "code", "language": "javascript", "content": "[blurb title=\"the_title\" subtitle=\"the_subtitle\" ]The content for the blurb[/blurb]" }
+			],
+			"buttons": []
+		},
+		{
+			"id": "pegasus-callout",
+			"type": "plugin",
+			"section_class": "py-5",
+			"title": "Callout",
+			"icon": "📣", "blurb": "Bold call-to-action blocks with buttons and background colors.", "accent": "teal",
+			"blocks": [
+				{ "type": "image", "src": "/wp-content/themes/pegasus-child/screenshots/callout1_screenshot.png", "alt": "placeholder image", "img_class": "img-fluid", "container_class": "text-center pegasus-image-container", "lightbox": true, "lightbox_group": "image-2", "lightbox_title": "Callout 1" },
+				{ "type": "code", "language": "javascript", "content": "[callout button=\"yes\" link=\"http://example.com\" external=\"yes\" color=\"white\" link_text=\"Learn More\" background=\"http://www.wpfreeware.com/themes/html/appstation/img/download_bg.png\"]\nGet your copy now!Suspendisse vitae bibendum mauris. Nunc iaculis nisl vitae laoreet elementum donec dignissim metus sit.\n[/callout]" },
+				{ "type": "image", "src": "/wp-content/themes/pegasus-child/screenshots/callout2_screenshot.png", "alt": "placeholder image", "img_class": "img-fluid", "container_class": "text-center pegasus-image-container", "lightbox": true, "lightbox_group": "image-3", "lightbox_title": "Callout 2" },
+				{ "type": "code", "language": "javascript", "content": "[callout button=\"yes\" link=\"http://example.com\" color=\"black\" external=\"yes\" backgroundcolor=\"#dedede\"]\nVivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Donec sollicitudin molestie malesuada. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec sollicitudin molestie malesuada.\nNulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.\n[/callout]" }
+			],
+			"buttons": [
+				{ "text": "Pegasus Callout Github", "url": "https://github.com/Visionquest-Development/pegasus-callout", "style": "primary", "target": "_blank" },
+				{ "text": "Callout Example Page", "url": "/pegasus-callout", "style": "secondary", "target": "_self" }
+			]
+		},
+		{
+			"id": "pegasus-carousel",
+			"type": "plugin",
+			"section_class": "py-5",
+			"title": "Carousel",
+			"icon": "🎠", "blurb": "Logo sliders and content carousels driven by any post type.", "accent": "blue",
+			"blocks": [
+				{ "type": "subheading", "text": "Logo Slider" },
+				{ "type": "image", "src": "/wp-content/themes/pegasus-child/screenshots/logo_slider.gif", "alt": "placeholder image", "img_class": "img-fluid", "container_class": "text-center pegasus-image-container", "lightbox": false },
+				{ "type": "code", "language": "javascript", "content": "[logo_slider the_query=\"showposts=100&post_type=logo_slider\"]" },
+				{ "type": "subheading", "text": "Testimonial Slider" },
+				{ "type": "image", "src": "/wp-content/themes/pegasus-child/screenshots/Testimonial_slider.gif", "alt": "placeholder image", "img_class": "img-fluid", "container_class": "text-center pegasus-image-container", "lightbox": false },
+				{ "type": "code", "language": "javascript", "content": "[testimonial_slider image=\"circle\" type=\"bubble\" class=\"test\" the_query=\"post_type=testimonial&showposts=100\" ]" }
+			],
+			"buttons": [
+				{ "text": "Pegasus Carousel Github", "url": "https://github.com/Visionquest-Development/pegasus-carousel", "style": "primary", "target": "_blank" },
+				{ "text": "Carousel Example Page", "url": "/pegasus-carousel", "style": "secondary", "target": "_self" }
+			]
+		},
+		{
+			"id": "pegasus-circle-progress",
+			"type": "plugin",
+			"section_class": "py-5",
+			"title": "Circle Progress",
+			"icon": "◔", "blurb": "Animated circular meters for stats and skill bars.", "accent": "green",
+			"blocks": [
+				{ "type": "image", "src": "/wp-content/themes/pegasus-child/screenshots/circle_progress.gif", "alt": "placeholder image", "img_class": "img-fluid", "container_class": "text-center pegasus-image-container", "lightbox": false },
+				{ "type": "code", "language": "javascript", "content": "[circle_progress number=\"90\"]" }
+			],
+			"buttons": [
+				{ "text": "Pegasus Circle Progress Github", "url": "https://github.com/Visionquest-Development/pegasus-circle-progress", "style": "primary", "target": "_blank" },
+				{ "text": "Circle Progress Example Page", "url": "/pegasus-circle-progress", "style": "secondary", "target": "_self" }
+			]
+		},
+		{
+			"id": "pegasus-count-up",
+			"type": "plugin",
+			"section_class": "py-5",
+			"title": "Count Up",
+			"icon": "#", "blurb": "Numbers that animate up on scroll — perfect for metrics.", "accent": "lime",
+			"blocks": [
+				{ "type": "image", "src": "/wp-content/themes/pegasus-child/screenshots/countup.gif", "alt": "placeholder image", "img_class": "img-fluid", "container_class": "text-center pegasus-image-container", "lightbox": false },
+				{ "type": "code", "language": "javascript", "content": "[counter_up number=\"2025\"]" }
+			],
+			"buttons": [
+				{ "text": "Pegasus Count Up Github", "url": "https://github.com/Visionquest-Development/pegasus-countup", "style": "primary", "target": "_blank" },
+				{ "text": "Count Up Example Page", "url": "/pegasus-countup", "style": "secondary", "target": "_self" }
+			]
+		},
+		{
+			"id": "pegasus-forkit",
+			"type": "plugin",
+			"hidden": true,
+			"section_class": "py-5",
+			"title": "Forkit",
+			"icon": "🍴", "blurb": "A 'Fork me on GitHub' ribbon for the corner of your site.", "accent": "blue",
+			"blocks": [
+				{ "type": "code", "language": "javascript", "content": "[forkit]" }
+			],
+			"buttons": []
+		},
+		{
+			"id": "pegasus-lightbox",
+			"type": "plugin",
+			"hidden": true,
+			"section_class": "py-5",
+			"title": "Lightbox",
+			"icon": "🔦", "blurb": "Lightbox overlays for images and galleries.", "accent": "lime",
+			"blocks": [
+				{ "type": "code", "language": "javascript", "content": "[lightbox]" }
+			],
+			"buttons": []
+		},
+		{
+			"id": "pegasus-isotope",
+			"type": "plugin",
+			"hidden": true,
+			"section_class": "py-5",
+			"title": "Isotope",
+			"icon": "🧩", "blurb": "Isotope filterable and sortable grid layouts.", "accent": "green",
+			"blocks": [
+				{ "type": "code", "language": "javascript", "content": "[isotope]" }
+			],
+			"buttons": []
+		},
+		{
+			"id": "pegasus-masonry",
+			"type": "plugin",
+			"section_class": "py-5",
+			"title": "Masonry",
+			"icon": "▦", "blurb": "Isotope-powered masonry galleries and filterable grids.", "accent": "teal",
+			"blocks": [
+				{ "type": "image", "src": "/wp-content/themes/pegasus-child/screenshots/Masonry.gif", "alt": "placeholder image", "img_class": "img-fluid", "container_class": "pegasus-image-container", "lightbox": false },
+				{ "type": "code", "language": "javascript", "content": "[masonry]\n<img src=\"http://pegasustheme.com/wp-content/uploads/2025/01/abarth.png\" alt=\"image\">\n<img src=\"http://pegasustheme.com/wp-content/uploads/2025/01/Acura.png\" alt=\"image\">\n<img src=\"http://pegasustheme.com/wp-content/uploads/2025/01/alfaromeo.png\" alt=\"image\">\n<img src=\"http://pegasustheme.com/wp-content/uploads/2025/01/Aston-Martin.png\" alt=\"image\">\n<img src=\"http://pegasustheme.com/wp-content/uploads/2025/01/Audi.png\" alt=\"image\">\n<img src=\"http://pegasustheme.com/wp-content/uploads/2025/01/bentley.png\" alt=\"image\">\n<img src=\"http://pegasustheme.com/wp-content/uploads/2025/01/BMW.png\" alt=\"image\">\n<img src=\"http://pegasustheme.com/wp-content/uploads/2025/01/Buick.png\" alt=\"image\">\n<img src=\"http://pegasustheme.com/wp-content/uploads/2025/01/Cadillac.png\" alt=\"image\">\n<img src=\"http://pegasustheme.com/wp-content/uploads/2025/01/Chevrolet.png\" alt=\"image\">\n<img src=\"http://pegasustheme.com/wp-content/uploads/2025/01/chrysler.png\" alt=\"image\">\n[/masonry]" }
+			],
+			"buttons": [
+				{ "text": "Pegasus Masonry Github", "url": "https://github.com/Visionquest-Development/pegasus-masonry", "style": "primary", "target": "_blank" },
+				{ "text": "Masonry Example Page", "url": "/pegasus-masonry", "style": "secondary", "target": "_self" }
+			]
+		},
+		{
+			"id": "pegasus-nav-menu",
+			"type": "plugin",
+			"hidden": true,
+			"section_class": "py-5",
+			"title": "Nav Menu",
+			"icon": "🧭", "blurb": "Render WordPress menus, including a Bootstrap navbar.", "accent": "teal",
+			"blocks": [
+				{ "type": "code", "language": "javascript", "content": "[menu menu=\"primary\"]" },
+				{ "type": "code", "language": "javascript", "content": "[bootstrap_menu menu=\"primary\" additional_classes=\"navbar-expand\"]" }
+			],
+			"buttons": [
+				{ "text": "Pegasus Nav Menu Github", "url": "https://github.com/Visionquest-Development/pegasus-navmenu", "style": "primary", "target": "_blank" },
+				{ "text": "Nav Menu Example Page", "url": "/pegasus-navmenu", "style": "secondary", "target": "_self" }
+			]
+		},
+		{
+			"id": "pegasus-one-page",
+			"type": "plugin",
+			"section_class": "py-5",
+			"title": "One Page",
+			"icon": "⇕", "blurb": "Scrollspy one-page navigation — the sidebar you see here.", "accent": "green",
+			"blocks": [
+				{ "type": "code", "language": "javascript", "content": "[section][/section]" }
+			],
+			"buttons": [
+				{ "text": "Pegasus One Page Github", "url": "https://github.com/Visionquest-Development/pegasus-onepage", "style": "primary", "target": "_blank" },
+				{ "text": "One Page Example Page", "url": "/pegasus-onepage", "style": "secondary", "target": "_self" }
+			]
+		},
+		{
+			"id": "pegasus-packery",
+			"type": "plugin",
+			"section_class": "py-5",
+			"title": "Packery",
+			"icon": "⧉", "blurb": "Draggable, gap-less grid layouts that pack tightly.", "accent": "blue",
+			"blocks": [
+				{ "type": "code", "language": "javascript", "content": "[packery]\n<img src=\"http://pegasustheme.com/wp-content/uploads/2025/01/abarth.png\" alt=\"image\">\n<img src=\"http://pegasustheme.com/wp-content/uploads/2025/01/Acura.png\" alt=\"image\">\n<img src=\"http://pegasustheme.com/wp-content/uploads/2025/01/alfaromeo.png\" alt=\"image\">\n<img src=\"http://pegasustheme.com/wp-content/uploads/2025/01/Aston-Martin.png\" alt=\"image\">\n<img src=\"http://pegasustheme.com/wp-content/uploads/2025/01/Audi.png\" alt=\"image\">\n<img src=\"http://pegasustheme.com/wp-content/uploads/2025/01/bentley.png\" alt=\"image\">\n<img src=\"http://pegasustheme.com/wp-content/uploads/2025/01/BMW.png\" alt=\"image\">\n<img src=\"http://pegasustheme.com/wp-content/uploads/2025/01/Buick.png\" alt=\"image\">\n<img src=\"http://pegasustheme.com/wp-content/uploads/2025/01/Cadillac.png\" alt=\"image\">\n<img src=\"http://pegasustheme.com/wp-content/uploads/2025/01/Chevrolet.png\" alt=\"image\">\n<img src=\"http://pegasustheme.com/wp-content/uploads/2025/01/chrysler.png\" alt=\"image\">\n[/packery]" }
+			],
+			"buttons": [
+				{ "text": "Pegasus Packery Github", "url": "https://github.com/Visionquest-Development/pegasus-packery", "style": "primary", "target": "_blank" },
+				{ "text": "Packery Example Page", "url": "/pegasus-packery", "style": "secondary", "target": "_self" }
+			]
+		},
+		{
+			"id": "pegasus-popup",
+			"type": "plugin",
+			"section_class": "py-5",
+			"title": "Popup",
+			"icon": "⊕", "blurb": "Lightboxes and modal popups for images and content.", "accent": "teal",
+			"blocks": [
+				{ "type": "image", "src": "/wp-content/themes/pegasus-child/screenshots/popup.gif", "alt": "placeholder image", "img_class": "img-fluid", "container_class": "pegasus-image-container", "lightbox": false },
+				{ "type": "code", "language": "javascript", "content": "[popup] <img src=\"//farm9.staticflickr.com/8241/8589392310_7b6127e243_b.jpg\"> [/popup]" }
+			],
+			"buttons": [
+				{ "text": "Pegasus Popup Github", "url": "https://github.com/Visionquest-Development/pegasus-popup", "style": "primary", "target": "_blank" },
+				{ "text": "Popup Example Page", "url": "/pegasus-popup", "style": "secondary", "target": "_self" }
+			]
+		},
+		{
+			"id": "pegasus-posts-grid",
+			"type": "plugin",
+			"section_class": "py-5",
+			"title": "Posts Grid",
+			"icon": "▤", "blurb": "Filterable, sortable post grids from any query.", "accent": "green",
+			"blocks": [
+				{ "type": "subheading", "text": "Loop Shortcode" },
+				{ "type": "image", "src": "/wp-content/themes/pegasus-child/screenshots/loop.png", "alt": "placeholder image", "img_class": "img-fluid", "container_class": "pegasus-image-container", "lightbox": true, "lightbox_group": "image-11", "lightbox_title": "Loop Grid Shortcode" },
+				{ "type": "code", "language": "javascript", "content": "[loop the_query=\"post_type=post&showposts=10\"]" },
+				{ "type": "code", "language": "javascript", "content": "[loop the_query=\"post_type=post&showposts=100&category_name=hot-news&order=ASC&order_by=title\"]" },
+				{ "type": "subheading", "text": "Loop Posts Shortcode" },
+				{ "type": "image", "src": "/wp-content/themes/pegasus-child/screenshots/loop-posts.png", "alt": "placeholder image", "img_class": "img-fluid", "container_class": "pegasus-image-container", "lightbox": true, "lightbox_group": "image-11", "lightbox_title": "Loop Grid Shortcode" },
+				{ "type": "code", "language": "javascript", "content": "[loop-posts the_query=\"post_type=post&showposts=10\"]" },
+				{ "type": "code", "language": "javascript", "content": "[loop-posts the_query=\"post_type=post&showposts=100&category_name=hot-news&order=ASC&order_by=title\"]" },
+				{ "type": "subheading", "text": "Loop Grid Shortcode" },
+				{ "type": "image", "src": "/wp-content/themes/pegasus-child/screenshots/loop-grid.png", "alt": "placeholder image", "img_class": "img-fluid", "container_class": "pegasus-image-container", "lightbox": true, "lightbox_group": "image-11", "lightbox_title": "Loop Grid Shortcode" },
+				{ "type": "code", "language": "javascript", "content": "[loop-grid the_query=\"post_type=post&showposts=10\"]" },
+				{ "type": "code", "language": "javascript", "content": "[loop-grid the_query=\"showposts=99&post_type=post\" bkg_color=\"#dedede\"]" }
+			],
+			"buttons": [
+				{ "text": "Pegasus Posts Grid Github", "url": "https://github.com/Visionquest-Development/pegasus-postgrid", "style": "primary", "target": "_blank" },
+				{ "text": "Posts Grid Example Page", "url": "/pegasus-postgrid", "style": "secondary", "target": "_self" }
+			]
+		},
+		{
+			"id": "pegasus-posts-filter",
+			"type": "plugin",
+			"hidden": true,
+			"section_class": "py-5",
+			"title": "Posts Filter",
+			"icon": "🔎", "blurb": "Ajax-filtered post listings with pagination.", "accent": "blue",
+			"blocks": [
+				{ "type": "code", "language": "javascript", "content": "[ajax_filter_posts per_page=\"1\"]" }
+			],
+			"buttons": [
+				{ "text": "Pegasus Posts Filter Github", "url": "https://github.com/Visionquest-Development/pegasus-posts-filter", "style": "primary", "target": "_blank" },
+				{ "text": "Posts Filter Example Page", "url": "/pegasus-posts-filter", "style": "secondary", "target": "_self" }
+			]
+		},
+		{
+			"id": "pegasus-slider",
+			"type": "plugin",
+			"section_class": "py-5",
+			"title": "Regular Slider",
+			"icon": "▭", "blurb": "Full-width hero sliders with captions and controls.", "accent": "blue",
+			"blocks": [
+				{ "type": "text", "content": "This includes the Regular Slider, Thumbnail Slider, and News/Posts Slider." },
+				{ "type": "subheading", "text": "Slider" },
+				{ "type": "image", "src": "/wp-content/themes/pegasus-child/screenshots/slider1.gif", "alt": "placeholder image", "img_class": "img-fluid", "container_class": "pegasus-image-container", "lightbox": false },
+				{ "type": "code", "language": "javascript", "content": "[slider]\n    [slide class=\"testing\"]\n        <img class=\"alignnone size-full wp-image-12\" src=\"https://via.placeholder.com/960x550/\" alt=\"Gold-and-Black-Logo\">\n    [/slide]\n    [slide]\n        <img class=\"alignnone size-full wp-image-12\" src=\"https://via.placeholder.com/600x350/\" alt=\"Gold-and-Black-Logo\">\n    [/slide]\n[/slider]" },
+				{ "type": "subheading", "text": "News/Posts Slider" },
+				{ "type": "image", "src": "/wp-content/themes/pegasus-child/screenshots/news_slider.gif", "alt": "placeholder image", "img_class": "img-fluid", "container_class": "pegasus-image-container", "lightbox": false },
+				{ "type": "code", "language": "javascript", "content": "[news_slider the_query=\"showposts=100&post_type=post\"]" },
+				{ "type": "subheading", "text": "Thumbnail Slider" },
+				{ "type": "image", "src": "/wp-content/themes/pegasus-child/screenshots/thumbnail_slider.gif", "alt": "placeholder image", "img_class": "img-fluid", "container_class": "pegasus-image-container", "lightbox": false },
+				{ "type": "code", "language": "javascript", "content": "[thumb_slider]\n    [thumb_slide title=\"slide1\" number=\"1\"]\n        <img  src=\"http://slippry.com/assets/img/image-1.jpg\" alt=\"This is caption 1 \">\n    [/thumb_slide]\n    [thumb_slide title=\"slide2\" number=\"2\"]\n        <img  src=\"http://slippry.com/assets/img/image-2.jpg\" alt=\"This is caption 2\">\n    [/thumb_slide]\n    [thumb_slide number=\"3\"]\n        <img  src=\"http://slippry.com/assets/img/image-3.jpg\" alt=\"This is caption 3\">\n    [/thumb_slide]\n    [thumb_slide title=\"slide4\" number=\"4\"]\n        <img  src=\"http://slippry.com/assets/img/image-4.jpg\" alt=\"This is caption 4\">\n    [/thumb_slide]\n[/thumb_slider]" }
+			],
+			"buttons": [
+				{ "text": "Pegasus Slider Github", "url": "https://github.com/Visionquest-Development/pegasus-slider", "style": "primary", "target": "_blank" },
+				{ "text": "Slider Example Page", "url": "/pegasus-slider", "style": "secondary", "target": "_self" }
+			]
+		},
+		{
+			"id": "pegasus-tabs",
+			"type": "plugin",
+			"section_class": "py-5",
+			"title": "Tabs",
+			"icon": "⊟", "blurb": "Tabbed content panels for organizing dense sections.", "accent": "lime",
+			"blocks": [
+				{ "type": "image", "src": "/wp-content/themes/pegasus-child/screenshots/tabs.gif", "alt": "placeholder image", "img_class": "img-fluid", "container_class": "pegasus-image-container", "lightbox": false },
+				{ "type": "code", "language": "javascript", "content": "[tabs]\n    [tab class=\"first\" title=\"Home\"]\n        Vivamus suscipit tortor eget felis porttitor volutpat. Pellentesque in ipsum id orci porta dapibus.\n        Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Pellentesque in ipsum id orci porta dapibus.\n        Quisque velit nisi, pretium ut lacinia in, elementum id enim. Sed porttitor lectus nibh. Vivamus suscipit tortor eget\n        felis porttitor volutpat. Nulla porttitor accumsan tincidunt. Vivamus magna justo\n    [/tab]\n    [tab class=\"second\" title=\"Profile\"]\n        <img loading=\"lazy\" decoding=\"async\" class=\"alignnone size-full wp-image-6\" src=\"http://visionquestdev.com/learn-wordpress/wp-content/uploads/2016/06/quadroIdeas_1153.jpg\" alt=\"quadroIdeas_1153\" width=\"960\" height=\"386\" />\n    [/tab]\n[/tabs]" }
+			],
+			"buttons": [
+				{ "text": "Pegasus Tabs Github", "url": "https://github.com/Visionquest-Development/pegasus-tabs", "style": "primary", "target": "_blank" },
+				{ "text": "Tabs Example Page", "url": "/pegasus-tabs", "style": "secondary", "target": "_self" }
+			]
+		},
+		{
+			"id": "pegasus-toggleslide",
+			"type": "plugin",
+			"section_class": "py-5",
+			"title": "Toggle Slide",
+			"icon": "⇅", "blurb": "Accordion toggles that slide open and closed.", "accent": "teal",
+			"blocks": [
+				{ "type": "image", "src": "/wp-content/themes/pegasus-child/screenshots/toggleslide.gif", "alt": "placeholder image", "img_class": "img-fluid", "container_class": "pegasus-image-container", "lightbox": false },
+				{ "type": "code", "language": "javascript", "content": "[toggleslide title=\"the_title\"]Toggle slide content[/toggleslide]" }
+			],
+			"buttons": [
+				{ "text": "Pegasus Toggleslide Github", "url": "https://github.com/Visionquest-Development/pegasus-toggleslide", "style": "primary", "target": "_blank" },
+				{ "text": "Toggleslide Example Page", "url": "/pegasus-toggleslide", "style": "secondary", "target": "_self" }
+			]
+		},
+		{
+			"id": "pegasus-tooldrawer",
+			"type": "plugin",
+			"hidden": true,
+			"section_class": "py-5",
+			"title": "Tool Drawer",
+			"icon": "🧰", "blurb": "A slide-out drawer of tools and quick links.", "accent": "lime",
+			"blocks": [
+				{ "type": "code", "language": "javascript", "content": "[tooldrawer]" }
+			],
+			"buttons": []
+		},
+		{
+			"id": "pegasus-wow",
+			"type": "plugin",
+			"section_class": "py-5",
+			"title": "Wow",
+			"icon": "✧", "blurb": "Scroll-reveal animations that fire as elements enter view.", "accent": "green",
+			"blocks": [
+				{ "type": "image", "src": "/wp-content/themes/pegasus-child/screenshots/wow.gif", "alt": "placeholder image", "img_class": "img-fluid", "container_class": "pegasus-image-container", "lightbox": false },
+				{ "type": "code", "language": "javascript", "content": "[wow]" }
+			],
+			"buttons": [
+				{ "text": "Pegasus Wow Github", "url": "https://github.com/Visionquest-Development/pegasus-wow", "style": "primary", "target": "_blank" },
+				{ "text": "Wow Example Page", "url": "/pegasus-wow", "style": "secondary", "target": "_self" }
+			]
+		}
+	]
+}
