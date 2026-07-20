@@ -129,21 +129,29 @@
 			 * Render an image block, optionally wrapped in a lightbox anchor.
 			 */
 			if ( ! function_exists( 'pegasus_demo_image' ) ) {
-				function pegasus_demo_image( $block ) {
+				function pegasus_demo_image( $block, $context = '' ) {
 					if ( empty( $block['src'] ) ) {
 						return;
 					}
-					$alt = isset( $block['alt'] ) ? $block['alt'] : '';
+					// Build a descriptive alt: prefer the block alt, then the lightbox
+					// title, then the section context — never the generic placeholder.
+					$alt = isset( $block['alt'] ) ? trim( $block['alt'] ) : '';
+					if ( '' === $alt || 'placeholder image' === strtolower( $alt ) ) {
+						$alt = ! empty( $block['lightbox_title'] ) ? $block['lightbox_title'] : trim( $context );
+						if ( '' === $alt ) {
+							$alt = 'Screenshot';
+						}
+					}
 					?>
 					<div class="pd-preview">
 						<span class="pd-preview-tag">&#9654; PREVIEW</span>
 						<div class="pd-preview-inner">
 							<?php if ( ! empty( $block['lightbox'] ) ) : ?>
-								<a href="<?php echo esc_url( $block['src'] ); ?>" data-lightbox="<?php echo esc_attr( isset( $block['lightbox_group'] ) ? $block['lightbox_group'] : 'demo' ); ?>" data-title="<?php echo esc_attr( isset( $block['lightbox_title'] ) ? $block['lightbox_title'] : '' ); ?>">
-									<img src="<?php echo esc_url( $block['src'] ); ?>" alt="<?php echo esc_attr( $alt ); ?>" class="img-fluid" />
+								<a href="<?php echo esc_url( $block['src'] ); ?>" data-lightbox="<?php echo esc_attr( isset( $block['lightbox_group'] ) ? $block['lightbox_group'] : 'demo' ); ?>" data-title="<?php echo esc_attr( isset( $block['lightbox_title'] ) ? $block['lightbox_title'] : $alt ); ?>">
+									<img src="<?php echo esc_url( $block['src'] ); ?>" alt="<?php echo esc_attr( $alt ); ?>" class="img-fluid" loading="lazy" decoding="async" />
 								</a>
 							<?php else : ?>
-								<img src="<?php echo esc_url( $block['src'] ); ?>" alt="<?php echo esc_attr( $alt ); ?>" class="img-fluid" />
+								<img src="<?php echo esc_url( $block['src'] ); ?>" alt="<?php echo esc_attr( $alt ); ?>" class="img-fluid" loading="lazy" decoding="async" />
 							<?php endif; ?>
 						</div>
 					</div>
@@ -171,6 +179,7 @@
 		</div>
 
 		<div class="pegasus-demo">
+			<h1 class="visually-hidden"><?php echo esc_html( get_the_title() ); ?></h1>
 			<?php
 			$plugin_index = 0; // Counts all sections (drives background rhythm).
 			$plugin_num   = 0; // Counts plugin sections only (drives number + accent).
@@ -192,7 +201,7 @@
 											<h3><?php echo esc_html( $col['heading'] ); ?></h3>
 										<?php endif; ?>
 										<?php if ( ! empty( $col['image']['src'] ) ) : ?>
-											<img class="pd-intro-img img-fluid" src="<?php echo esc_url( $col['image']['src'] ); ?>" alt="<?php echo esc_attr( isset( $col['image']['alt'] ) ? $col['image']['alt'] : '' ); ?>" />
+											<img class="pd-intro-img img-fluid" src="<?php echo esc_url( $col['image']['src'] ); ?>" alt="<?php echo esc_attr( ! empty( $col['image']['alt'] ) ? $col['image']['alt'] : ( isset( $col['heading'] ) ? $col['heading'] : '' ) ); ?>" loading="lazy" decoding="async" />
 										<?php endif; ?>
 										<?php if ( ! empty( $col['lead'] ) ) : ?>
 											<p class="pd-intro-lead"><?php echo esc_html( $col['lead'] ); ?></p>
@@ -275,7 +284,7 @@
 												echo '<p class="pd-lead">' . esc_html( $block['content'] ) . '</p>';
 												break;
 											case 'image':
-												pegasus_demo_image( $block );
+												pegasus_demo_image( $block, isset( $section['title'] ) ? $section['title'] . ' plugin' : '' );
 												break;
 											case 'code':
 												pegasus_demo_terminal(

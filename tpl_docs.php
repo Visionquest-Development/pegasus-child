@@ -54,10 +54,10 @@
 						<div class="pd-preview-inner">
 							<?php if ( ! empty( $image['lightbox'] ) ) : ?>
 								<a href="<?php echo esc_url( $image['src'] ); ?>" data-lightbox="<?php echo esc_attr( isset( $image['lightbox_group'] ) ? $image['lightbox_group'] : 'docs' ); ?>" data-title="<?php echo esc_attr( isset( $image['lightbox_title'] ) ? $image['lightbox_title'] : $alt ); ?>">
-									<img src="<?php echo esc_url( $image['src'] ); ?>" alt="<?php echo esc_attr( $alt ); ?>" class="img-fluid" />
+									<img src="<?php echo esc_url( $image['src'] ); ?>" alt="<?php echo esc_attr( $alt ); ?>" class="img-fluid" loading="lazy" decoding="async" />
 								</a>
 							<?php else : ?>
-								<img src="<?php echo esc_url( $image['src'] ); ?>" alt="<?php echo esc_attr( $alt ); ?>" class="img-fluid" />
+								<img src="<?php echo esc_url( $image['src'] ); ?>" alt="<?php echo esc_attr( $alt ); ?>" class="img-fluid" loading="lazy" decoding="async" />
 							<?php endif; ?>
 						</div>
 					</div>
@@ -69,6 +69,7 @@
 		?>
 
 		<div class="pegasus-demo pegasus-docs">
+			<h1 class="visually-hidden"><?php echo esc_html( get_the_title() ); ?></h1>
 			<?php
 			$docs_index = 0;
 			foreach ( $pegasus_docs_sections as $section ) :
