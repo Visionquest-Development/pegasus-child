@@ -301,6 +301,27 @@
       setProto(startProto);
     });
 
+    // Sidebar CTA (Home / Demo buttons + Documentation link): clone the
+    // <template> into the sidebar widget so it sits at the bottom of the nav.
+    var pgCtaTpl = document.getElementById('pg-sidebar-cta-tpl');
+    var pgSidebarWidget = document.querySelector('#header .nav-sidebar-widget') || document.querySelector('#header');
+    if ( pgCtaTpl && pgSidebarWidget && ! pgSidebarWidget.querySelector('.pg-sidebar-cta') ) {
+      pgSidebarWidget.appendChild(pgCtaTpl.content.cloneNode(true));
+    }
+
+    // Scroll progress bar (demo page only — the element exists only there).
+    var pdScrollBar = document.getElementById('pd-scroll-bar');
+    if ( pdScrollBar ) {
+      var pdUpdateScrollBar = function () {
+        var scrolled = window.scrollY || document.documentElement.scrollTop;
+        var total    = document.documentElement.scrollHeight - window.innerHeight;
+        pdScrollBar.style.width = ( total > 0 ? ( scrolled / total ) * 100 : 0 ).toFixed(2) + '%';
+      };
+      window.addEventListener('scroll', pdUpdateScrollBar, { passive: true });
+      window.addEventListener('resize', pdUpdateScrollBar, { passive: true });
+      pdUpdateScrollBar();
+    }
+
 		// $(function () {
 		//   $('[data-toggle="tooltip"]').tooltip();
 		// });

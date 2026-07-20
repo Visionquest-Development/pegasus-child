@@ -32,8 +32,21 @@ function pegasus_landing_section_links() {
 		);
 	}
 
-	// Future Documentation template will register its own hardcoded links here:
-	// if ( is_page_template( 'tpl_docs.php' ) ) { return array( ... ); }
+	// Documentation template: section anchors come from the docs JSON so the
+	// sidebar/primary nav always matches the page content.
+	if ( is_page_template( 'tpl_docs.php' ) && function_exists( 'pegasus_docs_sections' ) ) {
+		$links = array();
+		foreach ( pegasus_docs_sections() as $section ) {
+			if ( empty( $section['id'] ) ) {
+				continue;
+			}
+			$links[] = array(
+				'id'    => $section['id'],
+				'label' => isset( $section['title'] ) ? $section['title'] : $section['id'],
+			);
+		}
+		return $links;
+	}
 
 	/**
 	 * Allow other code to supply section links for a template.
@@ -119,3 +132,37 @@ function pegasus_prefilter_primary_nav( $output, $args ) {
 	return $ul;
 }
 add_filter( 'pre_wp_nav_menu', 'pegasus_prefilter_primary_nav', 10, 2 );
+
+
+/**
+ * Output the sidebar CTA (Home / Demo buttons + Documentation link) into a
+ * <template>. pegasus-custom.js clones it into the sidebar's .nav-sidebar-widget
+ * (only present in the header_five sidebar layout), so it sits at the bottom of
+ * the sidebar nav without forking the parent header template.
+ */
+function pegasus_sidebar_cta_template() {
+	$home = home_url( '/' );
+	$demo = function_exists( 'pegasus_demo_page_url' ) ? pegasus_demo_page_url() : '';
+	$docs = function_exists( 'pegasus_docs_page_url' ) ? pegasus_docs_page_url() : '';
+	?>
+	<template id="pg-sidebar-cta-tpl">
+		<div class="pg-sidebar-cta">
+			<div class="pg-sidebar-cta-row">
+				<a class="pg-cta-btn" href="<?php echo esc_url( $home ); ?>">
+					<i class="fa fa-home" aria-hidden="true"></i><span><?php esc_html_e( 'Home', 'pegasus-child' ); ?></span>
+				</a>
+				<a class="pg-cta-btn" href="<?php echo esc_url( $demo ? $demo : '#' ); ?>">
+					<i class="fa fa-th-large" aria-hidden="true"></i><span><?php esc_html_e( 'Demo', 'pegasus-child' ); ?></span>
+				</a>
+			</div>
+			<a class="pg-cta-docs" href="<?php echo esc_url( $docs ? $docs : '#' ); ?>">
+				<i class="fa fa-book" aria-hidden="true"></i><span><?php esc_html_e( 'Documentation', 'pegasus-child' ); ?></span>
+			</a>
+			<a class="pg-cta-docs" href="https://github.com/Visionquest-Development" target="_blank" rel="noopener">
+				<i class="fa fa-github" aria-hidden="true"></i><span><?php esc_html_e( 'GitHub', 'pegasus-child' ); ?></span>
+			</a>
+		</div>
+	</template>
+	<?php
+}
+add_action( 'wp_footer', 'pegasus_sidebar_cta_template' );

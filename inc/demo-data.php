@@ -75,6 +75,66 @@ function pegasus_demo_visible_plugins() {
 }
 
 /**
+ * Permalink of the first page assigned a given page template, cached per template.
+ *
+ * @param string $template Template filename, e.g. 'tpl_demo.php'.
+ * @return string Empty string if no such page exists.
+ */
+function pegasus_page_url_by_template( $template ) {
+	static $cache = array();
+	if ( array_key_exists( $template, $cache ) ) {
+		return $cache[ $template ];
+	}
+	$url   = '';
+	$pages = get_pages(
+		array(
+			'meta_key'   => '_wp_page_template',
+			'meta_value' => $template,
+			'number'     => 1,
+		)
+	);
+	if ( ! empty( $pages ) ) {
+		$url = get_permalink( $pages[0]->ID );
+	}
+	$cache[ $template ] = $url;
+	return $url;
+}
+
+/**
+ * Permalink of the Demo page (tpl_demo.php). Empty if none.
+ *
+ * @return string
+ */
+function pegasus_demo_page_url() {
+	return pegasus_page_url_by_template( 'tpl_demo.php' );
+}
+
+/**
+ * Permalink of the Documentation page (tpl_docs.php). Empty if none.
+ *
+ * @return string
+ */
+function pegasus_docs_page_url() {
+	return pegasus_page_url_by_template( 'tpl_docs.php' );
+}
+
+/**
+ * Link to a plugin's section on the Demo page (e.g. /demo/#pegasus-blog).
+ * Falls back to the plugin's example-page link if the demo page isn't found.
+ *
+ * @param array $section Plugin section.
+ * @return string
+ */
+function pegasus_demo_plugin_section_link( $section ) {
+	$base = pegasus_demo_page_url();
+	$id   = isset( $section['id'] ) ? $section['id'] : '';
+	if ( $base && $id ) {
+		return $base . '#' . $id;
+	}
+	return pegasus_demo_plugin_link( $section );
+}
+
+/**
  * Best link for a plugin summary card: its "example page" (secondary) button,
  * else the first button, else empty.
  *

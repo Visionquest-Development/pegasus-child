@@ -155,6 +155,21 @@
 			$pegasus_demo_sections = pegasus_demo_visible_sections();
 		?>
 
+		<?php /* Scroll progress bar (fixed top) — copied from the VisionQuest resume page. */ ?>
+		<div id="pd-scroll-progress"><div id="pd-scroll-bar"></div></div>
+
+		<?php /* Sticky notice: this is the showcase index, not the live plugin demo.
+		         Kept OUTSIDE .pegasus-demo (which has overflow-x:hidden) so position:sticky
+		         tracks the viewport instead of becoming a scroll container. */ ?>
+		<div class="pd-notice" role="note">
+			<div class="container pd-notice-inner">
+				<span class="pd-notice-badge">DEMO</span>
+				<p class="pd-notice-text">
+					This page showcases all the Pegasus plugin previews in one place. For a live demo of an individual plugin &mdash; and its shortcode usage &mdash; visit that plugin's own example page.
+				</p>
+			</div>
+		</div>
+
 		<div class="pegasus-demo">
 			<?php
 			$plugin_index = 0; // Counts all sections (drives background rhythm).

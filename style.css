@@ -122,6 +122,8 @@
     -webkit-text-fill-color: transparent;
     color: #2BB673; /* fallback for non-clipping browsers */
     text-decoration: none;
+    text-align: right;
+    display: block;
   }
 
   #header {
@@ -144,15 +146,20 @@
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 12px 22px;
+    padding: 8px 10px;
     color: #9A95C8 !important;
     font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
-    font-size: 17px;
-    font-weight: 500;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    line-height: 1.5 !important; /* deterministic height (overrides parent 18px) so the green bar matches */
     text-align: left;
     text-transform: none;
     text-decoration: none;
     transition: background .15s ease, color .15s ease;
+  }
+
+  #header li > a .sub-menu li a {
+    color: white !important;
   }
 
   /* Leading number (01, 02, …) */
@@ -183,11 +190,12 @@
     background: rgba(233, 230, 255, .06) !important;
     color: #E9E6FF !important;
     font-family: 'JetBrains Mono', ui-monospace, monospace;
-    /* Keep the active link the same size/weight as the rest so the green
-       accent bar matches height on both the home and demo sidebars
+    /* Keep the active link identical in size/weight/line-height to the rest so
+       the box and green accent bar match on both the home and demo sidebars
        (overrides the parent header_five.css .nav-link.active 20px/bold). */
-    font-size: 17px;
-    font-weight: 500;
+    font-size: 17px !important;
+    font-weight: 500 !important;
+    line-height: 1.5 !important;
     text-transform: none;
   }
   #header li > a.active::before,
@@ -208,11 +216,66 @@
     background: #2BB673;
     border-top: none !important;
     border-left: none !important;
+    border-right: none !important;
+    margin-left: 0 !important;
   }
 
   .sidebar-nav .navi-btn a i {
     background: #2BB673 !important;
   }
+
+  /* ~~~ Sidebar bottom CTA: Home / Demo buttons + Documentation link ~~~ */
+  #header .pg-sidebar-cta {
+    margin: 14px 14px 4px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, .08);
+  }
+  #header .pg-sidebar-cta-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  #header .pg-sidebar-cta .pg-cta-btn {
+    counter-increment: none; /* not part of the numbered nav */
+    flex: 1 1 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 10px;
+    font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+    color: #E9E6FF !important;
+    background: rgba(255, 255, 255, .05);
+    border: 1px solid rgba(255, 255, 255, .12);
+    text-decoration: none;
+    transition: background .15s ease, border-color .15s ease, color .15s ease;
+  }
+  #header .pg-sidebar-cta .pg-cta-btn::before { content: none; } /* no auto number */
+  #header .pg-sidebar-cta .pg-cta-btn:hover {
+    background: rgba(139, 198, 68, .12);
+    border-color: rgba(139, 198, 68, .4);
+    color: #8BC644 !important;
+  }
+  #header .pg-sidebar-cta .pg-cta-btn i { font-size: 13px; }
+  #header .pg-sidebar-cta .pg-cta-docs {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 10px;
+    font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    line-height: 1.2 !important;
+    color: #9A95C8 !important;
+    text-decoration: none;
+    transition: color .15s ease;
+  }
+  #header .pg-sidebar-cta .pg-cta-docs::before { content: none; }
+  #header .pg-sidebar-cta .pg-cta-docs:hover { color: #E9E6FF !important; }
+  #header .pg-sidebar-cta .pg-cta-docs i { color: #2BB673; font-size: 13px; }
 
 
   #dotnav {
@@ -227,10 +290,10 @@
   .keegans-header-menu li:hover .sub-menu {
     display: block;
     position: absolute;
-    left: 280px;
+    left: 240px;
     top: 0;
     background: rgba(82, 45, 168, 0.449);
-    padding: 2px 0;
+    padding: 2px 0 !important;
 
   }
 
@@ -242,6 +305,13 @@
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ FOOTER ~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
+
+  footer a {
+    color: #2BB673 !important;
+  }
+  footer a:hover {
+    color: #8BC644 !important;
+  }
 
   /* Pegasus footer logo (sits above the footer widgets, below the social section) */
   .pegasus-footer-logo {
@@ -696,6 +766,8 @@
 .pegasus-home .ph-card-title { font-size: 26px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 14px; color: var(--ph-text); }
 .pegasus-home .ph-card-desc  { color: var(--ph-muted); line-height: 1.65; margin-bottom: 24px; }
 .pegasus-home .ph-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.pegasus-home .ph-card-actions { margin-top: 24px; }
+.pegasus-home .ph-card-actions .ph-btn i { font-size: 1.05em; }
 .pegasus-home .ph-pill {
 	padding: 6px 12px; font-size: 12px; color: #B7E88C;
 	background: rgba(139,198,68,.1); border: 1px solid rgba(139,198,68,.25);
@@ -854,6 +926,74 @@
 .pegasus-demo .pd-accent-teal  { --pd-accent: #1A8D85; }
 .pegasus-demo .pd-accent-blue  { --pd-accent: #21648B; }
 
+/*~~~~~~~~~~~~~~~~~~~ SCROLL PROGRESS BAR (demo page) ~~~~~~~~~~~~~~~~~~~
+   Copied from the VisionQuest resume page. Fixed to the top of the viewport;
+   #pd-scroll-bar width is driven by pegasus-custom.js. */
+#pd-scroll-progress {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 3px;
+	z-index: 100000;
+	background: rgba(255, 255, 255, .06);
+	pointer-events: none;
+}
+/* Sit just below the WP admin bar when logged in */
+body.admin-bar #pd-scroll-progress { top: 32px; }
+@media screen and (max-width: 782px) {
+	body.admin-bar #pd-scroll-progress { top: 46px; }
+}
+#pd-scroll-bar {
+	height: 100%;
+	width: 0%;
+	background: linear-gradient(90deg, #241F60 0%, #21648B 25%, #1A8D85 50%, #2BB673 75%, #8BC644 100%);
+	transition: width 0.08s linear;
+	will-change: width;
+}
+
+/*~~~~~~~~~~~~~~~~~~~ STICKY DEMO NOTICE ~~~~~~~~~~~~~~~~~~~
+   Sits above .pegasus-demo (outside its overflow-x:hidden wrapper) so it can
+   stick to the viewport top while scrolling. Literal colors — the --pd-* vars
+   live on .pegasus-demo and aren't in scope here. */
+.pd-notice {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+	z-index: 1030;
+	background: rgba(6, 4, 23, 0.92);
+	-webkit-backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
+	border-bottom: 1px solid rgba(139, 198, 68, 0.28);
+	font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+}
+.pd-notice-inner {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	padding: 11px 15px;
+}
+.pd-notice-badge {
+	flex: 0 0 auto;
+	font-family: 'Press Start 2P', monospace;
+	font-size: 9px;
+	letter-spacing: 0.08em;
+	line-height: 1;
+	color: #041810;
+	background: #2BB673;
+	padding: 7px 9px;
+}
+.pd-notice-text {
+	margin: 0;
+	color: #C7C3E8;
+	font-size: 14px;
+	line-height: 1.45;
+}
+@media (max-width: 575.98px) {
+	.pd-notice-text { font-size: 12.5px; }
+	.pd-notice-badge { font-size: 8px; }
+}
+
 /*~~~~~~~~~~~~~~~~~~~ SECTION SHELL ~~~~~~~~~~~~~~~~~~~*/
 .pegasus-demo .pd-section { padding: clamp(56px, 8vw, 88px) 0; border-bottom: 1px solid rgba(255,255,255,.05); }
 .pegasus-demo .pd-section--dark { background: var(--pd-bg); }
@@ -985,6 +1125,55 @@
 @media (max-width: 767.98px) {
 	.pegasus-demo .pd-intro-img { width: 70%; }
 	.pegasus-demo .pd-title { font-size: 26px; }
+}
+
+/*~~~~~~~~~~~~~~~~~~~ DOCUMENTATION PAGE (tpl_docs.php) ~~~~~~~~~~~~~~~~~~~
+   The docs page reuses the .pegasus-demo section styling and adds option cards
+   and a lighter (tag-less) screenshot frame. */
+.pegasus-docs .pd-doc-shot { max-width: 900px; }
+.pegasus-docs .pd-doc-shot::before { opacity: .12; }
+.pegasus-docs .pd-doc-shot .pd-preview-inner { background: #0d0a26; padding: 10px; }
+.pegasus-docs .pd-doc-shot img { display: block; }
+
+/* Option cards (name + description) */
+.pegasus-docs .pd-options { margin-top: 26px; }
+.pegasus-docs .pd-option {
+	height: 100%;
+	padding: 20px 22px;
+	background: var(--pd-bg-card);
+	border: 1px solid var(--pd-border);
+	border-left: 3px solid var(--pd-accent);
+}
+.pegasus-docs .pd-option-name {
+	font-size: 16px;
+	font-weight: 700;
+	letter-spacing: -.01em;
+	margin: 0 0 6px;
+	color: var(--pd-text);
+}
+.pegasus-docs .pd-option-desc {
+	margin: 0;
+	font-size: 14px;
+	line-height: 1.6;
+	color: var(--pd-muted);
+}
+.pegasus-docs .pd-option .pd-doc-shot { margin-top: 14px; }
+
+/* Code examples inside option cards (social icon classes, widget HTML, …) */
+.pegasus-docs .pd-doc-code {
+	margin: 12px 0 0;
+	padding: 14px 16px;
+	background: var(--pd-bg-term);
+	border: 1px solid var(--pd-border-2);
+	overflow-x: auto;
+}
+.pegasus-docs .pd-doc-code code {
+	font-family: var(--pd-mono);
+	font-size: 12.5px;
+	line-height: 1.7;
+	color: #C7E9A8;
+	white-space: pre-wrap;
+	word-break: break-word;
 }
 
 

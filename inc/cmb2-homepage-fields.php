@@ -27,6 +27,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return array
  */
 function pegasus_home_defaults() {
+	// Permalink of the Demo page, used as a default button target where relevant.
+	$demo_url = function_exists( 'pegasus_demo_page_url' ) ? pegasus_demo_page_url() : '';
+
 	return array(
 		// HERO.
 		'hero_badge'          => 'WORDPRESS · BOOTSTRAP · FREE',
@@ -38,15 +41,15 @@ function pegasus_home_defaults() {
 		'hero_buttons'        => array(
 			array(
 				'label' => 'Get it on GitHub',
-				'url'   => 'https://github.com',
+				'url'   => 'https://github.com/Visionquest-Development/pegasus',
 				'style' => 'primary',
-				'icon'  => 'fa-brands fa-github',
+				'icon'  => 'fa fa-github',
 			),
 			array(
-				'label' => 'How to use it →',
+				'label' => 'How to use it',
 				'url'   => '#docs',
 				'style' => 'ghost',
-				'icon'  => '',
+				'icon'  => 'fa fa-book',
 			),
 		),
 		'hero_stats'          => array(
@@ -66,6 +69,9 @@ function pegasus_home_defaults() {
 				'title'  => 'WordPress Bootstrap Theme',
 				'desc'   => 'A clean, responsive foundation you can customize deeply. Built with CMB2 for custom fields and Font Awesome for icons — extend it, don\'t fight it.',
 				'tags'   => 'Bootstrap 5, CMB2, Font Awesome, Child themes',
+				'btn_label' => 'View on GitHub',
+				'btn_url'   => 'https://github.com/Visionquest-Development/pegasus',
+				'btn_icon'  => 'fa fa-github',
 			),
 			array(
 				'accent' => 'teal',
@@ -73,6 +79,9 @@ function pegasus_home_defaults() {
 				'title'  => 'Pegasus Suite of Plugins',
 				'desc'   => 'Each plugin is installed separately, so your site stays lean. Carousels, count-ups, masonry grids, popups, filterable post grids and more — mix and match.',
 				'tags'   => 'blog, carousel, masonry, countup, popup, +15',
+				'btn_label' => 'Browse the demos',
+				'btn_url'   => $demo_url ? $demo_url : '#plugins',
+				'btn_icon'  => 'fa fa-th-large',
 			),
 		),
 
@@ -82,14 +91,24 @@ function pegasus_home_defaults() {
 		'install_text'        => 'Clone the theme into your wp-content/themes directory, activate, and start building.',
 		'install_cards'       => array(
 			array(
-				'label'   => 'INSTALL THE THEME · HTTPS',
-				'comment' => '# Bootstrap theme',
-				'command' => 'git clone https://github.com/VisionQuest-Development/pegasus.git pegasus',
+				'label'   => 'PEGASUS THEME',
+				'comment' => '# the Bootstrap 5 parent theme',
+				'command' => 'git clone https://github.com/Visionquest-Development/pegasus.git pegasus',
 			),
 			array(
-				'label'   => 'ADD A PLUGIN · HTTPS',
-				'comment' => '# e.g. the carousel plugin',
-				'command' => 'git clone https://github.com/VisionQuest-Development/pegasus-carousel.git',
+				'label'   => 'PEGASUS CHILD',
+				'comment' => '# child theme for your customizations',
+				'command' => 'git clone https://github.com/Visionquest-Development/pegasus-child.git pegasus-child',
+			),
+			array(
+				'label'   => 'PEGASUS CAROUSEL',
+				'comment' => '# example plugin: carousels & sliders',
+				'command' => 'git clone https://github.com/Visionquest-Development/pegasus-carousel.git',
+			),
+			array(
+				'label'   => 'PEGASUS SLIDER',
+				'comment' => '# example plugin: hero sliders',
+				'command' => 'git clone https://github.com/Visionquest-Development/pegasus-slider.git',
 			),
 		),
 		'install_note'        => 'Prefer SSH? Every repo ships an SSH clone URL too. Child themes — pegasus-child &amp; timeline-child — install the same way.',
@@ -106,13 +125,8 @@ function pegasus_home_defaults() {
 		'docs_text'           => 'Everything is controlled from a friendly options panel — no code required. The guide walks you through changing the header, logo, footer widgets, colors, page templates and more.',
 		'docs_btn_label'      => 'Read the full guide →',
 		'docs_btn_url'        => '#',
-		'docs_items'          => array(
-			array( 'num' => '01', 'title' => 'Header, logo & colors', 'sub' => 'Pegasus Options global settings' ),
-			array( 'num' => '02', 'title' => 'Footer widgets', 'sub' => 'Configure widget areas' ),
-			array( 'num' => '03', 'title' => 'Additional Header', 'sub' => 'Global & per-page overrides' ),
-			array( 'num' => '04', 'title' => 'Page options & templates', 'sub' => 'Pick layouts per page' ),
-			array( 'num' => '05', 'title' => 'Navigation menus', 'sub' => 'Build and assign menus' ),
-		),
+		// The docs preview list is powered by inc/docs-content.json (shared with
+		// the Documentation page), not CMB2.
 	);
 }
 
@@ -421,6 +435,23 @@ function pegasus_home_register_metaboxes() {
 		'id'   => 'tags',
 		'type' => 'text',
 	) );
+	$overview->add_group_field( $overview_cards, array(
+		'name' => __( 'Button label', 'pegasus-child' ),
+		'desc' => __( 'Leave empty to hide the button.', 'pegasus-child' ),
+		'id'   => 'btn_label',
+		'type' => 'text',
+	) );
+	$overview->add_group_field( $overview_cards, array(
+		'name' => __( 'Button URL', 'pegasus-child' ),
+		'id'   => 'btn_url',
+		'type' => 'text_url',
+	) );
+	$overview->add_group_field( $overview_cards, array(
+		'name' => __( 'Button icon', 'pegasus-child' ),
+		'desc' => __( 'Font Awesome 4 class, e.g. fa fa-github', 'pegasus-child' ),
+		'id'   => 'btn_icon',
+		'type' => 'text',
+	) );
 
 	/* ------------------------------------------------------------------ *
 	 * INSTALL
@@ -555,25 +586,7 @@ function pegasus_home_register_metaboxes() {
 		'type'    => 'text_url',
 		'default' => $defaults['docs_btn_url'],
 	) );
-	$docs_items = $docs->add_field( array(
-		'id'      => $prefix . 'docs_items',
-		'type'    => 'group',
-		'options' => $group_options( __( 'Doc item', 'pegasus-child' ) ),
-	) );
-	$docs->add_group_field( $docs_items, array(
-		'name' => __( 'Number', 'pegasus-child' ),
-		'id'   => 'num',
-		'type' => 'text_small',
-	) );
-	$docs->add_group_field( $docs_items, array(
-		'name' => __( 'Title', 'pegasus-child' ),
-		'id'   => 'title',
-		'type' => 'text',
-	) );
-	$docs->add_group_field( $docs_items, array(
-		'name' => __( 'Subtitle', 'pegasus-child' ),
-		'id'   => 'sub',
-		'type' => 'text',
-	) );
+	// The docs preview list itself is powered by inc/docs-content.json (shared
+	// with the Documentation page) via inc/docs-data.php — no CMB2 group here.
 }
 add_action( 'cmb2_admin_init', 'pegasus_home_register_metaboxes' );

@@ -163,6 +163,14 @@ $pegasus_home_nav = array(
 										<?php endforeach; ?>
 									</div>
 								<?php endif; ?>
+								<?php if ( ! empty( $card['btn_label'] ) ) : ?>
+									<div class="ph-card-actions">
+										<a class="ph-btn ph-btn-primary" href="<?php echo esc_url( ! empty( $card['btn_url'] ) ? $card['btn_url'] : '#' ); ?>"<?php echo ( ! empty( $card['btn_url'] ) && false !== strpos( $card['btn_url'], 'http' ) ) ? ' target="_blank" rel="noopener"' : ''; ?>>
+											<?php if ( ! empty( $card['btn_icon'] ) ) : ?><i class="<?php echo esc_attr( $card['btn_icon'] ); ?>" aria-hidden="true"></i><?php endif; ?>
+											<span><?php echo esc_html( $card['btn_label'] ); ?></span>
+										</a>
+									</div>
+								<?php endif; ?>
 							</div>
 						</div>
 					<?php endforeach; ?>
@@ -233,7 +241,7 @@ $pegasus_home_nav = array(
 						<?php
 						$accent = pegasus_home_accent_class( $plugin['accent'] ?? 'green' );
 						$slug   = $plugin['id'] ?? ''; // already "pegasus-xxx"
-						$link   = pegasus_demo_plugin_link( $plugin );
+						$link   = pegasus_demo_plugin_section_link( $plugin ); // → demo page #section
 						?>
 						<div class="col">
 							<?php if ( $link ) : ?>
@@ -266,8 +274,14 @@ $pegasus_home_nav = array(
 						<h2 class="ph-h2 ph-h2--left"><?php echo esc_html( pegasus_home_field( $pegasus_home_id, 'docs_heading' ) ); ?></h2>
 						<p class="ph-section-lead ph-section-lead--left"><?php echo esc_html( pegasus_home_field( $pegasus_home_id, 'docs_text' ) ); ?></p>
 						<?php
+						// Docs preview + button are powered by the shared docs JSON.
+						if ( ! function_exists( 'pegasus_docs_sections' ) ) {
+							require_once get_stylesheet_directory() . '/inc/docs-data.php';
+						}
+						$docs_sections  = pegasus_docs_sections();
+						$docs_page_url  = function_exists( 'pegasus_docs_page_url' ) ? pegasus_docs_page_url() : '';
 						$docs_btn_label = pegasus_home_field( $pegasus_home_id, 'docs_btn_label' );
-						$docs_btn_url   = pegasus_home_field( $pegasus_home_id, 'docs_btn_url' );
+						$docs_btn_url   = $docs_page_url ? $docs_page_url : pegasus_home_field( $pegasus_home_id, 'docs_btn_url' );
 						?>
 						<?php if ( $docs_btn_label ) : ?>
 							<a class="ph-btn ph-btn-primary" href="<?php echo esc_url( $docs_btn_url ? $docs_btn_url : '#' ); ?>">
@@ -276,17 +290,18 @@ $pegasus_home_nav = array(
 						<?php endif; ?>
 					</div>
 					<div class="col-lg-6">
-						<?php $docs_items = pegasus_home_group( $pegasus_home_id, 'docs_items' ); ?>
 						<div class="ph-doc-list">
-							<?php foreach ( $docs_items as $doc ) : ?>
-								<a class="ph-doc-item" href="<?php echo esc_url( $docs_btn_url ? $docs_btn_url : '#' ); ?>">
-									<span class="ph-doc-num"><?php echo esc_html( $doc['num'] ?? '' ); ?></span>
+							<?php $docs_n = 1; ?>
+							<?php foreach ( $docs_sections as $ds ) : ?>
+								<a class="ph-doc-item" href="<?php echo esc_url( pegasus_docs_section_link( $ds['id'] ?? '' ) ); ?>">
+									<span class="ph-doc-num"><?php echo esc_html( str_pad( (string) $docs_n, 2, '0', STR_PAD_LEFT ) ); ?></span>
 									<span class="ph-doc-body">
-										<span class="ph-doc-title"><?php echo esc_html( $doc['title'] ?? '' ); ?></span>
-										<span class="ph-doc-sub"><?php echo esc_html( $doc['sub'] ?? '' ); ?></span>
+										<span class="ph-doc-title"><?php echo esc_html( $ds['title'] ?? '' ); ?></span>
+										<span class="ph-doc-sub"><?php echo esc_html( $ds['sub'] ?? '' ); ?></span>
 									</span>
 									<span class="ph-doc-arrow">→</span>
 								</a>
+								<?php $docs_n++; ?>
 							<?php endforeach; ?>
 						</div>
 					</div>

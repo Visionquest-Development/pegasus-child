@@ -1,0 +1,110 @@
+{
+	"meta": {
+		"title": "Pegasus Documentation",
+		"description": "Documentation content for the Pegasus theme options, rendered by tpl_docs.php and previewed in the home-page Docs section.",
+		"notes": [
+			"`hidden: true` hides a section everywhere (the docs page, its dot-nav, and the home-page docs preview). Omit (or set false) to show it.",
+			"Each section: `eyebrow`, `title`, `sub` (one-line used in the home-page preview), `intro`, optional `image`, and an `items` list of options.",
+			"Image `src` is site-root relative. `lightbox: true` wraps the screenshot in a lightbox anchor.",
+			"An item may carry its own `image` (used by the additional-header examples).",
+			"An item may carry a `code` string (rendered as a code block). It is stored DECODED (real < and >) and escaped at render time so markup/shortcodes display literally."
+		]
+	},
+	"sections": [
+		{
+			"id": "pegasus-options",
+			"eyebrow": "01 — GLOBAL SETTINGS",
+			"title": "Pegasus Options",
+			"sub": "Site-wide logo, colors, footer & navigation defaults",
+			"intro": "Global settings found under Pegasus Options in the WordPress admin. These apply site-wide and are the foundation every page inherits.",
+			"image": { "src": "/wp-content/themes/pegasus-child/images/docs/pegasus-options.png", "alt": "General Theme Options panel", "lightbox": true, "lightbox_title": "Pegasus Options — General Theme Options" },
+			"items": [
+				{ "name": "Logo", "desc": "Upload your site logo. Defaults to the Site Title (Settings → General) when left empty." },
+				{ "name": "Favicon", "desc": "The small icon shown in the browser tab." },
+				{ "name": "Background color", "desc": "Base background color for the whole site." },
+				{ "name": "Background Image", "desc": "Optional site background image. Position and mobile rendering may need developer tuning." },
+				{ "name": "Background Image Repeat", "desc": "No Repeat, Repeat, Repeat-X, Repeat-Y, Space or Round." },
+				{ "name": "Background Image Position", "desc": "Center Center, Top Left, Top Center, Top Right, Bottom Left, Bottom Center or Bottom Right." },
+				{ "name": "Background Image Size", "desc": "None, Cover or 100% 100%." },
+				{ "name": "Background Attachment Fixed", "desc": "Enable to fix the background image for a parallax effect." },
+				{ "name": "Content color (body, p)", "desc": "Base text color for body copy and paragraphs." },
+				{ "name": "Footer Widget Areas", "desc": "Choose None, One, Two, Three or Four footer widget columns." },
+				{ "name": "Top Bar", "desc": "Enable and style the optional top bar above the header." },
+				{ "name": "Mobile hamburger color & border color", "desc": "Color and border color of the mobile menu (hamburger) toggle button." },
+				{ "name": "Nav background color", "desc": "Background color of the navbar." },
+				{ "name": "Nav item color", "desc": "Color of the menu links in the navigation." },
+				{ "name": "Current item color", "desc": "Color of the active / current menu item." },
+				{ "name": "Footer options", "desc": "Footer copyright text, horizontal rule, and full-width footer toggles." }
+			]
+		},
+		{
+			"id": "header-options",
+			"eyebrow": "02 — HEADER LAYOUTS",
+			"title": "Header Options",
+			"sub": "Five header layouts for different logos & menus",
+			"intro": "Pick one of five header layouts under Header Select. Each suits a different logo size and menu complexity.",
+			"image": { "src": "/wp-content/themes/pegasus-child/images/docs/header-options.png", "alt": "Header Options — Header Select", "lightbox": true, "lightbox_title": "Header Options — Header Select" },
+			"items": [
+				{ "name": "Header One", "desc": "Logo above the navbar, opaque navbar, MegaMenu, and social media menu. Ideal for large menu systems because of its MegaMenu." },
+				{ "name": "Header Two", "desc": "Logo inside (left of) the navbar, transparent navigation, with a social media menu. Good for small logos and a simple design." },
+				{ "name": "Header Three", "desc": "Fixed full-width fancy header, transparent navigation, sidebar mobile nav (not good for a lot of menu items), with special page options for a small or large header." },
+				{ "name": "Header Four", "desc": "Bottom-sticky full-width fancy header, transparent navigation, sidebar mobile nav (not good for a lot of menu items)." },
+				{ "name": "Header Five", "desc": "Fixed left sidebar navigation — the layout this site uses." }
+			]
+		},
+		{
+			"id": "additional-header",
+			"eyebrow": "03 — HEADER SPACING",
+			"title": "Additional Header",
+			"sub": "Per-page header spacing & hero options",
+			"intro": "Used when a page needs extra header spacing or a hero area. Choose the header type under Additional Header Options, then set the overlay color, overlay opacity and NoSpacer padding.",
+			"image": { "src": "/wp-content/themes/pegasus-child/images/docs/page-options.png", "alt": "Additional Header Options", "lightbox": true, "lightbox_title": "Additional Header Options" },
+			"items": [
+				{ "name": "No Header - No Spacing", "desc": "No page header and no extra top spacing.", "image": { "src": "", "alt": "No Header - No Spacing example" } },
+				{ "name": "No Header - Just Spacing", "desc": "No header, but adds top spacing (NoSpacer Padding, e.g. 25px 0) so content clears a fixed navbar.", "image": { "src": "", "alt": "No Header - Just Spacing example" } },
+				{ "name": "Small Header (with parallax)", "desc": "A small hero header with an overlay color / opacity and optional parallax background.", "image": { "src": "", "alt": "Small Header example" } },
+				{ "name": "Large Header (full height + width)", "desc": "A full-viewport hero header with an overlay color / opacity.", "image": { "src": "", "alt": "Large Header example" } },
+				{ "name": "Overlay color & opacity", "desc": "Tint the header background with a color and opacity (default 0.4)." },
+				{ "name": "NoSpacer Padding", "desc": "Padding applied when using a no-header spacing option (default 25px 0)." }
+			]
+		},
+		{
+			"id": "page-options",
+			"eyebrow": "04 — PER-PAGE OPTIONS",
+			"title": "Pegasus Page Options",
+			"sub": "Full-width and page-header overrides per page",
+			"intro": "Per-page overrides found in the Pegasus Page Options box on each page or post editor. They override the matching global option for that page only.",
+			"image": { "src": "/wp-content/themes/pegasus-child/images/docs/page-options.png", "alt": "Pegasus Page Options", "lightbox": true, "lightbox_title": "Pegasus Page Options" },
+			"items": [
+				{ "name": "Fullwidth Container Checkbox", "desc": "Make the page full-width. This overrides the global full-width theme option." },
+				{ "name": "Disable Page Header", "desc": "Hide the page header on this page." }
+			]
+		},
+		{
+			"id": "primary-navigation",
+			"eyebrow": "05 — MENUS",
+			"title": "Primary Navigation",
+			"sub": "Assign your menu to the Primary Menu location",
+			"intro": "Build your menu under Appearance → Menus, then assign it to the Primary Menu display location. Set the display location for the primary navigation so each header layout works correctly.",
+			"image": { "src": "/wp-content/themes/pegasus-child/images/docs/primary-navigation.png", "alt": "Menu display location settings", "lightbox": true, "lightbox_title": "Primary Navigation — Display location" },
+			"items": [
+				{ "name": "Display location — Primary Menu", "desc": "Under Menu Settings, check Primary Menu so the menu renders in the header. Every header layout reads from the Primary Menu location." },
+				{ "name": "Social Icon Menu", "desc": "Assign a menu to the Social Icon Menu location to show social links in the header/footer." },
+				{ "name": "Mega Menu Columns One–Four", "desc": "For Header One's MegaMenu, assign menus to Mega Menu Column One through Four." },
+				{ "name": "Auto add pages", "desc": "Optionally auto-add new top-level pages to the menu." }
+			]
+		},
+		{
+			"id": "social-media",
+			"eyebrow": "06 — SOCIAL LINKS",
+			"title": "Social Media Links",
+			"sub": "Add Font Awesome social icons to the nav, top bar or footer",
+			"intro": "Show Font Awesome 4 social icons in the primary navigation, the top bar, or the Footer Social widget. There are two ways to add them: as menu items, or as a Custom HTML widget.",
+			"items": [
+				{ "name": "Primary nav / top bar — build a menu", "desc": "Go to Appearance → Menus and create a new menu. Add a Custom Link and paste the social platform URL. Open Screen Options (top-right) and check \"CSS Classes\" and \"Link Target\". Expand the link box, check \"Open link in a new tab\", then set CSS Classes to a Font Awesome 4 class — for example fa fa-facebook. Repeat for each platform." },
+				{ "name": "Font Awesome 4 icon classes", "desc": "Put one class in the CSS Classes field of each menu item / link:", "code": "fa fa-facebook\nfa fa-linkedin\nfa fa-youtube\nfa fa-twitter\nfa fa-instagram\nfa fa-github\nfa fa-medium\nfa fa-pinterest\nfa fa-tiktok" },
+				{ "name": "Footer Social widget — Custom HTML", "desc": "Go to Appearance → Widgets, open the \"Footer Social\" widget area, add a Custom HTML widget/block, and paste markup like this (swap in your own URLs). Items without a Font Awesome icon can just use text:", "code": "<ul class=\"sage-social\">\n  <li><a target=\"_blank\" href=\"https://www.youtube.com/@YourChannel\"><i class=\"fa fa-youtube\"></i></a></li>\n  <li><a target=\"_blank\" href=\"https://www.instagram.com/yourhandle/\"><i class=\"fa fa-instagram\"></i></a></li>\n  <li><a target=\"_blank\" href=\"https://www.ebay.com/str/yourstore\">Ebay</a></li>\n  <li><a target=\"_blank\" href=\"https://medium.com/@yourhandle\"><i class=\"fa fa-medium\"></i></a></li>\n</ul>" }
+			]
+		}
+	]
+}

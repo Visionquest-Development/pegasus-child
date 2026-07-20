@@ -23,6 +23,12 @@
 	 */
 	require_once get_stylesheet_directory() . '/inc/demo-data.php';
 
+	/**
+	 * Loader for the documentation content (inc/docs-content.json) used by the
+	 * Documentation template and the Home page Docs preview.
+	 */
+	require_once get_stylesheet_directory() . '/inc/docs-data.php';
+
 	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~PROPER WAY OF ADDING CHILD THEME CSS FILE ~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
