@@ -4,6 +4,7 @@
  * Homepage CMB2 fields + render helpers (Outlaw Coffee home template).
  */
 require_once get_stylesheet_directory() . '/inc/outlaw-home-fields.php';
+require_once get_stylesheet_directory() . '/inc/outlaw-hamilton-fields.php';
 
 /**
  * Enqueue parent CSS.
@@ -93,6 +94,103 @@ function assign_local_customer_role_on_profile_update($user_id) {
 	}
 }
 add_action('profile_update', 'assign_local_customer_role_on_profile_update');
+
+/* -------------------------------------------------------------------------
+ * Hamilton Mill neighborhood delivery
+ *
+ * Flow: a resident signs up (Hamilton Mill landing page or the normal
+ * registration page). Signing up alone grants NOTHING. After the client
+ * confirms the address is inside Hamilton Mill, he sets that user's role to
+ * "Hamilton Mill" (hamilton_mill) in Users -> edit user -> Role. Only then
+ * does the flat delivery method appear for them at checkout.
+ *
+ * The $1.50 flat rate itself is created once in the WooCommerce admin
+ * (Settings -> Shipping) named exactly OCH_HAMILTON_DELIVERY_LABEL. The filter
+ * below hides that method from anyone who is not an approved Hamilton Mill
+ * resident, while leaving the normal paid shipping options untouched.
+ * See HAMILTON-MILL-SETUP.md for the one-time admin steps.
+ * ---------------------------------------------------------------------- */
+
+// The exact Title given to the flat-rate shipping method in the WooCommerce
+// admin. Change it in one place here if you rename the method.
+if ( ! defined( 'OCH_HAMILTON_DELIVERY_LABEL' ) ) {
+	define( 'OCH_HAMILTON_DELIVERY_LABEL', 'Local Delivery' );
+}
+
+/**
+ * Register the Hamilton Mill role so it appears in the WordPress user editor.
+ *
+ * The role is a clone of the WooCommerce "customer" role, so an approved
+ * resident keeps every customer ability — viewing past orders, saved addresses,
+ * downloads, and anything plugins add to the customer role. It self-heals: if
+ * the customer role gains capabilities later, Hamilton Mill picks them up on the
+ * next page load.
+ */
+function add_hamilton_mill_role() {
+	$customer = get_role( 'customer' );
+
+	// Mirror the live customer capabilities (fallback to the WooCommerce
+	// default of just `read` if the customer role isn't available yet).
+	$caps = ( $customer && ! empty( $customer->capabilities ) )
+		? $customer->capabilities
+		: array( 'read' => true );
+
+	$role = get_role( 'hamilton_mill' );
+
+	if ( ! $role ) {
+		add_role( 'hamilton_mill', __( 'Hamilton Mill' ), $caps );
+		return;
+	}
+
+	// Role already exists — keep its capabilities in sync with customer.
+	if ( $role->capabilities != $caps ) { // phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison -- comparing cap maps.
+		foreach ( array_keys( $role->capabilities ) as $cap ) {
+			$role->remove_cap( $cap );
+		}
+		foreach ( $caps as $cap => $grant ) {
+			if ( $grant ) {
+				$role->add_cap( $cap );
+			}
+		}
+	}
+}
+add_action( 'init', 'add_hamilton_mill_role' );
+
+/**
+ * Does the current visitor qualify for Hamilton Mill delivery?
+ *
+ * @return bool
+ */
+function och_is_hamilton_mill_customer() {
+	if ( ! is_user_logged_in() ) {
+		return false;
+	}
+	$user = wp_get_current_user();
+	return in_array( 'hamilton_mill', (array) $user->roles, true );
+}
+
+/**
+ * Hide the flat "Local Delivery" method at checkout unless the logged-in user
+ * is an approved Hamilton Mill resident. Paid shipping methods are untouched.
+ *
+ * @param array $rates   Available shipping rates, keyed by rate ID.
+ * @param array $package Shipping package (unused).
+ * @return array
+ */
+function hamilton_mill_filter_delivery_rate( $rates, $package ) {
+	if ( och_is_hamilton_mill_customer() ) {
+		return $rates; // Approved resident — leave the delivery option in place.
+	}
+
+	foreach ( $rates as $rate_id => $rate ) {
+		if ( 0 === stripos( $rate->get_label(), OCH_HAMILTON_DELIVERY_LABEL ) ) {
+			unset( $rates[ $rate_id ] );
+		}
+	}
+
+	return $rates;
+}
+add_filter( 'woocommerce_package_rates', 'hamilton_mill_filter_delivery_rate', 10, 2 );
 
 // Allow multiple coupons (stacking)
 add_filter( 'woocommerce_coupon_is_valid', 'allow_multiple_coupons', 10, 2 );
