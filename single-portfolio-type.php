@@ -137,10 +137,12 @@ get_header();
 									<div class="span4 portfolio-description">
 										<div class="portfolio_post_item_description">
 
+												<?php /*
 												<div class="meta">
 													<span><?php previous_post_link('<strong>< %link</strong>'); ?></span>
 													<span class="last_item"><?php  next_post_link('<strong>%link ></strong>'); ?></span>
 												</div>
+												*/ ?>
 
 											<?php the_content(''); ?>
 										</div>
@@ -160,15 +162,18 @@ get_header();
 						<?php endif; ?>
 						<?php
 						// Edit post link
-						wp_bootstrap_edit_post_link(
-							sprintf(
-							/* translators: %s: Name of current post */
-								__( 'Edit<span class="screen-reader-text"> "%s"</span>', 'textdomain' ),
-								get_the_title()
-							),
-							'<span class="edit-link">',
-							'</span>'
-						);
+						if ( function_exists( 'wp_bootstrap_edit_post_link' ) ) {
+							// Edit post link
+							wp_bootstrap_edit_post_link(
+								sprintf(
+									/* translators: %s: Name of current post */
+									__( 'Edit<span class="screen-reader-text"> "%s"</span>', 'pegasus' ),
+									get_the_title()
+								),
+								'<span class="edit-link">',
+								'</span>'
+							);
+						}
 						?>
 					</div><!--end inner content-->
 				</div>

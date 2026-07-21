@@ -5,22 +5,34 @@
  Author:         Jim O'Brien
  Author URI:     http://visionquestdevelopment.com
  Template:       pegasus
- Version:        0.0.1
+ Version:        0.0.34
 */
-
 @import url("../pegasus/style.css");
 
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	body { font-size: 12px !important; }
+
+  :root {
+    --acc-purple: #91A4C9;
+    --acc-gray: #f7f7f7;
+    --acc-green: #AEC71E;
+    --acc-border: #cfd6df;
+  }
+
+  body { font-size: 12px !important; background-color: #96a4ab !important; }
 	body, p, h1, h2, h3, h4, h5, h6, span, div, b, ul, ul li, ul li a, a {
 		font-family: Arial, Helvetica, sans-serif !important;
 	}
 	/* green */
 	a { color: #7b8f0a ;}
 	a:hover {color:#AEC71E;}
+
+  .content-container a, .inner-content a, .home-news-query-slider h3 a { text-decoration: none; }
+
+
+  
 	h1 { color: rgb(45, 92, 136) !important; }
 	h2 { color: #4b63ab !important; }
 	h2 a { color: #2d5c88; }
@@ -56,7 +68,7 @@
 	}
 
 	/* btn */
-	.btn {
+	.old-btn {
 		text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
 		vertical-align: middle;
 		cursor: pointer;
@@ -74,6 +86,60 @@
 		filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 		*zoom: 1;
 		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+	}
+
+  .btn {
+		background: #1c3669 !important;
+		color: white !important;
+	}
+
+
+	#search-4 {
+		border: 1px solid #dedede;
+		padding: 10px;
+		border-radius: 10px;
+	}
+
+	#search-4 .widget-title {
+		color: #4b63ab !important;
+		font-size: 2rem;
+		padding: 0;
+	}
+
+
+	.sidebar #block-4 .card { border: none !important; }
+
+	.sidebar #block-4 .wp-block-heading { padding-left: 12px; }
+
+	iframe{
+	   max-width: 100%;
+	}
+
+	.responsive-container {
+		position: relative;
+		padding-bottom: 56.25%; /* fallback if calc() not supported */
+		padding-bottom: calc(315 / 560 * 100%); /* aspect ratio of iframe */
+		height: 0; /* let padding set the height */
+	}
+
+	.responsive-container iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%; /* fill container */
+		height: 100%; /* fill container */
+	}
+
+	center {
+		width: 300px;
+		margin: 0 auto;
+		padding: 0 5px 5px 0;
+		overflow: hidden;
+		resize: both;
+	}
+
+	.alignleft {
+		float: left;
 	}
 
 
@@ -714,3 +780,314 @@
 	@media only screen and (max-width: 479px) {
 
 	}
+
+
+	/* ===========================================================
+	   Pegasus Tabs + Accordions (homepage / tpl_home.php and global)
+	   Targets:
+	     - Pegasus Tabs plugin:      .js-tab-widget > ul.tab-list > li.tab-item > a.tab-link
+	                                 active tab uses [data-tab-active] attribute
+	                                 panels are <section class="tab-panel"> with aria-hidden
+	     - Pegasus Accordion plugin: .pegasus-accordion > .accordion-item > button[aria-expanded]
+	                                 panel is <section class="accordion-panel accordion-content">
+	   =========================================================== */
+
+
+	/* === PEGASUS TABS === */
+
+	/* Tab list: single horizontal row, equal-width tabs, no gaps.
+	   Overrides the plugin's default shadows/radii from tabs.css. */
+	.js-tab-widget ul.tab-list {
+		display: flex;
+		width: 100%;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		box-shadow: none !important;
+		border-radius: 0 !important;
+	}
+
+	.js-tab-widget ul.tab-list > li.tab-item {
+		flex: 1 1 0;
+		display: block;
+		margin: 0 1px 0 0;
+		padding: 0;
+		text-align: center;
+		box-shadow: none !important;
+		border-radius: 0 !important;
+	}
+
+	/* Default/inactive tab: PURPLE bar, WHITE uppercase bold text */
+	.js-tab-widget ul.tab-list > li.tab-item > a.tab-link {
+		display: block;
+		width: 100%;
+		padding: 12px 8px;
+		background-color: #91A4C9 !important;
+		color: #2d5c88 !important;
+		text-transform: uppercase;
+		font-weight: bold;
+		text-decoration: none;
+		border: none;
+		border-radius: 0;
+		box-shadow: none;
+	}
+
+	/* Kill the plugin's animated underline pseudo-element */
+	.js-tab-widget ul.tab-list > li.tab-item > a.tab-link::after {
+		content: none !important;
+		display: none !important;
+	}
+
+	/* Hover / focus: GREEN bar, WHITE text */
+	.js-tab-widget ul.tab-list > li.tab-item > a.tab-link:hover,
+	.js-tab-widget ul.tab-list > li.tab-item > a.tab-link:focus {
+		color: #AEC71E !important;
+	}
+
+	/* Active tab: GRAY bar with GREEN text.
+	   The double-selector form (li[data-tab-active] AND a[data-tab-active]/aria-selected)
+	   plus :hover/:focus variants makes sure this also wins when the user is hovering the
+	   active tab — otherwise the plugin's `a:hover { background: transparent; ... !important }`
+	   in tabs.css can stomp on our background. */
+	.js-tab-widget ul.tab-list > li.tab-item[data-tab-active] > a.tab-link,
+	.js-tab-widget ul.tab-list > li.tab-item[data-tab-active] > a.tab-link:hover,
+	.js-tab-widget ul.tab-list > li.tab-item[data-tab-active] > a.tab-link:focus,
+	.js-tab-widget ul.tab-list > li.tab-item > a.tab-link[data-tab-active],
+	.js-tab-widget ul.tab-list > li.tab-item > a.tab-link[data-tab-active]:hover,
+	.js-tab-widget ul.tab-list > li.tab-item > a.tab-link[data-tab-active]:focus,
+	.js-tab-widget ul.tab-list > li.tab-item > a.tab-link[aria-selected="true"],
+	.js-tab-widget ul.tab-list > li.tab-item > a.tab-link[aria-selected="true"]:hover,
+	.js-tab-widget ul.tab-list > li.tab-item > a.tab-link[aria-selected="true"]:focus {
+		background-color: #f7f7f7 !important;
+		color: #AEC71E !important;
+	}
+
+	/* Tab panels: clean white, no shadow/border, just padding */
+	.js-tab-widget .tab-panel {
+		background: #fff;
+		padding: 20px;
+		border: none;
+		border-radius: 0;
+		box-shadow: none;
+	}
+
+  .js-tab-widget .tab-panel[data-tab-active] {
+    background: #f7f7f7 !important;
+  }
+
+	/* Show/hide driven by the plugin's aria-hidden */
+	.js-tab-widget .tab-panel[aria-hidden="true"]  { display: none; }
+	.js-tab-widget .tab-panel[aria-hidden="false"] { display: block; }
+
+
+	/* === PEGASUS ACCORDION === */
+
+	.pegasus-accordion .accordion-item {
+		position: relative;            /* so the absolutely-positioned .icon anchors here */
+		margin-bottom: 10px;
+		border-bottom: none !important;
+	}
+	.pegasus-accordion .accordion-item:last-child {
+		margin-bottom: 0;
+	}
+
+	/* collapsed header bar (PURPLE bar, dark-blue uppercase title, white plus icon on the left) */
+	.pegasus-accordion .accordion-item button {
+		position: relative;
+		display: block;
+		width: 100%;
+		text-align: left;
+		background: var(--acc-purple) !important;
+		color: #2d5c88;
+		text-transform: uppercase;
+		font-weight: 700;
+		font-size: 18px;
+		letter-spacing: 0.5px;
+		padding: 20px 20px 20px 70px;   /* extra left padding makes room for the icon */
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+	}
+
+	/* hover -> GREEN text */
+	.pegasus-accordion .accordion-item button:hover,
+	.pegasus-accordion .accordion-item button:focus {
+		color: var(--acc-green) !important;
+	}
+
+	/* left white +/- icon (built from ::before horizontal and ::after vertical strokes) */
+	.pegasus-accordion .accordion-item button .icon {
+		position: absolute;
+		left: 22px;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 24px;
+		height: 24px;
+		border: none;
+		color: #fff;                /* plus/minus stroke color */
+		background: transparent;
+		pointer-events: none;
+	}
+	.pegasus-accordion .accordion-item button .icon::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 50%;
+		width: 24px;
+		height: 3px;
+		background: #fff;
+		transform: translateY(-50%);
+	}
+
+  .pegasus-accordion .accordion-item button[aria-expanded="true"] .icon::before {
+		background: var(--acc-green);
+	}
+	.pegasus-accordion .accordion-item button .icon::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 50%;
+		width: 3px;
+		height: 24px;
+		background: #fff;
+		transform: translateX(-50%);
+	}
+
+	/* OPEN (active) state = GRAY bar with GREEN text */
+	.pegasus-accordion .accordion-item button[aria-expanded="true"] {
+		background: var(--acc-gray) !important;
+		color: var(--acc-green) !important;
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+		border-bottom: none !important;
+	}
+
+	/* open-state icon: green minus on white */
+	.pegasus-accordion .accordion-item button[aria-expanded="true"] .icon,
+  .accordion .accordion-item button[aria-expanded="true"] .icon {
+		border-color: var(--acc-green) !important;
+		color: var(--acc-green) !important;
+		background: #fff;
+	}
+	.pegasus-accordion .accordion-item button[aria-expanded="true"] .icon::after {
+		display: none; /* minus instead of plus */
+	}
+
+	/* panel styling + show/hide */
+	.pegasus-accordion .accordion-panel,
+	.pegasus-accordion .accordion-panel.accordion-content {
+		background: #f6f6f6 !important;
+		border: none !important;
+		border-top: 0;
+		padding: 0 10px;
+		opacity: 0;
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height .3s ease, opacity .2s linear;
+    margin-bottom: 20px;
+	}
+	.pegasus-accordion .accordion-item button[aria-expanded="true"] + .accordion-panel,
+	.pegasus-accordion .accordion-item button[aria-expanded="true"] + .accordion-content {
+		opacity: 1;
+		max-height: 1000px;
+		padding: 8px 10px;
+	}
+
+	/* panel text & links (GREEN like old tabs) */
+	.pegasus-accordion .accordion-panel p { color: #000; line-height: 1.6; margin: 0 0 14px; }
+	.pegasus-accordion .accordion-panel a { color: var(--acc-green); text-decoration: underline; }
+	.pegasus-accordion .accordion-panel img { margin: 4px 16px 8px 0; }
+
+	/* hide stray <br> nodes that the shortcode/the_content can leave behind */
+	.pegasus-accordion > br { display: none; }
+
+  .post-grid {
+    padding: 0;
+    list-style: none;
+  }
+
+  .home .post-grid .content-container {
+    padding: 20px;
+    background: #dedede;
+
+  }
+
+  .home-testimonial-slide-content blockquote {
+      font-size: 14px;
+      font-weight: normal;
+      color: black;
+      background: #f9f9f9;
+      border-left: 10px solid #ccc;
+      border-top: 1px solid #ccc;
+      border-right: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      margin: 0;
+      padding: 0.5em 10px;
+      quotes: "\201C" "\201D" "\2018" "\2019";
+      border-radius: 10px;
+  }
+
+  .home-testimonial-attribution {
+    text-align: right;
+  }
+
+
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~~~~ SIDEBAR GRAVITY FORM (contact form, ID 3) ~~~~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+  /* Card-style the sidebar form so it reads as a distinct widget,
+     using the theme accent palette (blue heading, green submit). */
+  .sidebar .gform_wrapper {
+    background-color: #ffffff;
+    border: 1px solid var(--acc-border, #cfd6df);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(28, 54, 105, 0.12);
+    padding: 18px 20px;
+    margin-bottom: 20px;
+  }
+
+  .sidebar .gform_wrapper .gform_heading,
+  .sidebar .gform_wrapper .gform_title {
+    color: #2d5c88;
+  }
+
+  /* Inputs pick up the theme border + a soft focus in the accent purple. */
+  .sidebar .gform_wrapper .gfield input:not([type=submit]):not([type=radio]):not([type=checkbox]),
+  .sidebar .gform_wrapper .gfield textarea,
+  .sidebar .gform_wrapper .gfield select {
+    width: 100%;
+    border: 1px solid var(--acc-border, #cfd6df);
+    border-radius: 6px;
+    padding: 8px 10px;
+    background-color: #fdfdfd;
+  }
+
+  .sidebar .gform_wrapper .gfield input:not([type=submit]):focus,
+  .sidebar .gform_wrapper .gfield textarea:focus,
+  .sidebar .gform_wrapper .gfield select:focus {
+    border-color: var(--acc-purple, #91A4C9);
+    box-shadow: 0 0 0 2px rgba(145, 164, 201, 0.35);
+    outline: none;
+  }
+
+  .sidebar .gform_wrapper .gfield_label {
+    color: #4b63ab;
+    font-weight: 600;
+  }
+
+  /* Submit button in the theme green. */
+  .sidebar .gform_wrapper .gform_footer input[type=submit],
+  .sidebar .gform_wrapper .gform_footer button {
+    background-color: var(--acc-green, #AEC71E);
+    border: 1px solid #7b8f0a;
+    border-radius: 6px;
+    color: #ffffff;
+    padding: 8px 18px;
+    transition: background-color 0.15s ease;
+  }
+
+  .sidebar .gform_wrapper .gform_footer input[type=submit]:hover,
+  .sidebar .gform_wrapper .gform_footer button:hover {
+    background-color: #7b8f0a;
+  }
