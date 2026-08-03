@@ -1886,3 +1886,14 @@
 		}
 		return $output;
 	}, 10, 2 );
+/**
+ * Delete the theme-side Toast transients when the plugin's flush action fires.
+ *
+ * The vqdev-toast plugin owns the admin-bar "Refresh Toast Menu" button and
+ * fires this action; the theme is responsible for clearing its own caches.
+ */
+add_action( 'vqdev_toast_flush_cache', function () {
+	delete_transient( 'vqdev_toast_menu_data' );
+	delete_transient( 'vqdev_toast_menu_meta_check' );
+	delete_transient( 'vqdev_toast_oos_guids' );
+} );
