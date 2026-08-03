@@ -36,8 +36,24 @@ site's transient keys.
 
 ## Deploying to production (SiteGround)
 
-Themes and plugins are deployed by SSHing into SiteGround and running `git pull`.
-The tooling lives in **`/home/jim/Projects/vagrant-local/sync/`**:
+### Themes deploy automatically on push (GitHub Actions)
+
+**Themes** (this `pegasus-child` theme, etc.) do **not** need the sync scripts.
+Pushing to the theme's tracked branch (e.g. `theloft2025_theme`) triggers a
+GitHub Actions workflow that `git pull`s the theme on the live SiteGround server
+automatically. So for a theme change the full deploy is just:
+
+```bash
+git add … && git commit -m "…" && git push
+```
+
+Wait for the Actions run to finish, then verify on the live site. Do **not** run
+`deploy.sh … child` — that step is handled in the cloud now.
+
+### Plugins deploy via the sync scripts (manual)
+
+The sync tooling is only needed for **plugins**. It lives in
+**`/home/jim/Projects/vagrant-local/sync/`**:
 
 - `deploy.sh` — the deploy script (reads **`sites.json`**, which holds SSH creds
   + per-site theme branches + plugin lists). `repos.json` is a parallel, leaner
@@ -67,9 +83,10 @@ Run from `sync/`:
 ./deploy.sh list                              # all configured sites
 ./deploy.sh pull <site> plugin vqdev-toast    # one plugin, one site
 ./deploy.sh pull <site> plugins               # all that site's plugins
-./deploy.sh pull <site> child                 # pegasus-child theme
-./deploy.sh pull <site> all                   # all themes + all plugins
 ```
+
+`deploy.sh` can still pull themes (`child`, `all`), but that's no longer needed —
+themes auto-deploy on push (see above). Use it for plugins.
 
 ### Pull one plugin across every site that has it (fleet-wide)
 
