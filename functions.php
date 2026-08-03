@@ -1739,18 +1739,18 @@
 	function ulg_manual_event_listings() {
 		$events = array(
 			array(
-				'slug'     => 'gotta-sing-broadway-2026-05-29',
-				'title'    => 'Gotta Sing Broadway',
-				'date'     => 'May 29, 2026',
-				'time'     => '6:30 p.m.',
+				'slug'     => 'gotta-sing-80s-2026-08-14',
+				'title'    => "Gotta Sing: '80s",
+				'date'     => 'August 14, 2026',
+				'time'     => '8:00 p.m.',
 				'location' => '1032 Broadway Columbus, GA 31901',
 				'price'    => '$18 in advance / $28 at the door',
-				'desc'     => 'A musical theatre sing-along party for Gen-Xers, Boomers and Beyond! Doors open at 6:00 p.m.',
-				'image'    => get_stylesheet_directory_uri() . '/images/gotta_sing_broadway_052926.png',
-				'url'      => 'https://www.eventbrite.com/e/gotta-sing-broadway-tickets-1988641117114',
+				'desc'     => "An '80s sing-along party — the opposite of karaoke, no one is handed a mic! Sing along to the original hits with the whole room. Doors open at 6:30 p.m.",
+				'image'    => get_stylesheet_directory_uri() . '/images/gotta_sing_80s_081426.jpg',
+				'url'      => 'https://www.eventbrite.com/e/gotta-sing-80s-at-the-loft-columbus-tickets-1992183664970',
 				'cta'      => 'Buy tickets',
 				// Hide from listings 4 hours after start time.
-				'expires'  => strtotime( 'May 29, 2026 6:30 PM' ) + ( 4 * HOUR_IN_SECONDS ),
+				'expires'  => strtotime( 'August 14, 2026 8:00 PM' ) + ( 4 * HOUR_IN_SECONDS ),
 			),
 		);
 
