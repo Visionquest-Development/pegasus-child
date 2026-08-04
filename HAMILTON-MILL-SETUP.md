@@ -5,6 +5,10 @@ Two things live in this theme (already done in code):
 - `tpl_hamilton-mill.php` — the landing page template ("Hamilton Mill Landing").
 - `functions.php` — registers the **Hamilton Mill** user role and hides the
   `$1.50` delivery method from anyone who isn't an approved Hamilton Mill resident.
+  It also restricts the `$1.50` delivery to **coffee-only carts** — if the cart
+  contains any merchandise (or anything outside the Coffee category and its
+  roast subcategories), the flat rate disappears and the resident uses paid
+  shipping for that order.
 
 The rest is one-time clicking in the WordPress/WooCommerce admin. Do these once.
 
@@ -84,4 +88,5 @@ To revoke it later, change their role back to **Customer**.
 | `Hamilton Mill` role | `functions.php` (auto) | The "approved resident" flag |
 | `$1.50 Local Delivery` flat rate | WooCommerce (step 2) | The actual delivery charge |
 | Role-based visibility filter | `functions.php` (auto) | Shows delivery only to approved residents |
+| Coffee-only cart filter | `functions.php` (auto) | Hides delivery if the cart has non-coffee/merch items |
 | Assign role to a user | WP admin (step 3) | Client approves each resident |

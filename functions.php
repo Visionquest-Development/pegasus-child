@@ -170,16 +170,102 @@ function och_is_hamilton_mill_customer() {
 }
 
 /**
+ * Product categories whose items qualify for the flat $1.50 Local Delivery.
+ *
+ * A product qualifies if it lives in this category OR any of its subcategories
+ * (e.g. Coffee -> Dark Roast). Everything else — Merchandise, Coffee Drinks,
+ * Local Delivery Only, uncategorized items — makes the cart ineligible.
+ * Filterable so the eligible set can be tweaked without editing this function.
+ *
+ * @return string[] product_cat slugs.
+ */
+function och_hamilton_delivery_category_slugs() {
+	return apply_filters(
+		'och_hamilton_delivery_categories',
+		array( 'coffee' )
+	);
+}
+
+/**
+ * Expand the eligible category slugs into a flat set of product_cat term IDs —
+ * each configured root category plus all of its descendants. Cached per request.
+ *
+ * @return int[] Eligible product_cat term IDs (empty if none resolve).
+ */
+function och_hamilton_delivery_term_ids() {
+	static $ids = null;
+	if ( null !== $ids ) {
+		return $ids;
+	}
+
+	$ids = array();
+	foreach ( och_hamilton_delivery_category_slugs() as $slug ) {
+		$term = get_term_by( 'slug', $slug, 'product_cat' );
+		if ( ! $term || is_wp_error( $term ) ) {
+			continue;
+		}
+		$ids[] = (int) $term->term_id;
+		$children = get_term_children( $term->term_id, 'product_cat' );
+		if ( ! is_wp_error( $children ) ) {
+			$ids = array_merge( $ids, array_map( 'intval', $children ) );
+		}
+	}
+
+	$ids = array_values( array_unique( $ids ) );
+	return $ids;
+}
+
+/**
+ * Does this shipping package hold ONLY coffee-eligible items?
+ *
+ * The $1.50 delivery is coffee-only: if any item is merch (or anything outside
+ * the eligible categories), the whole cart loses the flat rate.
+ *
+ * @param array $package WooCommerce shipping package (its 'contents' line items).
+ * @return bool True only when every item qualifies for local delivery.
+ */
+function och_package_is_delivery_eligible( $package ) {
+	$allowed = och_hamilton_delivery_term_ids();
+	if ( empty( $allowed ) ) {
+		return false; // Categories missing/misconfigured — fail safe, hide the rate.
+	}
+
+	$contents = ! empty( $package['contents'] ) ? $package['contents'] : array();
+	if ( empty( $contents ) ) {
+		return false;
+	}
+
+	foreach ( $contents as $item ) {
+		$product_id = ! empty( $item['product_id'] ) ? (int) $item['product_id'] : 0;
+		if ( ! $product_id ) {
+			return false;
+		}
+
+		// Directly-assigned terms; descendants are already folded into $allowed,
+		// so a product tagged only "Dark Roast" still matches via that term ID.
+		$terms = wp_get_post_terms( $product_id, 'product_cat', array( 'fields' => 'ids' ) );
+		if ( is_wp_error( $terms ) || empty( $terms ) || ! array_intersect( $terms, $allowed ) ) {
+			return false; // Non-coffee (merch/uncategorized) item — block the rate.
+		}
+	}
+
+	return true;
+}
+
+/**
  * Hide the flat "Local Delivery" method at checkout unless the logged-in user
- * is an approved Hamilton Mill resident. Paid shipping methods are untouched.
+ * is an approved Hamilton Mill resident AND the cart contains only coffee. Any
+ * merch in the cart removes the $1.50 option (they use paid shipping instead);
+ * paid shipping methods are always left untouched.
  *
  * @param array $rates   Available shipping rates, keyed by rate ID.
- * @param array $package Shipping package (unused).
+ * @param array $package Shipping package (its line items decide eligibility).
  * @return array
  */
 function hamilton_mill_filter_delivery_rate( $rates, $package ) {
-	if ( och_is_hamilton_mill_customer() ) {
-		return $rates; // Approved resident — leave the delivery option in place.
+	// Approved resident with a coffee-only cart keeps the delivery option.
+	if ( och_is_hamilton_mill_customer() && och_package_is_delivery_eligible( $package ) ) {
+		return $rates;
 	}
 
 	foreach ( $rates as $rate_id => $rate ) {
