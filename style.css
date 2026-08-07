@@ -9,43 +9,636 @@
 */
 
 /*@import url("../pegasus/style.css");*/
-	
-	
+
+/* Load the theme's brand fonts (CSS-only, so no functions.php enqueue is required):
+   - Allura .......... script face for cursive accents (--font-script)
+   - Playfair Display  high-contrast Didone serif for display headings (--font-display),
+                       incl. italics used for phrases like "refuse to compromise on".
+   Must stay near the top: @import is only valid before other style rules. */
+@import url('https://fonts.googleapis.com/css2?family=Allura&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&display=swap');
+
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
+  :root {
+    --font-script: 'Allura', 'Snell Roundhand', 'Brush Script MT', 'Segoe Script', cursive;
+    --font-display: 'Playfair Display', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --hfhs-black: #0b0b0b;
+    --hfhs-ink: #141414;
+    --hfhs-light: #faf9f7;
+    --hfhs-white: #ffffff;
+    --hfhs-muted: #6c6c6c;
+    --hfhs-muted-light: rgba(255, 255, 255, 0.72);
+    --hfhs-hairline: rgba(0, 0, 0, 0.14);
+    --hfhs-hairline-light: rgba(255, 255, 255, 0.22);
+    --hfhs-gold: #b79a6a;
+  }
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ HEADER ~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	
+
+	.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    flex-shrink: 0;
+  }
+  .nav-logo-img {
+    height: 58px;
+    width: 58px;
+    display: block;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+  .nav-logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    color: white;
+    font-family: var(--font-script);
+  }
+  .nav-logo-text .wm {
+    font-family: var(--font-script);
+    font-weight: 400;
+    font-size: 1.25rem;
+    letter-spacing: 0;
+    line-height: 1;
+  }
+  .nav-logo-text .sc {
+    font-family: var(--font-script);
+    font-size: 1.25rem;
+    line-height: 1;
+    opacity: 0.95;
+    margin-top: 2px;
+  }
+
+  .sticky-top {
+    background: black;
+  }
+
+  /* ---- Nav CTA + Login buttons (sticky header) ---- */
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-left: 1.25rem;
+  }
+  .nav-actions .contact-button-container { margin: 0; }
+
+  /* Shared button shape.
+     Scoped under .nav-actions so these win over Bootstrap's base .btn, which
+     loads after this stylesheet and would otherwise reset bg/color/padding. */
+  .nav-actions .btn-hfhsga,
+  .nav-actions .nav-login-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.78rem;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+    padding: 0.95rem 1.6rem;
+    border: 1px solid transparent;
+    border-radius: 0;
+    text-decoration: none;
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+  }
+
+  /* FREE ESTIMATE — solid white (class set in Nav CTA Button Classes: "btn btn-hfhsga") */
+  .nav-actions .btn-hfhsga {
+    background: #fff;
+    color: var(--hfhs-black);
+    border-color: #fff;
+  }
+  .nav-actions .btn-hfhsga:hover,
+  .nav-actions .btn-hfhsga:focus {
+    background: transparent;
+    color: #fff;
+    border-color: #fff;
+  }
+
+  /* LOGIN — outlined, with fa-sign-in icon */
+  .nav-actions .nav-login-btn {
+    background: transparent;
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.35);
+  }
+  .nav-actions .nav-login-btn:hover,
+  .nav-actions .nav-login-btn:focus {
+    background: #fff;
+    color: var(--hfhs-black);
+    border-color: #fff;
+  }
+  .nav-actions .nav-login-btn .fa {
+    font-size: 0.95em;
+    line-height: 1;
+  }
+
+  @media only screen and (max-width: 767px) {
+    .nav-actions {
+      margin: 1rem 0 0.5rem;
+      flex-wrap: wrap;
+    }
+  }
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ NAVIGATION ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
 
-	
+  #menu-main-nav li a {
+    color: var(--hfhs-white);
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  #menu-main-nav li a:hover {
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  #menu-main-nav li.menu-item-has-children .dropdown-menu {
+    background: var(--hfhs-black) !important;
+    border: 1px solid var(--hfhs-hairline-light);
+  }
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ FOOTER ~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
+
+  #menu-footer-1, #menu-footer-2 {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #menu-footer-1 a, #menu-footer-2 a {
+    color: var(--hfhs-white);
+    padding: 0 !important
+  }
+
+  footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .hfhs-social {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .hfhs-social li {
+    display: inline-block;
+    margin: 0 0.5rem;
+    border: 1px solid var(--hfhs-white);
+    padding: 3px 12px;
+    border-radius: 50%;
+  }
+  .hfhs-social li a {
+    color: var(--hfhs-white);
+    font-size: 1.25rem;
+    transition: color .2s ease;
+    width: 24px;
+    height: 24px;
+
+  }
+  .hfhs-social li:hover {
+    background: var(--hfhs-white);
+    
+  }
+  .hfhs-social li:hover a {
+    color: var(--hfhs-black);
+  }
+
+  /* Dark footer to match the design. Applies to the parent theme's widget columns
+     (#footer-widgets → .footer-widget-area) plus the Contact & Hours HTML widget. */
+  .pegasus-footer { background: var(--hfhs-black); color: var(--hfhs-white); }
+  #footer-widgets { padding: 6rem 0 2rem; }
+  .footer-widget-area { margin-bottom: 2.5rem; }
+
+  /* The design uses a wide brand column with three narrower link columns pushed
+     to the right, instead of the theme's four equal col-lg-3 columns. IDs beat
+     Bootstrap's .col-lg-3 so we can re-weight the row without touching markup. */
+  @media (min-width: 992px) {
+    #footer-widgets .row { align-items: flex-start; }
+    #footer-widget-1 { flex: 0 0 auto; width: 34%; max-width: 34%; }
+    #footer-widget-2,
+    #footer-widget-3,
+    #footer-widget-4 { flex: 0 0 auto; width: 22%; max-width: 22%; }
+  }
+
+  /* Column heading — SERVICES / COMPANY / CONTACT & HOURS (widget titles + our own) */
+  .pegasus-footer .footer-widget-area .widget-title,
+  .pegasus-footer .footer-widget-area .widgettitle,
+  .pegasus-footer .hfhs-fcol__title {
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: var(--hfhs-muted-light);
+    margin: 0 0 2rem;
+  }
+
+  /* Nav-menu columns (Footer 1 = Services, Footer 2 = Company) */
+  .pegasus-footer .footer-widget-area .menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .pegasus-footer .footer-widget-area .menu li { margin: 0 0 1.5rem; }
+  .pegasus-footer .footer-widget-area .menu li:last-child { margin-bottom: 0; }
+  .pegasus-footer .footer-widget-area .menu li a {
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    font-size: 1.08rem;
+    line-height: 1.2;
+    transition: color .2s ease;
+  }
+  .pegasus-footer .footer-widget-area .menu li a:hover,
+  .pegasus-footer .footer-widget-area .menu li.current-menu-item a { color: #fff; }
+
+  /* Contact & Hours column */
+  .hfhs-hours {
+    list-style: none;
+    margin: 0 0 2rem;
+    padding: 0;
+    max-width: 320px;
+  }
+  .hfhs-hours li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin: 0 0 0.9rem;
+    font-size: 1.02rem;
+  }
+  .hfhs-hours__day { color: rgba(255, 255, 255, 0.88); }
+  .hfhs-hours__time { color: rgba(255, 255, 255, 0.58); white-space: nowrap; }
+
+  .hfhs-fcontact__meta { display: flex; flex-direction: column; gap: 0.9rem; }
+  .hfhs-fcontact__phone {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.12rem;
+    color: #fff;
+    text-decoration: none;
+  }
+  .hfhs-fcontact__phone:hover { text-decoration: underline; }
+  .hfhs-fcontact__email,
+  .hfhs-fcontact__loc { color: rgba(255, 255, 255, 0.82); text-decoration: none; }
+  a.hfhs-fcontact__email:hover { color: #fff; }
+
+  /* Colophon — hairline divider, copyright left, Allura script tagline right.
+     Content comes from the theme's Footer Copyright option (footer_copy_textareacode). */
+  .pegasus-footer #colophon.site-footer {
+    border-top: 1px solid var(--hfhs-hairline-light);
+    margin-top: 1.5rem;
+    padding: 0;
+  }
+  .hfhs-colophon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 1.5rem;
+    flex-wrap: wrap;
+    padding: 2.25rem 0 2.75rem;
+  }
+  .hfhs-colophon__copy {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.92rem;
+    letter-spacing: 0.01em;
+  }
+  .hfhs-colophon__script {
+    font-family: var(--font-script);
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 1.75rem;
+    line-height: 1;
+  }
+  @media (max-width: 575px) {
+    .hfhs-colophon { justify-content: center; text-align: center; }
+  }
+
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ HOME PAGE ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	
-	
+
+  /* ---- Home wrapper resets the parent .page-wrap padding for full-bleed sections ---- */
+  .hfhs-home {
+    font-family: var(--font-body);
+    color: var(--hfhs-ink);
+    overflow-x: hidden;
+  }
+  .hfhs-home p { margin-bottom: 0; }
+
+  /* Full-bleed section backgrounds */
+  .hfhs-section--dark  { background: var(--hfhs-black); color: var(--hfhs-white); }
+  .hfhs-section--light { background: var(--hfhs-light); color: var(--hfhs-ink); }
+  .hfhs-section--white { background: var(--hfhs-white); color: var(--hfhs-ink); }
+
+  /* ---- Shared type helpers ---- */
+  .hfhs-display {
+    font-family: var(--font-display);
+
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+  }
+  .hfhs-display em { font-style: italic; font-weight: 400; }
+
+  .hfhs-eyebrow {
+    display: block;
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--hfhs-muted);
+    margin-bottom: 1.25rem;
+  }
+  .hfhs-eyebrow--light { color: var(--hfhs-muted-light); }
+  .hfhs-eyebrow--line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .hfhs-eyebrow--line::before,
+  .hfhs-eyebrow--line::after {
+    content: "";
+    width: 42px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.5;
+  }
+
+  .hfhs-eyebrow-script {
+    font-family: var(--font-script);
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--hfhs-ink);
+    margin-bottom: 0.5rem;
+  }
+  .hfhs-eyebrow-script--light { color: var(--hfhs-white); }
+
+  /* ---- Buttons ---- */
+  .hfhs-btn {
+    display: inline-block;
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.78rem;
+    font-weight: 600;
+    line-height: 1;
+    padding: 1.15rem 2rem;
+    border: 1px solid transparent;
+    text-decoration: none;
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+  }
+  .hfhs-btn--solid { background: var(--hfhs-white); color: var(--hfhs-black); border-color: var(--hfhs-white); }
+  .hfhs-btn--solid:hover { background: transparent; color: var(--hfhs-white); }
+  .hfhs-btn--outline-light { background: transparent; color: var(--hfhs-white); border-color: var(--hfhs-hairline-light); }
+  .hfhs-btn--outline-light:hover { background: var(--hfhs-white); color: var(--hfhs-black); border-color: var(--hfhs-white); }
+  .hfhs-btn--outline-dark { background: transparent; color: var(--hfhs-black); border-color: rgba(0,0,0,0.55); }
+  .hfhs-btn--outline-dark:hover { background: var(--hfhs-black); color: var(--hfhs-white); border-color: var(--hfhs-black); }
+
+  /* ---- Arrow text links ---- */
+  .hfhs-arrow-link {
+    display: inline-block;
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: var(--hfhs-ink);
+    text-decoration: none;
+  }
+  .hfhs-arrow-link--light { color: var(--hfhs-white); }
+  .hfhs-arrow-link .hfhs-arrow { transition: transform .2s ease; display: inline-block; }
+  .hfhs-arrow-link:hover .hfhs-arrow { transform: translateX(4px); }
+
+  /* ---- Decorative corner frames ---- */
+  .hfhs-frame { position: absolute; width: 34px; height: 34px; }
+  .hfhs-frame--tl { top: 18px; left: 18px; border-top: 1px solid rgba(0,0,0,0.55); border-left: 1px solid rgba(0,0,0,0.55); }
+  .hfhs-frame--br { bottom: 18px; right: 18px; border-bottom: 1px solid rgba(0,0,0,0.55); border-right: 1px solid rgba(0,0,0,0.55); }
+
+  /* ====================== HERO ====================== */
+  .hfhs-hero {
+    position: relative;
+    padding: 8rem 0 3.5rem;
+    background: #1c1c1c url('images/hero.jpg') center/cover no-repeat;
+    /* Background image is a placeholder path; will be driven by a CMB2 field later. */
+  }
+  .hfhs-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.45) 45%, rgba(0,0,0,0.82) 100%);
+    z-index: 1;
+  }
+  .hfhs-hero__inner,
+  .hfhs-hero__stats { position: relative; z-index: 2; }
+  .hfhs-hero__inner { text-align: center; max-width: 860px; margin: 0 auto; padding-bottom: 4rem; }
+  .hfhs-hero__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: #fff;
+    font-size: clamp(2.75rem, 6vw, 5.25rem);
+    line-height: 1.02;
+    margin: 0.5rem 0 1.75rem;
+  }
+  .hfhs-hero__title em { font-style: italic; font-weight: 400; }
+  .hfhs-hero__lead {
+    color: rgba(255,255,255,0.9);
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 640px;
+    margin: 0 auto 2.5rem;
+  }
+  .hfhs-hero__actions { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+  .hfhs-hero__stats { border-top: 1px solid var(--hfhs-hairline-light); padding-top: 2.25rem; }
+  .hfhs-stat { display: flex; flex-direction: column; gap: 0.5rem; padding: 0.75rem 0; }
+  .hfhs-stat__label {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--hfhs-muted-light);
+  }
+  .hfhs-stat__value { font-family: var(--font-display); font-size: 1.35rem; color: #fff; }
+  .hfhs-stat__value a { color: inherit; text-decoration: none; }
+
+  /* ====================== VALUES ====================== */
+  .hfhs-values { padding: 6.5rem 0; }
+  .hfhs-values__title { font-size: clamp(2rem, 4vw, 3.4rem); margin-bottom: 2.25rem; }
+  .hfhs-values__body { color: var(--hfhs-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; }
+  .hfhs-values__sign { font-size: 2rem; margin-top: 1.5rem; color: var(--hfhs-ink); }
+
+  /* ====================== SERVICES ====================== */
+  .hfhs-services { padding: 6.5rem 0 7rem; }
+  .hfhs-services__head { margin-bottom: 3.5rem; }
+  .hfhs-services__title { font-size: clamp(2.1rem, 4vw, 3.4rem); color: #fff; margin-bottom: 1.5rem; }
+  .hfhs-services__lead { color: var(--hfhs-muted-light); font-size: 1.08rem; line-height: 1.7; }
+  .hfhs-services__grid { border-top: 1px solid var(--hfhs-hairline-light); border-left: 1px solid var(--hfhs-hairline-light); }
+
+  .hfhs-service {
+    position: relative;
+    display: block;
+    height: 100%;
+    min-height: 340px;
+    padding: 2.5rem;
+    overflow: hidden;
+    text-decoration: none;
+    color: #fff;
+    border-right: 1px solid var(--hfhs-hairline-light);
+    border-bottom: 1px solid var(--hfhs-hairline-light);
+  }
+  .hfhs-service__media {
+    position: absolute;
+    inset: 0;
+    background-color: #2a2a2a;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Per-service photo is set inline via style="background-image:url()" (CMB2 later). */
+    transition: transform .5s ease, -webkit-filter .3s ease;
+    transition: transform .5s ease, filter .3s ease;
+    transition: transform .5s ease, filter .3s ease, -webkit-filter .3s ease;
+    z-index: 0;
+  }
+  /* Darkening overlay keeps the white title/description legible over any photo. */
+  .hfhs-service__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10,10,10,0.45) 0%, rgba(10,10,10,0.55) 42%, rgba(6,6,6,0.92) 100%);
+  }
+  .hfhs-service:hover .hfhs-service__media { transform: scale(1.05); -webkit-filter: brightness(1.08); filter: brightness(1.08); }
+  .hfhs-service__num {
+    position: absolute;
+    top: 1.75rem;
+    right: 2rem;
+    z-index: 2;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.4);
+  }
+  .hfhs-service__body { position: relative; z-index: 2; display: flex; flex-direction: column; height: 100%; }
+  .hfhs-service__icon { display: block; margin-bottom: auto; color: #fff; }
+  .hfhs-service__icon-svg { width: 58px; height: 58px; }
+  .hfhs-service__title { font-family: var(--font-display); font-weight: 700; font-size: 1.65rem; margin: 1.75rem 0 0.85rem; }
+  .hfhs-service__desc { color: rgba(255,255,255,0.78); font-size: 0.98rem; line-height: 1.6; }
+  .hfhs-service__cta {
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--hfhs-hairline-light);
+    color: #fff;
+  }
+  .hfhs-service:hover .hfhs-service__cta .hfhs-arrow { transform: translateX(4px); }
+
+  /* ====================== ABOUT ====================== */
+  .hfhs-about { padding: 7rem 0; }
+  .hfhs-about__media {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    background-color: #d9d6d0; /* fallback shown only if the inline photo is absent */
+    background-size: cover;
+    background-position: 25% center; /* favor the left so Josh stays in frame */
+    background-repeat: no-repeat;
+  }
+  .hfhs-about__script { font-size: 2.15rem; margin-bottom: 0.25rem; }
+  .hfhs-about__title { font-size: clamp(2.1rem, 3.6vw, 3.2rem); margin-bottom: 1.75rem; }
+  .hfhs-about__body { color: var(--hfhs-muted); font-size: 1.08rem; line-height: 1.75; margin-bottom: 1.5rem; }
+  .hfhs-about__stats {
+    margin: 0.5rem 0 2.25rem;
+    padding: 1.75rem 0 0;
+    border-top: 1px solid var(--hfhs-hairline);
+  }
+  .hfhs-about__stat-value { display: block; font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; }
+  .hfhs-about__stat-label {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--hfhs-muted);
+    margin-top: 0.35rem;
+  }
+
+  /* ====================== TESTIMONIAL ====================== */
+  .hfhs-testimonial { position: relative; padding: 6.5rem 0 7rem; overflow: hidden; }
+  .hfhs-testimonial__mark {
+    position: absolute;
+    top: 0.5rem;
+    left: 3%;
+    font-family: var(--font-display);
+    font-size: 16rem;
+    line-height: 1;
+    color: rgba(255,255,255,0.06);
+    z-index: 0;
+  }
+  .hfhs-testimonial .container { position: relative; z-index: 1; }
+  .hfhs-testimonial .hfhs-eyebrow-script--light { font-size: 2.35rem; }
+  .hfhs-testimonial__quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(1.4rem, 2.6vw, 2.25rem);
+    line-height: 1.5;
+    color: #fff;
+    margin: 2rem auto 2rem;
+    max-width: 900px;
+  }
+  .hfhs-stars { color: #fff; letter-spacing: 0.4em; font-size: 1rem; margin-bottom: 1.75rem; }
+  .hfhs-testimonial__name { font-family: var(--font-body); font-weight: 700; font-size: 1.05rem; color: #fff; letter-spacing: 0.02em; }
+  .hfhs-testimonial__role { font-family: var(--font-display); font-style: italic; color: var(--hfhs-muted-light); margin-top: 0.35rem; }
+  .hfhs-testimonial__links { display: flex; flex-wrap: wrap; gap: 2.5rem; justify-content: center; margin-top: 2.5rem; }
+
+  /* ====================== COMMUNITY ====================== */
+  .hfhs-community { padding: 7rem 0; }
+  .hfhs-community__title { font-size: clamp(2.2rem, 4vw, 3.4rem); margin-bottom: 1.75rem; }
+  .hfhs-community__body { color: var(--hfhs-muted); font-size: 1.08rem; line-height: 1.75; margin-bottom: 2rem; }
+  .hfhs-community__partners {
+    background: rgba(0,0,0,0.02);
+    border: 1px solid var(--hfhs-hairline);
+    padding: 0.5rem 2rem;
+    margin-bottom: 2.5rem;
+  }
+  .hfhs-partner {
+    padding: 1.5rem 1.25rem;
+    border-bottom: 1px solid var(--hfhs-hairline);
+  }
+  /* .hfhs-partner:nth-child(2n) { border-left: 1px solid var(--hfhs-hairline); } */
+  .hfhs-partner:nth-last-child(-n+2) { border-bottom: none; }
+  .hfhs-partner__name { display: block; font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; }
+  .hfhs-partner__role { display: block; color: var(--hfhs-muted); font-size: 0.92rem; margin-top: 0.35rem; }
+  .hfhs-community__media {
+    background: var(--hfhs-light);
+    border: 1px solid var(--hfhs-hairline);
+    box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.45);
+  }
+  .hfhs-community__media img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* ====================== CTA ====================== */
+  .hfhs-cta { padding: 6rem 0; }
+  .hfhs-cta .hfhs-eyebrow-script--light { font-size: 2.35rem; }
+  .hfhs-cta__title { font-size: clamp(2.2rem, 4.5vw, 3.6rem); color: #fff; margin: 0.25rem 0 2.5rem; }
+  .hfhs-cta__actions { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+
+
+  
+
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~SITEMAP~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
-	
+
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~WOOCOMMERCE~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -54,21 +647,37 @@
 	~~~~~MEDIA QUERIES~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 	@media only screen and ( min-width: 1100px ) and ( max-width: 1405px) {
-		
+
 	}
-	
+
 	@media only screen and ( min-width: 981px ) {
-		
+
 	}
-		
-	@media only screen and (max-width: 980px) {
-		
-	}
-	
-	@media only screen and ( max-width: 767px ) {
-		
-	}
-	
+
+	@media only screen and (max-width: 991px) {
+    .hfhs-about { padding: 4.5rem 0; }
+    .hfhs-about__media { aspect-ratio: 16 / 10; }
+    .hfhs-community__media { margin-top: 2.5rem; }
+  }
+
+	@media only screen and (max-width: 767px) {
+    .hfhs-hero { padding: 6rem 0 2.5rem; }
+    .hfhs-hero__lead { font-size: 1.05rem; }
+    .hfhs-stat { border-bottom: 1px solid var(--hfhs-hairline-light); }
+    .hfhs-values,
+    .hfhs-services,
+    .hfhs-community,
+    .hfhs-about { padding: 4rem 0; }
+    .hfhs-services__grid { border-left: none; }
+    .hfhs-service { border-left: 1px solid var(--hfhs-hairline-light); min-height: 300px; }
+    .hfhs-testimonial__links { gap: 1.25rem; flex-direction: column; align-items: center; }
+    /* Partners collapse to one column: reset the 2-col borders */
+    .hfhs-partner:nth-child(2n) { border-left: none; }
+    .hfhs-partner:nth-last-child(-n+2):not(:last-child) { border-bottom: 1px solid var(--hfhs-hairline); }
+  }
+
 	@media only screen and (max-width: 479px) {
-		
-	}
+    .hfhs-btn { width: 100%; text-align: center; }
+    .hfhs-hero__actions,
+    .hfhs-cta__actions { flex-direction: column; }
+  }
