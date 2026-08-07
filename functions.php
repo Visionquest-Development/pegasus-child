@@ -40,105 +40,11 @@
 
 
 	/**
-	 * Read a Home Page hero CMB2 value with a fallback.
+	 * CMB2 — Home Page template fields.
+	 * Registration + read helpers live in their own file. Every metabox is
+	 * scoped to the "Home Page" template (tpl_home.php) only.
 	 */
-	function sp_home_hero( $key, $default = '' ) {
-		$val = get_post_meta( get_the_ID(), '_sp_home_hero_' . $key, true );
-		return ( '' !== $val && null !== $val ) ? $val : $default;
-	}
-
-	/**
-	 * CMB2 — Home Page hero fields.
-	 * Only shown on pages using the "Home Page" template (tpl_home.php).
-	 */
-	add_action( 'cmb2_admin_init', 'sp_register_home_hero_metabox' );
-	function sp_register_home_hero_metabox() {
-		$prefix = '_sp_home_hero_';
-
-		$cmb = new_cmb2_box( array(
-			'id'           => 'sp_home_hero',
-			'title'        => __( 'Home Page &mdash; Hero Section', 'pegasus-child' ),
-			'object_types' => array( 'page' ),
-			'show_on'      => array( 'key' => 'page-template', 'value' => 'tpl_home.php' ),
-			'context'      => 'normal',
-			'priority'     => 'high',
-		) );
-
-		$cmb->add_field( array(
-			'name' => __( 'Eyebrow', 'pegasus-child' ),
-			'desc' => __( 'Small uppercase line above the headline.', 'pegasus-child' ),
-			'id'   => $prefix . 'eyebrow',
-			'type' => 'text',
-		) );
-
-		$cmb->add_field( array(
-			'name'    => __( 'Headline', 'pegasus-child' ),
-			'desc'    => __( 'HTML allowed. Use &lt;br&gt; for line breaks and &lt;em&gt;...&lt;/em&gt; to color the italic accent pink.', 'pegasus-child' ),
-			'id'      => $prefix . 'headline',
-			'type'    => 'textarea_small',
-		) );
-
-		$cmb->add_field( array(
-			'name' => __( 'Body copy', 'pegasus-child' ),
-			'id'   => $prefix . 'body',
-			'type' => 'textarea',
-		) );
-
-		$cmb->add_field( array(
-			'name' => __( 'Primary button text', 'pegasus-child' ),
-			'id'   => $prefix . 'btn1_text',
-			'type' => 'text',
-		) );
-		$cmb->add_field( array(
-			'name' => __( 'Primary button link', 'pegasus-child' ),
-			'id'   => $prefix . 'btn1_link',
-			'type' => 'text_url',
-		) );
-
-		$cmb->add_field( array(
-			'name' => __( 'Secondary button text', 'pegasus-child' ),
-			'id'   => $prefix . 'btn2_text',
-			'type' => 'text',
-		) );
-		$cmb->add_field( array(
-			'name' => __( 'Secondary button link', 'pegasus-child' ),
-			'id'   => $prefix . 'btn2_link',
-			'type' => 'text_url',
-		) );
-
-		$facts_group_id = $cmb->add_field( array(
-			'id'          => $prefix . 'facts',
-			'type'        => 'group',
-			'description' => __( 'Small stats shown below the hero buttons. Drag to reorder.', 'pegasus-child' ),
-			'options'     => array(
-				'group_title'   => __( 'Fact {#}', 'pegasus-child' ),
-				'add_button'    => __( 'Add another fact', 'pegasus-child' ),
-				'remove_button' => __( 'Remove fact', 'pegasus-child' ),
-				'sortable'      => true,
-			),
-		) );
-
-		$cmb->add_group_field( $facts_group_id, array(
-			'name' => __( 'Number', 'pegasus-child' ),
-			'id'   => 'num',
-			'type' => 'text_small',
-		) );
-
-		$cmb->add_group_field( $facts_group_id, array(
-			'name' => __( 'Label', 'pegasus-child' ),
-			'id'   => 'label',
-			'type' => 'text',
-		) );
-
-		$cmb->add_field( array(
-			'name'         => __( 'Hero image', 'pegasus-child' ),
-			'desc'         => __( 'Right-side image. Leave empty to show a placeholder.', 'pegasus-child' ),
-			'id'           => $prefix . 'image',
-			'type'         => 'file',
-			'options'      => array( 'url' => false ),
-			'preview_size' => 'medium',
-		) );
-	}
+	require_once get_stylesheet_directory() . '/inc/cmb2-home-fields.php';
 
 	/**
 	 * Format a price value with leading $.
