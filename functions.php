@@ -12,11 +12,39 @@
 	function theme_enqueue_styles() {
 		wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
 
+		/* Google Fonts used by the Valor Care home template (Cinzel + Lato) */
+		wp_enqueue_style(
+			'valorcare-fonts',
+			'https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap',
+			array(),
+			null
+		);
+
 		/* qTip CSS */
 		//wp_enqueue_style('twentytwenty-css', get_stylesheet_directory_uri() . '/css/twentytwenty.css', null, false, false);
 
 	}
 	add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
+
+	/**
+	 * Load Google Fonts preconnect hints for faster font delivery.
+	 */
+	function valorcare_font_preconnect() {
+		echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
+		echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
+	}
+	add_action( 'wp_head', 'valorcare_font_preconnect', 1 );
+
+	/**
+	 * Home page CMB2 fields (only loaded when CMB2 is available via the parent theme).
+	 */
+	function valorcare_include_home_fields() {
+		$fields_file = get_stylesheet_directory() . '/inc/cmb2-home-fields.php';
+		if ( file_exists( $fields_file ) ) {
+			require_once $fields_file;
+		}
+	}
+	add_action( 'after_setup_theme', 'valorcare_include_home_fields' );
 
 	/**
 	* Proper way to enqueue JS
