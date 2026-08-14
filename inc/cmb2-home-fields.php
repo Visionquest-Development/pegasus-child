@@ -50,47 +50,10 @@ function valorcare_home_defaults() {
 			array( 'icon' => 'fa-clock-o',  'text' => 'Flexible scheduling, responsive communication' ),
 		),
 
-		// ---- Services ------------------------------------------------------
+		// ---- Services (section chrome only; cards live on the Services page)
 		'services_eyebrow' => 'Our Services',
 		'services_title'   => 'In-Home Care for Seniors',
 		'services_intro'   => 'Every client receives a customized plan built around what they actually need — from a few hours a week to daily support.',
-		'services' => array(
-			array(
-				'icon'      => 'fa-users',
-				'title'     => 'Companionship',
-				'text'      => 'Meaningful conversation, shared activities, errands, and a reassuring presence that keeps isolation at bay.',
-				'link_text' => 'Read more',
-				'link_url'  => '/services/companionship/',
-			),
-			array(
-				'icon'      => 'fa-heart',
-				'title'     => 'Personal Care',
-				'text'      => 'Respectful, hands-on help with bathing, grooming, dressing, mobility, and other daily personal needs.',
-				'link_text' => 'Read more',
-				'link_url'  => '/services/personal-care/',
-			),
-			array(
-				'icon'      => 'fa-clock-o',
-				'title'     => 'Respite Care',
-				'text'      => 'Family caregivers need rest too. We step in for a few hours, a weekend, or longer so you can recharge.',
-				'link_text' => 'Read more',
-				'link_url'  => '/services/respite-care/',
-			),
-			array(
-				'icon'      => 'fa-home',
-				'title'     => 'Homemaking',
-				'text'      => 'Light housekeeping, laundry, meal preparation, and feeding assistance that keep the home running comfortably.',
-				'link_text' => 'Read more',
-				'link_url'  => '/services/homemaking/',
-			),
-			array(
-				'icon'      => 'fa-lightbulb-o',
-				'title'     => "Dementia & Alzheimer's Support",
-				'text'      => 'Gentle guidance, daily structure, and safety-focused support tailored to memory-related needs.',
-				'link_text' => 'Read more',
-				'link_url'  => '/services/dementia-care/',
-			),
-		),
 
 		// ---- Is It Time (signs) -------------------------------------------
 		'signs_title'    => 'Is It Time for Home Care?',
@@ -154,6 +117,7 @@ function valorcare_home_defaults() {
 		'consult_email'      => 'valorcarega@gmail.com',
 		'consult_payment'    => 'Private pay accepted · Medicaid & VA benefits coming soon',
 		'form_note'          => 'We reply within one business day.',
+		'consult_form_shortcode' => '',
 		'care_options' => array(
 			array( 'label' => 'Companionship' ),
 			array( 'label' => 'Personal Care' ),
@@ -272,17 +236,12 @@ function valorcare_register_home_metaboxes() {
 	$svc->add_field( array( 'name' => 'Eyebrow', 'id' => $prefix . 'services_eyebrow', 'type' => 'text', 'default' => $defaults['services_eyebrow'] ) );
 	$svc->add_field( array( 'name' => 'Heading', 'id' => $prefix . 'services_title', 'type' => 'text', 'default' => $defaults['services_title'] ) );
 	$svc->add_field( array( 'name' => 'Intro', 'id' => $prefix . 'services_intro', 'type' => 'textarea_small', 'default' => $defaults['services_intro'] ) );
-	$svc_group = $svc->add_field( array(
-		'id'      => $prefix . 'services',
-		'type'    => 'group',
-		'options' => $group_opts( 'Service', 'Services' ),
+	$svc->add_field( array(
+		'name' => 'Service cards',
+		'id'   => $prefix . 'services_cards_note',
+		'type' => 'title',
+		'desc' => 'The cards shown in this section come from the <strong>Services page</strong> (the "Services Catalogue" metabox on the page using the Services Page template). Edit them there — they drive both this grid and the Services page.',
 	) );
-	$svc->add_group_field( $svc_group, array( 'name' => 'Photo', 'id' => 'image', 'type' => 'file', 'options' => array( 'url' => false ) ) );
-	$svc->add_group_field( $svc_group, array( 'name' => 'Font Awesome Icon', 'id' => 'icon', 'type' => 'text' ) );
-	$svc->add_group_field( $svc_group, array( 'name' => 'Title', 'id' => 'title', 'type' => 'text' ) );
-	$svc->add_group_field( $svc_group, array( 'name' => 'Text', 'id' => 'text', 'type' => 'textarea_small' ) );
-	$svc->add_group_field( $svc_group, array( 'name' => 'Link Text', 'id' => 'link_text', 'type' => 'text' ) );
-	$svc->add_group_field( $svc_group, array( 'name' => 'Link URL', 'id' => 'link_url', 'type' => 'text' ) );
 
 	/* --------------------------------------------------------- Is It Time (signs) */
 	$signs = new_cmb2_box( array_merge( $show_args, array(
@@ -374,6 +333,12 @@ function valorcare_register_home_metaboxes() {
 	$consult->add_field( array( 'name' => 'Email', 'id' => $prefix . 'consult_email', 'type' => 'text', 'default' => $defaults['consult_email'] ) );
 	$consult->add_field( array( 'name' => 'Payment Note', 'id' => $prefix . 'consult_payment', 'type' => 'text', 'default' => $defaults['consult_payment'] ) );
 	$consult->add_field( array( 'name' => 'Form Reply Note', 'id' => $prefix . 'form_note', 'type' => 'text', 'default' => $defaults['form_note'] ) );
+	$consult->add_field( array(
+		'name' => 'Gravity Forms Shortcode',
+		'desc' => 'Optional. Paste a Gravity Forms shortcode (e.g. <code>[gravityform id="1" title="false" description="false"]</code>) to replace the built-in contact form. Leave blank to keep the built-in form.',
+		'id'   => $prefix . 'consult_form_shortcode',
+		'type' => 'textarea_small',
+	) );
 	$care_group = $consult->add_field( array(
 		'id'      => $prefix . 'care_options',
 		'type'    => 'group',

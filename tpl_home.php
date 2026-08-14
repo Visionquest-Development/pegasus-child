@@ -183,9 +183,27 @@ get_header();
 					<p class="vc-lead"><?php echo esc_html( vc_val( 'services_intro' ) ); ?></p>
 				</div>
 
+				<?php
+				// The services grid pulls its cards from the Services page
+				// (tpl_services.php) so the catalogue is edited in one place.
+				// Falls back to the design defaults until real content is saved.
+				$svc_page_id  = function_exists( 'valorcare_get_services_page_id' ) ? valorcare_get_services_page_id() : 0;
+				$svc_fallback = function_exists( 'valorcare_services_defaults' ) ? valorcare_services_defaults() : array( 'catalogue' => array() );
+				$svc_fallback = $svc_fallback['catalogue'];
+				$services     = function_exists( 'valorcare_meta_group_from' ) ? valorcare_meta_group_from( 'vc_services', $svc_page_id, $svc_fallback ) : $svc_fallback;
+				$services     = function_exists( 'valorcare_nonempty_rows' ) ? valorcare_nonempty_rows( $services ) : $services;
+				if ( empty( $services ) ) { $services = $svc_fallback; }
+				// Base URL of the Services page — used to link each card to its
+				// matching service subpage (child of the Services page).
+				$svc_page_url = $svc_page_id ? trailingslashit( get_permalink( $svc_page_id ) ) : home_url( '/services/' );
+				?>
 				<div class="row g-4 mt-3 justify-content-center">
-					<?php foreach ( vc_rows( 'services' ) as $service ) :
+					<?php foreach ( $services as $service ) :
 						$svc_img = isset( $service['image'] ) ? $service['image'] : '';
+						// Button URL: explicit Button URL wins, else the service's subpage.
+						$svc_link = ! empty( $service['link_url'] )
+							? $service['link_url']
+							: ( ! empty( $service['title'] ) ? $svc_page_url . sanitize_title( $service['title'] ) . '/' : '' );
 					?>
 						<div class="col-md-6 col-lg-4">
 							<div class="vc-card h-100 d-flex flex-column">
@@ -193,14 +211,16 @@ get_header();
 									<?php echo vc_image_slot( $svc_img, isset( $service['title'] ) ? $service['title'] : 'Service photo', '' ); ?>
 								</div>
 								<div class="vc-card__body p-4 d-flex flex-column flex-grow-1">
+									<?php if ( ! empty( $service['icon'] ) ) : ?>
 									<div class="vc-badge-icon">
 										<i class="fa <?php echo esc_attr( $service['icon'] ); ?>"></i>
 									</div>
-									<h3 class="vc-serif vc-card__title"><?php echo esc_html( $service['title'] ); ?></h3>
-									<p class="vc-card__text"><?php echo esc_html( $service['text'] ); ?></p>
-									<?php if ( ! empty( $service['link_text'] ) ) : ?>
-										<a href="<?php echo esc_url( $service['link_url'] ); ?>" class="vc-readmore">
-											<?php echo esc_html( $service['link_text'] ); ?> <i class="fa fa-arrow-circle-right ms-1"></i>
+									<?php endif; ?>
+									<h3 class="vc-serif vc-card__title"><?php echo esc_html( isset( $service['title'] ) ? $service['title'] : '' ); ?></h3>
+									<p class="vc-card__text"><?php echo esc_html( isset( $service['text'] ) ? $service['text'] : '' ); ?></p>
+									<?php if ( ! empty( $svc_link ) ) : ?>
+										<a href="<?php echo esc_url( $svc_link ); ?>" class="vc-readmore">
+											<?php echo esc_html( ! empty( $service['link_text'] ) ? $service['link_text'] : 'Read more' ); ?> <i class="fa fa-arrow-circle-right ms-1"></i>
 										</a>
 									<?php endif; ?>
 								</div>
@@ -370,6 +390,14 @@ get_header();
 					</div>
 					<div class="col-lg-7">
 						<div class="vc-form-card p-4 p-md-5">
+							<?php
+							// A Gravity Forms shortcode set in the backend replaces the
+							// built-in form entirely. Blank ⇒ keep the built-in form.
+							$vc_form_shortcode = trim( (string) vc_val( 'consult_form_shortcode' ) );
+							if ( '' !== $vc_form_shortcode ) :
+								echo do_shortcode( $vc_form_shortcode );
+							else :
+							?>
 							<form class="row g-3" method="post" action="">
 								<div class="col-md-6">
 									<label class="form-label vc-form-label" for="vc-name">Your Name</label>
@@ -400,6 +428,7 @@ get_header();
 									<span class="vc-form-note"><?php echo esc_html( vc_val( 'form_note' ) ); ?></span>
 								</div>
 							</form>
+							<?php endif; ?>
 						</div>
 					</div>
 				</div>

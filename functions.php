@@ -36,15 +36,18 @@
 	add_action( 'wp_head', 'valorcare_font_preconnect', 1 );
 
 	/**
-	 * Home page CMB2 fields (only loaded when CMB2 is available via the parent theme).
+	 * Theme CMB2 field definitions + shared helpers.
+	 * (Only meaningful when CMB2 is available via the parent theme.)
 	 */
-	function valorcare_include_home_fields() {
-		$fields_file = get_stylesheet_directory() . '/inc/cmb2-home-fields.php';
-		if ( file_exists( $fields_file ) ) {
-			require_once $fields_file;
+	function valorcare_include_cmb2_fields() {
+		foreach ( array( 'cmb2-home-fields.php', 'cmb2-services-fields.php', 'cmb2-service-single-fields.php', 'cmb2-about-fields.php', 'cmb2-contact-fields.php' ) as $file ) {
+			$path = get_stylesheet_directory() . '/inc/' . $file;
+			if ( file_exists( $path ) ) {
+				require_once $path;
+			}
 		}
 	}
-	add_action( 'after_setup_theme', 'valorcare_include_home_fields' );
+	add_action( 'after_setup_theme', 'valorcare_include_cmb2_fields' );
 
 	/**
 	* Proper way to enqueue JS

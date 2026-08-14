@@ -105,6 +105,7 @@
     font-weight: bold !important;
   }
 
+  
 
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ FOOTER ~~~~~~~
@@ -112,6 +113,96 @@
 
   footer {
     border-top: 3px solid rgb(198, 154, 62);
+  }
+
+  .footer-contact-widget {
+    background-color: #141d33; /* Dark navy background */
+    padding: 24px;
+    color: #d1d8e0;
+    font-family: inherit;
+  }
+
+  .footer-heading {
+    color: #cca352; /* Gold header color */
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .contact-details {
+    font-style: normal; /* Removes default browser italic on <address> */
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.05rem;
+  }
+
+  .contact-icon {
+    width: 20px;
+    height: 20px;
+    color: #cca352; /* Gold icon color */
+    flex-shrink: 0;
+  }
+
+  .contact-item a,
+  .contact-item .service-area {
+    color: #d1d8e0;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .contact-item a:hover {
+    color: #cca352;
+    text-decoration: underline;
+  }
+
+  .colophon-container {
+    border-top: 1px solid rgba(198, 154, 62, 0.25);
+  }
+
+  /* Colophon: copyright left, Valor Care tagline right */
+  .colophon-container #colophon.site-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .vc-colophon-tagline {
+    color: rgb(198, 154, 62);
+    letter-spacing: 0.08em;
+  }
+
+  #nav_menu-2 .widget-title, #nav_menu-3 .widget-title {
+    color: rgb(198, 154, 62);
+  }
+
+  #menu-footer-menu-1, #menu-footer-menu-2 {
+    flex-direction: column;
+  }
+
+  #menu-footer-menu-1 li a, #menu-footer-menu-2 li a {
+    color: rgb(126, 143, 165);
+  }
+  #menu-footer-menu-1 li a:hover, #menu-footer-menu-2 li a:hover {
+    color: rgb(198, 154, 62);
+  }
+
+
+  .colophon-container {
+    border-top: 1px solid rgba(198, 154, 62, 0.25);
+  }
+
+  .site-info {
+    color: rgb(126, 143, 165) !important;
   }
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -251,7 +342,28 @@
 	.vc-home .vc-ar-1x1 { aspect-ratio: 1 / 1; }
 
 	/* ---- Hero ---- */
-	.vc-home .vc-hero { background: var(--vc-navy); }
+	/* Flag photo background (theme images/flag_background.png) with a navy
+	   gradient overlay — darker on the left where the headline sits so the
+	   cream/gold text stays legible, letting the flag show through on the right.
+	   url() is relative to this stylesheet (theme root). */
+	.vc-home .vc-hero {
+		position: relative;
+		background-color: var(--vc-navy);
+		background-image:
+			linear-gradient(90deg, rgba(14,36,64,.94) 0%, rgba(14,36,64,.86) 42%, rgba(14,36,64,.62) 100%),
+			url("images/flag_background.png");
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+	@media (max-width: 991.98px) {
+		/* Stacked layout: even, stronger overlay so text is readable over the flag. */
+		.vc-home .vc-hero {
+			background-image:
+				linear-gradient(180deg, rgba(14,36,64,.9) 0%, rgba(14,36,64,.82) 100%),
+				url("images/flag_background.png");
+		}
+	}
 	.vc-home .vc-badge {
 		display: inline-flex;
 		align-items: center;
@@ -507,6 +619,13 @@
 		box-shadow: 0 0 0 .2rem rgba(198,154,62,.2);
 	}
 	.vc-home .vc-form-note { color: #6B7688; font-size: .88rem; }
+	.vc-home .vc-form-title {
+		color: var(--vc-navy);
+		font-size: clamp(1.4rem, 2.4vw, 1.75rem);
+	}
+	.vc-home .vc-contact--stack { align-items: flex-start; }
+	.vc-home .vc-contact--stack span:last-child { line-height: 1.7; }
+	.vc-about-page .vc-team-member + .vc-team-member { margin-top: 3.5rem; }
 
 	/* ---- FAQ & Careers ---- */
 	.vc-home .vc-faq { background: var(--vc-cream); }
@@ -560,6 +679,208 @@
 	}
 
 
+	/*~~~~~~~~~~~~~~~~~~~~~
+	~~~~ SERVICES PAGE ~~~
+	~~~~~~~~~~~~~~~~~~~~~*/
+	/* Valor Care services inner page (tpl_services.php). The wrapper carries
+	   both .vc-home (palette + shared vc- classes) and .vc-services-page, so
+	   these rules only add the page-specific bits. */
+
+	/* Hero — navy band */
+	.vc-services-page .vc-svc-hero { background: var(--vc-navy); }
+	.vc-services-page .vc-svc-hero__title { margin: 14px 0 0; }
+	.vc-services-page .vc-svc-hero__intro {
+		color: #C6D0DD;
+		font-size: 1.08rem;
+		line-height: 1.8;
+		margin: 0;
+	}
+
+	/* Anchor bar — quick jump links */
+	.vc-services-page .vc-svc-anchorbar {
+		background: var(--vc-navy-dark);
+		border-top: 1px solid rgba(198,154,62,.28);
+		border-bottom: 1px solid rgba(198,154,62,.28);
+	}
+	.vc-services-page .vc-svc-anchor { gap: 0; }
+	.vc-services-page .vc-svc-anchor__link {
+		display: flex;
+		align-items: baseline;
+		gap: 8px;
+		padding: 16px 20px;
+		text-decoration: none;
+		border-right: 1px solid rgba(198,154,62,.18);
+		flex: 1 1 auto;
+		transition: background .2s ease;
+	}
+	.vc-services-page .vc-svc-anchor__link:hover { background: rgba(198,154,62,.08); }
+	.vc-services-page .vc-svc-anchor__num {
+		font-family: 'Cinzel', serif;
+		color: var(--vc-gold);
+		font-size: .8rem;
+	}
+	.vc-services-page .vc-svc-anchor__label {
+		color: var(--vc-cream-text);
+		font-size: .92rem;
+		letter-spacing: .03em;
+	}
+
+	/* Service detail blocks */
+	.vc-services-page .vc-svc-block { background: var(--vc-cream); }
+	.vc-services-page .vc-svc-block--alt {
+		background: var(--vc-card);
+		border-top: 1px solid var(--vc-line);
+		border-bottom: 1px solid var(--vc-line);
+	}
+	.vc-services-page .vc-svc-block__doc {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		font-family: 'Cinzel', serif;
+		letter-spacing: .12em;
+		text-transform: uppercase;
+		font-size: .78rem;
+		color: var(--vc-gold-deep);
+	}
+	.vc-services-page .vc-svc-block__code {
+		color: #8A7350;
+		border: 1px solid var(--vc-line);
+		padding: 2px 10px;
+		border-radius: 2px;
+	}
+	.vc-services-page .vc-badge-icon--static {
+		margin: 0;
+		flex: 0 0 52px;
+	}
+	.vc-services-page .vc-svc-block__lead {
+		color: var(--vc-ink-soft);
+		font-size: 1.1rem;
+		line-height: 1.8;
+		margin: 0 0 4px;
+	}
+	.vc-services-page .vc-svc-block__bullets { margin-top: 14px; }
+	.vc-services-page .vc-svc-block__bullets ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.vc-services-page .vc-svc-block__bullets li {
+		position: relative;
+		padding: 8px 0 8px 30px;
+		color: var(--vc-ink);
+		line-height: 1.55;
+		border-bottom: 1px solid var(--vc-line);
+	}
+	.vc-services-page .vc-svc-block__bullets li:last-child { border-bottom: 0; }
+	.vc-services-page .vc-svc-block__bullets li::before {
+		content: "\f058"; /* fa-check-circle */
+		font-family: FontAwesome;
+		position: absolute;
+		left: 0;
+		top: 8px;
+		color: var(--vc-gold);
+	}
+	.vc-services-page .vc-svc-block__bullets li ul { margin: 6px 0 0; }
+	.vc-services-page .vc-svc-block__bullets li ul li {
+		border-bottom: 0;
+		padding: 3px 0 3px 22px;
+		font-size: .92rem;
+		color: var(--vc-ink-soft);
+	}
+	.vc-services-page .vc-svc-block__bullets li ul li::before {
+		content: "\f105"; /* fa-angle-right */
+		top: 3px;
+		color: var(--vc-gold-deep);
+	}
+
+	/* Bottom CTA (reuses .vc-consult navy-dark band) */
+	.vc-services-page .vc-svc-cta .vc-consult-text {
+		color: #B9C5D4;
+		font-size: 1.05rem;
+		line-height: 1.8;
+	}
+
+
+	/*~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~ SERVICE DETAIL (SUBPAGE)~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+	/* Individual service pages (tpl_service_single.php). Wrapper carries both
+	   .vc-home (palette + shared classes) and .vc-service-single. */
+
+	/* Static (non-overlapping) icon badge — shared by the services page and
+	   these detail pages (overrides the home card's negative top margin). */
+	.vc-home .vc-badge-icon--static { margin: 0; flex: 0 0 52px; }
+
+	/* Hero — navy band */
+	.vc-service-single .vc-service-hero { background: var(--vc-navy); }
+	.vc-service-single .vc-service-crumb {
+		display: inline-flex;
+		align-items: center;
+		text-decoration: none;
+	}
+	.vc-service-single .vc-service-crumb:hover { color: var(--vc-gold-lighter); }
+
+	/* Overview */
+	.vc-service-single .vc-service-overview { background: var(--vc-cream); }
+	.vc-service-single .vc-service-body {
+		color: var(--vc-ink-soft);
+		font-size: 1.06rem;
+		line-height: 1.85;
+	}
+	.vc-service-single .vc-service-body p { margin: 0 0 1rem; }
+
+	/* "What's Included" card */
+	.vc-service-single .vc-included-card {
+		background: var(--vc-card);
+		border: 1px solid var(--vc-line);
+		border-top: 4px solid var(--vc-gold);
+		padding: 28px 28px 32px;
+		box-shadow: 0 14px 36px rgba(14,36,64,.1);
+	}
+	.vc-service-single .vc-included-title {
+		color: var(--vc-navy);
+		font-size: 1.35rem;
+		font-weight: 600;
+		margin: 0 0 8px;
+	}
+	.vc-service-single .vc-included ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.vc-service-single .vc-included li {
+		position: relative;
+		padding: 10px 0 10px 30px;
+		color: var(--vc-ink);
+		line-height: 1.55;
+		border-bottom: 1px solid var(--vc-line);
+	}
+	.vc-service-single .vc-included li:last-child { border-bottom: 0; }
+	.vc-service-single .vc-included li::before {
+		content: "\f058"; /* fa-check-circle */
+		font-family: FontAwesome;
+		position: absolute;
+		left: 0;
+		top: 10px;
+		color: var(--vc-gold);
+	}
+
+	/* Other services */
+	.vc-service-single .vc-service-other {
+		background: var(--vc-card);
+		border-top: 1px solid var(--vc-line);
+	}
+	.vc-service-single .vc-other-card { color: inherit; }
+	.vc-service-single .vc-other-card:hover .vc-card__title { color: var(--vc-gold-deep); }
+
+	/* Bottom CTA (reuses .vc-consult navy-dark band) */
+	.vc-service-single .vc-service-cta .vc-consult-text {
+		color: #B9C5D4;
+		font-size: 1.05rem;
+		line-height: 1.8;
+	}
+
+
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~SITEMAP~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -584,8 +905,13 @@
 	}
 
 	@media only screen and ( max-width: 767px ) {
+
 		#logo.vc-logo-svg svg { height: 56px; }
 		#logo.vc-logo-svg .vc-logo-wordmark { font-size: 1.2rem; letter-spacing: 0.1em; }
+
+    #menu-main-nav .sub-menu {
+      background: transparent !important;
+    }
 	}
 
 	@media only screen and (max-width: 479px) {
