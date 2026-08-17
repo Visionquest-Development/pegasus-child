@@ -5,70 +5,819 @@
  Author:         Jim O'Brien
  Author URI:     http://visionquestdevelopment.com
  Template:       pegasus
- Version:        0.0.1
+ Version:        0.0.2
 */
 
 /*@import url("../pegasus/style.css");*/
-	
-	
+
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	/*~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~ HEADER ~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	
-	/*~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~ NAVIGATION ~~~~~
-	~~~~~~~~~~~~~~~~~~~~~*/
 
-	
-	/*~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~ FOOTER ~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
+/* ---- Google font handles (site-wide) ----------------------------------
+   The actual font files (Spectral, IBM Plex Mono, IBM Plex Sans) are loaded
+   once, the fast way, via wp_enqueue_style('elliot-fonts', ...) in the child
+   theme functions.php — so there is NO @import here on purpose.
+   These :root variables just give you short, reusable handles. Use them in
+   any of your own CSS like:  font-family: var(--font-mono);
+------------------------------------------------------------------------- */
+:root {
+  --font-serif: 'Spectral', Georgia, 'Times New Roman', serif;                    /* headings              */
+  --font-mono:  'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;  /* labels / nav / eyebrows */
+  --font-sans:  'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; /* body text     */
+}
 
-	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
-	/*~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~ HOME PAGE ~~~~~
-	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	
-	
-	/* ~~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~~SITEMAP~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~*/
-	
-	/* ~~~~~~~~~~~~~~~~~~~~~~
-	~~~~WOOCOMMERCE~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~*/
+#header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
 
-	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	~~~~~MEDIA QUERIES~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	@media only screen and ( min-width: 1100px ) and ( max-width: 1405px) {
-		
+/* Primary navigation — IBM Plex Mono to match the Claude Design header nav. */
+#menu-main-nav li a {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: .14em;
+
+}
+
+/* ---- Elliot Integration wordmark ( logo.php inline SVG ) --------------- */
+.navbar-brand .elliot-logo {
+	display: block;
+	height: 26px;
+	width: auto;
+	overflow: visible;
+}
+.elliot-logo__name {
+	font-family: 'Spectral', Georgia, 'Times New Roman', serif;
+	font-weight: 600;
+	font-size: 24px;
+	letter-spacing: -0.24px;
+	/* Design cream — matches the dark header lockup. Override this fill if the
+	   header background is ever switched to a light colour. */
+	fill: #F3F1E9;
+}
+.elliot-logo__sub {
+	font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+	font-weight: 500;
+	font-size: 11px;
+	letter-spacing: 2.6px;
+	fill: #EEB43F;
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~
+~~~~~~ HOME PAGE ~~~~~
+~~~~~~~~~~~~~~~~~~~~~*/
+
+/* ---- Design tokens (scoped to the Elliot home template) ---------------- */
+.elliot-home {
+	--e-bg:      #F3F1E9;
+	--e-ink:     #12181F;
+	--e-dark:    #0E1218;
+	--e-dark2:   #12181F;
+	--e-cream:   #E8E7E3;
+	--e-paper:   #F3F1E9;
+	--e-gold:    #EEB43F;
+	--e-gold2:   #D99A1C;
+	--e-gold3:   #F2B441;
+	--e-muted:   #696A68;
+	--e-muted2:  #9EA0A0;
+	--e-blue:    #34506E;
+	--e-band:    #E9E6DC;
+	--e-hairline: rgba(26,22,18,.13);
+	--e-hairline-light: rgba(255,255,255,.12);
+	--font-serif: 'Spectral', Georgia, 'Times New Roman', serif;
+	--font-mono:  'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+	--font-sans:  'IBM Plex Sans', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+
+	background: var(--e-bg);
+	color: var(--e-ink);
+	font-family: var(--font-sans);
+	-webkit-font-smoothing: antialiased;
+	overflow-x: hidden;
+}
+
+/* Use Bootstrap's standard responsive .container so home content is centred
+   with proper side gutters and stays aligned with the theme header/footer.
+   ( The parent theme loads Bootstrap 5, whose .container caps at 1320px on
+   xxl — matching the design's ~1352px content width — and adds margins on
+   every smaller breakpoint. ) No max-width override here on purpose. */
+
+.elliot-home ::-moz-selection { background: var(--e-gold2); color: var(--e-paper); }
+
+.elliot-home ::selection { background: var(--e-gold2); color: var(--e-paper); }
+
+/* ---- Shared type helpers ---------------------------------------------- */
+.elliot-home .elliot-eyebrow {
+	font-family: var(--font-mono);
+	font-weight: 500;
+	font-size: 12px;
+	letter-spacing: .2em;
+	text-transform: uppercase;
+	color: var(--e-gold);
+	margin: 0;
+}
+.elliot-home .elliot-eyebrow--gold2 { color: var(--e-gold2); }
+.elliot-home .elliot-eyebrow--rule {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+}
+.elliot-home .elliot-eyebrow--rule::before {
+	content: "";
+	width: 30px;
+	height: 1px;
+	background: var(--e-gold);
+	flex: none;
+}
+
+.elliot-home .elliot-emph { font-style: italic; color: var(--e-gold); }
+.elliot-home .elliot-emph--gold2 { color: var(--e-gold2); }
+.elliot-home .elliot-emph--gold3 { color: var(--e-gold3); }
+
+.elliot-home .elliot-h2 {
+	font-family: var(--font-serif);
+	font-weight: 500;
+	font-size: clamp(34px, 5vw, 64px);
+	line-height: 1.04;
+	letter-spacing: -.02em;
+	margin: 0;
+	color: var(--e-ink);
+}
+.elliot-home .elliot-h2--light { color: var(--e-paper); }
+
+.elliot-home .elliot-h3 {
+	font-family: var(--font-serif);
+	font-weight: 500;
+	font-size: clamp(28px, 3.4vw, 42px);
+	line-height: 1.08;
+	letter-spacing: -.015em;
+	margin: 0;
+	color: var(--e-ink);
+}
+
+.elliot-home .elliot-lead {
+	font-size: 18px;
+	line-height: 1.7;
+	color: #35373B;
+	margin: 0 0 22px;
+}
+.elliot-home .elliot-muted {
+	font-size: 15px;
+	line-height: 1.7;
+	color: var(--e-muted);
+	margin: 0;
+}
+
+/* Section meta bar ( 01 — Practice / One integrator ) */
+.elliot-home .elliot-secmeta {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 20px;
+	border-top: 1px solid var(--e-hairline);
+	padding-top: 18px;
+	margin-bottom: 56px;
+	font-family: var(--font-mono);
+	font-weight: 500;
+	font-size: 11px;
+	letter-spacing: .16em;
+	text-transform: uppercase;
+	color: var(--e-muted);
+}
+.elliot-home .elliot-secmeta--plain { border-top: none; padding-top: 0; }
+.elliot-home .elliot-secmeta--dark  { border-top-color: var(--e-hairline-light); color: var(--e-muted2); }
+.elliot-home .elliot-secmeta--onblue { border-top: none; padding-top: 0; margin-bottom: 18px; color: var(--e-muted2); }
+
+/* ---- Buttons / links -------------------------------------------------- */
+.elliot-home .elliot-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	text-decoration: none;
+	padding: 16px 28px;
+	font-family: var(--font-mono);
+	font-weight: 600;
+	font-size: 12px;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	transition: background-color .18s ease;
+}
+.elliot-home .elliot-btn--gold  { background: var(--e-gold);  color: #241A09; }
+.elliot-home .elliot-btn--gold:hover  { background: var(--e-gold2); color: #241A09; }
+.elliot-home .elliot-btn--gold2 { background: var(--e-gold2); color: #241A09; }
+.elliot-home .elliot-btn--gold2:hover { background: #B67E12; color: #241A09; }
+
+.elliot-home .elliot-link {
+	text-decoration: none;
+	font-family: var(--font-mono);
+	font-weight: 500;
+	font-size: 12px;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	color: var(--e-cream);
+	border-bottom: 1px solid rgba(255,255,255,.3);
+	padding-bottom: 3px;
+	transition: color .18s ease, border-color .18s ease;
+}
+.elliot-home .elliot-link:hover { color: var(--e-gold); border-color: var(--e-gold); }
+
+/* ===== 01 · HERO ======================================================= */
+.elliot-home .elliot-hero {
+	background: var(--e-dark);
+	color: var(--e-cream);
+	padding: 64px 0 0;
+}
+.elliot-home .elliot-hero__title {
+	font-family: var(--font-serif);
+	font-weight: 500;
+	font-size: clamp(48px, 8.5vw, 90px);
+	line-height: .99;
+	letter-spacing: -.022em;
+	margin: 0;
+	color: var(--e-paper);
+}
+.elliot-home .elliot-hero__intro {
+	font-size: 16px;
+	line-height: 1.7;
+	color: var(--e-muted2);
+	margin: 0 0 32px;
+}
+.elliot-home .elliot-hero__actions {
+	display: flex;
+	align-items: center;
+	gap: 22px;
+	flex-wrap: wrap;
+}
+
+.elliot-home .elliot-credstrip {
+	margin-top: 90px;
+	border-top: 1px solid var(--e-hairline-light);
+}
+.elliot-home .elliot-credstrip__item {
+	padding: 28px 30px 40px;
+	border-left: 1px solid rgba(255,255,255,.1);
+}
+.elliot-home .elliot-credstrip__item:first-child { border-left: none; padding-left: 0; }
+.elliot-home .elliot-credstrip__num {
+	font-family: var(--font-mono);
+	font-weight: 500;
+	font-size: 10px;
+	letter-spacing: .18em;
+	color: #7C828A;
+	margin-bottom: 10px;
+}
+.elliot-home .elliot-credstrip__label {
+	font-weight: 500;
+	font-size: 15px;
+	color: var(--e-cream);
+}
+
+/* ===== 02 · STATEMENT ================================================== */
+.elliot-home .elliot-statement { padding: 110px 0; }
+
+/* ===== 03 · SERVICES ================================================== */
+.elliot-home .elliot-services { padding: 0 0 110px; }
+.elliot-home .elliot-service {
+	padding: 30px 28px 40px;
+	border-top: 2px solid var(--e-ink);
+	transition: background-color .18s ease;
+}
+.elliot-home .elliot-service:hover { background: rgba(210,74,30,.04); }
+.elliot-home .elliot-service__num {
+	font-family: var(--font-mono);
+	font-weight: 500;
+	font-size: 11px;
+	letter-spacing: .16em;
+	color: var(--e-gold2);
+	margin-bottom: 24px;
+}
+.elliot-home .elliot-service__title {
+	font-family: var(--font-serif);
+	font-weight: 500;
+	font-size: 23px;
+	letter-spacing: -.01em;
+	margin: 0 0 12px;
+	color: var(--e-ink);
+}
+.elliot-home .elliot-service__desc {
+	font-size: 14px;
+	line-height: 1.6;
+	color: var(--e-muted);
+	margin: 0;
+}
+
+/* ===== 04 · INDUSTRIES ================================================= */
+.elliot-home .elliot-industries {
+	background: var(--e-band);
+	border-top: 1px solid rgba(26,22,18,.1);
+	border-bottom: 1px solid rgba(26,22,18,.1);
+	padding: 100px 0;
+}
+.elliot-home .elliot-industry__code {
+	font-family: var(--font-mono);
+	font-weight: 500;
+	font-size: 10px;
+	letter-spacing: .18em;
+	color: var(--e-muted2);
+	margin-bottom: 10px;
+}
+.elliot-home .elliot-industry__name {
+	font-family: var(--font-serif);
+	font-weight: 500;
+	font-size: 19px;
+	color: var(--e-ink);
+}
+
+/* ===== 05 · CREDENTIALS BAND ========================================== */
+.elliot-home .elliot-credband {
+	background: var(--e-dark2);
+	color: var(--e-cream);
+	padding: 110px 0;
+}
+.elliot-home .elliot-credband__para {
+	font-size: 17px;
+	line-height: 1.7;
+	color: var(--e-muted2);
+	margin: 34px 0 0;
+	max-width: 420px;
+}
+.elliot-home .elliot-credcards {
+	background: var(--e-hairline-light);
+	border: 1px solid var(--e-hairline-light);
+	gap: 1px;
+}
+.elliot-home .elliot-credcard {
+	background: var(--e-dark2);
+	padding: 32px 28px;
+}
+.elliot-home .elliot-credcard__tag {
+	font-family: var(--font-mono);
+	font-weight: 500;
+	font-size: 11px;
+	letter-spacing: .16em;
+	color: var(--e-gold3);
+	margin-bottom: 16px;
+}
+.elliot-home .elliot-credcard__title {
+	font-family: var(--font-serif);
+	font-weight: 500;
+	font-size: 17px;
+	margin-bottom: 8px;
+	color: var(--e-paper);
+}
+.elliot-home .elliot-credcard__desc {
+	font-size: 13px;
+	line-height: 1.6;
+	color: var(--e-muted2);
+}
+
+/* ===== 06 · FEATURED PROJECT ========================================== */
+.elliot-home .elliot-project { padding: 110px 0; }
+.elliot-home .elliot-imgslot {
+	width: 100%;
+	height: 440px;
+	background: #DEDBCF;
+	overflow: hidden;
+}
+.elliot-home .elliot-imgslot img {
+	width: 100%;
+	height: 100%;
+	-o-object-fit: cover;
+	   object-fit: cover;
+	display: block;
+}
+.elliot-home .elliot-imgslot--empty {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px dashed rgba(26,22,18,.25);
+	background: rgba(26,22,18,.03);
+}
+.elliot-home .elliot-imgslot--empty span {
+	font-family: var(--font-mono);
+	font-size: 12px;
+	letter-spacing: .12em;
+	text-transform: uppercase;
+	color: var(--e-muted2);
+}
+.elliot-home .elliot-imgslot--portrait { height: 480px; }
+
+.elliot-home .elliot-specs { border-top: 1px solid var(--e-hairline); }
+.elliot-home .elliot-specs__row {
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+	padding: 18px 0;
+	border-bottom: 1px solid var(--e-hairline);
+}
+.elliot-home .elliot-specs__label {
+	font-family: var(--font-mono);
+	font-weight: 500;
+	font-size: 11px;
+	letter-spacing: .14em;
+	text-transform: uppercase;
+	color: var(--e-muted2);
+	flex: none;
+}
+.elliot-home .elliot-specs__value {
+	font-weight: 500;
+	font-size: 14px;
+	text-align: right;
+	color: var(--e-ink);
+}
+
+/* ===== 07 · PROCESS =================================================== */
+.elliot-home .elliot-process {
+	background: var(--e-blue);
+	color: var(--e-cream);
+	padding: 100px 0;
+}
+.elliot-home .elliot-steps { position: relative; }
+.elliot-home .elliot-step { text-align: center; }
+.elliot-home .elliot-step__num {
+	width: 42px;
+	height: 42px;
+	border: 1px solid var(--e-gold3);
+	border-radius: 50%;
+	background: var(--e-blue);
+	margin: 0 auto 24px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: var(--font-mono);
+	font-weight: 500;
+	font-size: 12px;
+	color: var(--e-gold3);
+}
+.elliot-home .elliot-step__title {
+	font-family: var(--font-serif);
+	font-weight: 500;
+	font-size: 16px;
+	margin-bottom: 10px;
+	color: var(--e-paper);
+}
+.elliot-home .elliot-step__desc {
+	font-size: 12px;
+	line-height: 1.6;
+	color: #92948F;
+}
+
+/* ===== 08 · ABOUT ===================================================== */
+.elliot-home .elliot-about { padding: 110px 0; }
+.elliot-home .elliot-tags {
+	display: flex;
+	gap: 14px;
+	flex-wrap: wrap;
+}
+.elliot-home .elliot-tag {
+	font-family: var(--font-mono);
+	font-weight: 500;
+	font-size: 11px;
+	letter-spacing: .12em;
+	text-transform: uppercase;
+	color: var(--e-ink);
+	border: 1px solid rgba(26,22,18,.2);
+	padding: 9px 16px;
+}
+
+/* ===== 09 · CTA ======================================================= */
+.elliot-home .elliot-cta {
+	background: var(--e-band);
+	border-top: 1px solid rgba(26,22,18,.1);
+	padding: 100px 0;
+}
+.elliot-home .elliot-cta__para {
+	font-size: 16px;
+	line-height: 1.7;
+	color: #484A4C;
+	margin: 0 0 26px;
+	max-width: 380px;
+}
+
+/* ===== Optional editor content ======================================== */
+.elliot-home .elliot-pagebody { padding: 60px 0; }
+
+
+/*~~~~~~~~~~~~~~~~~~~~~
+~~~~ SERVICES PAGE ~~~
+~~~~~~~~~~~~~~~~~~~~~*/
+
+/* ---- Design tokens (scoped to the Elliot services template) ------------ */
+.elliot-svcs {
+	--e-bg:      #F3F1E9;
+	--e-ink:     #12181F;
+	--e-dark:    #0E1218;
+	--e-dark2:   #12181F;
+	--e-cream:   #E8E7E3;
+	--e-paper:   #F3F1E9;
+	--e-gold:    #EEB43F;
+	--e-gold2:   #D99A1C;
+	--e-gold3:   #F2B441;
+	--e-muted:   #696A68;
+	--e-muted2:  #9EA0A0;
+	--e-band:    #E9E6DC;
+	--e-hairline: rgba(26,22,18,.13);
+	--e-hairline-light: rgba(255,255,255,.12);
+
+	background: var(--e-bg);
+	color: var(--e-ink);
+	font-family: var(--font-sans);
+	-webkit-font-smoothing: antialiased;
+	overflow-x: hidden;
+}
+
+.elliot-svcs ::-moz-selection { background: var(--e-gold2); color: var(--e-paper); }
+.elliot-svcs ::selection { background: var(--e-gold2); color: var(--e-paper); }
+
+/* Shared type helpers */
+.elliot-svcs .elliot-svcs-eyebrow {
+	font-family: var(--font-mono);
+	font-weight: 500;
+	font-size: 12px;
+	letter-spacing: .2em;
+	text-transform: uppercase;
+	color: var(--e-gold);
+	margin: 0;
+}
+.elliot-svcs .elliot-svcs-eyebrow--gold2 { color: var(--e-gold2); }
+.elliot-svcs .elliot-svcs-eyebrow--rule {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+}
+.elliot-svcs .elliot-svcs-eyebrow--rule::before {
+	content: "";
+	width: 30px;
+	height: 1px;
+	background: var(--e-gold);
+	flex: none;
+}
+.elliot-svcs .elliot-svcs-emph { font-style: italic; color: var(--e-gold); }
+.elliot-svcs .elliot-svcs-emph--gold2 { color: var(--e-gold2); }
+
+.elliot-svcs .elliot-svcs-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	text-decoration: none;
+	padding: 16px 28px;
+	font-family: var(--font-mono);
+	font-weight: 600;
+	font-size: 12px;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	background: var(--e-gold2);
+	color: #241A09;
+	transition: background-color .18s ease;
+}
+.elliot-svcs .elliot-svcs-btn:hover { background: #B67E12; color: #241A09; }
+
+/* ===== HERO =========================================================== */
+.elliot-svcs .elliot-svcs-hero {
+	background: var(--e-dark);
+	color: var(--e-cream);
+	padding: 96px 0;
+}
+.elliot-svcs .elliot-svcs-hero__title {
+	font-family: var(--font-serif);
+	font-weight: 500;
+	font-size: clamp(44px, 7.5vw, 84px);
+	line-height: 1.0;
+	letter-spacing: -.022em;
+	margin: 0;
+	color: var(--e-paper);
+}
+.elliot-svcs .elliot-svcs-hero__intro {
+	font-size: 16px;
+	line-height: 1.7;
+	color: var(--e-muted2);
+	margin: 0;
+}
+
+/* ===== SERVICE INDEX ================================================== */
+.elliot-svcs .elliot-svcs-index { padding: 0; }
+.elliot-svcs .elliot-svcindex {
+	border-top: 1px solid var(--e-hairline);
+	border-bottom: 1px solid var(--e-hairline);
+}
+.elliot-svcs .elliot-svcindex__item {
+	display: flex;
+	gap: 12px;
+	align-items: baseline;
+	padding: 20px 24px;
+	text-decoration: none;
+	color: var(--e-ink);
+	border-left: 1px solid rgba(26,22,18,.1);
+	transition: color .18s ease;
+}
+.elliot-svcs .elliot-svcindex__item:hover { color: var(--e-gold2); }
+.elliot-svcs .elliot-svcindex__num {
+	font-family: var(--font-mono);
+	font-weight: 500;
+	font-size: 10px;
+	color: var(--e-muted2);
+}
+.elliot-svcs .elliot-svcindex__label {
+	font-family: var(--font-mono);
+	font-weight: 500;
+	font-size: 12px;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+}
+
+/* ===== SERVICE BLOCKS ================================================= */
+.elliot-svcs .elliot-svc { padding: 96px 0; }
+.elliot-svcs .elliot-svc.is-band {
+	background: var(--e-band);
+	border-top: 1px solid rgba(26,22,18,.1);
+	border-bottom: 1px solid rgba(26,22,18,.1);
+}
+.elliot-svcs .elliot-svc.is-dark { background: var(--e-dark2); color: var(--e-cream); }
+
+.elliot-svcs .elliot-svc__eyebrow {
+	font-family: var(--font-mono);
+	font-weight: 500;
+	font-size: 11px;
+	letter-spacing: .2em;
+	text-transform: uppercase;
+	color: var(--e-gold2);
+	margin-bottom: 24px;
+}
+.elliot-svcs .elliot-svc.is-dark .elliot-svc__eyebrow { color: var(--e-gold3); }
+
+.elliot-svcs .elliot-svc__title {
+	font-family: var(--font-serif);
+	font-weight: 500;
+	font-size: clamp(32px, 4.2vw, 52px);
+	line-height: 1.04;
+	letter-spacing: -.02em;
+	margin: 0 0 26px;
+	color: var(--e-ink);
+}
+.elliot-svcs .elliot-svc.is-dark .elliot-svc__title { color: var(--e-paper); }
+
+.elliot-svcs .elliot-svc__lead {
+	font-family: var(--font-serif);
+	font-style: italic;
+	font-weight: 400;
+	font-size: 19px;
+	line-height: 1.6;
+	color: #35373B;
+	margin: 0 0 32px;
+	max-width: 480px;
+}
+.elliot-svcs .elliot-svc.is-dark .elliot-svc__lead { color: #BEC0BF; }
+
+.elliot-svcs .elliot-svc__features {
+	display: flex;
+	flex-direction: column;
+	max-width: 460px;
+}
+.elliot-svcs .elliot-svc__feature {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	padding: 0 0 14px;
+	margin-bottom: 14px;
+	border-bottom: 1px solid rgba(26,22,18,.12);
+	font-weight: 500;
+	font-size: 15px;
+}
+.elliot-svcs .elliot-svc__feature:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.elliot-svcs .elliot-svc.is-dark .elliot-svc__feature { border-bottom-color: rgba(255,255,255,.12); color: var(--e-cream); }
+.elliot-svcs .elliot-svc__dot {
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background: var(--e-gold2);
+	flex: none;
+}
+.elliot-svcs .elliot-svc.is-dark .elliot-svc__dot { background: var(--e-gold3); }
+
+/* Image slot */
+.elliot-svcs .elliot-imgslot2 {
+	width: 100%;
+	height: 400px;
+	background: #DEDBCF;
+	overflow: hidden;
+}
+.elliot-svcs .elliot-imgslot2 img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+.elliot-svcs .elliot-imgslot2.is-empty {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px dashed rgba(26,22,18,.25);
+	background: rgba(26,22,18,.03);
+}
+.elliot-svcs .elliot-svc.is-dark .elliot-imgslot2.is-empty {
+	border-color: rgba(255,255,255,.2);
+	background: rgba(255,255,255,.03);
+}
+.elliot-svcs .elliot-imgslot2.is-empty span {
+	font-family: var(--font-mono);
+	font-size: 12px;
+	letter-spacing: .12em;
+	text-transform: uppercase;
+	color: var(--e-muted2);
+}
+
+/* ===== CTA ============================================================ */
+.elliot-svcs .elliot-svcs-cta {
+	background: var(--e-band);
+	border-top: 1px solid rgba(26,22,18,.1);
+	padding: 100px 0;
+}
+.elliot-svcs .elliot-svcs-cta__title {
+	font-family: var(--font-serif);
+	font-weight: 500;
+	font-size: clamp(34px, 5vw, 56px);
+	line-height: 1.02;
+	letter-spacing: -.02em;
+	margin: 0;
+	color: var(--e-ink);
+}
+.elliot-svcs .elliot-svcs-cta__para {
+	font-size: 16px;
+	line-height: 1.7;
+	color: #484A4C;
+	margin: 0 0 26px;
+	max-width: 380px;
+}
+
+.elliot-svcs .elliot-svcs-pagebody { padding: 60px 0; }
+
+/* Responsive */
+@media only screen and ( max-width: 991px ) {
+	.elliot-svcs .elliot-svcs-hero { padding: 64px 0; }
+	.elliot-svcs .elliot-svc,
+	.elliot-svcs .elliot-svcs-cta { padding: 64px 0; }
+}
+@media only screen and ( max-width: 767px ) {
+	.elliot-svcs .elliot-svcindex__item {
+		border-left: none;
+		border-top: 1px solid rgba(26,22,18,.1);
 	}
-	
-	@media only screen and ( min-width: 981px ) {
-		
+	.elliot-svcs .elliot-svcindex__item:first-child,
+	.elliot-svcs .elliot-svcindex__item:nth-child(2) { border-top: none; }
+	.elliot-svcs .elliot-imgslot2 { height: 300px; }
+}
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~SITEMAP~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/* ~~~~~~~~~~~~~~~~~~~~~~
+~~~~WOOCOMMERCE~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~MEDIA QUERIES~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+@media only screen and ( max-width: 991px ) {
+	.elliot-home .elliot-hero { padding-top: 48px; }
+	.elliot-home .elliot-credstrip { margin-top: 56px; }
+	.elliot-home .elliot-statement,
+	.elliot-home .elliot-project,
+	.elliot-home .elliot-about,
+	.elliot-home .elliot-industries,
+	.elliot-home .elliot-credband,
+	.elliot-home .elliot-process,
+	.elliot-home .elliot-cta { padding: 72px 0; }
+	.elliot-home .elliot-services { padding-bottom: 72px; }
+}
+
+@media only screen and ( max-width: 767px ) {
+	.elliot-home .elliot-secmeta {
+		flex-direction: column;
+		gap: 6px;
+		margin-bottom: 36px;
 	}
-		
-	@media only screen and (max-width: 980px) {
-		
+	.elliot-home .elliot-credstrip__item {
+		border-left: none;
+		padding: 22px 0;
+		border-top: 1px solid rgba(255,255,255,.1);
 	}
-	
-	@media only screen and ( max-width: 767px ) {
-		
+	.elliot-home .elliot-credstrip__item:first-child,
+	.elliot-home .elliot-credstrip__item:nth-child(2) { border-top: none; }
+	.elliot-home .elliot-service {
+		padding: 24px 16px 30px;
 	}
-	
-	@media only screen and (max-width: 479px) {
-		
-	}
+	.elliot-home .elliot-imgslot,
+	.elliot-home .elliot-imgslot--portrait { height: 320px; }
+	.elliot-home .elliot-specs__value { text-align: left; }
+}
+
+@media only screen and ( max-width: 479px ) {
+	.elliot-home .elliot-hero__actions { gap: 16px; }
+	.elliot-home .elliot-credcard { padding: 24px 18px; }
+}
