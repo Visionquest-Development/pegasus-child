@@ -11,27 +11,44 @@
 /* Sugarpeddler — Bistro & Bakery */
 
 :root {
+	/* ── ULG brand palette ──────────────────────────────────────────────
+	   Source of truth. Semantic tokens below reference these. */
+	--sp-candy-apple:   #CF3F29;  /* PRIMARY   — Candy Apple  (PMS 7620 C) */
+	--sp-cocoa:         #462C20;  /* SECONDARY — Cocoa        (PMS 4625 C) */
+	--sp-pistachio:     #A09C6E;  /* SECONDARY — Pistachio    (PMS 5777 C) */
+	--sp-butterscotch:  #E8E4B4;  /* SECONDARY — Butterscotch (PMS 7499 C) */
+	--sp-cotton-candy:  #FFD1CA;  /* ACCENT    — Cotton Candy (PMS 488 C)  */
+	--sp-vanilla-cream: #FFF3E0;  /* TERTIARY  — Vanilla Cream(PMS 7401 C) */
+	--sp-sugar-glaze:   #A9C7DB;  /* TERTIARY  — Sugar Glaze  (PMS 544 C)  */
+	--sp-taffy:         #C0AFD1;  /* TERTIARY  — Taffy        (PMS 2635 C) */
+
+	/* Tints / shades derived from the palette */
+	--sp-candy-apple-deep: #B5341F;  /* hover / pressed state for primary */
+
+	/* ── Semantic tokens (mapped onto the palette above) ────────────────
+	   Change a mapping here and the whole theme follows. */
+
 	/* Core brand */
-	--sp-wood:        #3D2817;  /* deep cocoa — wordmark, headings, dark sections */
-	--sp-sage:        #8FA47B;  /* sage — tagline, flanking lines, accents */
-	--sp-paper:       #fffaf3;  /* off-white — page background */
+	--sp-wood:        var(--sp-cocoa);         /* wordmark, headings, dark sections */
+	--sp-sage:        var(--sp-pistachio);     /* tagline, flanking lines, accents */
+	--sp-paper:       var(--sp-vanilla-cream); /* page background */
 
 	/* Supporting shades */
-	--sp-cream:       #F1E8DC;
-	--sp-brown:       #5A3D29;
-	--sp-brown-mid:   #8C6B53;
-	--sp-ink:         #1A1410;
+	--sp-cream:       var(--sp-butterscotch);  /* light text on dark, soft panels */
+	--sp-brown:       #6E4B36;                 /* muted body / eyebrow text */
+	--sp-brown-mid:   #997457;
+	--sp-ink:         #2A1A12;                 /* deep cocoa — base text color */
 
-	--sp-sage-soft:   #C2CFB4;
-	--sp-sage-wash:   #E8EDDF;
-	--sp-sage-deep:   #5E6E4D;
+	--sp-sage-soft:   #C6C29A;                 /* pale pistachio */
+	--sp-sage-wash:   #EDECD8;                 /* pistachio wash — section backgrounds */
+	--sp-sage-deep:   #6E6A45;                 /* deep pistachio — banner text */
 
-	/* Pink accent */
-	--sp-pink:        #D17F7C;
-	--sp-pink-soft:   #F0D4D0;
-	--sp-pink-wash:   #F8E6E2;
+	/* Pink / primary accent */
+	--sp-pink:        var(--sp-candy-apple);   /* italic accents, primary CTA, prices */
+	--sp-pink-soft:   var(--sp-cotton-candy);  /* soft pink on dark backgrounds */
+	--sp-pink-wash:   #FFE7E2;                 /* softest cotton-candy wash */
 
-	--sp-line:        rgba(143,164,123,.32);
+	--sp-line:        rgba(160,156,110,.32);   /* pistachio hairline */
 
 	--sp-display: "Cormorant Garamond", "Cormorant", serif;
 	--sp-body: "Outfit", system-ui, sans-serif;
@@ -58,7 +75,7 @@
 	transition: transform .15s ease, background .15s ease, color .15s ease;
 }
 .sp-btn--primary { background: var(--sp-pink); color: #fff; }
-.sp-btn--primary:hover { background: #c97976; }
+.sp-btn--primary:hover { background: var(--sp-candy-apple-deep); }
 .sp-btn--dark    { background: var(--sp-wood); color: var(--sp-cream); }
 .sp-btn--ghost   { background: transparent; color: var(--sp-wood); border: 1px solid var(--sp-wood); }
 .sp-btn--ghost-light { background: transparent; color: var(--sp-cream); border: 1px solid rgba(245,237,228,.45); }
@@ -104,15 +121,15 @@
 }
 .sp-photo--dark { background: var(--sp-wood); background-image:
 		linear-gradient(135deg, rgba(255,255,255,.06), rgba(0,0,0,.4) 70%),
-		radial-gradient(circle at 70% 30%, rgba(217,142,139,.35), transparent 55%);
+		radial-gradient(circle at 70% 30%, rgba(255,209,202,.35), transparent 55%);
 }
 .sp-photo--brown { background: var(--sp-brown); background-image:
 		linear-gradient(160deg, rgba(255,255,255,.07), rgba(0,0,0,.3) 70%),
-		radial-gradient(circle at 30% 70%, rgba(217,142,139,.25), transparent 60%);
+		radial-gradient(circle at 30% 70%, rgba(255,209,202,.25), transparent 60%);
 }
 .sp-photo--cream { background: var(--sp-cream); background-image:
 		linear-gradient(135deg, rgba(255,255,255,.5), rgba(91,63,50,.08) 80%),
-		radial-gradient(circle at 70% 30%, rgba(217,142,139,.28), transparent 55%);
+		radial-gradient(circle at 70% 30%, rgba(255,209,202,.28), transparent 55%);
 }
 .sp-photo__label {
 	position: absolute; inset: auto 14px 14px 14px;
@@ -127,7 +144,7 @@
 .sp-chalk {
 	background:
 		radial-gradient(ellipse at 30% 20%, rgba(255,255,255,.06), transparent 60%),
-		radial-gradient(ellipse at 70% 80%, rgba(217,142,139,.08), transparent 60%),
+		radial-gradient(ellipse at 70% 80%, rgba(255,209,202,.08), transparent 60%),
 		#1F1612;
 	color: #F2E6D6;
 	border: 8px solid #6B4A37;
@@ -164,7 +181,7 @@
 	padding: 5px 10px; border-radius: 999px;
 	font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600;
 }
-.sp-badge--gf { background: var(--sp-sage); }
+.sp-badge--gf { background: var(--sp-sugar-glaze); color: var(--sp-cocoa); }
 
 /* ╔══════════════════════════════════════════════════════════════════╗
    ║                  HOMEPAGE SECTIONS                              ║
@@ -278,7 +295,7 @@
 .sp-visit__card {
 	background: var(--sp-pink-wash);
 	padding: 64px 72px;
-	border-left: 4px solid var(--sp-sage);
+	border-left: 4px solid var(--sp-taffy);
 }
 .sp-visit__title { font-size: 56px; line-height: 1.02; max-width: 620px; }
 .sp-visit__title em { font-style: italic; color: var(--sp-wood); }
@@ -797,7 +814,7 @@
 	letter-spacing: 0.14em;
 	text-transform: uppercase;
 }
-.sp-product-info form.cart .single_add_to_cart_button:hover { background: #c97976; }
+.sp-product-info form.cart .single_add_to_cart_button:hover { background: var(--sp-candy-apple-deep); }
 
 /* WC variations table inside cart form */
 .sp-product-info form.variations_form .variations { width: 100%; margin-bottom: 18px; }
