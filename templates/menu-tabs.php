@@ -36,10 +36,11 @@ if ( empty( $tabs ) || ! is_array( $tabs ) ) {
 
 <div class="tab-content sp-menu-panels" id="vqmenuTabContent">
 	<?php foreach ( $tabs as $i => $tab ) :
-		$tab_id   = preg_replace( '/[^a-z0-9\-_]/i', '', (string) ( $tab['id'] ?? ( 'tab-' . $i ) ) );
-		$desc     = (string) ( $tab['description'] ?? '' );
-		$active   = ( 0 === $i ) ? 'show active' : '';
-		$sections = $tab['sections'] ?? array();
+		$tab_id    = preg_replace( '/[^a-z0-9\-_]/i', '', (string) ( $tab['id'] ?? ( 'tab-' . $i ) ) );
+		$desc      = (string) ( $tab['description'] ?? '' );
+		$tab_hours = (string) ( $tab['hours'] ?? '' );
+		$active    = ( 0 === $i ) ? 'show active' : '';
+		$sections  = $tab['sections'] ?? array();
 	?>
 		<section
 			class="tab-pane fade <?php echo esc_attr( $active ); ?>"
@@ -49,8 +50,15 @@ if ( empty( $tabs ) || ! is_array( $tabs ) ) {
 			tabindex="0"
 			data-vqmenu-panel
 		>
-			<?php if ( $desc ) : ?>
-				<p class="sp-menu-tabdesc text-center mt-4 mb-5"><?php echo esc_html( $desc ); ?></p>
+			<?php if ( $tab_hours || $desc ) : ?>
+				<div class="sp-menu-tabmeta text-center mt-4 mb-5">
+					<?php if ( $tab_hours ) : ?>
+						<p class="sp-menu-tabhours text-uppercase mb-1"><?php echo esc_html( $tab_hours ); ?></p>
+					<?php endif; ?>
+					<?php if ( $desc ) : ?>
+						<p class="sp-menu-tabdesc mb-0"><?php echo esc_html( $desc ); ?></p>
+					<?php endif; ?>
+				</div>
 			<?php else : ?>
 				<div class="mt-4"></div>
 			<?php endif; ?>

@@ -85,6 +85,18 @@
 	 *-----------------------------------------------------------------*/
 
 	/**
+	 * FEATURE TOGGLE — time-gated menus.
+	 * When true, a menu tab is completely hidden while the current time (in the
+	 * restaurant's timezone) is outside that menu's Toast-scheduled hours. Menus
+	 * marked "alwaysAvailable" in Toast, or with no schedule, are always shown.
+	 * Set to false to always display every published menu regardless of time.
+	 * Define SP_MENU_TIME_GATE in wp-config.php to override per-environment.
+	 */
+	if ( ! defined( 'SP_MENU_TIME_GATE' ) ) {
+		define( 'SP_MENU_TIME_GATE', true );
+	}
+
+	/**
 	 * Get out-of-stock item GUIDs from the Toast Stock API (cached 5 min).
 	 * Returns an empty array if the plugin is absent or stock access is denied.
 	 */
@@ -167,7 +179,7 @@
 
 			$cached = get_transient( 'vqdev_toast_menu_data' );
 			if ( is_array( $cached ) ) {
-				return $cached;
+				return vqdev_toast_filter_menu_by_hours( $cached );
 			}
 
 			$menus_response = vqdev_toast()->menus()->get_menus_v2();
@@ -177,6 +189,7 @@
 
 			$oos_guids  = vqdev_toast_get_oos_guids();
 			$api_data   = $menus_response['data'];
+			$timezone   = $api_data['restaurantTimeZone'] ?? 'America/New_York';
 			$raw_menus  = isset( $api_data['menus'] ) ? $api_data['menus'] : $api_data;
 			$tabs       = array();
 			$skip_lower = array_map( 'strtolower', $skip_menus );
@@ -222,11 +235,13 @@
 				}
 
 				$tabs[] = array(
-					'id'          => sanitize_title( $menu_name ),
-					'label'       => $menu_name,
-					'description' => '',
-					'sections'    => $sections,
-					'footnotes'   => array(),
+					'id'           => sanitize_title( $menu_name ),
+					'label'        => $menu_name,
+					'description'  => '',
+					'availability' => $menu['availability'] ?? null,
+					'hours'        => vqdev_toast_format_hours( $menu['availability'] ?? null ),
+					'sections'     => $sections,
+					'footnotes'    => array(),
 				);
 			}
 
@@ -237,11 +252,13 @@
 			$data = array(
 				'restaurant_name' => 'Sugar Peddler',
 				'updated'         => gmdate( 'M j, Y g:ia' ),
+				'timezone'        => $timezone,
 				'tabs'            => $tabs,
 			);
 
+			// Cache the FULL menu (all tabs); time-gating is applied per-request below.
 			set_transient( 'vqdev_toast_menu_data', $data, DAY_IN_SECONDS );
-			return $data;
+			return vqdev_toast_filter_menu_by_hours( $data );
 		}
 	}
 
@@ -329,6 +346,225 @@
 				'spicy_level' => 0,
 				'extras'      => $extras,
 			);
+		}
+	}
+
+	/**
+	 * Convert an "HH:MM" (24h) string to minutes-since-midnight, or null if invalid.
+	 */
+	if ( ! function_exists( 'vqdev_toast_hhmm_to_mins' ) ) {
+		function vqdev_toast_hhmm_to_mins( $hhmm ) {
+			if ( ! preg_match( '/^(\d{1,2}):(\d{2})$/', (string) $hhmm, $m ) ) {
+				return null;
+			}
+			return ( (int) $m[1] * 60 ) + (int) $m[2];
+		}
+	}
+
+	/**
+	 * Normalize a minute value to the nearest whole hour when it's ±1 minute away.
+	 * Toast stores end times as ":59" (e.g. 10:59 for "until 11"); this snaps
+	 * 10:59 → 11:00 and 11:01 → 11:00. Used by both the time-gate and the label
+	 * so the boundary and the displayed hours agree (no dead minute at 10:59/11:00).
+	 */
+	if ( ! function_exists( 'vqdev_toast_round_minute' ) ) {
+		function vqdev_toast_round_minute( $mins ) {
+			if ( null === $mins ) {
+				return null;
+			}
+			$rem = $mins % 60;
+			if ( 59 === $rem ) {
+				return $mins + 1;
+			}
+			if ( 1 === $rem ) {
+				return $mins - 1;
+			}
+			return $mins;
+		}
+	}
+
+	/**
+	 * Is a Toast menu "availability" block active at the given moment?
+	 *
+	 * @param array|null $availability Toast menu availability block.
+	 * @param DateTime   $now          Current time in the restaurant timezone.
+	 * @return bool True if available now (or if no schedule is defined / alwaysAvailable).
+	 */
+	if ( ! function_exists( 'vqdev_toast_menu_is_available_now' ) ) {
+		function vqdev_toast_menu_is_available_now( $availability, DateTime $now ) {
+			if ( empty( $availability ) || ! empty( $availability['alwaysAvailable'] ) ) {
+				return true;
+			}
+			$schedule = $availability['schedule'] ?? array();
+			if ( empty( $schedule ) ) {
+				return true; // no schedule info → never hide
+			}
+
+			$today = strtoupper( $now->format( 'l' ) );                     // e.g. MONDAY
+			$mins  = ( (int) $now->format( 'G' ) * 60 ) + (int) $now->format( 'i' );
+
+			foreach ( $schedule as $block ) {
+				if ( ! in_array( $today, $block['days'] ?? array(), true ) ) {
+					continue;
+				}
+				foreach ( $block['timeRanges'] ?? array() as $range ) {
+					$start = vqdev_toast_round_minute( vqdev_toast_hhmm_to_mins( $range['start'] ?? '' ) );
+					$end   = vqdev_toast_round_minute( vqdev_toast_hhmm_to_mins( $range['end'] ?? '' ) );
+					if ( null === $start || null === $end ) {
+						continue;
+					}
+					// End is exclusive after ±1min rounding: 10:59→11:00 means Breakfast
+					// shows through 10:59 and Lunch takes over exactly at 11:00 (no overlap).
+					if ( $mins >= $start && $mins < $end ) {
+						return true;
+					}
+				}
+			}
+			return false;
+		}
+	}
+
+	/**
+	 * Remove menu tabs that are outside their scheduled hours.
+	 *
+	 * Controlled by the SP_MENU_TIME_GATE toggle. Runs per-request (never cached)
+	 * so the visible set always reflects the current time. Tabs marked
+	 * alwaysAvailable or with no schedule are always kept. If every tab is gated
+	 * out, tabs become empty and tpl_menu.php shows its "unavailable" state.
+	 *
+	 * @param array $data Menu data from vqdev_toast_get_menu_data().
+	 * @return array Possibly-filtered copy.
+	 */
+	if ( ! function_exists( 'vqdev_toast_filter_menu_by_hours' ) ) {
+		function vqdev_toast_filter_menu_by_hours( $data ) {
+			if ( ! SP_MENU_TIME_GATE || empty( $data['tabs'] ) ) {
+				return $data;
+			}
+
+			try {
+				$now = new DateTime( 'now', new DateTimeZone( $data['timezone'] ?? 'America/New_York' ) );
+			} catch ( Exception $e ) {
+				return $data; // bad timezone → don't gate
+			}
+
+			$visible = array();
+			foreach ( $data['tabs'] as $tab ) {
+				if ( vqdev_toast_menu_is_available_now( $tab['availability'] ?? null, $now ) ) {
+					$visible[] = $tab;
+				}
+			}
+
+			$data['tabs'] = $visible;
+			return $data;
+		}
+	}
+
+	/**
+	 * Format a minutes-since-midnight value as a compact "7am" / "11:30am" / "8pm".
+	 * Expects an already ±1min-normalized value (see vqdev_toast_round_minute).
+	 */
+	if ( ! function_exists( 'vqdev_toast_fmt_time' ) ) {
+		function vqdev_toast_fmt_time( $mins ) {
+			$h    = intdiv( $mins, 60 );
+			$m    = $mins % 60;
+			$ampm = ( $h >= 12 && $h < 24 ) ? 'pm' : 'am';
+			$h12  = $h % 12;
+			if ( 0 === $h12 ) {
+				$h12 = 12;
+			}
+			return 0 === $m ? $h12 . $ampm : sprintf( '%d:%02d%s', $h12, $m, $ampm );
+		}
+	}
+
+	/**
+	 * Format a start/end minute pair as "7–11am" (shared meridiem) or "11am–8pm".
+	 */
+	if ( ! function_exists( 'vqdev_toast_fmt_range' ) ) {
+		function vqdev_toast_fmt_range( $start, $end ) {
+			$a = vqdev_toast_fmt_time( $start );
+			$b = vqdev_toast_fmt_time( $end );
+			if ( substr( $a, -2 ) === substr( $b, -2 ) ) {
+				$a = substr( $a, 0, -2 ); // drop redundant am/pm from the first value
+			}
+			return $a . '–' . $b; // en dash
+		}
+	}
+
+	/**
+	 * Compress a Toast days array into "Mon–Fri" / "Mon–Sat" / "Mon, Wed, Fri".
+	 */
+	if ( ! function_exists( 'vqdev_toast_fmt_days' ) ) {
+		function vqdev_toast_fmt_days( $days ) {
+			$order = array( 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY' );
+			$abbr  = array( 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' );
+
+			$idx = array();
+			foreach ( (array) $days as $d ) {
+				$p = array_search( strtoupper( $d ), $order, true );
+				if ( false !== $p ) {
+					$idx[] = $p;
+				}
+			}
+			$idx = array_values( array_unique( $idx ) );
+			sort( $idx );
+			if ( empty( $idx ) ) {
+				return '';
+			}
+
+			$parts = array();
+			$run   = $idx[0];
+			$prev  = $idx[0];
+			$count = count( $idx );
+			for ( $i = 1; $i <= $count; $i++ ) {
+				$cur = $idx[ $i ] ?? null;
+				if ( null !== $cur && $cur === $prev + 1 ) {
+					$prev = $cur;
+					continue;
+				}
+				$parts[] = ( $run === $prev ) ? $abbr[ $run ] : $abbr[ $run ] . '–' . $abbr[ $prev ];
+				if ( null !== $cur ) {
+					$run  = $cur;
+					$prev = $cur;
+				}
+			}
+			return implode( ', ', $parts );
+		}
+	}
+
+	/**
+	 * Build a human-readable serving-hours label from a Toast availability block,
+	 * with ±1min normalization applied (so "10:59" reads as "11"). Returns e.g.
+	 * "Served Mon–Fri · 7–11am" or "Served all day". Empty string if unknown.
+	 */
+	if ( ! function_exists( 'vqdev_toast_format_hours' ) ) {
+		function vqdev_toast_format_hours( $availability ) {
+			if ( empty( $availability ) || ! empty( $availability['alwaysAvailable'] ) ) {
+				return 'Served all day';
+			}
+			$schedule = $availability['schedule'] ?? array();
+			if ( empty( $schedule ) ) {
+				return '';
+			}
+
+			$blocks = array();
+			foreach ( $schedule as $block ) {
+				$days   = vqdev_toast_fmt_days( $block['days'] ?? array() );
+				$ranges = array();
+				foreach ( $block['timeRanges'] ?? array() as $range ) {
+					$start = vqdev_toast_round_minute( vqdev_toast_hhmm_to_mins( $range['start'] ?? '' ) );
+					$end   = vqdev_toast_round_minute( vqdev_toast_hhmm_to_mins( $range['end'] ?? '' ) );
+					if ( null === $start || null === $end ) {
+						continue;
+					}
+					$ranges[] = vqdev_toast_fmt_range( $start, $end );
+				}
+				if ( empty( $ranges ) ) {
+					continue;
+				}
+				$blocks[] = $days ? $days . ' · ' . implode( ', ', $ranges ) : implode( ', ', $ranges );
+			}
+
+			return empty( $blocks ) ? '' : 'Served ' . implode( '; ', $blocks );
 		}
 	}
 
