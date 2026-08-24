@@ -97,6 +97,18 @@
 	}
 
 	/**
+	 * FEATURE TOGGLE — grey-out vs. hide past menus.
+	 * Only applies when SP_MENU_TIME_GATE is true. When this is:
+	 *   true  → out-of-hours menus stay visible but greyed out (still clickable),
+	 *           so guests can still browse e.g. Breakfast after 11am.
+	 *   false → out-of-hours menus are removed entirely.
+	 * Define SP_MENU_GREYOUT_PAST in wp-config.php to override per-environment.
+	 */
+	if ( ! defined( 'SP_MENU_GREYOUT_PAST' ) ) {
+		define( 'SP_MENU_GREYOUT_PAST', true );
+	}
+
+	/**
 	 * Get out-of-stock item GUIDs from the Toast Stock API (cached 5 min).
 	 * Returns an empty array if the plugin is absent or stock access is denied.
 	 */
@@ -425,36 +437,68 @@
 	}
 
 	/**
-	 * Remove menu tabs that are outside their scheduled hours.
+	 * Annotate/filter menu tabs by their scheduled hours.
 	 *
-	 * Controlled by the SP_MENU_TIME_GATE toggle. Runs per-request (never cached)
-	 * so the visible set always reflects the current time. Tabs marked
-	 * alwaysAvailable or with no schedule are always kept. If every tab is gated
-	 * out, tabs become empty and tpl_menu.php shows its "unavailable" state.
+	 * Runs per-request (never cached) so state always reflects the current time.
+	 * Each returned tab gains two flags:
+	 *   'is_available' — bool, whether the menu is within its hours right now
+	 *                    (always true when SP_MENU_TIME_GATE is off).
+	 *   'is_active'    — bool, exactly one tab (the first available) is marked to
+	 *                    open by default.
+	 *
+	 * Behaviour by toggle:
+	 *   SP_MENU_TIME_GATE off                       → all tabs, all available.
+	 *   gate on + SP_MENU_GREYOUT_PAST on           → all tabs kept; past ones
+	 *                                                 flagged is_available=false
+	 *                                                 for the template to grey out.
+	 *   gate on + SP_MENU_GREYOUT_PAST off          → past tabs removed entirely.
 	 *
 	 * @param array $data Menu data from vqdev_toast_get_menu_data().
-	 * @return array Possibly-filtered copy.
+	 * @return array Annotated/filtered copy.
 	 */
 	if ( ! function_exists( 'vqdev_toast_filter_menu_by_hours' ) ) {
 		function vqdev_toast_filter_menu_by_hours( $data ) {
-			if ( ! SP_MENU_TIME_GATE || empty( $data['tabs'] ) ) {
+			if ( empty( $data['tabs'] ) ) {
 				return $data;
 			}
 
-			try {
-				$now = new DateTime( 'now', new DateTimeZone( $data['timezone'] ?? 'America/New_York' ) );
-			} catch ( Exception $e ) {
-				return $data; // bad timezone → don't gate
-			}
-
-			$visible = array();
-			foreach ( $data['tabs'] as $tab ) {
-				if ( vqdev_toast_menu_is_available_now( $tab['availability'] ?? null, $now ) ) {
-					$visible[] = $tab;
+			$gate = SP_MENU_TIME_GATE;
+			$now  = null;
+			if ( $gate ) {
+				try {
+					$now = new DateTime( 'now', new DateTimeZone( $data['timezone'] ?? 'America/New_York' ) );
+				} catch ( Exception $e ) {
+					$gate = false; // bad timezone → treat everything as available
 				}
 			}
 
-			$data['tabs'] = $visible;
+			$tabs = array();
+			foreach ( $data['tabs'] as $tab ) {
+				$avail               = $gate ? vqdev_toast_menu_is_available_now( $tab['availability'] ?? null, $now ) : true;
+				$tab['is_available'] = $avail;
+				$tab['is_active']    = false;
+
+				// Hide mode: drop past menus entirely.
+				if ( $gate && ! $avail && ! SP_MENU_GREYOUT_PAST ) {
+					continue;
+				}
+				$tabs[] = $tab;
+			}
+
+			// Open the first available tab by default (fall back to the first tab).
+			$active_set = false;
+			foreach ( $tabs as $k => $t ) {
+				if ( ! empty( $t['is_available'] ) ) {
+					$tabs[ $k ]['is_active'] = true;
+					$active_set              = true;
+					break;
+				}
+			}
+			if ( ! $active_set && ! empty( $tabs ) ) {
+				$tabs[0]['is_active'] = true;
+			}
+
+			$data['tabs'] = $tabs;
 			return $data;
 		}
 	}

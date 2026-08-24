@@ -14,6 +14,11 @@ $all_sections  = array();
 $all_footnotes = array();
 
 foreach ( $tabs as $ti => $tab ) {
+	// Mobile is a single flat scroll, so past (greyed) menus are skipped here to
+	// avoid duplicated groups (e.g. Morning Bakery on both Breakfast and Lunch).
+	if ( isset( $tab['is_available'] ) && ! $tab['is_available'] ) {
+		continue;
+	}
 	$tab_id   = preg_replace( '/[^a-z0-9\-_]/i', '', (string) ( $tab['id'] ?? ( 'tab-' . $ti ) ) );
 	$sections = $tab['sections'] ?? array();
 	foreach ( $sections as $si => $section ) {

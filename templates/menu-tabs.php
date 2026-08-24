@@ -14,12 +14,15 @@ if ( empty( $tabs ) || ! is_array( $tabs ) ) {
 	<?php foreach ( $tabs as $i => $tab ) :
 		$tab_id   = preg_replace( '/[^a-z0-9\-_]/i', '', (string) ( $tab['id'] ?? ( 'tab-' . $i ) ) );
 		$label    = (string) ( $tab['label'] ?? 'Menu' );
-		$active   = ( 0 === $i ) ? 'active' : '';
-		$selected = ( 0 === $i ) ? 'true' : 'false';
+		$is_active = ! empty( $tab['is_active'] );
+		$is_past   = isset( $tab['is_available'] ) && ! $tab['is_available'];
+		$active    = $is_active ? 'active' : '';
+		$selected  = $is_active ? 'true' : 'false';
+		$past_cls  = $is_past ? ' sp-menu-tabs__btn--past' : '';
 	?>
 		<li class="nav-item" role="presentation">
 			<button
-				class="nav-link sp-menu-tabs__btn fst-italic <?php echo esc_attr( $active ); ?>"
+				class="nav-link sp-menu-tabs__btn fst-italic <?php echo esc_attr( $active . $past_cls ); ?>"
 				id="tab-<?php echo esc_attr( $tab_id ); ?>"
 				data-bs-toggle="tab"
 				data-bs-target="#panel-<?php echo esc_attr( $tab_id ); ?>"
@@ -27,6 +30,7 @@ if ( empty( $tabs ) || ! is_array( $tabs ) ) {
 				role="tab"
 				aria-controls="panel-<?php echo esc_attr( $tab_id ); ?>"
 				aria-selected="<?php echo esc_attr( $selected ); ?>"
+				<?php echo $is_past ? 'title="Outside serving hours right now"' : ''; ?>
 			>
 				<?php echo esc_html( $label ); ?>
 			</button>
@@ -39,21 +43,27 @@ if ( empty( $tabs ) || ! is_array( $tabs ) ) {
 		$tab_id    = preg_replace( '/[^a-z0-9\-_]/i', '', (string) ( $tab['id'] ?? ( 'tab-' . $i ) ) );
 		$desc      = (string) ( $tab['description'] ?? '' );
 		$tab_hours = (string) ( $tab['hours'] ?? '' );
-		$active    = ( 0 === $i ) ? 'show active' : '';
+		$is_active = ! empty( $tab['is_active'] );
+		$is_past   = isset( $tab['is_available'] ) && ! $tab['is_available'];
+		$active    = $is_active ? 'show active' : '';
+		$past_cls  = $is_past ? ' sp-menu-panel--past' : '';
 		$sections  = $tab['sections'] ?? array();
 	?>
 		<section
-			class="tab-pane fade <?php echo esc_attr( $active ); ?>"
+			class="tab-pane fade <?php echo esc_attr( $active . $past_cls ); ?>"
 			id="panel-<?php echo esc_attr( $tab_id ); ?>"
 			role="tabpanel"
 			aria-labelledby="tab-<?php echo esc_attr( $tab_id ); ?>"
 			tabindex="0"
 			data-vqmenu-panel
 		>
-			<?php if ( $tab_hours || $desc ) : ?>
+			<?php if ( $tab_hours || $desc || $is_past ) : ?>
 				<div class="sp-menu-tabmeta text-center mt-4 mb-5">
 					<?php if ( $tab_hours ) : ?>
 						<p class="sp-menu-tabhours text-uppercase mb-1"><?php echo esc_html( $tab_hours ); ?></p>
+					<?php endif; ?>
+					<?php if ( $is_past ) : ?>
+						<p class="sp-menu-tabpast text-uppercase mb-1">Outside serving hours &mdash; showing for reference</p>
 					<?php endif; ?>
 					<?php if ( $desc ) : ?>
 						<p class="sp-menu-tabdesc mb-0"><?php echo esc_html( $desc ); ?></p>

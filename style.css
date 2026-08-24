@@ -1046,4 +1046,33 @@ footer a:hover {
   color: var(--sp-pink);
 }
 
+/* ── Time-gated menus: greyed-out (past serving hours) ──────────────── */
+/* Applied when SP_MENU_TIME_GATE + SP_MENU_GREYOUT_PAST are on. */
+.sp-menu-tabs__btn--past {
+	opacity: .45;
+	text-decoration: line-through;
+	text-decoration-thickness: 1px;
+}
+.sp-menu-tabs__btn--past:hover {
+	opacity: .7;
+}
+
+.sp-menu-panel--past {
+	opacity: .5;
+	filter: grayscale(1);
+	transition: opacity .15s ease, filter .15s ease;
+}
+.sp-menu-panel--past:hover,
+.sp-menu-panel--past:focus-within {
+	opacity: .85;
+	filter: grayscale(.4);
+}
+
+.sp-menu-tabpast {
+	font-family: var(--sp-display);
+	font-size: 13px;
+	letter-spacing: .08em;
+	color: var(--sp-pink-soft);
+}
+
 
