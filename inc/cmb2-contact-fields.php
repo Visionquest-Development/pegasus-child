@@ -38,7 +38,7 @@ function sp_contact_defaults() {
 		'_sp_contact_region'      => 'GA',
 		'_sp_contact_postal'      => '31901',
 		'_sp_contact_phone'       => '706-330-3972',
-		'_sp_contact_email'       => 'hello@sugarpeddler.com',
+		'_sp_contact_email'       => 'callcenter@uptownlifegroup.com',
 		'_sp_contact_map_url'     => '',
 		'_sp_contact_map_embed'   => '',
 		'_sp_contact_opening_hours_schema' => 'Mo-Fr 07:30-17:00',

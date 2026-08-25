@@ -21,7 +21,7 @@ get_header();
 			$hero_facts = array(
 				array( 'num' => '14',   'label' => 'Daily breads' ),
 				array( 'num' => '32',   'label' => 'Pastry varieties' ),
-				array( 'num' => '1040', 'label' => 'Broadway, CGA' ),
+				array( 'num' => '3718', 'label' => '2nd Ave, CGA' ),
 			);
 		}
 		$hero_image    = sp_home_hero( 'image' );
@@ -381,10 +381,10 @@ get_header();
 		$visit_body      = sp_home_meta( '_sp_home_visit_body', 'Three blocks south of the RiverCenter, with parking on 11th and a covered patio when the weather behaves.' );
 		$visit_btn1_text = sp_home_meta( '_sp_home_visit_btn1_text', 'Get directions' );
 		$visit_btn1_link = sp_home_meta( '_sp_home_visit_btn1_link', '' );
-		$visit_btn2_text = sp_home_meta( '_sp_home_visit_btn2_text', 'Call (706) 984-8004' );
+		$visit_btn2_text = sp_home_meta( '_sp_home_visit_btn2_text', 'Call 706-330-3972' );
 		$visit_btn2_link = sp_home_meta( '_sp_home_visit_btn2_link', '' );
-		$visit_address   = sp_home_meta( '_sp_home_visit_address', '1040 Broadway<br/>Columbus, GA 31901' );
-		$visit_hours     = sp_home_meta( '_sp_home_visit_hours', 'Mon &ndash; Sat<br/>11 &ndash; 9:45<br/><span class="sp-visit__info-muted">Sunday closed</span>' );
+		$visit_address   = sp_home_meta( '_sp_home_visit_address', '3718 2nd Ave<br/>Columbus, GA 31901' );
+		$visit_hours     = sp_home_meta( '_sp_home_visit_hours', 'Mon &ndash; Fri<br/>7:30 &ndash; 5:00<br/><span class="sp-visit__info-muted">Sat &amp; Sun closed</span>' );
 	?>
 	<section class="sp-visit">
 		<div class="container">
