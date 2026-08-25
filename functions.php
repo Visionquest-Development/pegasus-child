@@ -12,6 +12,21 @@
 	function theme_enqueue_styles() {
 		wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
 
+		/*
+		 * Re-enqueue the child style.css with a filemtime version so edits bust
+		 * the browser cache immediately (the parent enqueues it via
+		 * get_stylesheet_uri() with a static ?ver, which otherwise caches stale).
+		 */
+		$child_css = get_stylesheet_directory() . '/style.css';
+		if ( file_exists( $child_css ) ) {
+			wp_enqueue_style(
+				'sugarpeddler-style',
+				get_stylesheet_uri(),
+				array( 'parent-style' ),
+				filemtime( $child_css )
+			);
+		}
+
 		wp_enqueue_style(
 			'sugarpeddler-fonts',
 			'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@400;500;600&display=swap',
@@ -45,6 +60,18 @@
 	 * scoped to the "Home Page" template (tpl_home.php) only.
 	 */
 	require_once get_stylesheet_directory() . '/inc/cmb2-home-fields.php';
+
+	/**
+	 * CMB2 — Menu template fields (hero images + reservation panel).
+	 * Scoped to the "Menu" template (tpl_menu.php) only.
+	 */
+	require_once get_stylesheet_directory() . '/inc/cmb2-menu-fields.php';
+
+	/**
+	 * CMB2 — Contact template fields (hero + contact details).
+	 * Scoped to the "Contact" template (tpl_contact.php) only.
+	 */
+	require_once get_stylesheet_directory() . '/inc/cmb2-contact-fields.php';
 
 	/**
 	 * Format a price value with leading $.

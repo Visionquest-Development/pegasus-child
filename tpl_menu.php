@@ -9,33 +9,37 @@ $menu_data = function_exists( 'vqdev_toast_get_menu_data' ) ? vqdev_toast_get_me
 
 <div class="sp sp-page" data-screen-label="Menu">
 
-	<?php /* ── HERO ─────────────────────────────────────────────────── */ ?>
+	<?php
+	/* ── HERO ─────────────────────────────────────────────────────── */
+	$hero_photos = array(
+		array( 'key' => '_sp_menu_hero_image_left',   'col' => 'col-3', 'mod' => 'sp-photo--cream', 'label' => 'Café detail' ),
+		array( 'key' => '_sp_menu_hero_image_center', 'col' => 'col-6', 'mod' => 'sp-photo--brown', 'label' => 'Bistro dining room — wide' ),
+		array( 'key' => '_sp_menu_hero_image_right',  'col' => 'col-3', 'mod' => '',                'label' => 'Plated dish' ),
+	);
+	?>
 	<section class="sp-menu-hero position-relative">
 		<div class="container sp-menu-hero__inner position-relative text-center">
-			<span class="sp-script sp-menu-hero__kicker">au menu</span>
-			<h1 class="sp-menu-hero__title fw-normal mt-1">The bistro <em>menu</em></h1>
-			<p class="sp-menu-hero__body mt-4 mx-auto">
-				A short, seasonal menu of French bistro classics &mdash; written each Monday,
-				cooked through Saturday. Available for lunch and dinner.
-			</p>
+			<span class="sp-script sp-menu-hero__kicker"><?php echo esc_html( sp_menu_meta( '_sp_menu_hero_kicker' ) ); ?></span>
+			<h1 class="sp-menu-hero__title fw-normal mt-1"><?php echo wp_kses_post( sp_menu_meta( '_sp_menu_hero_title' ) ); ?></h1>
+			<p class="sp-menu-hero__body mt-4 mx-auto"><?php echo esc_html( sp_menu_meta( '_sp_menu_hero_body' ) ); ?></p>
 		</div>
 
 		<div class="sp-menu-hero__strip row g-0">
-			<div class="col-3">
-				<div class="sp-photo sp-photo--cream sp-menu-hero__photo">
-					<span class="sp-photo__label">Caf&eacute; detail</span>
+			<?php foreach ( $hero_photos as $photo ) :
+				$img = sp_menu_meta( $photo['key'] );
+			?>
+				<div class="<?php echo esc_attr( $photo['col'] ); ?>">
+					<?php if ( $img ) : ?>
+						<div class="sp-menu-hero__photo sp-menu-hero__photo--img">
+							<img class="sp-menu-hero__img" src="<?php echo esc_url( $img ); ?>" alt="" loading="lazy" />
+						</div>
+					<?php else : ?>
+						<div class="sp-photo <?php echo esc_attr( $photo['mod'] ); ?> sp-menu-hero__photo">
+							<span class="sp-photo__label"><?php echo esc_html( $photo['label'] ); ?></span>
+						</div>
+					<?php endif; ?>
 				</div>
-			</div>
-			<div class="col-6">
-				<div class="sp-photo sp-photo--brown sp-menu-hero__photo">
-					<span class="sp-photo__label">Bistro dining room &mdash; wide</span>
-				</div>
-			</div>
-			<div class="col-3">
-				<div class="sp-photo sp-menu-hero__photo">
-					<span class="sp-photo__label">Plated dish</span>
-				</div>
-			</div>
+			<?php endforeach; ?>
 		</div>
 	</section>
 
@@ -86,37 +90,44 @@ $menu_data = function_exists( 'vqdev_toast_get_menu_data' ) ? vqdev_toast_get_me
 	</section>
 	<?php endif; ?>
 
-	<?php /* ── RESERVATION CALLOUT ─────────────────────────────────── */ ?>
+	<?php
+	/* ── RESERVATION CALLOUT ───────────────────────────────────────── */
+	$cta_hours = sp_menu_group( '_sp_menu_cta_hours', sp_menu_hours_default() );
+	$cta_phone = sp_menu_meta( '_sp_menu_cta_phone' );
+	$cta_tel   = preg_replace( '/[^0-9+]/', '', $cta_phone );
+	?>
 	<section class="sp-menu-cta">
 		<div class="container">
 			<div class="sp-menu-cta__card row g-0 overflow-hidden rounded">
 				<div class="col-12 col-md-7 position-relative sp-menu-cta__left">
-					<span class="sp-script sp-menu-cta__kicker">&agrave; bient&ocirc;t</span>
-					<h2 class="sp-menu-cta__title mt-2">
-						Reserve a table<br/>for <em>two &mdash; or twelve.</em>
-					</h2>
-					<p class="sp-menu-cta__body mt-4">
-						We seat parties of any size. Walk-ins welcome at the counter and
-						the bar; reservations recommended for the dining room.
-					</p>
+					<span class="sp-script sp-menu-cta__kicker"><?php echo esc_html( sp_menu_meta( '_sp_menu_cta_kicker' ) ); ?></span>
+					<h2 class="sp-menu-cta__title mt-2"><?php echo wp_kses_post( sp_menu_meta( '_sp_menu_cta_title' ) ); ?></h2>
+					<p class="sp-menu-cta__body mt-4"><?php echo esc_html( sp_menu_meta( '_sp_menu_cta_body' ) ); ?></p>
 					<div class="d-flex flex-wrap gap-3 mt-4">
-						<a href="#" class="sp-btn sp-btn--primary">Book a table</a>
-						<a href="#" class="sp-btn sp-btn--ghost">Private dining &rarr;</a>
+						<a href="<?php echo esc_url( sp_menu_meta( '_sp_menu_cta_btn1_link' ) ); ?>" class="sp-btn sp-btn--primary"><?php echo esc_html( sp_menu_meta( '_sp_menu_cta_btn1_text' ) ); ?></a>
+						<a href="<?php echo esc_url( sp_menu_meta( '_sp_menu_cta_btn2_link' ) ); ?>" class="sp-btn sp-btn--ghost"><?php echo esc_html( sp_menu_meta( '_sp_menu_cta_btn2_text' ) ); ?></a>
 					</div>
 				</div>
 				<div class="col-12 col-md-5 sp-menu-cta__right">
-					<div class="sp-eyebrow mb-3">Hours of service</div>
+					<div class="sp-eyebrow mb-3"><?php echo esc_html( sp_menu_meta( '_sp_menu_cta_hours_heading' ) ); ?></div>
 					<dl class="sp-menu-cta__hours mb-0">
-						<dt>Lunch</dt><dd>Mon &ndash; Sat &middot; 11 &ndash; 2:30</dd>
-						<dt>Caf&eacute;</dt><dd>Mon &ndash; Sat &middot; all day</dd>
-						<dt>Dinner</dt><dd>Mon &ndash; Sat &middot; 5 &ndash; 9:45</dd>
-						<dt>Sunday</dt><dd>Closed &mdash; see you Monday</dd>
+						<?php foreach ( $cta_hours as $row ) :
+							$lbl = (string) ( $row['label'] ?? '' );
+							$val = (string) ( $row['value'] ?? '' );
+							if ( '' === $lbl && '' === $val ) {
+								continue;
+							}
+						?>
+							<dt><?php echo wp_kses_post( $lbl ); ?></dt><dd><?php echo wp_kses_post( $val ); ?></dd>
+						<?php endforeach; ?>
 					</dl>
 					<hr class="sp-menu-cta__rule" />
-					<div class="sp-eyebrow mb-2">Find us</div>
+					<div class="sp-eyebrow mb-2"><?php echo esc_html( sp_menu_meta( '_sp_menu_cta_find_heading' ) ); ?></div>
 					<p class="sp-menu-cta__addr mb-0">
-						1040 Broadway, Columbus, GA 31901<br/>
-						(706) 984-8004
+						<?php echo wp_kses( sp_menu_meta( '_sp_menu_cta_address' ), array( 'br' => array() ) ); ?>
+						<?php if ( '' !== $cta_phone ) : ?>
+							<br/><a class="sp-menu-cta__phone" href="tel:<?php echo esc_attr( $cta_tel ); ?>"><?php echo esc_html( $cta_phone ); ?></a>
+						<?php endif; ?>
 					</p>
 				</div>
 			</div>
