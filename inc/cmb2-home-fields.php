@@ -47,34 +47,12 @@ if ( ! function_exists( 'rcd_home_defaults' ) ) {
 			// Brand statement.
 			'brand_statement'  => "At Rene Catherine Design, we don't just design interiors — we curate experiences and breathe new life into spaces and structures. True luxury lies in the details.",
 
-			// Services.
+			// Services section chrome ( the service ITEMS live in the shared
+			// repeatable field on the Services page — see rcd_get_services() ).
 			'services_eyebrow' => 'What We Do',
 			'services_heading' => 'Three ways we work',
 			'services_link_text' => 'All services',
 			'services_link_url'  => '#services',
-			'services'         => array(
-				array(
-					'n'     => '01',
-					'tag'   => 'Interiors & Styling',
-					'title' => 'Bespoke Curation',
-					'desc'  => 'Tailored interior transformations and single-room styling — composed around how you actually live.',
-					'link'  => '#',
-				),
-				array(
-					'n'     => '02',
-					'tag'   => 'Furniture & Revivals',
-					'title' => 'Restoration & Sourcing',
-					'desc'  => 'Reclaimed, high-end furniture and architectural revivals, given a second life with patient hands.',
-					'link'  => '#',
-				),
-				array(
-					'n'     => '03',
-					'tag'   => '3D & Sourcing',
-					'title' => 'Immersive Technical Design',
-					'desc'  => 'Premium 3D modeling and dynamic sourcing breakdowns — see the room before a single piece moves.',
-					'link'  => '#',
-				),
-			),
 
 			// Approach.
 			'approach_eyebrow' => 'Our Approach',
@@ -302,47 +280,11 @@ function rcd_home_register_metaboxes() {
 		'type'    => 'text',
 		'default' => $d['services_link_url'],
 	) );
-	$svc_group = $services->add_field( array(
-		'id'      => $prefix . 'services',
-		'type'    => 'group',
-		'options' => array_merge( $group_opts, array(
-			'group_title'   => __( 'Service {#}', 'pegasus-child' ),
-			'add_button'    => __( 'Add Service', 'pegasus-child' ),
-			'remove_button' => __( 'Remove Service', 'pegasus-child' ),
-		) ),
-	) );
-	$services->add_group_field( $svc_group, array(
-		'name'         => __( 'Image', 'pegasus-child' ),
-		'id'           => 'image',
-		'type'         => 'file',
-		'options'      => array( 'url' => false ),
-		'query_args'   => array( 'type' => 'image' ),
-		'preview_size' => 'medium',
-	) );
-	$services->add_group_field( $svc_group, array(
-		'name' => __( 'Number', 'pegasus-child' ),
-		'id'   => 'n',
-		'type' => 'text_small',
-	) );
-	$services->add_group_field( $svc_group, array(
-		'name' => __( 'Tag', 'pegasus-child' ),
-		'id'   => 'tag',
-		'type' => 'text',
-	) );
-	$services->add_group_field( $svc_group, array(
-		'name' => __( 'Title', 'pegasus-child' ),
-		'id'   => 'title',
-		'type' => 'text',
-	) );
-	$services->add_group_field( $svc_group, array(
-		'name' => __( 'Description', 'pegasus-child' ),
-		'id'   => 'desc',
-		'type' => 'textarea_small',
-	) );
-	$services->add_group_field( $svc_group, array(
-		'name' => __( 'Learn-more link', 'pegasus-child' ),
-		'id'   => 'link',
-		'type' => 'text',
+	$services->add_field( array(
+		'name' => __( 'Service items', 'pegasus-child' ),
+		'desc' => __( 'The service cards shown here are managed in one place — the "Service Items" box on the Services page ( Services Template ). Edit them there and they update on both the Homepage and the Services page.', 'pegasus-child' ),
+		'id'   => $prefix . 'services_items_note',
+		'type' => 'title',
 	) );
 
 	/* ---------------------------------------------------------------------

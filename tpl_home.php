@@ -183,22 +183,34 @@
 				</div>
 
 				<div class="row g-4">
-					<?php foreach ( rcd_home_rows( 'services' ) as $service ) : ?>
+					<?php
+					// Service items come from the shared repeatable field on the Services page.
+					$rcd_services_url = function_exists( 'rcd_services_page_url' ) ? rcd_services_page_url() : '';
+					foreach ( rcd_get_services() as $service ) :
+						$rcd_anchor    = rcd_home_row( $service, 'anchor' );
+						$rcd_card_link = rcd_home_row( $service, 'link' );
+						if ( '' === $rcd_card_link ) {
+							$rcd_card_link = ( $rcd_services_url ? $rcd_services_url : '' ) . ( $rcd_anchor ? '#' . $rcd_anchor : '' );
+							if ( '' === $rcd_card_link ) {
+								$rcd_card_link = '#';
+							}
+						}
+						?>
 						<div class="col-12 col-md-6 col-lg-4">
 							<article class="rcd-card">
 								<div class="rcd-card-media">
 									<?php rcd_home_media( rcd_home_row( $service, 'image' ), '', 'Drop image', rcd_home_row( $service, 'title' ) ); ?>
 									<?php if ( rcd_home_row( $service, 'tag' ) ) : ?>
-										<span class="rcd-card-tag"><?php echo esc_html( rcd_home_row( $service, 'tag' ) ); ?></span>
+										<span class="rcd-card-tag"><?php echo wp_kses_post( rcd_home_row( $service, 'tag' ) ); ?></span>
 									<?php endif; ?>
 								</div>
 								<div class="rcd-card-body">
-									<?php if ( rcd_home_row( $service, 'n' ) ) : ?>
-										<div class="rcd-card-n"><?php echo esc_html( rcd_home_row( $service, 'n' ) ); ?></div>
+									<?php if ( rcd_home_row( $service, 'number' ) ) : ?>
+										<div class="rcd-card-n"><?php echo esc_html( rcd_home_row( $service, 'number' ) ); ?></div>
 									<?php endif; ?>
 									<h3 class="rcd-card-title"><?php echo esc_html( rcd_home_row( $service, 'title' ) ); ?></h3>
-									<p class="rcd-card-desc"><?php echo esc_html( rcd_home_row( $service, 'desc' ) ); ?></p>
-									<a class="rcd-link-underline" href="<?php echo esc_url( rcd_home_row( $service, 'link', '#' ) ); ?>">Learn more</a>
+									<p class="rcd-card-desc"><?php echo esc_html( rcd_home_row( $service, 'excerpt' ) ); ?></p>
+									<a class="rcd-link-underline" href="<?php echo esc_url( $rcd_card_link ); ?>">Learn more</a>
 								</div>
 							</article>
 						</div>

@@ -9,43 +9,77 @@
 */
 
 /*@import url("../pegasus/style.css");*/
-	
-	
+
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
+  .btn-rcd {
+    background: black !important;
+    color: white !important;
+    border-color: black !important;
+  }
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ HEADER ~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	
+	#logo {
+    width: 100px;
+  }
+	/* Scale the inline RC logo SVG ( templates/logo.php ) to the #logo wrapper */
+	#logo .rc-logo,
+	.rc-logo {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+  #header {
+    border-bottom: 1px solid rgba(34,31,26,.13);
+  }
+
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ NAVIGATION ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
 
-	
+  #menu-main-nav {
+    gap: 30px;
+  }
+
+  #menu-main-nav li a {
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  #menu-main-nav li.current-menu-item a {
+    border-bottom: 2px solid #B0894E !important;
+  }
+
+  @media (min-width: 767px) {
+    .contact-button-container {
+      margin-left: 30px;
+    }
+  }
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ FOOTER ~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
+
+
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
+
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ HOME PAGE ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	
-	
+
+
+
+
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~SITEMAP~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
-	
+
 	/* ~~~~~~~~~~~~~~~~~~~~~~
 	~~~~WOOCOMMERCE~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -54,21 +88,21 @@
 	~~~~~MEDIA QUERIES~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 	@media only screen and ( min-width: 1100px ) and ( max-width: 1405px) {
-		
+
 	}
-	
+
 	@media only screen and ( min-width: 981px ) {
-		
+
 	}
-		
+
 	@media only screen and (max-width: 980px) {
-		
+
 	}
-	
+
 	@media only screen and ( max-width: 767px ) {
-		
+
 	}
-	
+
 	@media only screen and (max-width: 479px) {
 
 	}
@@ -145,7 +179,7 @@
 	.rcd-home .rcd-link-underline:hover{color:var(--gold-deep)}
 
 	/* Media + empty-slot placeholder */
-	.rcd-home .rcd-media{display:block;width:100%;object-fit:cover}
+	.rcd-home .rcd-media{display:block;width:100%;-o-object-fit:cover;object-fit:cover}
 	.rcd-home .rcd-slot{display:flex;align-items:center;justify-content:center;text-align:center;background:#ECE3D2;color:var(--muted);font-size:12px;letter-spacing:.08em;padding:16px}
 	.rcd-home .rcd-band-dark .rcd-slot{background:rgba(255,255,255,.06);color:rgba(248,244,236,.5)}
 	.rcd-home .rcd-hero-media{height:540px}
@@ -245,4 +279,151 @@
 		.rcd-home .rcd-furn-a,
 		.rcd-home .rcd-furn-b{height:260px}
 		.rcd-home .rcd-hero-full{min-height:560px}
+	}
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~ RENE CATHERINE — SERVICES TEMPLATE ( tpl_services.php ) ~~~~~~~~~~~~~~~~~~~~
+	~~~ Reuses the .rcd-home design system ( tokens, headings, buttons, eyebrow, hero-frame,   ~~~
+	~~~ bands, media/slot ). Only the services-specific pieces are defined below.              ~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+	/* Intro quick-links */
+	.rcd-home .rcd-svc-quicklinks{display:flex;gap:30px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+
+	/* Pillar copy */
+	.rcd-home .rcd-svc-kicker{font-family:var(--rcd-serif);font-size:18px;letter-spacing:.12em;color:var(--gold-deep);margin-bottom:14px}
+	.rcd-home .rcd-svc-body{color:var(--muted);font-size:17px;line-height:1.74;margin:0 0 16px}
+	.rcd-home .rcd-svc-body--last{margin-bottom:30px}
+	.rcd-home .rcd-svc-hero-media{height:480px}
+
+	/* "What's included" style sub-headings with trailing rule */
+	.rcd-home .rcd-svc-subhead{display:flex;align-items:center;gap:16px;font-family:var(--rcd-serif);font-weight:500;font-size:30px;margin:60px 0 26px}
+	.rcd-home .rcd-svc-subhead-rule{flex:1;height:1px;background:var(--line)}
+
+	/* Overlay image tiles */
+	.rcd-home .rcd-svc-tile{position:relative;overflow:hidden;margin:0}
+	.rcd-home .rcd-svc-tile .rcd-media,.rcd-home .rcd-svc-tile .rcd-slot{width:100%}
+	.rcd-home .rcd-svc-tile-sub{height:300px}
+	.rcd-home .rcd-svc-tile-feat{height:230px}
+	.rcd-home .rcd-svc-tile-scrim{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 45%,rgba(28,26,22,.72) 100%)}
+	.rcd-home .rcd-svc-tile-label{position:absolute;left:20px;bottom:18px;margin:0;color:#fff;font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+	.rcd-home .rcd-svc-tile--feat .rcd-svc-tile-scrim{background:linear-gradient(180deg,transparent 50%,rgba(28,26,22,.7) 100%)}
+	.rcd-home .rcd-svc-tile--feat .rcd-svc-tile-label{left:16px;bottom:14px;font-size:11.5px;letter-spacing:.14em}
+
+	/* Services responsive */
+	@media only screen and (max-width: 991px){
+		.rcd-home .rcd-svc-hero-media{height:380px}
+	}
+	@media only screen and (max-width: 575px){
+		.rcd-home .rcd-svc-hero-media{height:280px}
+		.rcd-home .rcd-svc-tile-sub,
+		.rcd-home .rcd-svc-tile-feat{height:220px}
+		.rcd-home .rcd-svc-subhead{font-size:24px;margin:44px 0 22px}
+		.rcd-home .rcd-svc-quicklinks{gap:18px}
+	}
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~ RENE CATHERINE — FURNITURE TEMPLATE ( tpl_furniture.php ) ~~~~~~~~~~~~~~~~~~~
+	~~~ Reuses the .rcd-home design system. Powered by the rcd_furniture custom post type.     ~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+	/* Intro pickup badge */
+	.rcd-home .rcd-fur-pickup{display:inline-flex;align-items:center;gap:10px;margin-top:12px;padding:10px 20px;border:1px solid var(--gold);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);font-weight:600}
+	.rcd-home .rcd-fur-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);flex:0 0 auto}
+
+	/* Filter row ( Isotope controls ) */
+	.rcd-home .rcd-fur-filters{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:40px}
+	.rcd-home .rcd-fur-pills{display:flex;gap:12px;flex-wrap:wrap}
+	.rcd-home .rcd-fur-pill{padding:9px 18px;border:1px solid var(--line);background:transparent;color:var(--muted);font-family:inherit;font-size:12px;letter-spacing:.1em;line-height:1.15;text-transform:uppercase;font-weight:600;cursor:pointer;transition:border-color .25s,background .25s,color .25s}
+	.rcd-home .rcd-fur-pill:hover{border-color:var(--gold);color:var(--gold-deep)}
+	.rcd-home .rcd-fur-pill--active,.rcd-home .rcd-fur-pill--active:hover{border-color:var(--ink);background:var(--ink);color:var(--ivory)}
+	.rcd-home .rcd-fur-count{font-size:13px;color:var(--muted);letter-spacing:.04em}
+
+	/* Isotope masonry grid ( gutter matches Bootstrap .container padding so no overflow ) */
+	.rcd-home .rcd-fur-grid{margin:0 -12px}
+	.rcd-home .rcd-fur-grid::after{content:'';display:block;clear:both}
+	.rcd-home .rcd-fur-item,.rcd-home .rcd-fur-sizer{width:33.333%}
+	.rcd-home .rcd-fur-item{float:left;box-sizing:border-box;padding:0 12px 28px}
+	.rcd-home .rcd-fur-sizer{padding:0}
+
+	/* Product cards */
+	.rcd-home .rcd-fur-card{display:flex;flex-direction:column;height:100%;background:#fff;border:1px solid var(--line);transition:transform .3s,box-shadow .3s}
+	.rcd-home .rcd-fur-card:hover{transform:translateY(-5px);box-shadow:0 26px 52px -32px rgba(34,31,26,.5)}
+	.rcd-home .rcd-fur-card--sold{opacity:.6}
+	.rcd-home .rcd-fur-card--reserved{opacity:.85}
+	.rcd-home .rcd-fur-card-media{position:relative;aspect-ratio:4/5;overflow:hidden}
+	.rcd-home .rcd-fur-card-media .rcd-media,.rcd-home .rcd-fur-card-media .rcd-slot{width:100%;height:100%}
+	.rcd-home .rcd-fur-badge{position:absolute;top:14px;left:14px;padding:6px 12px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#fff}
+	.rcd-home .rcd-fur-badge--available{background:rgba(139,106,51,.92);color:#fff}
+	.rcd-home .rcd-fur-badge--reserved{background:rgba(203,173,120,.95);color:#3a2f12}
+	.rcd-home .rcd-fur-badge--sold{background:rgba(34,31,26,.7);color:#fff}
+	.rcd-home .rcd-fur-card-body{display:flex;flex-direction:column;flex:1;padding:24px 24px 26px}
+	.rcd-home .rcd-fur-name{font-family:var(--rcd-serif);font-weight:500;font-size:25px;line-height:1.12;margin:0 0 6px}
+	.rcd-home .rcd-fur-meta{font-size:12.5px;letter-spacing:.04em;color:var(--muted);margin-bottom:18px}
+	.rcd-home .rcd-fur-priceRow{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:auto;padding-top:16px;border-top:1px solid var(--line)}
+	.rcd-home .rcd-fur-price{font-family:var(--rcd-serif);font-size:24px;color:var(--ink)}
+	.rcd-home .rcd-fur-inquire{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--ink);border-bottom:1px solid var(--gold);padding-bottom:3px;white-space:nowrap;transition:color .3s}
+	.rcd-home .rcd-fur-inquire:hover{color:var(--gold-deep)}
+
+	/* How it works ( dark ) */
+	.rcd-home .rcd-fur-step-num{font-family:var(--rcd-serif);font-size:52px;line-height:1;color:var(--gold-soft);margin-bottom:16px}
+	.rcd-home .rcd-fur-step-title{font-family:var(--rcd-serif);font-weight:500;font-size:27px;margin:0 0 12px;color:var(--ivory)}
+	.rcd-home .rcd-fur-step-desc{margin:0 auto;max-width:280px;color:rgba(248,244,236,.72);font-size:15px;line-height:1.7}
+	.rcd-home .rcd-fur-cta{margin-top:56px}
+	.rcd-home .rcd-fur-note{margin:20px 0 0;font-size:13px;letter-spacing:.04em;color:rgba(248,244,236,.55)}
+
+	/* Furniture responsive */
+	@media only screen and (max-width: 991px){
+		.rcd-home .rcd-fur-item,.rcd-home .rcd-fur-sizer{width:50%}
+	}
+	@media only screen and (max-width: 575px){
+		.rcd-home .rcd-fur-item,.rcd-home .rcd-fur-sizer{width:100%}
+		.rcd-home .rcd-fur-filters{justify-content:flex-start}
+		.rcd-home .rcd-fur-step-num{font-size:44px}
+	}
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~ RENE CATHERINE — CONTACT TEMPLATE ( tpl_contact.php ) ~~~~~~~~~~~~~~~~~~~~~~
+	~~~ Built in the .rcd-home design language ( no dedicated design file ).                   ~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+	/* Honeypot ( visually hidden, still in the DOM for bots ) */
+	.rcd-home .rcd-hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+	/* Form */
+	.rcd-home .rcd-contact-formheading{margin-bottom:28px}
+	.rcd-home .rcd-contact-form .rcd-field{display:flex;flex-direction:column;margin-bottom:20px}
+	.rcd-home .rcd-contact-form label{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--gold-deep);margin-bottom:8px}
+	.rcd-home .rcd-contact-form input[type="text"],
+	.rcd-home .rcd-contact-form input[type="email"],
+	.rcd-home .rcd-contact-form textarea{width:100%;background:#fff;border:1px solid var(--line);padding:13px 16px;font-family:var(--rcd-sans);font-size:15px;color:var(--ink);transition:border-color .25s,box-shadow .25s}
+	.rcd-home .rcd-contact-form input[type="text"]:focus,
+	.rcd-home .rcd-contact-form input[type="email"]:focus,
+	.rcd-home .rcd-contact-form textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(176,137,78,.12)}
+	.rcd-home .rcd-contact-form textarea{resize:vertical;min-height:150px}
+	.rcd-home .rcd-contact-form .rcd-btn{margin-top:8px;border:0;cursor:pointer}
+
+	/* Alerts */
+	.rcd-home .rcd-contact-alert{padding:16px 20px;margin-bottom:26px;font-size:15px;line-height:1.6;border:1px solid var(--line)}
+	.rcd-home .rcd-contact-alert--success{background:var(--cream);border-color:var(--gold);color:var(--ink)}
+	.rcd-home .rcd-contact-alert--error{background:#fff;border-color:#b4534a;color:#7a2f28}
+
+	/* Details card */
+	.rcd-home .rcd-contact-details{background:var(--cream);border:1px solid var(--line);padding:38px 34px}
+	.rcd-home .rcd-contact-detailsheading{font-size:clamp(28px,3vw,38px);margin:0 0 24px}
+	.rcd-home .rcd-contact-detaillist{display:flex;flex-direction:column}
+	.rcd-home .rcd-detail{display:flex;flex-direction:column;gap:4px;padding:16px 0;border-top:1px solid var(--line)}
+	.rcd-home .rcd-detail:first-child{border-top:0;padding-top:0}
+	.rcd-home .rcd-detail-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--muted)}
+	.rcd-home .rcd-detail-value{font-family:var(--rcd-serif);font-size:20px;color:var(--ink);line-height:1.3}
+	.rcd-home a.rcd-detail-value:hover{color:var(--gold-deep)}
+	.rcd-home .rcd-contact-socials{display:flex;gap:20px;flex-wrap:wrap;margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+	.rcd-home .rcd-contact-social{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--ink);border-bottom:1px solid var(--gold);padding-bottom:3px;transition:color .25s}
+	.rcd-home .rcd-contact-social:hover{color:var(--gold-deep)}
+
+	@media only screen and (max-width: 991px){
+		.rcd-home .rcd-contact-details{margin-top:8px}
 	}
