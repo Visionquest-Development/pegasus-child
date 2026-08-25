@@ -633,6 +633,181 @@
   .hfhs-cta__actions { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
 
 
+	/*~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~ ABOUT PAGE ~~~~
+	~~~~~~~~~~~~~~~~~~~~~*/
+
+  /* ---- Hero (no stats row, so it sits balanced) ---- */
+  .hfhs-about-hero {
+    padding: 9.5rem 0 7rem;
+    background-color: #1c1c1c;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .hfhs-about-hero .hfhs-hero__inner { padding-bottom: 0; }
+  .hfhs-about-hero .hfhs-hero__title { font-size: clamp(2.5rem, 5vw, 4.5rem); }
+  .hfhs-about-hero .hfhs-hero__lead { margin-bottom: 0; }
+
+  /* ---- Story ---- */
+  .hfhs-story { padding: 7rem 0; }
+  .hfhs-story__title { font-size: clamp(2rem, 3.6vw, 3.1rem); margin-bottom: 2rem; }
+  .hfhs-story__body p { color: var(--hfhs-muted); font-size: 1.08rem; line-height: 1.8; margin-bottom: 1.5rem; }
+  .hfhs-story__sign { font-size: 2rem; margin-top: 1.25rem; color: var(--hfhs-ink); }
+
+  /* ---- Principle band ---- */
+  .hfhs-principle { padding: 5.5rem 0; }
+  .hfhs-principle__eyebrow { font-size: 1.9rem; color: var(--hfhs-muted); margin-bottom: 1.25rem; }
+  .hfhs-principle__row { display: flex; align-items: center; justify-content: center; gap: 2.5rem; }
+  .hfhs-principle__text { font-size: clamp(1.9rem, 3.4vw, 2.9rem); margin: 0; max-width: 640px; }
+  .hfhs-principle__mark { flex: 0 0 auto; color: var(--hfhs-muted); opacity: 0.55; }
+  .hfhs-principle__icon { width: 56px; height: 56px; display: block; }
+  .hfhs-principle__rule { display: block; width: 56px; height: 1px; background: rgba(0, 0, 0, 0.25); margin: 1.85rem auto 0; }
+
+  /* ---- Credentials strip ---- */
+  .hfhs-creds { padding: 0; }
+  .hfhs-cred {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    padding: 3.5rem 2.75rem;
+  }
+  /* Short vertical rule between columns (not a full-height border), per the design.
+     Offset by the column's left padding so it sits on the column boundary (centered
+     in the gutter), not jammed against the text — `left:0` on an absolutely
+     positioned child is measured from the padding edge, i.e. where the text starts. */
+  .hfhs-cred + .hfhs-cred::before {
+    content: "";
+    position: absolute;
+    left: -2.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 74px;
+    background: var(--hfhs-hairline-light);
+  }
+  .hfhs-cred__value { font-family: var(--font-display); font-size: 1.6rem; color: #fff; line-height: 1.1; }
+  .hfhs-cred__caption {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--hfhs-muted-light);
+    line-height: 1.5;
+  }
+
+  /* ---- Promises ---- */
+  .hfhs-promises { padding: 6.5rem 0 7rem; }
+  .hfhs-promises__head { margin-bottom: 3.5rem; }
+  .hfhs-promises__title { font-size: clamp(2rem, 4vw, 3.2rem); margin-top: 0.5rem; }
+  .hfhs-promises__grid { border-top: 1px solid var(--hfhs-hairline); border-left: 1px solid var(--hfhs-hairline); }
+  .hfhs-promise {
+    position: relative;
+    height: 100%;
+    padding: 2.75rem 2rem;
+    border-right: 1px solid var(--hfhs-hairline);
+    border-bottom: 1px solid var(--hfhs-hairline);
+  }
+  /* Number sits in the top-right corner of the card, per the design. */
+  .hfhs-promise__num {
+    position: absolute;
+    top: 1.75rem;
+    right: 1.75rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.3);
+  }
+  .hfhs-promise__title { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; line-height: 1.2; margin-bottom: 1rem; padding-right: 2.5rem; }
+  .hfhs-promise__text { color: var(--hfhs-muted); font-size: 0.96rem; line-height: 1.65; margin: 0; }
+
+  /* ---- Team (pegasus_staff CPT) ---- */
+  .hfhs-team { padding: 6.5rem 0 7rem; }
+  .hfhs-team__head { margin-bottom: 3.5rem; }
+  .hfhs-team__script { font-size: 2.35rem; margin: 0.25rem 0 0.5rem; }
+  .hfhs-team__title { font-size: clamp(2rem, 4vw, 3.2rem); color: #fff; }
+  .hfhs-team__empty { color: var(--hfhs-muted-light); }
+
+  .hfhs-staff {
+    height: 100%;
+    background: var(--hfhs-white);
+    color: var(--hfhs-ink);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .hfhs-staff__photo {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    background: #ece9e3;
+    overflow: hidden;
+  }
+  .hfhs-staff__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .hfhs-staff__monogram {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 4.5rem;
+    color: var(--hfhs-gold);
+    opacity: 0.6;
+  }
+  .hfhs-staff__body { padding: 1.75rem 1.75rem 2rem; display: flex; flex-direction: column; gap: 0.75rem; }
+  .hfhs-staff__name { font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; margin: 0; line-height: 1.1; }
+  .hfhs-staff__role {
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--hfhs-muted);
+    margin: -0.25rem 0 0.5rem;
+  }
+  .hfhs-staff__line {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.98rem;
+    line-height: 1.55;
+    color: var(--hfhs-ink);
+    margin: 0;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--hfhs-hairline);
+  }
+  .hfhs-staff__line.is-placeholder { color: rgba(0, 0, 0, 0.32); }
+  /* A written bio (e.g. Charlotte) replaces the three prompt lines. */
+  .hfhs-staff__bio { padding-top: 0.25rem; }
+  .hfhs-staff__bio p { color: var(--hfhs-ink); font-size: 0.98rem; line-height: 1.6; margin: 0 0 0.9rem; }
+  .hfhs-staff__bio p:last-child { margin-bottom: 0; }
+
+  /* ---- About responsive ---- */
+  @media only screen and (max-width: 991px) {
+    .hfhs-about-hero { padding: 7rem 0 4.5rem; }
+    .hfhs-story,
+    .hfhs-team,
+    .hfhs-promises { padding: 4.5rem 0; }
+    .hfhs-principle__mark { display: none; }
+    .hfhs-promises__grid { border-left: none; }
+    .hfhs-promise { border-left: 1px solid var(--hfhs-hairline); }
+  }
+  @media only screen and (max-width: 767px) {
+    .hfhs-principle__row { gap: 0; }
+    .hfhs-principle { padding: 4rem 0; }
+    /* Stacked credentials: swap the short vertical rule for a top hairline. */
+    .hfhs-cred { padding: 2.5rem 0; }
+    .hfhs-cred + .hfhs-cred::before { display: none; }
+    .hfhs-cred + .hfhs-cred { border-top: 1px solid var(--hfhs-hairline-light); }
+  }
+
+
   
 
 	/* ~~~~~~~~~~~~~~~~~~~~~~
