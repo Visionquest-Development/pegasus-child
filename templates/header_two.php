@@ -64,8 +64,8 @@
 				<?php if( 'on' !== pegasus_get_option( 'full_container_chk' ) & 'container' !== $header_container_check ) : ?>
 					<div class="<?php echo esc_attr( $final_inner_container_class ); ?>">
 				<?php endif; ?>
-						<a class="navbar-brand <?php echo esc_attr( $centerLogo ); ?>" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="Sugarpeddler home">
-							<img id="logo" src="<?php echo esc_url( get_stylesheet_directory_uri() . '/images/sugarpeddler-logo.svg' ); ?>" alt="Sugarpeddler &mdash; Bistro &amp; Bakery" />
+						<a class="navbar-brand <?php echo esc_attr( $centerLogo ); ?>" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="Sugar Peddler home">
+							<?php get_template_part( 'templates/logo' ); ?>
 						</a>
 						<!-- Brand and toggle get grouped for better mobile display -->
 						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#pegasus_header_two" aria-controls="pegasus_header_two"  aria-label="Toggle navigation">

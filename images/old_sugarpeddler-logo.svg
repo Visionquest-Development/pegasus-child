@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="logo" viewBox="48 15 444 121" width="444" height="121" role="img" aria-label="Sugar Peddler — Bistro &amp; Bakery">
+  <title>Sugar Peddler — Bistro &amp; Bakery</title>
+  <desc>Wordmark: "Sugar Peddler" in a brown serif above a sage "BISTRO &amp; BAKERY" tagline flanked by two short sage lines.</desc>
+
+  <text x="270" y="90" text-anchor="middle"
+        font-family="'Cormorant Garamond', Cormorant, Georgia, 'Times New Roman', serif"
+        font-weight="500" font-size="80" letter-spacing="0.5" fill="#3D2817">Sugar Peddler</text>
+
+  <line x1="118" y1="122" x2="156" y2="122" stroke="#8FA47B" stroke-width="1.6" stroke-linecap="round"/>
+  <text x="270" y="129" text-anchor="middle"
+        font-family="'Outfit', system-ui, Arial, sans-serif"
+        font-weight="600" font-size="19" letter-spacing="5.5" fill="#8FA47B">BISTRO &amp; BAKERY</text>
+  <line x1="384" y1="122" x2="422" y2="122" stroke="#8FA47B" stroke-width="1.6" stroke-linecap="round"/>
+</svg>

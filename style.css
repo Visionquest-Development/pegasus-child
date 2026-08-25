@@ -90,6 +90,12 @@
 	color: var(--sp-pink); line-height: 1;
 }
 
+/* ── Header logo (bread-cart wordmark PNG) ──────────────────────────── */
+.navbar-brand #logo,
+.navbar-brand .sp-site-logo { height: 92px; width: auto; max-width: 100%; display: block; }
+@media (max-width: 991px) { .navbar-brand #logo { height: 76px; } }
+@media (max-width: 575px) { .navbar-brand #logo { height: 60px; } }
+
 /* ── Section heading ────────────────────────────────────────────────── */
 .sp-section-head { display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
 .sp-section-head h2 { font-size: 56px; font-weight: 400; }
