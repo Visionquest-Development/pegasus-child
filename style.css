@@ -72,6 +72,8 @@
 	padding: 14px 26px; border-radius: 999px; border: none;
 	font-family: var(--sp-body); font-size: 13.5px; font-weight: 500;
 	letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer;
+  background: var(--sp-pink) !important;
+  color: #fff !important;
 	transition: transform .15s ease, background .15s ease, color .15s ease;
 }
 .sp-btn--primary { background: var(--sp-pink); color: #fff; }
