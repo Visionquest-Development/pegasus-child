@@ -1070,6 +1070,10 @@ footer a:hover {
   flex-direction: column;
 }
 
+#menu-main-nav-1 li a {
+  color: var(--sp-paper);
+}
+
 .sp-social {
   list-style: none;
   padding: 0;
