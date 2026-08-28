@@ -48,7 +48,7 @@
 	<!-- ================= HERO ================= -->
 	<section class="hfhs-hero hfhs-comm-hero hfhs-section--dark" id="top" style="background-image: url('<?php echo esc_url( $hero_bg ); ?>');">
 		<div class="hfhs-hero__overlay" aria-hidden="true"></div>
-		<div class="container hfhs-hero__inner">
+		<div class="container hfhs-hero__inner wow fadeInUp" data-wow-duration="1s">
 			<nav class="hfhs-breadcrumb" aria-label="Breadcrumb">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a>
 				<span aria-hidden="true">/</span>
@@ -64,7 +64,7 @@
 	<section class="hfhs-comm-mission hfhs-section--white">
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-lg-9 col-xl-8 text-center">
+				<div class="col-lg-9 col-xl-8 text-center wow fadeInUp" data-wow-duration="0.9s">
 					<p class="hfhs-eyebrow hfhs-eyebrow--line"><?php echo esc_html( hfhs_comm_field( 'mission_eyebrow', 'Our Mission' ) ); ?></p>
 					<h2 class="hfhs-display hfhs-comm-mission__title"><?php echo wp_kses_post( hfhs_comm_field( 'mission_title', 'A business is <em>only as strong as the community</em> that supports it.' ) ); ?></h2>
 					<div class="hfhs-comm-mission__body"><?php echo wp_kses_post( wpautop( hfhs_comm_field( 'mission_body', $mission_body_default ) ) ); ?></div>
@@ -78,7 +78,7 @@
 	<section class="hfhs-partners hfhs-section--light">
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-lg-9 col-xl-8 text-center hfhs-partners__head">
+				<div class="col-lg-9 col-xl-8 text-center hfhs-partners__head wow fadeInUp" data-wow-duration="0.9s">
 					<p class="hfhs-eyebrow"><?php echo esc_html( hfhs_comm_field( 'partners_eyebrow', 'Our Partners' ) ); ?></p>
 					<p class="hfhs-eyebrow-script"><?php echo esc_html( hfhs_comm_field( 'partners_script', 'Who we show up for.' ) ); ?></p>
 					<h2 class="hfhs-display hfhs-partners__title"><?php echo wp_kses_post( hfhs_comm_field( 'partners_title', 'The organizations <em>we&rsquo;re proud to support.</em>' ) ); ?></h2>
@@ -88,7 +88,7 @@
 			<div class="row g-0 hfhs-partners__grid">
 				<?php foreach ( $partners as $i => $partner ) : ?>
 					<div class="col-12 col-sm-6 col-lg-3">
-						<div class="hfhs-pcard">
+						<div class="hfhs-pcard wow fadeInUp" data-wow-duration="0.7s" data-wow-delay="<?php echo esc_attr( ( $i % 4 ) * 0.1 ); ?>s">
 							<span class="hfhs-pcard__num"><?php echo esc_html( sprintf( '%02d', $i + 1 ) ); ?></span>
 							<h3 class="hfhs-pcard__title"><?php echo wp_kses_post( isset( $partner['title'] ) ? $partner['title'] : '' ); ?></h3>
 							<?php if ( ! empty( $partner['subtitle'] ) ) : ?>
@@ -130,7 +130,7 @@
 	<section class="hfhs-involve hfhs-section--dark">
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-lg-9 col-xl-8 text-center hfhs-involve__head">
+				<div class="col-lg-9 col-xl-8 text-center hfhs-involve__head wow fadeInUp" data-wow-duration="0.9s">
 					<p class="hfhs-eyebrow hfhs-eyebrow--light"><?php echo esc_html( hfhs_comm_field( 'involve_eyebrow', 'Get Involved' ) ); ?></p>
 					<p class="hfhs-eyebrow-script hfhs-eyebrow-script--light"><?php echo esc_html( hfhs_comm_field( 'involve_script', 'Help us help more families.' ) ); ?></p>
 					<h2 class="hfhs-display hfhs-involve__title"><?php echo wp_kses_post( hfhs_comm_field( 'involve_title', 'Three ways to <em>show up with us.</em>' ) ); ?></h2>
@@ -140,7 +140,7 @@
 			<div class="row g-0 hfhs-involve__grid">
 				<?php foreach ( $involve as $i => $way ) : ?>
 					<div class="col-12 col-md-4">
-						<div class="hfhs-involve__card">
+						<div class="hfhs-involve__card wow fadeInUp" data-wow-duration="0.7s" data-wow-delay="<?php echo esc_attr( ( $i % 3 ) * 0.12 ); ?>s">
 							<span class="hfhs-involve__num"><?php echo esc_html( sprintf( '%02d', $i + 1 ) ); ?></span>
 							<h3 class="hfhs-involve__card-title"><?php echo wp_kses_post( isset( $way['title'] ) ? $way['title'] : '' ); ?></h3>
 							<p class="hfhs-involve__text"><?php echo wp_kses_post( isset( $way['text'] ) ? $way['text'] : '' ); ?></p>
@@ -161,7 +161,7 @@
 
 	<!-- ================= CTA ================= -->
 	<section class="hfhs-cta hfhs-comm-cta hfhs-section--light">
-		<div class="container text-center">
+		<div class="container text-center wow fadeInUp" data-wow-duration="0.9s">
 			<p class="hfhs-eyebrow-script"><?php echo esc_html( hfhs_comm_field( 'cta_script', 'From Our Family to Yours.' ) ); ?></p>
 			<h2 class="hfhs-display hfhs-cta__title"><?php echo wp_kses_post( hfhs_comm_field( 'cta_title', 'This is what family looks like &mdash; <em>taking care of each other.</em>' ) ); ?></h2>
 			<div class="hfhs-cta__actions">

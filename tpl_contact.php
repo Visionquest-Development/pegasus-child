@@ -53,7 +53,7 @@
 	<!-- ================= HERO ================= -->
 	<section class="hfhs-hero hfhs-contact-hero hfhs-section--dark" id="top" style="background-image: url('<?php echo esc_url( $hero_bg ); ?>');">
 		<div class="hfhs-hero__overlay" aria-hidden="true"></div>
-		<div class="container hfhs-hero__inner">
+		<div class="container hfhs-hero__inner wow fadeInUp" data-wow-duration="1s">
 			<nav class="hfhs-breadcrumb" aria-label="Breadcrumb">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a>
 				<span aria-hidden="true">/</span>
@@ -71,7 +71,7 @@
 		<div class="container">
 			<div class="row g-5">
 				<!-- Estimate form -->
-				<div class="col-lg-7 hfhs-contact__form">
+				<div class="col-lg-7 hfhs-contact__form wow fadeInUp" data-wow-duration="0.9s">
 					<p class="hfhs-eyebrow"><?php echo esc_html( hfhs_contact_field( 'form_eyebrow', 'Free Estimate Form' ) ); ?></p>
 					<p class="hfhs-eyebrow-script hfhs-contact__script"><?php echo esc_html( hfhs_contact_field( 'form_script', 'Tell us about your project.' ) ); ?></p>
 					<h2 class="hfhs-display hfhs-contact__title"><?php echo wp_kses_post( hfhs_contact_field( 'form_title', 'We&rsquo;ll respond <em>within one business day.</em>' ) ); ?></h2>
@@ -89,7 +89,7 @@
 				</div>
 
 				<!-- Direct contact card -->
-				<div class="col-lg-5 hfhs-contact__aside">
+				<div class="col-lg-5 hfhs-contact__aside wow fadeInUp" data-wow-duration="0.9s" data-wow-delay="0.15s">
 					<div class="hfhs-cdirect">
 						<p class="hfhs-cdirect__heading"><?php echo esc_html( hfhs_contact_field( 'direct_heading', 'Direct Contact' ) ); ?></p>
 						<?php foreach ( $direct as $item ) :
@@ -99,7 +99,7 @@
 							$subtext = isset( $item['subtext'] ) ? $item['subtext'] : '';
 							$svg     = isset( $hfhs_contact_icons[ $icon ] ) ? $hfhs_contact_icons[ $icon ] : '';
 						?>
-							<div class="hfhs-cdirect__item">
+							<div class="hfhs-cdirect__item wow fadeInUp" data-wow-duration="0.7s">
 								<span class="hfhs-cdirect__icon" aria-hidden="true"><?php echo $svg; // phpcs:ignore ?></span>
 								<div class="hfhs-cdirect__body">
 									<?php if ( $label ) : ?><span class="hfhs-cdirect__label"><?php echo esc_html( $label ); ?></span><?php endif; ?>
@@ -130,7 +130,7 @@
 	<section class="hfhs-area hfhs-section--light">
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-lg-9 col-xl-8 text-center hfhs-area__head">
+				<div class="col-lg-9 col-xl-8 text-center hfhs-area__head wow fadeInUp" data-wow-duration="0.9s">
 					<p class="hfhs-eyebrow"><?php echo esc_html( hfhs_contact_field( 'area_eyebrow', 'Service Area' ) ); ?></p>
 					<p class="hfhs-eyebrow-script"><?php echo esc_html( hfhs_contact_field( 'area_script', 'Where we work.' ) ); ?></p>
 					<h2 class="hfhs-display hfhs-area__title"><?php echo wp_kses_post( hfhs_contact_field( 'area_title', 'Proud to serve <em>Greater Atlanta.</em>' ) ); ?></h2>
@@ -150,7 +150,7 @@
 
 	<!-- ================= CTA ================= -->
 	<section class="hfhs-cta hfhs-section--dark">
-		<div class="container text-center">
+		<div class="container text-center wow fadeInUp" data-wow-duration="0.9s">
 			<p class="hfhs-eyebrow-script hfhs-eyebrow-script--light"><?php echo esc_html( hfhs_contact_field( 'cta_script', 'Prefer to talk first?' ) ); ?></p>
 			<h2 class="hfhs-display hfhs-cta__title"><?php echo wp_kses_post( hfhs_contact_field( 'cta_title', 'Give us a call. We actually answer.' ) ); ?></h2>
 			<div class="hfhs-cta__actions">

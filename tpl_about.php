@@ -62,7 +62,7 @@
 	<!-- ================= HERO ================= -->
 	<section class="hfhs-hero hfhs-about-hero hfhs-section--dark" id="top" style="background-image: url('<?php echo esc_url( $hero_bg ); ?>');">
 		<div class="hfhs-hero__overlay" aria-hidden="true"></div>
-		<div class="container hfhs-hero__inner">
+		<div class="container hfhs-hero__inner wow fadeInUp" data-wow-duration="1s">
 			<p class="hfhs-eyebrow-script hfhs-eyebrow-script--light"><?php echo esc_html( hfhs_about_field( 'hero_eyebrow', 'Meet the Hart Family' ) ); ?></p>
 			<h1 class="hfhs-hero__title"><?php echo wp_kses_post( hfhs_about_field( 'hero_title', 'Your family of <em>home service</em> providers in Atlanta.' ) ); ?></h1>
 			<p class="hfhs-hero__lead"><?php echo esc_html( hfhs_about_field( 'hero_text', 'Founded in 2023, built on trust, integrity, and honesty — serving homeowners, property managers, and HOA communities across Greater Atlanta.' ) ); ?></p>
@@ -94,7 +94,7 @@
 	<section class="hfhs-principle hfhs-section--light">
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-lg-10 col-xl-8 text-center">
+				<div class="col-lg-10 col-xl-8 text-center wow fadeInUp" data-wow-duration="0.9s">
 					<p class="hfhs-eyebrow-script hfhs-principle__eyebrow"><?php echo esc_html( hfhs_about_field( 'principle_eyebrow', 'A simple principle' ) ); ?></p>
 					<div class="hfhs-principle__row">
 						<span class="hfhs-principle__mark hfhs-principle__mark--l" aria-hidden="true"><?php echo $house_icon; // phpcs:ignore ?></span>
@@ -125,7 +125,7 @@
 	<section class="hfhs-promises hfhs-section--white">
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-lg-9 col-xl-8 text-center hfhs-promises__head">
+				<div class="col-lg-9 col-xl-8 text-center hfhs-promises__head wow fadeInUp" data-wow-duration="0.9s">
 					<p class="hfhs-eyebrow hfhs-eyebrow--line"><?php echo esc_html( hfhs_about_field( 'promises_eyebrow', 'Why Choose Us' ) ); ?></p>
 					<h2 class="hfhs-display hfhs-promises__title"><?php echo wp_kses_post( hfhs_about_field( 'promises_title', 'Four promises we <em>refuse to compromise</em> on.' ) ); ?></h2>
 				</div>
@@ -134,7 +134,7 @@
 			<div class="row g-0 hfhs-promises__grid">
 				<?php foreach ( $promises as $i => $promise ) : ?>
 					<div class="col-12 col-md-6 col-lg-3">
-						<div class="hfhs-promise">
+						<div class="hfhs-promise wow fadeInUp" data-wow-duration="0.7s" data-wow-delay="<?php echo esc_attr( ( $i % 4 ) * 0.1 ); ?>s">
 							<span class="hfhs-promise__num"><?php echo esc_html( sprintf( '%02d', $i + 1 ) ); ?></span>
 							<h3 class="hfhs-promise__title"><?php echo wp_kses_post( isset( $promise['title'] ) ? $promise['title'] : '' ); ?></h3>
 							<p class="hfhs-promise__text"><?php echo wp_kses_post( isset( $promise['text'] ) ? $promise['text'] : '' ); ?></p>
@@ -149,7 +149,7 @@
 	<section class="hfhs-team hfhs-section--dark" id="team">
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-lg-9 col-xl-8 text-center hfhs-team__head">
+				<div class="col-lg-9 col-xl-8 text-center hfhs-team__head wow fadeInUp" data-wow-duration="0.9s">
 					<p class="hfhs-eyebrow hfhs-eyebrow--light"><?php echo esc_html( hfhs_about_field( 'team_eyebrow', 'The Team' ) ); ?></p>
 					<p class="hfhs-eyebrow-script hfhs-eyebrow-script--light hfhs-team__script"><?php echo esc_html( hfhs_about_field( 'team_script', 'The people who show up.' ) ); ?></p>
 					<h2 class="hfhs-display hfhs-team__title"><?php echo wp_kses_post( hfhs_about_field( 'team_title', 'Seven family members. <em>One promise.</em>' ) ); ?></h2>
@@ -186,7 +186,7 @@
 							);
 					?>
 						<div class="col-12 col-sm-6 col-lg-4">
-							<article class="hfhs-staff">
+							<article class="hfhs-staff wow fadeInUp" data-wow-duration="0.7s">
 								<div class="hfhs-staff__photo">
 									<?php if ( has_post_thumbnail() ) : ?>
 										<?php the_post_thumbnail( 'medium_large', array( 'class' => 'hfhs-staff__img', 'alt' => esc_attr( $name ) ) ); ?>
@@ -224,7 +224,7 @@
 		<span class="hfhs-testimonial__mark" aria-hidden="true">&ldquo;</span>
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-lg-10 col-xl-8 text-center">
+				<div class="col-lg-10 col-xl-8 text-center wow fadeInUp" data-wow-duration="0.9s">
 					<p class="hfhs-eyebrow-script hfhs-eyebrow-script--light"><?php echo esc_html( hfhs_about_field( 'testi_script', 'In their own words' ) ); ?></p>
 					<p class="hfhs-eyebrow hfhs-eyebrow--light"><?php echo esc_html( hfhs_about_field( 'testi_eyebrow', 'From a Homeowner' ) ); ?></p>
 					<blockquote class="hfhs-testimonial__quote">
@@ -242,7 +242,7 @@
 
 	<!-- ================= CTA ================= -->
 	<section class="hfhs-cta hfhs-section--dark">
-		<div class="container text-center">
+		<div class="container text-center wow fadeInUp" data-wow-duration="0.9s">
 			<p class="hfhs-eyebrow-script hfhs-eyebrow-script--light"><?php echo esc_html( hfhs_about_field( 'cta_script', 'From our family to yours.' ) ); ?></p>
 			<h2 class="hfhs-display hfhs-cta__title"><?php echo wp_kses_post( hfhs_about_field( 'cta_title', 'Ready to work with a team that <em>treats you like family</em>?' ) ); ?></h2>
 			<div class="hfhs-cta__actions">

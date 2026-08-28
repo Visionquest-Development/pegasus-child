@@ -146,7 +146,7 @@ while ( have_posts() ) :
 	<!-- ============================= HERO ============================= -->
 	<section class="hfhs-hero hfhs-svc-hero hfhs-section--dark" id="top"<?php if ( $hero_img ) : ?> style="background-image: url('<?php echo esc_url( $hero_img ); ?>');"<?php endif; ?>>
 		<div class="hfhs-hero__overlay" aria-hidden="true"></div>
-		<div class="container hfhs-hero__inner">
+		<div class="container hfhs-hero__inner wow fadeInUp" data-wow-duration="1s">
 			<nav class="hfhs-breadcrumb" aria-label="Breadcrumb">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a>
 				<span aria-hidden="true">/</span>
@@ -214,7 +214,7 @@ while ( have_posts() ) :
 	<section class="hfhs-svc-process hfhs-section--dark">
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-lg-9 col-xl-8 text-center hfhs-svc-process__head">
+				<div class="col-lg-9 col-xl-8 text-center hfhs-svc-process__head wow fadeInUp" data-wow-duration="0.9s">
 					<p class="hfhs-eyebrow hfhs-eyebrow--light"><?php echo esc_html( $lbl( 'process_eyebrow', 'Our Process' ) ); ?></p>
 					<p class="hfhs-eyebrow-script hfhs-eyebrow-script--light"><?php echo esc_html( $lbl( 'process_script', 'How we work.' ) ); ?></p>
 					<h2 class="hfhs-display hfhs-svc-process__title"><?php echo wp_kses_post( $lbl( 'process_title', 'Four steps. <em>No surprises.</em>' ) ); ?></h2>
@@ -226,7 +226,7 @@ while ( have_posts() ) :
 					$st_text  = is_array( $step ) && isset( $step['text'] ) ? $step['text'] : '';
 				?>
 					<div class="col-12 col-md-6 col-lg-3">
-						<div class="hfhs-svc-step">
+						<div class="hfhs-svc-step wow fadeInUp" data-wow-duration="0.7s" data-wow-delay="<?php echo esc_attr( ( $i % 4 ) * 0.1 ); ?>s">
 							<span class="hfhs-svc-step__num"><?php echo esc_html( sprintf( '%02d', $i + 1 ) ); ?></span>
 							<h3 class="hfhs-svc-step__title"><?php echo esc_html( $st_title ); ?></h3>
 							<p class="hfhs-svc-step__text"><?php echo esc_html( $st_text ); ?></p>
@@ -242,7 +242,7 @@ while ( have_posts() ) :
 	<section class="hfhs-svc-work hfhs-section--light">
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-lg-9 col-xl-8 text-center hfhs-svc-work__head">
+				<div class="col-lg-9 col-xl-8 text-center hfhs-svc-work__head wow fadeInUp" data-wow-duration="0.9s">
 					<p class="hfhs-eyebrow"><?php echo esc_html( $lbl( 'recent_eyebrow', 'Recent Work' ) ); ?></p>
 					<p class="hfhs-eyebrow-script"><?php echo esc_html( $lbl( 'recent_script', 'From the field.' ) ); ?></p>
 					<h2 class="hfhs-display hfhs-svc-work__title">A few recent <?php echo esc_html( strtolower( $title ) ); ?> projects.</h2>
@@ -303,7 +303,7 @@ while ( have_posts() ) :
 	<section class="hfhs-svc-related hfhs-section--dark">
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-lg-9 col-xl-8 text-center hfhs-svc-related__head">
+				<div class="col-lg-9 col-xl-8 text-center hfhs-svc-related__head wow fadeInUp" data-wow-duration="0.9s">
 					<p class="hfhs-eyebrow hfhs-eyebrow--light"><?php echo esc_html( $lbl( 'related_eyebrow', 'Related Services' ) ); ?></p>
 					<p class="hfhs-eyebrow-script hfhs-eyebrow-script--light"><?php echo esc_html( $lbl( 'related_script', 'Keep exploring.' ) ); ?></p>
 					<h2 class="hfhs-display hfhs-svc-related__title"><?php echo wp_kses_post( $lbl( 'related_title', 'Other ways we <em>protect your home.</em>' ) ); ?></h2>
@@ -312,7 +312,7 @@ while ( have_posts() ) :
 			<div class="row g-0 hfhs-svc-related__grid">
 				<?php foreach ( $related as $r ) : ?>
 					<div class="col-6 col-lg-3">
-						<a class="hfhs-svc-rcard" href="<?php echo esc_url( $r['url'] ); ?>">
+						<a class="hfhs-svc-rcard wow fadeInUp" data-wow-duration="0.7s" href="<?php echo esc_url( $r['url'] ); ?>">
 							<?php if ( $r['number'] ) : ?><span class="hfhs-svc-rcard__num"><?php echo esc_html( $r['number'] ); ?></span><?php endif; ?>
 							<h3 class="hfhs-svc-rcard__title"><?php echo esc_html( $r['title'] ); ?></h3>
 							<span class="hfhs-svc-rcard__cta hfhs-arrow-link hfhs-arrow-link--light">Explore <span class="hfhs-arrow" aria-hidden="true">&rarr;</span></span>
@@ -344,7 +344,7 @@ while ( have_posts() ) :
 
 	<!-- ============================= CTA ============================= -->
 	<section class="hfhs-cta hfhs-section--dark">
-		<div class="container text-center">
+		<div class="container text-center wow fadeInUp" data-wow-duration="0.9s">
 			<p class="hfhs-eyebrow-script hfhs-eyebrow-script--light"><?php echo esc_html( $lbl( 'cta_script', 'Ready to get started?' ) ); ?></p>
 			<h2 class="hfhs-display hfhs-cta__title"><?php echo wp_kses_post( $cta_title ); ?></h2>
 			<div class="hfhs-cta__actions">

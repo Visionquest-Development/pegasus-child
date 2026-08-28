@@ -57,7 +57,7 @@
 	<!-- ================= HERO ================= -->
 	<section class="hfhs-hero hfhs-testi-hero hfhs-section--dark" id="top" style="background-image: url('<?php echo esc_url( $hero_bg ); ?>');">
 		<div class="hfhs-hero__overlay" aria-hidden="true"></div>
-		<div class="container hfhs-hero__inner">
+		<div class="container hfhs-hero__inner wow fadeInUp" data-wow-duration="1s">
 			<nav class="hfhs-breadcrumb" aria-label="Breadcrumb">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a>
 				<span aria-hidden="true">/</span>
@@ -76,7 +76,7 @@
 		<span class="hfhs-testi-slider__mark hfhs-testi-slider__mark--close" aria-hidden="true">&rdquo;</span>
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-lg-9 col-xl-8 text-center hfhs-testi-slider__head">
+				<div class="col-lg-9 col-xl-8 text-center hfhs-testi-slider__head wow fadeInUp" data-wow-duration="0.9s">
 					<p class="hfhs-eyebrow hfhs-eyebrow--line"><?php echo esc_html( hfhs_testi_field( 'slider_eyebrow', 'Reviews' ) ); ?></p>
 					<p class="hfhs-eyebrow-script"><?php echo esc_html( hfhs_testi_field( 'slider_script', 'Honest words.' ) ); ?></p>
 					<h2 class="hfhs-display hfhs-testi-slider__title"><?php echo wp_kses_post( hfhs_testi_field( 'slider_title', 'From the clients <em>we take care of.</em>' ) ); ?></h2>
@@ -102,7 +102,7 @@
 	<section class="hfhs-ways hfhs-section--white">
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-lg-9 col-xl-8 text-center hfhs-ways__head">
+				<div class="col-lg-9 col-xl-8 text-center hfhs-ways__head wow fadeInUp" data-wow-duration="0.9s">
 					<p class="hfhs-eyebrow"><?php echo esc_html( hfhs_testi_field( 'ways_eyebrow', 'Leave a Review' ) ); ?></p>
 					<p class="hfhs-eyebrow-script"><?php echo esc_html( hfhs_testi_field( 'ways_script', 'Your words help other families.' ) ); ?></p>
 					<h2 class="hfhs-display hfhs-ways__title"><?php echo wp_kses_post( hfhs_testi_field( 'ways_title', 'Three ways to <em>share your experience.</em>' ) ); ?></h2>
@@ -112,7 +112,7 @@
 			<div class="row g-0 hfhs-ways__grid">
 				<?php foreach ( $ways as $i => $way ) : ?>
 					<div class="col-12 col-md-4">
-						<div class="hfhs-way">
+						<div class="hfhs-way wow fadeInUp" data-wow-duration="0.7s" data-wow-delay="<?php echo esc_attr( ( $i % 3 ) * 0.12 ); ?>s">
 							<span class="hfhs-way__num"><?php echo esc_html( sprintf( '%02d', $i + 1 ) ); ?></span>
 							<h3 class="hfhs-way__title"><?php echo wp_kses_post( isset( $way['title'] ) ? $way['title'] : '' ); ?></h3>
 							<p class="hfhs-way__text"><?php echo wp_kses_post( isset( $way['text'] ) ? $way['text'] : '' ); ?></p>
@@ -130,7 +130,7 @@
 	<section class="hfhs-share hfhs-section--dark" id="form">
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-lg-9 col-xl-8 text-center hfhs-share__head">
+				<div class="col-lg-9 col-xl-8 text-center hfhs-share__head wow fadeInUp" data-wow-duration="0.9s">
 					<p class="hfhs-eyebrow hfhs-eyebrow--light"><?php echo esc_html( hfhs_testi_field( 'form_eyebrow', 'Share Your Experience' ) ); ?></p>
 					<p class="hfhs-eyebrow-script hfhs-eyebrow-script--light"><?php echo esc_html( hfhs_testi_field( 'form_script', 'From our family to yours.' ) ); ?></p>
 					<h2 class="hfhs-display hfhs-share__title"><?php echo wp_kses_post( hfhs_testi_field( 'form_title', 'Worked with us? <em>Tell us about it.</em>' ) ); ?></h2>
@@ -157,7 +157,7 @@
 
 	<!-- ================= CTA ================= -->
 	<section class="hfhs-cta hfhs-section--dark">
-		<div class="container text-center">
+		<div class="container text-center wow fadeInUp" data-wow-duration="0.9s">
 			<p class="hfhs-eyebrow-script hfhs-eyebrow-script--light"><?php echo esc_html( hfhs_testi_field( 'cta_script', 'Ready to get started?' ) ); ?></p>
 			<h2 class="hfhs-display hfhs-cta__title"><?php echo wp_kses_post( hfhs_testi_field( 'cta_title', 'Become the next name on this page.' ) ); ?></h2>
 			<div class="hfhs-cta__actions">

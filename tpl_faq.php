@@ -61,7 +61,7 @@
 	<!-- ================= HERO ================= -->
 	<section class="hfhs-hero hfhs-faq-hero hfhs-section--dark" id="top" style="background-image: url('<?php echo esc_url( $hero_bg ); ?>');">
 		<div class="hfhs-hero__overlay" aria-hidden="true"></div>
-		<div class="container hfhs-hero__inner">
+		<div class="container hfhs-hero__inner wow fadeInUp" data-wow-duration="1s">
 			<nav class="hfhs-breadcrumb" aria-label="Breadcrumb">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a>
 				<span aria-hidden="true">/</span>
@@ -78,7 +78,7 @@
 	<section class="hfhs-faq hfhs-section--white">
 		<div class="container">
 			<div class="row g-5">
-				<div class="col-lg-5 hfhs-faq__intro">
+				<div class="col-lg-5 hfhs-faq__intro wow fadeInUp" data-wow-duration="0.9s">
 					<p class="hfhs-eyebrow"><?php echo esc_html( hfhs_faq_field( 'intro_eyebrow', 'Got a Question?' ) ); ?></p>
 					<p class="hfhs-eyebrow-script hfhs-faq__script"><?php echo esc_html( hfhs_faq_field( 'intro_script', 'Plainly put.' ) ); ?></p>
 					<h2 class="hfhs-display hfhs-faq__title"><?php echo wp_kses_post( hfhs_faq_field( 'intro_title', 'Honest answers <em>to the questions that matter.</em>' ) ); ?></h2>
@@ -90,7 +90,7 @@
 						</p>
 					<?php endif; ?>
 				</div>
-				<div class="col-lg-7 hfhs-faq__list">
+				<div class="col-lg-7 hfhs-faq__list wow fadeInUp" data-wow-duration="0.9s" data-wow-delay="0.15s">
 					<?php echo do_shortcode( $accordion_sc ); ?>
 				</div>
 			</div>
@@ -99,7 +99,7 @@
 
 	<!-- ================= CTA ================= -->
 	<section class="hfhs-cta hfhs-section--dark">
-		<div class="container text-center">
+		<div class="container text-center wow fadeInUp" data-wow-duration="0.9s">
 			<p class="hfhs-eyebrow-script hfhs-eyebrow-script--light"><?php echo esc_html( hfhs_faq_field( 'cta_script', 'Still have questions?' ) ); ?></p>
 			<h2 class="hfhs-display hfhs-cta__title"><?php echo wp_kses_post( hfhs_faq_field( 'cta_title', 'Give us a call. We actually answer.' ) ); ?></h2>
 			<div class="hfhs-cta__actions">

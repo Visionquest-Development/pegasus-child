@@ -73,7 +73,7 @@
 	<!-- ================= HERO ================= -->
 	<section class="hfhs-hero hfhs-section--dark" id="top"<?php if ( $hero_img ) : ?> style="background-image: url('<?php echo esc_url( $hero_img ); ?>');"<?php endif; ?>>
 		<div class="hfhs-hero__overlay" aria-hidden="true"></div>
-		<div class="container hfhs-hero__inner">
+		<div class="container hfhs-hero__inner wow fadeInUp" data-wow-duration="1s">
 			<p class="hfhs-eyebrow-script hfhs-eyebrow-script--light"><?php echo esc_html( hfhs_home_field( 'hero_script', 'From Our Family to Yours' ) ); ?></p>
 			<h1 class="hfhs-hero__title"><?php echo wp_kses_post( hfhs_home_field( 'hero_title', 'Your Family of <br/><em>Home Service</em> Providers' ) ); ?></h1>
 			<p class="hfhs-hero__lead mb-3"><?php echo esc_html( hfhs_home_field( 'hero_lead', 'Founded in 2023, Hart Family of Home Services is a family-owned, full-service home care team serving homeowners, property managers, and HOA communities across the Greater Atlanta area.' ) ); ?></p>
@@ -99,7 +99,7 @@
 	<section class="hfhs-values hfhs-section--white">
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-lg-9 col-xl-8 text-center">
+				<div class="col-lg-9 col-xl-8 text-center wow fadeInUp" data-wow-duration="0.9s">
 					<p class="hfhs-eyebrow hfhs-eyebrow--line"><?php echo esc_html( hfhs_home_field( 'values_eyebrow', 'Welcome' ) ); ?></p>
 					<h2 class="hfhs-display hfhs-values__title"><?php echo wp_kses_post( hfhs_home_field( 'values_title', 'We built this company on three values we <em>refuse to compromise on</em> &mdash; trust, integrity, and honesty.' ) ); ?></h2>
 					<div class="hfhs-values__body"><?php echo wp_kses_post( wpautop( hfhs_home_field( 'values_body', $values_body_default ) ) ); ?></div>
@@ -113,7 +113,7 @@
 	<section class="hfhs-services hfhs-section--dark" id="services">
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-lg-9 col-xl-8 text-center hfhs-services__head">
+				<div class="col-lg-9 col-xl-8 text-center hfhs-services__head wow fadeInUp" data-wow-duration="0.9s">
 					<p class="hfhs-eyebrow hfhs-eyebrow--light"><?php echo esc_html( hfhs_home_field( 'services_eyebrow', 'What We Do' ) ); ?></p>
 					<h2 class="hfhs-display hfhs-services__title"><?php echo wp_kses_post( hfhs_home_field( 'services_title', 'Nine services. One trusted team.' ) ); ?></h2>
 					<p class="hfhs-services__lead"><?php echo esc_html( hfhs_home_field( 'services_lead', 'From seasonal maintenance to full-scale improvements, we handle home care end-to-end so you’re never juggling multiple contractors. Click any service below to learn more.' ) ); ?></p>
@@ -123,7 +123,7 @@
 			<div class="row g-0 hfhs-services__grid">
 				<?php foreach ( $hfhs_services as $i => $service ) : ?>
 					<div class="col-12 col-md-6 col-lg-4">
-						<a class="hfhs-service" href="<?php echo esc_url( isset( $service['link'] ) ? $service['link'] : '#' ); ?>">
+						<a class="hfhs-service wow fadeInUp" data-wow-duration="0.7s" data-wow-delay="<?php echo esc_attr( ( $i % 3 ) * 0.12 ); ?>s" href="<?php echo esc_url( isset( $service['link'] ) ? $service['link'] : '#' ); ?>">
 							<span class="hfhs-service__media"<?php if ( ! empty( $service['img'] ) ) : ?> style="background-image: url('<?php echo esc_url( $service['img'] ); ?>');"<?php endif; ?> aria-hidden="true"></span>
 							<span class="hfhs-service__num"><?php echo esc_html( sprintf( '%02d', $i + 1 ) ); ?></span>
 							<span class="hfhs-service__body">
@@ -175,7 +175,7 @@
 		<span class="hfhs-testimonial__mark" aria-hidden="true">&ldquo;</span>
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-lg-10 col-xl-8 text-center">
+				<div class="col-lg-10 col-xl-8 text-center wow fadeInUp" data-wow-duration="0.9s">
 					<p class="hfhs-eyebrow-script hfhs-eyebrow-script--light"><?php echo esc_html( hfhs_home_field( 'testi_script', 'What our family of clients says' ) ); ?></p>
 					<p class="hfhs-eyebrow hfhs-eyebrow--light"><?php echo esc_html( hfhs_home_field( 'testi_eyebrow', 'A Property Manager’s Perspective' ) ); ?></p>
 					<blockquote class="hfhs-testimonial__quote"><?php echo esc_html( hfhs_home_field( 'testi_quote', 'We have completed at least 50 projects with Hart Family of Home Services and have yet to encounter a problem that wasn’t immediately handled. They are on time, professional, responsive, and competitive.' ) ); ?></blockquote>
@@ -226,7 +226,7 @@
 
 	<!-- ================= CTA ================= -->
 	<section class="hfhs-cta hfhs-section--dark">
-		<div class="container text-center">
+		<div class="container text-center wow fadeInUp" data-wow-duration="0.9s">
 			<p class="hfhs-eyebrow-script hfhs-eyebrow-script--light"><?php echo esc_html( hfhs_home_field( 'cta_script', 'Ready to get started?' ) ); ?></p>
 			<h2 class="hfhs-display hfhs-cta__title"><?php echo wp_kses_post( hfhs_home_field( 'cta_title', 'Request a free estimate today.' ) ); ?></h2>
 			<div class="hfhs-cta__actions">
