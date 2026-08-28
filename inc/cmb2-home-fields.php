@@ -11,8 +11,11 @@
  * repeatable group is collapsed by default as well ( group option
  * 'closed' => true ).
  *
- * The front-end template reads each value with a fallback helper so that the
- * hard-coded default copy shows until an editor overrides it in the field.
+ * Every scalar field ships a 'default' matching the hard-coded fallback in
+ * tpl_home.php, so the admin boxes are pre-filled with the current copy and it
+ * is obvious what content still needs real values. (Repeatable groups — hero
+ * facts, marquee phrases, editorial columns — fall back to their default rows
+ * in the template; CMB2 groups can't be pre-populated the same way.)
  *
  * @package pegasus-child
  */
@@ -84,47 +87,54 @@ function sp_register_home_metaboxes() {
 	) );
 
 	$cmb->add_field( array(
-		'name' => __( 'Eyebrow', 'pegasus-child' ),
-		'desc' => __( 'Small uppercase line above the headline.', 'pegasus-child' ),
-		'id'   => $prefix . 'eyebrow',
-		'type' => 'text',
+		'name'    => __( 'Eyebrow', 'pegasus-child' ),
+		'desc'    => __( 'Small uppercase line above the headline.', 'pegasus-child' ),
+		'id'      => $prefix . 'eyebrow',
+		'type'    => 'text',
+		'default' => 'Bistro &middot; Bakery &middot; Est. 2024',
 	) );
 	$cmb->add_field( array(
-		'name' => __( 'Headline', 'pegasus-child' ),
-		'desc' => __( 'HTML allowed. Use &lt;br&gt; for line breaks and &lt;em&gt;...&lt;/em&gt; to color the italic accent pink.', 'pegasus-child' ),
-		'id'   => $prefix . 'headline',
-		'type' => 'textarea_small',
+		'name'    => __( 'Headline', 'pegasus-child' ),
+		'desc'    => __( 'HTML allowed. Use &lt;br&gt; for line breaks and &lt;em&gt;...&lt;/em&gt; to color the italic accent pink.', 'pegasus-child' ),
+		'id'      => $prefix . 'headline',
+		'type'    => 'textarea_small',
+		'default' => 'Pastries by day,<br/><em>petit d&icirc;ner</em> by night.',
 	) );
 	$cmb->add_field( array(
-		'name' => __( 'Body copy', 'pegasus-child' ),
-		'id'   => $prefix . 'body',
-		'type' => 'textarea',
+		'name'    => __( 'Body copy', 'pegasus-child' ),
+		'id'      => $prefix . 'body',
+		'type'    => 'textarea',
+		'default' => 'Small-batch tarts, sourdough, and slow-cooked bistro plates from the corner of Broadway and 11th. Made in Columbus, Georgia &mdash; served the French way.',
 	) );
 	$cmb->add_field( array(
-		'name' => __( 'Primary button text', 'pegasus-child' ),
-		'id'   => $prefix . 'btn1_text',
-		'type' => 'text',
+		'name'    => __( 'Primary button text', 'pegasus-child' ),
+		'id'      => $prefix . 'btn1_text',
+		'type'    => 'text',
+		'default' => 'Shop the Bakery',
 	) );
 	$cmb->add_field( array(
-		'name' => __( 'Primary button link', 'pegasus-child' ),
-		'id'   => $prefix . 'btn1_link',
-		'type' => 'text_url',
+		'name'    => __( 'Primary button link', 'pegasus-child' ),
+		'id'      => $prefix . 'btn1_link',
+		'type'    => 'text_url',
+		'default' => '#',
 	) );
 	$cmb->add_field( array(
-		'name' => __( 'Secondary button text', 'pegasus-child' ),
-		'id'   => $prefix . 'btn2_text',
-		'type' => 'text',
+		'name'    => __( 'Secondary button text', 'pegasus-child' ),
+		'id'      => $prefix . 'btn2_text',
+		'type'    => 'text',
+		'default' => 'Reserve a Table',
 	) );
 	$cmb->add_field( array(
-		'name' => __( 'Secondary button link', 'pegasus-child' ),
-		'id'   => $prefix . 'btn2_link',
-		'type' => 'text_url',
+		'name'    => __( 'Secondary button link', 'pegasus-child' ),
+		'id'      => $prefix . 'btn2_link',
+		'type'    => 'text_url',
+		'default' => '#',
 	) );
 
 	$hero_facts = $cmb->add_field( array(
 		'id'          => $prefix . 'facts',
 		'type'        => 'group',
-		'description' => __( 'Small stats shown below the hero buttons. Drag to reorder.', 'pegasus-child' ),
+		'description' => __( 'Small stats shown below the hero buttons. Drag to reorder. Default: 14 Daily breads / 32 Pastry varieties / 3718 2nd Ave, CGA.', 'pegasus-child' ),
 		'options'     => array(
 			'group_title'   => __( 'Fact {#}', 'pegasus-child' ),
 			'add_button'    => __( 'Add another fact', 'pegasus-child' ),
@@ -169,7 +179,7 @@ function sp_register_home_metaboxes() {
 	$marquee_group = $cmb->add_field( array(
 		'id'          => $prefix . 'phrases',
 		'type'        => 'group',
-		'description' => __( 'Scrolling phrases in the value strip. Drag to reorder.', 'pegasus-child' ),
+		'description' => __( 'Scrolling phrases in the value strip. Drag to reorder. Defaults: Sourdough fired at 5am / French butter, local cream / Wine list curated weekly / Saltcellar family of restaurants / Open six days a week.', 'pegasus-child' ),
 		'options'     => array(
 			'group_title'   => __( 'Phrase {#}', 'pegasus-child' ),
 			'add_button'    => __( 'Add another phrase', 'pegasus-child' ),
@@ -206,36 +216,42 @@ function sp_register_home_metaboxes() {
 		'preview_size' => 'medium',
 	) );
 	$cmb->add_field( array(
-		'name' => __( 'Eyebrow', 'pegasus-child' ),
-		'id'   => $prefix . 'eyebrow',
-		'type' => 'text',
+		'name'    => __( 'Eyebrow', 'pegasus-child' ),
+		'id'      => $prefix . 'eyebrow',
+		'type'    => 'text',
+		'default' => 'Our Story',
 	) );
 	$cmb->add_field( array(
-		'name' => __( 'Title', 'pegasus-child' ),
-		'desc' => __( 'HTML allowed. Use &lt;br&gt; and &lt;em&gt;...&lt;/em&gt; for the italic accent.', 'pegasus-child' ),
-		'id'   => $prefix . 'title',
-		'type' => 'textarea_small',
+		'name'    => __( 'Title', 'pegasus-child' ),
+		'desc'    => __( 'HTML allowed. Use &lt;br&gt; and &lt;em&gt;...&lt;/em&gt; for the italic accent.', 'pegasus-child' ),
+		'id'      => $prefix . 'title',
+		'type'    => 'textarea_small',
+		'default' => 'A bakery on a bicycle,<br/><em>now with a bistro attached.</em>',
 	) );
 	$cmb->add_field( array(
-		'name' => __( 'Body &mdash; first paragraph', 'pegasus-child' ),
-		'id'   => $prefix . 'body',
-		'type' => 'textarea',
+		'name'    => __( 'Body &mdash; first paragraph', 'pegasus-child' ),
+		'id'      => $prefix . 'body',
+		'type'    => 'textarea',
+		'default' => 'Sugarpeddler started in 2018 as a one-person operation &mdash; desserts delivered around downtown Columbus by bicycle. In 2024 we took over the dining room next door, hired a French-trained chef, and started baking bread at 5am. The bistro opens at lunch.',
 	) );
 	$cmb->add_field( array(
-		'name' => __( 'Body &mdash; second paragraph', 'pegasus-child' ),
-		'desc' => __( 'HTML allowed ( e.g. &lt;strong&gt; for restaurant names ).', 'pegasus-child' ),
-		'id'   => $prefix . 'body2',
-		'type' => 'textarea',
+		'name'    => __( 'Body &mdash; second paragraph', 'pegasus-child' ),
+		'desc'    => __( 'HTML allowed ( e.g. &lt;strong&gt; for restaurant names ).', 'pegasus-child' ),
+		'id'      => $prefix . 'body2',
+		'type'    => 'textarea',
+		'default' => 'We&rsquo;re proud to be part of the same family as <strong>The Loft</strong>, <strong>Mabella Italian Steakhouse</strong>, and <strong>Saltcellar</strong>.',
 	) );
 	$cmb->add_field( array(
-		'name' => __( 'Link text', 'pegasus-child' ),
-		'id'   => $prefix . 'link_text',
-		'type' => 'text',
+		'name'    => __( 'Link text', 'pegasus-child' ),
+		'id'      => $prefix . 'link_text',
+		'type'    => 'text',
+		'default' => 'Read the full story',
 	) );
 	$cmb->add_field( array(
-		'name' => __( 'Link URL', 'pegasus-child' ),
-		'id'   => $prefix . 'link_url',
-		'type' => 'text_url',
+		'name'    => __( 'Link URL', 'pegasus-child' ),
+		'id'      => $prefix . 'link_url',
+		'type'    => 'text_url',
+		'default' => '#',
 	) );
 
 
@@ -254,25 +270,29 @@ function sp_register_home_metaboxes() {
 	) );
 
 	$cmb->add_field( array(
-		'name' => __( 'Eyebrow', 'pegasus-child' ),
-		'id'   => $prefix . 'eyebrow',
-		'type' => 'text',
+		'name'    => __( 'Eyebrow', 'pegasus-child' ),
+		'id'      => $prefix . 'eyebrow',
+		'type'    => 'text',
+		'default' => 'From the bakery',
 	) );
 	$cmb->add_field( array(
-		'name' => __( 'Title', 'pegasus-child' ),
-		'desc' => __( 'HTML allowed. Use &lt;em&gt;...&lt;/em&gt; for the italic accent.', 'pegasus-child' ),
-		'id'   => $prefix . 'title',
-		'type' => 'textarea_small',
+		'name'    => __( 'Title', 'pegasus-child' ),
+		'desc'    => __( 'HTML allowed. Use &lt;em&gt;...&lt;/em&gt; for the italic accent.', 'pegasus-child' ),
+		'id'      => $prefix . 'title',
+		'type'    => 'textarea_small',
+		'default' => 'This week&rsquo;s <em>petits plaisirs</em>',
 	) );
 	$cmb->add_field( array(
-		'name' => __( 'Intro copy', 'pegasus-child' ),
-		'id'   => $prefix . 'intro',
-		'type' => 'textarea',
+		'name'    => __( 'Intro copy', 'pegasus-child' ),
+		'id'      => $prefix . 'intro',
+		'type'    => 'textarea',
+		'default' => 'A rotating selection of what came out of the oven this morning. Pre-order by 4pm for next-day pickup.',
 	) );
 	$cmb->add_field( array(
-		'name' => __( 'Footer button text', 'pegasus-child' ),
-		'id'   => $prefix . 'footer_btn_text',
-		'type' => 'text',
+		'name'    => __( 'Footer button text', 'pegasus-child' ),
+		'id'      => $prefix . 'footer_btn_text',
+		'type'    => 'text',
+		'default' => 'Shop all 84 items',
 	) );
 	$cmb->add_field( array(
 		'name' => __( 'Footer button link', 'pegasus-child' ),
@@ -304,36 +324,42 @@ function sp_register_home_metaboxes() {
 		'preview_size' => 'medium',
 	) );
 	$cmb->add_field( array(
-		'name' => __( 'Chalkboard script line', 'pegasus-child' ),
-		'desc' => __( 'Small handwritten word above the chalkboard title ( e.g. "Today\'s" ).', 'pegasus-child' ),
-		'id'   => $prefix . 'chalk_script',
-		'type' => 'text',
+		'name'    => __( 'Chalkboard script line', 'pegasus-child' ),
+		'desc'    => __( 'Small handwritten word above the chalkboard title ( e.g. "Today\'s" ).', 'pegasus-child' ),
+		'id'      => $prefix . 'chalk_script',
+		'type'    => 'text',
+		'default' => 'Today&rsquo;s',
 	) );
 	$cmb->add_field( array(
-		'name' => __( 'Chalkboard title', 'pegasus-child' ),
-		'id'   => $prefix . 'chalk_title',
-		'type' => 'text',
+		'name'    => __( 'Chalkboard title', 'pegasus-child' ),
+		'id'      => $prefix . 'chalk_title',
+		'type'    => 'text',
+		'default' => 'Plat du jour',
 	) );
 	$cmb->add_field( array(
-		'name' => __( 'Eyebrow', 'pegasus-child' ),
-		'id'   => $prefix . 'eyebrow',
-		'type' => 'text',
+		'name'    => __( 'Eyebrow', 'pegasus-child' ),
+		'id'      => $prefix . 'eyebrow',
+		'type'    => 'text',
+		'default' => 'The Bistro',
 	) );
 	$cmb->add_field( array(
-		'name' => __( 'Title', 'pegasus-child' ),
-		'desc' => __( 'HTML allowed. Use &lt;br&gt; and &lt;em&gt;...&lt;/em&gt; for the italic accent.', 'pegasus-child' ),
-		'id'   => $prefix . 'title',
-		'type' => 'textarea_small',
+		'name'    => __( 'Title', 'pegasus-child' ),
+		'desc'    => __( 'HTML allowed. Use &lt;br&gt; and &lt;em&gt;...&lt;/em&gt; for the italic accent.', 'pegasus-child' ),
+		'id'      => $prefix . 'title',
+		'type'    => 'textarea_small',
+		'default' => 'Lunch &amp; dinner,<br/><em>French at heart.</em>',
 	) );
 	$cmb->add_field( array(
-		'name' => __( 'Body copy', 'pegasus-child' ),
-		'id'   => $prefix . 'body',
-		'type' => 'textarea',
+		'name'    => __( 'Body copy', 'pegasus-child' ),
+		'id'      => $prefix . 'body',
+		'type'    => 'textarea',
+		'default' => 'A short, seasonal menu of sandwiches, cassoulets, ni&ccedil;oises, and whatever the chef picked up at the farmers&rsquo; market this week. Wines by the glass start at $8.',
 	) );
 	$cmb->add_field( array(
-		'name' => __( 'Primary button text', 'pegasus-child' ),
-		'id'   => $prefix . 'btn1_text',
-		'type' => 'text',
+		'name'    => __( 'Primary button text', 'pegasus-child' ),
+		'id'      => $prefix . 'btn1_text',
+		'type'    => 'text',
+		'default' => 'See the menu',
 	) );
 	$cmb->add_field( array(
 		'name' => __( 'Primary button link', 'pegasus-child' ),
@@ -341,9 +367,10 @@ function sp_register_home_metaboxes() {
 		'type' => 'text_url',
 	) );
 	$cmb->add_field( array(
-		'name' => __( 'Secondary button text', 'pegasus-child' ),
-		'id'   => $prefix . 'btn2_text',
-		'type' => 'text',
+		'name'    => __( 'Secondary button text', 'pegasus-child' ),
+		'id'      => $prefix . 'btn2_text',
+		'type'    => 'text',
+		'default' => 'Reserve',
 	) );
 	$cmb->add_field( array(
 		'name' => __( 'Secondary button link', 'pegasus-child' ),
@@ -365,22 +392,24 @@ function sp_register_home_metaboxes() {
 	) );
 
 	$cmb->add_field( array(
-		'name' => __( 'Banner label', 'pegasus-child' ),
-		'desc' => __( 'Pill banner text ( e.g. "Spring menu &middot; in season now" ).', 'pegasus-child' ),
-		'id'   => $prefix . 'banner_text',
-		'type' => 'text',
+		'name'    => __( 'Banner label', 'pegasus-child' ),
+		'desc'    => __( 'Pill banner text ( e.g. "Spring menu &middot; in season now" ).', 'pegasus-child' ),
+		'id'      => $prefix . 'banner_text',
+		'type'    => 'text',
+		'default' => 'Spring menu &middot; in season now',
 	) );
 	$cmb->add_field( array(
-		'name' => __( 'Banner list', 'pegasus-child' ),
-		'desc' => __( 'Seasonal ingredients shown after the dash.', 'pegasus-child' ),
-		'id'   => $prefix . 'banner_list',
-		'type' => 'text',
+		'name'    => __( 'Banner list', 'pegasus-child' ),
+		'desc'    => __( 'Seasonal ingredients shown after the dash.', 'pegasus-child' ),
+		'id'      => $prefix . 'banner_list',
+		'type'    => 'text',
+		'default' => 'Strawberry &middot; Asparagus &middot; Basil &middot; Rhubarb',
 	) );
 
 	$editorial_group = $cmb->add_field( array(
 		'id'          => $prefix . 'columns',
 		'type'        => 'group',
-		'description' => __( 'Editorial columns. Drag to reorder ( numbering is automatic ).', 'pegasus-child' ),
+		'description' => __( 'Editorial columns. Drag to reorder ( numbering is automatic ). Defaults: Process / Sourcing / Community.', 'pegasus-child' ),
 		'options'     => array(
 			'group_title'   => __( 'Column {#}', 'pegasus-child' ),
 			'add_button'    => __( 'Add another column', 'pegasus-child' ),
@@ -420,25 +449,29 @@ function sp_register_home_metaboxes() {
 	) );
 
 	$cmb->add_field( array(
-		'name' => __( 'Eyebrow', 'pegasus-child' ),
-		'id'   => $prefix . 'eyebrow',
-		'type' => 'text',
+		'name'    => __( 'Eyebrow', 'pegasus-child' ),
+		'id'      => $prefix . 'eyebrow',
+		'type'    => 'text',
+		'default' => 'Find us',
 	) );
 	$cmb->add_field( array(
-		'name' => __( 'Title', 'pegasus-child' ),
-		'desc' => __( 'HTML allowed. Use &lt;em&gt;...&lt;/em&gt; for the italic accent.', 'pegasus-child' ),
-		'id'   => $prefix . 'title',
-		'type' => 'textarea_small',
+		'name'    => __( 'Title', 'pegasus-child' ),
+		'desc'    => __( 'HTML allowed. Use &lt;em&gt;...&lt;/em&gt; for the italic accent.', 'pegasus-child' ),
+		'id'      => $prefix . 'title',
+		'type'    => 'textarea_small',
+		'default' => 'On the corner of <em>Broadway &amp; 11th.</em>',
 	) );
 	$cmb->add_field( array(
-		'name' => __( 'Body copy', 'pegasus-child' ),
-		'id'   => $prefix . 'body',
-		'type' => 'textarea',
+		'name'    => __( 'Body copy', 'pegasus-child' ),
+		'id'      => $prefix . 'body',
+		'type'    => 'textarea',
+		'default' => 'Three blocks south of the RiverCenter, with parking on 11th and a covered patio when the weather behaves.',
 	) );
 	$cmb->add_field( array(
-		'name' => __( 'Primary button text', 'pegasus-child' ),
-		'id'   => $prefix . 'btn1_text',
-		'type' => 'text',
+		'name'    => __( 'Primary button text', 'pegasus-child' ),
+		'id'      => $prefix . 'btn1_text',
+		'type'    => 'text',
+		'default' => 'Get directions',
 	) );
 	$cmb->add_field( array(
 		'name' => __( 'Primary button link', 'pegasus-child' ),
@@ -446,9 +479,10 @@ function sp_register_home_metaboxes() {
 		'type' => 'text_url',
 	) );
 	$cmb->add_field( array(
-		'name' => __( 'Secondary button text', 'pegasus-child' ),
-		'id'   => $prefix . 'btn2_text',
-		'type' => 'text',
+		'name'    => __( 'Secondary button text', 'pegasus-child' ),
+		'id'      => $prefix . 'btn2_text',
+		'type'    => 'text',
+		'default' => 'Call 706-330-3972',
 	) );
 	$cmb->add_field( array(
 		'name' => __( 'Secondary button link', 'pegasus-child' ),
@@ -456,15 +490,17 @@ function sp_register_home_metaboxes() {
 		'type' => 'text_url',
 	) );
 	$cmb->add_field( array(
-		'name' => __( 'Address', 'pegasus-child' ),
-		'desc' => __( 'HTML allowed. Use &lt;br&gt; for line breaks.', 'pegasus-child' ),
-		'id'   => $prefix . 'address',
-		'type' => 'textarea_small',
+		'name'    => __( 'Address', 'pegasus-child' ),
+		'desc'    => __( 'HTML allowed. Use &lt;br&gt; for line breaks.', 'pegasus-child' ),
+		'id'      => $prefix . 'address',
+		'type'    => 'textarea_small',
+		'default' => '3718 2nd Ave<br/>Columbus, GA 31901',
 	) );
 	$cmb->add_field( array(
-		'name' => __( 'Hours', 'pegasus-child' ),
-		'desc' => __( 'HTML allowed. Use &lt;br&gt; for line breaks.', 'pegasus-child' ),
-		'id'   => $prefix . 'hours',
-		'type' => 'textarea_small',
+		'name'    => __( 'Hours', 'pegasus-child' ),
+		'desc'    => __( 'HTML allowed. Use &lt;br&gt; for line breaks.', 'pegasus-child' ),
+		'id'      => $prefix . 'hours',
+		'type'    => 'textarea_small',
+		'default' => 'Mon &ndash; Fri<br/>7:30 &ndash; 5:00<br/><span class="sp-visit__info-muted">Sat &amp; Sun closed</span>',
 	) );
 }
