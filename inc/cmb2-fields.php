@@ -6,7 +6,7 @@
  * This file is required from functions.php.
  *
  * Templates covered:
- *   §1  tpl_home.php   — Hero, Philosophy, Process, Pillars, CTA
+ *   §1  tpl_home.php   — Hero, Pillars, Philosophy, Process, CTA
  *   §2  tpl_team.php   — Team Members, Page Settings
  *   §3  tpl_about.php  — Hero, Mission, Stats, Trust Pillars, Providers, CTA
  */
@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 function pegasus_child_register_home_hero_metabox() {
 	$cmb = new_cmb2_box( array(
 		'id'           => 'rcf_home_hero_metabox',
-		'title'        => __( 'Home — Hero Section', 'pegasus-child' ),
+		'title'        => __( 'Home — §01 Hero Section', 'pegasus-child' ),
 		'object_types' => array( 'page' ),
 		'show_on'      => array( 'key' => 'page-template', 'value' => 'tpl_home.php' ),
 		'context'      => 'normal',
@@ -77,6 +77,58 @@ add_action( 'cmb2_admin_init', 'pegasus_child_register_home_hero_metabox' );
 
 
 /* -----------------------------------------------------------------------
+   HOME — Pillars Section (icon + content columns)
+   ----------------------------------------------------------------------- */
+function pegasus_child_register_home_pillars_metabox() {
+	$prefix = 'rcf_home_pillars_';
+
+	$cmb = new_cmb2_box( array(
+		'id'           => $prefix . 'metabox',
+		'title'        => __( 'Home — §02 Pillars Section', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'show_on'      => array( 'key' => 'page-template', 'value' => 'tpl_home.php' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+	) );
+
+	$group_id = $cmb->add_field( array(
+		'id'          => $prefix . 'group',
+		'type'        => 'group',
+		'description' => __( 'Each pillar appears as a column above the footer. Repeatable.', 'pegasus-child' ),
+		'options'     => array(
+			'group_title'   => __( 'Pillar {#}', 'pegasus-child' ),
+			'add_button'    => __( 'Add Another Pillar', 'pegasus-child' ),
+			'remove_button' => __( 'Remove Pillar', 'pegasus-child' ),
+			'sortable'      => true,
+			'closed'        => true,
+		),
+	) );
+
+	$cmb->add_group_field( $group_id, array(
+		'name' => __( 'Title', 'pegasus-child' ),
+		'id'   => 'title',
+		'type' => 'text',
+	) );
+	$cmb->add_group_field( $group_id, array(
+		'name' => __( 'Font Awesome 4 Icon Class', 'pegasus-child' ),
+		'desc' => __( 'Icon class without the leading "fa fa-". E.g. bar-chart, shield, handshake-o, users. See https://fontawesome.com/v4/icons/', 'pegasus-child' ),
+		'id'   => 'icon',
+		'type' => 'text',
+	) );
+	$cmb->add_group_field( $group_id, array(
+		'name'    => __( 'Content', 'pegasus-child' ),
+		'id'      => 'content',
+		'type'    => 'wysiwyg',
+		'options' => array(
+			'textarea_rows' => 5,
+			'media_buttons' => false,
+		),
+	) );
+}
+add_action( 'cmb2_admin_init', 'pegasus_child_register_home_pillars_metabox' );
+
+
+/* -----------------------------------------------------------------------
    HOME — Investment Philosophy (Tenets)
    ----------------------------------------------------------------------- */
 function pegasus_child_register_home_philosophy_metabox() {
@@ -84,7 +136,7 @@ function pegasus_child_register_home_philosophy_metabox() {
 
 	$cmb = new_cmb2_box( array(
 		'id'           => $prefix . 'metabox',
-		'title'        => __( 'Home — Investment Philosophy Section', 'pegasus-child' ),
+		'title'        => __( 'Home — §03 Investment Philosophy Section', 'pegasus-child' ),
 		'object_types' => array( 'page' ),
 		'show_on'      => array( 'key' => 'page-template', 'value' => 'tpl_home.php' ),
 		'context'      => 'normal',
@@ -151,7 +203,7 @@ function pegasus_child_register_home_process_metabox() {
 
 	$cmb = new_cmb2_box( array(
 		'id'           => $prefix . 'metabox',
-		'title'        => __( 'Home — How We Invest / Process Section', 'pegasus-child' ),
+		'title'        => __( 'Home — §04 How We Invest / Process Section', 'pegasus-child' ),
 		'object_types' => array( 'page' ),
 		'show_on'      => array( 'key' => 'page-template', 'value' => 'tpl_home.php' ),
 		'context'      => 'normal',
@@ -204,58 +256,6 @@ add_action( 'cmb2_admin_init', 'pegasus_child_register_home_process_metabox' );
 
 
 /* -----------------------------------------------------------------------
-   HOME — Pillars Section (icon + content columns)
-   ----------------------------------------------------------------------- */
-function pegasus_child_register_home_pillars_metabox() {
-	$prefix = 'rcf_home_pillars_';
-
-	$cmb = new_cmb2_box( array(
-		'id'           => $prefix . 'metabox',
-		'title'        => __( 'Home — Pillars Section', 'pegasus-child' ),
-		'object_types' => array( 'page' ),
-		'show_on'      => array( 'key' => 'page-template', 'value' => 'tpl_home.php' ),
-		'context'      => 'normal',
-		'priority'     => 'high',
-	) );
-
-	$group_id = $cmb->add_field( array(
-		'id'          => $prefix . 'group',
-		'type'        => 'group',
-		'description' => __( 'Each pillar appears as a column above the footer. Repeatable.', 'pegasus-child' ),
-		'options'     => array(
-			'group_title'   => __( 'Pillar {#}', 'pegasus-child' ),
-			'add_button'    => __( 'Add Another Pillar', 'pegasus-child' ),
-			'remove_button' => __( 'Remove Pillar', 'pegasus-child' ),
-			'sortable'      => true,
-			'closed'        => true,
-		),
-	) );
-
-	$cmb->add_group_field( $group_id, array(
-		'name' => __( 'Title', 'pegasus-child' ),
-		'id'   => 'title',
-		'type' => 'text',
-	) );
-	$cmb->add_group_field( $group_id, array(
-		'name' => __( 'Font Awesome 4 Icon Class', 'pegasus-child' ),
-		'desc' => __( 'Icon class without the leading "fa fa-". E.g. bar-chart, shield, handshake-o, users. See https://fontawesome.com/v4/icons/', 'pegasus-child' ),
-		'id'   => 'icon',
-		'type' => 'text',
-	) );
-	$cmb->add_group_field( $group_id, array(
-		'name'    => __( 'Content', 'pegasus-child' ),
-		'id'      => 'content',
-		'type'    => 'wysiwyg',
-		'options' => array(
-			'textarea_rows' => 5,
-			'media_buttons' => false,
-		),
-	) );
-}
-add_action( 'cmb2_admin_init', 'pegasus_child_register_home_pillars_metabox' );
-
-
-/* -----------------------------------------------------------------------
    HOME — CTA Band
    ----------------------------------------------------------------------- */
 function pegasus_child_register_home_cta_metabox() {
@@ -263,7 +263,7 @@ function pegasus_child_register_home_cta_metabox() {
 
 	$cmb = new_cmb2_box( array(
 		'id'           => $prefix . 'metabox',
-		'title'        => __( 'Home — CTA Band', 'pegasus-child' ),
+		'title'        => __( 'Home — §05 CTA Band', 'pegasus-child' ),
 		'object_types' => array( 'page' ),
 		'show_on'      => array( 'key' => 'page-template', 'value' => 'tpl_home.php' ),
 		'context'      => 'normal',
