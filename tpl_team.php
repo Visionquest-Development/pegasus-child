@@ -22,6 +22,9 @@ $cta_btn_url    = get_post_meta( $pid, 'rcf_team_page_cta_btn_url', true )    ?:
 $members_raw = get_post_meta( $pid, 'rcf_team_members_group', true );
 $members     = is_array( $members_raw ) ? $members_raw : array();
 
+/* ---- Page editor content (rendered via the_content below) ---- */
+$has_page_content = trim( wp_strip_all_tags( get_the_content() ) ) !== '';
+
 $subhero_img_url = get_the_post_thumbnail_url( $pid, 'full' ) ?: '';
 
 $ext_icon = '<svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true" focusable="false" style="margin-left:4px;flex-shrink:0"><path d="M4 1H12V9"/><path d="M12 1L5 8"/><path d="M9 12H1V4"/></svg>';
@@ -124,6 +127,21 @@ $ext_icon = '<svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke=
 			<?php endif; ?>
 		</div>
 	</section>
+
+	<!-- ===== EDITORIAL NOTE (WordPress editor content via the_content) ===== -->
+	<?php if ( $has_page_content ) : ?>
+	<section class="rcf-team-note">
+		<div class="container">
+			<div class="rcf-team-note__inner">
+				<div class="rcf-eyebrow justify-content-center">In Their Own Words</div>
+				<div class="rcf-team-note__rule" aria-hidden="true"></div>
+				<div class="rcf-team-note__body rcf-prose">
+					<?php the_content(); ?>
+				</div>
+			</div>
+		</div>
+	</section>
+	<?php endif; ?>
 
 	<!-- ===== CTA BAND ===== -->
 	<section class="rcf-cta">

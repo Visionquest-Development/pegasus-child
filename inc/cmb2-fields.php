@@ -6,9 +6,12 @@
  * This file is required from functions.php.
  *
  * Templates covered:
- *   §1  tpl_home.php   — Hero, Pillars, Philosophy, Process, CTA
+ *   §1  tpl_home.php   — Hero, Pillars, Philosophy, Process, Leadership, CTA
  *   §2  tpl_team.php   — Team Members, Page Settings
  *   §3  tpl_about.php  — Hero, Mission, Stats, Trust Pillars, Providers, CTA
+ *   §4  tpl_contact.php — Sub-Hero, Reach Us (details + form), Channels, Disclaimer
+ *   §5  tpl_investment-approach.php — Sub-Hero, Overview, Lenses, Process, CTA
+ *   §6  Posts page (home.php) — Blog Sub-Hero
  */
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
@@ -256,6 +259,48 @@ add_action( 'cmb2_admin_init', 'pegasus_child_register_home_process_metabox' );
 
 
 /* -----------------------------------------------------------------------
+   HOME — Leadership Preview (informational — powered by the Team page)
+   ----------------------------------------------------------------------- */
+function pegasus_child_register_home_leadership_metabox() {
+	$cmb = new_cmb2_box( array(
+		'id'           => 'rcf_home_leadership_metabox',
+		'title'        => __( 'Home — §05 Leadership Section', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'show_on'      => array( 'key' => 'page-template', 'value' => 'tpl_home.php' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+	) );
+
+	// Build a link to edit the Team page, if one exists.
+	$team_pages = get_posts( array(
+		'post_type'      => 'page',
+		'posts_per_page' => 1,
+		'meta_query'     => array(
+			array( 'key' => '_wp_page_template', 'value' => 'tpl_team.php' ),
+		),
+	) );
+	if ( ! empty( $team_pages ) ) {
+		$edit_link = get_edit_post_link( $team_pages[0]->ID );
+		$desc      = sprintf(
+			/* translators: %s: URL to edit the Team page. */
+			__( 'This section has no fields of its own. It automatically displays the first three members from the <strong>Team page</strong>, in the order they are listed there. To change who appears or their order, <a href="%s">edit the Team page &rarr; Team — Members</a> and drag members to reorder.', 'pegasus-child' ),
+			esc_url( $edit_link )
+		);
+	} else {
+		$desc = __( 'This section has no fields of its own. It automatically displays the first three members from the <strong>Team page</strong> (the page using the "Team" template), in the order they are listed there. No Team page exists yet — create one using the Team template to populate this section.', 'pegasus-child' );
+	}
+
+	$cmb->add_field( array(
+		'name' => __( 'Powered by the Team page', 'pegasus-child' ),
+		'desc' => $desc,
+		'id'   => 'rcf_home_leadership_info',
+		'type' => 'title',
+	) );
+}
+add_action( 'cmb2_admin_init', 'pegasus_child_register_home_leadership_metabox' );
+
+
+/* -----------------------------------------------------------------------
    HOME — CTA Band
    ----------------------------------------------------------------------- */
 function pegasus_child_register_home_cta_metabox() {
@@ -263,7 +308,7 @@ function pegasus_child_register_home_cta_metabox() {
 
 	$cmb = new_cmb2_box( array(
 		'id'           => $prefix . 'metabox',
-		'title'        => __( 'Home — §05 CTA Band', 'pegasus-child' ),
+		'title'        => __( 'Home — §06 CTA Band', 'pegasus-child' ),
 		'object_types' => array( 'page' ),
 		'show_on'      => array( 'key' => 'page-template', 'value' => 'tpl_home.php' ),
 		'context'      => 'normal',
@@ -781,3 +826,531 @@ function pegasus_child_register_about_cta_metabox() {
 	) );
 }
 add_action( 'cmb2_admin_init', 'pegasus_child_register_about_cta_metabox' );
+
+
+/* ====================================================================
+   §4  CONTACT PAGE  —  tpl_contact.php
+   ==================================================================== */
+
+/* -----------------------------------------------------------------------
+   CONTACT — Sub-Hero / Page Heading
+   ----------------------------------------------------------------------- */
+function pegasus_child_register_contact_hero_metabox() {
+	$cmb = new_cmb2_box( array(
+		'id'           => 'rcf_contact_hero_metabox',
+		'title'        => __( 'Contact — Sub-Hero / Page Heading', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'show_on'      => array( 'key' => 'page-template', 'value' => 'tpl_contact.php' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+	) );
+
+	$cmb->add_field( array(
+		'name'    => __( 'Heading', 'pegasus-child' ),
+		'desc'    => __( 'Use newlines for line breaks.', 'pegasus-child' ),
+		'id'      => 'rcf_contact_hero_heading',
+		'type'    => 'textarea_small',
+		'default' => "Begin a\nconversation.",
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Sub-heading Paragraph', 'pegasus-child' ),
+		'id'      => 'rcf_contact_hero_sub',
+		'type'    => 'textarea_small',
+		'default' => 'Request the current strategy presentation, arrange an introductory call, or direct a question to the appropriate desk. Every inquiry is reviewed personally by a member of the firm.',
+	) );
+}
+add_action( 'cmb2_admin_init', 'pegasus_child_register_contact_hero_metabox' );
+
+
+/* -----------------------------------------------------------------------
+   CONTACT — §01 Reach Us (contact details + message form)
+   ----------------------------------------------------------------------- */
+function pegasus_child_register_contact_reach_metabox() {
+	$cmb = new_cmb2_box( array(
+		'id'           => 'rcf_contact_reach_metabox',
+		'title'        => __( 'Contact — §01 Reach Us (details + form)', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'show_on'      => array( 'key' => 'page-template', 'value' => 'tpl_contact.php' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+	) );
+
+	$cmb->add_field( array(
+		'name' => __( 'Contact Details', 'pegasus-child' ),
+		'desc' => __( 'The left-hand column: eyebrow, heading, intro, and contact points.', 'pegasus-child' ),
+		'id'   => 'rcf_contact_details_title',
+		'type' => 'title',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Eyebrow', 'pegasus-child' ),
+		'id'      => 'rcf_contact_eyebrow',
+		'type'    => 'text',
+		'default' => 'Investor Relations',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Aside Heading', 'pegasus-child' ),
+		'desc'    => __( 'Use newlines for line breaks.', 'pegasus-child' ),
+		'id'      => 'rcf_contact_aside_heading',
+		'type'    => 'textarea_small',
+		'default' => "Speak directly\nwith our IR team.",
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Aside Body', 'pegasus-child' ),
+		'id'      => 'rcf_contact_aside_body',
+		'type'    => 'textarea_small',
+		'default' => 'We hold every conversation in confidence and respond to qualified inquiries within one business day. For time-sensitive matters, please call the office directly.',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Email Address', 'pegasus-child' ),
+		'id'      => 'rcf_contact_email',
+		'type'    => 'text_email',
+		'default' => 'info@ricecapitalfund.com',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Phone (display)', 'pegasus-child' ),
+		'id'      => 'rcf_contact_phone',
+		'type'    => 'text_medium',
+		'default' => '404.555.0123',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Phone (dial string)', 'pegasus-child' ),
+		'desc'    => __( 'Digits only, used for the tel: link. E.g. 4045550123', 'pegasus-child' ),
+		'id'      => 'rcf_contact_phone_link',
+		'type'    => 'text_medium',
+		'default' => '4045550123',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Office Address', 'pegasus-child' ),
+		'desc'    => __( 'Use newlines for line breaks.', 'pegasus-child' ),
+		'id'      => 'rcf_contact_address',
+		'type'    => 'textarea_small',
+		'default' => "1180 Peachtree Street NE\nSuite 2400\nAtlanta, Georgia 30309",
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Office Hours', 'pegasus-child' ),
+		'id'      => 'rcf_contact_hours',
+		'type'    => 'text',
+		'default' => "Monday\xe2\x80\x93Friday \xc2\xb7 9:00am\xe2\x80\x935:00pm ET",
+	) );
+
+	$cmb->add_field( array(
+		'name' => __( 'Message Form', 'pegasus-child' ),
+		'desc' => __( 'The right-hand form card. Leave the shortcode empty to use the built-in styled form; submissions are emailed to the recipient below.', 'pegasus-child' ),
+		'id'   => 'rcf_contact_form_title',
+		'type' => 'title',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Form Heading', 'pegasus-child' ),
+		'id'      => 'rcf_contact_form_heading',
+		'type'    => 'text',
+		'default' => 'Send a secure message',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Recipient Email', 'pegasus-child' ),
+		'desc'    => __( 'Where built-in form submissions are delivered. Falls back to the site admin email if left blank.', 'pegasus-child' ),
+		'id'      => 'rcf_contact_form_recipient',
+		'type'    => 'text_email',
+		'default' => 'info@ricecapitalfund.com',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Success Message', 'pegasus-child' ),
+		'id'      => 'rcf_contact_form_success',
+		'type'    => 'textarea_small',
+		'default' => 'Thank you — your message has been received. A member of our Investor Relations team will be in touch shortly.',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Fine-print Note (under the button)', 'pegasus-child' ),
+		'id'      => 'rcf_contact_form_note',
+		'type'    => 'textarea_small',
+		'default' => 'This form is intended for prospective and existing qualified investors. Submitting it does not create an investment advisory relationship, and nothing on this page constitutes an offer to sell or a solicitation to buy any security.',
+	) );
+	$cmb->add_field( array(
+		'name' => __( 'Form Shortcode (optional override)', 'pegasus-child' ),
+		'desc' => __( 'Paste a Contact Form 7 / Gravity Forms / WPForms shortcode to replace the built-in form. Leave blank to use the built-in form.', 'pegasus-child' ),
+		'id'   => 'rcf_contact_form_shortcode',
+		'type' => 'text',
+	) );
+}
+add_action( 'cmb2_admin_init', 'pegasus_child_register_contact_reach_metabox' );
+
+
+/* -----------------------------------------------------------------------
+   CONTACT — §02 Contact Channels (repeatable)
+   ----------------------------------------------------------------------- */
+function pegasus_child_register_contact_channels_metabox() {
+	$cmb = new_cmb2_box( array(
+		'id'           => 'rcf_contact_channels_metabox',
+		'title'        => __( 'Contact — §02 Contact Channels', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'show_on'      => array( 'key' => 'page-template', 'value' => 'tpl_contact.php' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+	) );
+
+	$group_id = $cmb->add_field( array(
+		'id'          => 'rcf_contact_channels',
+		'type'        => 'group',
+		'description' => __( 'Direct-line cards below the form — typically three. Repeatable.', 'pegasus-child' ),
+		'options'     => array(
+			'group_title'   => __( 'Channel {#}', 'pegasus-child' ),
+			'add_button'    => __( 'Add Channel', 'pegasus-child' ),
+			'remove_button' => __( 'Remove Channel', 'pegasus-child' ),
+			'sortable'      => true,
+			'closed'        => true,
+		),
+	) );
+	$cmb->add_group_field( $group_id, array(
+		'name' => __( 'Font Awesome 4 Icon Class', 'pegasus-child' ),
+		'desc' => __( 'Icon class without the leading "fa fa-". E.g. line-chart, envelope-o, newspaper-o.', 'pegasus-child' ),
+		'id'   => 'icon',
+		'type' => 'text',
+	) );
+	$cmb->add_group_field( $group_id, array(
+		'name' => __( 'Label', 'pegasus-child' ),
+		'id'   => 'label',
+		'type' => 'text',
+	) );
+	$cmb->add_group_field( $group_id, array(
+		'name' => __( 'Detail (email or phone)', 'pegasus-child' ),
+		'desc' => __( 'If a valid email is entered it becomes a mailto: link automatically.', 'pegasus-child' ),
+		'id'   => 'detail',
+		'type' => 'text',
+	) );
+	$cmb->add_group_field( $group_id, array(
+		'name' => __( 'Note', 'pegasus-child' ),
+		'id'   => 'note',
+		'type' => 'textarea_small',
+	) );
+}
+add_action( 'cmb2_admin_init', 'pegasus_child_register_contact_channels_metabox' );
+
+
+/* -----------------------------------------------------------------------
+   CONTACT — Closing Disclaimer Band
+   ----------------------------------------------------------------------- */
+function pegasus_child_register_contact_cta_metabox() {
+	$cmb = new_cmb2_box( array(
+		'id'           => 'rcf_contact_cta_metabox',
+		'title'        => __( 'Contact — Closing Disclaimer Band', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'show_on'      => array( 'key' => 'page-template', 'value' => 'tpl_contact.php' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+	) );
+
+	$cmb->add_field( array(
+		'name'    => __( 'Eyebrow', 'pegasus-child' ),
+		'id'      => 'rcf_contact_cta_eyebrow',
+		'type'    => 'text',
+		'default' => 'For Qualified Investors Only',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Heading', 'pegasus-child' ),
+		'id'      => 'rcf_contact_cta_heading',
+		'type'    => 'text',
+		'default' => 'Access to fund materials is restricted.',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Lede Paragraph', 'pegasus-child' ),
+		'id'      => 'rcf_contact_cta_lede',
+		'type'    => 'textarea_small',
+		'default' => 'Detailed performance, offering documents, and operational due-diligence materials are made available only to verified qualified purchasers and institutional investors under NDA. Please identify your investor category when you write.',
+	) );
+}
+add_action( 'cmb2_admin_init', 'pegasus_child_register_contact_cta_metabox' );
+
+
+/* ====================================================================
+   §5  INVESTMENT APPROACH  —  tpl_investment-approach.php
+   ==================================================================== */
+
+/* -----------------------------------------------------------------------
+   INVESTMENT APPROACH — Sub-Hero / Page Heading
+   ----------------------------------------------------------------------- */
+function pegasus_child_register_ia_hero_metabox() {
+	$cmb = new_cmb2_box( array(
+		'id'           => 'rcf_ia_hero_metabox',
+		'title'        => __( 'Approach — Sub-Hero / Page Heading', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'show_on'      => array( 'key' => 'page-template', 'value' => 'tpl_investment-approach.php' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+	) );
+
+	$cmb->add_field( array(
+		'name'    => __( 'Heading', 'pegasus-child' ),
+		'desc'    => __( 'Use newlines for line breaks.', 'pegasus-child' ),
+		'id'      => 'rcf_ia_hero_heading',
+		'type'    => 'textarea_small',
+		'default' => "A multi-strategy approach\nfocused on risk and reward.",
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Sub-heading Paragraph', 'pegasus-child' ),
+		'id'      => 'rcf_ia_hero_sub',
+		'type'    => 'textarea_small',
+		'default' => 'Research driven. Risk aware. Opportunistic. A disciplined framework for finding asymmetry across public markets — and protecting capital when the odds turn.',
+	) );
+}
+add_action( 'cmb2_admin_init', 'pegasus_child_register_ia_hero_metabox' );
+
+
+/* -----------------------------------------------------------------------
+   INVESTMENT APPROACH — §01 Overview
+   ----------------------------------------------------------------------- */
+function pegasus_child_register_ia_overview_metabox() {
+	$cmb = new_cmb2_box( array(
+		'id'           => 'rcf_ia_overview_metabox',
+		'title'        => __( 'Approach — §01 Overview', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'show_on'      => array( 'key' => 'page-template', 'value' => 'tpl_investment-approach.php' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+	) );
+
+	$cmb->add_field( array(
+		'name'    => __( 'Eyebrow', 'pegasus-child' ),
+		'id'      => 'rcf_ia_overview_eyebrow',
+		'type'    => 'text',
+		'default' => 'Our Approach',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Heading', 'pegasus-child' ),
+		'desc'    => __( 'Use newlines for line breaks.', 'pegasus-child' ),
+		'id'      => 'rcf_ia_overview_heading',
+		'type'    => 'textarea_small',
+		'default' => "Research driven.\nRisk aware.\nOpportunistic.",
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Body Paragraph 1', 'pegasus-child' ),
+		'id'      => 'rcf_ia_overview_body_1',
+		'type'    => 'textarea_small',
+		'default' => 'Rice Capital evaluates opportunities across public markets using fundamentals, valuation, technical structure, macro conditions, liquidity, and catalysts.',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Body Paragraph 2', 'pegasus-child' ),
+		'id'      => 'rcf_ia_overview_body_2',
+		'type'    => 'textarea_small',
+		'default' => 'The objective is to identify attractive risk/reward opportunities while maintaining a strong focus on portfolio construction, drawdown control, and capital preservation.',
+	) );
+}
+add_action( 'cmb2_admin_init', 'pegasus_child_register_ia_overview_metabox' );
+
+
+/* -----------------------------------------------------------------------
+   INVESTMENT APPROACH — §02 What We Evaluate (lenses, repeatable)
+   ----------------------------------------------------------------------- */
+function pegasus_child_register_ia_lenses_metabox() {
+	$cmb = new_cmb2_box( array(
+		'id'           => 'rcf_ia_lenses_metabox',
+		'title'        => __( 'Approach — §02 What We Evaluate', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'show_on'      => array( 'key' => 'page-template', 'value' => 'tpl_investment-approach.php' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+	) );
+
+	$cmb->add_field( array(
+		'name'    => __( 'Eyebrow', 'pegasus-child' ),
+		'id'      => 'rcf_ia_lenses_eyebrow',
+		'type'    => 'text',
+		'default' => 'What We Evaluate',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Heading', 'pegasus-child' ),
+		'id'      => 'rcf_ia_lenses_heading',
+		'type'    => 'text',
+		'default' => 'Six lenses on every position.',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Lede Paragraph', 'pegasus-child' ),
+		'id'      => 'rcf_ia_lenses_lede',
+		'type'    => 'textarea_small',
+		'default' => 'No single factor earns a position a place in the book. Each opportunity is pressure-tested across the same six dimensions before it is sized.',
+	) );
+
+	$group_id = $cmb->add_field( array(
+		'id'          => 'rcf_ia_lenses',
+		'type'        => 'group',
+		'description' => __( 'Evaluation lenses — displayed as a card grid. Repeatable.', 'pegasus-child' ),
+		'options'     => array(
+			'group_title'   => __( 'Lens {#}', 'pegasus-child' ),
+			'add_button'    => __( 'Add Lens', 'pegasus-child' ),
+			'remove_button' => __( 'Remove Lens', 'pegasus-child' ),
+			'sortable'      => true,
+			'closed'        => true,
+		),
+	) );
+	$cmb->add_group_field( $group_id, array(
+		'name' => __( 'Label', 'pegasus-child' ),
+		'id'   => 'label',
+		'type' => 'text',
+	) );
+	$cmb->add_group_field( $group_id, array(
+		'name' => __( 'Description', 'pegasus-child' ),
+		'id'   => 'desc',
+		'type' => 'textarea_small',
+	) );
+}
+add_action( 'cmb2_admin_init', 'pegasus_child_register_ia_lenses_metabox' );
+
+
+/* -----------------------------------------------------------------------
+   INVESTMENT APPROACH — §03 The Process (repeatable steps)
+   ----------------------------------------------------------------------- */
+function pegasus_child_register_ia_process_metabox() {
+	$cmb = new_cmb2_box( array(
+		'id'           => 'rcf_ia_process_metabox',
+		'title'        => __( 'Approach — §03 The Process', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'show_on'      => array( 'key' => 'page-template', 'value' => 'tpl_investment-approach.php' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+	) );
+
+	$cmb->add_field( array(
+		'name'    => __( 'Eyebrow', 'pegasus-child' ),
+		'id'      => 'rcf_ia_process_eyebrow',
+		'type'    => 'text',
+		'default' => 'The Process',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Heading', 'pegasus-child' ),
+		'desc'    => __( 'Use newlines for line breaks.', 'pegasus-child' ),
+		'id'      => 'rcf_ia_process_heading',
+		'type'    => 'textarea_small',
+		'default' => "From idea to position,\nby a repeatable path.",
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Lede Paragraph', 'pegasus-child' ),
+		'id'      => 'rcf_ia_process_lede',
+		'type'    => 'textarea_small',
+		'default' => 'Every position travels the same four stages — deliberate at the front end, disciplined at the back.',
+	) );
+
+	$group_id = $cmb->add_field( array(
+		'id'          => 'rcf_ia_process_steps',
+		'type'        => 'group',
+		'description' => __( 'Process steps — typically four, in a ruled navy grid. Repeatable.', 'pegasus-child' ),
+		'options'     => array(
+			'group_title'   => __( 'Step {#}', 'pegasus-child' ),
+			'add_button'    => __( 'Add Step', 'pegasus-child' ),
+			'remove_button' => __( 'Remove Step', 'pegasus-child' ),
+			'sortable'      => true,
+			'closed'        => true,
+		),
+	) );
+	$cmb->add_group_field( $group_id, array(
+		'name' => __( 'Step Number', 'pegasus-child' ),
+		'desc' => __( 'e.g. 01, 02, 03, 04', 'pegasus-child' ),
+		'id'   => 'num',
+		'type' => 'text_small',
+	) );
+	$cmb->add_group_field( $group_id, array(
+		'name' => __( 'Title', 'pegasus-child' ),
+		'id'   => 'title',
+		'type' => 'text',
+	) );
+	$cmb->add_group_field( $group_id, array(
+		'name' => __( 'Body Text', 'pegasus-child' ),
+		'id'   => 'body',
+		'type' => 'textarea_small',
+	) );
+}
+add_action( 'cmb2_admin_init', 'pegasus_child_register_ia_process_metabox' );
+
+
+/* -----------------------------------------------------------------------
+   INVESTMENT APPROACH — CTA Band
+   ----------------------------------------------------------------------- */
+function pegasus_child_register_ia_cta_metabox() {
+	$cmb = new_cmb2_box( array(
+		'id'           => 'rcf_ia_cta_metabox',
+		'title'        => __( 'Approach — CTA Band', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'show_on'      => array( 'key' => 'page-template', 'value' => 'tpl_investment-approach.php' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+	) );
+
+	$cmb->add_field( array(
+		'name'    => __( 'Eyebrow', 'pegasus-child' ),
+		'id'      => 'rcf_ia_cta_eyebrow',
+		'type'    => 'text',
+		'default' => 'For Qualified Investors',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Heading', 'pegasus-child' ),
+		'id'      => 'rcf_ia_cta_heading',
+		'type'    => 'text',
+		'default' => 'See the approach applied.',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Lede Paragraph', 'pegasus-child' ),
+		'id'      => 'rcf_ia_cta_lede',
+		'type'    => 'textarea_small',
+		'default' => 'Request the current strategy presentation, or speak with our Investor Relations team about how the process translates into the live portfolio.',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Button 1 — Text', 'pegasus-child' ),
+		'id'      => 'rcf_ia_cta_btn1_text',
+		'type'    => 'text_small',
+		'default' => 'Request the Deck',
+	) );
+	$cmb->add_field( array(
+		'name' => __( 'Button 1 — URL', 'pegasus-child' ),
+		'id'   => 'rcf_ia_cta_btn1_url',
+		'type' => 'text_url',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Button 2 — Text', 'pegasus-child' ),
+		'id'      => 'rcf_ia_cta_btn2_text',
+		'type'    => 'text_small',
+		'default' => 'Speak with IR',
+	) );
+	$cmb->add_field( array(
+		'name' => __( 'Button 2 — URL', 'pegasus-child' ),
+		'id'   => 'rcf_ia_cta_btn2_url',
+		'type' => 'text_url',
+	) );
+}
+add_action( 'cmb2_admin_init', 'pegasus_child_register_ia_cta_metabox' );
+
+
+/* ====================================================================
+   §6  POSTS PAGE (BLOG)  —  home.php
+   The posts page ignores its template dropdown, so target it by ID.
+   ==================================================================== */
+
+/* -----------------------------------------------------------------------
+   BLOG — Sub-Hero / Page Heading (shown on the "Posts page")
+   ----------------------------------------------------------------------- */
+function pegasus_child_register_blog_hero_metabox() {
+	$posts_page_id = (int) get_option( 'page_for_posts' );
+	if ( ! $posts_page_id ) {
+		return; // No posts page assigned under Settings → Reading.
+	}
+
+	$cmb = new_cmb2_box( array(
+		'id'           => 'rcf_blog_hero_metabox',
+		'title'        => __( 'Blog — Sub-Hero / Page Heading', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'show_on'      => array( 'key' => 'id', 'value' => array( $posts_page_id ) ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+	) );
+
+	$cmb->add_field( array(
+		'name'    => __( 'Heading', 'pegasus-child' ),
+		'desc'    => __( 'Heading shown at the top of the blog / news listing.', 'pegasus-child' ),
+		'id'      => 'rcf_blog_hero_heading',
+		'type'    => 'text',
+		'default' => 'News & Insights',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Sub-heading Paragraph', 'pegasus-child' ),
+		'id'      => 'rcf_blog_hero_sub',
+		'type'    => 'textarea_small',
+		'default' => 'Commentary, firm updates, and perspective from the Rice Capital investment team.',
+	) );
+}
+add_action( 'cmb2_admin_init', 'pegasus_child_register_blog_hero_metabox' );

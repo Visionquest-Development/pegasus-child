@@ -41,3 +41,6 @@
 
 	/* ---- CMB2 metabox registrations (all templates) ---- */
 	require_once get_stylesheet_directory() . '/inc/cmb2-fields.php';
+
+	/* ---- Contact form submission handler ---- */
+	require_once get_stylesheet_directory() . '/inc/contact-form.php';
