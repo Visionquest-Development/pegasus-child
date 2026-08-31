@@ -108,6 +108,37 @@ function valorcare_services_default( $key ) {
 	return isset( $d[ $key ] ) && ! is_array( $d[ $key ] ) ? $d[ $key ] : '';
 }
 
+/**
+ * Prefill the Services Catalogue group in the admin with the default services
+ * whenever the page has none saved yet.
+ *
+ * CMB2 group fields can't use the scalar `default` arg, so without this the
+ * catalogue metabox opens blank even though the front end renders five default
+ * services. This makes those defaults appear as real, editable rows in the
+ * backend so the client can see and tweak the actual copy.
+ *
+ * Non-destructive: this only affects what CMB2 shows (it hooks the meta *read*,
+ * not a save). Nothing is written to the database until the page is saved, and
+ * the front-end templates keep their own raw-meta "defaults until filled"
+ * fallback, so this filter never interferes with them.
+ *
+ * @param mixed  $override  CMB2 no-override sentinel (returned to keep normal fetch).
+ * @param int    $object_id Page ID being edited.
+ * @param array  $args      Field args.
+ * @param object $field     CMB2_Field instance.
+ * @return mixed Default catalogue rows to seed, or $override to fetch normally.
+ */
+function valorcare_prefill_services_catalogue( $override, $object_id, $args, $field ) {
+	$existing = get_post_meta( $object_id, 'vc_services', true );
+	// Real saved rows exist ⇒ leave CMB2 to fetch them normally.
+	if ( is_array( $existing ) && ! empty( valorcare_nonempty_rows( $existing ) ) ) {
+		return $override;
+	}
+	$defaults = valorcare_services_defaults();
+	return isset( $defaults['catalogue'] ) ? $defaults['catalogue'] : $override;
+}
+add_filter( 'cmb2_override_vc_services_meta_value', 'valorcare_prefill_services_catalogue', 10, 4 );
+
 /* -------------------------------------------------------------------------
  * Shared helpers (guarded) — cross-template page lookups + meta reads.
  * ---------------------------------------------------------------------- */
