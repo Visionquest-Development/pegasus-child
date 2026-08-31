@@ -48,7 +48,7 @@ $menu_data = function_exists( 'vqdev_toast_get_menu_data' ) ? vqdev_toast_get_me
 		<section class="sp-menu sp-menu--empty">
 			<div class="container">
 				<div class="alert alert-warning mb-0">
-					Menu is currently unavailable. Please check back later.
+					<?php echo esc_html( sp_menu_meta( '_sp_menu_board_unavailable' ) ); ?>
 				</div>
 			</div>
 		</section>
@@ -65,11 +65,12 @@ $menu_data = function_exists( 'vqdev_toast_get_menu_data' ) ? vqdev_toast_get_me
 		<div class="container">
 			<div class="sp-chalk sp-menu__chalk wow sp-anim-up">
 				<div class="sp-menu__head text-center">
-					<span class="sp-menu__kicker">Bienvenue chez nous</span>
-					<h2 class="sp-menu__title fst-italic mt-1">La Carte</h2>
-					<?php if ( ! empty( $menu_data['updated'] ) ) : ?>
+					<span class="sp-menu__kicker"><?php echo esc_html( sp_menu_meta( '_sp_menu_board_kicker' ) ); ?></span>
+					<h2 class="sp-menu__title fst-italic mt-1"><?php echo wp_kses_post( sp_menu_meta( '_sp_menu_board_title' ) ); ?></h2>
+					<?php $board_updated_label = sp_menu_meta( '_sp_menu_board_updated_label' ); ?>
+					<?php if ( ! empty( $menu_data['updated'] ) && '' !== $board_updated_label ) : ?>
 						<div class="sp-menu__meta text-uppercase mt-3">
-							Updated &middot; <?php echo esc_html( $menu_data['updated'] ); ?>
+							<?php echo esc_html( $board_updated_label ); ?> &middot; <?php echo esc_html( $menu_data['updated'] ); ?>
 						</div>
 					<?php endif; ?>
 				</div>
@@ -82,9 +83,10 @@ $menu_data = function_exists( 'vqdev_toast_get_menu_data' ) ? vqdev_toast_get_me
 					<?php include get_stylesheet_directory() . '/templates/menu-mobile.php'; ?>
 				</div>
 
-				<p class="sp-menu__footnote text-center text-uppercase mt-5 mb-0">
-					20% gratuity added for parties of 6 or more &middot; gluten-free bread on request
-				</p>
+				<?php $board_footnote = sp_menu_meta( '_sp_menu_board_footnote' ); ?>
+				<?php if ( '' !== $board_footnote ) : ?>
+					<p class="sp-menu__footnote text-center text-uppercase mt-5 mb-0"><?php echo esc_html( $board_footnote ); ?></p>
+				<?php endif; ?>
 			</div>
 		</div>
 	</section>

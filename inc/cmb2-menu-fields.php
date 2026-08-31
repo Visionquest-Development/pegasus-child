@@ -38,6 +38,14 @@ function sp_menu_defaults() {
 		'_sp_menu_hero_title'  => 'The bistro <em>menu</em>',
 		'_sp_menu_hero_body'   => 'A short, seasonal menu of French bistro classics — written each Monday, cooked through Saturday. Available for lunch and dinner.',
 
+		// Menu board — headings/footnote around the Toast-rendered menu (the menu
+		// items and their section titles come from Toast and are not editable here).
+		'_sp_menu_board_kicker'        => 'Bienvenue chez nous',
+		'_sp_menu_board_title'         => 'La Carte',
+		'_sp_menu_board_updated_label' => 'Updated',
+		'_sp_menu_board_footnote'      => '20% gratuity added for parties of 6 or more · gluten-free bread on request',
+		'_sp_menu_board_unavailable'   => 'Menu is currently unavailable. Please check back later.',
+
 		// Reserve a table.
 		'_sp_menu_cta_kicker'       => 'à bientôt',
 		'_sp_menu_cta_title'        => 'Reserve a table<br/>for <em>two &mdash; or twelve.</em>',
@@ -178,11 +186,59 @@ function sp_register_menu_metaboxes() {
 		'preview_size' => 'medium',
 	) );
 
-	/* ── 2. Menu — Reserve a Table ───────────────────────────────────────── */
+	/* ── 2. Menu — Menu Board (headings around the Toast-rendered menu) ───── */
+	$prefix = '_sp_menu_board_';
+	$cmb    = new_cmb2_box( array(
+		'id'           => 'sp_menu_board',
+		'title'        => __( '2. Menu &mdash; Menu Board (headings)', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'show_on'      => $show_on,
+		'context'      => 'normal',
+		'priority'     => 'high',
+		'closed'       => true,
+	) );
+
+	$cmb->add_field( array(
+		'name'    => __( 'Kicker', 'pegasus-child' ),
+		'desc'    => __( 'Small line above the menu title ( e.g. "Bienvenue chez nous" ).', 'pegasus-child' ),
+		'id'      => $prefix . 'kicker',
+		'type'    => 'text',
+		'default' => sp_menu_default( $prefix . 'kicker' ),
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Title', 'pegasus-child' ),
+		'desc'    => __( 'HTML allowed ( &lt;em&gt; / &lt;br&gt; ).', 'pegasus-child' ),
+		'id'      => $prefix . 'title',
+		'type'    => 'text',
+		'default' => sp_menu_default( $prefix . 'title' ),
+	) );
+	$cmb->add_field( array(
+		'name'    => __( '&ldquo;Updated&rdquo; label', 'pegasus-child' ),
+		'desc'    => __( 'Prefix before the auto date ( the date itself comes from Toast ). Leave empty to hide the line.', 'pegasus-child' ),
+		'id'      => $prefix . 'updated_label',
+		'type'    => 'text',
+		'default' => sp_menu_default( $prefix . 'updated_label' ),
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Footnote', 'pegasus-child' ),
+		'desc'    => __( 'Small print under the menu. Leave empty to hide it.', 'pegasus-child' ),
+		'id'      => $prefix . 'footnote',
+		'type'    => 'textarea_small',
+		'default' => sp_menu_default( $prefix . 'footnote' ),
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Menu-unavailable message', 'pegasus-child' ),
+		'desc'    => __( 'Shown only if the Toast menu cannot be loaded.', 'pegasus-child' ),
+		'id'      => $prefix . 'unavailable',
+		'type'    => 'text',
+		'default' => sp_menu_default( $prefix . 'unavailable' ),
+	) );
+
+	/* ── 3. Menu — Reserve a Table ───────────────────────────────────────── */
 	$prefix = '_sp_menu_cta_';
 	$cmb    = new_cmb2_box( array(
 		'id'           => 'sp_menu_cta',
-		'title'        => __( '2. Menu &mdash; Reserve a Table', 'pegasus-child' ),
+		'title'        => __( '3. Menu &mdash; Reserve a Table', 'pegasus-child' ),
 		'object_types' => array( 'page' ),
 		'show_on'      => $show_on,
 		'context'      => 'normal',
