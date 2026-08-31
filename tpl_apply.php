@@ -143,8 +143,16 @@ if ( 'header-three' === $header_choice ) {
 						<div class="vc-form-card p-4 p-md-5">
 							<h2 class="vc-serif vc-form-title mb-4"><?php echo esc_html( vc_apply_val( 'apply_form_title' ) ); ?></h2>
 							<?php
+							// The form comes from the Gravity Form ID field; a full
+							// shortcode in the advanced field overrides it when set.
 							$apply_shortcode = trim( (string) vc_apply_val( 'apply_form_shortcode' ) );
-							$gf_active       = class_exists( 'GFForms' ) || function_exists( 'gravity_form' );
+							if ( '' === $apply_shortcode ) {
+								$apply_form_id = absint( vc_apply_val( 'apply_form_id' ) );
+								if ( $apply_form_id > 0 ) {
+									$apply_shortcode = '[gravityform id="' . $apply_form_id . '" title="false" description="false" ajax="true"]';
+								}
+							}
+							$gf_active = class_exists( 'GFForms' ) || function_exists( 'gravity_form' );
 
 							if ( '' === $apply_shortcode ) {
 								// Form intentionally hidden via the backend — show nothing.

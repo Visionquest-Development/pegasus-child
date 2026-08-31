@@ -45,7 +45,8 @@ function valorcare_apply_defaults() {
 
 		// ---- Form ---------------------------------------------------------
 		'apply_form_title'     => 'Caregiver Application',
-		'apply_form_shortcode' => '[gravityform id="2" title="false" description="false" ajax="true"]',
+		'apply_form_id'        => '2',
+		'apply_form_shortcode' => '',
 	);
 
 	return $defaults;
@@ -123,11 +124,18 @@ function valorcare_register_apply_metaboxes() {
 	) ) );
 	$form->add_field( array( 'name' => 'Form Heading', 'id' => $prefix . 'apply_form_title', 'type' => 'text', 'default' => $defaults['apply_form_title'] ) );
 	$form->add_field( array(
-		'name' => 'Gravity Forms Shortcode',
-		'desc' => 'The Caregiver Application form. Defaults to Gravity Form ID 2 — change only if you swap forms. Leave blank to hide the form.',
+		'name'    => 'Gravity Form ID',
+		'desc'    => 'The numeric ID of the Gravity Form to show (the Caregiver Application is ID 2). Set to 0 to hide the form.',
+		'id'      => $prefix . 'apply_form_id',
+		'type'    => 'text',
+		'attributes' => array( 'type' => 'number', 'min' => '0', 'step' => '1' ),
+		'default' => $defaults['apply_form_id'],
+	) );
+	$form->add_field( array(
+		'name' => 'Gravity Forms Shortcode (advanced)',
+		'desc' => 'Optional. Paste a full Gravity Forms shortcode to override the Form ID above — e.g. to pass extra shortcode options. Leave blank to use the Form ID.',
 		'id'   => $prefix . 'apply_form_shortcode',
 		'type' => 'textarea_small',
-		'default' => $defaults['apply_form_shortcode'],
 	) );
 }
 add_action( 'cmb2_admin_init', 'valorcare_register_apply_metaboxes' );
