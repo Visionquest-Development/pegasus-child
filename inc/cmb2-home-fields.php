@@ -99,6 +99,44 @@ function valorcare_home_defaults() {
 			array( 'quote' => 'Testimonial copy goes here once the client collects reviews. Two to three sentences works best in this card.', 'name' => 'Client Name', 'meta' => 'Case manager, Marietta' ),
 		),
 
+		// ---- Get Started (families vs caregivers split) -------------------
+		'getstarted_eyebrow' => 'Get Started',
+		'getstarted_title'   => 'Two Ways to Get Started with Valor Care',
+		'getstarted_intro'   => "Whether you're seeking trusted, compassionate care for someone you love — or you're a caregiver looking for meaningful work — there's a place for you here.",
+
+		// Families / clients column.
+		'getstarted_client_icon'       => 'fa-heart',
+		'getstarted_client_eyebrow'    => 'For Families',
+		'getstarted_client_title'      => 'Looking for Care for a Loved One?',
+		'getstarted_client_text'       => "Tell us a little about what you need and we'll help you build a care plan around it. Start your request online and our care team will follow up to guide you through every step — no doctor's order required.",
+		'getstarted_client_list_title' => 'You can request help with:',
+		'getstarted_client_points'     => array(
+			array( 'text' => 'Companionship and everyday support' ),
+			array( 'text' => 'Personal care — bathing, grooming, and dressing' ),
+			array( 'text' => 'Respite care to give family caregivers a break' ),
+			array( 'text' => 'Homemaking and meal preparation' ),
+			array( 'text' => "Dementia and Alzheimer's support" ),
+		),
+		'getstarted_client_btn_text'   => 'Request Care Services',
+		'getstarted_client_btn_link'   => 'https://auth.swyftops.com/form/intake?office=SVN-GA-VLC',
+
+		// Caregivers column.
+		'getstarted_care_icon'       => 'fa-user-plus',
+		'getstarted_care_eyebrow'    => 'For Caregivers',
+		'getstarted_care_title'      => 'Do You Enjoy Helping Seniors Feel Safe and Valued?',
+		'getstarted_care_text'       => "Caregiving is more than helping with daily tasks — it's showing up with patience, kindness, and a genuine desire to make someone's day a little easier. We're looking for dependable caregivers who truly enjoy spending time with seniors and helping them stay comfortable, respected, and independent in their own homes.\n\nOpportunities are currently PRN / as-needed, with the potential for more consistent hours as our client base grows. If you have a heart for helping others and take pride in the care you provide, we'd love to hear from you.",
+		'getstarted_care_list_title' => 'You may be a great fit if you:',
+		'getstarted_care_points'     => array(
+			array( 'text' => 'Genuinely enjoy helping seniors' ),
+			array( 'text' => 'Are compassionate, patient, and dependable' ),
+			array( 'text' => 'Treat every client with dignity and respect' ),
+			array( 'text' => 'Communicate well and follow through on commitments' ),
+			array( 'text' => "Are comfortable working independently in a client's home" ),
+			array( 'text' => 'Want meaningful work where your presence truly matters' ),
+		),
+		'getstarted_care_btn_text'   => 'Apply to Join Our Care Team',
+		'getstarted_care_btn_link'   => 'https://auth.swyftops.com/form/applicant?office=SVN-GA-VLC',
+
 		// ---- Service area --------------------------------------------------
 		'area_eyebrow' => 'Service Area',
 		'area_title'   => 'Proudly Serving Cobb & Paulding Counties',
@@ -303,6 +341,46 @@ function valorcare_register_home_metaboxes() {
 	$test->add_group_field( $test_group, array( 'name' => 'Quote', 'id' => 'quote', 'type' => 'textarea_small' ) );
 	$test->add_group_field( $test_group, array( 'name' => 'Name', 'id' => 'name', 'type' => 'text' ) );
 	$test->add_group_field( $test_group, array( 'name' => 'Relationship / Location', 'id' => 'meta', 'type' => 'text' ) );
+
+	/* ------------------------------------------------------------- Service area */
+	/* -------------------------------------------------------------- Get Started */
+	$gs = new_cmb2_box( array_merge( $show_args, array(
+		'id'    => $prefix . 'getstarted_box',
+		'title' => 'Home - Get Started (Families / Caregivers)',
+	) ) );
+	$gs->add_field( array( 'name' => 'Eyebrow', 'id' => $prefix . 'getstarted_eyebrow', 'type' => 'text', 'default' => $defaults['getstarted_eyebrow'] ) );
+	$gs->add_field( array( 'name' => 'Heading', 'id' => $prefix . 'getstarted_title', 'type' => 'text', 'default' => $defaults['getstarted_title'] ) );
+	$gs->add_field( array( 'name' => 'Intro', 'id' => $prefix . 'getstarted_intro', 'type' => 'textarea_small', 'default' => $defaults['getstarted_intro'] ) );
+
+	$gs->add_field( array( 'name' => 'For Families', 'id' => $prefix . 'getstarted_client_note', 'type' => 'title', 'desc' => 'Left card - links families to the Swyftops care-request (intake) form.' ) );
+	$gs->add_field( array( 'name' => 'Families - Font Awesome Icon', 'id' => $prefix . 'getstarted_client_icon', 'type' => 'text', 'default' => $defaults['getstarted_client_icon'] ) );
+	$gs->add_field( array( 'name' => 'Families - Eyebrow', 'id' => $prefix . 'getstarted_client_eyebrow', 'type' => 'text', 'default' => $defaults['getstarted_client_eyebrow'] ) );
+	$gs->add_field( array( 'name' => 'Families - Heading', 'id' => $prefix . 'getstarted_client_title', 'type' => 'text', 'default' => $defaults['getstarted_client_title'] ) );
+	$gs->add_field( array( 'name' => 'Families - Text (one paragraph per line)', 'id' => $prefix . 'getstarted_client_text', 'type' => 'textarea', 'default' => $defaults['getstarted_client_text'] ) );
+	$gs->add_field( array( 'name' => 'Families - List Heading', 'id' => $prefix . 'getstarted_client_list_title', 'type' => 'text', 'default' => $defaults['getstarted_client_list_title'] ) );
+	$gs_client_group = $gs->add_field( array(
+		'id'      => $prefix . 'getstarted_client_points',
+		'type'    => 'group',
+		'options' => $group_opts( 'Families List Item', 'Families List Items' ),
+	) );
+	$gs->add_group_field( $gs_client_group, array( 'name' => 'List Item', 'id' => 'text', 'type' => 'text' ) );
+	$gs->add_field( array( 'name' => 'Families - Button Text', 'id' => $prefix . 'getstarted_client_btn_text', 'type' => 'text', 'default' => $defaults['getstarted_client_btn_text'] ) );
+	$gs->add_field( array( 'name' => 'Families - Button Link', 'desc' => 'Swyftops care-request (intake) form URL.', 'id' => $prefix . 'getstarted_client_btn_link', 'type' => 'text', 'default' => $defaults['getstarted_client_btn_link'] ) );
+
+	$gs->add_field( array( 'name' => 'For Caregivers', 'id' => $prefix . 'getstarted_care_note', 'type' => 'title', 'desc' => 'Right card - links applicants to the Swyftops applicant form (submissions are added to Swyftops automatically).' ) );
+	$gs->add_field( array( 'name' => 'Caregivers - Font Awesome Icon', 'id' => $prefix . 'getstarted_care_icon', 'type' => 'text', 'default' => $defaults['getstarted_care_icon'] ) );
+	$gs->add_field( array( 'name' => 'Caregivers - Eyebrow', 'id' => $prefix . 'getstarted_care_eyebrow', 'type' => 'text', 'default' => $defaults['getstarted_care_eyebrow'] ) );
+	$gs->add_field( array( 'name' => 'Caregivers - Heading', 'id' => $prefix . 'getstarted_care_title', 'type' => 'text', 'default' => $defaults['getstarted_care_title'] ) );
+	$gs->add_field( array( 'name' => 'Caregivers - Text (one paragraph per line)', 'id' => $prefix . 'getstarted_care_text', 'type' => 'textarea', 'default' => $defaults['getstarted_care_text'] ) );
+	$gs->add_field( array( 'name' => 'Caregivers - List Heading', 'id' => $prefix . 'getstarted_care_list_title', 'type' => 'text', 'default' => $defaults['getstarted_care_list_title'] ) );
+	$gs_care_group = $gs->add_field( array(
+		'id'      => $prefix . 'getstarted_care_points',
+		'type'    => 'group',
+		'options' => $group_opts( 'Caregivers List Item', 'Caregivers List Items' ),
+	) );
+	$gs->add_group_field( $gs_care_group, array( 'name' => 'List Item', 'id' => 'text', 'type' => 'text' ) );
+	$gs->add_field( array( 'name' => 'Caregivers - Button Text', 'id' => $prefix . 'getstarted_care_btn_text', 'type' => 'text', 'default' => $defaults['getstarted_care_btn_text'] ) );
+	$gs->add_field( array( 'name' => 'Caregivers - Button Link', 'desc' => 'Swyftops applicant form URL.', 'id' => $prefix . 'getstarted_care_btn_link', 'type' => 'text', 'default' => $defaults['getstarted_care_btn_link'] ) );
 
 	/* ------------------------------------------------------------- Service area */
 	$area = new_cmb2_box( array_merge( $show_args, array(

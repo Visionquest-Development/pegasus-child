@@ -627,6 +627,49 @@
 	.vc-home .vc-contact--stack span:last-child { line-height: 1.7; }
 	.vc-about-page .vc-team-member + .vc-team-member { margin-top: 3.5rem; }
 
+	/* ---- Get Started (families vs caregivers) ---- */
+	.vc-home .vc-getstarted {
+		background: #fff;
+		border-top: 1px solid var(--vc-line);
+	}
+	.vc-home .vc-getstarted-card {
+		background: var(--vc-card);
+		border: 1px solid var(--vc-line);
+		border-top: 4px solid var(--vc-gold);
+		box-shadow: 0 14px 36px rgba(14,36,64,.06);
+	}
+	.vc-home .vc-getstarted-card--alt { border-top-color: var(--vc-navy); }
+	.vc-home .vc-getstarted-title {
+		color: var(--vc-navy);
+		font-size: 1.5rem;
+		font-weight: 600;
+		margin: 8px 0 14px;
+	}
+	.vc-home .vc-getstarted-text {
+		color: var(--vc-ink-soft);
+		line-height: 1.8;
+		margin-bottom: 20px;
+	}
+	.vc-home .vc-getstarted-list-title {
+		color: var(--vc-navy);
+		font-weight: 700;
+		margin-bottom: 12px;
+	}
+	.vc-home .vc-getstarted-list {
+		list-style: none;
+		padding: 0;
+		margin: 0 0 28px;
+	}
+	.vc-home .vc-getstarted-list li {
+		display: flex;
+		align-items: flex-start;
+		gap: 12px;
+		color: var(--vc-ink-soft);
+		line-height: 1.6;
+		margin-bottom: 12px;
+	}
+	.vc-home .vc-getstarted-list li span { flex: 1; }
+
 	/* ---- FAQ & Careers ---- */
 	.vc-home .vc-faq { background: var(--vc-cream); }
 	.vc-home .vc-faq-title { margin: 0 0 24px; font-size: clamp(1.8rem, 2.8vw, 2.3rem); }

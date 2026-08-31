@@ -335,6 +335,62 @@ get_header();
 			</div>
 		</section>
 
+		<!-- ========================= GET STARTED ======================== -->
+		<section class="vc-getstarted py-5">
+			<div class="container py-lg-4">
+				<div class="text-center mx-auto vc-section-head mb-5">
+					<div class="vc-eyebrow"><?php echo esc_html( vc_val( 'getstarted_eyebrow' ) ); ?></div>
+					<h2 class="vc-serif vc-title"><?php echo esc_html( vc_val( 'getstarted_title' ) ); ?></h2>
+					<p class="vc-lead mt-3"><?php echo esc_html( vc_val( 'getstarted_intro' ) ); ?></p>
+				</div>
+				<div class="row g-4 justify-content-center">
+
+					<!-- For families / potential clients -->
+					<div class="col-lg-6">
+						<div class="vc-getstarted-card h-100 d-flex flex-column p-4 p-md-5">
+							<div class="vc-badge-icon"><i class="fa <?php echo esc_attr( vc_val( 'getstarted_client_icon' ) ); ?>"></i></div>
+							<div class="vc-eyebrow mt-3"><?php echo esc_html( vc_val( 'getstarted_client_eyebrow' ) ); ?></div>
+							<h3 class="vc-serif vc-getstarted-title"><?php echo esc_html( vc_val( 'getstarted_client_title' ) ); ?></h3>
+							<p class="vc-getstarted-text"><?php echo vc_para( vc_val( 'getstarted_client_text' ) ); ?></p>
+							<?php $gs_client_points = vc_rows( 'getstarted_client_points' ); if ( $gs_client_points ) : ?>
+								<div class="vc-getstarted-list-title"><?php echo esc_html( vc_val( 'getstarted_client_list_title' ) ); ?></div>
+								<ul class="vc-getstarted-list">
+									<?php foreach ( $gs_client_points as $gs_p ) : ?>
+										<li><i class="fa fa-check-circle vc-check-icon"></i><span><?php echo esc_html( $gs_p['text'] ); ?></span></li>
+									<?php endforeach; ?>
+								</ul>
+							<?php endif; ?>
+							<a href="<?php echo esc_url( vc_val( 'getstarted_client_btn_link' ) ); ?>" class="btn btn-lg fw-bold px-4 align-self-start mt-auto vc-btn-gold" target="_blank" rel="noopener">
+								<?php echo esc_html( vc_val( 'getstarted_client_btn_text' ) ); ?>
+							</a>
+						</div>
+					</div>
+
+					<!-- For caregivers / potential applicants -->
+					<div class="col-lg-6">
+						<div class="vc-getstarted-card vc-getstarted-card--alt h-100 d-flex flex-column p-4 p-md-5">
+							<div class="vc-badge-icon"><i class="fa <?php echo esc_attr( vc_val( 'getstarted_care_icon' ) ); ?>"></i></div>
+							<div class="vc-eyebrow mt-3"><?php echo esc_html( vc_val( 'getstarted_care_eyebrow' ) ); ?></div>
+							<h3 class="vc-serif vc-getstarted-title"><?php echo esc_html( vc_val( 'getstarted_care_title' ) ); ?></h3>
+							<p class="vc-getstarted-text"><?php echo vc_para( vc_val( 'getstarted_care_text' ) ); ?></p>
+							<?php $gs_care_points = vc_rows( 'getstarted_care_points' ); if ( $gs_care_points ) : ?>
+								<div class="vc-getstarted-list-title"><?php echo esc_html( vc_val( 'getstarted_care_list_title' ) ); ?></div>
+								<ul class="vc-getstarted-list">
+									<?php foreach ( $gs_care_points as $gs_p ) : ?>
+										<li><i class="fa fa-check-circle vc-check-icon"></i><span><?php echo esc_html( $gs_p['text'] ); ?></span></li>
+									<?php endforeach; ?>
+								</ul>
+							<?php endif; ?>
+							<a href="<?php echo esc_url( vc_val( 'getstarted_care_btn_link' ) ); ?>" class="btn btn-lg fw-bold px-4 align-self-start mt-auto vc-btn-navy" target="_blank" rel="noopener">
+								<?php echo esc_html( vc_val( 'getstarted_care_btn_text' ) ); ?>
+							</a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
 		<!-- ========================= SERVICE AREA ======================= -->
 		<section class="vc-area py-5">
 			<div class="container py-lg-4">
