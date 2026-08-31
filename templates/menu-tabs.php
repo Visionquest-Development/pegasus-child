@@ -42,7 +42,9 @@ if ( empty( $tabs ) || ! is_array( $tabs ) ) {
 	<?php foreach ( $tabs as $i => $tab ) :
 		$tab_id    = preg_replace( '/[^a-z0-9\-_]/i', '', (string) ( $tab['id'] ?? ( 'tab-' . $i ) ) );
 		$desc      = (string) ( $tab['description'] ?? '' );
-		$tab_hours = (string) ( $tab['hours'] ?? '' );
+		// Editor override ( Menu Board metabox ) wins over the Toast-derived hours.
+		$tab_override = function_exists( 'sp_menu_hours_override' ) ? sp_menu_hours_override( $tab['label'] ?? '' ) : null;
+		$tab_hours    = ( null !== $tab_override ) ? $tab_override : (string) ( $tab['hours'] ?? '' );
 		$is_active = ! empty( $tab['is_active'] );
 		$is_past   = isset( $tab['is_available'] ) && ! $tab['is_available'];
 		$active    = $is_active ? 'show active' : '';

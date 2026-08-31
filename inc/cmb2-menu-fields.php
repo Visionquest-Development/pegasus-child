@@ -119,6 +119,60 @@ function sp_menu_group( $key, $default = array() ) {
 	return ( is_array( $val ) && ! empty( $val ) ) ? $val : $default;
 }
 
+/**
+ * Options for the hours-override "Menu" dropdown: the current Toast menu names.
+ * Reads the full ( ungated ) cached menu, falling back to the V2 menus API.
+ *
+ * @return array
+ */
+function sp_menu_toast_menu_options() {
+	$opts  = array( '' => __( '&mdash; select a menu &mdash;', 'pegasus-child' ) );
+	$names = array();
+
+	$cached = get_transient( 'vqdev_toast_menu_data' );
+	if ( is_array( $cached ) && ! empty( $cached['tabs'] ) ) {
+		foreach ( $cached['tabs'] as $t ) {
+			if ( ! empty( $t['label'] ) ) {
+				$names[] = (string) $t['label'];
+			}
+		}
+	} elseif ( function_exists( 'vqdev_toast' ) ) {
+		$r = vqdev_toast()->menus()->get_menus_v2();
+		if ( ! empty( $r['success'] ) && ! empty( $r['data']['menus'] ) ) {
+			foreach ( $r['data']['menus'] as $m ) {
+				if ( ! empty( $m['name'] ) ) {
+					$names[] = (string) $m['name'];
+				}
+			}
+		}
+	}
+
+	foreach ( array_unique( $names ) as $n ) {
+		$opts[ $n ] = $n;
+	}
+	return $opts;
+}
+
+/**
+ * Look up the editor's hours-override for a given menu name.
+ *
+ * @param string $menu_name Toast menu / tab label.
+ * @return string|null Override string ( '' means "hide" ), or null if no row
+ *                     matches ( use the Toast-derived hours instead ).
+ */
+function sp_menu_hours_override( $menu_name ) {
+	$menu_name = trim( (string) $menu_name );
+	if ( '' === $menu_name ) {
+		return null;
+	}
+	foreach ( sp_menu_group( '_sp_menu_board_hours_overrides', array() ) as $row ) {
+		if ( 0 === strcasecmp( trim( (string) ( $row['menu'] ?? '' ) ), $menu_name ) ) {
+			return (string) ( $row['hours'] ?? '' );
+		}
+	}
+	return null;
+}
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * Metabox registration
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -232,6 +286,30 @@ function sp_register_menu_metaboxes() {
 		'id'      => $prefix . 'unavailable',
 		'type'    => 'text',
 		'default' => sp_menu_default( $prefix . 'unavailable' ),
+	) );
+
+	$hours_over = $cmb->add_field( array(
+		'id'          => $prefix . 'hours_overrides',
+		'type'        => 'group',
+		'description' => __( 'Override the &ldquo;Served&hellip;&rdquo; hours line shown under each menu tab. By default those come from the Toast menu schedule &mdash; add a row here to replace one. Pick the menu, then type the hours to show ( leave &ldquo;Hours&rdquo; empty to hide that tab&rsquo;s line ).', 'pegasus-child' ),
+		'options'     => array(
+			'group_title'   => __( 'Override {#}', 'pegasus-child' ),
+			'add_button'    => __( 'Add hours override', 'pegasus-child' ),
+			'remove_button' => __( 'Remove override', 'pegasus-child' ),
+			'closed'        => true,
+		),
+	) );
+	$cmb->add_group_field( $hours_over, array(
+		'name'       => __( 'Menu', 'pegasus-child' ),
+		'id'         => 'menu',
+		'type'       => 'select',
+		'options_cb' => 'sp_menu_toast_menu_options',
+	) );
+	$cmb->add_group_field( $hours_over, array(
+		'name' => __( 'Hours to show', 'pegasus-child' ),
+		'desc' => __( 'e.g. &ldquo;Served Mon&ndash;Fri &middot; 7&ndash;11am&rdquo;. Leave empty to hide the line for this menu.', 'pegasus-child' ),
+		'id'   => 'hours',
+		'type' => 'text',
 	) );
 
 	/* ── 3. Menu — Reserve a Table ───────────────────────────────────────── */
