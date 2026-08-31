@@ -18,7 +18,7 @@ $menu_data = function_exists( 'vqdev_toast_get_menu_data' ) ? vqdev_toast_get_me
 	);
 	?>
 	<section class="sp-menu-hero position-relative">
-		<div class="container sp-menu-hero__inner position-relative text-center">
+		<div class="container sp-menu-hero__inner position-relative text-center wow sp-anim-up">
 			<span class="sp-script sp-menu-hero__kicker"><?php echo esc_html( sp_menu_meta( '_sp_menu_hero_kicker' ) ); ?></span>
 			<h1 class="sp-menu-hero__title fw-normal mt-1"><?php echo wp_kses_post( sp_menu_meta( '_sp_menu_hero_title' ) ); ?></h1>
 			<p class="sp-menu-hero__body mt-4 mx-auto"><?php echo esc_html( sp_menu_meta( '_sp_menu_hero_body' ) ); ?></p>
@@ -63,7 +63,7 @@ $menu_data = function_exists( 'vqdev_toast_get_menu_data' ) ? vqdev_toast_get_me
 	?>
 	<section class="sp-menu">
 		<div class="container">
-			<div class="sp-chalk sp-menu__chalk">
+			<div class="sp-chalk sp-menu__chalk wow sp-anim-up">
 				<div class="sp-menu__head text-center">
 					<span class="sp-menu__kicker">Bienvenue chez nous</span>
 					<h2 class="sp-menu__title fst-italic mt-1">La Carte</h2>
@@ -98,14 +98,14 @@ $menu_data = function_exists( 'vqdev_toast_get_menu_data' ) ? vqdev_toast_get_me
 	?>
 	<section class="sp-menu-cta">
 		<div class="container">
-			<div class="sp-menu-cta__card row g-0 overflow-hidden rounded">
+			<div class="sp-menu-cta__card row g-0 overflow-hidden rounded wow sp-anim-up">
 				<div class="col-12 col-md-7 position-relative sp-menu-cta__left">
 					<span class="sp-script sp-menu-cta__kicker"><?php echo esc_html( sp_menu_meta( '_sp_menu_cta_kicker' ) ); ?></span>
 					<h2 class="sp-menu-cta__title mt-2"><?php echo wp_kses_post( sp_menu_meta( '_sp_menu_cta_title' ) ); ?></h2>
 					<p class="sp-menu-cta__body mt-4"><?php echo esc_html( sp_menu_meta( '_sp_menu_cta_body' ) ); ?></p>
 					<div class="d-flex flex-wrap gap-3 mt-4">
-						<a href="<?php echo esc_url( sp_menu_meta( '_sp_menu_cta_btn1_link' ) ); ?>" class="sp-btn sp-btn--primary"><?php echo esc_html( sp_menu_meta( '_sp_menu_cta_btn1_text' ) ); ?></a>
-						<a href="<?php echo esc_url( sp_menu_meta( '_sp_menu_cta_btn2_link' ) ); ?>" class="sp-btn sp-btn--ghost"><?php echo esc_html( sp_menu_meta( '_sp_menu_cta_btn2_text' ) ); ?></a>
+						<a href="<?php echo esc_url( sp_menu_meta( '_sp_menu_cta_btn1_link' ) ); ?>" class="<?php echo esc_attr( sp_menu_meta( '_sp_menu_cta_btn1_classes' ) ); ?>"><?php echo esc_html( sp_menu_meta( '_sp_menu_cta_btn1_text' ) ); ?></a>
+						<a href="<?php echo esc_url( sp_menu_meta( '_sp_menu_cta_btn2_link' ) ); ?>" class="<?php echo esc_attr( sp_menu_meta( '_sp_menu_cta_btn2_classes' ) ); ?>"><?php echo esc_html( sp_menu_meta( '_sp_menu_cta_btn2_text' ) ); ?></a>
 					</div>
 				</div>
 				<div class="col-12 col-md-5 sp-menu-cta__right">

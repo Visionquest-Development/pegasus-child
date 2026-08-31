@@ -16,6 +16,8 @@ get_header();
 		$hero_btn1_link = sp_home_hero( 'btn1_link', '#' );
 		$hero_btn2_text = sp_home_hero( 'btn2_text', 'Reserve a Table' );
 		$hero_btn2_link = sp_home_hero( 'btn2_link', '#' );
+		$hero_btn1_classes = sp_home_hero( 'btn1_classes', 'sp-btn sp-btn--primary' );
+		$hero_btn2_classes = sp_home_hero( 'btn2_classes', 'sp-btn sp-btn--ghost' );
 		$hero_facts = get_post_meta( get_the_ID(), '_sp_home_hero_facts', true );
 		if ( ! is_array( $hero_facts ) || empty( $hero_facts ) ) {
 			$hero_facts = array(
@@ -30,16 +32,16 @@ get_header();
 	<section class="sp-hero position-relative">
 		<div class="container sp-hero__inner position-relative">
 			<div class="row align-items-center g-5">
-				<div class="col-12 col-md-6 order-2 order-md-1">
+				<div class="col-12 col-md-6 order-2 order-md-1 wow sp-anim-up">
 					<span class="sp-eyebrow"><?php echo wp_kses_post( $hero_eyebrow ); ?></span>
 					<h1 class="sp-hero__title fw-normal mt-4"><?php echo wp_kses_post( $hero_headline ); ?></h1>
 					<p class="sp-hero__body mt-4"><?php echo wp_kses_post( $hero_body ); ?></p>
 					<div class="d-flex flex-wrap gap-3 mt-4">
 						<?php if ( $hero_btn1_text ) : ?>
-							<a href="<?php echo esc_url( $hero_btn1_link ); ?>" class="sp-btn sp-btn--primary"><?php echo esc_html( $hero_btn1_text ); ?></a>
+							<a href="<?php echo esc_url( $hero_btn1_link ?: '#' ); ?>" class="<?php echo esc_attr( $hero_btn1_classes ); ?>"><?php echo esc_html( $hero_btn1_text ); ?></a>
 						<?php endif; ?>
 						<?php if ( $hero_btn2_text ) : ?>
-							<a href="<?php echo esc_url( $hero_btn2_link ); ?>" class="sp-btn sp-btn--ghost"><?php echo esc_html( $hero_btn2_text ); ?></a>
+							<a href="<?php echo esc_url( $hero_btn2_link ?: '#' ); ?>" class="<?php echo esc_attr( $hero_btn2_classes ); ?>"><?php echo esc_html( $hero_btn2_text ); ?></a>
 						<?php endif; ?>
 					</div>
 					<div class="sp-hero__facts d-flex flex-wrap mt-5 pt-4">
@@ -54,7 +56,7 @@ get_header();
 						<?php endforeach; ?>
 					</div>
 				</div>
-				<div class="col-12 col-md-6 order-1 order-md-2">
+				<div class="col-12 col-md-6 order-1 order-md-2 wow sp-anim-in" data-wow-delay="0.15s">
 					<?php if ( $hero_image ) : ?>
 						<?php $alt = $hero_image_id ? get_post_meta( $hero_image_id, '_wp_attachment_image_alt', true ) : ''; ?>
 						<img src="<?php echo esc_url( $hero_image ); ?>" alt="<?php echo esc_attr( $alt ); ?>" class="d-block w-100 h-auto rounded" />
@@ -110,7 +112,7 @@ get_header();
 		$story_image     = sp_home_meta( '_sp_home_story_image' );
 		$story_image_id  = get_post_meta( get_the_ID(), '_sp_home_story_image_id', true );
 	?>
-	<section class="sp-story position-relative">
+	<section class="sp-story position-relative wow sp-anim-up">
 		<div class="container">
 			<div class="row align-items-center g-5">
 				<div class="col-12 col-md-6">
@@ -151,7 +153,7 @@ get_header();
 	?>
 	<section class="sp-products position-relative">
 		<div class="container">
-			<div class="sp-section-head">
+			<div class="sp-section-head wow sp-anim-up">
 				<div class="sp-divider"><span class="sp-eyebrow"><?php echo wp_kses_post( $products_eyebrow ); ?></span></div>
 				<h2><?php echo wp_kses_post( $products_title ); ?></h2>
 				<p class="sp-section-head__body mx-auto">
@@ -161,69 +163,98 @@ get_header();
 
 			<div class="row g-4 mt-4">
 				<?php
+				/*
+				 * Featured products — today's suggested menu, hand-picked from Toast.
+				 * Title / description / price come straight from the Toast menu items
+				 * ( 'guid' below is the Toast menu-item GUID ) and are hardcoded here so
+				 * the homepage doesn't call the API on every load.
+				 */
 				$sp_products = array(
 					array(
-						'category'      => 'Tart',
-						'name'          => 'Strawberry &amp; basil tart',
-						'price'         => '$8',
+						'category'      => 'Soup',
+						'name'          => 'Chicken Tortellini',
+						'price'         => '$6',
 						'old_price'     => '',
-						'badge_label'   => 'New',
+						'badge_label'   => '',
 						'badge_tone'    => '',
-						'photo_variant' => '',
-						'tagline'       => 'Strawberry tart, top-down',
+						'photo_variant' => 'sp-photo--cream',
+						'tagline'       => 'Chicken tortellini soup',
+						'desc'          => 'Chicken, cheese tortellini, vegetables, savory broth',
+						'guid'          => '643ce289-6207-4e35-ae48-f9b697ddaa9c',
+						'icon'          => 'fa-coffee',
+						'image'         => '', // fill with an image URL to replace the icon.
 					),
 					array(
-						'category'      => 'Cheesecake',
-						'name'          => 'Mama Kay&rsquo;s cheesecake',
+						'category'      => 'Salad',
+						'name'          => 'Berry Burrata',
+						'price'         => '$14.50',
+						'old_price'     => '',
+						'badge_label'   => '',
+						'badge_tone'    => '',
+						'photo_variant' => 'sp-photo--brown',
+						'tagline'       => 'Berry burrata salad',
+						'desc'          => 'Seasonal berries, baby spinach, burrata, fresh basil, honey vinaigrette, toasted almonds',
+						'guid'          => 'eebb8c22-98c4-42f4-bace-e8531b315ef8',
+						'icon'          => 'fa-leaf',
+						'image'         => '',
+					),
+					array(
+						'category'      => 'Main',
+						'name'          => 'Turkey Mornay Melt',
+						'price'         => '$15.50',
+						'old_price'     => '',
+						'badge_label'   => '',
+						'badge_tone'    => '',
+						'photo_variant' => '',
+						'tagline'       => 'Turkey Mornay melt',
+						'desc'          => 'Toasted English muffin, turkey, tomato, Mornay sauce, bacon; baked until bubbly',
+						'guid'          => 'a30239f0-f2ee-4d70-bffa-1244c75ef707',
+						'icon'          => 'fa-cutlery',
+						'image'         => '',
+					),
+					array(
+						'category'      => 'Dessert',
+						'name'          => 'Bourbon Pecan Pie',
 						'price'         => '$9',
 						'old_price'     => '',
 						'badge_label'   => '',
 						'badge_tone'    => '',
 						'photo_variant' => 'sp-photo--cream',
-						'tagline'       => 'Sliced cheesecake',
-					),
-					array(
-						'category'      => 'Bread',
-						'name'          => 'Country sourdough boule',
-						'price'         => '$11',
-						'old_price'     => '$14',
-						'badge_label'   => 'Sale',
-						'badge_tone'    => '',
-						'photo_variant' => 'sp-photo--brown',
-						'tagline'       => 'Sourdough loaf',
-					),
-					array(
-						'category'      => 'Confection',
-						'name'          => 'Pistachio macarons (6)',
-						'price'         => '$18',
-						'old_price'     => '',
-						'badge_label'   => 'GF',
-						'badge_tone'    => 'gf',
-						'photo_variant' => 'sp-photo--cream',
-						'tagline'       => 'Macaron box',
+						'tagline'       => 'Bourbon pecan pie',
+						'desc'          => '',
+						'guid'          => '72a29101-4f79-4c91-aeb0-8776b839d10b',
+						'icon'          => 'fa-birthday-cake',
+						'image'         => '',
 					),
 				);
-				foreach ( $sp_products as $p ) : ?>
-					<div class="col-12 col-sm-6 col-lg-3">
-						<article class="sp-card">
-							<div class="sp-card__img sp-photo position-relative">
+				foreach ( $sp_products as $sp_pi => $p ) : ?>
+					<div class="col-12 col-sm-6 col-lg-3 wow sp-anim-up" data-wow-delay="<?php echo esc_attr( ( $sp_pi * 0.1 ) . 's' ); ?>">
+						<article class="sp-card" data-toast-guid="<?php echo esc_attr( $p['guid'] ?? '' ); ?>">
+							<div class="sp-card__img position-relative">
 								<?php if ( $p['badge_label'] ) : ?>
 									<span class="sp-badge<?php echo $p['badge_tone'] ? ' sp-badge--' . esc_attr( $p['badge_tone'] ) : ''; ?>"><?php echo esc_html( $p['badge_label'] ); ?></span>
 								<?php endif; ?>
-								<div class="sp-photo <?php echo esc_attr( $p['photo_variant'] ); ?> position-absolute top-0 start-0 w-100 h-100">
-									<span class="sp-photo__label"><?php echo esc_html( $p['tagline'] ); ?></span>
-								</div>
+								<?php if ( ! empty( $p['image'] ) ) : ?>
+									<img src="<?php echo esc_url( $p['image'] ); ?>" alt="<?php echo esc_attr( $p['name'] ); ?>" class="sp-card__photo position-absolute top-0 start-0 w-100 h-100" />
+								<?php else : ?>
+									<div class="sp-card__icon-wrap <?php echo esc_attr( $p['photo_variant'] ); ?> position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
+										<i class="fa <?php echo esc_attr( $p['icon'] ); ?> sp-card__icon" aria-hidden="true"></i>
+									</div>
+								<?php endif; ?>
 							</div>
 							<div>
 								<div class="sp-card__cat"><?php echo esc_html( $p['category'] ); ?></div>
-								<h3 class="sp-card__title mt-1"><?php echo $p['name']; // entities intentional ?></h3>
+								<h3 class="sp-card__title mt-1"><?php echo esc_html( $p['name'] ); ?></h3>
+								<?php if ( ! empty( $p['desc'] ) ) : ?>
+									<p class="sp-card__desc mt-1"><?php echo esc_html( $p['desc'] ); ?></p>
+								<?php endif; ?>
 							</div>
 							<div class="sp-card__row">
 								<div class="sp-card__price">
 									<?php if ( $p['old_price'] ) : ?><s><?php echo esc_html( $p['old_price'] ); ?></s><?php endif; ?>
 									<?php echo esc_html( $p['price'] ); ?>
 								</div>
-								<button class="sp-card__add">Add</button>
+								<a href="#" class="sp-card__add" role="button">Add</a>
 							</div>
 						</article>
 					</div>
@@ -233,9 +264,9 @@ get_header();
 			<?php if ( $products_btn_text ) : ?>
 				<div class="d-flex justify-content-center mt-5">
 					<?php if ( $products_btn_link ) : ?>
-						<a href="<?php echo esc_url( $products_btn_link ); ?>" class="sp-btn sp-btn--dark"><?php echo esc_html( $products_btn_text ); ?></a>
+						<a href="<?php echo esc_url( $products_btn_link ?: '#' ); ?>" class="<?php echo esc_attr( sp_home_meta( '_sp_home_products_footer_btn_classes', 'sp-btn sp-btn--dark' ) ); ?>"><?php echo esc_html( $products_btn_text ); ?></a>
 					<?php else : ?>
-						<button class="sp-btn sp-btn--dark"><?php echo esc_html( $products_btn_text ); ?></button>
+						<a href="<?php echo esc_url( $products_btn_link ?: '#' ); ?>" class="<?php echo esc_attr( sp_home_meta( '_sp_home_products_footer_btn_classes', 'sp-btn sp-btn--dark' ) ); ?>"><?php echo esc_html( $products_btn_text ); ?></a>
 					<?php endif; ?>
 				</div>
 			<?php endif; ?>
@@ -246,8 +277,8 @@ get_header();
 	<?php
 		$bistro_image        = sp_home_meta( '_sp_home_bistro_image' );
 		$bistro_image_id     = get_post_meta( get_the_ID(), '_sp_home_bistro_image_id', true );
-		$bistro_chalk_script = sp_home_meta( '_sp_home_bistro_chalk_script', 'Today&rsquo;s' );
-		$bistro_chalk_title  = sp_home_meta( '_sp_home_bistro_chalk_title', 'Plat du jour' );
+		$bistro_chalk_script = sp_home_meta( '_sp_home_bistro_chalk_script', '' );
+		$bistro_chalk_title  = sp_home_meta( '_sp_home_bistro_chalk_title', 'Today&rsquo;s Suggested Menu' );
 		$bistro_eyebrow      = sp_home_meta( '_sp_home_bistro_eyebrow', 'The Bistro' );
 		$bistro_title        = sp_home_meta( '_sp_home_bistro_title', 'Lunch &amp; dinner,<br/><em>French at heart.</em>' );
 		$bistro_body         = sp_home_meta( '_sp_home_bistro_body', 'A short, seasonal menu of sandwiches, cassoulets, ni&ccedil;oises, and whatever the chef picked up at the farmers&rsquo; market this week. Wines by the glass start at $8.' );
@@ -256,7 +287,7 @@ get_header();
 		$bistro_btn2_text    = sp_home_meta( '_sp_home_bistro_btn2_text', 'Reserve' );
 		$bistro_btn2_link    = sp_home_meta( '_sp_home_bistro_btn2_link', '' );
 	?>
-	<section class="sp-bistro position-relative">
+	<section class="sp-bistro position-relative wow sp-anim-up">
 		<div class="row g-0 align-items-stretch sp-bistro__row">
 			<div class="col-12 col-lg-4">
 				<?php if ( $bistro_image ) : ?>
@@ -271,23 +302,26 @@ get_header();
 			<div class="col-12 col-lg-4 d-flex align-items-center justify-content-center py-5">
 				<div class="sp-chalk sp-bistro__chalk">
 					<div class="text-center mb-4">
-						<span class="sp-bistro__chalk-script"><?php echo wp_kses_post( $bistro_chalk_script ); ?></span>
+						<?php if ( $bistro_chalk_script ) : ?>
+							<span class="sp-bistro__chalk-script"><?php echo wp_kses_post( $bistro_chalk_script ); ?></span>
+						<?php endif; ?>
 						<div class="sp-bistro__chalk-title fst-italic"><?php echo wp_kses_post( $bistro_chalk_title ); ?></div>
 						<div class="sp-bistro__chalk-rule mx-auto"></div>
 					</div>
 					<ul class="sp-bistro__menu list-unstyled d-flex flex-column m-0 p-0">
 						<?php
+						// Today's suggested menu — same Toast items as the featured cards above.
 						$sp_specials = array(
-							array( 'Croque Madame',  '12' ),
-							array( 'Ni&ccedil;oise Salad', '16' ),
-							array( 'Coq au Vin',     '24' ),
-							array( 'Tarte Tatin',    '9' ),
+							array( 'name' => 'Chicken Tortellini', 'price' => '6',     'guid' => '643ce289-6207-4e35-ae48-f9b697ddaa9c' ),
+							array( 'name' => 'Berry Burrata',      'price' => '14.50', 'guid' => 'eebb8c22-98c4-42f4-bace-e8531b315ef8' ),
+							array( 'name' => 'Turkey Mornay Melt', 'price' => '15.50', 'guid' => 'a30239f0-f2ee-4d70-bffa-1244c75ef707' ),
+							array( 'name' => 'Bourbon Pecan Pie',  'price' => '9',     'guid' => '72a29101-4f79-4c91-aeb0-8776b839d10b' ),
 						);
 						foreach ( $sp_specials as $sp_special ) : ?>
-							<li class="sp-bistro__menu-item d-flex align-items-baseline">
-								<span class="fst-italic"><?php echo $sp_special[0]; // entity intentional ?></span>
+							<li class="sp-bistro__menu-item d-flex align-items-baseline" data-toast-guid="<?php echo esc_attr( $sp_special['guid'] ); ?>">
+								<span class="fst-italic"><?php echo esc_html( $sp_special['name'] ); ?></span>
 								<span class="sp-bistro__dots flex-grow-1"></span>
-								<span class="sp-bistro__price"><?php echo esc_html( $sp_special[1] ); ?></span>
+								<span class="sp-bistro__price"><?php echo esc_html( $sp_special['price'] ); ?></span>
 							</li>
 						<?php endforeach; ?>
 					</ul>
@@ -301,16 +335,16 @@ get_header();
 					<div class="d-flex flex-wrap gap-3 mt-4">
 						<?php if ( $bistro_btn1_text ) : ?>
 							<?php if ( $bistro_btn1_link ) : ?>
-								<a href="<?php echo esc_url( $bistro_btn1_link ); ?>" class="sp-btn sp-btn--primary"><?php echo esc_html( $bistro_btn1_text ); ?></a>
+								<a href="<?php echo esc_url( $bistro_btn1_link ?: '#' ); ?>" class="<?php echo esc_attr( sp_home_meta( '_sp_home_bistro_btn1_classes', 'sp-btn sp-btn--primary' ) ); ?>"><?php echo esc_html( $bistro_btn1_text ); ?></a>
 							<?php else : ?>
-								<button class="sp-btn sp-btn--primary"><?php echo esc_html( $bistro_btn1_text ); ?></button>
+								<a href="<?php echo esc_url( $bistro_btn1_link ?: '#' ); ?>" class="<?php echo esc_attr( sp_home_meta( '_sp_home_bistro_btn1_classes', 'sp-btn sp-btn--primary' ) ); ?>"><?php echo esc_html( $bistro_btn1_text ); ?></a>
 							<?php endif; ?>
 						<?php endif; ?>
 						<?php if ( $bistro_btn2_text ) : ?>
 							<?php if ( $bistro_btn2_link ) : ?>
-								<a href="<?php echo esc_url( $bistro_btn2_link ); ?>" class="sp-btn sp-btn--ghost-light"><?php echo esc_html( $bistro_btn2_text ); ?></a>
+								<a href="<?php echo esc_url( $bistro_btn2_link ?: '#' ); ?>" class="<?php echo esc_attr( sp_home_meta( '_sp_home_bistro_btn2_classes', 'sp-btn sp-btn--ghost-light' ) ); ?>"><?php echo esc_html( $bistro_btn2_text ); ?></a>
 							<?php else : ?>
-								<button class="sp-btn sp-btn--ghost-light"><?php echo esc_html( $bistro_btn2_text ); ?></button>
+								<a href="<?php echo esc_url( $bistro_btn2_link ?: '#' ); ?>" class="<?php echo esc_attr( sp_home_meta( '_sp_home_bistro_btn2_classes', 'sp-btn sp-btn--ghost-light' ) ); ?>"><?php echo esc_html( $bistro_btn2_text ); ?></a>
 							<?php endif; ?>
 						<?php endif; ?>
 					</div>
@@ -343,7 +377,7 @@ get_header();
 	?>
 	<section class="sp-editorial">
 		<div class="container">
-			<div class="sp-editorial__banner d-inline-flex align-items-center rounded-pill text-uppercase mb-5">
+			<div class="sp-editorial__banner d-inline-flex align-items-center rounded-pill text-uppercase mb-5 wow sp-anim-up">
 				<span class="sp-editorial__banner-icon rounded-circle d-inline-flex align-items-center justify-content-center">
 					<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
 						<path d="M12 22c5-3 8-7 8-12V5l-8 3-8-3v5c0 5 3 9 8 12z"/>
@@ -359,7 +393,7 @@ get_header();
 				<?php
 				foreach ( $sp_editorial as $sp_idx => $sp_col ) :
 					$sp_col = wp_parse_args( $sp_col, array( 'eyebrow' => '', 'title' => '', 'body' => '' ) ); ?>
-					<div class="col-12 col-md-4">
+					<div class="col-12 col-md-4 wow sp-anim-up" data-wow-delay="<?php echo esc_attr( ( $sp_idx * 0.12 ) . 's' ); ?>">
 						<article class="d-flex flex-column gap-3">
 							<div class="sp-editorial__head d-flex align-items-center">
 								<span class="sp-script sp-editorial__num">0<?php echo (int) $sp_idx + 1; ?></span>
@@ -386,7 +420,7 @@ get_header();
 		$visit_address   = sp_home_meta( '_sp_home_visit_address', '3718 2nd Ave<br/>Columbus, GA 31901' );
 		$visit_hours     = sp_home_meta( '_sp_home_visit_hours', 'Mon &ndash; Fri<br/>7:30 &ndash; 5:00<br/><span class="sp-visit__info-muted">Sat &amp; Sun closed</span>' );
 	?>
-	<section class="sp-visit">
+	<section class="sp-visit wow sp-anim-up">
 		<div class="container">
 			<div class="sp-visit__card position-relative overflow-hidden rounded">
 				<div class="row align-items-center g-5">
@@ -397,16 +431,16 @@ get_header();
 						<div class="d-flex flex-wrap gap-3 mt-4">
 							<?php if ( $visit_btn1_text ) : ?>
 								<?php if ( $visit_btn1_link ) : ?>
-									<a href="<?php echo esc_url( $visit_btn1_link ); ?>" class="sp-btn sp-btn--dark"><?php echo esc_html( $visit_btn1_text ); ?></a>
+									<a href="<?php echo esc_url( $visit_btn1_link ?: '#' ); ?>" class="<?php echo esc_attr( sp_home_meta( '_sp_home_visit_btn1_classes', 'sp-btn sp-btn--dark' ) ); ?>"><?php echo esc_html( $visit_btn1_text ); ?></a>
 								<?php else : ?>
-									<button class="sp-btn sp-btn--dark"><?php echo esc_html( $visit_btn1_text ); ?></button>
+									<a href="<?php echo esc_url( $visit_btn1_link ?: '#' ); ?>" class="<?php echo esc_attr( sp_home_meta( '_sp_home_visit_btn1_classes', 'sp-btn sp-btn--dark' ) ); ?>"><?php echo esc_html( $visit_btn1_text ); ?></a>
 								<?php endif; ?>
 							<?php endif; ?>
 							<?php if ( $visit_btn2_text ) : ?>
 								<?php if ( $visit_btn2_link ) : ?>
-									<a href="<?php echo esc_url( $visit_btn2_link ); ?>" class="sp-btn sp-btn--ghost"><?php echo esc_html( $visit_btn2_text ); ?></a>
+									<a href="<?php echo esc_url( $visit_btn2_link ?: '#' ); ?>" class="<?php echo esc_attr( sp_home_meta( '_sp_home_visit_btn2_classes', 'sp-btn sp-btn--ghost' ) ); ?>"><?php echo esc_html( $visit_btn2_text ); ?></a>
 								<?php else : ?>
-									<button class="sp-btn sp-btn--ghost"><?php echo esc_html( $visit_btn2_text ); ?></button>
+									<a href="<?php echo esc_url( $visit_btn2_link ?: '#' ); ?>" class="<?php echo esc_attr( sp_home_meta( '_sp_home_visit_btn2_classes', 'sp-btn sp-btn--ghost' ) ); ?>"><?php echo esc_html( $visit_btn2_text ); ?></a>
 								<?php endif; ?>
 							<?php endif; ?>
 						</div>

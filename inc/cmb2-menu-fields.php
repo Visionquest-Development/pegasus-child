@@ -46,6 +46,8 @@ function sp_menu_defaults() {
 		'_sp_menu_cta_btn1_link'    => '#',
 		'_sp_menu_cta_btn2_text'    => 'Private dining →',
 		'_sp_menu_cta_btn2_link'    => '#',
+		'_sp_menu_cta_btn1_classes' => 'sp-btn sp-btn--primary',
+		'_sp_menu_cta_btn2_classes' => 'sp-btn sp-btn--ghost',
 		'_sp_menu_cta_hours_heading' => 'Hours of service',
 		'_sp_menu_cta_find_heading' => 'Find us',
 		'_sp_menu_cta_address'      => "Sugar Peddler<br>3718 2nd Ave<br>Columbus, GA 31901",
@@ -230,6 +232,18 @@ function sp_register_menu_metaboxes() {
 		'id'      => $prefix . 'btn2_link',
 		'type'    => 'text_url',
 		'default' => sp_menu_default( $prefix . 'btn2_link' ),
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Primary button classes', 'pegasus-child' ),
+		'id'      => $prefix . 'btn1_classes',
+		'type'    => 'text',
+		'default' => sp_menu_default( $prefix . 'btn1_classes' ),
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Secondary button classes', 'pegasus-child' ),
+		'id'      => $prefix . 'btn2_classes',
+		'type'    => 'text',
+		'default' => sp_menu_default( $prefix . 'btn2_classes' ),
 	) );
 
 	$cmb->add_field( array(

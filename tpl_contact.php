@@ -29,7 +29,7 @@ $map_href = $map ? $map : 'https://www.google.com/maps/search/?api=1&query=' . r
 
 	<?php /* ── HERO ─────────────────────────────────────────────────── */ ?>
 	<section class="sp-menu-hero position-relative">
-		<div class="container sp-menu-hero__inner position-relative text-center">
+		<div class="container sp-menu-hero__inner position-relative text-center wow sp-anim-up">
 			<span class="sp-script sp-menu-hero__kicker"><?php echo esc_html( sp_contact_meta( '_sp_contact_hero_kicker' ) ); ?></span>
 			<h1 class="sp-menu-hero__title fw-normal mt-1"><?php echo wp_kses_post( sp_contact_meta( '_sp_contact_hero_title' ) ); ?></h1>
 			<p class="sp-menu-hero__body mt-4 mx-auto"><?php echo esc_html( sp_contact_meta( '_sp_contact_hero_body' ) ); ?></p>
@@ -39,7 +39,7 @@ $map_href = $map ? $map : 'https://www.google.com/maps/search/?api=1&query=' . r
 	<?php /* ── CONTACT CARD ─────────────────────────────────────────── */ ?>
 	<section class="sp-contact">
 		<div class="container">
-			<div class="sp-contact-card row g-0 overflow-hidden rounded" itemscope itemtype="https://schema.org/Restaurant">
+			<div class="sp-contact-card row g-0 overflow-hidden rounded wow sp-anim-up" itemscope itemtype="https://schema.org/Restaurant">
 				<meta itemprop="name" content="<?php echo esc_attr( $biz ); ?>" />
 				<meta itemprop="url" content="<?php echo esc_url( home_url( '/' ) ); ?>" />
 				<?php if ( $sched ) : ?>
@@ -124,13 +124,13 @@ $map_href = $map ? $map : 'https://www.google.com/maps/search/?api=1&query=' . r
 	<?php /* ── MESSAGE FORM (Gravity Forms) ───────────────────────────── */ ?>
 	<section class="sp-contact-form">
 		<div class="container">
-			<div class="sp-contact-form__head text-center">
+			<div class="sp-contact-form__head text-center wow sp-anim-up">
 				<span class="sp-script"><?php echo esc_html( sp_contact_meta( '_sp_contact_form_kicker' ) ); ?></span>
 				<h2 class="sp-contact-form__title mt-1"><?php echo wp_kses_post( sp_contact_meta( '_sp_contact_form_title' ) ); ?></h2>
 				<p class="sp-contact-form__intro mt-3"><?php echo esc_html( sp_contact_meta( '_sp_contact_form_intro' ) ); ?></p>
 			</div>
 
-			<div class="sp-contact-form__body">
+			<div class="sp-contact-form__body wow sp-anim-up" data-wow-delay="0.1s">
 				<?php
 				$gform_id = (int) sp_contact_meta( '_sp_contact_gform_id' );
 

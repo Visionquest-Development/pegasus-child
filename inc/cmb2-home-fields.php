@@ -131,6 +131,20 @@ function sp_register_home_metaboxes() {
 		'default' => '#',
 	) );
 
+	$cmb->add_field( array(
+		'name'    => __( 'Primary button classes', 'pegasus-child' ),
+		'desc'    => __( 'CSS classes for the primary button link.', 'pegasus-child' ),
+		'id'      => $prefix . 'btn1_classes',
+		'type'    => 'text',
+		'default' => 'sp-btn sp-btn--primary',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Secondary button classes', 'pegasus-child' ),
+		'id'      => $prefix . 'btn2_classes',
+		'type'    => 'text',
+		'default' => 'sp-btn sp-btn--ghost',
+	) );
+
 	$hero_facts = $cmb->add_field( array(
 		'id'          => $prefix . 'facts',
 		'type'        => 'group',
@@ -299,6 +313,12 @@ function sp_register_home_metaboxes() {
 		'id'   => $prefix . 'footer_btn_link',
 		'type' => 'text_url',
 	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Footer button classes', 'pegasus-child' ),
+		'id'      => $prefix . 'footer_btn_classes',
+		'type'    => 'text',
+		'default' => 'sp-btn sp-btn--dark',
+	) );
 
 
 	/* ── 5. Bistro intro ─────────────────────────────────────────────────── */
@@ -325,16 +345,15 @@ function sp_register_home_metaboxes() {
 	) );
 	$cmb->add_field( array(
 		'name'    => __( 'Chalkboard script line', 'pegasus-child' ),
-		'desc'    => __( 'Small handwritten word above the chalkboard title ( e.g. "Today\'s" ).', 'pegasus-child' ),
+		'desc'    => __( 'Small handwritten word above the chalkboard title. Leave empty for none.', 'pegasus-child' ),
 		'id'      => $prefix . 'chalk_script',
 		'type'    => 'text',
-		'default' => 'Today&rsquo;s',
 	) );
 	$cmb->add_field( array(
 		'name'    => __( 'Chalkboard title', 'pegasus-child' ),
 		'id'      => $prefix . 'chalk_title',
 		'type'    => 'text',
-		'default' => 'Plat du jour',
+		'default' => 'Today&rsquo;s Suggested Menu',
 	) );
 	$cmb->add_field( array(
 		'name'    => __( 'Eyebrow', 'pegasus-child' ),
@@ -376,6 +395,18 @@ function sp_register_home_metaboxes() {
 		'name' => __( 'Secondary button link', 'pegasus-child' ),
 		'id'   => $prefix . 'btn2_link',
 		'type' => 'text_url',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Primary button classes', 'pegasus-child' ),
+		'id'      => $prefix . 'btn1_classes',
+		'type'    => 'text',
+		'default' => 'sp-btn sp-btn--primary',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Secondary button classes', 'pegasus-child' ),
+		'id'      => $prefix . 'btn2_classes',
+		'type'    => 'text',
+		'default' => 'sp-btn sp-btn--ghost-light',
 	) );
 
 
@@ -488,6 +519,18 @@ function sp_register_home_metaboxes() {
 		'name' => __( 'Secondary button link', 'pegasus-child' ),
 		'id'   => $prefix . 'btn2_link',
 		'type' => 'text_url',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Primary button classes', 'pegasus-child' ),
+		'id'      => $prefix . 'btn1_classes',
+		'type'    => 'text',
+		'default' => 'sp-btn sp-btn--dark',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Secondary button classes', 'pegasus-child' ),
+		'id'      => $prefix . 'btn2_classes',
+		'type'    => 'text',
+		'default' => 'sp-btn sp-btn--ghost',
 	) );
 	$cmb->add_field( array(
 		'name'    => __( 'Address', 'pegasus-child' ),

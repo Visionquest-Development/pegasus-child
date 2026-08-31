@@ -66,6 +66,24 @@
 
 .sp-page { background: var(--sp-paper); overflow: hidden; }
 
+/* ── WOW.js scroll reveals — subtle, size-independent ────────────────────
+   Used with the pegasus-wow plugin: add `wow sp-anim-up` (gentle rise + fade)
+   or `wow sp-anim-in` (pure fade) to an element, plus an optional
+   data-wow-delay. Unlike animate.css fadeInUp (100% of element height), the
+   rise is a fixed 24px so it stays subtle on tall blocks too. WOW adds the
+   `animated` class on scroll-in, which supplies the duration + fill-mode. */
+@-webkit-keyframes spAnimUp { from { opacity: 0; -webkit-transform: translate3d(0, 24px, 0); transform: translate3d(0, 24px, 0); } to { opacity: 1; -webkit-transform: none; transform: none; } }
+@keyframes spAnimUp { from { opacity: 0; -webkit-transform: translate3d(0, 24px, 0); transform: translate3d(0, 24px, 0); } to { opacity: 1; -webkit-transform: none; transform: none; } }
+@-webkit-keyframes spAnimIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes spAnimIn { from { opacity: 0; } to { opacity: 1; } }
+.sp-anim-up { -webkit-animation-name: spAnimUp; animation-name: spAnimUp; }
+.sp-anim-in { -webkit-animation-name: spAnimIn; animation-name: spAnimIn; }
+
+/* Respect reduced-motion: reveal everything immediately, no animation. */
+@media (prefers-reduced-motion: reduce) {
+	.wow { -webkit-animation: none !important; animation: none !important; opacity: 1 !important; visibility: visible !important; -webkit-transform: none !important; transform: none !important; }
+}
+
 /* ── Buttons ────────────────────────────────────────────────────────── */
 .sp-btn {
 	display: inline-flex; align-items: center; justify-content: center; gap: 10px;
@@ -170,9 +188,15 @@
 
 /* ── Product card ───────────────────────────────────────────────────── */
 .sp-card { display: flex; flex-direction: column; gap: 14px; }
-.sp-card__img { aspect-ratio: 4 / 5; }
+.sp-card__img { aspect-ratio: 4 / 5; border-radius: 4px; overflow: hidden; background: var(--sp-pink-wash); }
+/* Featured-product icon fallback (shown until a real image is filled in). */
+.sp-card__icon-wrap { border-radius: 4px; }
+.sp-card__icon { font-size: 56px; line-height: 1; color: rgba(91, 63, 50, .5); }
+.sp-photo--brown .sp-card__icon,
+.sp-photo--dark .sp-card__icon { color: rgba(255, 243, 224, .82); }
 .sp-card__cat { font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sp-brown-mid); }
 .sp-card__title { font-family: var(--sp-display); font-size: 22px; font-weight: 500; color: var(--sp-wood); line-height: 1.15; }
+.sp-card__desc { font-size: 13px; line-height: 1.5; color: var(--sp-brown); }
 .sp-card__row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
 .sp-card__price { font-family: var(--sp-display); font-size: 19px; color: var(--sp-pink); font-weight: 500; }
 .sp-card__price s { color: var(--sp-brown-mid); margin-right: 8px; font-size: 15px; }

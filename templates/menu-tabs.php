@@ -21,19 +21,19 @@ if ( empty( $tabs ) || ! is_array( $tabs ) ) {
 		$past_cls  = $is_past ? ' sp-menu-tabs__btn--past' : '';
 	?>
 		<li class="nav-item" role="presentation">
-			<button
+			<a
 				class="nav-link sp-menu-tabs__btn fst-italic <?php echo esc_attr( $active . $past_cls ); ?>"
 				id="tab-<?php echo esc_attr( $tab_id ); ?>"
 				data-bs-toggle="tab"
 				data-bs-target="#panel-<?php echo esc_attr( $tab_id ); ?>"
-				type="button"
+				href="#panel-<?php echo esc_attr( $tab_id ); ?>"
 				role="tab"
 				aria-controls="panel-<?php echo esc_attr( $tab_id ); ?>"
 				aria-selected="<?php echo esc_attr( $selected ); ?>"
 				<?php echo $is_past ? 'title="Outside serving hours right now"' : ''; ?>
 			>
 				<?php echo esc_html( $label ); ?>
-			</button>
+			</a>
 		</li>
 	<?php endforeach; ?>
 </ul>
