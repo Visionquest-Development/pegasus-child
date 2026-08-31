@@ -40,7 +40,7 @@
 	 * (Only meaningful when CMB2 is available via the parent theme.)
 	 */
 	function valorcare_include_cmb2_fields() {
-		foreach ( array( 'cmb2-home-fields.php', 'cmb2-services-fields.php', 'cmb2-service-single-fields.php', 'cmb2-about-fields.php', 'cmb2-contact-fields.php' ) as $file ) {
+		foreach ( array( 'cmb2-home-fields.php', 'cmb2-services-fields.php', 'cmb2-service-single-fields.php', 'cmb2-about-fields.php', 'cmb2-contact-fields.php', 'cmb2-apply-fields.php' ) as $file ) {
 			$path = get_stylesheet_directory() . '/inc/' . $file;
 			if ( file_exists( $path ) ) {
 				require_once $path;

@@ -729,10 +729,16 @@
 	   both .vc-home (palette + shared vc- classes) and .vc-services-page, so
 	   these rules only add the page-specific bits. */
 
-	/* Hero — navy band */
-	.vc-services-page .vc-svc-hero { background: var(--vc-navy); }
-	.vc-services-page .vc-svc-hero__title { margin: 14px 0 0; }
-	.vc-services-page .vc-svc-hero__intro {
+	/* Hero — navy band (shared by the Services, Contact & Apply inner pages) */
+	.vc-services-page .vc-svc-hero,
+	.vc-contact-page .vc-svc-hero,
+	.vc-apply-page .vc-svc-hero { background: var(--vc-navy); }
+	.vc-services-page .vc-svc-hero__title,
+	.vc-contact-page .vc-svc-hero__title,
+	.vc-apply-page .vc-svc-hero__title { margin: 14px 0 0; }
+	.vc-services-page .vc-svc-hero__intro,
+	.vc-contact-page .vc-svc-hero__intro,
+	.vc-apply-page .vc-svc-hero__intro {
 		color: #C6D0DD;
 		font-size: 1.08rem;
 		line-height: 1.8;
@@ -959,4 +965,126 @@
 
 	@media only screen and (max-width: 479px) {
 
+	}
+
+	/*~~~~~~~~~~~~~~~~~~~~
+	~~~~ APPLY PAGE ~~~~~
+	~~~~~~~~~~~~~~~~~~~~~*/
+	/* Caregiver Application page (tpl_apply.php). Wrapper carries both .vc-home
+	   and .vc-apply-page. Styles the supporting column plus the embedded
+	   Gravity Form so it matches the Valor Care look-and-feel. */
+
+	.vc-apply-page .vc-apply { background: var(--vc-cream); }
+	.vc-apply-page .vc-apply-aside { position: sticky; top: 24px; }
+	.vc-apply-page .vc-apply-list {
+		list-style: none;
+		padding: 0;
+		margin: 22px 0 26px;
+	}
+	.vc-apply-page .vc-apply-list li {
+		display: flex;
+		align-items: flex-start;
+		gap: 12px;
+		color: var(--vc-ink-soft);
+		line-height: 1.6;
+		margin-bottom: 12px;
+	}
+	.vc-apply-page .vc-apply-list li span { flex: 1; }
+	.vc-apply-page .vc-apply-notice {
+		background: var(--vc-card);
+		border: 1px solid var(--vc-line);
+		border-left: 4px solid var(--vc-gold);
+		padding: 18px 20px;
+		color: var(--vc-ink-soft);
+		font-size: .95rem;
+		line-height: 1.7;
+	}
+	.vc-apply-page .vc-apply-notice__label {
+		font-family: 'Cinzel', serif;
+		text-transform: uppercase;
+		letter-spacing: .12em;
+		font-size: .78rem;
+		color: var(--vc-gold-deep);
+		margin-bottom: 6px;
+	}
+	.vc-apply-page .vc-apply-contact-note {
+		color: var(--vc-ink-soft);
+		font-size: .95rem;
+		margin: 20px 0 0;
+	}
+
+	/* Gravity Form, themed to the form card */
+	.vc-apply-page .gform_wrapper.gravity-theme .gform_fields { grid-row-gap: 20px; }
+	.vc-apply-page .gform_wrapper .gsection {
+		border-bottom: 1px solid var(--vc-line);
+		margin: 8px 0 4px;
+		padding-bottom: 6px;
+	}
+	.vc-apply-page .gform_wrapper .gsection_title,
+	.vc-apply-page .gform_wrapper h2.gsection_title,
+	.vc-apply-page .gform_wrapper h3.gsection_title {
+		font-family: 'Cinzel', serif;
+		color: var(--vc-navy);
+		font-size: 1.15rem;
+		font-weight: 600;
+		margin: 0;
+	}
+	.vc-apply-page .gform_wrapper .gfield_label,
+	.vc-apply-page .gform_wrapper legend.gfield_label {
+		color: var(--vc-navy);
+		font-weight: 700;
+		font-size: .95rem;
+	}
+	.vc-apply-page .gform_wrapper .gfield_required { color: var(--vc-gold-deep); }
+	.vc-apply-page .gform_wrapper .gform_required_legend { color: var(--vc-ink-soft); }
+	.vc-apply-page .gform_wrapper input[type="text"],
+	.vc-apply-page .gform_wrapper input[type="email"],
+	.vc-apply-page .gform_wrapper input[type="tel"],
+	.vc-apply-page .gform_wrapper input[type="number"],
+	.vc-apply-page .gform_wrapper input[type="date"],
+	.vc-apply-page .gform_wrapper textarea,
+	.vc-apply-page .gform_wrapper select {
+		border-radius: 2px;
+		border: 1px solid #D8CDB5;
+		padding: .6rem .8rem;
+		background: #fff;
+		color: var(--vc-ink);
+	}
+	.vc-apply-page .gform_wrapper input:focus,
+	.vc-apply-page .gform_wrapper textarea:focus,
+	.vc-apply-page .gform_wrapper select:focus {
+		border-color: var(--vc-gold);
+		box-shadow: 0 0 0 .2rem rgba(198,154,62,.2);
+		outline: none;
+	}
+	.vc-apply-page .gform_wrapper .gfield_description { color: #6B7688; }
+	.vc-apply-page .gform_wrapper .gfield_radio label,
+	.vc-apply-page .gform_wrapper .gfield_checkbox label {
+		color: var(--vc-ink);
+		font-weight: 400;
+	}
+	.vc-apply-page .gform_wrapper .gfield-choice-input:checked { accent-color: var(--vc-gold-deep); }
+	.vc-apply-page .gform_wrapper .gform_footer input[type="submit"],
+	.vc-apply-page .gform_wrapper .gform_footer button,
+	.vc-apply-page .gform_wrapper .gform_page_footer input[type="submit"] {
+		background: linear-gradient(180deg, var(--vc-gold-light), var(--vc-gold-deep));
+		color: var(--vc-navy);
+		border: 0;
+		border-radius: 2px;
+		font-weight: 700;
+		letter-spacing: .04em;
+		padding: .7rem 1.8rem;
+	}
+	.vc-apply-page .gform_wrapper .gform_footer input[type="submit"]:hover,
+	.vc-apply-page .gform_wrapper .gform_footer button:hover {
+		filter: brightness(1.04);
+		color: var(--vc-navy);
+	}
+	.vc-apply-page .gform_wrapper .gform_validation_errors {
+		border-radius: 2px;
+		border-left: 4px solid #b3261e;
+	}
+
+	@media (max-width: 991px) {
+		.vc-apply-page .vc-apply-aside { position: static; margin-bottom: 2.5rem; }
 	}
