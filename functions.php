@@ -50,6 +50,18 @@
 	add_action( 'after_setup_theme', 'valorcare_include_cmb2_fields' );
 
 	/**
+	 * Caregiver Application (Gravity Form) — keep the theme-bundled field set in
+	 * sync with Gravity Form ID 2. Safe no-op when Gravity Forms is inactive.
+	 */
+	function valorcare_include_gravity_forms() {
+		$path = get_stylesheet_directory() . '/inc/gf-caregiver-application.php';
+		if ( file_exists( $path ) ) {
+			require_once $path;
+		}
+	}
+	add_action( 'after_setup_theme', 'valorcare_include_gravity_forms' );
+
+	/**
 	* Proper way to enqueue JS
 	*/
 	function pegasus_child_bootstrap_js() {
