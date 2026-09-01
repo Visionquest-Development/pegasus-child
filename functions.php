@@ -309,6 +309,12 @@
 			$items = array();
 
 			foreach ( $group['menuItems'] ?? array() as $raw_item ) {
+				// Only include items flagged for Toast Online Ordering in Toast's visibility list.
+				$sp_vis = ( isset( $raw_item['visibility'] ) && is_array( $raw_item['visibility'] ) ) ? $raw_item['visibility'] : array();
+				if ( ! in_array( 'TOAST_ONLINE_ORDERING', $sp_vis, true ) ) {
+					continue;
+				}
+
 				$item = vqdev_toast_transform_item( $raw_item, $mod_groups, $mod_options );
 				if ( ! $item ) {
 					continue;
