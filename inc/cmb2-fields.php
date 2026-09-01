@@ -65,6 +65,13 @@ function pegasus_child_register_home_hero_metabox() {
 		'type' => 'text_url',
 	) );
 	$cmb->add_field( array(
+		'name'    => __( 'Button 1 — CSS Classes', 'pegasus-child' ),
+		'desc'    => __( 'Space-separated CSS classes. Base: rcf-btn. Variants: rcf-btn--light &amp; rcf-btn--outline-light (dark/navy sections), rcf-btn--ghost (light sections).', 'pegasus-child' ),
+		'id'      => 'rcf_hero_btn1_class',
+		'type'    => 'text',
+		'default' => 'rcf-btn rcf-btn--light',
+	) );
+	$cmb->add_field( array(
 		'name'    => __( 'Button 2 — Text', 'pegasus-child' ),
 		'id'      => 'rcf_hero_btn2_text',
 		'type'    => 'text_small',
@@ -74,6 +81,13 @@ function pegasus_child_register_home_hero_metabox() {
 		'name' => __( 'Button 2 — URL', 'pegasus-child' ),
 		'id'   => 'rcf_hero_btn2_url',
 		'type' => 'text_url',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Button 2 — CSS Classes', 'pegasus-child' ),
+		'desc'    => __( 'Space-separated CSS classes. Base: rcf-btn. Variants: rcf-btn--light &amp; rcf-btn--outline-light (dark/navy sections), rcf-btn--ghost (light sections).', 'pegasus-child' ),
+		'id'      => 'rcf_hero_btn2_class',
+		'type'    => 'text',
+		'default' => 'rcf-btn rcf-btn--outline-light',
 	) );
 }
 add_action( 'cmb2_admin_init', 'pegasus_child_register_home_hero_metabox' );
@@ -350,6 +364,13 @@ function pegasus_child_register_home_cta_metabox() {
 		'type' => 'text_url',
 	) );
 	$cmb->add_field( array(
+		'name'    => __( 'Button 1 — CSS Classes', 'pegasus-child' ),
+		'desc'    => __( 'Space-separated CSS classes. Base: rcf-btn. Variants: rcf-btn--light &amp; rcf-btn--outline-light (dark/navy sections), rcf-btn--ghost (light sections).', 'pegasus-child' ),
+		'id'      => $prefix . 'btn1_class',
+		'type'    => 'text',
+		'default' => 'rcf-btn rcf-btn--light',
+	) );
+	$cmb->add_field( array(
 		'name'    => __( 'Button 2 — Text', 'pegasus-child' ),
 		'id'      => $prefix . 'btn2_text',
 		'type'    => 'text_small',
@@ -359,6 +380,13 @@ function pegasus_child_register_home_cta_metabox() {
 		'name' => __( 'Button 2 — URL', 'pegasus-child' ),
 		'id'   => $prefix . 'btn2_url',
 		'type' => 'text_url',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Button 2 — CSS Classes', 'pegasus-child' ),
+		'desc'    => __( 'Space-separated CSS classes. Base: rcf-btn. Variants: rcf-btn--light &amp; rcf-btn--outline-light (dark/navy sections), rcf-btn--ghost (light sections).', 'pegasus-child' ),
+		'id'      => $prefix . 'btn2_class',
+		'type'    => 'text',
+		'default' => 'rcf-btn rcf-btn--outline-light',
 	) );
 }
 add_action( 'cmb2_admin_init', 'pegasus_child_register_home_cta_metabox' );
@@ -526,6 +554,13 @@ function pegasus_child_register_team_page_settings_metabox() {
 		'name' => __( 'CTA Button — URL', 'pegasus-child' ),
 		'id'   => $prefix . 'cta_btn_url',
 		'type' => 'text_url',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'CTA Button — CSS Classes', 'pegasus-child' ),
+		'desc'    => __( 'Space-separated CSS classes. Base: rcf-btn. Variants: rcf-btn--light &amp; rcf-btn--outline-light (dark/navy sections), rcf-btn--ghost (light sections).', 'pegasus-child' ),
+		'id'      => $prefix . 'cta_btn_class',
+		'type'    => 'text',
+		'default' => 'rcf-btn rcf-btn--light',
 	) );
 }
 add_action( 'cmb2_admin_init', 'pegasus_child_register_team_page_settings_metabox' );
@@ -819,6 +854,13 @@ function pegasus_child_register_about_cta_metabox() {
 		'type' => 'text_url',
 	) );
 	$cmb->add_field( array(
+		'name'    => __( 'Button 1 — CSS Classes', 'pegasus-child' ),
+		'desc'    => __( 'Space-separated CSS classes. Base: rcf-btn. Variants: rcf-btn--light &amp; rcf-btn--outline-light (dark/navy sections), rcf-btn--ghost (light sections).', 'pegasus-child' ),
+		'id'      => $prefix . 'btn1_class',
+		'type'    => 'text',
+		'default' => 'rcf-btn rcf-btn--light',
+	) );
+	$cmb->add_field( array(
 		'name'    => __( 'Button 2 — Text', 'pegasus-child' ),
 		'id'      => $prefix . 'btn2_text',
 		'type'    => 'text_small',
@@ -828,6 +870,13 @@ function pegasus_child_register_about_cta_metabox() {
 		'name' => __( 'Button 2 — URL', 'pegasus-child' ),
 		'id'   => $prefix . 'btn2_url',
 		'type' => 'text_url',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Button 2 — CSS Classes', 'pegasus-child' ),
+		'desc'    => __( 'Space-separated CSS classes. Base: rcf-btn. Variants: rcf-btn--light &amp; rcf-btn--outline-light (dark/navy sections), rcf-btn--ghost (light sections).', 'pegasus-child' ),
+		'id'      => $prefix . 'btn2_class',
+		'type'    => 'text',
+		'default' => 'rcf-btn rcf-btn--outline-light',
 	) );
 }
 add_action( 'cmb2_admin_init', 'pegasus_child_register_about_cta_metabox' );
@@ -1307,6 +1356,13 @@ function pegasus_child_register_ia_cta_metabox() {
 		'type' => 'text_url',
 	) );
 	$cmb->add_field( array(
+		'name'    => __( 'Button 1 — CSS Classes', 'pegasus-child' ),
+		'desc'    => __( 'Space-separated CSS classes. Base: rcf-btn. Variants: rcf-btn--light &amp; rcf-btn--outline-light (dark/navy sections), rcf-btn--ghost (light sections).', 'pegasus-child' ),
+		'id'      => 'rcf_ia_cta_btn1_class',
+		'type'    => 'text',
+		'default' => 'rcf-btn rcf-btn--light',
+	) );
+	$cmb->add_field( array(
 		'name'    => __( 'Button 2 — Text', 'pegasus-child' ),
 		'id'      => 'rcf_ia_cta_btn2_text',
 		'type'    => 'text_small',
@@ -1316,6 +1372,13 @@ function pegasus_child_register_ia_cta_metabox() {
 		'name' => __( 'Button 2 — URL', 'pegasus-child' ),
 		'id'   => 'rcf_ia_cta_btn2_url',
 		'type' => 'text_url',
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Button 2 — CSS Classes', 'pegasus-child' ),
+		'desc'    => __( 'Space-separated CSS classes. Base: rcf-btn. Variants: rcf-btn--light &amp; rcf-btn--outline-light (dark/navy sections), rcf-btn--ghost (light sections).', 'pegasus-child' ),
+		'id'      => 'rcf_ia_cta_btn2_class',
+		'type'    => 'text',
+		'default' => 'rcf-btn rcf-btn--outline-light',
 	) );
 }
 add_action( 'cmb2_admin_init', 'pegasus_child_register_ia_cta_metabox' );

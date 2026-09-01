@@ -152,6 +152,8 @@ $cta_btn1_text = get_post_meta( $pid, 'rcf_about_cta_btn1_text', true ) ?: 'Requ
 $cta_btn1_url  = get_post_meta( $pid, 'rcf_about_cta_btn1_url', true )  ?: '#';
 $cta_btn2_text = get_post_meta( $pid, 'rcf_about_cta_btn2_text', true ) ?: 'Speak with IR';
 $cta_btn2_url  = get_post_meta( $pid, 'rcf_about_cta_btn2_url', true )  ?: '#';
+$cta_btn1_class = get_post_meta( $pid, 'rcf_about_cta_btn1_class', true ) ?: 'rcf-btn rcf-btn--light';
+$cta_btn2_class = get_post_meta( $pid, 'rcf_about_cta_btn2_class', true ) ?: 'rcf-btn rcf-btn--outline-light';
 ?>
 
 <div id="page-wrap">
@@ -297,10 +299,10 @@ $cta_btn2_url  = get_post_meta( $pid, 'rcf_about_cta_btn2_url', true )  ?: '#';
 				<h2 class="rcf-h2"><?php echo esc_html( $cta_heading ); ?></h2>
 				<p class="rcf-lede mx-auto"><?php echo esc_html( $cta_lede ); ?></p>
 				<div class="rcf-cta__buttons">
-					<a href="<?php echo esc_url( $cta_btn1_url ?: '#' ); ?>" class="rcf-btn rcf-btn--light">
+					<a href="<?php echo esc_url( $cta_btn1_url ?: '#' ); ?>" class="<?php echo esc_attr( $cta_btn1_class ); ?>">
 						<?php echo esc_html( $cta_btn1_text ); ?>
 					</a>
-					<a href="<?php echo esc_url( $cta_btn2_url ?: '#' ); ?>" class="rcf-btn rcf-btn--outline-light">
+					<a href="<?php echo esc_url( $cta_btn2_url ?: '#' ); ?>" class="<?php echo esc_attr( $cta_btn2_class ); ?>">
 						<?php echo esc_html( $cta_btn2_text ); ?> <?php echo $ext_icon; ?>
 					</a>
 				</div>

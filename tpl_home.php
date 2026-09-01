@@ -17,6 +17,8 @@ $hero_btn1_text = get_post_meta( $pid, 'rcf_hero_btn1_text', true )  ?: 'Our App
 $hero_btn1_url  = get_post_meta( $pid, 'rcf_hero_btn1_url', true )   ?: '#';
 $hero_btn2_text = get_post_meta( $pid, 'rcf_hero_btn2_text', true )  ?: 'Learn More';
 $hero_btn2_url  = get_post_meta( $pid, 'rcf_hero_btn2_url', true )   ?: '#';
+$hero_btn1_class = get_post_meta( $pid, 'rcf_hero_btn1_class', true ) ?: 'rcf-btn rcf-btn--light';
+$hero_btn2_class = get_post_meta( $pid, 'rcf_hero_btn2_class', true ) ?: 'rcf-btn rcf-btn--outline-light';
 
 /* ---- Pillars (CMB2 group) ---- */
 $home_pillars = get_post_meta( $pid, 'rcf_home_pillars_group', true );
@@ -77,6 +79,8 @@ $cta_btn1_text = get_post_meta( $pid, 'rcf_home_cta_btn1_text', true ) ?: 'Sched
 $cta_btn1_url  = get_post_meta( $pid, 'rcf_home_cta_btn1_url', true )  ?: '#';
 $cta_btn2_text = get_post_meta( $pid, 'rcf_home_cta_btn2_text', true ) ?: 'Request the Deck';
 $cta_btn2_url  = get_post_meta( $pid, 'rcf_home_cta_btn2_url', true )  ?: '#';
+$cta_btn1_class = get_post_meta( $pid, 'rcf_home_cta_btn1_class', true ) ?: 'rcf-btn rcf-btn--light';
+$cta_btn2_class = get_post_meta( $pid, 'rcf_home_cta_btn2_class', true ) ?: 'rcf-btn rcf-btn--outline-light';
 
 $ext_icon = '<svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true" focusable="false" style="margin-left:4px;flex-shrink:0"><path d="M4 1H12V9"/><path d="M12 1L5 8"/><path d="M9 12H1V4"/></svg>';
 ?>
@@ -95,8 +99,8 @@ $ext_icon = '<svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke=
 				<div class="rcf-hero__sub"><?php echo esc_html( $hero_subtitle ); ?></div>
 				<p class="rcf-hero__lede"><?php echo esc_html( $hero_lede ); ?></p>
 				<div class="rcf-hero__buttons">
-					<a href="<?php echo esc_url( $hero_btn1_url ); ?>" class="rcf-btn rcf-btn--light"><?php echo esc_html( $hero_btn1_text ); ?></a>
-					<a href="<?php echo esc_url( $hero_btn2_url ); ?>" class="rcf-btn rcf-btn--outline-light"><?php echo esc_html( $hero_btn2_text ); ?></a>
+					<a href="<?php echo esc_url( $hero_btn1_url ); ?>" class="<?php echo esc_attr( $hero_btn1_class ); ?>"><?php echo esc_html( $hero_btn1_text ); ?></a>
+					<a href="<?php echo esc_url( $hero_btn2_url ); ?>" class="<?php echo esc_attr( $hero_btn2_class ); ?>"><?php echo esc_html( $hero_btn2_text ); ?></a>
 				</div>
 			</div>
 		</div>
@@ -252,8 +256,8 @@ $ext_icon = '<svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke=
 				<h2 class="rcf-h2"><?php echo esc_html( $cta_heading ); ?></h2>
 				<p class="rcf-lede mx-auto"><?php echo esc_html( $cta_lede ); ?></p>
 				<div class="rcf-cta__buttons">
-					<a href="<?php echo esc_url( $cta_btn1_url ?: '#' ); ?>" class="rcf-btn rcf-btn--light"><?php echo esc_html( $cta_btn1_text ); ?></a>
-					<a href="<?php echo esc_url( $cta_btn2_url ?: '#' ); ?>" class="rcf-btn rcf-btn--outline-light"><?php echo esc_html( $cta_btn2_text ); ?> <?php echo $ext_icon; ?></a>
+					<a href="<?php echo esc_url( $cta_btn1_url ?: '#' ); ?>" class="<?php echo esc_attr( $cta_btn1_class ); ?>"><?php echo esc_html( $cta_btn1_text ); ?></a>
+					<a href="<?php echo esc_url( $cta_btn2_url ?: '#' ); ?>" class="<?php echo esc_attr( $cta_btn2_class ); ?>"><?php echo esc_html( $cta_btn2_text ); ?> <?php echo $ext_icon; ?></a>
 				</div>
 			</div>
 		</div>

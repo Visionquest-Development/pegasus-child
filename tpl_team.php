@@ -17,6 +17,7 @@ $cta_heading    = get_post_meta( $pid, 'rcf_team_page_cta_heading', true )    ?:
 $cta_lede       = get_post_meta( $pid, 'rcf_team_page_cta_lede', true )       ?: 'Sector analysts, risk, operations, compliance, technology, and investor relations — full team biographies are available upon request through our IR group.';
 $cta_btn_text   = get_post_meta( $pid, 'rcf_team_page_cta_btn_text', true )   ?: 'Contact Investor Relations';
 $cta_btn_url    = get_post_meta( $pid, 'rcf_team_page_cta_btn_url', true )    ?: '#';
+$cta_btn_class  = get_post_meta( $pid, 'rcf_team_page_cta_btn_class', true )  ?: 'rcf-btn rcf-btn--light';
 
 /* ---- Team members (CMB2 group — rcf_team_members_group) ---- */
 $members_raw = get_post_meta( $pid, 'rcf_team_members_group', true );
@@ -151,7 +152,7 @@ $ext_icon = '<svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke=
 				<h2 class="rcf-h2"><?php echo esc_html( $cta_heading ); ?></h2>
 				<p class="rcf-lede mx-auto"><?php echo esc_html( $cta_lede ); ?></p>
 				<div class="rcf-cta__buttons">
-					<a href="<?php echo esc_url( $cta_btn_url ?: '#' ); ?>" class="rcf-btn rcf-btn--light"><?php echo esc_html( $cta_btn_text ); ?></a>
+					<a href="<?php echo esc_url( $cta_btn_url ?: '#' ); ?>" class="<?php echo esc_attr( $cta_btn_class ); ?>"><?php echo esc_html( $cta_btn_text ); ?></a>
 				</div>
 			</div>
 		</div>
