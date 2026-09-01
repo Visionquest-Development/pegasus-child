@@ -72,8 +72,8 @@
    data-wow-delay. Unlike animate.css fadeInUp (100% of element height), the
    rise is a fixed 24px so it stays subtle on tall blocks too. WOW adds the
    `animated` class on scroll-in, which supplies the duration + fill-mode. */
-@-webkit-keyframes spAnimUp { from { opacity: 0; -webkit-transform: translate3d(0, 24px, 0); transform: translate3d(0, 24px, 0); } to { opacity: 1; -webkit-transform: none; transform: none; } }
-@keyframes spAnimUp { from { opacity: 0; -webkit-transform: translate3d(0, 24px, 0); transform: translate3d(0, 24px, 0); } to { opacity: 1; -webkit-transform: none; transform: none; } }
+@-webkit-keyframes spAnimUp { from { opacity: 0; transform: translate3d(0, 24px, 0); } to { opacity: 1; transform: none; } }
+@keyframes spAnimUp { from { opacity: 0; transform: translate3d(0, 24px, 0); } to { opacity: 1; transform: none; } }
 @-webkit-keyframes spAnimIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes spAnimIn { from { opacity: 0; } to { opacity: 1; } }
 .sp-anim-up { -webkit-animation-name: spAnimUp; animation-name: spAnimUp; }
@@ -81,7 +81,7 @@
 
 /* Respect reduced-motion: reveal everything immediately, no animation. */
 @media (prefers-reduced-motion: reduce) {
-	.wow { -webkit-animation: none !important; animation: none !important; opacity: 1 !important; visibility: visible !important; -webkit-transform: none !important; transform: none !important; }
+	.wow { -webkit-animation: none !important; animation: none !important; opacity: 1 !important; visibility: visible !important; transform: none !important; }
 }
 
 /* ── Buttons ────────────────────────────────────────────────────────── */
@@ -1062,15 +1062,17 @@
 	border-bottom: 1px solid #3d281729;
 }
 
-#menu-footer-menu-1 {
+#menu-footer-menu-1, #menu-footernav1 {
   flex-direction: column;
 }
 
-#menu-footer-menu-1 li a {
+#menu-footer-menu-1 li a,
+#menu-footernav1 li a {
   color: var(--sp-paper);
 }
 
-#menu-footer-menu-1 li a:hover {
+#menu-footer-menu-1 li a:hover,
+#menu-footernav1 li a:hover {
   color: var(--sp-pink);
 }
 
