@@ -279,13 +279,18 @@ function pegasus_child_register_home_leadership_metabox() {
 			array( 'key' => '_wp_page_template', 'value' => 'tpl_team.php' ),
 		),
 	) );
-	if ( ! empty( $team_pages ) ) {
-		$edit_link = get_edit_post_link( $team_pages[0]->ID );
-		$desc      = sprintf(
+	// get_edit_post_link() can return null (e.g. before edit caps are resolved),
+	// so guard it — never pass null to esc_url().
+	$edit_link = ! empty( $team_pages ) ? get_edit_post_link( $team_pages[0]->ID ) : '';
+
+	if ( $edit_link ) {
+		$desc = sprintf(
 			/* translators: %s: URL to edit the Team page. */
 			__( 'This section has no fields of its own. It automatically displays the first three members from the <strong>Team page</strong>, in the order they are listed there. To change who appears or their order, <a href="%s">edit the Team page &rarr; Team — Members</a> and drag members to reorder.', 'pegasus-child' ),
 			esc_url( $edit_link )
 		);
+	} elseif ( ! empty( $team_pages ) ) {
+		$desc = __( 'This section has no fields of its own. It automatically displays the first three members from the <strong>Team page</strong>, in the order they are listed there. To change who appears or their order, edit the Team page &rarr; Team — Members and drag members to reorder.', 'pegasus-child' );
 	} else {
 		$desc = __( 'This section has no fields of its own. It automatically displays the first three members from the <strong>Team page</strong> (the page using the "Team" template), in the order they are listed there. No Team page exists yet — create one using the Team template to populate this section.', 'pegasus-child' );
 	}

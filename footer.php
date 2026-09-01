@@ -40,9 +40,9 @@
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
 										<span>Atlanta, Georgia</span>
 									</div>
-									<a class="rcf-footer-contact__item" href="tel:4045550123">
+									<a class="rcf-footer-contact__item" href="tel:6012786072">
 										<i class="fa fa-phone" aria-hidden="true"></i>
-										<span>404.555.0123</span>
+										<span>601.278.6072</span>
 									</a>
 									<a class="rcf-footer-contact__item" href="mailto:info@ricecapitalfund.com">
 										<i class="fa fa-envelope" aria-hidden="true"></i>
