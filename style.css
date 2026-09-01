@@ -112,7 +112,7 @@
 
 /* ── Header logo (bread-cart wordmark PNG) ──────────────────────────── */
 .navbar-brand #logo,
-.navbar-brand .sp-site-logo { height: 100px; width: auto; max-width: 100%; display: block; }
+.navbar-brand .sp-site-logo { height: 62px; width: auto; max-width: 100%; display: block; }
 /* @media (max-width: 991px) { .navbar-brand #logo { height: 76px; } }
 @media (max-width: 575px) { .navbar-brand #logo { height: 60px; } } */
 
@@ -1074,6 +1074,11 @@
 #menu-footer-menu-1 li a:hover,
 #menu-footernav1 li a:hover {
   color: var(--sp-pink);
+}
+
+footer .wp-image-247 {
+  background: white;
+  padding: 10px;
 }
 
 .sg-social {

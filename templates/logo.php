@@ -13,8 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$sp_logo_path = get_stylesheet_directory() . '/images/sugarpeddler-logo.png';
-$sp_logo_uri  = get_stylesheet_directory_uri() . '/images/sugarpeddler-logo.png';
+$sp_logo_path = get_stylesheet_directory() . '/images/sugarpeddler-logo.svg';
+$sp_logo_uri  = get_stylesheet_directory_uri() . '/images/sugarpeddler-logo.svg';
 
 // filemtime cache-buster so logo swaps show immediately.
 if ( is_readable( $sp_logo_path ) ) {
@@ -23,6 +23,6 @@ if ( is_readable( $sp_logo_path ) ) {
 ?>
 <img id="logo" class="sp-site-logo"
 	src="<?php echo esc_url( $sp_logo_uri ); ?>"
-	width="700" height="406"
+	width="1221" height="200"
 	alt="Sugar Peddler &mdash; Bistro &amp; Bakery"
 	decoding="async" />

@@ -214,15 +214,15 @@ get_header();
 					),
 					array(
 						'category'      => 'Dessert',
-						'name'          => 'Bourbon Pecan Pie',
-						'price'         => '$9',
+						'name'          => 'Mama Kay\'s Cheesecake',
+						'price'         => '$11',
 						'old_price'     => '',
 						'badge_label'   => '',
 						'badge_tone'    => '',
 						'photo_variant' => 'sp-photo--cream',
-						'tagline'       => 'Bourbon pecan pie',
+						'tagline'       => 'Mama Kay\'s cheesecake',
 						'desc'          => '',
-						'guid'          => '72a29101-4f79-4c91-aeb0-8776b839d10b',
+						'guid'          => '90684644-a3b9-49f3-9ebe-d1021a0a9db6',
 						'icon'          => 'fa-birthday-cake',
 						'image'         => '',
 					),
@@ -315,7 +315,7 @@ get_header();
 							array( 'name' => 'Chicken Tortellini', 'price' => '6',     'guid' => '643ce289-6207-4e35-ae48-f9b697ddaa9c' ),
 							array( 'name' => 'Berry Burrata',      'price' => '14.50', 'guid' => 'eebb8c22-98c4-42f4-bace-e8531b315ef8' ),
 							array( 'name' => 'Turkey Mornay Melt', 'price' => '15.50', 'guid' => 'a30239f0-f2ee-4d70-bffa-1244c75ef707' ),
-							array( 'name' => 'Bourbon Pecan Pie',  'price' => '9',     'guid' => '72a29101-4f79-4c91-aeb0-8776b839d10b' ),
+							array( 'name' => 'Mama Kay\'s Cheesecake', 'price' => '11', 'guid' => '90684644-a3b9-49f3-9ebe-d1021a0a9db6' ),
 						);
 						foreach ( $sp_specials as $sp_special ) : ?>
 							<li class="sp-bistro__menu-item d-flex align-items-baseline" data-toast-guid="<?php echo esc_attr( $sp_special['guid'] ); ?>">
