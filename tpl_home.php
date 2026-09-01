@@ -200,15 +200,15 @@ get_header();
 					),
 					array(
 						'category'      => 'Main',
-						'name'          => 'Turkey Mornay Melt',
-						'price'         => '$15.50',
+						'name'          => 'Chicken Pesto Wrap',
+						'price'         => '$14.50',
 						'old_price'     => '',
 						'badge_label'   => '',
 						'badge_tone'    => '',
 						'photo_variant' => '',
-						'tagline'       => 'Turkey Mornay melt',
-						'desc'          => 'Toasted English muffin, turkey, tomato, Mornay sauce, bacon; baked until bubbly',
-						'guid'          => 'a30239f0-f2ee-4d70-bffa-1244c75ef707',
+						'tagline'       => 'Chicken pesto wrap',
+						'desc'          => 'Grilled chicken, basil pesto, fresh mozzarella, roasted tomato, arugula, whole wheat tortilla',
+						'guid'          => '9d68a02d-2591-43ce-b524-cd048d4dac4f',
 						'icon'          => 'fa-cutlery',
 						'image'         => '',
 					),
@@ -314,7 +314,7 @@ get_header();
 						$sp_specials = array(
 							array( 'name' => 'Chicken Tortellini', 'price' => '6',     'guid' => '643ce289-6207-4e35-ae48-f9b697ddaa9c' ),
 							array( 'name' => 'Berry Burrata',      'price' => '14.50', 'guid' => 'eebb8c22-98c4-42f4-bace-e8531b315ef8' ),
-							array( 'name' => 'Turkey Mornay Melt', 'price' => '15.50', 'guid' => 'a30239f0-f2ee-4d70-bffa-1244c75ef707' ),
+							array( 'name' => 'Chicken Pesto Wrap', 'price' => '14.50', 'guid' => '9d68a02d-2591-43ce-b524-cd048d4dac4f' ),
 							array( 'name' => 'Mama Kay\'s Cheesecake', 'price' => '11', 'guid' => '90684644-a3b9-49f3-9ebe-d1021a0a9db6' ),
 						);
 						foreach ( $sp_specials as $sp_special ) : ?>
