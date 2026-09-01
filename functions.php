@@ -74,6 +74,12 @@
 	require_once get_stylesheet_directory() . '/inc/cmb2-contact-fields.php';
 
 	/**
+	 * Make CMB2 meta-box edits register as unsaved changes in the block editor
+	 * so they reliably save (applies to every CMB2 box, all templates).
+	 */
+	require_once get_stylesheet_directory() . '/inc/cmb2-editor-dirty.php';
+
+	/**
 	 * Format a price value with leading $.
 	 * Whole-dollar values render without decimals; otherwise two-decimal.
 	 */
@@ -134,6 +140,21 @@
 	if ( ! defined( 'SP_MENU_GREYOUT_PAST' ) ) {
 		define( 'SP_MENU_GREYOUT_PAST', true );
 	}
+
+	/**
+	 * Clear this theme's cached Toast menu data when the vqdev-toast plugin's
+	 * "Refresh Toast Menu" admin-bar button is used ( it fires this action ).
+	 * Without this, the button flushes nothing on our side and the menu stays
+	 * stale until the 10-min change check or the 24h cache expiry.
+	 */
+	if ( ! function_exists( 'sp_flush_toast_menu_cache' ) ) {
+		function sp_flush_toast_menu_cache() {
+			delete_transient( 'vqdev_toast_menu_data' );
+			delete_transient( 'vqdev_toast_menu_meta_check' );
+			delete_transient( 'vqdev_toast_oos_guids' );
+		}
+	}
+	add_action( 'vqdev_toast_flush_cache', 'sp_flush_toast_menu_cache' );
 
 	/**
 	 * Get out-of-stock item GUIDs from the Toast Stock API (cached 5 min).

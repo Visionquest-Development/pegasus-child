@@ -39,6 +39,8 @@ function sp_contact_defaults() {
 		'_sp_contact_postal'      => '31901',
 		'_sp_contact_phone'       => '706-330-3972',
 		'_sp_contact_email'       => 'callcenter@uptownlifegroup.com',
+		'_sp_contact_email_label' => '',
+		'_sp_contact_image'       => '',
 		'_sp_contact_map_url'     => '',
 		'_sp_contact_map_embed'   => '',
 		'_sp_contact_opening_hours_schema' => 'Mo-Fr 07:30-17:00',
@@ -200,6 +202,22 @@ function sp_register_contact_metaboxes() {
 		'default' => sp_contact_default( $prefix . 'email' ),
 	) );
 	$cmb->add_field( array(
+		'name'    => __( 'Email display label (optional)', 'pegasus-child' ),
+		'desc'    => __( 'Visible link text for the email. Leave empty to show the address itself. The mailto: link always uses the Email field above.', 'pegasus-child' ),
+		'id'      => $prefix . 'email_label',
+		'type'    => 'text',
+		'default' => sp_contact_default( $prefix . 'email_label' ),
+	) );
+	$cmb->add_field( array(
+		'name'    => __( 'Contact photo / image (optional)', 'pegasus-child' ),
+		'desc'    => __( 'Shown in the media column beside the contact details. Overrides the map placeholder. Leave empty to show the map embed (if set) or the address placeholder.', 'pegasus-child' ),
+		'id'      => $prefix . 'image',
+		'type'    => 'file',
+		'options' => array( 'url' => false ),
+		'text'    => array( 'add_upload_file_text' => __( 'Choose image', 'pegasus-child' ) ),
+		'query_args' => array( 'type' => 'image' ),
+	) );
+	$cmb->add_field( array(
 		'name'    => __( 'Directions / map link (optional)', 'pegasus-child' ),
 		'desc'    => __( 'Where the “Get directions” link points. Leave empty to auto-build a Google Maps search from the address.', 'pegasus-child' ),
 		'id'      => $prefix . 'map_url',
@@ -280,4 +298,29 @@ function sp_register_contact_metaboxes() {
 		'type'    => 'text_small',
 		'attributes' => array( 'type' => 'number', 'pattern' => '\d*' ),
 	) );
+}
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * Seed the "hours" group with the default rows the first time a Contact page is
+ * edited, so the admin shows the actual current hours (Mon–Fri / Sat & Sun)
+ * instead of a single blank row. Without this the editor looked empty and edits
+ * felt like they "did nothing". The front end already falls back to the same
+ * defaults, so this does not change the live page.
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+add_action( 'add_meta_boxes_page', 'sp_contact_seed_hours' );
+function sp_contact_seed_hours( $post ) {
+	if ( ! $post instanceof WP_Post ) {
+		return;
+	}
+	if ( 'tpl_contact.php' !== get_page_template_slug( $post->ID ) ) {
+		return;
+	}
+	if ( ! current_user_can( 'edit_page', $post->ID ) ) {
+		return;
+	}
+	$existing = get_post_meta( $post->ID, '_sp_contact_hours', true );
+	if ( empty( $existing ) ) {
+		update_post_meta( $post->ID, '_sp_contact_hours', sp_contact_hours_default() );
+	}
 }

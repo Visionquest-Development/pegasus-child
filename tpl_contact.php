@@ -11,6 +11,9 @@ $region = sp_contact_meta( '_sp_contact_region' );
 $postal = sp_contact_meta( '_sp_contact_postal' );
 $phone  = sp_contact_meta( '_sp_contact_phone' );
 $email  = sp_contact_meta( '_sp_contact_email' );
+$email_label = sp_contact_meta( '_sp_contact_email_label' );
+$email_text  = ( '' !== trim( (string) $email_label ) ) ? $email_label : $email;
+$image  = sp_contact_meta( '_sp_contact_image' );
 $map    = sp_contact_meta( '_sp_contact_map_url' );
 $embed  = sp_contact_meta( '_sp_contact_map_embed' );
 $sched  = sp_contact_meta( '_sp_contact_opening_hours_schema' );
@@ -69,7 +72,7 @@ $map_href = $map ? $map : 'https://www.google.com/maps/search/?api=1&query=' . r
 						</div>
 						<div class="sp-contact-block">
 							<div class="sp-eyebrow mb-2">Email</div>
-							<a class="sp-contact-value sp-contact-value--email" itemprop="email" href="mailto:<?php echo esc_attr( $email ); ?>"><?php echo esc_html( $email ); ?></a>
+							<a class="sp-contact-value sp-contact-value--email" itemprop="email" href="mailto:<?php echo esc_attr( $email ); ?>"><?php echo esc_html( $email_text ); ?></a>
 						</div>
 					</div>
 
@@ -91,7 +94,11 @@ $map_href = $map ? $map : 'https://www.google.com/maps/search/?api=1&query=' . r
 				</div>
 
 				<div class="col-12 col-lg-6 sp-contact-card__media">
-					<?php if ( $embed ) : ?>
+					<?php if ( $image ) : ?>
+						<figure class="sp-contact-photo sp-photo m-0">
+							<img class="sp-contact-photo__img" src="<?php echo esc_url( $image ); ?>" alt="<?php echo esc_attr( $biz ); ?>" loading="lazy" decoding="async" />
+						</figure>
+					<?php elseif ( $embed ) : ?>
 						<div class="sp-contact-map">
 							<?php
 							echo wp_kses(
@@ -146,7 +153,7 @@ $map_href = $map ? $map : 'https://www.google.com/maps/search/?api=1&query=' . r
 						<p class="mb-2">Our contact form is on the way.</p>
 						<p class="mb-0">
 							In the meantime, email us at
-							<a href="mailto:<?php echo esc_attr( $email ); ?>"><?php echo esc_html( $email ); ?></a>
+							<a href="mailto:<?php echo esc_attr( $email ); ?>"><?php echo esc_html( $email_text ); ?></a>
 							or call <a href="tel:<?php echo esc_attr( $tel ); ?>"><?php echo esc_html( $phone ); ?></a>.
 						</p>
 						<?php if ( current_user_can( 'edit_pages' ) ) : ?>

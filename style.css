@@ -1275,6 +1275,15 @@ footer a:hover {
 	text-decoration: none;
 }
 .sp-contact-mapholder .sp-photo__label { position: static; }
+.sp-contact-photo { flex: 1 1 auto; position: relative; display: flex; }
+.sp-contact-photo__img {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
 
 @media (max-width: 991px) {
 	.sp-contact-card__media { min-height: 300px; }
