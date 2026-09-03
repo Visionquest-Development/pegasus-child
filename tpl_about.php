@@ -127,8 +127,8 @@ if ( 'header-three' === $header_choice ) {
 				<div class="row align-items-center g-5 py-lg-4">
 					<div class="col-lg-6">
 						<div class="vc-eyebrow"><?php echo esc_html( vc_about_val( 'about_eyebrow' ) ); ?></div>
-						<h1 class="vc-serif vc-h1"><?php echo wp_kses_post( vc_about_val( 'about_title' ) ); ?></h1>
-						<p class="vc-hero-lead"><?php echo nl2br( esc_html( vc_about_val( 'about_intro' ) ) ); ?></p>
+						<h1 class="vc-serif vc-h1 wow fadeInUp"><?php echo wp_kses_post( vc_about_val( 'about_title' ) ); ?></h1>
+						<p class="vc-hero-lead wow fadeInUp" data-wow-delay="0.1s"><?php echo nl2br( esc_html( vc_about_val( 'about_intro' ) ) ); ?></p>
 					</div>
 					<div class="col-lg-6">
 						<div class="vc-framed vc-framed--bl">
@@ -152,7 +152,7 @@ if ( 'header-three' === $header_choice ) {
 					</div>
 					<div class="col-lg-7">
 						<div class="vc-eyebrow"><?php echo esc_html( vc_about_val( 'about_story_eyebrow' ) ); ?></div>
-						<h2 class="vc-serif vc-title mb-0"><?php echo esc_html( vc_about_val( 'about_story_title' ) ); ?></h2>
+						<h2 class="vc-serif vc-title mb-0 wow fadeInRight"><?php echo esc_html( vc_about_val( 'about_story_title' ) ); ?></h2>
 						<div class="vc-rule"></div>
 						<?php vc_paras( vc_about_val( 'about_story_body' ), 'vc-founder-bio' ); ?>
 					</div>
@@ -163,13 +163,13 @@ if ( 'header-three' === $header_choice ) {
 		<!-- ========================== OUR VALUES ======================== -->
 		<section class="vc-why py-5">
 			<div class="container py-lg-4">
-				<div class="text-center mx-auto vc-section-head-sm">
+				<div class="text-center mx-auto vc-section-head-sm wow fadeInUp">
 					<div class="vc-eyebrow vc-eyebrow--light"><?php echo esc_html( vc_about_val( 'about_values_eyebrow' ) ); ?></div>
 					<h2 class="vc-serif vc-title vc-title--light"><?php echo esc_html( vc_about_val( 'about_values_title' ) ); ?></h2>
 				</div>
 				<div class="row g-4 mt-2">
-					<?php foreach ( vc_about_rows( 'values' ) as $value ) : ?>
-						<div class="col-md-6 col-lg-3">
+					<?php foreach ( vc_about_rows( 'values' ) as $vi => $value ) : ?>
+						<div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="<?php echo esc_attr( $vi * 0.1 ); ?>s">
 							<div class="vc-why-card h-100 p-4">
 								<?php if ( ! empty( $value['icon'] ) ) : ?>
 									<i class="fa <?php echo esc_attr( $value['icon'] ); ?> vc-why-icon"></i>
@@ -186,7 +186,7 @@ if ( 'header-three' === $header_choice ) {
 		<!-- ============================ TEAM ============================ -->
 		<section class="vc-founder py-5">
 			<div class="container py-lg-4">
-				<div class="text-center mx-auto vc-section-head-xs mb-5">
+				<div class="text-center mx-auto vc-section-head-xs mb-5 wow fadeInUp">
 					<div class="vc-eyebrow"><?php echo esc_html( vc_about_val( 'about_team_eyebrow' ) ); ?></div>
 					<h2 class="vc-serif vc-title"><?php echo esc_html( vc_about_val( 'about_team_title' ) ); ?></h2>
 				</div>
@@ -194,7 +194,7 @@ if ( 'header-three' === $header_choice ) {
 					$even = ( 0 === $i % 2 ); // First (and every other) member: portrait on the right.
 					$name = isset( $member['name'] ) ? $member['name'] : '';
 				?>
-					<div class="row align-items-center g-5 vc-team-member">
+					<div class="row align-items-center g-5 vc-team-member wow fadeInUp">
 						<div class="col-lg-5 <?php echo $even ? 'order-lg-2' : 'order-lg-1'; ?>">
 							<div class="vc-framed <?php echo $even ? 'vc-framed--bl' : 'vc-framed--tr'; ?>">
 								<div class="vc-framed__accent vc-framed__accent--solid"></div>
@@ -222,7 +222,7 @@ if ( 'header-three' === $header_choice ) {
 			<div class="container py-lg-4">
 				<div class="row align-items-center g-4">
 					<div class="col-lg-8">
-						<h2 class="vc-serif vc-title vc-title--light m-0"><?php echo wp_kses_post( vc_about_val( 'about_cta_title' ) ); ?></h2>
+						<h2 class="vc-serif vc-title vc-title--light m-0 wow fadeInUp"><?php echo wp_kses_post( vc_about_val( 'about_cta_title' ) ); ?></h2>
 						<p class="vc-consult-text mb-0 mt-3"><?php echo nl2br( esc_html( vc_about_val( 'about_cta_text' ) ) ); ?></p>
 					</div>
 					<div class="col-lg-4 text-lg-end">

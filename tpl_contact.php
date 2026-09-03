@@ -76,10 +76,10 @@ if ( 'header-three' === $header_choice ) {
 				<div class="row g-5 align-items-end py-lg-3">
 					<div class="col-lg-7">
 						<div class="vc-eyebrow vc-eyebrow--light"><?php echo esc_html( vc_contact_val( 'contact_eyebrow' ) ); ?></div>
-						<h1 class="vc-serif vc-h1 vc-svc-hero__title"><?php echo wp_kses_post( vc_contact_val( 'contact_title' ) ); ?></h1>
+						<h1 class="vc-serif vc-h1 vc-svc-hero__title wow fadeInUp"><?php echo wp_kses_post( vc_contact_val( 'contact_title' ) ); ?></h1>
 					</div>
 					<div class="col-lg-5">
-						<p class="vc-svc-hero__intro"><?php echo nl2br( esc_html( vc_contact_val( 'contact_intro' ) ) ); ?></p>
+						<p class="vc-svc-hero__intro wow fadeInUp" data-wow-delay="0.1s"><?php echo nl2br( esc_html( vc_contact_val( 'contact_intro' ) ) ); ?></p>
 					</div>
 				</div>
 			</div>
@@ -92,7 +92,7 @@ if ( 'header-three' === $header_choice ) {
 
 					<!-- Contact details -->
 					<div class="col-lg-5">
-						<h2 class="vc-serif vc-title vc-title--light mb-0"><?php echo esc_html( vc_contact_val( 'contact_info_title' ) ); ?></h2>
+						<h2 class="vc-serif vc-title vc-title--light mb-0 wow fadeInLeft"><?php echo esc_html( vc_contact_val( 'contact_info_title' ) ); ?></h2>
 						<div class="vc-rule"></div>
 						<div class="d-flex flex-column gap-3 mt-4">
 							<?php $phone = vc_contact_val( 'contact_phone' ); if ( $phone ) : ?>
@@ -130,7 +130,7 @@ if ( 'header-three' === $header_choice ) {
 
 					<!-- Form card -->
 					<div class="col-lg-7">
-						<div class="vc-form-card p-4 p-md-5">
+						<div class="vc-form-card p-4 p-md-5 wow fadeInRight">
 							<h2 class="vc-serif vc-form-title mb-4"><?php echo esc_html( vc_contact_val( 'contact_form_title' ) ); ?></h2>
 							<?php
 							// A Gravity Forms shortcode set in the backend replaces the

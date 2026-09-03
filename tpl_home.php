@@ -128,15 +128,15 @@ get_header();
 			<div class="container py-5">
 				<div class="row align-items-center g-5 py-lg-4">
 					<div class="col-lg-6">
-						<div class="vc-badge">
+						<div class="vc-badge wow fadeInUp">
 							<i class="fa fa-star"></i> <?php echo esc_html( vc_val( 'hero_badge' ) ); ?>
 						</div>
-						<h1 class="vc-serif vc-h1">
+						<h1 class="vc-serif vc-h1 wow fadeInUp" data-wow-delay="0.1s">
 							<?php echo esc_html( vc_val( 'hero_title_1' ) ); ?><br>
 							<span class="vc-gold-text"><?php echo esc_html( vc_val( 'hero_title_2' ) ); ?></span>
 						</h1>
-						<p class="vc-hero-lead"><?php echo vc_para( vc_val( 'hero_text' ) ); ?></p>
-						<div class="d-flex flex-wrap gap-3 mt-4">
+						<p class="vc-hero-lead wow fadeInUp" data-wow-delay="0.2s"><?php echo vc_para( vc_val( 'hero_text' ) ); ?></p>
+						<div class="d-flex flex-wrap gap-3 mt-4 wow fadeInUp" data-wow-delay="0.3s">
 							<a href="<?php echo esc_url( vc_val( 'hero_btn1_link' ) ); ?>" class="btn btn-lg fw-bold px-4 vc-btn-gold">
 								<?php echo esc_html( vc_val( 'hero_btn1_text' ) ); ?>
 							</a>
@@ -159,8 +159,8 @@ get_header();
 		<section class="vc-trustbar">
 			<div class="container py-4">
 				<div class="row text-center g-4">
-					<?php foreach ( vc_rows( 'trust' ) as $item ) : ?>
-						<div class="col-6 col-lg-3 vc-trust-item">
+					<?php foreach ( vc_rows( 'trust' ) as $i => $item ) : ?>
+						<div class="col-6 col-lg-3 vc-trust-item wow fadeInUp" data-wow-delay="<?php echo esc_attr( $i * 0.1 ); ?>s">
 							<i class="fa <?php echo esc_attr( $item['icon'] ); ?> vc-trust-icon"></i>
 							<span class="vc-trust-text"><?php echo esc_html( $item['text'] ); ?></span>
 						</div>
@@ -172,7 +172,7 @@ get_header();
 		<!-- =========================== SERVICES ========================= -->
 		<section class="vc-services py-5">
 			<div class="container py-lg-4">
-				<div class="text-center mx-auto vc-section-head">
+				<div class="text-center mx-auto vc-section-head wow fadeInUp">
 					<div class="vc-eyebrow"><?php echo esc_html( vc_val( 'services_eyebrow' ) ); ?></div>
 					<h2 class="vc-serif vc-title"><?php echo esc_html( vc_val( 'services_title' ) ); ?></h2>
 					<div class="vc-ornament">
@@ -198,7 +198,7 @@ get_header();
 				$svc_page_url = $svc_page_id ? trailingslashit( get_permalink( $svc_page_id ) ) : home_url( '/services/' );
 				?>
 				<div class="row g-4 mt-3 justify-content-center">
-					<?php foreach ( $services as $service ) :
+					<?php foreach ( $services as $svc_i => $service ) :
 						$svc_img = isset( $service['image'] ) ? $service['image'] : '';
 						// Button URL: explicit Button URL wins, else the service's subpage.
 						$svc_link = ! empty( $service['link_url'] )
@@ -206,7 +206,7 @@ get_header();
 							: ( ! empty( $service['title'] ) ? $svc_page_url . sanitize_title( $service['title'] ) . '/' : '' );
 					?>
 						<div class="col-md-6 col-lg-4">
-							<div class="vc-card h-100 d-flex flex-column">
+							<div class="vc-card h-100 d-flex flex-column wow fadeInUp" data-wow-delay="<?php echo esc_attr( $svc_i * 0.1 ); ?>s">
 								<div class="vc-card__media vc-ar-3x2">
 									<?php echo vc_image_slot( $svc_img, isset( $service['title'] ) ? $service['title'] : 'Service photo', '' ); ?>
 								</div>
@@ -236,13 +236,13 @@ get_header();
 			<div class="container py-lg-4">
 				<div class="row align-items-center g-5">
 					<div class="col-lg-5">
-						<div class="vc-framed vc-framed--tr">
+						<div class="vc-framed vc-framed--tr wow fadeInLeft">
 							<div class="vc-framed__accent"></div>
 							<?php echo vc_image_slot( vc_val( 'signs_image' ), 'Senior at home, family visit', 'vc-framed__media vc-ar-4x5' ); ?>
 						</div>
 					</div>
 					<div class="col-lg-7">
-						<h2 class="vc-serif vc-title mb-0"><?php echo esc_html( vc_val( 'signs_title' ) ); ?></h2>
+						<h2 class="vc-serif vc-title mb-0 wow fadeInRight"><?php echo esc_html( vc_val( 'signs_title' ) ); ?></h2>
 						<p class="vc-signs-sub"><?php echo esc_html( vc_val( 'signs_subtitle' ) ); ?></p>
 						<div class="row g-3">
 							<?php foreach ( vc_rows( 'signs' ) as $sign ) : ?>
@@ -266,14 +266,14 @@ get_header();
 		<!-- ======================== WHY CHOOSE US ======================= -->
 		<section class="vc-why py-5">
 			<div class="container py-lg-4">
-				<div class="text-center mx-auto vc-section-head-sm">
+				<div class="text-center mx-auto vc-section-head-sm wow fadeInUp">
 					<div class="vc-eyebrow vc-eyebrow--light"><?php echo esc_html( vc_val( 'why_eyebrow' ) ); ?></div>
 					<h2 class="vc-serif vc-title vc-title--light"><?php echo esc_html( vc_val( 'why_title' ) ); ?></h2>
 				</div>
 				<div class="row g-4 mt-2">
-					<?php foreach ( vc_rows( 'why' ) as $reason ) : ?>
+					<?php foreach ( vc_rows( 'why' ) as $wi => $reason ) : ?>
 						<div class="col-md-6 col-lg-4">
-							<div class="vc-why-card h-100 p-4">
+							<div class="vc-why-card h-100 p-4 wow fadeInUp" data-wow-delay="<?php echo esc_attr( $wi * 0.1 ); ?>s">
 								<i class="fa <?php echo esc_attr( $reason['icon'] ); ?> vc-why-icon"></i>
 								<h3 class="vc-serif vc-why-title"><?php echo esc_html( $reason['title'] ); ?></h3>
 								<p class="vc-why-text"><?php echo esc_html( $reason['text'] ); ?></p>
@@ -288,13 +288,13 @@ get_header();
 		<section class="vc-founder py-5">
 			<div class="container py-lg-4">
 				<div class="row align-items-center g-5">
-					<div class="col-lg-5 order-lg-2">
+					<div class="col-lg-5 order-lg-2 wow fadeInRight">
 						<div class="vc-framed vc-framed--bl">
 							<div class="vc-framed__accent vc-framed__accent--solid"></div>
 							<?php echo vc_image_slot( vc_val( 'founder_image' ), 'Wendi McCracken, RN, BSN', 'vc-framed__media vc-ar-1x1' ); ?>
 						</div>
 					</div>
-					<div class="col-lg-7 order-lg-1">
+					<div class="col-lg-7 order-lg-1 wow fadeInLeft">
 						<div class="vc-eyebrow"><?php echo esc_html( vc_val( 'founder_eyebrow' ) ); ?></div>
 						<h2 class="vc-serif vc-title"><?php echo esc_html( vc_val( 'founder_name' ) ); ?></h2>
 						<div class="vc-rule"></div>
@@ -316,14 +316,14 @@ get_header();
 		<!-- ======================== TESTIMONIALS ======================== -->
 		<section class="vc-testimonials py-5">
 			<div class="container py-lg-4">
-				<div class="text-center mx-auto mb-4 vc-section-head-xs">
+				<div class="text-center mx-auto mb-4 vc-section-head-xs wow fadeInUp">
 					<div class="vc-eyebrow"><?php echo esc_html( vc_val( 'testimonials_eyebrow' ) ); ?></div>
 					<h2 class="vc-serif vc-title"><?php echo esc_html( vc_val( 'testimonials_title' ) ); ?></h2>
 				</div>
 				<div class="row g-4">
-					<?php foreach ( vc_rows( 'testimonials' ) as $t ) : ?>
+					<?php foreach ( vc_rows( 'testimonials' ) as $ti => $t ) : ?>
 						<div class="col-lg-4">
-							<div class="vc-testimonial h-100 p-4">
+							<div class="vc-testimonial h-100 p-4 wow fadeInUp" data-wow-delay="<?php echo esc_attr( $ti * 0.1 ); ?>s">
 								<i class="fa fa-quote-left vc-quote-icon"></i>
 								<p class="vc-testimonial-text"><?php echo vc_para( $t['quote'] ); ?></p>
 								<div class="vc-serif vc-testimonial-name"><?php echo esc_html( $t['name'] ); ?></div>
@@ -338,7 +338,7 @@ get_header();
 		<!-- ========================= GET STARTED ======================== -->
 		<section class="vc-getstarted py-5">
 			<div class="container py-lg-4">
-				<div class="text-center mx-auto vc-section-head mb-5">
+				<div class="text-center mx-auto vc-section-head mb-5 wow fadeInUp">
 					<div class="vc-eyebrow"><?php echo esc_html( vc_val( 'getstarted_eyebrow' ) ); ?></div>
 					<h2 class="vc-serif vc-title"><?php echo esc_html( vc_val( 'getstarted_title' ) ); ?></h2>
 					<p class="vc-lead mt-3"><?php echo esc_html( vc_val( 'getstarted_intro' ) ); ?></p>
@@ -347,7 +347,7 @@ get_header();
 
 					<!-- For families / potential clients -->
 					<div class="col-lg-6">
-						<div class="vc-getstarted-card h-100 d-flex flex-column p-4 p-md-5">
+						<div class="vc-getstarted-card h-100 d-flex flex-column p-4 p-md-5 wow fadeInUp">
 							<div class="vc-badge-icon"><i class="fa <?php echo esc_attr( vc_val( 'getstarted_client_icon' ) ); ?>"></i></div>
 							<div class="vc-eyebrow mt-3"><?php echo esc_html( vc_val( 'getstarted_client_eyebrow' ) ); ?></div>
 							<h3 class="vc-serif vc-getstarted-title"><?php echo esc_html( vc_val( 'getstarted_client_title' ) ); ?></h3>
@@ -368,7 +368,7 @@ get_header();
 
 					<!-- For caregivers / potential applicants -->
 					<div class="col-lg-6">
-						<div class="vc-getstarted-card vc-getstarted-card--alt h-100 d-flex flex-column p-4 p-md-5">
+						<div class="vc-getstarted-card vc-getstarted-card--alt h-100 d-flex flex-column p-4 p-md-5 wow fadeInUp" data-wow-delay="0.15s">
 							<div class="vc-badge-icon"><i class="fa <?php echo esc_attr( vc_val( 'getstarted_care_icon' ) ); ?>"></i></div>
 							<div class="vc-eyebrow mt-3"><?php echo esc_html( vc_val( 'getstarted_care_eyebrow' ) ); ?></div>
 							<h3 class="vc-serif vc-getstarted-title"><?php echo esc_html( vc_val( 'getstarted_care_title' ) ); ?></h3>
@@ -397,7 +397,7 @@ get_header();
 				<div class="row g-5 align-items-center">
 					<div class="col-lg-6">
 						<div class="vc-eyebrow"><?php echo esc_html( vc_val( 'area_eyebrow' ) ); ?></div>
-						<h2 class="vc-serif vc-title vc-area-title"><?php echo esc_html( vc_val( 'area_title' ) ); ?></h2>
+						<h2 class="vc-serif vc-title vc-area-title wow fadeInLeft"><?php echo esc_html( vc_val( 'area_title' ) ); ?></h2>
 						<p class="vc-lead"><?php echo esc_html( vc_val( 'area_text' ) ); ?></p>
 						<div class="row g-4 mt-1">
 							<?php foreach ( vc_rows( 'area_counties' ) as $county ) :
@@ -415,7 +415,7 @@ get_header();
 						</div>
 					</div>
 					<div class="col-lg-6">
-						<?php echo vc_image_slot( vc_val( 'area_image' ), 'Service-area map (Cobb & Paulding)', 'vc-map vc-ar-4x3' ); ?>
+						<div class="wow fadeInRight"><?php echo vc_image_slot( vc_val( 'area_image' ), 'Service-area map (Cobb & Paulding)', 'vc-map vc-ar-4x3' ); ?></div>
 					</div>
 				</div>
 			</div>
@@ -426,7 +426,7 @@ get_header();
 			<div class="container py-lg-4">
 				<div class="row g-5">
 					<div class="col-lg-5">
-						<h2 class="vc-serif vc-title vc-title--light mb-0"><?php echo esc_html( vc_val( 'consult_title' ) ); ?></h2>
+						<h2 class="vc-serif vc-title vc-title--light mb-0 wow fadeInLeft"><?php echo esc_html( vc_val( 'consult_title' ) ); ?></h2>
 						<div class="vc-rule"></div>
 						<p class="vc-consult-text"><?php echo vc_para( vc_val( 'consult_text' ) ); ?></p>
 						<div class="d-flex flex-column gap-3 mt-4">
@@ -445,7 +445,7 @@ get_header();
 						</div>
 					</div>
 					<div class="col-lg-7">
-						<div class="vc-form-card p-4 p-md-5">
+						<div class="vc-form-card p-4 p-md-5 wow fadeInRight">
 							<?php
 							// A Gravity Forms shortcode set in the backend replaces the
 							// built-in form entirely. Blank ⇒ keep the built-in form.
@@ -496,13 +496,13 @@ get_header();
 			<div class="container py-lg-4">
 				<div class="row g-5">
 					<div class="col-lg-7">
-						<h2 class="vc-serif vc-title vc-faq-title"><?php echo esc_html( vc_val( 'faq_title' ) ); ?></h2>
+						<h2 class="vc-serif vc-title vc-faq-title wow fadeInUp"><?php echo esc_html( vc_val( 'faq_title' ) ); ?></h2>
 						<div class="accordion vc-faq-accordion" id="vcFaq">
 							<?php foreach ( vc_rows( 'faq' ) as $i => $faq ) :
 								$faq_id  = 'vcFaq' . $i;
 								$is_open = ( 0 === $i );
 							?>
-								<div class="accordion-item">
+								<div class="accordion-item wow fadeInUp" data-wow-delay="<?php echo esc_attr( $i * 0.08 ); ?>s">
 									<h3 class="accordion-header">
 										<button class="accordion-button vc-serif<?php echo $is_open ? '' : ' collapsed'; ?>" type="button" data-bs-toggle="collapse" data-bs-target="#<?php echo esc_attr( $faq_id ); ?>" aria-expanded="<?php echo $is_open ? 'true' : 'false'; ?>" aria-controls="<?php echo esc_attr( $faq_id ); ?>">
 											<?php echo esc_html( $faq['question'] ); ?>
@@ -516,7 +516,7 @@ get_header();
 						</div>
 					</div>
 					<div class="col-lg-5">
-						<div class="vc-careers p-4 p-xl-5 h-100 d-flex flex-column justify-content-center">
+						<div class="vc-careers p-4 p-xl-5 h-100 d-flex flex-column justify-content-center wow fadeInRight">
 							<i class="fa fa-briefcase vc-careers-icon"></i>
 							<h2 class="vc-serif vc-careers-title"><?php echo esc_html( vc_val( 'careers_title' ) ); ?></h2>
 							<p class="vc-careers-text"><?php echo vc_para( vc_val( 'careers_text' ) ); ?></p>

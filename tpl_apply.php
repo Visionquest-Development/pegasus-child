@@ -96,10 +96,10 @@ if ( 'header-three' === $header_choice ) {
 				<div class="row g-5 align-items-end py-lg-3">
 					<div class="col-lg-7">
 						<div class="vc-eyebrow vc-eyebrow--light"><?php echo esc_html( vc_apply_val( 'apply_eyebrow' ) ); ?></div>
-						<h1 class="vc-serif vc-h1 vc-svc-hero__title"><?php echo wp_kses_post( vc_apply_val( 'apply_title' ) ); ?></h1>
+						<h1 class="vc-serif vc-h1 vc-svc-hero__title wow fadeInUp"><?php echo wp_kses_post( vc_apply_val( 'apply_title' ) ); ?></h1>
 					</div>
 					<div class="col-lg-5">
-						<p class="vc-svc-hero__intro"><?php echo nl2br( esc_html( vc_apply_val( 'apply_intro' ) ) ); ?></p>
+						<p class="vc-svc-hero__intro wow fadeInUp" data-wow-delay="0.1s"><?php echo nl2br( esc_html( vc_apply_val( 'apply_intro' ) ) ); ?></p>
 					</div>
 				</div>
 			</div>
@@ -112,7 +112,7 @@ if ( 'header-three' === $header_choice ) {
 
 					<!-- Supporting column -->
 					<div class="col-lg-4">
-						<div class="vc-apply-aside">
+						<div class="vc-apply-aside wow fadeInLeft">
 							<h2 class="vc-serif vc-title"><?php echo esc_html( vc_apply_val( 'apply_aside_title' ) ); ?></h2>
 							<div class="vc-rule"></div>
 							<p class="vc-lead"><?php echo nl2br( esc_html( vc_apply_val( 'apply_aside_text' ) ) ); ?></p>
@@ -140,7 +140,7 @@ if ( 'header-three' === $header_choice ) {
 
 					<!-- Form card -->
 					<div class="col-lg-8">
-						<div class="vc-form-card p-4 p-md-5">
+						<div class="vc-form-card p-4 p-md-5 wow fadeInRight">
 							<h2 class="vc-serif vc-form-title mb-4"><?php echo esc_html( vc_apply_val( 'apply_form_title' ) ); ?></h2>
 							<?php
 							// The form comes from the Gravity Form ID field; a full

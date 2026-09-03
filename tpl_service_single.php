@@ -132,9 +132,9 @@ if ( 'header-three' === $header_choice ) {
 						<a class="vc-eyebrow vc-eyebrow--light vc-service-crumb" href="<?php echo esc_url( $services_url ); ?>">
 							<i class="fa fa-angle-left me-2"></i><?php echo esc_html( $svc_eyebrow ); ?>
 						</a>
-						<h1 class="vc-serif vc-h1 mt-2"><?php echo esc_html( $svc_title ); ?></h1>
-						<p class="vc-hero-lead"><?php echo esc_html( $svc_lead ); ?></p>
-						<div class="d-flex flex-wrap gap-3 mt-4">
+						<h1 class="vc-serif vc-h1 mt-2 wow fadeInUp"><?php echo esc_html( $svc_title ); ?></h1>
+						<p class="vc-hero-lead wow fadeInUp" data-wow-delay="0.1s"><?php echo esc_html( $svc_lead ); ?></p>
+						<div class="d-flex flex-wrap gap-3 mt-4 wow fadeInUp" data-wow-delay="0.2s">
 							<a href="<?php echo esc_url( home_url( '/' ) ); ?>#consultation" class="btn btn-lg fw-bold px-4 vc-btn-gold">Request a Free Consultation</a>
 							<a href="<?php echo esc_url( $phone_link ); ?>" class="btn btn-lg px-4 vc-btn-outline">
 								<i class="fa fa-phone me-2 vc-gold-text"></i><?php echo esc_html( $phone ); ?>
@@ -142,7 +142,7 @@ if ( 'header-three' === $header_choice ) {
 						</div>
 					</div>
 					<div class="col-lg-6">
-						<div class="vc-framed vc-framed--bl">
+						<div class="vc-framed vc-framed--bl wow fadeInRight">
 							<div class="vc-framed__accent"></div>
 							<?php echo vc_image_slot( $hero_image, $svc_title . ' — Valor Care', 'vc-framed__media vc-ar-4x3' ); ?>
 						</div>
@@ -160,7 +160,7 @@ if ( 'header-three' === $header_choice ) {
 							<span class="vc-badge-icon vc-badge-icon--static"><i class="fa <?php echo esc_attr( $svc_icon ); ?>"></i></span>
 							<div>
 								<div class="vc-eyebrow">Overview<?php echo $svc_code ? ' &middot; ' . esc_html( $svc_code ) : ''; ?></div>
-								<h2 class="vc-serif vc-title m-0"><?php echo esc_html( $ov_heading ); ?></h2>
+								<h2 class="vc-serif vc-title m-0 wow fadeInUp"><?php echo esc_html( $ov_heading ); ?></h2>
 							</div>
 						</div>
 						<div class="vc-rule"></div>
@@ -177,7 +177,7 @@ if ( 'header-three' === $header_choice ) {
 						</div>
 					</div>
 					<div class="col-lg-5">
-						<div class="vc-included-card">
+						<div class="vc-included-card wow fadeInRight">
 							<h3 class="vc-serif vc-included-title"><?php echo esc_html( $inc_heading ); ?></h3>
 							<div class="vc-included"><?php echo apply_filters( 'the_content', $svc_bull ); ?></div>
 							<a href="<?php echo esc_url( home_url( '/' ) ); ?>#consultation" class="btn fw-bold px-4 py-2 vc-btn-navy mt-3">Talk with Our Team</a>
@@ -206,13 +206,13 @@ if ( 'header-three' === $header_choice ) {
 		?>
 		<section class="vc-service-other py-5">
 			<div class="container py-lg-4">
-				<div class="text-center mx-auto vc-section-head-xs mb-4">
+				<div class="text-center mx-auto vc-section-head-xs mb-4 wow fadeInUp">
 					<div class="vc-eyebrow">Explore More</div>
 					<h2 class="vc-serif vc-title">Our Other Services</h2>
 				</div>
 				<div class="row g-4 justify-content-center">
-					<?php foreach ( $others as $o ) : ?>
-						<div class="col-md-6 col-lg-4">
+					<?php foreach ( $others as $oi => $o ) : ?>
+						<div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="<?php echo esc_attr( $oi * 0.1 ); ?>s">
 							<a class="vc-card vc-other-card h-100 d-flex flex-column p-4 text-decoration-none" href="<?php echo esc_url( $o['url'] ); ?>">
 								<span class="vc-badge-icon vc-badge-icon--static"><i class="fa <?php echo esc_attr( $o['icon'] ); ?>"></i></span>
 								<h3 class="vc-serif vc-card__title mt-3"><?php echo esc_html( $o['title'] ); ?></h3>
@@ -231,7 +231,7 @@ if ( 'header-three' === $header_choice ) {
 			<div class="container py-lg-4">
 				<div class="row align-items-center g-4">
 					<div class="col-lg-8">
-						<h2 class="vc-serif vc-title vc-title--light m-0"><?php echo esc_html( $cta_heading ); ?></h2>
+						<h2 class="vc-serif vc-title vc-title--light m-0 wow fadeInUp"><?php echo esc_html( $cta_heading ); ?></h2>
 						<p class="vc-consult-text mb-0 mt-3"><?php echo nl2br( esc_html( $cta_text ) ); ?></p>
 						<div class="d-flex flex-column gap-2 mt-4">
 							<a href="<?php echo esc_url( $phone_link ); ?>" class="vc-contact">

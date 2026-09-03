@@ -73,3 +73,12 @@
 
 	} //end function
 	add_action( 'wp_enqueue_scripts', 'pegasus_child_bootstrap_js' );
+
+	/*
+	 * Scroll animations are provided by the Pegasus Wow plugin, which enqueues
+	 * Animate.css + WOW.js site-wide and initializes WOW in the footer
+	 * (animateClass "animated"). Templates opt an element in with class
+	 * "wow fadeInUp" (any Animate.css animation) plus optional data-wow-delay /
+	 * data-wow-duration / data-wow-offset / data-wow-iteration attributes.
+	 * Nothing to enqueue here — keep the plugin active.
+	 */

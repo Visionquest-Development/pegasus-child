@@ -94,10 +94,10 @@ if ( 'header-three' === $header_choice ) {
 				<div class="row g-5 align-items-end py-lg-3">
 					<div class="col-lg-7">
 						<div class="vc-eyebrow vc-eyebrow--light"><?php echo esc_html( vc_svc_val( 'services_page_eyebrow' ) ); ?></div>
-						<h1 class="vc-serif vc-h1 vc-svc-hero__title"><?php echo wp_kses_post( vc_svc_val( 'services_page_title' ) ); ?></h1>
+						<h1 class="vc-serif vc-h1 vc-svc-hero__title wow fadeInUp"><?php echo wp_kses_post( vc_svc_val( 'services_page_title' ) ); ?></h1>
 					</div>
 					<div class="col-lg-5">
-						<p class="vc-svc-hero__intro"><?php echo nl2br( esc_html( vc_svc_val( 'services_page_intro' ) ) ); ?></p>
+						<p class="vc-svc-hero__intro wow fadeInUp" data-wow-delay="0.1s"><?php echo nl2br( esc_html( vc_svc_val( 'services_page_intro' ) ) ); ?></p>
 					</div>
 				</div>
 			</div>
@@ -148,7 +148,7 @@ if ( 'header-three' === $header_choice ) {
 					<div class="row g-5 align-items-center">
 
 						<!-- Text column -->
-						<div class="col-lg-6 <?php echo $even ? 'order-lg-1' : 'order-lg-2'; ?>">
+						<div class="col-lg-6 wow fadeInUp <?php echo $even ? 'order-lg-1' : 'order-lg-2'; ?>">
 							<div class="vc-svc-block__doc">
 								<span class="vc-svc-block__num">&sect; <?php echo esc_html( $num ); ?></span>
 								<?php if ( $code ) : ?><span class="vc-svc-block__code"><?php echo esc_html( $code ); ?></span><?php endif; ?>
@@ -176,7 +176,7 @@ if ( 'header-three' === $header_choice ) {
 						</div>
 
 						<!-- Media column -->
-						<div class="col-lg-6 <?php echo $even ? 'order-lg-2' : 'order-lg-1'; ?>">
+						<div class="col-lg-6 wow fadeInUp <?php echo $even ? 'order-lg-2' : 'order-lg-1'; ?>" data-wow-delay="0.1s">
 							<div class="vc-framed <?php echo $even ? 'vc-framed--bl' : 'vc-framed--tr'; ?>">
 								<div class="vc-framed__accent"></div>
 								<?php echo vc_image_slot( $image, $title . ' — Valor Care', 'vc-framed__media vc-ar-4x3' ); ?>
@@ -193,7 +193,7 @@ if ( 'header-three' === $header_choice ) {
 			<div class="container py-lg-4">
 				<div class="row align-items-center g-4">
 					<div class="col-lg-8">
-						<h2 class="vc-serif vc-title vc-title--light m-0"><?php echo wp_kses_post( vc_svc_val( 'services_page_cta_title' ) ); ?></h2>
+						<h2 class="vc-serif vc-title vc-title--light m-0 wow fadeInUp"><?php echo wp_kses_post( vc_svc_val( 'services_page_cta_title' ) ); ?></h2>
 						<p class="vc-consult-text mb-0 mt-3"><?php echo nl2br( esc_html( vc_svc_val( 'services_page_cta_text' ) ) ); ?></p>
 					</div>
 					<div class="col-lg-4 text-lg-end">
