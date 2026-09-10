@@ -43,6 +43,25 @@
 	} //end function
 	add_action( 'wp_enqueue_scripts', 'pegasus_child_bootstrap_js' );
 
+	/**
+	 * Pre-tick the Brevo newsletter opt-in checkbox (#ws_opt_in) at checkout.
+	 * The Brevo plugin has no default-checked setting, so we handle it in JS.
+	 */
+	function pegasus_child_brevo_optin_default_js() {
+		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() ) {
+			return;
+		}
+		$rel = '/js/brevo-optin-default.js';
+		wp_enqueue_script(
+			'brevo-optin-default',
+			get_stylesheet_directory_uri() . $rel,
+			array( 'jquery' ),
+			filemtime( get_stylesheet_directory() . $rel ),
+			true
+		);
+	}
+	add_action( 'wp_enqueue_scripts', 'pegasus_child_brevo_optin_default_js' );
+
 	function pegasus_child_admin_css() {
 		wp_enqueue_style( 'pegasus-child-admin-css', get_stylesheet_directory_uri() . '/admin.css', array(), '1.0.0' );
 	}
