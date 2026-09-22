@@ -15,7 +15,7 @@
    - Playfair Display  high-contrast Didone serif for display headings (--font-display),
                        incl. italics used for phrases like "refuse to compromise on".
    Must stay near the top: @import is only valid before other style rules. */
-@import url('https://fonts.googleapis.com/css2?family=Allura&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Allura&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&display=swap');
 
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -25,6 +25,7 @@
     --font-script: 'Allura', 'Snell Roundhand', 'Brush Script MT', 'Segoe Script', cursive;
     --font-display: 'Playfair Display', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
     --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-nav: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     --hfhs-black: #0b0b0b;
     --hfhs-ink: #141414;
     --hfhs-light: #faf9f7;
@@ -92,7 +93,8 @@
      Scoped under .nav-actions so these win over Bootstrap's base .btn, which
      loads after this stylesheet and would otherwise reset bg/color/padding. */
   .nav-actions .btn-hfhsga,
-  .nav-actions .nav-login-btn {
+  .nav-actions .nav-login-btn,
+  .nav-actions .nav-phone-btn {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -123,19 +125,23 @@
     border-color: #fff;
   }
 
-  /* LOGIN — outlined, with fa-sign-in icon */
-  .nav-actions .nav-login-btn {
+  /* LOGIN + PHONE — outlined, with FontAwesome icon */
+  .nav-actions .nav-login-btn,
+  .nav-actions .nav-phone-btn {
     background: transparent;
     color: #fff;
     border-color: rgba(255, 255, 255, 0.35);
   }
   .nav-actions .nav-login-btn:hover,
-  .nav-actions .nav-login-btn:focus {
+  .nav-actions .nav-login-btn:focus,
+  .nav-actions .nav-phone-btn:hover,
+  .nav-actions .nav-phone-btn:focus {
     background: #fff;
     color: var(--hfhs-black);
     border-color: #fff;
   }
-  .nav-actions .nav-login-btn .fa {
+  .nav-actions .nav-login-btn .fa,
+  .nav-actions .nav-phone-btn .fa {
     font-size: 0.95em;
     line-height: 1;
   }
@@ -153,8 +159,11 @@
 
   #menu-main-nav li a {
     color: var(--hfhs-white);
+    font-family: var(--font-nav);
     text-transform: uppercase;
-    font-weight: bold;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    font-size: 0.82rem;
   }
 
   #menu-main-nav li a:hover {
@@ -532,6 +541,8 @@
   .hfhs-service__body { position: relative; z-index: 2; display: flex; flex-direction: column; height: 100%; }
   .hfhs-service__icon { display: block; margin-bottom: auto; color: #fff; }
   .hfhs-service__icon-svg { width: 58px; height: 58px; }
+  /* Branded per-service icon (white PNG on the dark card). */
+  .hfhs-service__icon-img { display: block; width: 58px; height: 58px; object-fit: contain; }
   .hfhs-service__title { font-family: var(--font-display); font-weight: 700; font-size: 1.65rem; margin: 1.75rem 0 0.85rem; }
   .hfhs-service__desc { color: rgba(255,255,255,0.78); font-size: 0.98rem; line-height: 1.6; }
   .hfhs-service__cta {
@@ -665,7 +676,7 @@
   .hfhs-principle__row { display: flex; align-items: center; justify-content: center; gap: 2.5rem; }
   .hfhs-principle__text { font-size: clamp(1.9rem, 3.4vw, 2.9rem); margin: 0; max-width: 640px; }
   .hfhs-principle__mark { flex: 0 0 auto; color: var(--hfhs-muted); opacity: 0.55; }
-  .hfhs-principle__icon { width: 56px; height: 56px; display: block; }
+  .hfhs-principle__icon { width: 124px; height: auto; display: block; }
   .hfhs-principle__rule { display: block; width: 56px; height: 1px; background: rgba(0, 0, 0, 0.25); margin: 1.85rem auto 0; }
 
   /* ---- Credentials strip ---- */
@@ -1305,6 +1316,9 @@
     background-repeat: no-repeat;
   }
   .hfhs-svc-hero .hfhs-hero__inner { padding-bottom: 0; max-width: 760px; }
+  /* Branded per-service icon badge in the service hero (white PNG on dark). */
+  .hfhs-svc-hero__icon { display: inline-flex; margin: 0.5rem 0 1rem; }
+  .hfhs-svc-hero__icon img { display: block; width: 76px; height: 76px; object-fit: contain; opacity: 0.95; }
   .hfhs-svc-hero__title { font-size: clamp(3rem, 7vw, 6rem); margin: 0.25rem 0 1.5rem; }
   .hfhs-svc-hero .hfhs-hero__lead { margin-bottom: 2.25rem; }
 

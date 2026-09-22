@@ -32,8 +32,13 @@
 		array( 'title' => 'Custom Projects', 'desc' => 'Saunas, chicken coops, climbing walls, pergolas, custom gates. If you can dream it, there’s a good chance we can build it.', 'link' => home_url( '/services/custom-projects/' ), 'cta' => 'Explore Custom Projects', 'img' => 'https://hfhsgeorgia.com/wp-content/uploads/2025/03/Dry-sauna-3.webp' ),
 	) );
 
-	// Generic placeholder line-icon reused per card.
+	// Generic placeholder line-icon (fallback if a branded icon is missing).
 	$hfhs_service_icon = '<svg class="hfhs-service__icon-svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 30 32 14l20 16"/><path d="M18 28v20h28V28"/><path d="M28 48V36h8v12"/><path d="M8 40c3-3 6-3 9 0M47 40c3-3 6-3 9 0"/></svg>';
+
+	// Branded per-service icons (white line-art on transparent) live in the child
+	// theme; each card is matched to its icon by the service slug in its link.
+	$hfhs_icons_uri  = get_stylesheet_directory_uri() . '/images/branding/icons/';
+	$hfhs_icons_path = get_stylesheet_directory() . '/images/branding/icons/';
 
 	$hero_img = hfhs_home_field( 'hero_image', get_stylesheet_directory_uri() . '/images/hero.jpg' );
 
@@ -127,7 +132,15 @@
 							<span class="hfhs-service__media"<?php if ( ! empty( $service['img'] ) ) : ?> style="background-image: url('<?php echo esc_url( $service['img'] ); ?>');"<?php endif; ?> aria-hidden="true"></span>
 							<span class="hfhs-service__num"><?php echo esc_html( sprintf( '%02d', $i + 1 ) ); ?></span>
 							<span class="hfhs-service__body">
-								<span class="hfhs-service__icon" aria-hidden="true"><?php echo $hfhs_service_icon; // phpcs:ignore ?></span>
+								<span class="hfhs-service__icon" aria-hidden="true">
+									<?php
+									$svc_slug = ! empty( $service['link'] ) ? basename( untrailingslashit( (string) wp_parse_url( $service['link'], PHP_URL_PATH ) ) ) : '';
+									$svc_icon = $svc_slug ? $hfhs_icons_path . $svc_slug . '-icon.png' : '';
+									if ( $svc_icon && file_exists( $svc_icon ) ) : ?>
+										<img class="hfhs-service__icon-img" src="<?php echo esc_url( $hfhs_icons_uri . $svc_slug . '-icon.png' ); ?>" alt="" width="58" height="58" loading="lazy" />
+									<?php else : echo $hfhs_service_icon; // phpcs:ignore
+									endif; ?>
+								</span>
 								<span class="hfhs-service__title"><?php echo esc_html( isset( $service['title'] ) ? $service['title'] : '' ); ?></span>
 								<span class="hfhs-service__desc"><?php echo esc_html( isset( $service['desc'] ) ? $service['desc'] : '' ); ?></span>
 								<span class="hfhs-service__cta hfhs-arrow-link"><?php echo esc_html( isset( $service['cta'] ) ? $service['cta'] : '' ); ?> <span class="hfhs-arrow" aria-hidden="true">&rarr;</span></span>

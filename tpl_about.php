@@ -30,7 +30,7 @@
 	// -------------------------------------------------------------------------
 	// Defaults. Each is shown unless the matching CMB2 field is filled in.
 	// -------------------------------------------------------------------------
-	$hero_bg = hfhs_about_field( 'hero_image', get_stylesheet_directory_uri() . '/images/hero.jpg' );
+	$hero_bg = hfhs_about_field( 'hero_image', get_stylesheet_directory_uri() . '/images/branding/heroes/about-hero.jpg' );
 
 	$story_img     = hfhs_about_field( 'story_image', get_stylesheet_directory_uri() . '/images/about-josh.jpg' );
 	$story_img_alt = hfhs_about_field( 'story_image_alt', 'Josh Hart on a roofing job' );
@@ -54,7 +54,7 @@
 		array( 'title' => 'Warranty-Backed Work', 'text' => 'Two-to-five year warranties are standard, with lifetime coverage on select products. If something&rsquo;s not right, we come back and make it right.' ),
 	) );
 
-	$house_icon = '<svg class="hfhs-principle__icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 30 32 14l20 16"/><path d="M18 28v20h28V28"/><path d="M28 48V36h8v12"/></svg>';
+	$house_icon = '<img class="hfhs-principle__icon" src="' . esc_url( get_stylesheet_directory_uri() . '/images/branding/icons/house-icon.png' ) . '" alt="" aria-hidden="true" loading="lazy" />';
 ?>
 
 <main id="page-wrap" class="hfhs-home hfhs-about-page">

@@ -1,0 +1,33 @@
+<svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
+  <!-- Left laurel sprig -->
+  <g stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.9">
+    <path d="M14 82 Q 20 72 24 62 Q 28 52 30 44"/>
+    <path d="M20 74 Q 13 70 9 74 Q 13 77 20 74 Z"/>
+    <path d="M24 62 Q 17 59 12 63 Q 17 68 24 62 Z"/>
+    <path d="M28 52 Q 22 48 17 52 Q 22 56 28 52 Z"/>
+    <path d="M31 43 Q 26 40 22 43 Q 26 47 31 43 Z"/>
+  </g>
+  <!-- Right laurel sprig -->
+  <g stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.9">
+    <path d="M106 82 Q 100 72 96 62 Q 92 52 90 44"/>
+    <path d="M100 74 Q 107 70 111 74 Q 107 77 100 74 Z"/>
+    <path d="M96 62 Q 103 59 108 63 Q 103 68 96 62 Z"/>
+    <path d="M92 52 Q 98 48 103 52 Q 98 56 92 52 Z"/>
+    <path d="M89 43 Q 94 40 98 43 Q 94 47 89 43 Z"/>
+  </g>
+  <!-- Fence: 4 pickets with pointed tops, slightly uneven for hand feel -->
+  <g stroke="white" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M42 38 L42 82"/>
+    <path d="M53 34 L53 82"/>
+    <path d="M65 36 L65 82"/>
+    <path d="M77 34 L77 82"/>
+    <!-- Pointed picket tops -->
+    <path d="M38 44 L42 37 L46 44"/>
+    <path d="M49 40 L53 33 L57 40"/>
+    <path d="M61 42 L65 35 L69 42"/>
+    <path d="M73 40 L77 33 L81 40"/>
+    <!-- Horizontal rails (slightly curved for hand feel) -->
+    <path d="M37 52 Q 60 51 82 53"/>
+    <path d="M37 72 Q 60 71 82 73"/>
+  </g>
+</svg>

@@ -20,7 +20,7 @@
 <?php get_header(); ?>
 
 <?php
-	$hero_bg = hfhs_faq_field( 'hero_image', get_stylesheet_directory_uri() . '/images/hero.jpg' );
+	$hero_bg = hfhs_faq_field( 'hero_image', get_stylesheet_directory_uri() . '/images/branding/heroes/faq-hero.jpg' );
 
 	$intro_body_default =
 		'<p>We&rsquo;ve compiled the questions homeowners, property managers, and HOA boards ask us most. Browse them here &mdash; or if you&rsquo;d rather talk to a real person, pick up the phone. We actually answer.</p>' .

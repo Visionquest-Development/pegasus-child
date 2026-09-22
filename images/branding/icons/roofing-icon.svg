@@ -1,0 +1,37 @@
+<svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
+  <!-- Left laurel sprig -->
+  <g stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.9">
+    <path d="M14 82 Q 20 72 24 62 Q 28 52 30 44"/>
+    <path d="M20 74 Q 13 70 9 74 Q 13 77 20 74 Z"/>
+    <path d="M24 62 Q 17 59 12 63 Q 17 68 24 62 Z"/>
+    <path d="M28 52 Q 22 48 17 52 Q 22 56 28 52 Z"/>
+    <path d="M31 43 Q 26 40 22 43 Q 26 47 31 43 Z"/>
+  </g>
+  <!-- Right laurel sprig -->
+  <g stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.9">
+    <path d="M106 82 Q 100 72 96 62 Q 92 52 90 44"/>
+    <path d="M100 74 Q 107 70 111 74 Q 107 77 100 74 Z"/>
+    <path d="M96 62 Q 103 59 108 63 Q 103 68 96 62 Z"/>
+    <path d="M92 52 Q 98 48 103 52 Q 98 56 92 52 Z"/>
+    <path d="M89 43 Q 94 40 98 43 Q 94 47 89 43 Z"/>
+  </g>
+  <!-- Peaked roof with chimney and shingle hatching -->
+  <g stroke="white" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Roof outline: peaked gable -->
+    <path d="M34 68 L60 30 L86 68"/>
+    <!-- Eaves line -->
+    <path d="M32 68 L88 68"/>
+    <!-- Chimney -->
+    <path d="M72 42 L72 28 L78 28 L78 48"/>
+  </g>
+  <!-- Shingle rows -->
+  <g stroke="white" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.9">
+    <path d="M40 62 Q 60 60 80 62"/>
+    <path d="M44 56 Q 60 54 76 56"/>
+    <path d="M48 49 Q 60 47 72 49"/>
+    <path d="M53 42 Q 60 40 67 42"/>
+    <!-- Small vertical shingle marks -->
+    <path d="M48 63 L48 66 M56 63 L56 66 M64 63 L64 66 M72 63 L72 66"/>
+    <path d="M52 57 L52 59 M60 57 L60 59 M68 57 L68 59"/>
+  </g>
+</svg>

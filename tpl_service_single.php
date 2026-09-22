@@ -54,7 +54,7 @@ if ( ! function_exists( 'hfhs_svc_rows' ) ) {
 get_header();
 
 // House-icon (reused from the About principle band) for the principle strip.
-$hfhs_svc_house = '<svg class="hfhs-principle__icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 30 32 14l20 16"/><path d="M18 28v20h28V28"/><path d="M28 48V36h8v12"/></svg>';
+$hfhs_svc_house = '<img class="hfhs-principle__icon" src="' . esc_url( get_stylesheet_directory_uri() . '/images/branding/icons/house-icon.png' ) . '" alt="" aria-hidden="true" loading="lazy" />';
 ?>
 
 <main id="page-wrap" class="hfhs-home hfhs-svc-page">
@@ -75,6 +75,7 @@ while ( have_posts() ) :
 			'script'        => 'Where it begins.',
 			'lead'          => get_the_excerpt(),
 			'img'           => '',
+			'hero'          => '',
 			'overview_title'=> 'Every aspect of ' . $title . ' — done right.',
 			'overview_body' => '',
 			'scope'         => array(),
@@ -96,7 +97,12 @@ while ( have_posts() ) :
 	$number   = hfhs_svc( 'hfhs_svc_number', $d['number'] );
 	$script   = hfhs_svc( 'hfhs_svc_script', $d['script'] );
 	$lead     = hfhs_svc( 'hfhs_svc_lead', $d['lead'] );
-	$hero_img = hfhs_svc( 'hfhs_svc_hero_image', $d['img'] );
+	$hero_img = hfhs_svc( 'hfhs_svc_hero_image', ! empty( $d['hero'] ) ? $d['hero'] : $d['img'] );
+
+	// Branded per-service icon (white line-art) — matched to the page slug.
+	$svc_icon_path = get_stylesheet_directory() . '/images/branding/icons/' . $slug . '-icon.png';
+	$svc_icon_uri  = get_stylesheet_directory_uri() . '/images/branding/icons/' . $slug . '-icon.png';
+	$has_svc_icon  = file_exists( $svc_icon_path );
 
 	$ov_title = hfhs_svc( 'hfhs_svc_overview_title', $d['overview_title'] );
 	$ov_body  = hfhs_svc( 'hfhs_svc_overview_body', $d['overview_body'] );
@@ -154,6 +160,9 @@ while ( have_posts() ) :
 				<span aria-hidden="true">/</span>
 				<span aria-current="page"><?php echo esc_html( $title ); ?></span>
 			</nav>
+			<?php if ( $has_svc_icon ) : ?>
+				<span class="hfhs-svc-hero__icon" aria-hidden="true"><img src="<?php echo esc_url( $svc_icon_uri ); ?>" alt="" width="80" height="80" loading="lazy" /></span>
+			<?php endif; ?>
 			<?php if ( $number ) : ?>
 				<p class="hfhs-eyebrow hfhs-eyebrow--light">Service <?php echo esc_html( $number ); ?></p>
 			<?php endif; ?>

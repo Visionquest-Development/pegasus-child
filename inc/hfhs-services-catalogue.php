@@ -28,8 +28,9 @@ function hfhs_services_catalogue() {
 		return $c;
 	}
 
-	$img = 'https://hfhsgeorgia.com/wp-content/uploads/';
-	$svc = trailingslashit( get_stylesheet_directory_uri() ) . 'images/services/';
+	$img  = 'https://hfhsgeorgia.com/wp-content/uploads/';
+	$svc  = trailingslashit( get_stylesheet_directory_uri() ) . 'images/services/';
+	$hero = trailingslashit( get_stylesheet_directory_uri() ) . 'images/branding/heroes/'; // branded per-service hero backgrounds
 
 	// Generic process fallback (rarely used — each service defines its own).
 	$c = array(
@@ -66,6 +67,7 @@ function hfhs_services_catalogue() {
 				'script'         => 'Where protection begins.',
 				'lead'           => 'Your gutters are your home’s first line of defense against water damage. From seasonal cleaning to full replacement, the Hart Family team handles every aspect of gutter care with the precision and integrity your home deserves.',
 				'img'            => $img . '2024/12/gutters-small.webp',
+				'hero'           => $hero . 'gutters-hero.webp',
 				'overview_title' => 'Every aspect of gutter care — <em>cleaned, repaired, or replaced.</em>',
 				'overview_body'  => '<p>When gutters fail, water fails with them. Overflow damages your fascia, your foundation, and your landscape. Clogs freeze and split seams. A small gap in a downspout sends runoff straight to your siding. We handle all of it — from a one-time seasonal cleaning to a full replacement run over several hundred feet of home.</p><p>Our approach is the same on every job: inspect honestly, document thoroughly, and leave your property cleaner than we found it.</p>',
 				'scope'          => array( 'Seasonal gutter cleaning', 'Clog removal and flushing', 'Seam and joint repair', 'Downspout repair & extension', 'Hanger and bracket replacement', 'Full gutter replacement', 'Custom gutter installation', 'Gutter guards & leaf protection', 'Post-work photo documentation' ),
@@ -100,6 +102,7 @@ function hfhs_services_catalogue() {
 				'script'         => 'Where your property begins.',
 				'lead'           => 'A good fence marks your property, protects what matters, and adds curb appeal. From standard privacy fencing to custom property-line installations stretching hundreds of feet, the Hart Family team builds and repairs fences across the Greater Atlanta area.',
 				'img'            => $img . '2024/12/fencing-header.webp',
+				'hero'           => $hero . 'fencing-hero.webp',
 				'overview_title' => 'Every kind of fence — <em>built, repaired, or replaced.</em>',
 				'overview_body'  => '<p>A fence does three jobs: it marks your property, it protects what’s inside, and it adds to the look of your home. When any of those fail, the whole fence feels the weight of it. A leaning post means a compromised line. A rotting board means an open invitation to pests. A broken gate means you stop using it altogether.</p><p>We’ve installed runs of over 700 feet — no job is too long, and no repair is too small. Our approach is the same on every project: inspect honestly, document thoroughly, and leave your property cleaner than we found it.</p>',
 				'scope'          => array( 'Wood privacy fencing', 'Picket & split-rail fencing', 'Chain link installation', 'Custom gates & hardware', 'Property-line installations', 'Post replacement & straightening', 'Board and section repair', 'Staining, sealing & weatherproofing', 'Full fence replacement' ),
@@ -134,6 +137,7 @@ function hfhs_services_catalogue() {
 				'script'         => 'Against the seasons.',
 				'lead'           => 'Your home’s exterior takes a beating — sun, storms, humidity, pests. When something needs fixing, repairing, or replacing on the outside of your home, the Hart Family team handles it with the care, honesty, and documentation we bring to every project.',
 				'img'            => $img . '2024/12/sofit-siding-header.webp',
+				'hero'           => $hero . 'exterior-repairs-hero.jpg',
 				'overview_title' => 'Every part of the outside of your home — <em>repaired, restored, or replaced.</em>',
 				'overview_body'  => '<p>Your exterior is where the weather does its work. Sun bleaches paint. Rain finds every gap. Wind lifts loose flashing. Pests find their way in through rotted soffit or pulled-away siding. Left alone, small issues turn into structural problems — and structural problems turn into expensive ones.</p><p>We handle everything from small repairs to full replacements and complete rebuilds — siding, soffit, fascia, chimney, trim, paint, full window and door replacement, dormer rebuilds, rot removal, and pest damage. Some jobs need a careful patch. Others need to be rebuilt from the sheathing up. Our approach is the same on both: inspect honestly, document thoroughly, and leave the job better than we found it.</p>',
 				'scope'          => array( 'Siding repair & full replacement', 'Soffit & fascia repair', 'Chimney repair & painting', 'Full window & door replacement', 'Door & window frame repair', 'Full dormer & feature rebuilds', 'Trim & molding replacement', 'Paint, stain & finish work', 'Pressure washing', 'Flashing & caulking repair', 'Rot removal & rebuild', 'Pest & rodent damage repair' ),
@@ -168,6 +172,7 @@ function hfhs_services_catalogue() {
 				'script'         => 'What’s above matters most.',
 				'lead'           => 'Your roof protects everything underneath it. Whether you need a small patch, a leak diagnosed, a pipe stack repaired, or a full inspection before storm season, the Hart Family team approaches roofing with safety, transparency, and the long-term health of your home in mind.',
 				'img'            => $img . '2024/12/roofing-header.webp',
+				'hero'           => $hero . 'roofing-hero.webp',
 				'overview_title' => 'The full scope of roofing — <em>inspected, repaired, or replaced.</em>',
 				'overview_body'  => '<p>Your roof is the single most important barrier between your home and the weather. When it works, everything underneath stays dry. When it fails — even in a small, unnoticed way — water finds its path, insulation rots, ceilings stain, and structural wood starts to go. Small leaks become big problems quickly.</p><p>We handle shingle repair, leak diagnosis, storm damage assessment, pipe stack repair, flashing replacement, rotten decking rebuilds, and full inspections for homeowners planning ahead. If the right answer is a small patch, we say so. If the right answer is full replacement, we give you a written breakdown so you can plan. Safety and honesty on every project.</p>',
 				'scope'          => array( 'Roof inspection & assessment', 'Shingle repair & replacement', 'Leak diagnosis & repair', 'Storm damage assessment', 'Pipe stack repair & replacement', 'Flashing repair & replacement', 'Chimney flashing', 'Rotten decking & sheathing replacement', 'Roof vent repair', 'Full replacement planning', 'Storm-season preventive inspection', 'Photo documentation of every repair' ),
@@ -202,6 +207,7 @@ function hfhs_services_catalogue() {
 				'script'         => 'Between your roof and the sky.',
 				'lead'           => 'Atlanta’s tree canopy is beautiful — until a limb threatens your roof or a dead tree threatens your safety. We handle tree work with the same care we give your home: respect for the property, safety for the crew, and cleanup that leaves the landscape looking intentional.',
 				'img'            => $img . '2024/12/Finished-Dead-Tree-Removal.webp',
+				'hero'           => $hero . 'tree-services-hero.webp',
 				'overview_title' => 'Tree work that <em>respects your home and the landscape.</em>',
 				'overview_body'  => '<p>Trees are part of what makes Atlanta feel like Atlanta — but they don’t always cooperate with the house they’re next to. A dead tree is a slow emergency. A storm-weakened limb doesn’t ask permission before it falls. An overgrown canopy dumps debris into your gutters every season and rubs against your siding in every wind.</p><p>We handle everything from hazard-tree assessment and dead-tree removal to careful limb trimming, storm response, stump grinding, and full property cleanup. Every cut is planned. Every limb comes down where we intend it to. And we haul away every piece so your yard looks intentional when we leave — not like a worksite.</p>',
 				'scope'          => array( 'Hazard tree assessment', 'Dead tree removal', 'Full tree takedown', 'Limb & branch trimming', 'Crown thinning & pruning', 'Storm damage cleanup', 'Emergency response', 'Stump grinding', 'Dead bush & shrub removal', 'Debris hauling & disposal', 'Property-safe removal planning', 'Post-work site cleanup' ),
@@ -236,6 +242,7 @@ function hfhs_services_catalogue() {
 				'script'         => 'Where the house meets the yard.',
 				'lead'           => 'A well-built deck extends your living space into the outdoors. Whether you’re planning a brand-new build, reviving a weathered deck with refinishing, or replacing worn boards and failing railings, the Hart Family team approaches every decking project with the same care we bring to the rest of your home.',
 				'img'            => $img . '2025/03/decking-services.webp',
+				'hero'           => $hero . 'decking-hero.webp',
 				'overview_title' => 'New builds, repairs, and <em>full second-life refinishing.</em>',
 				'overview_body'  => '<p>A deck is where your house ends and your yard begins — the outdoor room you actually use. Built right, it holds its line for decades. Built carelessly, it starts to tell on itself fast: cupped boards, loose balusters, a soft spot near the step. Atlanta’s heat and humidity don’t forgive shortcuts.</p><p>We build new decks from the footings up, repair existing ones board-by-board, and bring worn decks back to life with refinishing, sanding, and staining. We also build pergolas, custom outdoor structures, and the connecting features that make a deck feel like part of the home — not an afterthought attached to it.</p>',
 				'scope'          => array( 'New deck construction', 'Full deck replacement', 'Board replacement & repair', 'Railing installation & repair', 'Step & stair construction', 'Refinishing, sanding & staining', 'Weather sealing & protection', 'Pergola construction', 'Custom outdoor structures', 'Structural inspection', 'Footing & post repair', 'Photo documentation of every build' ),
@@ -271,6 +278,7 @@ function hfhs_services_catalogue() {
 				'script'         => 'The list you keep meaning to get to.',
 				'lead'           => 'Some projects don’t fit neatly into one category — they’re just things around the house that need to get done. That’s where our handyman services come in. One call, one crew, and a list you’ve been looking at for months finally gets crossed off.',
 				'img'            => $img . '2024/12/home-repair-small.webp',
+				'hero'           => $hero . 'handyman-hero.webp',
 				'overview_title' => 'The punch list, <em>handled.</em>',
 				'overview_body'  => '<p>Every home has a running list: the squeaky door, the shelf that never got hung, the caulking around the tub that needs redoing, the TV that should be on the wall by now, the light switch that sometimes works. Individually, each one isn’t worth a contractor call. Together, they add up to a home that doesn’t quite feel finished.</p><p>That’s where our handyman service comes in. One visit, one crew, and everything on the list gets crossed off. We bring the tools, the ladders, and the parts. You give us the list. We work through it efficiently, document each item with a photo, and leave you with a home that feels cared for again.</p>',
 				'scope'          => array( 'TV & art mounting', 'Shelving & cabinet installation', 'Door & window adjustments', 'Light fixture & ceiling fan install', 'Drywall patching & texture', 'Caulking & weatherstripping', 'Small trim repair', 'Furniture assembly', 'Minor plumbing fixes', 'Small paint touch-ups', 'Hardware replacement', 'One-call punch-list work' ),
@@ -304,6 +312,7 @@ function hfhs_services_catalogue() {
 				'script'         => 'Where your home comes home.',
 				'lead'           => 'The inside of your home carries the weight of daily life — scuffed trim, hairline cracks in drywall, a settled door that no longer latches, a wall begging for fresh paint. From a single fix to a full kitchen or bathroom renovation, we handle interior work with the same careful hands we bring to every HFHS job.',
 				'img'            => $img . '2024/12/sofit-repairs.webp',
+				'hero'           => $hero . 'interior-repairs-hero.jpg',
 				'overview_title' => 'Every wall, every room — <em>made right again.</em>',
 				'overview_body'  => '<p>Interior repairs are where a house starts to feel like your home again. A crisp corner of trim. A patched wall where a stud finder once strayed. A freshly painted ceiling. A kitchen reworked from the subfloor up. Whether it’s a single fix, a new floor, or a full kitchen or bathroom renovation, we handle it cleanly so your rooms read finished.</p><p>We work indoors the way we work outdoors: dropcloths down, surfaces protected, dust contained, and every fix photographed when it’s done. Whether it’s a single hallway or every room in the house, you get the same careful hands and the same itemized, honest estimate.</p>',
 				'scope'          => array( 'Full kitchen renovations', 'Full bathroom renovations', 'Flooring installation — hardwood, LVP & tile', 'Subfloor repair & replacement', 'Cabinetry install & refresh', 'Countertop install & fixture fitting', 'Interior painting — walls, trim & ceilings', 'Accent walls & color consultation', 'Drywall repair — cracks, holes, water damage', 'Drywall installation', 'Trim & baseboard installation', 'Crown molding & chair rail', 'Interior door install & adjustment', 'Caulking & finish carpentry', 'Wall texture matching & blending', 'Tile repair & small tile install' ),
@@ -337,6 +346,7 @@ function hfhs_services_catalogue() {
 				'script'         => 'Built from scratch, built to last.',
 				'lead'           => 'Some projects don’t fit into a standard category — a custom pergola build over your patio, a chicken coop perfect for your backyard friends, a climbing wall for the kids, a custom gate at the driveway, a wood-burning sauna. If you can dream it, the HFHS team can build it.',
 				'img'            => $img . '2025/03/Dry-sauna-3.webp',
+				'hero'           => $hero . 'custom-projects-hero.jpg',
 				'overview_title' => 'If you can picture it, <em>we can build it.</em>',
 				'overview_body'  => '<p>Custom Projects are the one-off, one-of-a-kind builds that don’t fit neatly into any other service. A backyard sauna. A cedar chicken coop. A garage climbing wall. A pergola stretched across the patio. A gate that makes the driveway feel like an entrance. If you’ve got a picture in your head, a rough sketch on a napkin, or a reference you saved on your phone — bring it to us.</p><p>Josh built his own sauna, coop, and climbing wall in his backyard before HFHS existed. That custom-build habit is baked into the company from the top down. Every project starts with a conversation about what you want, becomes a written design and estimate, and ends with something your family will actually use for years.</p>',
 				'scope'          => array( 'Outdoor saunas & sweat rooms', 'Chicken coops & backyard animal structures', 'Climbing walls & backyard recreation builds', 'Pergolas & custom shade structures', 'Custom gates & entry features', 'Garden boxes & raised beds', 'Outdoor storage & shed modifications', 'Playhouses & kid-spec builds', 'Unique architectural features & one-off builds' ),

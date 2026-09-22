@@ -18,7 +18,7 @@
 <?php get_header(); ?>
 
 <?php
-	$hero_bg = hfhs_comm_field( 'hero_image', get_stylesheet_directory_uri() . '/images/hero.jpg' );
+	$hero_bg = hfhs_comm_field( 'hero_image', get_stylesheet_directory_uri() . '/images/branding/heroes/community-hero.jpg' );
 
 	$mission_body_default =
 		'<p>From sponsoring local scout troops to partnering with Family Promise of DeKalb, we give our time, resources, and hands to the organizations that make our neighborhoods better places to live. When one of our neighbors needs help, our crew shows up &mdash; not for a paycheck, but because that&rsquo;s what family does.</p>' .

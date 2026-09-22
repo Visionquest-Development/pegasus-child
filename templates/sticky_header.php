@@ -118,6 +118,10 @@
 					$nav_cta_classes = trim( (string) pegasus_get_option( 'nav_cta_classes' ) );
 					?>
 					<div class="nav-actions">
+						<?php // Hardcoded for now (not wired to a Theme Option). ?>
+						<a class="nav-phone-btn" href="tel:+14045072579">
+							<i class="fa fa-phone" aria-hidden="true"></i> <span>404-507-2579</span>
+						</a>
 						<?php // TODO: replace href="#" with the real client/staff login (external) URL. ?>
 						<a class="nav-login-btn" href="#" target="_blank" rel="noopener noreferrer">
 							<i class="fa fa-sign-in" aria-hidden="true"></i> <span>Login</span>
