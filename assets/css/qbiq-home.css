@@ -83,6 +83,29 @@
   font-size: clamp(2.5rem, 6.5vw, 5.25rem);
 }
 .qb-home .v1-hero h1 .accent { color: var(--qb-accent); display: block; }
+.qb-home .v1-hero .hero-subheading {
+  display: flex;
+  align-items: center;
+  gap: .5em;
+  font-family: var(--qb-display);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-weight: 700;
+  color: #fff;
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  line-height: 1.15;
+  max-width: 560px;
+}
+.qb-home .v1-hero .hero-subheading__check {
+  flex: 0 0 auto;
+  width: 3.3em;
+  height: 3.3em;
+  fill: none;
+  stroke: var(--qb-accent);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 .qb-home .v1-hero .lead { color: #d8dbe2; max-width: 560px; }
 
 /* App mock peek */

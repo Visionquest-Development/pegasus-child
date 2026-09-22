@@ -25,7 +25,7 @@ function qbiq_register_home_metaboxes() {
 	 * ----------------------------------------------------------------- */
 	$hero = new_cmb2_box( array(
 		'id'           => $prefix . 'hero',
-		'title'        => __( 'Home — Hero', 'pegasus-child' ),
+		'title'        => __( 'Home 01 — Hero', 'pegasus-child' ),
 		'object_types' => array( 'page' ),
 		'context'      => 'normal',
 		'priority'     => 'high',
@@ -43,6 +43,16 @@ function qbiq_register_home_metaboxes() {
 		'id'      => $prefix . 'hero_headline_2',
 		'type'    => 'text',
 		'default' => 'Dominate the game.',
+	) );
+	$hero->add_field( array(
+		'name'            => 'Subheading (below headline)',
+		'desc'            => 'You can use &lt;br/&gt; to force a line break.',
+		'id'              => $prefix . 'hero_subheading',
+		'type'            => 'text',
+		'default'         => 'The #1 Presnap Reading System in Football',
+		'sanitization_cb' => function ( $value ) {
+			return wp_kses( $value, array( 'br' => array() ) );
+		},
 	) );
 	$hero->add_field( array(
 		'name'    => 'Lead paragraph',
@@ -135,8 +145,10 @@ function qbiq_register_home_metaboxes() {
 	 * ----------------------------------------------------------------- */
 	$stats = new_cmb2_box( array(
 		'id'           => $prefix . 'stats',
-		'title'        => __( 'Home — Stat Band', 'pegasus-child' ),
+		'title'        => __( 'Home 02 — Stat Band', 'pegasus-child' ),
 		'object_types' => array( 'page' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
 		'show_on'      => $show_on,
 	) );
 	$stat_group = $stats->add_field( array(
@@ -158,8 +170,10 @@ function qbiq_register_home_metaboxes() {
 	 * ----------------------------------------------------------------- */
 	$intro = new_cmb2_box( array(
 		'id'           => $prefix . 'intro',
-		'title'        => __( 'Home — What is QBIQ', 'pegasus-child' ),
+		'title'        => __( 'Home 03 — What is QBIQ', 'pegasus-child' ),
 		'object_types' => array( 'page' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
 		'show_on'      => $show_on,
 	) );
 	$intro->add_field( array( 'name' => 'Eyebrow',  'id' => $prefix . 'intro_eyebrow',  'type' => 'text',          'default' => 'What is QBIQ' ) );
@@ -189,8 +203,10 @@ function qbiq_register_home_metaboxes() {
 	 * ----------------------------------------------------------------- */
 	$trust = new_cmb2_box( array(
 		'id'           => $prefix . 'trust',
-		'title'        => __( 'Home — Trust Strip', 'pegasus-child' ),
+		'title'        => __( 'Home 04 — Trust Strip', 'pegasus-child' ),
 		'object_types' => array( 'page' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
 		'show_on'      => $show_on,
 	) );
 	$trust->add_field( array( 'name' => 'Eyebrow',  'id' => $prefix . 'trust_eyebrow',  'type' => 'text', 'default' => 'Trusted on the sideline' ) );
@@ -214,8 +230,10 @@ function qbiq_register_home_metaboxes() {
 	 * ----------------------------------------------------------------- */
 	$feat = new_cmb2_box( array(
 		'id'           => $prefix . 'features',
-		'title'        => __( 'Home — Training System (Feature Cards)', 'pegasus-child' ),
+		'title'        => __( 'Home 05 — Training System (Feature Cards)', 'pegasus-child' ),
 		'object_types' => array( 'page' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
 		'show_on'      => $show_on,
 	) );
 	$feat->add_field( array( 'name' => 'Eyebrow',  'id' => $prefix . 'features_eyebrow',  'type' => 'text', 'default' => 'The QBIQ training system' ) );
@@ -242,8 +260,10 @@ function qbiq_register_home_metaboxes() {
 	 * ----------------------------------------------------------------- */
 	$coach = new_cmb2_box( array(
 		'id'           => $prefix . 'coach',
-		'title'        => __( 'Home — Coach Authority', 'pegasus-child' ),
+		'title'        => __( 'Home 06 — Coach Authority', 'pegasus-child' ),
 		'object_types' => array( 'page' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
 		'show_on'      => $show_on,
 	) );
 	$coach->add_field( array( 'name' => 'Portrait image (optional)', 'id' => $prefix . 'coach_image', 'type' => 'file', 'desc' => 'Replaces the initials circle if set.', 'options' => array( 'url' => false ), 'text' => array( 'add_upload_file_text' => 'Add image' ) ) );
@@ -258,8 +278,10 @@ function qbiq_register_home_metaboxes() {
 	 * ----------------------------------------------------------------- */
 	$how = new_cmb2_box( array(
 		'id'           => $prefix . 'how',
-		'title'        => __( 'Home — How It Works', 'pegasus-child' ),
+		'title'        => __( 'Home 07 — How It Works', 'pegasus-child' ),
 		'object_types' => array( 'page' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
 		'show_on'      => $show_on,
 	) );
 	$how->add_field( array( 'name' => 'Eyebrow', 'id' => $prefix . 'how_eyebrow', 'type' => 'text', 'default' => 'How it works' ) );
@@ -303,8 +325,10 @@ function qbiq_register_home_metaboxes() {
 	 * ----------------------------------------------------------------- */
 	$test = new_cmb2_box( array(
 		'id'           => $prefix . 'testimonials',
-		'title'        => __( 'Home — Testimonials', 'pegasus-child' ),
+		'title'        => __( 'Home 08 — Testimonials', 'pegasus-child' ),
 		'object_types' => array( 'page' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
 		'show_on'      => $show_on,
 	) );
 	$test->add_field( array( 'name' => 'Eyebrow',         'id' => $prefix . 'test_eyebrow', 'type' => 'text', 'default' => 'What players are saying' ) );
@@ -332,8 +356,10 @@ function qbiq_register_home_metaboxes() {
 	 * ----------------------------------------------------------------- */
 	$cta = new_cmb2_box( array(
 		'id'           => $prefix . 'cta',
-		'title'        => __( 'Home — Bottom CTA Band', 'pegasus-child' ),
+		'title'        => __( 'Home 09 — Bottom CTA Band', 'pegasus-child' ),
 		'object_types' => array( 'page' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
 		'show_on'      => $show_on,
 	) );
 	$cta->add_field( array( 'name' => 'Pill text',  'id' => $prefix . 'cta_pill',    'type' => 'text', 'default' => 'Plans from $15/month' ) );

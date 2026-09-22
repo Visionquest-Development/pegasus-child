@@ -35,10 +35,11 @@ $img_url = function ( $key ) use ( $pid, $prefix ) {
 // ============================================================ HERO
 $hero_h1     = $g( 'hero_headline_1', 'Train your mind.' );
 $hero_h2     = $g( 'hero_headline_2', 'Dominate the game.' );
+$hero_sub    = $g( 'hero_subheading', 'The #1 Presnap Reading System in Football' );
 $hero_lead   = $g( 'hero_lead', 'The mental training system that teaches quarterbacks and receivers to read defenses in seconds — not minutes. Recognize coverage. Anticipate the blitz. Win the snap before it starts.' );
 $hero_pills  = $grp( 'hero_pills', array(
 	array( 'text' => 'Built by Coach Hixson · 30+ yrs', 'has_dot' => 'on' ),
-	array( 'text' => 'For QBs & WRs',                    'has_dot' => '' ),
+	array( 'text' => 'For all offenses',                    'has_dot' => '' ),
 ) );
 $hero_cta1_t = $g( 'hero_cta_primary_text',   'Try Free — 2 Chapters' );
 $hero_cta1_u = $g( 'hero_cta_primary_url',    '#' );
@@ -189,6 +190,13 @@ $num_icon = array( 'bi-1-circle-fill', 'bi-2-circle-fill', 'bi-3-circle-fill', '
 					<?php echo esc_html( $hero_h1 ); ?>
 					<?php if ( $hero_h2 ) : ?><span class="accent"><?php echo esc_html( $hero_h2 ); ?></span><?php endif; ?>
 				</h1>
+
+				<?php if ( $hero_sub ) : ?>
+					<p class="hero-subheading mb-4">
+						<svg class="hero-subheading__check" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 13.2 L9 20 L22 3" /></svg>
+						<span><?php echo wp_kses( $hero_sub, array( 'br' => array() ) ); ?></span>
+					</p>
+				<?php endif; ?>
 
 				<p class="lead mb-4"><?php echo esc_html( $hero_lead ); ?></p>
 
