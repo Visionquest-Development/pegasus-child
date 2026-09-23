@@ -101,6 +101,9 @@
 							$nav_cta_classes = trim( (string) pegasus_get_option( 'nav_cta_classes' ) );
 							if ( $nav_cta_text && $nav_cta_link ) : ?>
 							<div class="contact-button-container">
+								<a href="<?php echo esc_url( 'https://www.toasttab.com/catering/sugarpeddler?mode=fulfillment' ); ?>" class=" btn sp-btn" data-wow-delay="0.3s">
+									Catering
+								</a>
 								<a href="<?php echo esc_url( $nav_cta_link ); ?>" class=" <?php echo $nav_cta_classes ? ' ' . esc_attr( $nav_cta_classes ) : ''; ?>" data-wow-delay="0.3s"><?php echo esc_html( $nav_cta_text ); ?></a>
 							</div>
 							<?php endif; ?>
