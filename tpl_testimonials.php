@@ -25,7 +25,7 @@
 <?php get_header(); ?>
 
 <?php
-	$hero_bg = hfhs_testi_field( 'hero_image', get_stylesheet_directory_uri() . '/images/branding/heroes/testimonials-hero.jpg' );
+	$hero_bg = hfhs_hero_bg( hfhs_testi_field( 'hero_image', '' ), get_stylesheet_directory_uri() . '/images/branding/heroes/testimonials-hero.jpg' );
 
 	// "Three ways to share" cards (repeatable group; falls back to these three).
 	$ways = hfhs_testi_group( 'ways', array(

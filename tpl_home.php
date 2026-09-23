@@ -40,7 +40,7 @@
 	$hfhs_icons_uri  = get_stylesheet_directory_uri() . '/images/branding/icons/';
 	$hfhs_icons_path = get_stylesheet_directory() . '/images/branding/icons/';
 
-	$hero_img = hfhs_home_field( 'hero_image', get_stylesheet_directory_uri() . '/images/hero.jpg' );
+	$hero_img = hfhs_hero_bg( hfhs_home_field( 'hero_image', '' ), get_stylesheet_directory_uri() . '/images/hero.jpg' );
 
 	// Hero stats (repeatable group; falls back to these four).
 	$hero_stats = hfhs_home_group( 'hero_stats', array(

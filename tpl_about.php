@@ -30,7 +30,7 @@
 	// -------------------------------------------------------------------------
 	// Defaults. Each is shown unless the matching CMB2 field is filled in.
 	// -------------------------------------------------------------------------
-	$hero_bg = hfhs_about_field( 'hero_image', get_stylesheet_directory_uri() . '/images/branding/heroes/about-hero.jpg' );
+	$hero_bg = hfhs_hero_bg( hfhs_about_field( 'hero_image', '' ), get_stylesheet_directory_uri() . '/images/branding/heroes/about-hero.jpg' );
 
 	$story_img     = hfhs_about_field( 'story_image', get_stylesheet_directory_uri() . '/images/about-josh.jpg' );
 	$story_img_alt = hfhs_about_field( 'story_image_alt', 'Josh Hart on a roofing job' );

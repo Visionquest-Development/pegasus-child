@@ -414,6 +414,8 @@
   .hfhs-btn--outline-light:hover { background: var(--hfhs-white); color: var(--hfhs-black); border-color: var(--hfhs-white); }
   .hfhs-btn--outline-dark { background: transparent; color: var(--hfhs-black); border-color: rgba(0,0,0,0.55); }
   .hfhs-btn--outline-dark:hover { background: var(--hfhs-black); color: var(--hfhs-white); border-color: var(--hfhs-black); }
+  .hfhs-btn--dark { background: var(--hfhs-black); color: var(--hfhs-white); border-color: var(--hfhs-black); }
+  .hfhs-btn--dark:hover { background: transparent; color: var(--hfhs-black); }
 
   /* ---- Arrow text links ---- */
   .hfhs-arrow-link {
@@ -439,7 +441,7 @@
   .hfhs-hero {
     position: relative;
     padding: 8rem 0 3.5rem;
-    background: #1c1c1c url('images/hero.jpg') center/cover no-repeat;
+    background: #1c1c1c url('images/hero.jpg') top center/cover no-repeat;
     /* Background image is a placeholder path; will be driven by a CMB2 field later. */
   }
   .hfhs-hero__overlay {
@@ -656,7 +658,7 @@
   .hfhs-about-hero {
     padding: 9.5rem 0 7rem;
     background-color: #1c1c1c;
-    background-position: center;
+    background-position: top center;
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -833,7 +835,7 @@
   .hfhs-testi-hero {
     padding: 8rem 0 6rem;
     background-color: #1c1c1c;
-    background-position: center;
+    background-position: top center;
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -1020,7 +1022,7 @@
   .hfhs-comm-hero {
     padding: 8rem 0 6rem;
     background-color: #1c1c1c;
-    background-position: center;
+    background-position: top center;
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -1126,7 +1128,7 @@
   .hfhs-faq-hero {
     padding: 7.5rem 0 6rem;
     background-color: #1c1c1c;
-    background-position: center;
+    background-position: top center;
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -1215,13 +1217,56 @@
   .hfhs-contact-hero {
     padding: 7.5rem 0 6rem;
     background-color: #1c1c1c;
-    background-position: center;
+    background-position: top center;
     background-size: cover;
     background-repeat: no-repeat;
   }
   .hfhs-contact-hero .hfhs-hero__inner { padding-bottom: 0; }
   .hfhs-contact-hero .hfhs-hero__title { font-size: clamp(2.4rem, 5vw, 4.25rem); }
   .hfhs-contact-hero .hfhs-hero__lead { margin-bottom: 0; }
+
+  /* ============================ PAY PAGE ============================ */
+  /* Hero is solid dark by default (design has no image); an inline
+     background-image (Featured Image / CMB2 override) still wins if set. */
+  .hfhs-pay-hero { background-image: none; background-color: #1c1c1c; padding: 6.5rem 0 4.5rem; }
+  .hfhs-pay-hero .hfhs-hero__inner { padding-bottom: 0; }
+  .hfhs-pay-hero .hfhs-hero__title { font-size: clamp(2.4rem, 5vw, 4.25rem); }
+  .hfhs-pay-hero .hfhs-hero__lead { margin-bottom: 0; }
+
+  .hfhs-pay { padding: 6rem 0; }
+
+  /* Left: primary payment card */
+  .hfhs-paycard {
+    background: #faf9f7;
+    border: 1px solid var(--hfhs-hairline);
+    padding: 3rem;
+    height: 100%;
+  }
+  .hfhs-paycard__script { font-size: 2rem; color: var(--hfhs-muted); margin-bottom: 0.25rem; }
+  .hfhs-paycard__title { font-size: clamp(1.8rem, 3vw, 2.6rem); margin-bottom: 1.5rem; }
+  .hfhs-paycard__body p { color: var(--hfhs-muted); font-size: 1.05rem; line-height: 1.75; margin-bottom: 1.25rem; }
+  .hfhs-paycard__btn { margin-top: 0.75rem; }
+  .hfhs-paycard__note {
+    margin-top: 1.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--hfhs-hairline);
+    font-size: 0.85rem;
+    color: var(--hfhs-muted);
+    line-height: 1.6;
+  }
+  .hfhs-paycard__lock { margin-right: 0.35rem; }
+
+  /* Right: stacked help cards */
+  .hfhs-pay__aside { display: flex; flex-direction: column; gap: 1.5rem; }
+  .hfhs-payhelp {
+    border: 1px solid var(--hfhs-hairline);
+    padding: 2rem 2.25rem;
+  }
+  .hfhs-payhelp__script { font-size: 1.6rem; color: var(--hfhs-muted); margin: 0.15rem 0 0.85rem; }
+  .hfhs-payhelp__body { color: var(--hfhs-muted); font-size: 1rem; line-height: 1.7; margin-bottom: 1rem; }
+  .hfhs-payhelp__contact { display: flex; flex-direction: column; gap: 0.3rem; margin: 0; }
+  .hfhs-payhelp__contact a { color: var(--hfhs-black); font-weight: 600; text-decoration: none; }
+  .hfhs-payhelp__contact a:hover { text-decoration: underline; }
 
   /* ---- Form column ---- */
   .hfhs-contact { padding: 6.5rem 0; }
@@ -1311,7 +1356,7 @@
   .hfhs-svc-hero {
     padding: 7.5rem 0 5rem;
     background-color: #1c1c1c;
-    background-position: center;
+    background-position: top center;
     background-size: cover;
     background-repeat: no-repeat;
   }

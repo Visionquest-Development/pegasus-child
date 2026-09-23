@@ -17,7 +17,7 @@
 <?php get_header(); ?>
 
 <?php
-	$hero_bg = hfhs_contact_field( 'hero_image', get_stylesheet_directory_uri() . '/images/branding/heroes/contact-hero.jpg' );
+	$hero_bg = hfhs_hero_bg( hfhs_contact_field( 'hero_image', '' ), get_stylesheet_directory_uri() . '/images/branding/heroes/contact-hero.jpg' );
 
 	$form_shortcode = hfhs_contact_field( 'form_shortcode', '' );
 

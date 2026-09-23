@@ -78,6 +78,33 @@
 	define( 'HFHS_ABOUT_PREFIX', '_hfhs_about_' );
 
 	/**
+	 * Resolve a hero/section background image, WordPress-native first.
+	 *
+	 * Priority: (1) an explicit CMB2 override if the editor filled one, then
+	 * (2) the page's Featured Image (the standard WP workflow, matching the
+	 * parent theme's additional_header via pegasus_image_display), then
+	 * (3) the template/catalogue design default so a hero never renders blank.
+	 *
+	 * @param string $override CMB2 field value ('' when unset).
+	 * @param string $default  Design fallback image URL.
+	 * @param int    $post_id  Optional; defaults to the queried object.
+	 * @return string Image URL.
+	 */
+	function hfhs_hero_bg( $override, $default = '', $post_id = 0 ) {
+		if ( is_string( $override ) && '' !== trim( $override ) ) {
+			return $override;
+		}
+		$post_id = $post_id ? $post_id : get_queried_object_id();
+		if ( $post_id && has_post_thumbnail( $post_id ) ) {
+			$url = get_the_post_thumbnail_url( $post_id, 'full' );
+			if ( $url ) {
+				return $url;
+			}
+		}
+		return $default;
+	}
+
+	/**
 	 * Return a single About-page meta value, or $default when the field is empty.
 	 * Bound to the queried page so it works anywhere inside the template.
 	 */
@@ -624,4 +651,96 @@
 		$cmb->add_field( array( 'name' => 'Closing CTA', 'type' => 'title', 'id' => $prefix . 'title_cta', 'before_row' => '<hr>' ) );
 		$cmb->add_field( array( 'name' => 'CTA Script', 'id' => $prefix . 'cta_script', 'type' => 'text', 'attributes' => array( 'placeholder' => 'Prefer to talk first?' ) ) );
 		$cmb->add_field( array( 'name' => 'CTA Title', 'desc' => 'Use &lt;em&gt; for the italic accent.', 'id' => $prefix . 'cta_title', 'type' => 'textarea_small' ) );
+	}
+
+
+	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~ PAY PAGE — CMB2 FIELDS + "FIELD OR DEFAULT" HELPERS ~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Branded landing that hands off to the payment portal. The "Pay Online Now"
+	button link is a plain URL field — paste the Stripe Payment Link (buy.stripe.com/…)
+	or the Jobber Client Hub URL. Redirect-out is intentional so payments stay
+	reconciled in Stripe/Jobber (nothing card-related is stored on this site).
+	Same override-or-default pattern as the other pages.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+	define( 'HFHS_PAY_PREFIX', '_hfhs_pay_' );
+
+	function hfhs_pay_field( $key, $default = '' ) {
+		if ( isset( $GLOBALS['hfhs_prefill'] ) ) { $GLOBALS['hfhs_prefill'][ HFHS_PAY_PREFIX . $key ] = $default; }
+		$id  = get_queried_object_id();
+		$val = $id ? get_post_meta( $id, HFHS_PAY_PREFIX . $key, true ) : '';
+		if ( is_string( $val ) ) {
+			$val = trim( $val );
+		}
+		return ( '' === $val || null === $val || array() === $val ) ? $default : $val;
+	}
+
+	function hfhs_pay_group( $key, $default = array() ) {
+		if ( isset( $GLOBALS['hfhs_prefill'] ) ) { $GLOBALS['hfhs_prefill'][ HFHS_PAY_PREFIX . $key ] = $default; }
+		$id  = get_queried_object_id();
+		$val = $id ? get_post_meta( $id, HFHS_PAY_PREFIX . $key, true ) : array();
+		if ( ! is_array( $val ) ) {
+			return $default;
+		}
+		$rows = array_filter(
+			$val,
+			function( $row ) {
+				return is_array( $row ) && '' !== trim( implode( '', array_map( 'strval', $row ) ) );
+			}
+		);
+		return ! empty( $rows ) ? array_values( $rows ) : $default;
+	}
+
+	function hfhs_show_on_pay_template( $cmb ) {
+		$post_id = $cmb->object_id();
+		if ( ! $post_id && isset( $_GET['post'] ) ) {
+			$post_id = absint( $_GET['post'] );
+		}
+		return $post_id && 'tpl_pay.php' === get_page_template_slug( $post_id );
+	}
+
+	add_action( 'cmb2_admin_init', 'hfhs_pay_register_metaboxes' );
+	function hfhs_pay_register_metaboxes() {
+		$prefix = HFHS_PAY_PREFIX;
+
+		$cmb = new_cmb2_box(
+			array(
+				'id'           => 'hfhs_pay_content',
+				'title'        => __( 'Pay Page Content', 'pegasus' ),
+				'object_types' => array( 'page' ),
+				'context'      => 'normal',
+				'priority'     => 'high',
+				'closed'       => true,
+				'show_on_cb'   => 'hfhs_show_on_pay_template',
+			)
+		);
+
+		$cmb->add_field( array( 'name' => 'Hero', 'type' => 'title', 'id' => $prefix . 'title_hero', 'before_row' => '<hr>' ) );
+		$cmb->add_field( array( 'name' => 'Hero Eyebrow', 'id' => $prefix . 'hero_eyebrow', 'type' => 'text', 'attributes' => array( 'placeholder' => 'Quick Pay' ) ) );
+		$cmb->add_field( array( 'name' => 'Hero Script', 'id' => $prefix . 'hero_script', 'type' => 'text', 'attributes' => array( 'placeholder' => 'From Our Family to Yours.' ) ) );
+		$cmb->add_field( array( 'name' => 'Hero Title', 'desc' => 'Use &lt;em&gt; for the italic accent.', 'id' => $prefix . 'hero_title', 'type' => 'textarea_small' ) );
+		$cmb->add_field( array( 'name' => 'Hero Intro', 'id' => $prefix . 'hero_text', 'type' => 'textarea_small' ) );
+		$cmb->add_field( array( 'name' => 'Hero Background Image', 'desc' => 'Optional. Leave empty for the solid dark hero shown in the design. (The page Featured Image is also used if set.)', 'id' => $prefix . 'hero_image', 'type' => 'file', 'options' => array( 'url' => false ) ) );
+
+		$cmb->add_field( array( 'name' => 'Payment Card (left)', 'type' => 'title', 'id' => $prefix . 'title_pay', 'before_row' => '<hr>' ) );
+		$cmb->add_field( array( 'name' => 'Eyebrow', 'id' => $prefix . 'pay_eyebrow', 'type' => 'text', 'attributes' => array( 'placeholder' => 'Online Payment' ) ) );
+		$cmb->add_field( array( 'name' => 'Script', 'id' => $prefix . 'pay_script', 'type' => 'text', 'attributes' => array( 'placeholder' => 'Fast & secure.' ) ) );
+		$cmb->add_field( array( 'name' => 'Title', 'desc' => 'Use &lt;em&gt; for the italic accent.', 'id' => $prefix . 'pay_title', 'type' => 'textarea_small' ) );
+		$cmb->add_field( array( 'name' => 'Body', 'id' => $prefix . 'pay_body', 'type' => 'wysiwyg', 'options' => array( 'textarea_rows' => 5 ) ) );
+		$cmb->add_field( array( 'name' => 'Button Text', 'id' => $prefix . 'pay_button_text', 'type' => 'text', 'attributes' => array( 'placeholder' => 'Pay Online Now' ) ) );
+		$cmb->add_field( array( 'name' => 'Button Link (payment portal)', 'desc' => 'Paste the Stripe Payment Link (https://buy.stripe.com/…) or the Jobber Client Hub URL. Opens in a new tab.', 'id' => $prefix . 'pay_button_link', 'type' => 'text_url' ) );
+		$cmb->add_field( array( 'name' => 'Security Note', 'id' => $prefix . 'pay_note', 'type' => 'textarea_small', 'attributes' => array( 'placeholder' => 'Secure payment processing via Stripe · …' ) ) );
+
+		$cmb->add_field( array( 'name' => 'Help Cards (right column)', 'type' => 'title', 'id' => $prefix . 'title_help', 'before_row' => '<hr>', 'desc' => 'Stacked cards beside the payment card (e.g. invoice questions, pay by check). Drag to reorder.' ) );
+		$help = $cmb->add_field( array(
+			'id'      => $prefix . 'help',
+			'type'    => 'group',
+			'options' => array( 'group_title' => 'Card {#}', 'add_button' => 'Add Card', 'remove_button' => 'Remove Card', 'sortable' => true, 'closed' => true ),
+		) );
+		$cmb->add_group_field( $help, array( 'name' => 'Eyebrow', 'id' => 'eyebrow', 'type' => 'text' ) );
+		$cmb->add_group_field( $help, array( 'name' => 'Script', 'id' => 'script', 'type' => 'text' ) );
+		$cmb->add_group_field( $help, array( 'name' => 'Body', 'id' => 'body', 'type' => 'textarea_small' ) );
+		$cmb->add_group_field( $help, array( 'name' => 'Phone', 'id' => 'phone', 'type' => 'text', 'desc' => 'Optional; auto-linked.' ) );
+		$cmb->add_group_field( $help, array( 'name' => 'Email', 'id' => 'email', 'type' => 'text', 'desc' => 'Optional; auto-linked.' ) );
 	}

@@ -97,7 +97,8 @@ while ( have_posts() ) :
 	$number   = hfhs_svc( 'hfhs_svc_number', $d['number'] );
 	$script   = hfhs_svc( 'hfhs_svc_script', $d['script'] );
 	$lead     = hfhs_svc( 'hfhs_svc_lead', $d['lead'] );
-	$hero_img = hfhs_svc( 'hfhs_svc_hero_image', ! empty( $d['hero'] ) ? $d['hero'] : $d['img'] );
+	$hero_default = ! empty( $d['hero'] ) ? $d['hero'] : $d['img'];
+	$hero_img     = hfhs_hero_bg( hfhs_svc( 'hfhs_svc_hero_image', '' ), $hero_default, get_the_ID() );
 
 	// Branded per-service icon (white line-art) — matched to the page slug.
 	$svc_icon_path = get_stylesheet_directory() . '/images/branding/icons/' . $slug . '-icon.png';
