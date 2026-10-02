@@ -8,9 +8,11 @@ if ( have_posts() ) :
     $terms       = get_the_terms( $post_id, 'portcats' );
     $terms2      = get_the_terms( $post_id, 'feattag' );
     $the_alt_img = get_post_meta( $post_id, 'alternate_image', true );
+    $cmb_url     = get_post_meta( $post_id, 'vq_live_url', true );
     $the_url     = get_post_meta( $post_id, '_url', true );
     $alt_url     = get_post_meta( $post_id, 'url', true );
-    $live_url    = $the_url ?: $alt_url;
+    $live_url    = $cmb_url ?: ( $the_url ?: $alt_url );
+    $engagement  = get_post_meta( $post_id, 'vq_engagement_focus', true );
     $thumb_url   = $the_alt_img ?: get_the_post_thumbnail_url( $post_id, 'full' );
     $excerpt     = get_the_excerpt();
     $cat_name    = ( is_array( $terms ) && count( $terms ) ) ? $terms[0]->name : 'Project';
@@ -30,6 +32,11 @@ if ( have_posts() ) :
       <h1 class="vq-page-hero-title">
         <span class="vq-page-hero-brand"><?php the_title(); ?></span>
       </h1>
+      <?php if ( $engagement ) : ?>
+        <div class="vq-font-mono" style="margin-top:14px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--vq-quarternary)">
+          <span style="color:var(--vq-ink-faint)">Engagement Focus &mdash;</span> <?php echo esc_html( $engagement ); ?>
+        </div>
+      <?php endif; ?>
       <?php if ( $excerpt ) : ?>
         <p class="vq-sub" style="margin-top:20px;max-width:640px"><?php echo esc_html( substr( strip_tags( $excerpt ), 0, 160 ) ); ?></p>
       <?php endif; ?>
@@ -50,10 +57,10 @@ if ( have_posts() ) :
     <div class="vq-section-inner">
       <div class="vq-single-port-grid">
 
-        <!-- Image -->
+        <!-- Image — the featured image, also the first item of the gallery below. -->
         <div class="vq-single-port-img wow fadeInLeft">
           <?php if ( $thumb_url ) : ?>
-            <img src="<?php echo esc_url( $thumb_url ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>">
+            <img src="<?php echo esc_url( $thumb_url ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>" class="vq-featured-trigger">
           <?php else : ?>
             <div class="vq-port-placeholder ph">
               <span><?php echo esc_html( strtoupper( str_replace( ' ', '_', get_the_title() ) ) ); ?>.png</span>
@@ -121,6 +128,73 @@ if ( have_posts() ) :
       </div>
     </div>
   </section>
+  <?php endif; ?>
+
+  <!-- ===================== GALLERY (Packery) — featured image leads ===================== -->
+  <?php
+  $gallery = get_post_meta( $post_id, 'vq_gallery', true );
+  if ( ! is_array( $gallery ) ) { $gallery = array(); }
+
+  // The featured image leads the gallery, followed by any gallery images. Because the
+  // featured image is also slide 0 of the shared lightbox group, the arrow keys move
+  // from it across the rest of the gallery.
+  $gallery_items = array();
+  if ( $thumb_url ) {
+    $gallery_items[] = array( 'image' => $thumb_url, 'caption' => 'Homepage' );
+  }
+  foreach ( $gallery as $g ) {
+    if ( is_array( $g ) && ! empty( $g['image'] ) ) {
+      $gallery_items[] = array(
+        'image'   => $g['image'],
+        'caption' => ! empty( $g['caption'] ) ? $g['caption'] : '',
+      );
+    }
+  }
+
+  if ( count( $gallery_items ) ) :
+  ?>
+  <section class="vq-section">
+    <div class="vq-section-inner">
+      <div class="vq-section-head wow fadeInUp">
+        <div class="vq-kicker"><span style="color:var(--vq-quinary)">&#9656;</span> Gallery</div>
+        <h2 class="vq-h2">A closer look</h2>
+      </div>
+      <div class="vq-packery-grid" id="vq-packery">
+        <div class="vq-packery-sizer"></div>
+        <?php foreach ( $gallery_items as $gi ) :
+          $g_url = $gi['image'];
+          $g_cap = $gi['caption'];
+        ?>
+        <figure class="vq-packery-item">
+          <a href="<?php echo esc_url( $g_url ); ?>" class="vq-lightbox-link" data-lightbox="vq-portfolio" data-title="<?php echo esc_attr( $g_cap ?: get_the_title() ); ?>">
+            <img src="<?php echo esc_url( $g_url ); ?>" alt="<?php echo esc_attr( $g_cap ?: get_the_title() ); ?>">
+          </a>
+          <?php if ( $g_cap ) : ?><figcaption class="vq-packery-cap"><?php echo esc_html( $g_cap ); ?></figcaption><?php endif; ?>
+        </figure>
+        <?php endforeach; ?>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  (function () {
+    /* Packery gallery — packery.pkgd.js + WP-core imagesLoaded, enqueued on single portfolio. */
+    function initPackery() {
+      var grid = document.getElementById('vq-packery');
+      if (!grid || typeof Packery === 'undefined') { return; }
+      var pckry = new Packery(grid, {
+        itemSelector: '.vq-packery-item',
+        columnWidth: '.vq-packery-sizer',
+        gutter: 18,
+        percentPosition: true
+      });
+      if (typeof imagesLoaded !== 'undefined') {
+        imagesLoaded(grid).on('progress', function () { pckry.layout(); });
+      }
+    }
+    window.addEventListener('load', initPackery);
+  })();
+  </script>
   <?php endif; ?>
 
   <!-- ===================== PREV / NEXT ===================== -->
@@ -194,6 +268,19 @@ if ( have_posts() ) :
       </div>
     </div>
   </section>
+
+
+  <script>
+  (function () {
+    /* The top featured image opens the same Lightbox2 gallery at the featured slide, without
+       being a duplicate album entry — it forwards its click to the gallery's first link. */
+    var trigger   = document.querySelector('.vq-featured-trigger');
+    var firstLink = document.querySelector('#vq-packery .vq-lightbox-link');
+    if ( trigger && firstLink ) {
+      trigger.addEventListener('click', function () { firstLink.click(); });
+    }
+  })();
+  </script>
 
 </div><!-- #vq-single-port -->
 

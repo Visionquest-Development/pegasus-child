@@ -26,6 +26,26 @@ if ( ! function_exists( 'vq_mountain_row' ) ) {
 
 <div id="vq-home">
 
+<?php /* ---------- Homepage: service-tile links + per-section CTA rows ---------- */ ?>
+<style>
+  .vq-svc .vq-svc-link,
+  .vq-svc--featured .vq-svc-link {
+    display: inline-block;
+    margin-top: 18px;
+    font-size: 9px;
+    padding: 10px 16px;
+  }
+  .vq-svc--featured .vq-svc-link { margin-top: 22px; }
+  .vq-section-cta {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 44px;
+  }
+</style>
+
   <!-- ===================== HERO ===================== -->
   <section class="vq-hero">
 
@@ -137,19 +157,22 @@ if ( ! function_exists( 'vq_mountain_row' ) ) {
               <span class="vq-tag vq-tag--featured">OpenAI</span>
               <!-- <span class="vq-tag vq-tag--featured">RAG</span> -->
             </div>
+            <a href="#ai" class="vq-btn vq-svc-link">Learn more &#8594;</a>
           </div>
         </div>
 
         <?php
         $services = [
-            [ '02', 'Web Development',    'Marketing sites, landing pages, and content platforms that feel fast and look sharp on every device.',                             [ 'Next.js', 'WordPress', 'Headless CMS' ], 'var(--vq-quarternary)' ],
-            [ '03', 'Web Applications',   'Dashboards, portals, and SaaS products — real-time data, auth, payments, the works.',                                             [ 'React', 'Node', 'Postgres' ],            'var(--vq-tertiary)'    ],
-            [ '04', 'E-Commerce',         'Stores that convert. Woocommerce, custom carts, subscriptions, and inventory that actually syncs.',                                   [ 'Woocommerce', 'Stripe', 'Custom' ],          'var(--vq-secondary)'   ],
-            [ '05', 'Software Development','Custom internal tools, integrations, and APIs built to your workflow — not shoehorned into someone else\'s.',                    [ 'Typescript', 'Next.js', 'REST APIs' ],         'var(--vq-tertiary)'    ],
-            [ '06', 'DevOps &amp; Cloud', 'CI/CD, infrastructure-as-code, observability. Ship on Friday without breaking a sweat.',                                         [ 'AWS', 'Docker', 'Terraform' ],           'var(--vq-primary)'     ],
+            [ '02', 'Web Development',    'Marketing sites, landing pages, and content platforms that feel fast and look sharp on every device.',                             [ 'Next.js', 'WordPress', 'Headless CMS' ], 'var(--vq-quarternary)', '/web-development/' ],
+            [ '03', 'Design',             'Brand identity, UI, and UX. Wireframes to polished, on-brand interfaces your customers actually enjoy using.',                      [ 'Figma', 'Branding', 'UI/UX' ],           'var(--vq-quinary)',     '/design/'          ],
+            [ '04', 'Web Applications',   'Dashboards, portals, and SaaS products — real-time data, auth, payments, the works.',                                             [ 'React', 'Node', 'Postgres' ],            'var(--vq-tertiary)',    '/services/'        ],
+            [ '05', 'E-Commerce',         'Stores that convert. Woocommerce, custom carts, subscriptions, and inventory that actually syncs.',                                   [ 'Woocommerce', 'Stripe', 'Custom' ],          'var(--vq-secondary)',   '/services/'        ],
+            [ '06', 'Software Development','Custom internal tools, integrations, and APIs built to your workflow — not shoehorned into someone else\'s.',                    [ 'Typescript', 'Next.js', 'REST APIs' ],         'var(--vq-tertiary)',    '/services/'        ],
+            [ '07', 'Digital Marketing',  'SEO, Google Business Profile management, and social media management — all in one. Get found, earn reviews, and stay top-of-feed.',   [ 'SEO', 'Google Business', 'Social Media' ],   'var(--vq-quarternary)', '/seo/'             ],
+            [ '08', 'DevOps &amp; Cloud', 'CI/CD, infrastructure-as-code, observability. Ship on Friday without breaking a sweat.',                                         [ 'AWS', 'Docker', 'Terraform' ],           'var(--vq-primary)',     '/services/'        ],
         ];
         $si = 0;
-        foreach ( $services as [ $id, $name, $desc, $tags, $color ] ) {
+        foreach ( $services as [ $id, $name, $desc, $tags, $color, $url ] ) {
             $delay = number_format( 0.1 + $si * 0.1, 1 ) . 's';
             echo '<div class="vq-svc wow fadeInUp" data-wow-delay="' . $delay . '" style="--svc-color:' . $color . '">';
             echo '  <div class="vq-svc-inner">';
@@ -162,6 +185,7 @@ if ( ! function_exists( 'vq_mountain_row' ) ) {
             echo '  <div class="vq-svc-tags">';
             foreach ( $tags as $tag ) echo '<span class="vq-tag">' . esc_html( $tag ) . '</span>';
             echo '  </div>';
+            echo '  <a href="' . esc_url( home_url( $url ) ) . '" class="vq-btn vq-svc-link">Learn more &#8594;</a>';
             echo '  </div>';
             echo '</div>';
             $si++;
@@ -176,6 +200,11 @@ if ( ! function_exists( 'vq_mountain_row' ) ) {
           <a href="#contact" class="vq-btn" style="font-size:9px;padding:12px 18px">Ask Us &#9656;</a>
         </div>
 
+      </div>
+
+      <div class="vq-section-cta wow fadeInUp">
+        <a href="/get-started" class="vq-btn vq-btn--primary">&#9658; Get Started</a>
+        <a href="/contact" class="vq-btn">Contact Us</a>
       </div>
     </div>
   </section>
@@ -218,6 +247,7 @@ if ( ! function_exists( 'vq_mountain_row' ) ) {
           </div>
           <div style="display:flex;gap:12px;margin-top:32px;flex-wrap:wrap">
             <a href="/contact" class="vq-btn vq-btn--primary">&#9658; Book an AI Strategy Call</a>
+            <a href="/get-started" class="vq-btn">Get Started</a>
           </div>
         </div>
 
@@ -308,6 +338,11 @@ if ( ! function_exists( 'vq_mountain_row' ) ) {
         }
         ?>
       </div>
+
+      <div class="vq-section-cta wow fadeInUp">
+        <a href="/get-started" class="vq-btn vq-btn--primary">&#9658; Get Started</a>
+        <a href="/contact" class="vq-btn">Contact Us</a>
+      </div>
     </div>
   </section>
 
@@ -378,7 +413,9 @@ if ( ! function_exists( 'vq_mountain_row' ) ) {
         wp_reset_postdata();
         ?>
       </div>
-      <div class="vq-work-footer">
+      <div class="vq-work-footer vq-section-cta">
+        <a href="/resume" class="vq-btn">View R&eacute;sum&eacute;</a>
+        <a href="/get-started" class="vq-btn vq-btn--primary">&#9658; Get Started</a>
         <a href="<?php echo esc_url( get_post_type_archive_link( 'portfolio' ) ?: home_url( '/portfolio' ) ); ?>" class="vq-btn">View All Work &#8594;</a>
       </div>
     </div>
@@ -395,6 +432,7 @@ if ( ! function_exists( 'vq_mountain_row' ) ) {
           <div style="display:flex;gap:12px;flex-wrap:wrap">
             <a href="https://pegasustheme.com" class="vq-btn vq-btn--primary" style="font-size:9px" target="_blank" rel="noopener">&#9658; Visit Site</a>
             <a href="https://pegasustheme.com/docs" class="vq-btn" style="font-size:9px" target="_blank" rel="noopener">Docs</a>
+            <a href="/contact" class="vq-btn" style="font-size:9px">Contact Us</a>
           </div>
         </div>
         <div class="vq-pegasus-right wow fadeInRight">
@@ -449,11 +487,117 @@ if ( ! function_exists( 'vq_mountain_row' ) ) {
       <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:36px">
         <a href="/get-started" class="vq-btn vq-btn--primary">&#9658; Get started</a>
         <a href="/contact" class="vq-btn">Contact us</a>
+        <a href="/resume" class="vq-btn">R&eacute;sum&eacute;</a>
       </div>
     </div>
   </section>
 
 </div><!-- #vq-home -->
+
+<?php /* ---------- Section dot-nav (homepage only) ---------- */ ?>
+<style>
+  #vq-dotnav {
+    position: fixed;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 40;
+    margin: 0;
+    padding: 0;
+  }
+  #vq-dotnav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  #vq-dotnav li {
+    display: block;
+    margin: 0 0 10px;
+  }
+  #vq-dotnav li:last-child {
+    margin-bottom: 0;
+  }
+  #vq-dotnav a.nav-link {
+    display: block;
+    width: 14px;
+    height: 14px;
+    padding: 0;
+    border-radius: 50%;
+    border: 2px solid rgba(43, 182, 115, .55); /* --vq-quarternary @ 55% */
+    background: transparent;
+    overflow: hidden;
+    text-indent: -999%;
+    transition: background .2s ease, box-shadow .2s ease, border-color .2s ease, transform .2s ease;
+  }
+  #vq-dotnav a.nav-link:hover,
+  #vq-dotnav a.nav-link:focus,
+  #vq-dotnav a.nav-link.active {
+    background: var(--vq-quarternary, #2BB673);
+    border-color: var(--vq-quarternary, #2BB673);
+    box-shadow: 0 0 12px rgba(139, 198, 68, .65); /* --vq-quinary glow */
+    transform: scale(1.15);
+    outline: none;
+  }
+  /* Hide on tablet/phone, matching the theme's landing-page dot-nav behavior */
+  @media (max-width: 991.98px) {
+    #vq-dotnav { display: none; }
+  }
+</style>
+
+<nav id="vq-dotnav" class="nav" aria-label="<?php esc_attr_e( 'Section navigation', 'pegasus-child' ); ?>">
+  <ul>
+    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="left" title="<?php esc_attr_e( 'Services', 'pegasus-child' ); ?>">
+      <a class="nav-link" href="#services"></a>
+    </li>
+    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="left" title="<?php esc_attr_e( 'AI', 'pegasus-child' ); ?>">
+      <a class="nav-link" href="#ai"></a>
+    </li>
+    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="left" title="<?php esc_attr_e( 'Process', 'pegasus-child' ); ?>">
+      <a class="nav-link" href="#process"></a>
+    </li>
+    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="left" title="<?php esc_attr_e( 'Work', 'pegasus-child' ); ?>">
+      <a class="nav-link" href="#work"></a>
+    </li>
+    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="left" title="<?php esc_attr_e( 'Pegasus', 'pegasus-child' ); ?>">
+      <a class="nav-link" href="#pegasus"></a>
+    </li>
+    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="left" title="<?php esc_attr_e( 'Contact', 'pegasus-child' ); ?>">
+      <a class="nav-link" href="#contact"></a>
+    </li>
+  </ul>
+</nav>
+
+<script>
+(function () {
+  /* ---- Section dot-nav: scrollspy + tooltips (Bootstrap 5) ----
+     Deferred to window 'load' because Bootstrap's bundle is enqueued in the
+     footer, so window.bootstrap is not yet defined while this inline script
+     is parsed. */
+  function initDotnav() {
+    if (!window.bootstrap) { return; }
+    var dotnav = document.getElementById('vq-dotnav');
+    if (!dotnav) { return; }
+
+    if (bootstrap.ScrollSpy) {
+      new bootstrap.ScrollSpy(document.body, {
+        target: '#vq-dotnav',
+        smoothScroll: true
+      });
+    }
+    if (bootstrap.Tooltip) {
+      dotnav.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(function (el) {
+        new bootstrap.Tooltip(el, { placement: 'left' });
+      });
+    }
+  }
+
+  if (window.bootstrap) {
+    initDotnav();
+  } else {
+    window.addEventListener('load', initDotnav);
+  }
+})();
+</script>
 
 <script>
 (function () {

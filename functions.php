@@ -5,7 +5,7 @@
 		wp_enqueue_style( 'child-style',
 			get_stylesheet_directory_uri() . '/style.css',
 			array( 'parent-style' ),
-			wp_get_theme()->get('Version') // Or filemtime( get_stylesheet_directory() . '/style.css' )
+			filemtime( get_stylesheet_directory() . '/style.css' ) // cache-bust on every edit
 		);
 		
 		/* qTip CSS */
@@ -16,6 +16,21 @@
 		
 	}
 	add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
+
+	/**
+	 * The parent theme enqueues the child style.css under the 'pegasus' handle (with the
+	 * theme-options :root CSS variables, e.g. --pegasus-nav-bg-color, attached as an inline
+	 * style via wp_add_inline_style) but with NO version, so the browser can serve a stale
+	 * copy. Give that handle a filemtime version so edits bust cache — do NOT dequeue it, or
+	 * the inline --pegasus-* variables the header/footer depend on disappear.
+	 */
+	add_action( 'wp_enqueue_scripts', 'vq_version_pegasus_style', 100 );
+	function vq_version_pegasus_style() {
+		$styles = wp_styles();
+		if ( isset( $styles->registered['pegasus'] ) ) {
+			$styles->registered['pegasus']->ver = filemtime( get_stylesheet_directory() . '/style.css' );
+		}
+	}
 	/* ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^~~~~~
 	~~~~PROPER WAY OF ADDING CHILD THEME CSS FILE ~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -38,7 +53,17 @@
 		//if( is_page( 'home' ) ) wp_enqueue_script('packery_js', get_stylesheet_directory_uri() .'/js/packery.pkgd.js', array('jquery'), false, true);
 		//if( is_page( '2610' ) ) wp_enqueue_script('packery_js', get_stylesheet_directory_uri() .'/js/packery.pkgd.js', array('jquery'), false, true);
 		if( is_page( '2610' ) ) wp_enqueue_script('masonry_js', get_stylesheet_directory_uri() .'/js/masonry.js', array('jquery'), false, true);
-		
+
+		// Single portfolio: Packery gallery (imagesLoaded is a WP-core registered handle) + Lightbox2.
+		if ( is_singular( 'portfolio' ) ) {
+			wp_enqueue_script( 'imagesloaded' );
+			wp_enqueue_script( 'packery_js', get_stylesheet_directory_uri() . '/js/packery.pkgd.js', array( 'jquery', 'imagesloaded' ), null, true );
+			// Lightbox2 (v2.11.4) — same library the sage_theme card-sets CPT uses. Auto-inits on
+			// anchors with data-lightbox; captions via data-title; arrow keys built in.
+			wp_enqueue_style( 'lightbox-css', get_stylesheet_directory_uri() . '/css/lightbox.min.css', array(), filemtime( get_stylesheet_directory() . '/css/lightbox.min.css' ) );
+			wp_enqueue_script( 'lightbox_js', get_stylesheet_directory_uri() . '/js/lightbox.min.js', array( 'jquery' ), filemtime( get_stylesheet_directory() . '/js/lightbox.min.js' ), true );
+		}
+
 		wp_enqueue_script( 'visionquest_custom_js', get_stylesheet_directory_uri() . '/js/pegasus_custom.js', array(), '', true );
 		
 		if(is_page( '211' ) || is_category() ) wp_enqueue_script( 'classie_custom_js', get_stylesheet_directory_uri() . '/js/classie.js', array(), '', true );
@@ -70,6 +95,72 @@
 		
 	} //end function
 	add_action( 'wp_enqueue_scripts', 'pegasus_child_bootstrap_js' );
+
+	/* ===============================================================================================
+	============================ PORTFOLIO CASE-STUDY FIELDS (CMB2) ==================================
+	CMB2 is bundled by the parent Pegasus theme, so new_cmb2_box() is available here. Adds the
+	live URL, an "engagement focus" label, and a repeatable image gallery that powers the Packery
+	grid on single-portfolio.php. The gallery group is collapsed by default ('closed' => true).
+	=============================================================================================== */
+	add_action( 'cmb2_admin_init', 'vq_portfolio_cmb2_fields' );
+	function vq_portfolio_cmb2_fields() {
+
+		if ( ! function_exists( 'new_cmb2_box' ) ) {
+			return;
+		}
+
+		$cmb = new_cmb2_box( array(
+			'id'           => 'vq_portfolio_meta',
+			'title'        => __( 'Project Details', 'pegasus-child' ),
+			'object_types' => array( 'portfolio' ),
+			'context'      => 'normal',
+			'priority'     => 'high',
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Live URL', 'pegasus-child' ),
+			'id'   => 'vq_live_url',
+			'type' => 'text_url',
+			'desc' => __( 'Live site URL — powers the “View Live Site” button.', 'pegasus-child' ),
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Engagement Focus', 'pegasus-child' ),
+			'id'   => 'vq_engagement_focus',
+			'type' => 'text',
+			'desc' => __( 'Short service label, e.g. “Web Design &amp; Development · E-Commerce”.', 'pegasus-child' ),
+		) );
+
+		// Repeatable gallery group — collapsed by default per request.
+		$gallery = $cmb->add_field( array(
+			'id'          => 'vq_gallery',
+			'type'        => 'group',
+			'name'        => __( 'Project Gallery', 'pegasus-child' ),
+			'description' => __( 'Images shown in the Packery grid on the project page.', 'pegasus-child' ),
+			'options'     => array(
+				'group_title'   => __( 'Image {#}', 'pegasus-child' ),
+				'add_button'    => __( 'Add image', 'pegasus-child' ),
+				'remove_button' => __( 'Remove image', 'pegasus-child' ),
+				'sortable'      => true,
+				'closed'        => true, // collapsed by default
+			),
+		) );
+
+		$cmb->add_group_field( $gallery, array(
+			'name'         => __( 'Image', 'pegasus-child' ),
+			'id'           => 'image',
+			'type'         => 'file',
+			'options'      => array( 'url' => false ),
+			'query_args'   => array( 'type' => 'image' ),
+			'preview_size' => 'medium',
+		) );
+
+		$cmb->add_group_field( $gallery, array(
+			'name' => __( 'Caption', 'pegasus-child' ),
+			'id'   => 'caption',
+			'type' => 'text',
+		) );
+	}
 	
 
 	
