@@ -662,20 +662,80 @@
 	 *===================================================*/
 
 	/**
+	 * Mabella's Toast restaurants.
+	 *
+	 * Mabella's runs two locations (Uptown + Midland) through a single Toast
+	 * integration. The vqdev-toast plugin stores one "current" restaurant GUID
+	 * in the vqdev_toast_restaurant_guid option; to serve both locations from
+	 * one site we fetch each explicitly by GUID (see vqdev_toast_with_restaurant).
+	 *
+	 * @return array[] Keyed by slug: array( 'guid' => string, 'name' => string ).
+	 */
+	function vqdev_toast_mabella_restaurants() {
+		return array(
+			'uptown'  => array(
+				'guid' => '2e40ad16-2a18-4285-a2b5-4f20dbad029e',
+				'name' => 'Mabellas - Uptown Columbus',
+			),
+			'midland' => array(
+				'guid' => '14215290-2f1e-4cab-bdd4-98add3ae120d',
+				'name' => 'Mabellas - Midland',
+			),
+		);
+	}
+
+	/**
+	 * Run a callback with the Toast "current restaurant" temporarily overridden.
+	 *
+	 * The vqdev-toast client reads the restaurant GUID from the
+	 * vqdev_toast_restaurant_guid option and injects it as the
+	 * Toast-Restaurant-External-Id request header. Rather than touching the
+	 * shared plugin or the saved option, we override just that header for the
+	 * duration of the callback via the plugin's vqdev_toast_request_headers
+	 * filter. An empty GUID leaves the configured default in place.
+	 *
+	 * @param string   $guid Restaurant GUID to target (empty = configured default).
+	 * @param callable $cb   Callback performing the API call(s).
+	 * @return mixed Whatever $cb returns.
+	 */
+	function vqdev_toast_with_restaurant( $guid, callable $cb ) {
+		if ( empty( $guid ) ) {
+			return $cb();
+		}
+
+		$override = function ( $headers ) use ( $guid ) {
+			$headers['Toast-Restaurant-External-Id'] = $guid;
+			return $headers;
+		};
+
+		add_filter( 'vqdev_toast_request_headers', $override, 99 );
+		try {
+			return $cb();
+		} finally {
+			remove_filter( 'vqdev_toast_request_headers', $override, 99 );
+		}
+	}
+
+	/**
 	 * Fetch out-of-stock item GUIDs from the Toast Stock API.
 	 *
 	 * Cached for 5 minutes (stock changes more frequently than menus).
 	 *
+	 * @param string $guid Restaurant GUID to target (empty = configured default).
 	 * @return array Set of GUIDs that are OUT_OF_STOCK, keyed by GUID for fast lookup.
 	 */
-	function vqdev_toast_get_oos_guids() {
+	function vqdev_toast_get_oos_guids( $guid = '' ) {
 
-		$cached = get_transient( 'vqdev_toast_oos_guids' );
+		$cache_key = 'vqdev_toast_oos_guids' . ( $guid ? '_' . $guid : '' );
+
+		$cached = get_transient( $cache_key );
 		if ( false !== $cached ) {
 			return $cached;
 		}
 
-		$result = vqdev_toast()->stock()->get_inventory();
+		$result = vqdev_toast_with_restaurant( $guid, function () {
+			return vqdev_toast()->stock()->get_inventory();
+		} );
 		$oos    = array();
 
 		if ( $result['success'] && is_array( $result['data'] ) ) {
@@ -686,7 +746,7 @@
 			}
 		}
 
-		set_transient( 'vqdev_toast_oos_guids', $oos, 5 * MINUTE_IN_SECONDS );
+		set_transient( $cache_key, $oos, 5 * MINUTE_IN_SECONDS );
 
 		return $oos;
 	}
@@ -699,19 +759,26 @@
 	 * timestamp is cached for 10 minutes so we don't hit the API on every
 	 * page load, but still detect menu changes relatively quickly.
 	 *
+	 * @param string $guid Restaurant GUID to target (empty = configured default).
 	 * @return bool True if the menu has changed since our last full fetch.
 	 */
-	function vqdev_toast_menu_has_changed() {
+	function vqdev_toast_menu_has_changed( $guid = '' ) {
 
-		$stored_timestamp = get_option( 'vqdev_toast_menu_last_updated', '' );
+		$suffix       = $guid ? '_' . $guid : '';
+		$option_key   = 'vqdev_toast_menu_last_updated' . $suffix;
+		$throttle_key = 'vqdev_toast_metadata_checked' . $suffix;
+
+		$stored_timestamp = get_option( $option_key, '' );
 
 		// Throttle metadata checks to every 10 minutes.
-		$last_check = get_transient( 'vqdev_toast_metadata_checked' );
+		$last_check = get_transient( $throttle_key );
 		if ( false !== $last_check ) {
 			return false; // Already checked recently, assume no change.
 		}
 
-		$meta = vqdev_toast()->menus()->get_metadata_v2();
+		$meta = vqdev_toast_with_restaurant( $guid, function () {
+			return vqdev_toast()->menus()->get_metadata_v2();
+		} );
 
 		if ( ! $meta['success'] ) {
 			return false; // Can't reach API, keep using cached data.
@@ -720,11 +787,11 @@
 		$api_timestamp = $meta['data']['lastUpdated'] ?? '';
 
 		// Mark that we checked, regardless of result.
-		set_transient( 'vqdev_toast_metadata_checked', 1, 10 * MINUTE_IN_SECONDS );
+		set_transient( $throttle_key, 1, 10 * MINUTE_IN_SECONDS );
 
 		if ( $api_timestamp !== $stored_timestamp ) {
 			// Menu has changed — store the new timestamp.
-			update_option( 'vqdev_toast_menu_last_updated', $api_timestamp, false );
+			update_option( $option_key, $api_timestamp, false );
 			return true;
 		}
 
@@ -742,28 +809,32 @@
 	 * Includes item images from the Toast API.
 	 * Marks out-of-stock items (or hides them, based on $hide_oos).
 	 *
-	 * @param array $skip_menus Menu names to exclude (default: ['Retail']).
-	 * @param bool  $hide_oos   If true, completely remove OOS items. If false, mark them.
+	 * @param array  $skip_menus      Menu names to exclude (default: ['Retail']).
+	 * @param bool   $hide_oos        If true, completely remove OOS items. If false, mark them.
+	 * @param string $restaurant_guid Restaurant GUID to fetch (empty = configured default).
+	 * @param string $restaurant_name Display name for the menu header.
 	 * @return array|null Theme-formatted menu data, or null on failure.
 	 */
-	function vqdev_toast_get_menu_data( $skip_menus = array( 'Retail' ), $hide_oos = false ) {
+	function vqdev_toast_get_menu_data( $skip_menus = array( 'Retail' ), $hide_oos = false, $restaurant_guid = '', $restaurant_name = 'Mabellas' ) {
 
 		if ( ! function_exists( 'vqdev_toast' ) ) {
 			return null;
 		}
 
-		$cache_key = 'vqdev_toast_menu_data';
+		$cache_key = 'vqdev_toast_menu_data' . ( $restaurant_guid ? '_' . $restaurant_guid : '' );
 		$cached    = get_transient( $cache_key );
 
 		// If we have cached data, check metadata to see if it's stale.
 		if ( false !== $cached ) {
-			if ( ! vqdev_toast_menu_has_changed() ) {
+			if ( ! vqdev_toast_menu_has_changed( $restaurant_guid ) ) {
 				return $cached;
 			}
 			// Menu changed — fall through to re-fetch.
 		}
 
-		$result = vqdev_toast()->menus()->get_menus_v2();
+		$result = vqdev_toast_with_restaurant( $restaurant_guid, function () {
+			return vqdev_toast()->menus()->get_menus_v2();
+		} );
 		if ( ! $result['success'] || empty( $result['data']['menus'] ) ) {
 			// If re-fetch fails but we have stale cache, return it anyway.
 			if ( false !== $cached ) {
@@ -790,7 +861,7 @@
 		}
 
 		// Fetch out-of-stock GUIDs.
-		$oos_guids = vqdev_toast_get_oos_guids();
+		$oos_guids = vqdev_toast_get_oos_guids( $restaurant_guid );
 
 		$tabs = array();
 
@@ -825,6 +896,11 @@
 				}
 			}
 
+			// Skip tabs that resolved to no sections (e.g. an empty Catering menu).
+			if ( empty( $tab['sections'] ) ) {
+				continue;
+			}
+
 			$tabs[] = $tab;
 		}
 
@@ -837,7 +913,7 @@
 		}
 
 		$menu_data = array(
-			'restaurant_name' => 'Mabellas',
+			'restaurant_name' => $restaurant_name,
 			'updated'         => $last_updated,
 			'tabs'            => $tabs,
 		);
@@ -846,8 +922,9 @@
 		// compare against it on future requests. Also set the metadata
 		// throttle so we don't immediately re-check after a fresh fetch.
 		if ( ! empty( $api['lastUpdated'] ) ) {
-			update_option( 'vqdev_toast_menu_last_updated', $api['lastUpdated'], false );
-			set_transient( 'vqdev_toast_metadata_checked', 1, 10 * MINUTE_IN_SECONDS );
+			$suffix = $restaurant_guid ? '_' . $restaurant_guid : '';
+			update_option( 'vqdev_toast_menu_last_updated' . $suffix, $api['lastUpdated'], false );
+			set_transient( 'vqdev_toast_metadata_checked' . $suffix, 1, 10 * MINUTE_IN_SECONDS );
 		}
 
 		// Cache for 24 hours as a safety net. The metadata check (every 10 min)
@@ -1047,7 +1124,20 @@
  * fires this action; the theme is responsible for clearing its own caches.
  */
 add_action( 'vqdev_toast_flush_cache', function () {
-	delete_transient( 'vqdev_toast_menu_data' );
-	delete_transient( 'vqdev_toast_metadata_checked' );
-	delete_transient( 'vqdev_toast_oos_guids' );
+	// Start with the default (configured-restaurant) cache keys, then add a
+	// per-GUID suffix for each Mabella location we fetch explicitly, so the
+	// admin-bar "Refresh menu cache" button clears Uptown and Midland too.
+	$suffixes = array( '' );
+
+	if ( function_exists( 'vqdev_toast_mabella_restaurants' ) ) {
+		foreach ( vqdev_toast_mabella_restaurants() as $restaurant ) {
+			$suffixes[] = '_' . $restaurant['guid'];
+		}
+	}
+
+	foreach ( $suffixes as $suffix ) {
+		delete_transient( 'vqdev_toast_menu_data' . $suffix );
+		delete_transient( 'vqdev_toast_metadata_checked' . $suffix );
+		delete_transient( 'vqdev_toast_oos_guids' . $suffix );
+	}
 } );

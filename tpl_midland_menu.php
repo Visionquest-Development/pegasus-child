@@ -115,45 +115,58 @@
 			</div><!--end row -->
 		</div><!-- end container -->
 		<?php
-		$menu_json_path = get_stylesheet_directory() . '/data/midland_menu.json';
-		$menu_json = file_get_contents($menu_json_path);
-		$menu_data = json_decode($menu_json, true);
-		if (!is_array($menu_data) || empty($menu_data['tabs'])) {
-		  $menu_data = ['restaurant_name' => '', 'updated' => '', 'tabs' => []];
-		}
+		/*------------------------------------------------------------------
+		 * Toast POS Menu (live from the Toast API)
+		 *
+		 * Fetches the Mabella Midland menu via vqdev_toast_get_menu_data()
+		 * and renders it with the shared menu-tabs (desktop) / menu-mobile
+		 * (mobile) includes — the same markup the static JSON menu used.
+		 *-----------------------------------------------------------------*/
+		$location  = vqdev_toast_mabella_restaurants()['midland'];
+		$menu_data = vqdev_toast_get_menu_data( array( 'Retail' ), false, $location['guid'], $location['name'] );
 
-		// Format helpers
-		function vqmenu_money($value) {
-		  // accepts strings like "14" or "14.00"
-		  $num = is_numeric($value) ? number_format((float)$value, 2, '.', '') : $value;
-		  // If you prefer no cents when .00, tweak here:
-		  if (is_numeric($value) && fmod((float)$value, 1.0) === 0.0) {
-			$num = number_format((float)$value, 0, '.', '');
-		  }
-		  return '$' . $num;
-		}
+		if ( ! $menu_data || empty( $menu_data['tabs'] ) ) :
+		?>
+			<div class="container py-5">
+				<div class="alert alert-warning">
+					Menu is currently unavailable. Please check back later.
+				</div>
+			</div>
+		<?php
+		else :
 
-		function vqmenu_badge_class($label) {
-		  $label = strtoupper(trim((string)$label));
-		  return match ($label) {
-			'V'   => 'vqmenu-badge vqmenu-badge--veg',
-			'GF'  => 'vqmenu-badge vqmenu-badge--gf',
-			'GF*' => 'vqmenu-badge vqmenu-badge--gf',
-			default => 'vqmenu-badge'
-		  };
-		}
+			// Format helpers (shared by the desktop/mobile includes).
+			if ( ! function_exists( 'vqmenu_money' ) ) {
+				function vqmenu_money( $value ) {
+					$num = is_numeric( $value ) ? number_format( (float) $value, 2, '.', '' ) : $value;
+					if ( is_numeric( $value ) && fmod( (float) $value, 1.0 ) === 0.0 ) {
+						$num = number_format( (float) $value, 0, '.', '' );
+					}
+					return '$' . $num;
+				}
+			}
 
-		// Enqueue the mobile menu JS
-		$theme_uri = get_stylesheet_directory_uri();
-		$theme_dir = get_stylesheet_directory();
-		$js_rel = '/assets/restaurant-menu/restaurant-menu.js';
-		if (file_exists($theme_dir . $js_rel)) {
-		  wp_enqueue_script('vq-restaurant-menu', $theme_uri . $js_rel, [], filemtime($theme_dir . $js_rel), true);
-		}
+			if ( ! function_exists( 'vqmenu_badge_class' ) ) {
+				function vqmenu_badge_class( $label ) {
+					$label = strtoupper( trim( (string) $label ) );
+					return match ( $label ) {
+						'V'     => 'vqmenu-badge vqmenu-badge--veg',
+						'GF'    => 'vqmenu-badge vqmenu-badge--gf',
+						'GF*'   => 'vqmenu-badge vqmenu-badge--gf',
+						default => 'vqmenu-badge',
+					};
+				}
+			}
 
-		$tabs = $menu_data['tabs'];
-		$first_tab_id = $tabs[0]['id'] ?? 'menu';
+			// Enqueue the mobile menu JS.
+			$theme_uri = get_stylesheet_directory_uri();
+			$theme_dir = get_stylesheet_directory();
+			$js_rel    = '/assets/restaurant-menu/restaurant-menu.js';
+			if ( file_exists( $theme_dir . $js_rel ) ) {
+				wp_enqueue_script( 'vq-restaurant-menu', $theme_uri . $js_rel, array(), filemtime( $theme_dir . $js_rel ), true );
+			}
 
+			$tabs = $menu_data['tabs'];
 		?>
 		<main id="primary" class="site-main">
 		  <div class="container py-5 vqmenu">
@@ -182,12 +195,7 @@
 			</div>
 		  </div>
 		</main>
-
-		<?php /*
-		<section class="py-5 mb-5">
-			<?php echo do_shortcode( '[uptown_restaurant_map height="600px"]' ); ?>
-		</section>
-		*/ ?>
+		<?php endif; ?>
 
 
 	</div><!-- end page wrap -->
