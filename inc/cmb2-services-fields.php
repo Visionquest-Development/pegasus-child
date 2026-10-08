@@ -29,6 +29,7 @@ if ( ! function_exists( 'rcd_services_defaults' ) ) {
 	 * @return array
 	 */
 	function rcd_services_defaults() {
+		$img = get_stylesheet_directory_uri() . '/assets/img/';
 		return array(
 
 			// Intro.
@@ -48,6 +49,7 @@ if ( ! function_exists( 'rcd_services_defaults' ) ) {
 					'tag'            => 'Interiors &amp; Styling',
 					'title'          => 'Bespoke Curation',
 					'anchor'         => 'bespoke',
+					'image'          => $img . 'rcd-service-bespoke-curation-french-country-living-room.jpg',
 					'excerpt'        => 'Tailored interior transformations and single-room styling — composed around how you actually live.',
 					'body'           => 'Tailored interior transformations and single-room styling, composed around how you actually live. We layer color, material, light, and collected objects until a space feels effortless and entirely yours.',
 					'body2'          => 'From the first concept to the final styled shelf, we guide every decision with a clear, considered point of view.',
@@ -61,6 +63,7 @@ if ( ! function_exists( 'rcd_services_defaults' ) ) {
 					'tag'            => 'Furniture &amp; Revivals',
 					'title'          => 'Restoration &amp; Sourcing',
 					'anchor'         => 'restoration',
+					'image'          => $img . 'rcd-service-restoration-sourcing-farmhouse-dining-fireplace.jpg',
 					'excerpt'        => 'Reclaimed, high-end furniture and architectural revivals, given a second life with patient hands.',
 					'body'           => "Reclaimed, high-end furniture and architectural revivals. We track down structural pieces with real provenance, then restore them with patient, expert hands — preserving the maker's intent while readying them for a new life.",
 					'body2'          => 'Restored pieces are available for local pickup and offered one at a time.',
@@ -74,6 +77,7 @@ if ( ! function_exists( 'rcd_services_defaults' ) ) {
 					'tag'            => '3D &amp; Sourcing',
 					'title'          => 'Immersive Technical Design',
 					'anchor'         => 'technical',
+					'image'          => $img . 'rcd-service-technical-design-barrel-vault-hallway-render.jpg',
 					'excerpt'        => 'Premium 3D modeling and dynamic sourcing breakdowns — see the room before a single piece moves.',
 					'body'           => 'Premium 3D modeling and dynamic sourcing breakdowns. Walk your space before a single piece moves — ultra-detailed spatial models paired with itemized, shoppable source lists so nothing is left to guesswork.',
 					'body2'          => 'Ideal for full transformations, renovations, and clients who want to see — and price — every decision in advance.',
@@ -480,9 +484,17 @@ if ( ! function_exists( 'rcd_services_render_pillar' ) ) {
 						<?php if ( $body2 ) : ?>
 							<p class="rcd-svc-body rcd-svc-body--last"><?php echo esc_html( $body2 ); ?></p>
 						<?php endif; ?>
-						<?php if ( rcd_home_row( $row, 'button_text' ) ) : ?>
-							<a class="rcd-btn rcd-btn-dark rcd-btn--self" href="<?php echo esc_url( rcd_home_row( $row, 'button_link', '#' ) ); ?>"><?php echo esc_html( rcd_home_row( $row, 'button_text' ) ); ?> &rsaquo;</a>
-						<?php endif; ?>
+						<?php
+						$detail_url = function_exists( 'rcd_service_detail_url' ) ? rcd_service_detail_url( $anchor ) : '';
+						?>
+						<div class="rcd-svc-actions">
+							<?php if ( rcd_home_row( $row, 'button_text' ) ) : ?>
+								<a class="rcd-btn rcd-btn-dark rcd-btn--self" href="<?php echo esc_url( rcd_home_row( $row, 'button_link', '#' ) ); ?>"><?php echo esc_html( rcd_home_row( $row, 'button_text' ) ); ?> &rsaquo;</a>
+							<?php endif; ?>
+							<?php if ( $detail_url ) : ?>
+								<a class="rcd-link-underline rcd-svc-explore" href="<?php echo esc_url( $detail_url ); ?>">Explore <?php echo esc_html( wp_strip_all_tags( rcd_home_row( $row, 'title' ) ) ); ?> &rsaquo;</a>
+							<?php endif; ?>
+						</div>
 					</div>
 					<div class="<?php echo esc_attr( $img_col ); ?>">
 						<div class="rcd-hero-frame">
@@ -490,6 +502,23 @@ if ( ! function_exists( 'rcd_services_render_pillar' ) ) {
 						</div>
 					</div>
 				</div>
+
+				<?php
+				// "What's included" + "Featured projects" card grids ( CMB2-editable
+				// on this service's detail page, design defaults until saved ). Each
+				// card deep-links to a section anchor on the individual service page.
+				if ( function_exists( 'rcd_get_service_cards' ) ) {
+					$included = rcd_get_service_cards( $anchor, 'included' );
+					$featured = rcd_get_service_cards( $anchor, 'featured' );
+
+					if ( $included || $featured ) {
+						echo '<div class="rcd-svc-cardsets">';
+						rcd_render_service_cardset( $included, __( "What's included", 'pegasus-child' ), $detail_url, 'rcd-svc-cards--3' );
+						rcd_render_service_cardset( $featured, __( 'Featured projects', 'pegasus-child' ), $detail_url, 'rcd-svc-cards--4' );
+						echo '</div>';
+					}
+				}
+				?>
 			</div>
 		</section>
 		<?php

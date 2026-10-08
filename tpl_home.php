@@ -268,7 +268,8 @@
 						?>
 						<div class="<?php echo esc_attr( $col_class ); ?>">
 							<div class="rcd-gallery-item">
-								<?php rcd_home_media( rcd_home_row( $item, 'image' ), $height_class, 'Drop project image', rcd_home_row( $item, 'caption' ) ); ?>
+								<?php $gal_alt = rcd_home_row( $item, 'alt' ); ?>
+								<?php rcd_home_media( rcd_home_row( $item, 'image' ), $height_class, 'Drop project image', $gal_alt ? $gal_alt : rcd_home_row( $item, 'caption' ) ); ?>
 								<?php if ( rcd_home_row( $item, 'caption' ) ) : ?>
 									<span class="rcd-gallery-cap"><?php echo esc_html( rcd_home_row( $item, 'caption' ) ); ?></span>
 								<?php endif; ?>

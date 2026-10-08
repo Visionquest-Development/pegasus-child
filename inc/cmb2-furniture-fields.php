@@ -60,6 +60,13 @@ if ( ! function_exists( 'rcd_furniture_defaults' ) ) {
 			'inquire_btn_link' => 'mailto:hello@renecatherinedesigns.com?subject=Furniture%20Inquiry',
 			'coming_soon'      => 'An online shop for merch, candles &amp; more is coming soon.',
 
+			// Single-piece contact / CTA ( used by single-rcd_furniture.php ).
+			'contact_phone'    => '', // e.g. (404) 555-0199 — leave blank to hide the Call button.
+			'contact_email'    => 'hello@renecatherinedesigns.com',
+			'contact_page'     => '/contact/',
+			'single_cta_heading' => 'Interested in this piece?',
+			'single_cta_text'    => "Each piece is one-of-a-kind and available for local pickup in the Atlanta area. Reach out and we'll confirm availability, condition, and dimensions.",
+
 			// Default filter labels ( used until furniture_cat terms exist ).
 			'filters' => array( 'All Pieces', 'Seating', 'Case Goods', 'Tables', 'Lighting &amp; Décor' ),
 
@@ -194,6 +201,92 @@ function rcd_furniture_register_metaboxes() {
 		'type'    => 'text',
 		'default' => $d['coming_soon'],
 	) );
+
+	/* Single-piece Contact / CTA ( used on each furniture product page ). */
+	$contact = new_cmb2_box( array_merge( $box_args, array(
+		'id'    => $prefix . 'contact_box',
+		'title' => __( 'Furniture — Piece Page Contact / CTA', 'pegasus-child' ),
+	) ) );
+	$contact->add_field( array(
+		'name' => __( 'Contact phone', 'pegasus-child' ),
+		'desc' => __( 'Shown as a "Call" button on each piece page ( tel: link ). Leave blank to hide it.', 'pegasus-child' ),
+		'id'   => $prefix . 'contact_phone',
+		'type' => 'text',
+		'default' => $d['contact_phone'],
+	) );
+	$contact->add_field( array(
+		'name' => __( 'Contact email', 'pegasus-child' ),
+		'id'   => $prefix . 'contact_email',
+		'type' => 'text',
+		'default' => $d['contact_email'],
+	) );
+	$contact->add_field( array(
+		'name' => __( 'Contact page link', 'pegasus-child' ),
+		'id'   => $prefix . 'contact_page',
+		'type' => 'text',
+		'default' => $d['contact_page'],
+	) );
+	$contact->add_field( array(
+		'name' => __( 'CTA heading', 'pegasus-child' ),
+		'id'   => $prefix . 'single_cta_heading',
+		'type' => 'text',
+		'default' => $d['single_cta_heading'],
+	) );
+	$contact->add_field( array(
+		'name' => __( 'CTA text', 'pegasus-child' ),
+		'id'   => $prefix . 'single_cta_text',
+		'type' => 'textarea_small',
+		'default' => $d['single_cta_text'],
+	) );
+}
+
+if ( ! function_exists( 'rcd_get_furniture_page_id' ) ) {
+	/**
+	 * Find the page that uses the Furniture template ( tpl_furniture.php ), so the
+	 * single-piece pages can read the shared contact / CTA settings from it.
+	 *
+	 * @return int Page ID, or 0 if none found.
+	 */
+	function rcd_get_furniture_page_id() {
+		static $cached = null;
+		if ( null !== $cached ) {
+			return $cached;
+		}
+
+		$ids = get_posts( array(
+			'post_type'      => 'page',
+			'post_status'    => 'publish',
+			'posts_per_page' => 1,
+			'fields'         => 'ids',
+			'meta_key'       => '_wp_page_template',
+			'meta_value'     => 'tpl_furniture.php',
+			'no_found_rows'  => true,
+		) );
+
+		$cached = ! empty( $ids ) ? (int) $ids[0] : 0;
+		return $cached;
+	}
+}
+
+if ( ! function_exists( 'rcd_fur_contact' ) ) {
+	/**
+	 * Read a furniture contact / CTA setting from the Furniture page, falling back
+	 * to the Claude Design default. Works from anywhere ( e.g. a single piece page ).
+	 *
+	 * @param string $key Field key without the rcd_fur_ prefix.
+	 * @return string
+	 */
+	function rcd_fur_contact( $key ) {
+		$page_id = rcd_get_furniture_page_id();
+		$value   = $page_id ? get_post_meta( $page_id, 'rcd_fur_' . $key, true ) : '';
+
+		if ( '' === $value || null === $value || false === $value ) {
+			$defaults = rcd_furniture_defaults();
+			return isset( $defaults[ $key ] ) ? $defaults[ $key ] : '';
+		}
+
+		return $value;
+	}
 }
 
 /**

@@ -107,10 +107,15 @@
 					foreach ( $rcd_pieces as $piece ) :
 						$status_meta = rcd_furniture_status_meta( rcd_home_row( $piece, 'status', 'available' ) );
 						$piece_name  = rcd_home_row( $piece, 'name' );
+						$permalink   = rcd_home_row( $piece, 'permalink' );
 						$inquire     = rcd_home_row( $piece, 'inquire' );
 						if ( '' === $inquire ) {
 							$inquire = 'mailto:hello@renecatherinedesigns.com?subject=' . rawurlencode( 'Inquiry: ' . html_entity_decode( wp_strip_all_tags( $piece_name ), ENT_QUOTES ) );
 						}
+						// Real pieces link to their product page; the default demo
+						// pieces ( no permalink ) keep the inquire mailto.
+						$card_cta_url  = $permalink ? $permalink : $inquire;
+						$card_cta_text = $permalink ? __( 'View piece', 'pegasus-child' ) : $status_meta['cta'];
 						// Category slug classes drive the Isotope filtering.
 						$piece_cats = isset( $piece['cats'] ) && is_array( $piece['cats'] ) ? $piece['cats'] : array();
 						$cat_classes = array();
@@ -124,17 +129,29 @@
 						<div class="rcd-fur-item <?php echo esc_attr( implode( ' ', $cat_classes ) ); ?>">
 							<article class="rcd-fur-card <?php echo esc_attr( $status_meta['card_class'] ); ?>">
 								<div class="rcd-fur-card-media">
-									<?php rcd_home_media( rcd_home_row( $piece, 'image' ), 'rcd-fur-media', 'Drop furniture photo', $piece_name ); ?>
+									<?php if ( $permalink ) : ?>
+										<a class="rcd-fur-card-link" href="<?php echo esc_url( $permalink ); ?>" aria-label="<?php echo esc_attr( $piece_name ); ?>">
+											<?php rcd_home_media( rcd_home_row( $piece, 'image' ), 'rcd-fur-media', 'Drop furniture photo', $piece_name ); ?>
+										</a>
+									<?php else : ?>
+										<?php rcd_home_media( rcd_home_row( $piece, 'image' ), 'rcd-fur-media', 'Drop furniture photo', $piece_name ); ?>
+									<?php endif; ?>
 									<span class="rcd-fur-badge <?php echo esc_attr( $status_meta['badge_class'] ); ?>"><?php echo esc_html( $status_meta['label'] ); ?></span>
 								</div>
 								<div class="rcd-fur-card-body">
-									<h3 class="rcd-fur-name"><?php echo wp_kses_post( $piece_name ); ?></h3>
+									<h3 class="rcd-fur-name">
+										<?php if ( $permalink ) : ?>
+											<a href="<?php echo esc_url( $permalink ); ?>"><?php echo wp_kses_post( $piece_name ); ?></a>
+										<?php else : ?>
+											<?php echo wp_kses_post( $piece_name ); ?>
+										<?php endif; ?>
+									</h3>
 									<?php if ( rcd_home_row( $piece, 'meta' ) ) : ?>
 										<div class="rcd-fur-meta"><?php echo wp_kses_post( rcd_home_row( $piece, 'meta' ) ); ?></div>
 									<?php endif; ?>
 									<div class="rcd-fur-priceRow">
 										<span class="rcd-fur-price"><?php echo esc_html( rcd_home_row( $piece, 'price' ) ); ?></span>
-										<a class="rcd-fur-inquire" href="<?php echo esc_url( $inquire ); ?>"><?php echo esc_html( $status_meta['cta'] ); ?> &rsaquo;</a>
+										<a class="rcd-fur-inquire" href="<?php echo esc_url( $card_cta_url ); ?>"><?php echo esc_html( $card_cta_text ); ?> &rsaquo;</a>
 									</div>
 								</div>
 							</article>

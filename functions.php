@@ -34,6 +34,13 @@
 	require_once get_stylesheet_directory() . '/inc/cmb2-services-fields.php';
 
 	/**
+	 * Service Detail template ( tpl_service_detail.php ) CMB2 fields + helpers.
+	 * Loaded after the services fields — it reuses rcd_get_services() /
+	 * rcd_get_services_page_id() defined there.
+	 */
+	require_once get_stylesheet_directory() . '/inc/cmb2-service-detail-fields.php';
+
+	/**
 	 * Furniture custom post type + taxonomies + per-piece CMB2 fields.
 	 */
 	require_once get_stylesheet_directory() . '/inc/furniture-cpt.php';
@@ -80,3 +87,22 @@
 
 	} //end function
 	add_action( 'wp_enqueue_scripts', 'rcd_furniture_isotope_scripts' );
+
+	/**
+	 * Lightbox2 ( v2.11.4 ) for the Service Detail project galleries and the single
+	 * Furniture piece product gallery. Same library + pattern used on the vqdev
+	 * theme: auto-inits on anchors with data-lightbox ( grouped by its value ),
+	 * captions via data-title, arrow keys built in. filemtime versions bust cache
+	 * on every edit.
+	 */
+	function rcd_service_detail_scripts() {
+
+		if ( ! is_page_template( 'tpl_service_detail.php' ) && ! is_singular( 'rcd_furniture' ) ) {
+			return;
+		}
+
+		wp_enqueue_style( 'lightbox-css', get_stylesheet_directory_uri() . '/css/lightbox.min.css', array(), filemtime( get_stylesheet_directory() . '/css/lightbox.min.css' ) );
+		wp_enqueue_script( 'lightbox_js', get_stylesheet_directory_uri() . '/js/lightbox.min.js', array( 'jquery' ), filemtime( get_stylesheet_directory() . '/js/lightbox.min.js' ), true );
+
+	} //end function
+	add_action( 'wp_enqueue_scripts', 'rcd_service_detail_scripts' );

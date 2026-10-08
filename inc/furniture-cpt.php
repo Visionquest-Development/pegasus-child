@@ -129,7 +129,11 @@ function rcd_furniture_register_piece_fields() {
 		'object_types' => array( 'rcd_furniture' ),
 		'context'      => 'normal',
 		'priority'     => 'high',
-		'closed'       => true,
+		// Open by default: this is the primary editing surface for a furniture
+		// piece, so its fields should be visible immediately ( a collapsed box
+		// shows as an empty title bar in the block editor's Meta Boxes drawer ).
+		// The page-template metaboxes stay collapsed; this CPT box does not.
+		'closed'       => false,
 	) );
 
 	$box->add_field( array(
@@ -159,6 +163,62 @@ function rcd_furniture_register_piece_fields() {
 		'name' => __( 'Inquire link ( optional )', 'pegasus-child' ),
 		'desc' => __( 'Leave blank to auto-build a mailto with this piece in the subject line.', 'pegasus-child' ),
 		'id'   => 'rcd_fur_inquire_link',
+		'type' => 'text',
+	) );
+
+	/* Product gallery ( additional photos beyond the Featured Image ) — a
+	   repeatable group so each shot carries its own alt text + caption. */
+	$gal_group = $box->add_field( array(
+		'id'          => 'rcd_fur_gallery',
+		'type'        => 'group',
+		'name'        => __( 'Gallery ( additional photos )', 'pegasus-child' ),
+		'description' => __( 'Extra detail shots beyond the Featured Image. Each appears as a thumbnail and opens in the lightbox.', 'pegasus-child' ),
+		'options'     => array(
+			'closed'        => true,
+			'sortable'      => true,
+			'group_title'   => __( 'Photo {#}', 'pegasus-child' ),
+			'add_button'    => __( 'Add Photo', 'pegasus-child' ),
+			'remove_button' => __( 'Remove Photo', 'pegasus-child' ),
+		),
+	) );
+	$box->add_group_field( $gal_group, array(
+		'name'         => __( 'Image', 'pegasus-child' ),
+		'id'           => 'image',
+		'type'         => 'file',
+		'options'      => array( 'url' => false ),
+		'query_args'   => array( 'type' => 'image' ),
+		'preview_size' => array( 160, 120 ),
+	) );
+	$box->add_group_field( $gal_group, array(
+		'name' => __( 'Alt text', 'pegasus-child' ),
+		'desc' => __( 'Describes the image for screen readers &amp; SEO. Falls back to the Media Library alt, then the piece title.', 'pegasus-child' ),
+		'id'   => 'alt',
+		'type' => 'text',
+	) );
+	$box->add_group_field( $gal_group, array(
+		'name' => __( 'Caption', 'pegasus-child' ),
+		'desc' => __( 'Optional — shown under the image in the lightbox.', 'pegasus-child' ),
+		'id'   => 'caption',
+		'type' => 'text',
+	) );
+
+	/* Spec details ( shown as a product spec list ). */
+	$box->add_field( array(
+		'name' => __( 'Dimensions', 'pegasus-child' ),
+		'desc' => __( 'e.g. 72"W × 18"D × 32"H.', 'pegasus-child' ),
+		'id'   => 'rcd_fur_dimensions',
+		'type' => 'text',
+	) );
+	$box->add_field( array(
+		'name' => __( 'Materials', 'pegasus-child' ),
+		'desc' => __( 'e.g. Solid walnut, brass hardware.', 'pegasus-child' ),
+		'id'   => 'rcd_fur_materials',
+		'type' => 'text',
+	) );
+	$box->add_field( array(
+		'name' => __( 'Condition', 'pegasus-child' ),
+		'desc' => __( 'e.g. Fully restored, excellent.', 'pegasus-child' ),
+		'id'   => 'rcd_fur_condition',
 		'type' => 'text',
 	) );
 }

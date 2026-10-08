@@ -28,6 +28,7 @@ if ( ! function_exists( 'rcd_home_defaults' ) ) {
 	 * @return array
 	 */
 	function rcd_home_defaults() {
+		$img = get_stylesheet_directory_uri() . '/assets/img/';
 		return array(
 
 			// Hero.
@@ -42,7 +43,7 @@ if ( ! function_exists( 'rcd_home_defaults' ) ) {
 			'hero_btn2_link'   => '#furniture',
 			'hero_stat_number' => '15+',
 			'hero_stat_text'   => 'years sourcing &amp; restoring pieces with a story',
-			'hero_image'       => '',
+			'hero_image'       => $img . 'rcd-hero-dual-island-luxury-kitchen.jpg',
 
 			// Brand statement.
 			'brand_statement'  => "At Rene Catherine Design, we don't just design interiors — we curate experiences and breathe new life into spaces and structures. True luxury lies in the details.",
@@ -80,11 +81,11 @@ if ( ! function_exists( 'rcd_home_defaults' ) ) {
 			'gallery_eyebrow'  => 'Selected Work',
 			'gallery_heading'  => 'A portfolio in progress',
 			'gallery'          => array(
-				array( 'caption' => 'Full-Home Transformation' ),
-				array( 'caption' => 'Single-Room Styling' ),
-				array( 'caption' => 'Restored Sideboard' ),
-				array( 'caption' => '3D Spatial Model' ),
-				array( 'caption' => 'Sourced Lighting' ),
+				array( 'caption' => 'Full-Home Transformation', 'image' => $img . 'rcd-gallery-full-home-transformation-farmhouse-kitchen.jpg' ),
+				array( 'caption' => 'Single-Room Styling',      'image' => $img . 'rcd-gallery-single-room-styling-navy-bedroom.jpg' ),
+				array( 'caption' => 'Spa Bath Styling',         'image' => $img . 'rcd-gallery-spa-bath-subway-tile-shower.jpg' ),
+				array( 'caption' => 'Built-In Library',         'image' => $img . 'rcd-gallery-built-in-library-loft.jpg' ),
+				array( 'caption' => 'Woodland Retreat',         'image' => $img . 'rcd-gallery-woodland-retreat-cabin-exterior.jpg' ),
 			),
 
 			// Furniture band.
@@ -373,6 +374,12 @@ function rcd_home_register_metaboxes() {
 		'options'      => array( 'url' => false ),
 		'query_args'   => array( 'type' => 'image' ),
 		'preview_size' => 'medium',
+	) );
+	$gallery->add_group_field( $gal_group, array(
+		'name' => __( 'Alt text', 'pegasus-child' ),
+		'desc' => __( 'Describes the image for screen readers &amp; SEO. Leave blank to fall back to the caption.', 'pegasus-child' ),
+		'id'   => 'alt',
+		'type' => 'text',
 	) );
 	$gallery->add_group_field( $gal_group, array(
 		'name' => __( 'Caption', 'pegasus-child' ),
