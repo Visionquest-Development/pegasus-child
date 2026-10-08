@@ -309,3 +309,157 @@
   padding-block: 3.5rem 2rem;
   border-top: 1px solid var(--qb-line);
 }
+
+/* =============================================================================
+   LEARN THE HALF SECOND  (Tom Brady case study)
+   ========================================================================== */
+.qb-home .qb-halfsec {
+  position: relative;
+  overflow: hidden;
+}
+.qb-home .qb-halfsec::before {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(60% 55% at 50% 0%, rgba(233,131,24,.12) 0%, rgba(233,131,24,0) 70%);
+  pointer-events: none;
+}
+.qb-home .qb-halfsec > .container { position: relative; z-index: 1; }
+
+/* --- Head --- */
+.qb-home .qb-halfsec .qb-eyebrow-center { display: inline-flex; }
+.qb-home .qb-halfsec-title {
+  color: #fff;
+  font-size: clamp(2.6rem, 7vw, 5rem);
+  line-height: .98;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+}
+.qb-home .qb-halfsec-lead {
+  max-width: 760px;
+  font-size: 1.12rem;
+  line-height: 1.7;
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
+/* --- Comparison bars --- */
+.qb-home .qb-hs-compare {
+  max-width: 860px;
+  margin: 0 auto clamp(2.5rem, 6vw, 4rem);
+  display: grid;
+  gap: 1.75rem;
+}
+.qb-home .qb-hs-row { display: grid; gap: .6rem; }
+.qb-home .qb-hs-meta { display: flex; align-items: baseline; gap: .6rem; flex-wrap: wrap; }
+.qb-home .qb-hs-name { font-family: var(--qb-display); font-weight: 800; color: #fff; font-size: 1.1rem; }
+.qb-home .qb-hs-sub  { color: var(--qb-fog); font-size: .82rem; letter-spacing: .02em; }
+
+.qb-home .qb-hs-track {
+  position: relative;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 999px;
+  height: 56px;
+  overflow: hidden;
+}
+.qb-home .qb-hs-bar {
+  position: relative;
+  height: 100%;
+  width: var(--pct);
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 1.1rem;
+  min-width: 70px;
+  transition: width 1.15s cubic-bezier(.22, 1, .36, 1);
+}
+.qb-home .qb-hs-row--fast .qb-hs-bar {
+  background: linear-gradient(90deg, var(--qb-orange-600), var(--qb-orange-400));
+  box-shadow: 0 6px 20px rgba(233,131,24,.35);
+}
+.qb-home .qb-hs-row--avg .qb-hs-bar {
+  background: linear-gradient(90deg, #2a2f38, #3a414c);
+}
+.qb-home .qb-hs-val {
+  font-family: var(--qb-display);
+  font-weight: 800;
+  font-size: 1.35rem;
+  color: #fff;
+  line-height: 1;
+}
+.qb-home .qb-hs-val small { font-size: .7em; font-weight: 700; opacity: .8; margin-left: 1px; }
+
+/* Reveal gating — bars animate from 0 only when JS is present (graceful without JS). */
+.qb-home .qb-halfsec.qb-hs-prep .qb-hs-bar { width: 0; }
+.qb-home .qb-halfsec.qb-hs-prep.is-visible .qb-hs-bar { width: var(--pct); }
+
+/* --- Delta focal number --- */
+.qb-home .qb-hs-delta { text-align: center; margin-bottom: clamp(2rem, 5vw, 3rem); }
+.qb-home .qb-hs-delta-fig {
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  line-height: .9;
+  background: linear-gradient(180deg, var(--qb-orange-300), var(--qb-orange-600));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.qb-home .qb-hs-delta-num {
+  font-family: var(--qb-display);
+  font-weight: 900;
+  font-size: clamp(4.5rem, 16vw, 10rem);
+  letter-spacing: -0.03em;
+}
+.qb-home .qb-hs-delta-unit {
+  font-family: var(--qb-display);
+  font-weight: 800;
+  font-size: clamp(1.6rem, 5vw, 3rem);
+  margin-top: .35em;
+}
+.qb-home .qb-hs-delta-label {
+  color: #fff;
+  font-size: clamp(1rem, 2.4vw, 1.35rem);
+  font-weight: 600;
+  letter-spacing: .01em;
+  margin-top: .25rem;
+}
+
+/* --- Payoff / value prop --- */
+.qb-home .qb-hs-payoff {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: clamp(1.5rem, 4vw, 2.5rem);
+  border-top: 1px solid rgba(255,255,255,.1);
+}
+.qb-home .qb-hs-payoff-body { color: var(--qb-mist); font-size: 1.15rem; line-height: 1.7; }
+.qb-home .qb-hs-payoff-body p { margin-bottom: 1rem; }
+.qb-home .qb-hs-payoff-body strong { color: #fff; }
+.qb-home .qb-hs-payoff-body em { color: var(--qb-accent); font-style: normal; }
+.qb-home .qb-hs-cta { margin-top: 1.75rem; }
+
+/* --- Reveal transitions for delta + payoff --- */
+.qb-home .qb-halfsec.qb-hs-prep .qb-hs-delta,
+.qb-home .qb-halfsec.qb-hs-prep .qb-hs-payoff {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .7s ease .35s, transform .7s ease .35s;
+}
+.qb-home .qb-halfsec.qb-hs-prep.is-visible .qb-hs-delta,
+.qb-home .qb-halfsec.qb-hs-prep.is-visible .qb-hs-payoff {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qb-home .qb-hs-bar,
+  .qb-home .qb-halfsec.qb-hs-prep .qb-hs-delta,
+  .qb-home .qb-halfsec.qb-hs-prep .qb-hs-payoff { transition: none !important; }
+}
+
+@media (max-width: 575.98px) {
+  .qb-home .qb-hs-track { height: 48px; }
+  .qb-home .qb-hs-val { font-size: 1.1rem; }
+}

@@ -1,0 +1,130 @@
+/* =============================================================================
+   QBIQ — Seasonal Promo slider
+   Rendered by the [seasonal_slider] shortcode. Re-uses the Slick assets from
+   the Pegasus Carousel plugin; styling below matches the QBIQ design tokens.
+   ========================================================================== */
+
+.qb-seasonal-section { overflow: hidden; }
+
+.qb-seasonal-head .qb-eyebrow { color: var(--qb-accent); }
+
+/* --- Slider shell --------------------------------------------------------- */
+.qbiq-seasonal-slider {
+	position: relative;
+	visibility: hidden; /* hidden until Slick initialises to avoid FOUC */
+}
+.qbiq-seasonal-slider.slick-initialized { visibility: visible; }
+
+/* --- Slide card ----------------------------------------------------------- */
+.qb-seasonal-card {
+	position: relative;
+	display: flex;
+	align-items: flex-end;
+	min-height: clamp(360px, 48vw, 540px);
+	border-radius: var(--qb-radius-lg, 20px);
+	overflow: hidden;
+	background-color: var(--qb-ink-2, #15171c);
+	background-size: cover;
+	background-position: center;
+}
+
+.qb-seasonal-overlay {
+	position: absolute;
+	inset: 0;
+	background:
+		linear-gradient( to top, rgba(12,13,16,.92) 0%, rgba(12,13,16,.55) 45%, rgba(12,13,16,.15) 100% );
+	z-index: 1;
+}
+
+.qb-seasonal-body {
+	position: relative;
+	z-index: 2;
+	width: 100%;
+	max-width: 640px;
+	padding: clamp(1.5rem, 4vw, 3rem);
+	color: #fff;
+}
+
+/* Season badge — accent colour set per-season below */
+.qb-seasonal-badge {
+	display: inline-block;
+	font-family: var(--qb-sans);
+	font-size: .7rem;
+	font-weight: 700;
+	letter-spacing: .14em;
+	text-transform: uppercase;
+	padding: .35rem .75rem;
+	border-radius: 999px;
+	color: #0c0d10;
+	background: var(--season, var(--qb-accent));
+	margin-bottom: .9rem;
+}
+
+.qb-seasonal-eyebrow {
+	display: block;
+	font-size: .72rem;
+	font-weight: 600;
+	letter-spacing: .14em;
+	text-transform: uppercase;
+	color: var(--season, var(--qb-accent));
+	margin-bottom: .5rem;
+}
+
+.qb-seasonal-title {
+	color: #fff;
+	font-size: clamp(1.6rem, 3.4vw, 2.6rem);
+	line-height: 1.1;
+	margin: 0 0 .75rem;
+}
+
+.qb-seasonal-text {
+	color: var(--qb-mist, #b5bac3);
+	font-size: 1.05rem;
+	line-height: 1.6;
+	margin: 0 0 1.5rem;
+	max-width: 52ch;
+}
+
+.qb-seasonal-cta { margin-top: .25rem; }
+
+/* --- Per-season accents --------------------------------------------------- */
+.qb-seasonal-slide[data-season="spring"] { --season: #5bb85b; } /* fresh green  */
+.qb-seasonal-slide[data-season="summer"] { --season: #f5a623; } /* warm gold    */
+.qb-seasonal-slide[data-season="fall"]   { --season: #d35400; } /* burnt orange */
+.qb-seasonal-slide[data-season="winter"] { --season: #4a90d9; } /* ice blue     */
+
+/* --- Slick controls ------------------------------------------------------- */
+.qb-seasonal-section .slick-prev,
+.qb-seasonal-section .slick-next {
+	width: 44px;
+	height: 44px;
+	z-index: 5;
+}
+.qb-seasonal-section .slick-prev { left: 16px; }
+.qb-seasonal-section .slick-next { right: 16px; }
+.qb-seasonal-section .slick-prev:before,
+.qb-seasonal-section .slick-next:before {
+	font-size: 28px;
+	opacity: .9;
+	color: #fff;
+}
+
+.qb-seasonal-section .slick-dots {
+	position: relative;
+	bottom: auto;
+	margin-top: 1.5rem;
+}
+.qb-seasonal-section .slick-dots li button:before {
+	font-size: 10px;
+	color: var(--qb-mist, #b5bac3);
+	opacity: .5;
+}
+.qb-seasonal-section .slick-dots li.slick-active button:before {
+	color: var(--qb-accent, #e98318);
+	opacity: 1;
+}
+
+@media (max-width: 575.98px) {
+	.qb-seasonal-section .slick-prev,
+	.qb-seasonal-section .slick-next { display: none !important; }
+}

@@ -199,6 +199,51 @@ function qbiq_register_home_metaboxes() {
 	$intro->add_field( array( 'name' => 'Video URL (link target for play button)', 'id' => $prefix . 'intro_video_url', 'type' => 'text_url' ) );
 
 	/* -----------------------------------------------------------------
+	 * LEARN THE HALF SECOND  (Tom Brady case study)
+	 * ----------------------------------------------------------------- */
+	$hs = new_cmb2_box( array(
+		'id'           => $prefix . 'halfsec',
+		'title'        => __( 'Home 03.5 — Learn the Half Second', 'pegasus-child' ),
+		'object_types' => array( 'page' ),
+		'context'      => 'normal',
+		'priority'     => 'high',
+		'show_on'      => $show_on,
+	) );
+
+	$hs->add_field( array( 'name' => 'Eyebrow', 'id' => $prefix . 'hs_eyebrow', 'type' => 'text', 'default' => 'The Half Second' ) );
+	$hs->add_field( array( 'name' => 'Heading', 'id' => $prefix . 'hs_heading', 'type' => 'text', 'default' => 'Learn the Half Second' ) );
+	$hs->add_field( array(
+		'name'    => 'Lead paragraph',
+		'id'      => $prefix . 'hs_lead',
+		'type'    => 'textarea_small',
+		'default' => 'When Tom Brady won Super Bowl LV, he got the ball out in an average of 2.49 seconds — while the rest of the NFL averaged 2.98 that year. Half a second doesn\'t sound like much. On a football field, it\'s the difference between a completion and a sack.',
+	) );
+
+	// Fast QB (Brady)
+	$hs->add_field( array( 'name' => 'Fast QB — name',     'id' => $prefix . 'hs_player_name', 'type' => 'text', 'default' => 'Tom Brady' ) );
+	$hs->add_field( array( 'name' => 'Fast QB — sublabel', 'id' => $prefix . 'hs_player_sub',  'type' => 'text', 'default' => 'Super Bowl LV winning season' ) );
+	$hs->add_field( array( 'name' => 'Fast QB — time (seconds, number only)', 'id' => $prefix . 'hs_player_time', 'type' => 'text_small', 'default' => '2.49' ) );
+
+	// League average
+	$hs->add_field( array( 'name' => 'Average — name',     'id' => $prefix . 'hs_avg_name', 'type' => 'text', 'default' => 'NFL Average' ) );
+	$hs->add_field( array( 'name' => 'Average — sublabel', 'id' => $prefix . 'hs_avg_sub',  'type' => 'text', 'default' => 'Every other QB, same season' ) );
+	$hs->add_field( array( 'name' => 'Average — time (seconds, number only)', 'id' => $prefix . 'hs_avg_time', 'type' => 'text_small', 'default' => '2.98' ) );
+
+	$hs->add_field( array( 'name' => 'Delta label (under the big number)', 'id' => $prefix . 'hs_delta_label', 'type' => 'text', 'default' => 'faster to decide — on every single snap' ) );
+
+	$hs->add_field( array(
+		'name'    => 'Payoff / value proposition',
+		'desc'    => 'The bridge to QBIQ — why that half second is a mental process, not an athletic one.',
+		'id'      => $prefix . 'hs_payoff',
+		'type'    => 'wysiwyg',
+		'options' => array( 'textarea_rows' => 5, 'media_buttons' => false ),
+		'default' => '<p>That edge wasn\'t a stronger arm or faster feet. Brady processed the field differently — he recognized coverage, found the leverage, and decided <em>before</em> everyone else. You can\'t out-athlete a half second. You have to out-think it.</p><p><strong>That mental process is exactly what QBIQ teaches.</strong></p>',
+	) );
+
+	$hs->add_field( array( 'name' => 'CTA — text', 'id' => $prefix . 'hs_cta_text', 'type' => 'text', 'default' => 'Train the Half Second' ) );
+	$hs->add_field( array( 'name' => 'CTA — URL',  'id' => $prefix . 'hs_cta_url',  'type' => 'text_url' ) );
+
+	/* -----------------------------------------------------------------
 	 * TRUST STRIP
 	 * ----------------------------------------------------------------- */
 	$trust = new_cmb2_box( array(

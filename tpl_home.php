@@ -85,6 +85,26 @@ $intro_ctau = $g( 'intro_cta_url',  '#' );
 $intro_vl   = $g( 'intro_video_label', 'Watch How It Works · 1:34' );
 $intro_vu   = $g( 'intro_video_url',   '#' );
 
+// ============================================================ LEARN THE HALF SECOND
+$hs_eye     = $g( 'hs_eyebrow', 'The Half Second' );
+$hs_h       = $g( 'hs_heading', 'Learn the Half Second' );
+$hs_lead    = $g( 'hs_lead',    'When Tom Brady won Super Bowl LV, he got the ball out in an average of 2.49 seconds — while the rest of the NFL averaged 2.98 that year. Half a second doesn\'t sound like much. On a football field, it\'s the difference between a completion and a sack.' );
+$hs_p_name  = $g( 'hs_player_name', 'Tom Brady' );
+$hs_p_sub   = $g( 'hs_player_sub',  'Super Bowl LV winning season' );
+$hs_p_time  = (float) $g( 'hs_player_time', '2.49' );
+$hs_a_name  = $g( 'hs_avg_name', 'NFL Average' );
+$hs_a_sub   = $g( 'hs_avg_sub',  'Every other QB, same season' );
+$hs_a_time  = (float) $g( 'hs_avg_time', '2.98' );
+$hs_dlabel  = $g( 'hs_delta_label', 'faster to decide — on every single snap' );
+$hs_payoff  = $g( 'hs_payoff', '<p>That edge wasn\'t a stronger arm or faster feet. Brady processed the field differently — he recognized coverage, found the leverage, and decided <em>before</em> everyone else. You can\'t out-athlete a half second. You have to out-think it.</p><p><strong>That mental process is exactly what QBIQ teaches.</strong></p>' );
+$hs_cta_t   = $g( 'hs_cta_text', 'Train the Half Second' );
+$hs_cta_u   = $g( 'hs_cta_url',  '#' );
+
+// Derived figures. The "fast" QB's bar is drawn shorter (less time = faster).
+$hs_delta   = max( 0, $hs_a_time - $hs_p_time );                               // e.g. 0.49
+$hs_p_pct   = ( $hs_a_time > 0 ) ? max( 4, min( 100, ( $hs_p_time / $hs_a_time ) * 100 ) ) : 100; // Brady vs avg
+$hs_a_pct   = 100;                                                             // average = full-length reference bar
+
 // ============================================================ TRUST STRIP
 $trust_eye = $g( 'trust_eyebrow',  'Trusted on the sideline' );
 $trust_sub = $g( 'trust_subtitle', 'Used by HS, college and select pro programs across 38 states.' );
@@ -294,6 +314,9 @@ $num_icon = array( 'bi-1-circle-fill', 'bi-2-circle-fill', 'bi-3-circle-fill', '
 </section>
 <?php endif; ?>
 
+<!-- ============================================ SEASONAL PROMOS -->
+<?php echo do_shortcode( '[seasonal_slider]' ); ?>
+
 <!-- ============================================ WHAT IS QBIQ -->
 <section class="qb-section qb-bg-dark">
 	<div class="container">
@@ -321,6 +344,58 @@ $num_icon = array( 'bi-1-circle-fill', 'bi-2-circle-fill', 'bi-3-circle-fill', '
 					<span class="v1-vlabel text-white"><?php echo esc_html( $intro_vl ); ?></span>
 				</a>
 			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ============================================ LEARN THE HALF SECOND -->
+<section class="qb-section qb-halfsec qb-bg-ink2">
+	<div class="container">
+		<div class="qb-halfsec-head text-center">
+			<?php if ( $hs_eye ) : ?><span class="qb-eyebrow qb-eyebrow-center"><?php echo esc_html( $hs_eye ); ?></span><?php endif; ?>
+			<h2 class="qb-halfsec-title qb-display mt-3"><?php echo esc_html( $hs_h ); ?></h2>
+			<?php if ( $hs_lead ) : ?><p class="qb-halfsec-lead text-muted mx-auto"><?php echo esc_html( $hs_lead ); ?></p><?php endif; ?>
+		</div>
+
+		<div class="qb-hs-compare">
+			<!-- Fast QB (shorter bar = faster) -->
+			<div class="qb-hs-row qb-hs-row--fast">
+				<div class="qb-hs-meta">
+					<span class="qb-hs-name"><?php echo esc_html( $hs_p_name ); ?></span>
+					<?php if ( $hs_p_sub ) : ?><span class="qb-hs-sub"><?php echo esc_html( $hs_p_sub ); ?></span><?php endif; ?>
+				</div>
+				<div class="qb-hs-track">
+					<div class="qb-hs-bar" style="--pct: <?php echo esc_attr( round( $hs_p_pct, 1 ) ); ?>%;">
+						<span class="qb-hs-val"><?php echo esc_html( number_format( $hs_p_time, 2 ) ); ?><small>s</small></span>
+					</div>
+				</div>
+			</div>
+			<!-- League average -->
+			<div class="qb-hs-row qb-hs-row--avg">
+				<div class="qb-hs-meta">
+					<span class="qb-hs-name"><?php echo esc_html( $hs_a_name ); ?></span>
+					<?php if ( $hs_a_sub ) : ?><span class="qb-hs-sub"><?php echo esc_html( $hs_a_sub ); ?></span><?php endif; ?>
+				</div>
+				<div class="qb-hs-track">
+					<div class="qb-hs-bar" style="--pct: <?php echo esc_attr( round( $hs_a_pct, 1 ) ); ?>%;">
+						<span class="qb-hs-val"><?php echo esc_html( number_format( $hs_a_time, 2 ) ); ?><small>s</small></span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="qb-hs-delta">
+			<div class="qb-hs-delta-fig">
+				<span class="qb-hs-delta-num"><?php echo esc_html( number_format( $hs_delta, 2 ) ); ?></span><span class="qb-hs-delta-unit">s</span>
+			</div>
+			<?php if ( $hs_dlabel ) : ?><div class="qb-hs-delta-label"><?php echo esc_html( $hs_dlabel ); ?></div><?php endif; ?>
+		</div>
+
+		<div class="qb-hs-payoff">
+			<div class="qb-hs-payoff-body"><?php echo wp_kses_post( wpautop( $hs_payoff ) ); ?></div>
+			<?php if ( $hs_cta_t ) : ?>
+				<a href="<?php echo esc_url( $hs_cta_u ); ?>" class="btn btn-qb btn-qb-primary qb-hs-cta"><?php echo esc_html( $hs_cta_t ); ?></a>
+			<?php endif; ?>
 		</div>
 	</div>
 </section>

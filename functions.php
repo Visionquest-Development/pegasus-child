@@ -98,3 +98,11 @@
 	if ( file_exists( $qbiq_home_metaboxes ) ) {
 		require_once $qbiq_home_metaboxes;
 	}
+
+	/**
+	 * Seasonal Promos CPT + [seasonal_slider] shortcode.
+	 */
+	$qbiq_seasonal = get_stylesheet_directory() . '/inc/seasonal-events.php';
+	if ( file_exists( $qbiq_seasonal ) ) {
+		require_once $qbiq_seasonal;
+	}
