@@ -365,11 +365,12 @@ if ( ! function_exists( 'vq_mountain_row' ) ) {
             'var(--vq-quarternary)',
         ];
 
+        // Match the portfolio page ordering: newest first by date.
         $portfolio_query = new WP_Query( [
             'post_type'      => 'portfolio',
             'posts_per_page' => 6,
-            'orderby'        => 'menu_order',
-            'order'          => 'ASC',
+            'orderby'        => 'date',
+            'order'          => 'DESC',
         ] );
 
         $wi = 0;
