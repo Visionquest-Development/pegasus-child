@@ -164,16 +164,78 @@
   text-transform: uppercase; letter-spacing: .1em;
 }
 .qb-home .v1-appcta .v1-appchip.active { background: var(--qb-accent); }
+
+/* Coverage image tabs (Read Accelerator) — box size unchanged; images swap in
+   the existing field area. */
+.qb-home .v1-appfield--img {
+  background: #0a0a0a;
+  border: 1px solid #23272f;
+}
+.qb-home .v1-appfield--img::before,
+.qb-home .v1-appfield--img::after { display: none; } /* hide decorative yardlines in image mode */
+.qb-home .v1-cover-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+.qb-home .v1-cover-img.is-active { opacity: 1; }
+
+/* Chips as interactive tab buttons (inherit .v1-appchip look) */
+.qb-home .v1-appcta .v1-cover-tab {
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background .2s ease, color .2s ease;
+}
+.qb-home .v1-appcta .v1-cover-tab:focus-visible {
+  outline: 2px solid var(--qb-accent);
+  outline-offset: 2px;
+}
+/* Four coverage tabs need to fit the narrow mock — tighten spacing. */
+.qb-home .v1-appcta { gap: 6px; }
+.qb-home .v1-appcta .v1-cover-tab {
+  flex: 1 1 0;
+  padding: 9px 2px;
+  font-size: 10px;
+  letter-spacing: .03em;
+}
+
+/* "Add image" placeholder for coverages without an uploaded diagram. */
+.qb-home .v1-cover-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+  padding: 16px;
+  background: linear-gradient(180deg, #14181e 0%, #0b0e12 100%);
+  color: var(--qb-fog, #6b7280);
+}
+.qb-home .v1-cover-placeholder i { font-size: 30px; color: #2f3640; }
+.qb-home .v1-cover-placeholder span {
+  font-family: var(--qb-display);
+  font-size: 22px;
+  color: #fff;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+}
+.qb-home .v1-cover-placeholder small { font-size: 11px; line-height: 1.35; }
 .qb-home .v1-appread {
   margin: 14px;
   border-top: 1px solid #1f232a;
   padding-top: 14px;
-  font-size: 12px;
+  font-size: 13.5px;
   color: #b5bac3;
-  line-height: 1.45;
+  line-height: 1.5;
 }
 .qb-home .v1-appread strong {
-  color: #fff; display: block; font-size: 13px; margin-bottom: 4px;
+  color: #fff; display: block; font-size: 14px; margin-bottom: 4px;
   font-family: var(--qb-display); text-transform: uppercase; letter-spacing: .04em;
 }
 

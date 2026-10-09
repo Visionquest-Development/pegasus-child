@@ -59,3 +59,29 @@
 
 		io.observe(section);
 	})();
+
+
+	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	   Read Accelerator — Cover 2 / Cover 3 image tabs in the hero app mock.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+	(function () {
+		document.querySelectorAll('.v1-appmock').forEach(function (mock) {
+			var tabs = mock.querySelectorAll('.v1-cover-tab');
+			var imgs = mock.querySelectorAll('.v1-cover-img');
+			if (!tabs.length || !imgs.length) { return; }
+
+			tabs.forEach(function (tab) {
+				tab.addEventListener('click', function () {
+					var cover = tab.getAttribute('data-cover');
+					tabs.forEach(function (t) {
+						var on = (t === tab);
+						t.classList.toggle('active', on);
+						t.setAttribute('aria-selected', on ? 'true' : 'false');
+					});
+					imgs.forEach(function (im) {
+						im.classList.toggle('is-active', im.getAttribute('data-cover') === cover);
+					});
+				});
+			});
+		});
+	})();

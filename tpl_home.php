@@ -31,6 +31,10 @@ $img_url = function ( $key ) use ( $pid, $prefix ) {
 	}
 	return $url;
 };
+// Helper — is a section hidden? Reads the "<key>_hide" CMB2 checkbox ('on' = hidden).
+$hide = function ( $key ) use ( $g ) {
+	return 'on' === $g( $key . '_hide' );
+};
 
 // ============================================================ HERO
 $hero_h1     = $g( 'hero_headline_1', 'Train your mind.' );
@@ -38,8 +42,8 @@ $hero_h2     = $g( 'hero_headline_2', 'Dominate the game.' );
 $hero_sub    = $g( 'hero_subheading', 'The #1 Presnap Reading System in Football' );
 $hero_lead   = $g( 'hero_lead', 'The mental training system that teaches quarterbacks and receivers to read defenses in seconds — not minutes. Recognize coverage. Anticipate the blitz. Win the snap before it starts.' );
 $hero_pills  = $grp( 'hero_pills', array(
+	array( 'text' => 'For all offenses',                'has_dot' => 'on' ),
 	array( 'text' => 'Built by Coach Hixson · 30+ yrs', 'has_dot' => 'on' ),
-	array( 'text' => 'For all offenses',                    'has_dot' => '' ),
 ) );
 $hero_cta1_t = $g( 'hero_cta_primary_text',   'Try Free — 2 Chapters' );
 $hero_cta1_u = $g( 'hero_cta_primary_url',    '#' );
@@ -57,10 +61,26 @@ $mock_img      = $img_url( 'hero_appmock_image' );
 $mock_eyebrow  = $g( 'hero_appmock_eyebrow', 'Read Accelerator' );
 $mock_coverage = $g( 'hero_appmock_coverage', 'COVER 2' );
 $mock_chip1    = $g( 'hero_appmock_chip1', 'Mike' );
-$mock_chip2    = $g( 'hero_appmock_chip2', 'Cover 2' );
-$mock_chip3    = $g( 'hero_appmock_chip3', 'Cover 3' );
-$mock_rtitle   = $g( 'hero_appmock_read_title', 'Pre-snap read' );
-$mock_rbody    = $g( 'hero_appmock_read_body',  'Safeties split 12 yards. Corners squatting flat. CB leverage outside — backside post is open. Decide.' );
+$mock_chip2    = $g( 'hero_appmock_chip2', 'Cov 2' );
+$mock_chip3    = $g( 'hero_appmock_chip3', 'Cov 3' );
+$mock_chip4    = $g( 'hero_appmock_chip4', 'Cov 4' );
+$mock_chip6    = $g( 'hero_appmock_chip6', 'Cov 6' );
+$mock_rtitle   = $g( 'hero_appmock_read_title', 'QBIQ’s Pre-Snap Process' );
+$mock_rbody    = $g( 'hero_appmock_read_body',  'It is 3 precise steps, and is critical to elite decision speed.' );
+// Coverage tab images for the Read Accelerator mock. Cov 2 / Cov 3 ship with the
+// theme; Cov 4 / Cov 6 fall back to an "add image" placeholder until uploaded.
+$mock_cover2   = $img_url( 'hero_appmock_cover2' );
+$mock_cover3   = $img_url( 'hero_appmock_cover3' );
+$mock_cover4   = $img_url( 'hero_appmock_cover4' );
+$mock_cover6   = $img_url( 'hero_appmock_cover6' );
+if ( ! $mock_cover2 ) { $mock_cover2 = get_stylesheet_directory_uri() . '/assets/img/cover-2.jpg'; }
+if ( ! $mock_cover3 ) { $mock_cover3 = get_stylesheet_directory_uri() . '/assets/img/cover-3.jpg'; }
+$mock_covers = array(
+	array( 'key' => '2', 'label' => $mock_chip2, 'img' => $mock_cover2 ),
+	array( 'key' => '3', 'label' => $mock_chip3, 'img' => $mock_cover3 ),
+	array( 'key' => '4', 'label' => $mock_chip4, 'img' => $mock_cover4 ),
+	array( 'key' => '6', 'label' => $mock_chip6, 'img' => $mock_cover6 ),
+);
 
 // ============================================================ STATS
 $stat_items = $grp( 'stat_items', array(
@@ -181,6 +201,7 @@ $num_icon = array( 'bi-1-circle-fill', 'bi-2-circle-fill', 'bi-3-circle-fill', '
 <div class="qb-home">
 
 <!-- ============================================ HERO -->
+<?php if ( ! $hide( 'hero' ) ) : ?>
 <header class="v1-hero<?php echo $hero_video ? ' has-video' : ''; ?>">
 
 	<?php if ( $hero_video ) : ?>
@@ -257,32 +278,25 @@ $num_icon = array( 'bi-1-circle-fill', 'bi-2-circle-fill', 'bi-3-circle-fill', '
 							<span class="qb-eyebrow"><?php echo esc_html( $mock_eyebrow ); ?></span>
 							<div class="v1-appdot"><span></span><span></span><span></span></div>
 						</div>
-						<div class="v1-appfield" aria-hidden="true">
-							<svg viewBox="0 0 100 60" preserveAspectRatio="none">
-								<g fill="#fff">
-									<circle cx="20" cy="14" r="2.2"/><circle cx="40" cy="14" r="2.2"/>
-									<circle cx="60" cy="14" r="2.2"/><circle cx="80" cy="14" r="2.2"/>
-									<circle cx="30" cy="26" r="2.2"/><circle cx="70" cy="26" r="2.2"/>
-									<circle cx="50" cy="20" r="2.2"/>
-								</g>
-								<g fill="#e98318">
-									<circle cx="50" cy="48" r="2.6"/>
-									<circle cx="18" cy="42" r="2.2"/><circle cx="34" cy="42" r="2.2"/>
-									<circle cx="66" cy="42" r="2.2"/><circle cx="82" cy="42" r="2.2"/>
-								</g>
-								<g stroke="#e98318" stroke-width="0.7" fill="none" stroke-dasharray="1.5 1.5">
-									<path d="M18 42 L18 30 L26 24"/>
-									<path d="M82 42 L82 30 L74 24"/>
-									<path d="M34 42 L40 28"/>
-									<path d="M66 42 L60 28"/>
-								</g>
-								<text x="6" y="9" fill="#b5bac3" font-size="4" font-family="Inter" font-weight="700"><?php echo esc_html( $mock_coverage ); ?></text>
-							</svg>
+						<div class="v1-appfield v1-appfield--img">
+							<?php foreach ( $mock_covers as $ci => $cov ) :
+								$active = ( 0 === $ci ) ? ' is-active' : '';
+							?>
+								<?php if ( ! empty( $cov['img'] ) ) : ?>
+									<img class="v1-cover-img<?php echo $active; ?>" data-cover="<?php echo esc_attr( $cov['key'] ); ?>" src="<?php echo esc_url( $cov['img'] ); ?>" alt="<?php echo esc_attr( $cov['label'] ); ?> coverage diagram"<?php echo ( 0 === $ci ) ? '' : ' loading="lazy"'; ?> />
+								<?php else : ?>
+									<div class="v1-cover-img v1-cover-placeholder<?php echo $active; ?>" data-cover="<?php echo esc_attr( $cov['key'] ); ?>" aria-hidden="true">
+										<i class="bi bi-image"></i>
+										<span><?php echo esc_html( $cov['label'] ); ?></span>
+										<small>Add image in the page editor</small>
+									</div>
+								<?php endif; ?>
+							<?php endforeach; ?>
 						</div>
-						<div class="v1-appcta">
-							<div class="v1-appchip"><?php echo esc_html( $mock_chip1 ); ?></div>
-							<div class="v1-appchip active"><?php echo esc_html( $mock_chip2 ); ?></div>
-							<div class="v1-appchip"><?php echo esc_html( $mock_chip3 ); ?></div>
+						<div class="v1-appcta" role="tablist" aria-label="Coverage">
+							<?php foreach ( $mock_covers as $ci => $cov ) : $on = ( 0 === $ci ); ?>
+								<button type="button" class="v1-appchip v1-cover-tab<?php echo $on ? ' active' : ''; ?>" data-cover="<?php echo esc_attr( $cov['key'] ); ?>" aria-selected="<?php echo $on ? 'true' : 'false'; ?>"><?php echo esc_html( $cov['label'] ); ?></button>
+							<?php endforeach; ?>
 						</div>
 						<div class="v1-appread">
 							<strong><?php echo esc_html( $mock_rtitle ); ?></strong>
@@ -294,9 +308,10 @@ $num_icon = array( 'bi-1-circle-fill', 'bi-2-circle-fill', 'bi-3-circle-fill', '
 		</div>
 	</div>
 </header>
+<?php endif; ?>
 
 <!-- ============================================ STAT BAND -->
-<?php if ( $stat_items ) : ?>
+<?php if ( ! $hide( 'stats' ) && $stat_items ) : ?>
 <section class="qb-stat-band">
 	<div class="container">
 		<div class="row text-center py-4">
@@ -315,9 +330,13 @@ $num_icon = array( 'bi-1-circle-fill', 'bi-2-circle-fill', 'bi-3-circle-fill', '
 <?php endif; ?>
 
 <!-- ============================================ SEASONAL PROMOS -->
-<?php echo do_shortcode( '[seasonal_slider]' ); ?>
+<!-- Hidden for now (d-none). Remove the wrapper div to re-enable. -->
+<div class="d-none">
+	<?php echo do_shortcode( '[seasonal_slider]' ); ?>
+</div>
 
 <!-- ============================================ WHAT IS QBIQ -->
+<?php if ( ! $hide( 'intro' ) ) : ?>
 <section class="qb-section qb-bg-dark">
 	<div class="container">
 		<div class="row align-items-center g-5">
@@ -347,8 +366,10 @@ $num_icon = array( 'bi-1-circle-fill', 'bi-2-circle-fill', 'bi-3-circle-fill', '
 		</div>
 	</div>
 </section>
+<?php endif; ?>
 
 <!-- ============================================ LEARN THE HALF SECOND -->
+<?php if ( ! $hide( 'hs' ) ) : ?>
 <section class="qb-section qb-halfsec qb-bg-ink2">
 	<div class="container">
 		<div class="qb-halfsec-head text-center">
@@ -399,9 +420,10 @@ $num_icon = array( 'bi-1-circle-fill', 'bi-2-circle-fill', 'bi-3-circle-fill', '
 		</div>
 	</div>
 </section>
+<?php endif; ?>
 
 <!-- ============================================ TRUST STRIP -->
-<?php if ( $trust_l ) : ?>
+<?php if ( ! $hide( 'trust' ) && $trust_l ) : ?>
 <section class="v1-trust qb-section-tight">
 	<div class="container">
 		<div class="row align-items-center">
@@ -424,6 +446,7 @@ $num_icon = array( 'bi-1-circle-fill', 'bi-2-circle-fill', 'bi-3-circle-fill', '
 <?php endif; ?>
 
 <!-- ============================================ TRAINING SYSTEM (FEATURES) -->
+<?php if ( ! $hide( 'features' ) ) : ?>
 <section class="qb-section qb-bg-dark">
 	<div class="container">
 		<div class="text-center mb-5">
@@ -450,8 +473,10 @@ $num_icon = array( 'bi-1-circle-fill', 'bi-2-circle-fill', 'bi-3-circle-fill', '
 		<?php endif; ?>
 	</div>
 </section>
+<?php endif; ?>
 
 <!-- ============================================ COACH AUTHORITY -->
+<?php if ( ! $hide( 'coach' ) ) : ?>
 <section class="qb-section qb-bg-ink2">
 	<div class="container">
 		<div class="v1-authority">
@@ -477,8 +502,10 @@ $num_icon = array( 'bi-1-circle-fill', 'bi-2-circle-fill', 'bi-3-circle-fill', '
 		</div>
 	</div>
 </section>
+<?php endif; ?>
 
 <!-- ============================================ HOW IT WORKS -->
+<?php if ( ! $hide( 'how' ) ) : ?>
 <section class="qb-section qb-bg-dark">
 	<div class="container">
 		<div class="text-center mb-5">
@@ -543,8 +570,10 @@ $num_icon = array( 'bi-1-circle-fill', 'bi-2-circle-fill', 'bi-3-circle-fill', '
 		</div>
 	</div>
 </section>
+<?php endif; ?>
 
 <!-- ============================================ TESTIMONIALS -->
+<?php if ( ! $hide( 'test' ) ) : ?>
 <section class="qb-section qb-bg-ink2">
 	<div class="container">
 		<div class="d-flex flex-wrap align-items-end justify-content-between mb-5 gap-3">
@@ -575,8 +604,10 @@ $num_icon = array( 'bi-1-circle-fill', 'bi-2-circle-fill', 'bi-3-circle-fill', '
 		<?php endif; ?>
 	</div>
 </section>
+<?php endif; ?>
 
 <!-- ============================================ CTA BAND -->
+<?php if ( ! $hide( 'cta' ) ) : ?>
 <section class="v1-cta-band">
 	<div class="container">
 		<div class="row align-items-center g-4">
@@ -598,6 +629,7 @@ $num_icon = array( 'bi-1-circle-fill', 'bi-2-circle-fill', 'bi-3-circle-fill', '
 		</div>
 	</div>
 </section>
+<?php endif; ?>
 
 </div><!-- /.qb-home -->
 

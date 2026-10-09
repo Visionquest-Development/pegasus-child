@@ -33,6 +33,13 @@ function qbiq_register_home_metaboxes() {
 	) );
 
 	$hero->add_field( array(
+		'name' => '🚫 Hide this section',
+		'desc' => 'Check to hide the Hero section on the homepage.',
+		'id'   => $prefix . 'hero_hide',
+		'type' => 'checkbox',
+	) );
+
+	$hero->add_field( array(
 		'name'    => 'Headline (line 1)',
 		'id'      => $prefix . 'hero_headline_1',
 		'type'    => 'text',
@@ -135,10 +142,44 @@ function qbiq_register_home_metaboxes() {
 	$hero->add_field( array( 'name' => 'App mock — eyebrow label', 'id' => $prefix . 'hero_appmock_eyebrow', 'type' => 'text', 'default' => 'Read Accelerator' ) );
 	$hero->add_field( array( 'name' => 'App mock — coverage label (SVG)', 'id' => $prefix . 'hero_appmock_coverage', 'type' => 'text', 'default' => 'COVER 2' ) );
 	$hero->add_field( array( 'name' => 'App mock — chip 1', 'id' => $prefix . 'hero_appmock_chip1', 'type' => 'text', 'default' => 'Mike' ) );
-	$hero->add_field( array( 'name' => 'App mock — chip 2 (active)', 'id' => $prefix . 'hero_appmock_chip2', 'type' => 'text', 'default' => 'Cover 2' ) );
-	$hero->add_field( array( 'name' => 'App mock — chip 3', 'id' => $prefix . 'hero_appmock_chip3', 'type' => 'text', 'default' => 'Cover 3' ) );
-	$hero->add_field( array( 'name' => 'App mock — read title', 'id' => $prefix . 'hero_appmock_read_title', 'type' => 'text', 'default' => 'Pre-snap read' ) );
-	$hero->add_field( array( 'name' => 'App mock — read body', 'id' => $prefix . 'hero_appmock_read_body', 'type' => 'textarea_small', 'default' => 'Safeties split 12 yards. Corners squatting flat. CB leverage outside — backside post is open. Decide.' ) );
+	$hero->add_field( array( 'name' => 'App mock — tab 1 label (active)', 'id' => $prefix . 'hero_appmock_chip2', 'type' => 'text', 'default' => 'Cov 2' ) );
+	$hero->add_field( array( 'name' => 'App mock — tab 2 label', 'id' => $prefix . 'hero_appmock_chip3', 'type' => 'text', 'default' => 'Cov 3' ) );
+	$hero->add_field( array( 'name' => 'App mock — tab 3 label', 'id' => $prefix . 'hero_appmock_chip4', 'type' => 'text', 'default' => 'Cov 4' ) );
+	$hero->add_field( array( 'name' => 'App mock — tab 4 label', 'id' => $prefix . 'hero_appmock_chip6', 'type' => 'text', 'default' => 'Cov 6' ) );
+	$hero->add_field( array( 'name' => 'App mock — read title', 'id' => $prefix . 'hero_appmock_read_title', 'type' => 'text', 'default' => 'QBIQ’s Pre-Snap Process' ) );
+	$hero->add_field( array( 'name' => 'App mock — read body', 'id' => $prefix . 'hero_appmock_read_body', 'type' => 'textarea_small', 'default' => 'It is 3 precise steps, and is critical to elite decision speed.' ) );
+	$hero->add_field( array(
+		'name'    => 'App mock — Cover 2 image',
+		'desc'    => 'Shown when the "' . 'Cover 2' . '" tab is active. Leave empty to use the bundled default.',
+		'id'      => $prefix . 'hero_appmock_cover2',
+		'type'    => 'file',
+		'options' => array( 'url' => false ),
+		'text'    => array( 'add_upload_file_text' => 'Add image' ),
+	) );
+	$hero->add_field( array(
+		'name'    => 'App mock — Cover 3 image',
+		'desc'    => 'Shown when the "' . 'Cover 3' . '" tab is active. Leave empty to use the bundled default.',
+		'id'      => $prefix . 'hero_appmock_cover3',
+		'type'    => 'file',
+		'options' => array( 'url' => false ),
+		'text'    => array( 'add_upload_file_text' => 'Add image' ),
+	) );
+	$hero->add_field( array(
+		'name'    => 'App mock — Cover 4 image',
+		'desc'    => 'Shown when the "Cov 4" tab is active. Until set, the tab shows an "add image" placeholder.',
+		'id'      => $prefix . 'hero_appmock_cover4',
+		'type'    => 'file',
+		'options' => array( 'url' => false ),
+		'text'    => array( 'add_upload_file_text' => 'Add image' ),
+	) );
+	$hero->add_field( array(
+		'name'    => 'App mock — Cover 6 image',
+		'desc'    => 'Shown when the "Cov 6" tab is active. Until set, the tab shows an "add image" placeholder.',
+		'id'      => $prefix . 'hero_appmock_cover6',
+		'type'    => 'file',
+		'options' => array( 'url' => false ),
+		'text'    => array( 'add_upload_file_text' => 'Add image' ),
+	) );
 
 	/* -----------------------------------------------------------------
 	 * STAT BAND
@@ -150,6 +191,13 @@ function qbiq_register_home_metaboxes() {
 		'context'      => 'normal',
 		'priority'     => 'high',
 		'show_on'      => $show_on,
+	) );
+
+	$stats->add_field( array(
+		'name' => '🚫 Hide this section',
+		'desc' => 'Check to hide the Stat Band section on the homepage.',
+		'id'   => $prefix . 'stats_hide',
+		'type' => 'checkbox',
 	) );
 	$stat_group = $stats->add_field( array(
 		'id'      => $prefix . 'stat_items',
@@ -175,6 +223,13 @@ function qbiq_register_home_metaboxes() {
 		'context'      => 'normal',
 		'priority'     => 'high',
 		'show_on'      => $show_on,
+	) );
+
+	$intro->add_field( array(
+		'name' => '🚫 Hide this section',
+		'desc' => 'Check to hide the What is QBIQ section on the homepage.',
+		'id'   => $prefix . 'intro_hide',
+		'type' => 'checkbox',
 	) );
 	$intro->add_field( array( 'name' => 'Eyebrow',  'id' => $prefix . 'intro_eyebrow',  'type' => 'text',          'default' => 'What is QBIQ' ) );
 	$intro->add_field( array( 'name' => 'Heading',  'id' => $prefix . 'intro_heading',  'type' => 'text',          'default' => 'A mental rep system for the position that thinks the most.' ) );
@@ -208,6 +263,13 @@ function qbiq_register_home_metaboxes() {
 		'context'      => 'normal',
 		'priority'     => 'high',
 		'show_on'      => $show_on,
+	) );
+
+	$hs->add_field( array(
+		'name' => '🚫 Hide this section',
+		'desc' => 'Check to hide the Learn the Half Second section on the homepage.',
+		'id'   => $prefix . 'hs_hide',
+		'type' => 'checkbox',
 	) );
 
 	$hs->add_field( array( 'name' => 'Eyebrow', 'id' => $prefix . 'hs_eyebrow', 'type' => 'text', 'default' => 'The Half Second' ) );
@@ -254,6 +316,13 @@ function qbiq_register_home_metaboxes() {
 		'priority'     => 'high',
 		'show_on'      => $show_on,
 	) );
+
+	$trust->add_field( array(
+		'name' => '🚫 Hide this section',
+		'desc' => 'Check to hide the Trust Strip section on the homepage.',
+		'id'   => $prefix . 'trust_hide',
+		'type' => 'checkbox',
+	) );
 	$trust->add_field( array( 'name' => 'Eyebrow',  'id' => $prefix . 'trust_eyebrow',  'type' => 'text', 'default' => 'Trusted on the sideline' ) );
 	$trust->add_field( array( 'name' => 'Subtitle', 'id' => $prefix . 'trust_subtitle', 'type' => 'text', 'default' => 'Used by HS, college and select pro programs across 38 states.' ) );
 
@@ -280,6 +349,13 @@ function qbiq_register_home_metaboxes() {
 		'context'      => 'normal',
 		'priority'     => 'high',
 		'show_on'      => $show_on,
+	) );
+
+	$feat->add_field( array(
+		'name' => '🚫 Hide this section',
+		'desc' => 'Check to hide the Training System (Feature Cards) section on the homepage.',
+		'id'   => $prefix . 'features_hide',
+		'type' => 'checkbox',
 	) );
 	$feat->add_field( array( 'name' => 'Eyebrow',  'id' => $prefix . 'features_eyebrow',  'type' => 'text', 'default' => 'The QBIQ training system' ) );
 	$feat->add_field( array( 'name' => 'Heading',  'id' => $prefix . 'features_heading',  'type' => 'text', 'default' => 'Everything you need to elevate your mental game.' ) );
@@ -311,6 +387,13 @@ function qbiq_register_home_metaboxes() {
 		'priority'     => 'high',
 		'show_on'      => $show_on,
 	) );
+
+	$coach->add_field( array(
+		'name' => '🚫 Hide this section',
+		'desc' => 'Check to hide the Coach Authority section on the homepage.',
+		'id'   => $prefix . 'coach_hide',
+		'type' => 'checkbox',
+	) );
 	$coach->add_field( array( 'name' => 'Portrait image (optional)', 'id' => $prefix . 'coach_image', 'type' => 'file', 'desc' => 'Replaces the initials circle if set.', 'options' => array( 'url' => false ), 'text' => array( 'add_upload_file_text' => 'Add image' ) ) );
 	$coach->add_field( array( 'name' => 'Initials (fallback)', 'id' => $prefix . 'coach_initials', 'type' => 'text', 'default' => 'CH' ) );
 	$coach->add_field( array( 'name' => 'Role label',          'id' => $prefix . 'coach_role',     'type' => 'text', 'default' => 'Founder' ) );
@@ -328,6 +411,13 @@ function qbiq_register_home_metaboxes() {
 		'context'      => 'normal',
 		'priority'     => 'high',
 		'show_on'      => $show_on,
+	) );
+
+	$how->add_field( array(
+		'name' => '🚫 Hide this section',
+		'desc' => 'Check to hide the How It Works section on the homepage.',
+		'id'   => $prefix . 'how_hide',
+		'type' => 'checkbox',
 	) );
 	$how->add_field( array( 'name' => 'Eyebrow', 'id' => $prefix . 'how_eyebrow', 'type' => 'text', 'default' => 'How it works' ) );
 	$how->add_field( array( 'name' => 'Heading', 'id' => $prefix . 'how_heading', 'type' => 'text', 'default' => 'Start improving your quarterback IQ in three steps.' ) );
@@ -376,6 +466,13 @@ function qbiq_register_home_metaboxes() {
 		'priority'     => 'high',
 		'show_on'      => $show_on,
 	) );
+
+	$test->add_field( array(
+		'name' => '🚫 Hide this section',
+		'desc' => 'Check to hide the Testimonials section on the homepage.',
+		'id'   => $prefix . 'test_hide',
+		'type' => 'checkbox',
+	) );
 	$test->add_field( array( 'name' => 'Eyebrow',         'id' => $prefix . 'test_eyebrow', 'type' => 'text', 'default' => 'What players are saying' ) );
 	$test->add_field( array( 'name' => 'Heading',         'id' => $prefix . 'test_heading', 'type' => 'text', 'default' => 'Built for the field. Tested under the lights.' ) );
 	$test->add_field( array( 'name' => 'Reviews link — text', 'id' => $prefix . 'test_link_text', 'type' => 'text', 'default' => 'Read all 240 reviews' ) );
@@ -406,6 +503,13 @@ function qbiq_register_home_metaboxes() {
 		'context'      => 'normal',
 		'priority'     => 'high',
 		'show_on'      => $show_on,
+	) );
+
+	$cta->add_field( array(
+		'name' => '🚫 Hide this section',
+		'desc' => 'Check to hide the Bottom CTA Band section on the homepage.',
+		'id'   => $prefix . 'cta_hide',
+		'type' => 'checkbox',
 	) );
 	$cta->add_field( array( 'name' => 'Pill text',  'id' => $prefix . 'cta_pill',    'type' => 'text', 'default' => 'Plans from $15/month' ) );
 	$cta->add_field( array( 'name' => 'Heading',    'id' => $prefix . 'cta_heading', 'type' => 'text', 'default' => 'Ready to elevate your game?' ) );

@@ -293,3 +293,13 @@
   padding-bottom: 1px;
 }
 .qb-link:hover { color: var(--qb-accent-strong); }
+
+/* =============================================================================
+   Primary nav — bold the CURRENT page's menu item.
+   (The orange color is already applied via Pegasus theme options; this only
+   adds the bold weight for the active item.)
+   ========================================================================== */
+#header .current-menu-item > a,
+#header li.current_page_item > a {
+  font-weight: 700;
+}
