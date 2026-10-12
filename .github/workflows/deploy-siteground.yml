@@ -1,198 +1,98 @@
-name: Deploy Pegasus Child (SiteGround)
+# Auto-deploy to SiteGround (shared by pegasus, pegasus-child and every pegasus-* plugin repo).
+# Source of truth: vagrant-local/sync/sites.json -> build-deploy-registry.py -> pegasus-child@master:deploy/sites.json
+# Docs: vagrant-local/DEPLOY-SITEGROUND.md
+name: Deploy to SiteGround
 
 on:
   push:
-    branches:
-      - ulg_theme
-      - ulg_events_theme
-      - theloft2025_theme
-      - mabellas_theme
-      - saltcellar_theme
-      - mixmarket_theme
-      - tommygs_theme
-      - vqdev_theme
-      - sugarpeddler_theme
-      - visionquestdev_theme
-      - avena_theme
-      - meowweretalkin_theme
-      - pegasustheme_child
-      - vqgoods_theme
-      - sagescnc_theme
-      - chrishixson_theme
-      - qbiqcamp_theme
-      - qbiqsystem_theme
-      - qbroundtable_theme
-      - advcompany_theme
-      - theshootout_theme
-      - vineandvision_theme
-      - 34oak_theme
-      - top100proday_theme
-      - russellcontracting_theme
-      - ricecapital_theme
-      - gentwo_theme
-      - osps26_theme
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      only_site:
+        description: "Optional: deploy only this registry key (e.g. mabellas)"
+        required: false
+        default: ""
+
+concurrency:
+  group: siteground-${{ github.repository }}-${{ github.ref_name }}
+  cancel-in-progress: false
+
+env:
+  REGISTRY_URL: https://raw.githubusercontent.com/Visionquest-Development/pegasus-child/master/deploy/sites.json
 
 jobs:
+  plan:
+    name: Plan deploy targets
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.plan.outputs.matrix }}
+      count: ${{ steps.plan.outputs.count }}
+    steps:
+      - name: Build site matrix from registry
+        id: plan
+        env:
+          HAS_KEY: ${{ secrets.SITEGROUND_SSH_KEY != '' }}
+          REPO: ${{ github.event.repository.name }}
+          REF: ${{ github.ref_name }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          ONLY_SITE: ${{ github.event.inputs.only_site }}
+        run: |
+          set -euo pipefail
+          none() { echo "::notice title=SiteGround deploy skipped::$1"; echo 'matrix={"include":[]}' >> "$GITHUB_OUTPUT"; echo "count=0" >> "$GITHUB_OUTPUT"; echo "Skipped: $1" >> "$GITHUB_STEP_SUMMARY"; exit 0; }
+          [ "$HAS_KEY" = "true" ] || none "secret SITEGROUND_SSH_KEY is not set for this repo/org."
+          curl -fsSL "$REGISTRY_URL" -o sites.json || none "could not download registry $REGISTRY_URL"
+          if [ "$REPO" = "pegasus-child" ]; then
+            FILTER='select(.value.child_branch == $ref)'
+          else
+            [ "$REF" = "$DEFAULT_BRANCH" ] || none "push to $REF (not $DEFAULT_BRANCH); only the default branch deploys."
+            # Sites whose plugin list includes this repo, or whose plugin list is unknown (null): the remote step skips if not installed.
+            FILTER='select(($repo == "pegasus") or (.value.plugins == null) or ((.value.plugins // []) | index($repo)))'
+          fi
+          jq -c --arg repo "$REPO" --arg ref "$REF" --arg only "$ONLY_SITE" '
+            .components[$repo] as $c
+            | [ .sites | to_entries[] | '"$FILTER"'
+                | select($only == "" or .key == $only)
+                | {key: .key, domain: .value.domain, environment: (.value.environment // "live"), enabled: .value.enabled,
+                   host: .value.ssh_host, user: .value.ssh_user, port: (.value.ssh_port // 18765),
+                   wp_content: .value.wp_content, kind: ($c.type // "plugin"),
+                   folders: (($c.folders // [$repo]) | join(" ")),
+                   branch: (if $repo == "pegasus-child" then $ref else ($c.branch // "master") end)} ]
+            | {include: .}' sites.json > matrix.json
+          jq -r '.include[] | select(.enabled != true) | "::notice title=Skipped \(.key)::no SSH host/user/path in registry"' matrix.json
+          jq -c '{include: [.include[] | select(.enabled == true)]}' matrix.json > m.json
+          n=$(jq '.include | length' m.json)
+          [ "$n" -gt 0 ] || none "no registry sites map to $REPO@$REF."
+          echo "matrix=$(cat m.json)" >> "$GITHUB_OUTPUT"; echo "count=$n" >> "$GITHUB_OUTPUT"
+          { echo "### Deploy plan for $REPO@$REF"; jq -r '.include[] | "- \(.key) (\(.environment)) -> \(.host):\(.wp_content)"' m.json; } >> "$GITHUB_STEP_SUMMARY"
+
   deploy:
-    name: Deploy theme (matrix)
+    name: ${{ matrix.key }} (${{ matrix.environment }})
+    needs: plan
+    if: needs.plan.outputs.count != '0'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix:
-        site:
-          - name: ULG
-            branch: ulg_theme
-            host: gvam1201.siteground.biz
-            user: u2337-sdvymoa8u5vg
-            remote_path: /home/u2337-sdvymoa8u5vg/www/uptownlifegroup.com/public_html/wp-content/themes/pegasus-child
-          - name: ULG Events
-            branch: ulg_events_theme
-            host: gvam1201.siteground.biz
-            user: u2337-sdvymoa8u5vg
-            remote_path: /home/u2337-sdvymoa8u5vg/www/events.uptownlifegroup.com/public_html/wp-content/themes/pegasus-child
-          - name: The Loft
-            branch: theloft2025_theme
-            host: gvam1201.siteground.biz
-            user: u2322-twgfllmscyih
-            remote_path: /home/u2322-twgfllmscyih/www/theloft.com/public_html/wp-content/themes/pegasus-child
-          - name: Mabellas
-            branch: mabellas_theme
-            host: gvam1201.siteground.biz
-            user: u2334-rmtgm55yo6gg
-            remote_path: /home/u2334-rmtgm55yo6gg/www/mabellas.com/public_html/wp-content/themes/pegasus-child
-          - name: Saltcellar
-            branch: saltcellar_theme
-            host: gvam1248.siteground.biz
-            user: u1922-ox3nr6uplk2h
-            remote_path: /home/u1922-ox3nr6uplk2h/www/saltcellar.com/public_html/wp-content/themes/pegasus-child
-          - name: The Mix Market
-            branch: mixmarket_theme
-            host: gvam1248.siteground.biz
-            user: u1926-nm5r7lzdccbc
-            remote_path: /home/u1926-nm5r7lzdccbc/www/themixmarket.com/public_html/wp-content/themes/pegasus-child
-          - name: TommyG's
-            branch: tommygs_theme
-            host: gvam1248.siteground.biz
-            user: u1929-p96clzjdofva
-            remote_path: /home/u1929-p96clzjdofva/www/tommygs.com/public_html/wp-content/themes/pegasus-child
-          - name: VisionQuest Development
-            branch: vqdev_theme
-            host: ssh.visionquestdevelopment.com
-            user: u795-gsjmrktis7i1
-            remote_path: /home/u795-gsjmrktis7i1/www/visionquestdevelopment.com/public_html/wp-content/themes/pegasus-child
-          - name: Sugarpeddler
-            branch: sugarpeddler_theme
-            host: gvam1168.siteground.biz
-            user: u2821-kszudcgjgqwe
-            remote_path: /home/u2821-kszudcgjgqwe/www/sugarpeddler.com/public_html/wp-content/themes/pegasus-child
-          - name: VisionQuest Dev
-            branch: visionquestdev_theme
-            host: ssh.visionquestdev.com
-            user: u137-u0edzwblljc1
-            remote_path: /home/u137-u0edzwblljc1/www/visionquestdev.com/public_html/wp-content/themes/pegasus-child
-          - name: Avena Family Photos
-            branch: avena_theme
-            host: ssh.avenafamilyphotos.com
-            user: u2668-1czijvloaqmy
-            remote_path: /home/u2668-1czijvloaqmy/www/avenafamilyphotos.com/public_html/wp-content/themes/pegasus-child
-          - name: Meow We're Talkin
-            branch: meowweretalkin_theme
-            host: ssh.meowweretalkin.com
-            user: u2373-whpzjvnzbcyl
-            remote_path: /home/u2373-whpzjvnzbcyl/www/meowweretalkin.com/public_html/wp-content/themes/pegasus-child
-          - name: Pegasus Theme
-            branch: pegasustheme_child
-            host: ssh.pegasustheme.com
-            user: u2375-bnxmykzebbol
-            remote_path: /home/u2375-bnxmykzebbol/www/pegasustheme.com/public_html/wp-content/themes/pegasus-child
-          - name: VisionQuest Goods
-            branch: vqgoods_theme
-            host: gvam1224.siteground.biz
-            user: u1448-xyecwpzvlm05
-            remote_path: /home/u1448-xyecwpzvlm05/www/visionquestgoods.com/public_html/wp-content/themes/pegasus-child
-          - name: Sage's CNC
-            branch: sagescnc_theme
-            host: ssh.sagescnc.com
-            user: u1896-o95aamxni69r
-            remote_path: /home/u1896-o95aamxni69r/www/sagescnc.com/public_html/wp-content/themes/pegasus-child
-          - name: Chris Hixson
-            branch: chrishixson_theme
-            host: gvam1007.siteground.biz
-            user: u869-geq9wwrhqrna
-            remote_path: /home/u869-geq9wwrhqrna/www/chrishixson.com/public_html/wp-content/themes/pegasus-child
-          - name: QBIQ Camp
-            branch: qbiqcamp_theme
-            host: ssh.qbiqcamp.com
-            user: u3018-28ezo8zzg2yz
-            remote_path: /home/u3018-28ezo8zzg2yz/www/qbiqcamp.com/public_html/wp-content/themes/pegasus-child
-          - name: QBIQ System
-            branch: qbiqsystem_theme
-            host: gvam1008.siteground.biz
-            user: u436-ep3uiws3fvge
-            remote_path: /home/u436-ep3uiws3fvge/www/qbiqsystem.com/public_html/wp-content/themes/pegasus-child
-          - name: QB Roundtable
-            branch: qbroundtable_theme
-            host: ssh.qbroundtable.com
-            user: u1153-di2xlglhg6jr
-            remote_path: /home/u1153-di2xlglhg6jr/www/qbroundtable.com/public_html/wp-content/themes/pegasus-child
-          - name: The ADV Company
-            branch: advcompany_theme
-            host: gvam1008.siteground.biz
-            user: u592-x2l2hh9agfst
-            remote_path: /home/u592-x2l2hh9agfst/www/theadvcompany.com/public_html/wp-content/themes/pegasus-child
-          - name: The Shootout
-            branch: theshootout_theme
-            host: ssh.theshootout.camp
-            user: u1059-lbxrgueukvoh
-            remote_path: /home/u1059-lbxrgueukvoh/www/theshootout.camp/public_html/wp-content/themes/pegasus-child
-          - name: Vine and Vision Consulting
-            branch: vineandvision_theme
-            host: ssh.vineandvisionconsulting.com
-            user: u2017-qcevdn2ytb46
-            remote_path: /home/u2017-qcevdn2ytb46/www/vineandvisionconsulting.com/public_html/wp-content/themes/pegasus-child
-          - name: 34 Oak Contracting
-            branch: 34oak_theme
-            host: gvam1082.siteground.biz
-            user: u3139-as2zskfuqrlw
-            remote_path: /home/u3139-as2zskfuqrlw/www/34oakcontracting.com/public_html/wp-content/themes/pegasus-child
-          - name: Top 100 Pro Day
-            branch: top100proday_theme
-            host: ssh.top100proday.com
-            user: u2547-1s1cfrj9bp8f
-            remote_path: /home/u2547-1s1cfrj9bp8f/www/top100proday.com/public_html/wp-content/themes/pegasus-child
-          - name: Russell Contracting
-            branch: russellcontracting_theme
-            host: ssh.russellcontracting.org
-            user: u2186-ihxeklzicf7p
-            remote_path: /home/u2186-ihxeklzicf7p/www/russellcontracting.org/public_html/wp-content/themes/pegasus-child
-          - name: Rice Capital Fund
-            branch: ricecapital_theme
-            host: gvam1137.siteground.biz
-            user: u3053-bxgyinhxxknr
-            remote_path: /home/u3053-bxgyinhxxknr/www/ricecapitalfund.com/public_html/wp-content/themes/pegasus-child
-          - name: Gen2 Automation
-            branch: gentwo_theme
-            host: gtxm1263.siteground.biz
-            user: u2607-33glsnvdafav
-            remote_path: /home/u2607-33glsnvdafav/www/gen2automation.com/public_html/wp-content/themes/pegasus-child
-          - name: OSPS26
-            branch: osps26_theme
-            host: gtxm1338.siteground.biz
-            user: u899-mruelycumg2h
-            remote_path: /home/u899-mruelycumg2h/www/osps26.com/public_html/wp-content/themes/pegasus-child
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
     steps:
-      - name: Deploy via SSH
-        if: github.ref_name == matrix.site.branch
+      - name: git pull --ff-only on server
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ matrix.site.host }}
-          username: ${{ matrix.site.user }}
+          host: ${{ matrix.host }}
+          username: ${{ matrix.user }}
           key: ${{ secrets.SITEGROUND_SSH_KEY }}
           passphrase: ${{ secrets.SITEGROUND_SSH_PASSPHRASE }}
-          port: ${{ secrets.SITEGROUND_SSH_PORT }}
+          port: ${{ secrets.SITEGROUND_SSH_PORT || matrix.port }}
+          script_stop: true
           script: |
-            cd ${{ matrix.site.remote_path }}
+            set -u
+            BASE="${{ matrix.wp_content }}/${{ matrix.kind }}s"
+            DIR=""
+            for f in ${{ matrix.folders }}; do [ -d "$BASE/$f" ] && DIR="$BASE/$f" && break; done
+            if [ -z "$DIR" ]; then echo "SKIP: ${{ github.event.repository.name }} not installed under $BASE"; exit 0; fi
+            cd "$DIR"
+            if [ ! -d .git ]; then echo "SKIP: $DIR is not a git checkout (clone it first, see DEPLOY-SITEGROUND.md)"; exit 0; fi
+            CUR=$(git rev-parse --abbrev-ref HEAD)
+            if [ "$CUR" != "${{ matrix.branch }}" ]; then echo "SKIP: $DIR is on '$CUR', expected '${{ matrix.branch }}'"; exit 0; fi
+            if [ -n "$(git status --porcelain --untracked-files=no)" ]; then echo "FAIL: $DIR has local modifications on the server"; git status --short; exit 1; fi
             git fetch --prune origin
-            git checkout ${{ matrix.site.branch }}
-            git pull origin ${{ matrix.site.branch }}
+            git pull --ff-only origin "${{ matrix.branch }}"
+            echo "DEPLOYED ${{ matrix.key }}: $(git log -1 --format='%h %s')"
