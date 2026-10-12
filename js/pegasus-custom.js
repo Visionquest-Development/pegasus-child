@@ -20,6 +20,8 @@
 			//}
 
 		//});
+		
+		$('.matchHeight').matchHeight();
 
 	}); //end document ready function
 

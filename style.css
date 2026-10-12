@@ -1,74 +1,457 @@
-/*
- Theme Name:     Pegasus Child
- Theme URI:      http://visionquestdevelopment.com
- Description:    Pegasus Child Theme
- Author:         Jim O'Brien
- Author URI:     http://visionquestdevelopment.com
- Template:       pegasus
- Version:        0.0.1
-*/
-
-/*@import url("../pegasus/style.css");*/
-	
-	
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	/*~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~ HEADER ~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	
-	/*~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~ NAVIGATION ~~~~~
-	~~~~~~~~~~~~~~~~~~~~~*/
-
-	
-	/*~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~ FOOTER ~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-
-	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
-	/*~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~ HOME PAGE ~~~~~
-	~~~~~~~~~~~~~~~~~~~~~*/
-	
-	
-	
-	
-	/* ~~~~~~~~~~~~~~~~~~~~~~
-	~~~~~~~~~SITEMAP~~~~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~*/
-	
-	/* ~~~~~~~~~~~~~~~~~~~~~~
-	~~~~WOOCOMMERCE~~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~*/
-
-	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	~~~~~MEDIA QUERIES~~~~
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	@media only screen and ( min-width: 1100px ) and ( max-width: 1405px) {
-		
-	}
-	
-	@media only screen and ( min-width: 981px ) {
-		
-	}
-		
-	@media only screen and (max-width: 980px) {
-		
-	}
-	
-	@media only screen and ( max-width: 767px ) {
-		
-	}
-	
-	@media only screen and (max-width: 479px) {
-		
-	}
+/*
+ Theme Name:     Pegasus Child
+ Theme URI:      http://visionquestdevelopment.com
+ Description:    Pegasus Child Theme
+ Author:         Jim O'Brien
+ Author URI:     http://visionquestdevelopment.com
+ Template:       pegasus
+ Version:        0.0.1
+*/
+
+/*@import url("../pegasus/style.css");*/
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
+	
+	
+	.lato-thin {
+  font-family: "Lato", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.lato-light {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.lato-regular {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.lato-bold {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.lato-black {
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.lato-thin-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.lato-light-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.lato-regular-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.lato-bold-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.lato-black-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+.playfair-display-sc-regular {
+  font-family: "Playfair Display SC", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.playfair-display-sc-bold {
+  font-family: "Playfair Display SC", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.playfair-display-sc-black {
+  font-family: "Playfair Display SC", serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.playfair-display-sc-regular-italic {
+  font-family: "Playfair Display SC", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.playfair-display-sc-bold-italic {
+  font-family: "Playfair Display SC", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.playfair-display-sc-black-italic {
+  font-family: "Playfair Display SC", serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Playfair Display SC", serif;
+    font-weight: 900;
+    font-style: normal;
+}
+
+body {
+	font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+	
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+	
+	:root {
+	  --color-primary: #29442C; /*green*/
+	  --color-secondary: #F5F2EB; /*gray*/
+	  --color-accent: #D4A650; /*gold*/
+	  --color-dark: #2D2D2D; /*dark gray*/
+	}
+	
+	.primary {
+		background: var(--color-primary);
+	}
+	
+	.secondary {
+		background: var(--color-secondary);
+	}
+	
+	.accent {
+		background: var(--color-accent);
+	}
+	
+	.dark {
+		background: var(--color-dark);
+	}
+	
+	
+	
+	.vnv-custom-button {
+		color: white;
+		border-color: white;
+		margin: 50px 0 0;
+		    padding: 20px 60px;
+    border: 3px solid white;
+	border-radius: 10px;
+    font-weight: bold;
+    font-size: 20px;
+	transition: background 0.3s ease, color 0.3s ease;
+	}
+	
+	.vnv-custom-button:hover {
+		background: white;
+		color: #29442C;
+		
+	}
+	
+	
+	
+	.callout_container {
+		margin-bottom: 0 !important;
+	}
+	
+	
+	.page-template-tpl_page-full-width .container .page-header {
+		padding: 20px 0 0;
+	}
+	
+	.page-template-tpl_page-full-width .container-fluid .page-header {
+		padding: 20px 45px 20px;
+	}
+	
+	
+	.nocomments { display: none; }
+	
+	
+	
+	
+
+	/*~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~ HEADER ~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~*/
+	#logo {
+		width: 250px;
+		height: 250px;
+	}
+	
+	
+	
+	/*~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~ NAVIGATION ~~~~~
+	~~~~~~~~~~~~~~~~~~~~~*/
+	.the-default-nav .navbar-brand { visibility: hidden; }
+	
+	/*~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~ FOOTER ~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~*/
+	footer .footer-social-container {
+		padding: 20px 0 0;
+	}
+	
+	footer a, footer .nav-link {
+		color: white;
+	}
+	
+	.footer-cta a.btn { 
+		color: white;
+		border-color: white;
+		margin: 20px 0 0;
+	}
+	.footer-cta { padding: 50px; }
+
+	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+	
+	/*~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~ HOME PAGE ~~~~~
+	~~~~~~~~~~~~~~~~~~~~~*/
+	
+	.home #large-header h1 {
+		font-family: "Garamond", "Baskerville", "Times New Roman", serif;
+		font-weight: bold; 
+	}
+	.home #large-header h1,
+	.home #large-header h2,
+	.home #large-header span.smaller
+	{
+		color: var(--color-primary);
+		text-transform: uppercase;
+		font-family: "Garamond", "Baskerville", "Times New Roman", serif;
+		font-weight: bold; 
+	}
+	
+	.home #large-header span.smaller { 
+		color: var(--color-primary);
+		font-size: 2.5rem; 
+		font-family: "Garamond", "Baskerville", "Times New Roman", serif;
+		font-weight: bold; 
+	}
+	
+	
+	
+	
+	.callout_container {
+		color: white; 
+		background: #29442C;
+	}
+	
+	
+
+
+	#services {
+	  background-color: var(--color-primary);
+	  color: var(--color-secondary);
+	  padding: 4rem 0;
+	}
+
+	#services h2,
+	#services p {
+	  color: var(--color-secondary);
+	}
+
+	#services .card {
+	  background-color: var(--color-secondary);
+	  color: var(--color-dark);
+	  border: none;
+	  border-radius: 0.75rem;
+	  transition: transform 0.3s ease, box-shadow 0.3s ease;
+	}
+
+	#services .card:hover {
+	  transform: translateY(-4px);
+	  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+	}
+
+	#services .card-title {
+	  color: var(--color-primary);
+	  font-weight: 600;
+	}
+
+	#services .card-text {
+	  color: var(--color-dark);
+	}
+
+	#services .fa {
+	  color: var(--color-accent);
+	  min-width: 2.5rem;
+	}
+
+	
+	
+	#hero {
+	  background-color: var(--color-primary);
+	  position: relative;
+	  z-index: 1;
+	  color: var(--color-secondary);
+	}
+
+	#hero::before {
+	  content: '';
+	  position: absolute;
+	  top: 0; left: 0; right: 0; bottom: 0;
+	  background-color: rgba(41, 68, 44, 0.6); /* dark green overlay */
+	  z-index: -1;
+	}
+
+	#hero h1,
+	#hero p {
+	  color: var(--color-secondary);
+	}
+
+	#hero .btn-success {
+	  background-color: var(--color-primary);
+	  border-color: var(--color-accent);
+	  color: var(--color-secondary);
+	}
+
+	#hero .btn-success:hover {
+	  background-color: var(--color-accent);
+	  color: var(--color-dark);
+	}
+
+	#hero .btn-outline-light {
+	  border-color: var(--color-accent);
+	  color: var(--color-secondary);
+	}
+
+	#hero .btn-outline-light:hover {
+	  background-color: var(--color-accent);
+	  color: var(--color-dark);
+	}
+	
+	#services .btn-outline-primary {
+	  color: var(--color-primary);
+	  border-color: var(--color-accent);
+	}
+
+	#services .btn-outline-primary:hover {
+	  background-color: var(--color-accent);
+	  color: var(--color-dark);
+	  border-color: var(--color-accent);
+	}
+	
+	.custom-gold-button {
+		background-color: #d4af37;
+		color: #fff;
+		padding: 0.375rem 0.75rem;
+		font-size: 0.875rem;
+		border-radius: 0.25rem;
+		text-decoration: none;
+		display: inline-block;
+		transition: all 0.3s ease;
+	}
+
+	.custom-gold-button:hover,
+	.custom-gold-button:focus {
+		background-color: #a67c00;
+		color: #fff;
+	}
+
+	
+#cta {
+  background-color: var(--color-primary);
+  min-height: 40vh;
+}
+
+#cta .btn-outline-light {
+  border: 2px solid var(--color-secondary);
+  color: var(--color-secondary);
+  transition: all 0.3s ease-in-out;
+  font-size: 1.1rem;
+}
+
+#cta .btn-outline-light:hover {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-dark);
+}
+
+
+	
+	/* ~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~SITEMAP~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~*/
+	
+	/* ~~~~~~~~~~~~~~~~~~~~~~
+	~~~~WOOCOMMERCE~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~*/
+
+	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~MEDIA QUERIES~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+	@media only screen and ( min-width: 1100px ) and ( max-width: 1405px) {
+		
+	}
+	
+	/* DESKTOP AND ABOVE - lg */	
+	@media only screen and ( min-width: 981px ) {
+		.dropdown-item.active {
+			color: var(--pegasus-sub-nav-item-color) !important;
+			font-weight: bold;
+		}
+		
+		.home #large-header h1 {
+			font-size: 6rem;
+		}
+		
+		.home #large-header span.smaller { font-size: 3rem; }
+		
+		
+		
+		
+	}
+	
+	/* DESKTOP AND BELOW - lg */
+	@media only screen and (max-width: 980px) {
+		
+	}
+	
+	/* TABLET AND ABOVE - md */
+	@media only screen and ( min-width: 768px ) {
+		.the-default-nav .navbar-brand { display: none; }
+	}
+	
+	/* TABLET AND BELOW - md */
+	@media only screen and ( max-width: 767px ) {
+		
+		.the-default-nav #menu-main-nav li.menu-item-has-children .dropdown-menu {
+			display: block;
+			background: transparent;
+			border: none;
+			padding: 0;
+		}
+		
+		.dropdown-item.active {
+			background-color: transparent !important;
+			font-weight: bold;
+		}
+		
+	}
+	
+	/* PHONE AND BELOW - sm */
+	@media only screen and (max-width: 479px) {
+		
+	}
