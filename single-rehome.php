@@ -1,4 +1,9 @@
-<?php get_header(); ?>
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+get_header();
+?>
 
 <div id="page-wrap">
 	<?php
@@ -160,7 +165,7 @@
 						<?php endif; ?>
 					</div>
 
-					
+
 					<?php /*
 					<div class="pet-details">
 						<?php if ($gender && 'custom' !== $gender) { ?><p><b>Gender:</b> <?php echo $gender; ?></p><?php } ?>

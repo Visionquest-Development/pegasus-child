@@ -57,7 +57,7 @@
 
 		?>
 
-		<div class="<?php echo $final_container_class; ?>">
+		<div class="<?php echo esc_attr( $final_container_class ); ?>">
 			<!-- Example row of columns -->
 			<div class="row">
 				<?php
@@ -78,7 +78,7 @@
 											echo '';
 										} elseif ( $page_title ) {
 											echo '<h1>';
-											echo the_title();
+											echo esc_html( get_the_title() );
 											echo '</h1>';
 										}
 									?>

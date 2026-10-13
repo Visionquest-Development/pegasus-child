@@ -2,6 +2,9 @@
 /*
 	Template Name: Dogs Page Template
 */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 ?>
 
 <?php get_header(); ?>
@@ -49,14 +52,14 @@
 											}
 										?>
 
-										<div class="content-item-container col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 <?php echo strtolower($tax); ?>">
+										<div class="content-item-container col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 <?php echo esc_attr( strtolower( $tax ) ); ?>">
 											<article class="article-<?php the_ID(); ?> block-inner">
-												<a href="<?php the_permalink(); ?>" class="content-item-image" style="background-image: url('<?php echo pegasus_image_display('full', '', false); ?>');"></a>
+												<a href="<?php echo esc_url( get_permalink() ); ?>" class="content-item-image" style="background-image: url('<?php echo esc_url( pegasus_image_display( 'full', '', false ) ); ?>');"></a>
 												<div class="content-item-wrapper">
-													<a href="<?php the_permalink(); ?>" alt="<?php the_title(); ?>">
-														<h3 class="content-item-title"><?php the_title(); ?></h3>
+													<a href="<?php echo esc_url( get_permalink() ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>">
+														<h3 class="content-item-title"><?php echo esc_html( get_the_title() ); ?></h3>
 													</a>
-													<a class="opp-button" href="<?php the_permalink(); ?>">Learn More</a>
+													<a class="opp-button" href="<?php echo esc_url( get_permalink() ); ?>">Learn More</a>
 												</div>
 												<?php
 													if (function_exists('wp_bootstrap_edit_post_link')) {

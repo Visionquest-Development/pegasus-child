@@ -1,4 +1,11 @@
 <!-- filepath: /home/jim/Projects/vagrant-local/www/ourpalsplace/public_html/wp-content/themes/pegasus-child/templates/opp_callout.php -->
+<!-- filepath: /home/jim/Projects/vagrant-local/www/ourpalsplace/public_html/wp-content/themes/pegasus-child/templates/opp_callout.php -->
+<?php
+// Prevent direct access
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+?>
 <div class="opp-callout-container text-center p-4 shadow-sm rounded">
     <!-- Logo Section -->
     <div class="opp-logo mb-3">

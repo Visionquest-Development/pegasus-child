@@ -12,13 +12,13 @@
 
 
 	function theme_enqueue_styles() {
-		wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
+		wp_enqueue_style( 'parent-style', esc_url( get_template_directory_uri() ) . '/style.css' );
 
 		/* slick */
-		wp_enqueue_style('slick-css', get_stylesheet_directory_uri() . '/css/slick.css', null, false, false);
-		wp_enqueue_style('slick-theme-css', get_stylesheet_directory_uri() . '/css/slick-theme.css', null, false, false);
+		wp_enqueue_style('slick-css', esc_url( get_stylesheet_directory_uri() ) . '/css/slick.css', null, false, false);
+		wp_enqueue_style('slick-theme-css', esc_url( get_stylesheet_directory_uri() ) . '/css/slick-theme.css', null, false, false);
 
-		wp_enqueue_style('magnific-css', get_stylesheet_directory_uri() . '/css/magnific.css', null, false, false);
+		wp_enqueue_style('magnific-css', esc_url( get_stylesheet_directory_uri() ) . '/css/magnific.css', null, false, false);
 
 	}
 	add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
@@ -34,17 +34,17 @@
 	*/
 	function pegasus_child_bootstrap_js() {
 
-		wp_enqueue_script( 'opp_custom_js', get_stylesheet_directory_uri() . '/js/custom.js', array(), '', true );
+		wp_enqueue_script( 'opp_custom_js', esc_url( get_stylesheet_directory_uri() ) . '/js/custom.js', array(), '', true );
 
-		wp_enqueue_script( 'matchHeight_js', get_stylesheet_directory_uri() . '/js/jquery.matchHeight-min.js', array(), '', true );
+		wp_enqueue_script( 'matchHeight_js', esc_url( get_stylesheet_directory_uri() ) . '/js/jquery.matchHeight-min.js', array(), '', true );
 
-		wp_enqueue_script( 'fitvids_js', get_stylesheet_directory_uri() . '/js/fitvids.js', array(), '', true );
+		wp_enqueue_script( 'fitvids_js', esc_url( get_stylesheet_directory_uri() ) . '/js/fitvids.js', array(), '', true );
 
 		//wp_enqueue_script( 'popup_js', get_stylesheet_directory_uri() . '/js/jquery.magnific-popup.min.js', array(), '', true );
 
 		//wp_enqueue_script( 'pegasus_child_custom_js', get_stylesheet_directory_uri() . '/js/pegasus-custom.js', array(), '', true );
 		//plugins_url( 'js/slick.min.js', dirname(__FILE__) . '/../../pegasus-carousel/pegasus-carousel.php' )
-		$slick_js = get_stylesheet_directory_uri() . '/js/slick.js';
+		$slick_js = esc_url( get_stylesheet_directory_uri() ) . '/js/slick.js';
 
 		wp_enqueue_script( 'slick_js', $slick_js, array(), '', true );
 
@@ -423,9 +423,9 @@
 			'show_on_cb' => function( $cmb ) {
 				// Hide this field for the 'rehome' post type
 				if ( isset( $_GET['post'] ) ) {
-					$post_id = $_GET['post'];
+					$post_id = absint( $_GET['post'] );
 					return get_post_type( $post_id ) !== 'rehome';
-				} elseif ( isset( $_GET['post_type'] ) && $_GET['post_type'] === 'rehome' ) {
+				} elseif ( isset( $_GET['post_type'] ) && sanitize_text_field( $_GET['post_type'] ) === 'rehome' ) {
 					return false;
 				}
 				return true;
@@ -495,9 +495,9 @@
 
 	function show_if_rehome_post_type( $cmb ) {
 		if ( isset( $_GET['post'] ) ) {
-			$post_id = $_GET['post'];
+			$post_id = absint( $_GET['post'] );
 			return get_post_type( $post_id ) === 'rehome';
-		} elseif ( isset( $_GET['post_type'] ) && $_GET['post_type'] === 'rehome' ) {
+		} elseif ( isset( $_GET['post_type'] ) && sanitize_text_field( $_GET['post_type'] ) === 'rehome' ) {
 			return true;
 		}
 		return false;
@@ -582,7 +582,7 @@
 		}
 	}
 	add_action( 'wp_head', 'hide_quantity_using_css' );
-	
+
 	*/
 
 	add_filter( 'woocommerce_quantity_input_args', 'hide_quantity_input_field', 20, 2 );
@@ -730,8 +730,8 @@
 			remove_menu_page('jetpack');
 		}
 	}
-	
-	
+
+
 	/**
 	 * VQD Home Slider via CMB2 (no JSON)
 	 * - Visible only on post ID 2 or pages using template named "Home Template"
@@ -758,7 +758,7 @@
 		} elseif (isset($_POST['post_ID'])) {
 			$post_id = (int) $_POST['post_ID'];
 		}
-		
+
 		if ( ! $post_id ) return false;
 
 		// Condition 1: Exactly post ID 2
