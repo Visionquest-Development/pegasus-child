@@ -297,14 +297,50 @@
 					<div class="col-12 col-lg-6 rcd-furn-media">
 						<div class="row g-3 align-items-center">
 							<?php
-							$furn_rows = rcd_home_rows( 'furn_images' );
-							foreach ( $furn_rows as $index => $furn_item ) :
-								$furn_height = ( 0 === $index ) ? 'rcd-furn-a' : 'rcd-furn-b';
-								?>
-								<div class="col-6">
-									<?php rcd_home_media( rcd_home_row( $furn_item, 'image' ), $furn_height, 'Drop furniture image' ); ?>
-								</div>
-							<?php endforeach; ?>
+							// Pull the latest pieces from the Furniture custom post type.
+							$furn_q = new WP_Query( array(
+								'post_type'      => 'rcd_furniture',
+								'post_status'    => 'publish',
+								'posts_per_page' => 2,
+								'orderby'        => array( 'menu_order' => 'ASC', 'date' => 'DESC' ),
+								'no_found_rows'  => true,
+							) );
+
+							if ( $furn_q->have_posts() ) :
+								$furn_i = 0;
+								while ( $furn_q->have_posts() ) :
+									$furn_q->the_post();
+									$furn_height = ( 0 === $furn_i ) ? 'rcd-furn-a' : 'rcd-furn-b';
+									$furn_thumb  = get_the_post_thumbnail_url( get_the_ID(), 'large' );
+									$furn_price  = get_post_meta( get_the_ID(), 'rcd_fur_price', true );
+									?>
+									<div class="col-6">
+										<a class="rcd-gallery-item rcd-furn-piece" href="<?php the_permalink(); ?>">
+											<?php rcd_home_media( $furn_thumb, $furn_height, 'Drop furniture image', get_the_title() ); ?>
+											<span class="rcd-gallery-cap rcd-furn-piece-cap">
+												<?php the_title(); ?>
+												<?php if ( $furn_price ) : ?>
+													<span class="rcd-furn-piece-price"><?php echo esc_html( $furn_price ); ?></span>
+												<?php endif; ?>
+											</span>
+										</a>
+									</div>
+									<?php
+									$furn_i++;
+								endwhile;
+								wp_reset_postdata();
+							else :
+								// No pieces published yet — keep the design's placeholder slots.
+								$furn_rows = rcd_home_rows( 'furn_images' );
+								foreach ( $furn_rows as $index => $furn_item ) :
+									$furn_height = ( 0 === $index ) ? 'rcd-furn-a' : 'rcd-furn-b';
+									?>
+									<div class="col-6">
+										<?php rcd_home_media( rcd_home_row( $furn_item, 'image' ), $furn_height, 'Drop furniture image' ); ?>
+									</div>
+								<?php endforeach;
+							endif;
+							?>
 						</div>
 					</div>
 				</div>

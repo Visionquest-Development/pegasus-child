@@ -580,3 +580,24 @@
 		.rcd-home .rcd-svc-card,
 		.rcd-home .rcd-svc-cards--4 .rcd-svc-card{aspect-ratio:16/10}
 	}
+
+	/* Homepage furniture band — pieces pulled from the Furniture CPT */
+	.rcd-home .rcd-furn-piece{display:block;height:100%}
+	.rcd-home .rcd-furn-piece .rcd-media{transition:transform .6s ease}
+	.rcd-home .rcd-furn-piece:hover .rcd-media{transform:scale(1.04)}
+	.rcd-home .rcd-furn-piece-price{display:block;font-family:var(--rcd-sans);font-size:12px;letter-spacing:.08em;font-weight:600;margin-top:3px;opacity:.92}
+
+	/* Service detail: single / duo gallery sections ( card-section lead images ) */
+	.rcd-service-detail .rcd-glry--single{grid-template-columns:1fr;max-width:900px;margin-left:auto;margin-right:auto}
+	.rcd-service-detail .rcd-glry--single .rcd-glry-item img{height:480px}
+	.rcd-service-detail .rcd-glry--duo{grid-template-columns:repeat(2,1fr)}
+	@media only screen and (max-width: 991px){
+		.rcd-service-detail .rcd-glry--single .rcd-glry-item img{height:360px}
+	}
+	@media only screen and (max-width: 575px){
+		.rcd-service-detail .rcd-glry--single .rcd-glry-item img,
+		.rcd-service-detail .rcd-glry--duo .rcd-glry-item img{height:240px}
+	}
+
+	/* Anchor jump: keep the section heading clear of the sticky header */
+	.rcd-service-detail .rcd-sd-gallery{scroll-margin-top:110px}

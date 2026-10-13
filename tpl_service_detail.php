@@ -36,9 +36,11 @@
 		// Optional per-page intro override.
 		$rcd_intro    = get_post_meta( get_the_ID(), 'rcd_detail_intro', true );
 
-		// Project galleries.
-		// Gallery sections ( images grouped by their Section name ).
-		$rcd_galleries = function_exists( 'rcd_detail_grouped_galleries' ) ? rcd_detail_grouped_galleries( get_the_ID() ) : array();
+		// Anchored sections — one per "What's included" / "Featured projects" card
+		// ( id derived from the card title ), each landed on by its card on the
+		// Services landing. Project-Gallery images filed under a matching section
+		// name are folded in; unmatched galleries render on their own.
+		$rcd_sections = function_exists( 'rcd_detail_card_sections' ) ? rcd_detail_card_sections( get_the_ID(), $rcd_anchor ) : array();
 
 		// Services landing page ( for the breadcrumb + CTA content ).
 		$rcd_svc_page = function_exists( 'rcd_get_services_page_id' ) ? rcd_get_services_page_id() : 0;
@@ -110,18 +112,18 @@
 			</div>
 		</section>
 
-		<!-- ===================== PROJECT GALLERIES ===================== -->
-		<?php if ( ! empty( $rcd_galleries ) ) : ?>
+		<!-- ===================== CARD SECTIONS ( deep-link targets ) ===================== -->
+		<?php if ( ! empty( $rcd_sections ) ) : ?>
 			<?php
 			$rcd_gi = 0;
-			foreach ( $rcd_galleries as $gallery ) :
-				$images = isset( $gallery['images'] ) ? $gallery['images'] : array();
+			foreach ( $rcd_sections as $section ) :
+				$images = isset( $section['images'] ) ? $section['images'] : array();
 				if ( empty( $images ) ) {
 					continue;
 				}
-				$g_name   = isset( $gallery['name'] ) ? $gallery['name'] : '';
-				$g_desc   = isset( $gallery['desc'] ) ? $gallery['desc'] : '';
-				$g_anchor = ! empty( $gallery['anchor'] ) ? $gallery['anchor'] : 'gallery-' . $rcd_gi;
+				$g_name   = isset( $section['title'] ) ? $section['title'] : '';
+				$g_desc   = isset( $section['desc'] ) ? $section['desc'] : '';
+				$g_anchor = ! empty( $section['anchor'] ) ? $section['anchor'] : 'section-' . $rcd_gi;
 				$band     = ( 1 === ( $rcd_gi % 2 ) ) ? ' rcd-band-sand' : '';
 				?>
 				<section id="<?php echo esc_attr( $g_anchor ); ?>" class="rcd-section rcd-sd-gallery<?php echo esc_attr( $band ); ?>">

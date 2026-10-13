@@ -178,14 +178,9 @@ if ( ! function_exists( 'rcd_service_detail_add_card_fields' ) ) {
 		) );
 		$cmb->add_group_field( $group, array(
 			'name' => __( 'Title', 'pegasus-child' ),
+			'desc' => __( 'This card links to a matching section on the service page ( the section is created automatically from this title ).', 'pegasus-child' ),
 			'id'   => 'title',
 			'type' => 'text',
-		) );
-		$cmb->add_group_field( $group, array(
-			'name' => __( 'Target section anchor ( optional )', 'pegasus-child' ),
-			'desc' => __( 'Section id on this service page to jump to, e.g. "selected-interiors". Leave blank to link to the top of the page.', 'pegasus-child' ),
-			'id'   => 'anchor',
-			'type' => 'text_medium',
 		) );
 	}
 }
@@ -291,7 +286,9 @@ if ( ! function_exists( 'rcd_render_service_gallery' ) ) {
 		if ( empty( $images ) || ! is_array( $images ) ) {
 			return;
 		}
-		echo '<div class="rcd-glry">';
+		$count = count( $images );
+		$mod   = ( 1 === $count ) ? ' rcd-glry--single' : ( ( 2 === $count ) ? ' rcd-glry--duo' : '' );
+		echo '<div class="rcd-glry' . esc_attr( $mod ) . '">';
 		foreach ( $images as $item ) {
 			$url  = isset( $item['url'] ) ? $item['url'] : '';
 			$full = isset( $item['full'] ) && $item['full'] ? $item['full'] : $url;
@@ -405,44 +402,45 @@ if ( ! function_exists( 'rcd_service_cards_defaults' ) ) {
 	 * @return array
 	 */
 	function rcd_service_cards_defaults() {
+		$img = get_stylesheet_directory_uri() . '/assets/img/';
 		return array(
 			'bespoke' => array(
 				'included' => array(
-					array( 'title' => 'Full-Home Transformations', 'anchor' => 'selected-interiors' ),
-					array( 'title' => 'Single-Room Styling',       'anchor' => 'selected-interiors' ),
-					array( 'title' => 'Color &amp; Material Palettes', 'anchor' => 'selected-interiors' ),
+					array( 'title' => 'Full-Home Transformations', 'anchor' => 'selected-interiors', 'image' => $img . 'rcd-card-bespoke-full-home-transformations.jpg' ),
+					array( 'title' => 'Single-Room Styling',       'anchor' => 'selected-interiors', 'image' => $img . 'rcd-card-bespoke-single-room-styling.jpg' ),
+					array( 'title' => 'Color &amp; Material Palettes', 'anchor' => 'selected-interiors', 'image' => $img . 'rcd-card-bespoke-color-material-palettes.jpg' ),
 				),
 				'featured' => array(
-					array( 'title' => 'Buckhead Living Room',   'anchor' => 'selected-interiors' ),
-					array( 'title' => 'Decatur Dining',         'anchor' => 'selected-interiors' ),
-					array( 'title' => 'Marietta Primary Suite', 'anchor' => 'selected-interiors' ),
-					array( 'title' => 'Midtown Loft',           'anchor' => 'selected-interiors' ),
+					array( 'title' => 'Buckhead Living Room',   'anchor' => 'selected-interiors', 'image' => $img . 'rcd-card-bespoke-buckhead-living-room.jpg' ),
+					array( 'title' => 'Decatur Dining',         'anchor' => 'selected-interiors', 'image' => $img . 'rcd-card-bespoke-decatur-dining.jpg' ),
+					array( 'title' => 'Marietta Primary Suite', 'anchor' => 'selected-interiors', 'image' => $img . 'rcd-card-bespoke-marietta-primary-suite.jpg' ),
+					array( 'title' => 'Midtown Loft',           'anchor' => 'selected-interiors', 'image' => $img . 'rcd-card-bespoke-midtown-loft.jpg' ),
 				),
 			),
 			'restoration' => array(
 				'included' => array(
-					array( 'title' => 'Furniture Restoration',   'anchor' => '' ),
-					array( 'title' => 'Architectural Revivals',  'anchor' => '' ),
-					array( 'title' => 'Sourcing &amp; Procurement', 'anchor' => '' ),
+					array( 'title' => 'Furniture Restoration',   'anchor' => '', 'image' => $img . 'rcd-card-restoration-furniture-restoration.jpg' ),
+					array( 'title' => 'Architectural Revivals',  'anchor' => '', 'image' => $img . 'rcd-card-restoration-architectural-revivals.jpg' ),
+					array( 'title' => 'Sourcing &amp; Procurement', 'anchor' => '', 'image' => $img . 'rcd-card-restoration-sourcing-procurement.jpg' ),
 				),
 				'featured' => array(
-					array( 'title' => 'Walnut Credenza',       'anchor' => '' ),
-					array( 'title' => 'Carved Oak Armoire',    'anchor' => '' ),
-					array( 'title' => 'Brass &amp; Cane Bar Cart', 'anchor' => '' ),
-					array( 'title' => 'Marble-Top Console',    'anchor' => '' ),
+					array( 'title' => 'Walnut Credenza',       'anchor' => '', 'image' => $img . 'rcd-card-restoration-walnut-credenza.jpg' ),
+					array( 'title' => 'Carved Oak Armoire',    'anchor' => '', 'image' => $img . 'rcd-card-restoration-carved-oak-armoire.jpg' ),
+					array( 'title' => 'Brass &amp; Cane Bar Cart', 'anchor' => '', 'image' => $img . 'rcd-card-restoration-brass-cane-bar-cart.jpg' ),
+					array( 'title' => 'Marble-Top Console',    'anchor' => '', 'image' => $img . 'rcd-card-restoration-marble-top-console.jpg' ),
 				),
 			),
 			'technical' => array(
 				'included' => array(
-					array( 'title' => '3D Spatial Models',      'anchor' => 'spatial-renderings' ),
-					array( 'title' => 'Itemized Source Lists',  'anchor' => 'spatial-renderings' ),
-					array( 'title' => 'Renderings &amp; Walkthroughs', 'anchor' => 'spatial-renderings' ),
+					array( 'title' => '3D Spatial Models',      'anchor' => 'spatial-renderings', 'image' => $img . 'rcd-card-technical-3d-spatial-models.jpg' ),
+					array( 'title' => 'Itemized Source Lists',  'anchor' => 'spatial-renderings', 'image' => $img . 'rcd-card-technical-itemized-source-lists.jpg' ),
+					array( 'title' => 'Renderings &amp; Walkthroughs', 'anchor' => 'spatial-renderings', 'image' => $img . 'rcd-card-technical-renderings-walkthroughs.jpg' ),
 				),
 				'featured' => array(
-					array( 'title' => 'Full-Home 3D Model',     'anchor' => 'spatial-renderings' ),
-					array( 'title' => 'Kitchen Rendering',      'anchor' => 'spatial-renderings' ),
-					array( 'title' => 'Primary Suite Model',    'anchor' => 'spatial-renderings' ),
-					array( 'title' => 'Sourcing Breakdown',     'anchor' => 'spatial-renderings' ),
+					array( 'title' => 'Full-Home 3D Model',     'anchor' => 'spatial-renderings', 'image' => $img . 'rcd-card-technical-full-home-3d-model.jpg' ),
+					array( 'title' => 'Kitchen Rendering',      'anchor' => 'spatial-renderings', 'image' => $img . 'rcd-card-technical-kitchen-rendering.jpg' ),
+					array( 'title' => 'Primary Suite Model',    'anchor' => 'spatial-renderings', 'image' => $img . 'rcd-card-technical-primary-suite-model.jpg' ),
+					array( 'title' => 'Sourcing Breakdown',     'anchor' => 'spatial-renderings', 'image' => $img . 'rcd-card-technical-sourcing-breakdown.jpg' ),
 				),
 			),
 		);
@@ -546,7 +544,9 @@ if ( ! function_exists( 'rcd_render_service_cardset' ) ) {
 				foreach ( $cards as $card ) {
 					$title  = rcd_home_row( $card, 'title' );
 					$img    = rcd_home_row( $card, 'image' );
-					$anchor = ltrim( (string) rcd_home_row( $card, 'anchor' ), '#' );
+					// Anchor is derived from the title so it always matches the
+					// matching section id on the detail page ( 34oak-style deep link ).
+					$anchor = rcd_card_anchor( $title );
 
 					if ( $detail_url ) {
 						$href = $anchor ? trailingslashit( $detail_url ) . '#' . $anchor : $detail_url;
@@ -569,5 +569,111 @@ if ( ! function_exists( 'rcd_render_service_cardset' ) ) {
 			</div>
 		</div>
 		<?php
+	}
+}
+
+if ( ! function_exists( 'rcd_card_anchor' ) ) {
+	/**
+	 * Section anchor for a card title. Both the landing-page card href and the
+	 * matching detail-page section id derive from this, so they always line up
+	 * ( mirrors the 34oak Interior/Exterior deep-link pattern ).
+	 *
+	 * @param string $title Card / section title ( may contain HTML entities ).
+	 * @return string
+	 */
+	function rcd_card_anchor( $title ) {
+		return sanitize_title( html_entity_decode( wp_strip_all_tags( (string) $title ), ENT_QUOTES ) );
+	}
+}
+
+if ( ! function_exists( 'rcd_detail_card_sections' ) ) {
+	/**
+	 * Build the ordered list of anchored sections for a service detail page.
+	 * Each "What's included" and "Featured projects" card becomes its own section
+	 * ( id = rcd_card_anchor( title ) ) whose images are the card image followed by
+	 * any Project-Gallery rows tagged with that same section name. Project-Gallery
+	 * sections that don't match a card are appended as standalone galleries.
+	 *
+	 * @param int    $post_id        Detail page id.
+	 * @param string $service_anchor This page's linked service anchor.
+	 * @return array Sections: array( 'title', 'anchor', 'desc', 'images' => [ url, full, alt, caption ] ).
+	 */
+	function rcd_detail_card_sections( $post_id, $service_anchor ) {
+		$sections = array();
+		$seen     = array();
+
+		// Section-tagged Project-Gallery images, indexed by their anchor.
+		$galleries   = function_exists( 'rcd_detail_grouped_galleries' ) ? rcd_detail_grouped_galleries( $post_id ) : array();
+		$gal_by_slug = array();
+		foreach ( $galleries as $g ) {
+			$gal_by_slug[ $g['anchor'] ] = $g;
+		}
+
+		$build = function ( $card ) use ( &$seen, $gal_by_slug ) {
+			$title = isset( $card['title'] ) ? $card['title'] : '';
+			if ( '' === trim( wp_strip_all_tags( $title ) ) ) {
+				return null;
+			}
+			$slug = rcd_card_anchor( $title );
+			if ( '' === $slug || isset( $seen[ $slug ] ) ) {
+				return null;
+			}
+			$seen[ $slug ] = true;
+
+			$images = array();
+
+			// Lead image = the card's own image.
+			$img = isset( $card['image'] ) ? $card['image'] : '';
+			if ( '' !== $img ) {
+				$gid = isset( $card['image_id'] ) ? (int) $card['image_id'] : 0;
+				$alt = $gid ? (string) get_post_meta( $gid, '_wp_attachment_image_alt', true ) : '';
+				$images[] = array(
+					'url'     => ( $gid && wp_get_attachment_image_url( $gid, 'large' ) ) ? wp_get_attachment_image_url( $gid, 'large' ) : $img,
+					'full'    => ( $gid && wp_get_attachment_image_url( $gid, 'full' ) ) ? wp_get_attachment_image_url( $gid, 'full' ) : $img,
+					'alt'     => $alt ? $alt : wp_strip_all_tags( $title ),
+					'caption' => '',
+				);
+			}
+
+			// Plus any Project-Gallery images filed under the same section name.
+			$desc = '';
+			if ( isset( $gal_by_slug[ $slug ] ) ) {
+				$images = array_merge( $images, $gal_by_slug[ $slug ]['images'] );
+				$desc   = $gal_by_slug[ $slug ]['desc'];
+			}
+
+			return array(
+				'title'  => $title,
+				'anchor' => $slug,
+				'desc'   => $desc,
+				'images' => $images,
+			);
+		};
+
+		$cards = array_merge(
+			rcd_get_service_cards( $service_anchor, 'included' ),
+			rcd_get_service_cards( $service_anchor, 'featured' )
+		);
+		foreach ( $cards as $card ) {
+			$section = $build( $card );
+			if ( $section ) {
+				$sections[] = $section;
+			}
+		}
+
+		// Any Project-Gallery section not claimed by a card renders on its own.
+		foreach ( $galleries as $g ) {
+			if ( ! isset( $seen[ $g['anchor'] ] ) ) {
+				$seen[ $g['anchor'] ] = true;
+				$sections[] = array(
+					'title'  => $g['name'],
+					'anchor' => $g['anchor'],
+					'desc'   => $g['desc'],
+					'images' => $g['images'],
+				);
+			}
+		}
+
+		return $sections;
 	}
 }
