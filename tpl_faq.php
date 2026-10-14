@@ -37,7 +37,7 @@
 		array( 'question' => 'Do you offer seasonal maintenance?', 'answer' => 'Absolutely. From gutter cleaning to weatherproofing and exterior upkeep, we handle recurring seasonal maintenance for homes and HOA communities so you&rsquo;re never juggling multiple contractors.' ),
 		array( 'question' => 'What are your hours?', 'answer' => 'Our office hours are Monday–Friday, 9a–6p, with Saturdays by appointment. We&rsquo;re closed Sundays. You can reach us any time at 404-507-2579 and we&rsquo;ll get right back to you.' ),
 		array( 'question' => 'How fast will I get an estimate?', 'answer' => 'We aim to get you a written estimate quickly — usually within a couple of business days of your request, and often sooner for smaller jobs. Reach out and we&rsquo;ll schedule a visit.' ),
-		array( 'question' => 'What if my project doesn&rsquo;t fit one of your nine services?', 'answer' => 'Ask us anyway. Between our nine core services and our custom-project work — saunas, pergolas, chicken coops, and more — there&rsquo;s a good chance we can build it. If we&rsquo;re not the right fit, we&rsquo;ll point you to someone who is.' ),
+		array( 'question' => 'What if my project doesn&rsquo;t fit one of your ten services?', 'answer' => 'Ask us anyway. Between our ten core services and our custom-project work — saunas, pergolas, chicken coops, and more — there&rsquo;s a good chance we can build it. If we&rsquo;re not the right fit, we&rsquo;ll point you to someone who is.' ),
 		array( 'question' => 'Can I request a specific team member?', 'answer' => 'Of course. We&rsquo;re a family-owned team and we&rsquo;re happy to send the person you&rsquo;re most comfortable with whenever scheduling allows. Just let us know.' ),
 	) );
 

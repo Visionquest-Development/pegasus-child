@@ -19,7 +19,7 @@
 <?php get_header(); ?>
 
 <?php
-	// Service cards (repeatable group; falls back to these nine).
+	// Service cards (repeatable group; falls back to these ten).
 	$hfhs_services = hfhs_home_group( 'services', array(
 		array( 'title' => 'Gutters', 'desc' => 'Cleaning, repair, full replacement, and custom installations. Keep water moving away from your home and your foundation.', 'link' => home_url( '/services/gutters/' ), 'cta' => 'Explore Gutters', 'img' => 'https://hfhsgeorgia.com/wp-content/uploads/2024/12/gutters-small.webp' ),
 		array( 'title' => 'Fencing', 'desc' => 'Wood privacy, picket, chain link, and custom gates. We’ve installed runs over 700 feet — no job is too long.', 'link' => home_url( '/services/fencing/' ), 'cta' => 'Explore Fencing', 'img' => 'https://hfhsgeorgia.com/wp-content/uploads/2024/12/fencing-header.webp' ),
@@ -30,6 +30,7 @@
 		array( 'title' => 'Handyman Services', 'desc' => 'The punch-list specialists. One call knocks out the whole honey-do list — mounts, fixtures, small fixes, and more.', 'link' => home_url( '/services/handyman/' ), 'cta' => 'Explore Handyman', 'img' => 'https://hfhsgeorgia.com/wp-content/uploads/2024/12/home-repair-small.webp' ),
 		array( 'title' => 'Interior Repairs', 'desc' => 'Painting, drywall, trim, crown molding, and finish carpentry. Clean job sites and finishes that look intentional.', 'link' => home_url( '/services/interior-repairs/' ), 'cta' => 'Explore Interior Repairs', 'img' => 'https://hfhsgeorgia.com/wp-content/uploads/2024/12/sofit-repairs.webp' ),
 		array( 'title' => 'Custom Projects', 'desc' => 'Saunas, chicken coops, climbing walls, pergolas, custom gates. If you can dream it, there’s a good chance we can build it.', 'link' => home_url( '/services/custom-projects/' ), 'cta' => 'Explore Custom Projects', 'img' => 'https://hfhsgeorgia.com/wp-content/uploads/2025/03/Dry-sauna-3.webp' ),
+		array( 'title' => 'Windows & Doors', 'desc' => 'Window replacement, entry and patio doors, frame and sill repair, and weather sealing. Every opening set plumb, sealed tight, and trimmed clean.', 'link' => home_url( '/services/windows-doors/' ), 'cta' => 'Explore Windows & Doors', 'img' => get_stylesheet_directory_uri() . '/images/services/windows-doors/windows-doors-full-home-window-replacement.webp' ),
 	) );
 
 	// Generic placeholder line-icon (fallback if a branded icon is missing).
@@ -120,7 +121,7 @@
 			<div class="row justify-content-center">
 				<div class="col-lg-9 col-xl-8 text-center hfhs-services__head wow fadeInUp" data-wow-duration="0.9s">
 					<p class="hfhs-eyebrow hfhs-eyebrow--light"><?php echo esc_html( hfhs_home_field( 'services_eyebrow', 'What We Do' ) ); ?></p>
-					<h2 class="hfhs-display hfhs-services__title"><?php echo wp_kses_post( hfhs_home_field( 'services_title', 'Nine services. One trusted team.' ) ); ?></h2>
+					<h2 class="hfhs-display hfhs-services__title"><?php echo wp_kses_post( hfhs_home_field( 'services_title', 'Ten services. One trusted team.' ) ); ?></h2>
 					<p class="hfhs-services__lead"><?php echo esc_html( hfhs_home_field( 'services_lead', 'From seasonal maintenance to full-scale improvements, we handle home care end-to-end so you’re never juggling multiple contractors. Click any service below to learn more.' ) ); ?></p>
 				</div>
 			</div>

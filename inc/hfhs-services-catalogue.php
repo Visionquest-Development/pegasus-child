@@ -119,8 +119,8 @@ function hfhs_services_catalogue() {
 				'warranty_body'  => 'If a post pulls, a board warps beyond expected tolerance, or a gate sags — we come back and make it right. Every client receives their warranty terms in writing at job completion.',
 				'related'        => array( 'gutters', 'decking', 'tree-services', 'custom-projects' ),
 				'testi_eyebrow'  => 'Fencing Services',
-				'testi_quote'    => '',
-				'testi_name'     => '',
+				'testi_quote'    => 'Hart Family of Home Services has been quick to respond, kind, efficient, and gets the job done WELL.',
+				'testi_name'     => 'Megan Owen',
 			),
 
 			'exterior-repairs' => array(
@@ -154,8 +154,8 @@ function hfhs_services_catalogue() {
 				'warranty_body'  => 'If a repair fails under normal conditions — paint lifts, caulking cracks, flashing leaks — we come back and make it right. Every client receives their warranty terms in writing at job completion.',
 				'related'        => array( 'gutters', 'fencing', 'roofing', 'handyman' ),
 				'testi_eyebrow'  => 'Exterior Repairs',
-				'testi_quote'    => '',
-				'testi_name'     => '',
+				'testi_quote'    => 'I had hired Josh Hart a couple of times in the past and found him easy going and the services a good value. When needing exterior wood repairs and painting I hired Hart Family Services and am very pleased with the end results.',
+				'testi_name'     => 'T. Robertson',
 			),
 
 			'roofing' => array(
@@ -259,8 +259,8 @@ function hfhs_services_catalogue() {
 				'warranty_body'  => 'If a board lifts, a rail loosens, or a finish fails beyond expected wear — we come back and make it right. Every client receives their warranty terms in writing at job completion.',
 				'related'        => array( 'fencing', 'exterior-repairs', 'custom-projects', 'handyman' ),
 				'testi_eyebrow'  => 'Decking Services',
-				'testi_quote'    => '',
-				'testi_name'     => '',
+				'testi_quote'    => 'The best guys out, they go to the extreme to get it done right.',
+				'testi_name'     => 'Ryan Baker',
 			),
 
 			'handyman' => array(
@@ -295,8 +295,8 @@ function hfhs_services_catalogue() {
 				'warranty_body'  => 'If a fix fails under normal conditions — a shelf pulls, a mount loosens, caulking fails before its time — we come back and make it right. Every client receives their service terms in writing at job completion.',
 				'related'        => array( 'exterior-repairs', 'interior-repairs', 'custom-projects', 'gutters' ),
 				'testi_eyebrow'  => 'Handyman Services',
-				'testi_quote'    => '',
-				'testi_name'     => '',
+				'testi_quote'    => 'These guys are great to work with! Professional, knowledgeable, skilled! Joshua has been awesome and I am so happy I found a Handyman I can trust! Highly recommend!',
+				'testi_name'     => 'Brandon Holland',
 			),
 
 			'interior-repairs' => array(
@@ -329,8 +329,8 @@ function hfhs_services_catalogue() {
 				'warranty_body'  => 'If a patch cracks, a seam splits, or trim pulls under normal conditions, we come back and make it right. Premium paints and finishes carry their own manufacturer warranties, which we hand off to you in writing at job completion.',
 				'related'        => array( 'handyman', 'exterior-repairs', 'custom-projects', 'decking' ),
 				'testi_eyebrow'  => 'Interior Repairs',
-				'testi_quote'    => '',
-				'testi_name'     => '',
+				'testi_quote'    => 'Josh and his team are exceptional. I have referred dozens of my customers to them. They are responsive and their work is top notch. I highly recommend Hart Family of Home Services!',
+				'testi_name'     => 'Jay Pittroff',
 			),
 
 			'custom-projects' => array(
@@ -363,8 +363,47 @@ function hfhs_services_catalogue() {
 				'warranty_body'  => 'If a joint loosens, a hinge sags, or finish work fails under normal use, we come back and make it right. Premium lumber, hardware, and finishes carry their own manufacturer warranties, which we hand off to you in writing at project completion.',
 				'related'        => array( 'decking', 'handyman', 'exterior-repairs', 'fencing' ),
 				'testi_eyebrow'  => 'Custom Projects',
-				'testi_quote'    => '',
-				'testi_name'     => '',
+				'testi_quote'    => 'If you need a handyman, put Josh Hart of Hart Family Services on your list! I’ve had the pleasure of getting to know him and seeing firsthand how talented he is at what he does. … She was so impressed with his work, his attention to detail, and especially his level of service. … I highly recommend Josh and Hart Family Services!',
+				'testi_name'     => 'Traci Leath',
+			),
+
+			'windows-doors' => array(
+				'gallery' => array(
+					array( 'image' => $svc . 'windows-doors/windows-doors-full-home-window-replacement.webp', 'caption' => 'Full-home window replacement', 'meta' => 'Residential · Greater Atlanta' ),
+					array( 'image' => $svc . 'windows-doors/windows-doors-front-porch-window-replacement.webp', 'caption' => 'Front porch window replacement', 'meta' => 'Residential · Atlanta' ),
+					array( 'image' => $svc . 'windows-doors/windows-doors-double-window-replacement.webp', 'caption' => 'Double window replacement', 'meta' => 'Residential · Atlanta' ),
+					array( 'image' => $svc . 'windows-doors/windows-doors-single-hung-window-install.webp', 'caption' => 'Single-hung window install', 'meta' => 'Residential · Greater Atlanta' ),
+					array( 'image' => $svc . 'windows-doors/windows-doors-window-frame-and-sill-repair.webp', 'caption' => 'Window frame & sill repair', 'meta' => 'Residential · Atlanta' ),
+					array( 'image' => $svc . 'windows-doors/windows-doors-window-replacement-before.webp', 'caption' => 'Aging window — before replacement', 'meta' => 'Residential · Atlanta' ),
+					array( 'image' => $svc . 'windows-doors/windows-doors-exterior-door-replacement.webp', 'caption' => 'Exterior door replacement', 'meta' => 'Residential · Greater Atlanta' ),
+					array( 'image' => $svc . 'windows-doors/windows-doors-entry-door-frame-rebuild.webp', 'caption' => 'Entry door & frame rebuild', 'meta' => 'Residential · Atlanta' ),
+					array( 'image' => $svc . 'windows-doors/windows-doors-sliding-door-installation.webp', 'caption' => 'Sliding door installation', 'meta' => 'Residential · Greater Atlanta' ),
+				),
+				// DRAFT COPY — written to match the other service pages; confirm with Charlotte/Josh.
+				'number'         => '10',
+				'title'          => 'Windows & Doors',
+				'script'         => 'How light and life come in.',
+				'lead'           => 'Drafty windows, sticking doors, and rotted frames cost you comfort, security, and money every month. From a single door frame rebuild to whole-home window replacement, the Hart Family team installs and repairs windows and doors with the care, honesty, and documentation we bring to every project.',
+				'img'            => $svc . 'windows-doors/windows-doors-full-home-window-replacement.webp',
+				'hero'           => $hero . 'windows-doors-hero.webp',
+				'overview_title' => 'Every window, every door — <em>repaired, replaced, or rebuilt.</em>',
+				'overview_body'  => '<p>Windows and doors are the moving parts of your home’s envelope. When a seal fails, conditioned air leaks out and moisture finds its way in. When a frame rots, a door stops latching and a window stops closing square. Left alone, a small gap at the sill becomes soft wood, water damage, and a much bigger repair.</p><p>We handle everything from frame and sill repair to full window replacement, exterior and entry doors, sliding patio doors, and storm doors. Every opening is measured carefully, set plumb and level, flashed and sealed properly, and trimmed out so it looks like it was always there. Our approach is the same on every job: inspect honestly, document thoroughly, and leave your home better than we found it.</p>',
+				'scope'          => array( 'Full window replacement', 'Single window installation', 'Window frame & sill repair', 'Exterior & entry door replacement', 'Door frame repair & rebuild', 'Sliding & patio door installation', 'Storm door installation', 'Interior door install & adjustment', 'Weatherstripping & sealing', 'Flashing & caulking around openings', 'Trim & casing replacement', 'Photo documentation of every install' ),
+				'principle'      => 'A tight seal is a quiet home.',
+				'process'        => array(
+					array( 'title' => 'Inspection', 'text' => 'We check every window and door on the list — frames, sills, seals, hardware, and the wood around each opening — and photograph anything that needs attention, including hidden rot.' ),
+					array( 'title' => 'Estimate', 'text' => 'Written, itemized estimate within 24 hours. Unit sizes, product options, materials, labor, and timeline are spelled out clearly so you know exactly what you’re approving.' ),
+					array( 'title' => 'The Install', 'text' => 'Old units come out cleanly. Rotten framing is cut back to solid wood and rebuilt. New units are set plumb, flashed, sealed, and trimmed. Jobsite stays clean throughout.' ),
+					array( 'title' => 'Photo Record', 'text' => 'Before, during, and finished photos delivered after every job — so you can see what was behind the old frame, what we fixed, and how the finished opening looks.' ),
+				),
+				'pricing_line'   => 'Written, itemized estimates — every time.',
+				'pricing_body'   => 'Every window and door estimate is written up in detail: unit count and sizes, product choice, materials, labor, and timeline. If we pull an old frame and find rot underneath, you get a written change-order before we proceed. No surprises, no pressure, no commitment on the spot.',
+				'warranty_line'  => '2–5 year workmanship warranty, standard.',
+				'warranty_body'  => 'If an install leaks, a door stops latching, or trim pulls under normal conditions, we come back and make it right. Window and door manufacturers’ product warranties are handed off to you in writing at job completion.',
+				'related'        => array( 'exterior-repairs', 'interior-repairs', 'handyman', 'roofing' ),
+				'testi_eyebrow'  => 'Windows & Doors',
+				'testi_quote'    => 'I highly recommend Hart Family of Home Services. The workers were polite they were professional they respected my home and their work was outstanding. Last and certainly not least the prices were very reasonable',
+				'testi_name'     => 'Debra Little',
 			),
 
 		),

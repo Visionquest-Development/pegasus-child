@@ -37,7 +37,7 @@
 
 	$story_body_default =
 		'<p>Hart Family of Home Services was founded in 2023 by Josh Hart, carrying forward a family tradition of entrepreneurship that spans his grandfather, uncle, mother, and father. What started as a single-service gutter cleaning operation has grown into a trusted, full-service home care team serving the Greater Atlanta area.</p>' .
-		'<p>Today we handle nine distinct services &mdash; from gutters and fencing to custom builds &mdash; for homeowners, property managers, and HOA communities through BNI. Most importantly, we approach every job the same way we approach our own homes: with care, transparency, and a promise to do it right the first time.</p>';
+		'<p>Today we handle ten distinct services &mdash; from gutters and fencing to custom builds &mdash; for homeowners, property managers, and HOA communities through BNI. Most importantly, we approach every job the same way we approach our own homes: with care, transparency, and a promise to do it right the first time.</p>';
 
 	// Credentials strip (repeatable group; falls back to these three).
 	$credentials = hfhs_about_group( 'credentials', array(
