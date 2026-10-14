@@ -1,4 +1,10 @@
 	<?php get_header(); ?>
+	<?php
+	// Prevent direct access
+	if ( ! defined( 'ABSPATH' ) ) {
+		exit;
+	}
+	?>
 
 	<div id="page-wrap">
 		<?php
@@ -23,8 +29,8 @@
 				</div>
 
 				<div class="container-fluid">
-					<div class="gallery-container mb-3">
-						<!--<h4>Gallery</h4>-->
+					<div class="d-md-none gallery-container mb-3">
+						
 						<?php
 						$gallery_images = get_post_meta(get_the_ID(), 'pets_gallery', true);
 						if (!empty($gallery_images)) {
@@ -51,6 +57,35 @@
 						}
 						?>
 					</div>
+					
+					<div class="d-none d-md-block gallery-container mb-3">
+						<?php
+						$gallery_images = get_post_meta(get_the_ID(), 'pets_gallery', true);
+						if (!empty($gallery_images)) {
+							$image_urls = array();
+
+							foreach ($gallery_images as $gallery_item) {
+								if (isset($gallery_item['image_id']) && !empty($gallery_item['image_id'])) {
+									$image_url = wp_get_attachment_image_url($gallery_item['image_id'], 'medium');
+									if ($image_url) {
+										$image_urls[] = $image_url;
+									}
+								}
+							}
+
+							if (!empty($image_urls)) {
+								$packery_content = '[packery]';
+								foreach ($image_urls as $image_url) {
+									$packery_content .= '<img src="' . esc_url($image_url) . '" alt="image">';
+								}
+								$packery_content .= '[/packery]';
+
+								echo do_shortcode($packery_content);
+							}
+						}
+						?>
+					</div>
+
 				</div>
 
 				<div class="row">
@@ -58,7 +93,7 @@
 
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-9 col-xg-9 pets-gallery-video mb-2">
 						<div class="page-header mb-3">
-							<h1><?php wp_title(''); ?></h1>
+							<h1><?php echo esc_html( wp_get_document_title() ); ?></h1>
 						</div>
 						<?php /*
 						<div class="row">
@@ -127,7 +162,8 @@
 
 						<h3>About</h3>
 						<div class="pet-about">
-							<?php if (!empty($f_dogs) || !empty($f_cats) || !empty($f_child)) : ?>
+							
+							<?php /*if (!empty($f_dogs) || !empty($f_cats) || !empty($f_child)) : ?>
 								<p><strong>CHARACTERISTICS</strong><br>
 									<?php
 									$characteristics = array_filter([
@@ -138,7 +174,7 @@
 									echo esc_html(implode(', ', $characteristics));
 									?>
 								</p>
-							<?php endif; ?>
+							<?php endif;*/ ?>
 
 							<?php if (!empty($h_trained)) : ?>
 								<p><strong>HOUSE-TRAINED</strong><br>
@@ -146,20 +182,27 @@
 								</p>
 							<?php endif; ?>
 
-							<?php if (!empty($f_child)) : ?>
+							<?php
+							$characteristics = [];
+
+							if ($f_dogs === 'yes') {
+								$characteristics[] = 'Good with other dogs';
+							}
+							if ($f_cats === 'yes') {
+								$characteristics[] = 'Good with cats';
+							}
+							if ($f_child === 'yes') {
+								$characteristics[] = 'Good with children';
+							}
+
+							if (!empty($characteristics)) :
+							?>
 								<p><strong>GOOD IN A HOME WITH</strong><br>
-									Children.
+									<?php echo esc_html(implode(', ', $characteristics)); ?>
 								</p>
 							<?php endif; ?>
 						</div>
 
-						<hr class="mt-4">
-
-						<p class="petfinder-note">
-							<i class="fa fa-bell"></i> Our Pal's Place recommends that you should always take reasonable security steps before making online payments.
-						</p>
-
-						<hr class="mb-4">
 						<?php /*
 						<div class="pet-details">
 							<?php if ($gender && 'custom' !== $gender) { ?><p><b>Gender:</b> <?php echo $gender; ?></p><?php } ?>
@@ -187,7 +230,7 @@
 					<div class="col-md-12">
 						<hr>
 						<p>Our Pal's Place adoption process is called "Companion Match" <a href='/companion-match/'>Learn More</a></p>
-						<p>If you are interested in <?php wp_title(''); ?>...</p>
+						<p>If you are interested in <?php echo esc_html( get_the_title() ); ?>...</p>
 						<ul>
 							<li>Come Meet him/her Saturday &amp; Sundays 1:00-5:00pm or weekday by appointment</li>
 							<li>Complete the <a href="/companion-match-form/">Companion Match Form</a> which helps us determine if she/he is a good match for you</li>

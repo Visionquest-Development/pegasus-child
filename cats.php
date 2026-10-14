@@ -2,6 +2,10 @@
 /* 
 	Template Name: Cats Page Template
 */
+// Prevent direct access
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 ?>
 	<?php get_header(); ?>
 	
@@ -78,15 +82,15 @@
 												<div class="content-item-container col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 <?php echo strtolower( $tax ); ?>">
 													<article class="article-<?php the_ID(); ?> block-inner ">
 
-														<div class="content-item-image" style="background-image: url( '<?php echo pegasus_image_display( 'thumbnail', '', false ); ?>' );">
+														<div class="content-item-image" style="background-image: url( '<?php echo esc_url( pegasus_image_display( 'thumbnail', '', false ) ); ?>' );">
 															<?php /* 
-															<img src="<?php echo pegasus_image_display( 'thumbnail', '', false ); ?>" alt="">
+															<img src="<?php echo esc_url( pegasus_image_display( 'thumbnail', '', false ) ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>">
 															*/  ?>
 														</div>
 
 														<div class="content-item-wrapper">
 															<!-- the permalink and title -->
-															<a href="<?php the_permalink(); ?>" alt="<?php the_title(); ?>">
+															<a href="<?php echo esc_url( get_permalink() ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>">
 																<h3 class="content-item-title"><?php the_title(); ?></h3>
 															</a>
 															<?php
@@ -114,7 +118,7 @@
 																		<?php
 																		$temporary_excerpt = substr( strip_tags( $pegasus_excerpt ), 0, 300 );
 																		$final_excerpt = ( $pegasus_excerpt !== $temporary_excerpt ) ? ( $temporary_excerpt . '...') : $pegasus_excerpt;
-																		echo $final_excerpt;
+																		echo esc_html( $final_excerpt );
 																		?>
 																	</p>
 																<?php } else {
@@ -124,12 +128,12 @@
 																	$final_content = ( $pegasus_content !== $temporary_content ) ? ( $temporary_content . '...' ) : $pegasus_content;
 																?>
 																	<p>
-																		<?php echo do_shortcode( $final_content ); ?>
+																		<?php echo wp_kses_post( do_shortcode( $final_content ) ); ?>
 																	</p>
 																<?php }	?>
 															</div>
 															<!-- output a read more button -->
-															<a class="button btn btn-primary" href="<?php the_permalink(); ?>"> Read More </a>
+															<a class="button btn btn-primary" href="<?php echo esc_url( get_permalink() ); ?>"> Read More </a>
 														</div>
 
 														<?php

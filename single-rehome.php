@@ -1,4 +1,9 @@
-<?php get_header(); ?>
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+get_header();
+?>
 
 <div id="page-wrap">
 	<?php
@@ -184,7 +189,6 @@
 					<?php the_content(); ?>
 
 				</div><!-- -- col-lg-9 -->
-
 				<div class="col-lg-3 pets-column mb-2 px-lg-2">
 					<?php get_template_part('templates/opp_callout'); ?>
 				</div>

@@ -120,7 +120,7 @@ jQuery(document).ready(function ($) {
   });
 
   $("#opp-button-3").on( 'click', function(){
-    var targetUrl = window.location.host + '/camp-opp-2025/';
+    var targetUrl = window.location.host + '/camp-opp-2025p/';
     if (targetUrl) {
       window.location.href = targetUrl;
     } else {
