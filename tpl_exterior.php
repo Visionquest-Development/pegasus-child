@@ -120,8 +120,91 @@ if ( 'header-three' === $header_choice ) {
 		</div><!--end row -->
 	</div><!-- end container -->
 
+	<?php // Legacy hardcoded template parts ?>
 	<?php get_template_part( 'templates/exterior/gallery' ); ?>
 	<?php get_template_part( 'templates/exterior/before-after' ); ?>
+
+	<?php
+	$oak_projects    = get_post_meta( get_the_ID(), 'oak_projects_group', true );
+	$oak_ba_pairs    = get_post_meta( get_the_ID(), 'oak_ba_group', true );
+	$has_cmb2_data   = ! empty( $oak_projects ) || ! empty( $oak_ba_pairs );
+
+	if ( $has_cmb2_data ) :
+	?>
+
+	<?php // ---- Project Gallery Sections ---- ?>
+	<?php if ( ! empty( $oak_projects ) ) : ?>
+	<?php foreach ( $oak_projects as $project ) :
+		if ( empty( $project['project_name'] ) ) continue;
+		$anchor  = oak_project_anchor( $project['project_name'] );
+		$gallery = ! empty( $project['gallery_images'] ) ? $project['gallery_images'] : array();
+	?>
+	<section id="<?php echo esc_attr( $anchor ); ?>" class="exterior-gallery-section py-5">
+		<div class="container">
+			<div class="row mb-4">
+				<div class="col-12">
+					<h2 class="gallery-section-title"><?php echo esc_html( $project['project_name'] ); ?></h2>
+				</div>
+			</div>
+			<?php if ( ! empty( $gallery ) ) : ?>
+			<div class="row">
+				<div class="col-12">
+					<?php oak_render_masonry_gallery( $gallery, $anchor . '-gallery', $project['project_name'] ); ?>
+				</div>
+			</div>
+			<?php endif; ?>
+		</div>
+	</section>
+	<?php endforeach; ?>
+	<?php endif; ?>
+
+	<?php // ---- Before & After Comparison Sliders ---- ?>
+	<?php if ( ! empty( $oak_ba_pairs ) ) :
+		// Group pairs by section name.
+		$ba_sections = array();
+		foreach ( $oak_ba_pairs as $pair ) {
+			if ( empty( $pair['section_name'] ) || empty( $pair['before_image'] ) || empty( $pair['after_image'] ) ) continue;
+			$ba_sections[ $pair['section_name'] ][] = $pair;
+		}
+
+		$alt_bg = false;
+		$ba_counter = 0;
+		foreach ( $ba_sections as $section_name => $pairs ) :
+			$anchor        = oak_project_anchor( $section_name );
+			$section_class = $alt_bg ? ' section-alt-bg' : '';
+			$alt_bg = ! $alt_bg;
+	?>
+	<section id="<?php echo esc_attr( $anchor ); ?>" class="exterior-section py-5<?php echo $section_class; ?>">
+		<div class="container">
+			<div class="row mb-4">
+				<div class="col-12">
+					<h2><?php echo esc_html( $section_name ); ?></h2>
+				</div>
+			</div>
+			<?php
+			$chunks = array_chunk( $pairs, 2 );
+			foreach ( $chunks as $row_pairs ) :
+			?>
+			<div class="row g-4 mb-4">
+				<?php foreach ( $row_pairs as $pair ) :
+					$ba_counter++;
+				?>
+				<div class="col-lg-6 col-md-6">
+					<div class="pegasus-image-diff" id="<?php echo esc_attr( $anchor . '-' . $ba_counter ); ?>">
+						<img class="pegasus-image-diff__image pegasus-image-diff__image--before" src="<?php echo esc_url( $pair['before_image'] ); ?>" alt="Before">
+						<img class="pegasus-image-diff__image pegasus-image-diff__image--after" src="<?php echo esc_url( $pair['after_image'] ); ?>" alt="After">
+						<div class="pegasus-image-diff__handle"></div>
+					</div>
+				</div>
+				<?php endforeach; ?>
+			</div>
+			<?php endforeach; ?>
+		</div>
+	</section>
+	<?php endforeach; ?>
+	<?php endif; ?>
+
+	<?php endif; ?>
 
 </div><!-- end page wrap -->
 
