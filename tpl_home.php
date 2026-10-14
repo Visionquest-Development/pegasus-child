@@ -9,7 +9,7 @@
 				[slide class="testing"]
 					<div class="p-relative slide-1">
 						<div class="home-slider-text">
-							<h2>Welcome to Our Pals Place!</h2>
+							<h2>Welcome to <br>Our Pals Place!</h2>
 						</div>
 						<img class="alignnone size-full wp-image-12" src="http://ourpalsplace.test/wp-content/wp-content/themes/pegasus-child/images/slider/1.jpg" />
 					</div>

@@ -420,6 +420,16 @@
 			//'desc' => __( 'Check this box to make the page fullwidth', 'cmb2' ),
 			'id'   => $prefix . '_rescue',
 			'type' => 'text',
+			'show_on_cb' => function( $cmb ) {
+				// Hide this field for the 'rehome' post type
+				if ( isset( $_GET['post'] ) ) {
+					$post_id = $_GET['post'];
+					return get_post_type( $post_id ) !== 'rehome';
+				} elseif ( isset( $_GET['post_type'] ) && $_GET['post_type'] === 'rehome' ) {
+					return false;
+				}
+				return true;
+			},
 		) );
 		$cmb_demo2->add_field( array(
 			'name' => __( 'Good With Other Dogs', 'cmb2' ),
