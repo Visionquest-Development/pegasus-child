@@ -12,7 +12,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Lato:wght@300;400;700&display=swap');
 
-/* 
+/*
  * Organize Plus Color Scheme
  * Primary: #4CAF50 (Fresh Green - represents cleanliness & organization)
  * Secondary: #2196F3 (Trust Blue - professional & reliable)
@@ -30,6 +30,7 @@
     --background-light: #F5F5F5;
     --white: #ffffff;
     --border-color: #e0e0e0;
+    --navbar-background: #2d5c88;
 }
 
 body {
@@ -81,26 +82,7 @@ h1, h2, h3, h4, h5, h6 {
 ~~~~~~ NAVIGATION ~~~~~
 ~~~~~~~~~~~~~~~~~~~~~*/
 
-.navbar {
-    background: var(--white);
-}
 
-.navbar-nav .nav-link {
-    color: var(--text-color);
-    font-weight: 500;
-    padding: 0.75rem 1.25rem;
-    transition: all 0.3s ease;
-}
-
-.navbar-nav .nav-link:hover {
-    color: var(--primary-color);
-    transform: translateY(-2px);
-}
-
-.navbar-nav .nav-link.active {
-    color: var(--primary-color);
-    font-weight: 600;
-}
 
 .btn-primary,
 .btn-primary:not(:disabled):not(.disabled):active {
@@ -144,8 +126,8 @@ h1, h2, h3, h4, h5, h6 {
 footer {
     background: var(--text-color);
     color: var(--white);
-    padding: 3rem 0 1rem;
-    margin-top: 4rem;
+    padding: 3rem 0 0;
+    margin-top: 1rem;
 }
 
 footer h3, footer h4 {
@@ -534,7 +516,7 @@ textarea.form-control {
     .hero-section h1 {
         font-size: 2.5rem;
     }
-    
+
     .section-title h2 {
         font-size: 2.2rem;
     }
@@ -546,31 +528,31 @@ textarea.form-control {
         padding-left: 1rem;
     }
 }
-    
+
 @media only screen and (max-width: 980px) {
     .hero-section {
         padding: 3rem 0;
     }
-    
+
     .hero-section h1 {
         font-size: 2.2rem;
     }
-    
+
     .hero-section .lead {
         font-size: 1.1rem;
     }
-    
+
     .services-section,
     .features-section,
     .testimonials-section,
     .contact-section {
         padding: 3rem 0;
     }
-    
+
     .section-title h2 {
         font-size: 2rem;
     }
-    
+
     .service-card {
         margin-bottom: 2rem;
     }
@@ -580,37 +562,37 @@ textarea.form-control {
     .hero-section h1 {
         font-size: 1.8rem;
     }
-    
+
     .hero-section .lead {
         font-size: 1rem;
     }
-    
+
     .section-title h2 {
         font-size: 1.7rem;
     }
-    
+
     .service-card {
         padding: 2rem;
     }
-    
+
     .service-icon {
         font-size: 3rem;
     }
-    
+
     .feature-item {
         flex-direction: column;
         text-align: center;
     }
-    
+
     .feature-icon {
         margin-right: 0;
         margin-bottom: 1rem;
     }
-    
+
     .cta-section h2 {
         font-size: 1.8rem;
     }
-    
+
     .navbar-nav .nav-link {
         padding: 0.5rem 1rem;
     }
@@ -620,22 +602,22 @@ textarea.form-control {
     .hero-section {
         padding: 2rem 0;
     }
-    
+
     .hero-section h1 {
         font-size: 1.5rem;
     }
-    
+
     .btn-primary,
     .btn-secondary,
     .btn-light {
         padding: 0.6rem 1.5rem;
         font-size: 0.95rem;
     }
-    
+
     .service-card {
         padding: 1.5rem;
     }
-    
+
     .testimonial-card {
         padding: 1.5rem;
     }
