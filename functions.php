@@ -73,8 +73,8 @@
 		wp_enqueue_script( 'parallax_js', get_stylesheet_directory_uri() . '/js/parallax.js', array(), '', true );
 		
 		// if(is_page( '69' )) wp_enqueue_script( 'overflow_android_js', get_stylesheet_directory_uri() . '/js/overflow-android.min.js', array('jquery'), '', true );
-		//if(is_page( '69' )) wp_enqueue_script( 'foundation_js', '//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.0/js/foundation.min.js', array(), '', true );
-		//if(is_page( '69' )) wp_enqueue_script( 'hammer_js', '//cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.6/hammer.min.js', array(), '', true );
+		//if(is_page( '69' )) wp_enqueue_script( 'foundation_js', '//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/js/foundation.min.js', array(), '', true );
+		//if(is_page( '69' )) wp_enqueue_script( 'hammer_js', '//cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js', array(), '', true );
 		
 		wp_enqueue_script( 'matchHeight_js', get_stylesheet_directory_uri() . '/js/jquery.matchHeight-min.js', array(), '', true );
 		
@@ -90,8 +90,8 @@
 		//if(is_page( '2588' )) wp_enqueue_script( 'stripe_custom_js', get_stylesheet_directory_uri() . '/js/stripe.js', array(), '', true );
 		//if(is_page( '2588' )) wp_enqueue_script( 'stripe_js', 'https://js.stripe.com/v3', array(), '', false );
 		
-		wp_enqueue_script('gsap-js', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/gsap.min.js', array(), null, true);
-		wp_enqueue_script('gsap-scrolltrigger', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/ScrollTrigger.min.js', array(), null, true);
+		wp_enqueue_script('gsap-js', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js', array(), null, true);
+		wp_enqueue_script('gsap-scrolltrigger', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js', array(), null, true);
 		
 	} //end function
 	add_action( 'wp_enqueue_scripts', 'pegasus_child_bootstrap_js' );
