@@ -39,7 +39,7 @@ function pegasus_child_enqueue_styles() {
 	// Bootstrap Icons
 	wp_enqueue_style(
 		'bootstrap-icons',
-		'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css',
+		'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.css',
 		array(),
 		'1.11.3'
 	);
