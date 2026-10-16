@@ -120,8 +120,17 @@ if ( 'header-three' === $header_choice ) {
 		</div><!--end row -->
 	</div><!-- end container -->
 
+	<?php // Legacy hardcoded template parts ?>
+	<?php get_template_part( 'templates/make-ready/silverchase' ); ?>
+	<?php get_template_part( 'templates/make-ready/greg-michell' ); ?>
+	<?php get_template_part( 'templates/make-ready/woodstock' ); ?>
+
+	<?php
+	$oak_projects = get_post_meta( get_the_ID(), 'oak_projects_group', true );
+
+	if ( ! empty( $oak_projects ) ) :
+	?>
 	<!-- Make Ready Project Navigation -->
-	<?php $mr_img_path = get_stylesheet_directory_uri() . '/images/make-ready'; ?>
 	<section class="service-feature-section py-5 oak-section-light">
 		<div class="container">
 			<div class="row mb-3">
@@ -133,36 +142,86 @@ if ( 'header-three' === $header_choice ) {
 			</div>
 			<div class="gallery-cta-grid">
 				<div class="row g-4">
+					<?php foreach ( $oak_projects as $project ) :
+						if ( empty( $project['project_name'] ) ) continue;
+						$anchor = oak_project_anchor( $project['project_name'] );
+						$cover  = ! empty( $project['cover_image'] ) ? $project['cover_image'] : '';
+					?>
 					<div class="col-lg-4 col-md-6">
-						<a class="gallery-cta-card gallery-cta-card--sm" href="#silverchase-make-ready" style="background-image: url('<?php echo $mr_img_path; ?>/silverchase-aaron-alona/after/after-018.jpg');">
+						<a class="gallery-cta-card gallery-cta-card--sm" href="#<?php echo esc_attr( $anchor ); ?>" <?php if ( $cover ) : ?>style="background-image: url('<?php echo esc_url( $cover ); ?>');"<?php endif; ?>>
 							<span class="gallery-cta-overlay"></span>
-							<span class="gallery-cta-title">Silverchase</span>
+							<span class="gallery-cta-title"><?php echo esc_html( $project['project_name'] ); ?></span>
 						</a>
 					</div>
-					<div class="col-lg-4 col-md-6">
-						<a class="gallery-cta-card gallery-cta-card--sm" href="#greg-michell-make-ready" style="background-image: url('<?php echo $mr_img_path; ?>/greg-michell/after/after-18.jpg');">
-							<span class="gallery-cta-overlay"></span>
-							<span class="gallery-cta-title">Roswell</span>
-						</a>
-					</div>
-					<div class="col-lg-4 col-md-6">
-						<a class="gallery-cta-card gallery-cta-card--sm" href="#woodstock-make-ready" style="background-image: url('<?php echo $mr_img_path; ?>/woodstock-jc-jennifer/after/after-18.jpg');">
-							<span class="gallery-cta-overlay"></span>
-							<span class="gallery-cta-title">Woodstock</span>
-						</a>
-					</div>
+					<?php endforeach; ?>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<?php //get_template_part( 'templates/make-ready/gallery' ); ?>
+	<!-- Make Ready Project Sections -->
+	<?php
+	$alt_bg = false;
+	foreach ( $oak_projects as $project ) :
+		if ( empty( $project['project_name'] ) ) continue;
+		$anchor        = oak_project_anchor( $project['project_name'] );
+		$gallery       = ! empty( $project['gallery_images'] ) ? $project['gallery_images'] : array();
+		$before_images = ! empty( $project['before_images'] ) ? $project['before_images'] : array();
+		$after_images  = ! empty( $project['after_images'] ) ? $project['after_images'] : array();
+		$section_class = $alt_bg ? ' section-alt-bg' : '';
+		$alt_bg = ! $alt_bg;
+	?>
+	<section id="<?php echo esc_attr( $anchor ); ?>" class="interior-section py-5<?php echo $section_class; ?>">
+		<div class="container">
+			<div class="row mb-4">
+				<div class="col-12">
+					<h2><?php echo esc_html( $project['project_name'] ); ?></h2>
+				</div>
+			</div>
 
-	<?php get_template_part( 'templates/make-ready/silverchase' ); ?>
+			<?php if ( ! empty( $gallery ) ) : ?>
+			<div class="row mb-4">
+				<div class="col-12">
+					<h3>Progress Photos</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<?php oak_render_masonry_gallery( $gallery, $anchor . '-gallery', $project['project_name'] . ' - Progress' ); ?>
+				</div>
+			</div>
+			<?php endif; ?>
 
-	<?php get_template_part( 'templates/make-ready/greg-michell' ); ?>
+			<?php if ( ! empty( $before_images ) ) : ?>
+			<div class="row mt-5 mb-4">
+				<div class="col-12">
+					<h3>Before Photos</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<?php oak_render_masonry_gallery( $before_images, $anchor . '-before', $project['project_name'] . ' - Before' ); ?>
+				</div>
+			</div>
+			<?php endif; ?>
 
-	<?php get_template_part( 'templates/make-ready/woodstock' ); ?>
+			<?php if ( ! empty( $after_images ) ) : ?>
+			<div class="row mt-5 mb-4">
+				<div class="col-12">
+					<h3>After Photos</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<?php oak_render_masonry_gallery( $after_images, $anchor . '-after', $project['project_name'] . ' - After' ); ?>
+				</div>
+			</div>
+			<?php endif; ?>
+		</div>
+	</section>
+	<?php endforeach; ?>
+
+	<?php endif; ?>
 
 
 </div><!-- end page wrap -->

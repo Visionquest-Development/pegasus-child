@@ -119,8 +119,15 @@ if ( 'header-three' === $header_choice ) {
 		</div><!--end row -->
 	</div><!-- end container -->
 
+	<?php // Legacy hardcoded template parts ?>
+	<?php get_template_part( 'templates/commercial/cpd' ); ?>
+
+	<?php
+	$oak_projects = get_post_meta( get_the_ID(), 'oak_projects_group', true );
+
+	if ( ! empty( $oak_projects ) ) :
+	?>
 	<!-- Commercial Project Navigation -->
-	<?php $com_img_path = get_stylesheet_directory_uri() . '/images/Commercial/CPD'; ?>
 	<section class="service-feature-section py-5 oak-section-light">
 		<div class="container">
 			<div class="row mb-3">
@@ -132,18 +139,52 @@ if ( 'header-three' === $header_choice ) {
 			</div>
 			<div class="gallery-cta-grid">
 				<div class="row g-4">
+					<?php foreach ( $oak_projects as $project ) :
+						if ( empty( $project['project_name'] ) ) continue;
+						$anchor = oak_project_anchor( $project['project_name'] );
+						$cover  = ! empty( $project['cover_image'] ) ? $project['cover_image'] : '';
+					?>
 					<div class="col-lg-4 col-md-6">
-						<a class="gallery-cta-card gallery-cta-card--sm" href="#cpd-commercial" style="background-image: url('<?php echo $com_img_path; ?>/1.jpg');">
+						<a class="gallery-cta-card gallery-cta-card--sm" href="#<?php echo esc_attr( $anchor ); ?>" <?php if ( $cover ) : ?>style="background-image: url('<?php echo esc_url( $cover ); ?>');"<?php endif; ?>>
 							<span class="gallery-cta-overlay"></span>
-							<span class="gallery-cta-title">CPD</span>
+							<span class="gallery-cta-title"><?php echo esc_html( $project['project_name'] ); ?></span>
 						</a>
 					</div>
+					<?php endforeach; ?>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<?php get_template_part( 'templates/commercial/cpd' ); ?>
+	<!-- Commercial Project Sections -->
+	<?php
+	$alt_bg = false;
+	foreach ( $oak_projects as $project ) :
+		if ( empty( $project['project_name'] ) ) continue;
+		$anchor      = oak_project_anchor( $project['project_name'] );
+		$gallery     = ! empty( $project['gallery_images'] ) ? $project['gallery_images'] : array();
+		$section_class = $alt_bg ? ' section-alt-bg' : '';
+		$alt_bg = ! $alt_bg;
+	?>
+	<section id="<?php echo esc_attr( $anchor ); ?>" class="interior-section py-5<?php echo $section_class; ?>">
+		<div class="container">
+			<div class="row mb-4">
+				<div class="col-12">
+					<h2><?php echo esc_html( $project['project_name'] ); ?></h2>
+				</div>
+			</div>
+			<?php if ( ! empty( $gallery ) ) : ?>
+			<div class="row">
+				<div class="col-12">
+					<?php oak_render_masonry_gallery( $gallery, $anchor . '-gallery', $project['project_name'] ); ?>
+				</div>
+			</div>
+			<?php endif; ?>
+		</div>
+	</section>
+	<?php endforeach; ?>
+
+	<?php endif; ?>
 
 </div><!-- end page wrap -->
 

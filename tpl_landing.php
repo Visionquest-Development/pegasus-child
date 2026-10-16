@@ -25,7 +25,7 @@ if ( 'header-three' === $header_choice ) {
 				</a>
 
 				<h1 class="display-3 fw-bold text-uppercase oak-gradient-text">
-					Roofing and Construction
+					Roofing, Remodeling &amp; Renovations
 				</h1>
 
 				<div class="oak-divider"></div>
@@ -35,11 +35,11 @@ if ( 'header-three' === $header_choice ) {
 				</p>
 
 				<h2 class="fw-bold mb-4">
-					Roofing &bull; Siding &bull; Exteriors
+					Interior &bull; Exterior &bull; Whole-Home
 				</h2>
 
 				<p class="fs-5 mb-4 mx-auto" style="max-width: 760px;">
-					34 Oak Contracting provides quality roofing, exterior upgrades, and home improvement services across North Georgia. From roof replacement and repairs to siding, windows, concrete, fencing, and painting, we help homeowners improve curb appeal, protect their investment, and get work done right.
+					34 Oak Contracting provides quality construction, remodeling, and home improvement services across North Georgia. Whether you're upgrading the inside of your home or improving curb appeal outside, we help homeowners get the job done right.
 				</p>
 
 				<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="btn oak-btn me-2 mb-2">Request a Free Estimate</a>
@@ -50,96 +50,50 @@ if ( 'header-three' === $header_choice ) {
 		<img class="oak-landing-house d-block mx-auto mb-3" src="<?php echo esc_url( get_stylesheet_directory_uri() . '/images/house-only.png' ); ?>" alt="Home upgrades">
 
 
-		<!-- SERVICES -->
+		<!-- CHOOSE YOUR PROJECT -->
 		<div class="container py-5">
 			<div class="text-center mb-5">
-				<h2 class="fw-bold text-uppercase oak-gradient-text">Our Services</h2>
-				<p class="text-white-50">Roofing, siding, windows, concrete, fencing, and painting.</p>
+				<h2 class="fw-bold text-uppercase oak-gradient-text">What Can We Build For You?</h2>
+				<p class="text-white-50">Explore our interior and exterior services.</p>
 			</div>
 
-			<div class="row g-4">
-				<div class="col-md-6 col-lg-4">
-					<div class="oak-card p-4">
+			<div class="row g-4 justify-content-center">
+				<div class="col-md-6">
+					<a href="<?php echo esc_url( home_url( '/interior-landing/' ) ); ?>" class="oak-card oak-card-link p-4 h-100 d-block text-decoration-none text-white">
+						<div class="oak-icon"><i class="fa fa-cutlery" aria-hidden="true"></i></div>
+						<h3 class="h3 fw-bold text-uppercase oak-gradient-text">Interior Services</h3>
+						<p class="text-white-50">
+							Kitchens, bathrooms, flooring, painting, trim, and drywall &mdash; transform the spaces you live in every day.
+						</p>
+						<ul>
+							<li>Kitchen Remodels</li>
+							<li>Bathroom Remodels</li>
+							<li>Flooring</li>
+							<li>Interior Painting</li>
+							<li>Trim &amp; Millwork</li>
+							<li>Drywall &amp; Repairs</li>
+						</ul>
+						<span class="btn oak-btn mt-3">View Interior Services</span>
+					</a>
+				</div>
+
+				<div class="col-md-6">
+					<a href="<?php echo esc_url( home_url( '/exterior-landing/' ) ); ?>" class="oak-card oak-card-link p-4 h-100 d-block text-decoration-none text-white">
 						<div class="oak-icon"><i class="fa fa-home" aria-hidden="true"></i></div>
-						<h3 class="h4 fw-bold">Roofing</h3>
+						<h3 class="h3 fw-bold text-uppercase oak-gradient-text">Exterior Services</h3>
+						<p class="text-white-50">
+							Roofing, siding, windows, concrete, fencing, and painting &mdash; protect your investment and improve curb appeal.
+						</p>
 						<ul>
-							<li>Full roof replacement</li>
-							<li>Roof repairs</li>
-							<li>Architectural shingles</li>
-							<li>Metal roofing options</li>
-							<li>Fascia &amp; gutter repairs</li>
+							<li>Roofing</li>
+							<li>Siding</li>
+							<li>Windows</li>
+							<li>Concrete</li>
+							<li>Fencing</li>
+							<li>Exterior Painting</li>
 						</ul>
-					</div>
-				</div>
-
-				<div class="col-md-6 col-lg-4">
-					<div class="oak-card p-4">
-						<div class="oak-icon"><i class="fa fa-th-large" aria-hidden="true"></i></div>
-						<h3 class="h4 fw-bold">Siding</h3>
-						<ul>
-							<li>Fiber cement siding</li>
-							<li>Vinyl siding</li>
-							<li>Trim &amp; soffit</li>
-							<li>Insulated siding</li>
-							<li>Increase home value</li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="col-md-6 col-lg-4">
-					<div class="oak-card p-4">
-						<div class="oak-icon"><i class="fa fa-th" aria-hidden="true"></i></div>
-						<h3 class="h4 fw-bold">Windows</h3>
-						<ul>
-							<li>Energy efficient options</li>
-							<li>Reduce drafts</li>
-							<li>Modern styles</li>
-							<li>Lower energy bills</li>
-							<li>Increase home value</li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="col-md-6 col-lg-4">
-					<div class="oak-card p-4">
-						<div class="oak-icon"><i class="fa fa-square-o" aria-hidden="true"></i></div>
-						<h3 class="h4 fw-bold">Concrete</h3>
-						<ul>
-							<li>Driveways</li>
-							<li>Patios &amp; walkways</li>
-							<li>Garage slabs</li>
-							<li>Stamped concrete</li>
-							<li>Decorative finishes</li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="col-md-6 col-lg-4">
-					<div class="oak-card p-4">
-						<div class="oak-icon"><i class="fa fa-bars" aria-hidden="true"></i></div>
-						<h3 class="h4 fw-bold">Fencing</h3>
-						<ul>
-							<li>Privacy fences</li>
-							<li>Wood fences</li>
-							<li>Split rail fences</li>
-							<li>Aluminum fences</li>
-							<li>Custom gates</li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="col-md-6 col-lg-4">
-					<div class="oak-card p-4">
-						<div class="oak-icon"><i class="fa fa-paint-brush" aria-hidden="true"></i></div>
-						<h3 class="h4 fw-bold">Painting</h3>
-						<ul>
-							<li>Exterior painting</li>
-							<li>Trim &amp; soffit</li>
-							<li>Fiber cement siding painting</li>
-							<li>Interior painting</li>
-							<li>Cabinet painting &amp; refinishing</li>
-						</ul>
-					</div>
+						<span class="btn oak-btn mt-3">View Exterior Services</span>
+					</a>
 				</div>
 			</div>
 		</div>

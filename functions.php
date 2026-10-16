@@ -138,6 +138,194 @@
 
 
 	/*============================
+	======= Project Sections Metabox (CMB2) ========
+	============================*/
+
+	/**
+	 * Repeatable Project Sections – shown on Interior, Exterior, Make Ready & Commercial templates.
+	 * Each project entry holds a name, cover image (for nav cards), and file_list galleries.
+	 */
+	add_action( 'cmb2_admin_init', 'oak_project_sections_metabox' );
+	function oak_project_sections_metabox() {
+		$prefix = 'oak_projects_';
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Project Sections', 'pegasus-bootstrap' ),
+			'object_types' => array( 'page' ),
+			'show_on'      => array(
+				'key'   => 'page-template',
+				'value' => array(
+					'tpl_interior.php',
+					'tpl_exterior.php',
+					'tpl_makeready.php',
+					'tpl_commercial.php',
+				),
+			),
+			'context'  => 'normal',
+			'priority' => 'high',
+		) );
+
+		$group_id = $cmb->add_field( array(
+			'id'          => $prefix . 'group',
+			'type'        => 'group',
+			'description' => __( 'Add project sections. Each project appears as its own section on the page with a navigation card at the top.', 'pegasus-bootstrap' ),
+			'options'     => array(
+				'group_title'   => __( 'Project {#}', 'pegasus-bootstrap' ),
+				'add_button'    => __( 'Add Another Project', 'pegasus-bootstrap' ),
+				'remove_button' => __( 'Remove Project', 'pegasus-bootstrap' ),
+				'sortable'      => true,
+				'closed'        => true,
+			),
+		) );
+
+		$cmb->add_group_field( $group_id, array(
+			'name' => __( 'Project Name', 'pegasus-bootstrap' ),
+			'id'   => 'project_name',
+			'type' => 'text',
+		) );
+
+		$cmb->add_group_field( $group_id, array(
+			'name'         => __( 'Cover Image', 'pegasus-bootstrap' ),
+			'desc'         => __( 'Thumbnail for the navigation card at the top of the page.', 'pegasus-bootstrap' ),
+			'id'           => 'cover_image',
+			'type'         => 'file',
+			'options'      => array( 'url' => false ),
+			'query_args'   => array( 'type' => array( 'image/gif', 'image/jpeg', 'image/png' ) ),
+			'preview_size' => 'medium',
+		) );
+
+		$cmb->add_group_field( $group_id, array(
+			'name'         => __( 'Gallery Images', 'pegasus-bootstrap' ),
+			'desc'         => __( 'Main gallery images displayed in a masonry grid.', 'pegasus-bootstrap' ),
+			'id'           => 'gallery_images',
+			'type'         => 'file_list',
+			'query_args'   => array( 'type' => 'image' ),
+			'preview_size' => 'medium',
+		) );
+
+		$cmb->add_group_field( $group_id, array(
+			'name'         => __( 'Before Images', 'pegasus-bootstrap' ),
+			'desc'         => __( 'Before photos displayed in their own masonry grid (optional).', 'pegasus-bootstrap' ),
+			'id'           => 'before_images',
+			'type'         => 'file_list',
+			'query_args'   => array( 'type' => 'image' ),
+			'preview_size' => 'medium',
+		) );
+
+		$cmb->add_group_field( $group_id, array(
+			'name'         => __( 'After Images', 'pegasus-bootstrap' ),
+			'desc'         => __( 'After photos displayed in their own masonry grid (optional).', 'pegasus-bootstrap' ),
+			'id'           => 'after_images',
+			'type'         => 'file_list',
+			'query_args'   => array( 'type' => 'image' ),
+			'preview_size' => 'medium',
+		) );
+	}
+
+	/**
+	 * Before & After Comparison Sliders – shown on Interior & Exterior templates.
+	 * Each entry is one image-diff slider pair. Entries sharing the same Section Name
+	 * are grouped under a single heading in the front-end output.
+	 */
+	add_action( 'cmb2_admin_init', 'oak_ba_comparisons_metabox' );
+	function oak_ba_comparisons_metabox() {
+		$prefix = 'oak_ba_';
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Before & After Comparison Sliders', 'pegasus-bootstrap' ),
+			'object_types' => array( 'page' ),
+			'show_on'      => array(
+				'key'   => 'page-template',
+				'value' => array(
+					'tpl_interior.php',
+					'tpl_exterior.php',
+				),
+			),
+			'context'  => 'normal',
+			'priority' => 'high',
+		) );
+
+		$group_id = $cmb->add_field( array(
+			'id'          => $prefix . 'group',
+			'type'        => 'group',
+			'description' => __( 'Add before/after comparison sliders. Pairs with the same Section Name are grouped under one heading.', 'pegasus-bootstrap' ),
+			'options'     => array(
+				'group_title'   => __( 'Comparison {#}', 'pegasus-bootstrap' ),
+				'add_button'    => __( 'Add Another Comparison', 'pegasus-bootstrap' ),
+				'remove_button' => __( 'Remove Comparison', 'pegasus-bootstrap' ),
+				'sortable'      => true,
+				'closed'        => true,
+			),
+		) );
+
+		$cmb->add_group_field( $group_id, array(
+			'name' => __( 'Section Name', 'pegasus-bootstrap' ),
+			'desc' => __( 'Pairs with the same name appear under one heading (e.g. "Canton - Kitchen Renovation").', 'pegasus-bootstrap' ),
+			'id'   => 'section_name',
+			'type' => 'text',
+		) );
+
+		$cmb->add_group_field( $group_id, array(
+			'name'         => __( 'Before Image', 'pegasus-bootstrap' ),
+			'id'           => 'before_image',
+			'type'         => 'file',
+			'options'      => array( 'url' => false ),
+			'query_args'   => array( 'type' => array( 'image/gif', 'image/jpeg', 'image/png' ) ),
+			'preview_size' => 'medium',
+		) );
+
+		$cmb->add_group_field( $group_id, array(
+			'name'         => __( 'After Image', 'pegasus-bootstrap' ),
+			'id'           => 'after_image',
+			'type'         => 'file',
+			'options'      => array( 'url' => false ),
+			'query_args'   => array( 'type' => array( 'image/gif', 'image/jpeg', 'image/png' ) ),
+			'preview_size' => 'medium',
+		) );
+	}
+
+	/*============================
+	======= Project Rendering Helpers ========
+	============================*/
+
+	/**
+	 * Render a masonry gallery from a CMB2 file_list array.
+	 *
+	 * @param array  $images        Associative array of attachment_id => url from file_list.
+	 * @param string $lightbox_group Lightbox group identifier.
+	 * @param string $lightbox_title Default title for lightbox captions.
+	 */
+	function oak_render_masonry_gallery( $images, $lightbox_group = 'gallery', $lightbox_title = '' ) {
+		if ( empty( $images ) || ! is_array( $images ) ) {
+			return;
+		}
+
+		$output = '[masonry]';
+		foreach ( $images as $attachment_id => $url ) {
+			$alt = get_post_meta( $attachment_id, '_wp_attachment_image_alt', true );
+			$title = $lightbox_title ? $lightbox_title : ( $alt ? $alt : 'Project Photo' );
+			$output .= '<a href="' . esc_url( $url ) . '" data-lightbox="' . esc_attr( $lightbox_group ) . '" data-title="' . esc_attr( $title ) . '" class="wow fadeIn">';
+			$output .= '<img src="' . esc_url( $url ) . '">';
+			$output .= '</a>';
+		}
+		$output .= '[/masonry]';
+
+		echo do_shortcode( $output );
+	}
+
+	/**
+	 * Generate a URL-friendly anchor slug from a project name.
+	 *
+	 * @param string $name Project name.
+	 * @return string Sanitized anchor slug.
+	 */
+	function oak_project_anchor( $name ) {
+		return sanitize_title( $name );
+	}
+
+	/*============================
 	======= Gallery Post Type ========
 	============================*/
 
