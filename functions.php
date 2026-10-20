@@ -1064,13 +1064,6 @@
 		  $diffDays  += $cyclesBack * $cycleDays;
 		}
 		$windowIndex = (int) floor($diffDays / $cycleDays);
-		$tierIndex   = $windowIndex % count($tiers);
-		$promo       = $tiers[$tierIndex] ?? null;
-		if (!$promo) return;
-
-		$percent = (int)($promo['percent'] ?? 0);
-		$code    = (string)($promo['code'] ?? '');
-		if ($percent <= 0 || $code === '') return;
 
 		// Current window start (for daily decrement)
 		$windowStart = clone $anchor;
@@ -1088,20 +1081,10 @@
 		echo '<div class="qbiq-year qbiq-gradient">2026</div>';
 		echo '<div class="qbiq-title qbiq-gradient">OPENING DRIVE</div>';
 
-		echo '<span class="qbiq-title qbiq-gradient">' . $esc($percent) . '% OFF</span>';
-		echo '<br>';
-
-		// ⬇️ Replaced the old "ENDS ..." line with your copy + dynamic counter
-		echo '<span class="qbiq-callout">For next ' . $esc($spotsTotal) . ' registrations.</span>';
+		// Game Film Breakdown offer (replaces the old discount promo)
+		echo '<span class="qbiq-callout">The first ' . $esc($spotsTotal) . ' to sign up get a 1-on-1 game film video breakdown with<br>Coach Hixson.</span>';
 		echo '<br>';
 		echo '<span class="qbiq-callout">' . $esc($spotsLeft) . '/' . $esc($spotsTotal) . ' spots left</span>';
-
-		//echo '<div class="qbiq-sub">QUARTERBACKS ONLY</div>';
-
-		echo '<div class="qbiq-promo mt-2" role="status" aria-live="polite">';
-		  echo '<span class="text-1">Use code </span>';
-		  echo '<code class="code-block">' . $esc($code) . '</code>';
-		echo '</div>';
 	  }
 	}
 
@@ -1153,7 +1136,6 @@
 			  </div>
 			  
 			  <div class="modal-footer">
-				<button type="button" id="promoCopyBtn" class="btn btn-outline-secondary">Copy code</button>
 				<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Got it</button>
 				<button type="button" id="promoHide7dBtn" class="btn btn-link ms-auto" data-bs-dismiss="modal" style="text-decoration:none">
 				  Don’t show for 7 days
@@ -1183,22 +1165,6 @@
 		  window.setTimeout(function() {
 			modal.show();
 		  }, 800);
-
-		  // Copy code button
-		  const copyBtn = document.getElementById('promoCopyBtn');
-		  if (copyBtn) {
-			copyBtn.addEventListener('click', function() {
-			  const codeEl = modalEl.querySelector('#homePromoModal .code-block');
-			  const text = codeEl ? codeEl.textContent.trim() : '';
-			  if (!text) return;
-			  if (navigator.clipboard && navigator.clipboard.writeText) {
-				navigator.clipboard.writeText(text).then(function() {
-				  copyBtn.textContent = 'Copied!';
-				  setTimeout(function(){ copyBtn.textContent = 'Copy code'; }, 1500);
-				});
-			  }
-			});
-		  }
 
 		  // Hide for 7 days
 		  const hide7Btn = document.getElementById('promoHide7dBtn');
