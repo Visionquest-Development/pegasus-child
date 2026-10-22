@@ -1,0 +1,92 @@
+{
+ "hero-family": {
+  "alt": "Family with a child on a parent's shoulders watching the sunset by a lake",
+  "width": 1600,
+  "height": 880,
+  "sizes": [
+   1600,
+   800
+  ],
+  "role": "home hero",
+  "ext": "jpg",
+  "source": "https://insuranceguyjoe.com/wp-content/uploads/2024/01/iStock-1159499688.jpg"
+ },
+ "og-share": {
+  "alt": "Insurance Guy Joe",
+  "width": 1200,
+  "height": 630,
+  "sizes": [],
+  "role": "Open Graph share image",
+  "ext": "jpg",
+  "source": "https://insuranceguyjoe.com/wp-content/uploads/2024/01/iStock-1159499688.jpg"
+ },
+ "consultation": {
+  "alt": "A couple reviewing health coverage options with an advisor",
+  "width": 1000,
+  "height": 750,
+  "sizes": [
+   1000,
+   560
+  ],
+  "role": "about / services / contact",
+  "ext": "jpg",
+  "source": "https://insuranceguyjoe.com/wp-content/uploads/2024/01/iStock-872557702-scaled.jpg"
+ },
+ "page-hero": {
+  "alt": "",
+  "width": 1600,
+  "height": 900,
+  "sizes": [
+   1600,
+   800
+  ],
+  "role": "inner page hero background",
+  "ext": "jpg",
+  "source": "https://insuranceguyjoe.com/wp-content/uploads/2024/01/iStock-872557702-scaled.jpg"
+ },
+ "joe-avena": {
+  "alt": "Joe Avena, Insurance Guy Joe",
+  "width": 155,
+  "height": 200,
+  "sizes": [
+   155
+  ],
+  "role": "headshot (TODO: high-res photo)",
+  "ext": "jpg",
+  "source": "https://insuranceguyjoe.com/wp-content/uploads/2024/01/Joe-Avena-headshot.jpg"
+ },
+ "igj-logo": {
+  "alt": "Insurance Guy Joe Solutions \u2013 Affordable Health Coverage",
+  "width": 300,
+  "height": 87,
+  "sizes": [
+   300
+  ],
+  "role": "header logo",
+  "ext": "png",
+  "source": "https://insuranceguyjoe.com/wp-content/uploads/2024/01/TRANSPARENCY-1.png"
+ },
+ "igj-logo-white": {
+  "alt": "Insurance Guy Joe Solutions",
+  "width": 171,
+  "height": 51,
+  "sizes": [
+   171
+  ],
+  "role": "footer logo",
+  "ext": "png",
+  "source": "https://insuranceguyjoe.com/wp-content/uploads/2024/01/Ins-Guy-Joe-Logo-TRANSPARENCY_WHITE.png"
+ },
+ "carrier-logos": {
+  "alt": "Carrier logos: Oscar, BlueCross BlueShield, Aetna, Cigna, UnitedHealthcare, Ambetter",
+  "width": 1088,
+  "height": 88,
+  "sizes": [
+   1088,
+   600
+  ],
+  "role": "carriers strip (TODO confirm appointments)",
+  "ext": "png",
+  "source": "https://insuranceguyjoe.com/wp-content/uploads/2024/02/Joe-Avena-logo-bar-FOOTER-FEB24.png"
+ }
+}

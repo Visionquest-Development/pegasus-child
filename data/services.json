@@ -1,0 +1,813 @@
+{
+ "_readme": "Service page copy. Keys are page slugs. Rendered by tpl_igj_service.php. HTML allowed in paragraphs/list items; root-relative links are converted to home_url(). {{todo:...}} renders a visible TODO badge.",
+ "order": [
+  "individual-family-health-insurance",
+  "self-employed-health-insurance",
+  "small-business-health-insurance",
+  "travel-nurse-health-insurance",
+  "realtor-health-insurance",
+  "early-retiree-health-insurance",
+  "turning-26-health-insurance",
+  "private-health-insurance",
+  "aca-marketplace-health-insurance",
+  "cobra-alternatives",
+  "health-insurance-for-1099",
+  "supplemental-insurance",
+  "dental-vision-insurance"
+ ],
+ "services": {
+  "individual-family-health-insurance": {
+   "slug": "individual-family-health-insurance",
+   "nav": "Individual & Family",
+   "icon": "fa-users",
+   "service_type": "Individual and family health insurance",
+   "title": "Individual & Family Health Insurance",
+   "lead": "Coverage for you, your spouse and your kids when you don’t get health insurance through a job, or when the job plan doesn’t fit your family.",
+   "summary": "Plans for individuals, couples and families buying coverage on their own.",
+   "seo_title": "Individual & Family Health Insurance Plans | Insurance Guy Joe",
+   "seo_desc": "Compare individual and family health insurance: ACA Marketplace plans, off-exchange plans and options for kids. Get a free quote from Joe Avena.",
+   "sections": [
+    {
+     "h": "Who individual and family coverage is for",
+     "p": [
+      "Individual and family plans are health insurance you buy for yourself instead of getting it through an employer. They’re common for people who are self-employed, between jobs, working part-time, retired before 65, or whose employer plan is too expensive to add a spouse and children to."
+     ],
+     "list": [
+      "Families whose employer doesn’t offer coverage, or offers it only for the employee",
+      "Couples where one spouse is self-employed or works for a small company",
+      "Parents looking for coverage for children only",
+      "Anyone who just moved, married, divorced or had a baby"
+     ]
+    },
+    {
+     "h": "Your main options",
+     "p": [
+      "Most individual and family coverage falls into two groups. <strong>ACA-compliant plans</strong> are sold on the Health Insurance Marketplace (HealthCare.gov or your state’s exchange) and also directly from insurers “off-exchange.” They must cover the ACA’s essential health benefits and can’t turn you down or charge more because of a pre-existing condition. <strong>Non-ACA private plans</strong> follow different rules: some are medically underwritten and may cost less for healthy people, but they can exclude pre-existing conditions and may not cover everything an ACA plan does.",
+      "The right fit depends on your household income, your family’s health, the doctors you want to keep and how much you’d rather pay up front versus when you use care."
+     ]
+    },
+    {
+     "h": "What to compare besides the monthly premium",
+     "list": [
+      "<strong>Deductible and out-of-pocket maximum:</strong> what you could pay in a bad year, not just a normal one",
+      "<strong>Network:</strong> whether your doctors, pediatrician and nearest hospital are in-network (see <a href=\"/learn/ppo-vs-hmo-vs-epo/\">PPO vs. HMO vs. EPO</a>)",
+      "<strong>Prescriptions:</strong> whether your family’s medications are on the plan’s drug list, and at what tier",
+      "<strong>Family deductible rules:</strong> how individual and family deductibles work together",
+      "<strong>Dental and vision for kids:</strong> pediatric dental is an essential health benefit, but it may be offered as a separate plan"
+     ]
+    },
+    {
+     "h": "When you can enroll",
+     "p": [
+      "ACA plans can be bought during the annual <a href=\"/learn/open-enrollment-guide/\">Open Enrollment Period</a>, or at other times if a qualifying life event gives you a Special Enrollment Period: losing other coverage, moving, getting married, or having or adopting a child, for example. Medicaid and CHIP accept applications all year."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Can I get a family plan if my employer only covers me?",
+     "a": "Yes. Family members can be covered on an individual-market plan even if you keep your job-based plan. If your employer offers family coverage, though, its cost affects whether your family qualifies for Marketplace premium tax credits, so it’s worth checking the numbers before you decide."
+    },
+    {
+     "q": "Will a pre-existing condition affect my price?",
+     "a": "Not on an ACA-compliant plan. Those plans can’t deny you or charge more because of your health; price is based on age, location, tobacco use, the plan you pick and who is covered. Medically underwritten private plans can consider health history."
+    },
+    {
+     "q": "Can I cover only my children?",
+     "a": "Yes. Child-only plans are available, and children in lower-income households may qualify for Medicaid or CHIP, which you can apply for at any time of year."
+    }
+   ],
+   "related": [
+    "self-employed-health-insurance",
+    "aca-marketplace-health-insurance",
+    "private-health-insurance",
+    "supplemental-insurance"
+   ],
+   "learn": [
+    "aca-vs-private-health-insurance",
+    "open-enrollment-guide"
+   ],
+   "parent": null
+  },
+  "self-employed-health-insurance": {
+   "slug": "self-employed-health-insurance",
+   "nav": "Self-Employed",
+   "icon": "fa-briefcase",
+   "service_type": "Health insurance for self-employed people",
+   "title": "Health Insurance for the Self-Employed",
+   "lead": "Running your own business means choosing your own health plan. Joe helps owners, freelancers and contractors find coverage that fits a variable income.",
+   "summary": "Coverage for business owners, freelancers and contractors without an employer plan.",
+   "seo_title": "Self-Employed Health Insurance | Insurance Guy Joe",
+   "seo_desc": "Health insurance options for self-employed people, freelancers and sole proprietors: ACA plans, private plans and the self-employed health insurance deduction.",
+   "sections": [
+    {
+     "h": "Why it’s different when you work for yourself",
+     "p": [
+      "Without an employer, nobody is splitting the premium with you, and your income may change from year to year. That affects which plans make sense and, for ACA Marketplace plans, how much financial help you qualify for, because premium tax credits are based on your estimated household income for the year."
+     ]
+    },
+    {
+     "h": "Common options for self-employed people",
+     "list": [
+      "<strong>ACA Marketplace plans:</strong> guaranteed coverage regardless of health, with premium tax credits for eligible incomes (see <a href=\"/services/aca-marketplace-health-insurance/\">ACA Marketplace</a>)",
+      "<strong>Off-exchange ACA plans:</strong> the same consumer protections, bought directly from an insurer (no tax credits)",
+      "<strong>Private, underwritten plans:</strong> may suit healthy applicants who want broader networks; read the limits carefully (see <a href=\"/services/private-health-insurance/\">private health insurance</a>)",
+      "<strong>A spouse’s employer plan:</strong> often worth comparing",
+      "<strong>Small group coverage:</strong> if you have employees, see <a href=\"/services/small-business-health-insurance/\">small business health insurance</a>"
+     ]
+    },
+    {
+     "h": "Taxes: the self-employed health insurance deduction",
+     "p": [
+      "If you have a net profit from self-employment and you aren’t eligible for an employer-subsidized plan (through your own job or your spouse’s), the IRS generally lets you deduct premiums for medical, dental and qualifying long-term care coverage for yourself, your spouse and dependents. The deduction has limits and interacts with any premium tax credit you receive, so confirm the details with your tax professional."
+     ]
+    },
+    {
+     "h": "Estimating income when it changes",
+     "p": [
+      "For Marketplace plans you estimate your income for the coming year. If it turns out higher or lower, the difference is reconciled on your tax return, and you may owe back some advance tax credit or get more back. Updating your Marketplace application when your income changes during the year helps avoid surprises."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Can I deduct my health insurance premiums if I’m self-employed?",
+     "a": "Often, yes. The IRS self-employed health insurance deduction generally applies if you have self-employment income and weren’t eligible for an employer-subsidized health plan for the months you claim. Your tax professional can confirm how it applies to you."
+    },
+    {
+     "q": "What income do I report for Marketplace savings?",
+     "a": "Marketplace savings use your estimated modified adjusted gross income (MAGI) for the year, which for business owners is generally based on net self-employment income after business expenses, not gross revenue."
+    },
+    {
+     "q": "Is a short-term plan a good idea for a freelancer?",
+     "a": "Short-term plans can fill a brief gap, but they are not ACA-compliant: they can exclude pre-existing conditions, cap benefits and skip services ACA plans must cover. Most self-employed people need a plan they can keep year-round."
+    }
+   ],
+   "related": [
+    "health-insurance-for-1099",
+    "small-business-health-insurance",
+    "aca-marketplace-health-insurance",
+    "realtor-health-insurance"
+   ],
+   "learn": [
+    "aca-vs-private-health-insurance",
+    "ppo-vs-hmo-vs-epo"
+   ],
+   "parent": null
+  },
+  "small-business-health-insurance": {
+   "slug": "small-business-health-insurance",
+   "nav": "Small Business",
+   "icon": "fa-building",
+   "service_type": "Small business group health insurance",
+   "title": "Small Business Health Insurance",
+   "lead": "Offering health benefits helps you hire and keep good people. Joe helps small employers compare group plans and other ways to help employees pay for coverage.",
+   "summary": "Group plans and health reimbursement options for small employers.",
+   "seo_title": "Small Business Health Insurance & Group Plans | Insurance Guy Joe",
+   "seo_desc": "Small business health insurance options: small group plans, SHOP, QSEHRA and ICHRA reimbursement arrangements, plus dental and vision. Free consultation.",
+   "sections": [
+    {
+     "h": "Ways a small business can offer health benefits",
+     "list": [
+      "<strong>Small group health plans:</strong> a traditional group policy; small-group plans are ACA-compliant and include essential health benefits",
+      "<strong>SHOP Marketplace plans:</strong> the Small Business Health Options Program; buying through SHOP is how eligible employers can claim the Small Business Health Care Tax Credit",
+      "<strong>QSEHRA:</strong> a Qualified Small Employer HRA for businesses with fewer than 50 full-time-equivalent employees and no group plan; you reimburse employees, tax-free, for individual coverage up to annual limits",
+      "<strong>ICHRA:</strong> an Individual Coverage HRA, available to employers of any size, that reimburses employees who buy their own individual coverage",
+      "<strong>Supplemental benefits:</strong> dental, vision and other voluntary coverage (see <a href=\"/services/supplemental-insurance/\">supplemental insurance</a>)"
+     ]
+    },
+    {
+     "h": "Things to decide up front",
+     "list": [
+      "How much of the premium you’ll contribute for employees, and for dependents",
+      "Which employees are eligible, and any waiting period",
+      "Whether employees need broad networks across several areas",
+      "Your budget for the year, and how predictable it needs to be"
+     ]
+    },
+    {
+     "h": "The Small Business Health Care Tax Credit",
+     "p": [
+      "Employers with fewer than 25 full-time-equivalent employees, average wages below an annually adjusted limit, who pay at least 50% of employee-only premiums and buy coverage through SHOP may qualify for a federal tax credit for up to two consecutive years. Eligibility rules are specific, so check with your tax professional."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "How many employees do I need for a group plan?",
+     "a": "It depends on the state and the insurer. Many small-group insurers require at least one non-owner employee (a business owned only by spouses may not qualify), and most also require a minimum share of eligible employees to enroll."
+    },
+    {
+     "q": "Do I have to offer health insurance?",
+     "a": "Under the ACA, the employer shared responsibility rules apply to “applicable large employers” with 50 or more full-time employees, including full-time equivalents. Smaller businesses aren’t federally required to offer coverage."
+    },
+    {
+     "q": "What is the difference between a QSEHRA and an ICHRA?",
+     "a": "Both reimburse employees for individual coverage. A QSEHRA is only for employers with fewer than 50 full-time-equivalent employees and has annual IRS limits. An ICHRA works for any size employer, has no federal dollar cap, and lets you set different allowances for certain classes of employees."
+    }
+   ],
+   "related": [
+    "self-employed-health-insurance",
+    "supplemental-insurance",
+    "dental-vision-insurance",
+    "realtor-health-insurance"
+   ],
+   "learn": [
+    "ppo-vs-hmo-vs-epo",
+    "aca-vs-private-health-insurance"
+   ],
+   "parent": null
+  },
+  "travel-nurse-health-insurance": {
+   "slug": "travel-nurse-health-insurance",
+   "nav": "Travel Nurses",
+   "icon": "fa-medkit",
+   "service_type": "Health insurance for travel nurses",
+   "title": "Health Insurance for Travel Nurses",
+   "lead": "Short contracts, different states and gaps between assignments make coverage tricky. Joe helps travel nurses and other traveling healthcare workers keep continuous coverage.",
+   "summary": "Coverage that follows you between contracts and across state lines.",
+   "seo_title": "Travel Nurse Health Insurance | Insurance Guy Joe",
+   "seo_desc": "Health insurance for travel nurses and traveling healthcare professionals: agency plans vs. your own plan, coverage between contracts and out-of-state networks.",
+   "sections": [
+    {
+     "h": "Agency coverage vs. your own plan",
+     "p": [
+      "Many staffing agencies offer health benefits, but coverage can start after a waiting period and may end soon after a contract does. If you change agencies often or take time off between assignments, that can mean repeated gaps, new deductibles and new networks.",
+      "Buying your own plan keeps one policy, one deductible and one set of doctors no matter which agency you work for. Some agencies offer a higher pay package or stipend if you decline their benefits; compare the two in dollars before you choose."
+     ]
+    },
+    {
+     "h": "Networks when you work in another state",
+     "p": [
+      "Individual-market plans are usually built around a network in the state where you buy them, often your tax home. HMOs and EPOs typically cover only emergencies outside that network. If you’ll be out of state for months at a time, ask whether a plan has a national or multi-state PPO network, how it handles non-emergency care while traveling, and whether telehealth is included. See <a href=\"/learn/ppo-vs-hmo-vs-epo/\">PPO vs. HMO vs. EPO</a>."
+     ]
+    },
+    {
+     "h": "Gaps between contracts",
+     "p": [
+      "Losing agency coverage is a qualifying life event, which generally gives you a 60-day Special Enrollment Period for a Marketplace plan. COBRA may also be offered by a larger agency. Planning before a contract ends is the easiest way to avoid a gap."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Which state should I buy a plan in as a travel nurse?",
+     "a": "Generally the state where you live and maintain your tax home, because individual plans are sold based on your residence. Talk to your tax advisor about your tax home; Joe can help you compare plans available where you live."
+    },
+    {
+     "q": "Will my plan cover me in another state?",
+     "a": "Emergency care is covered nationwide on ACA plans. Routine and specialist care outside your plan’s network depends on the plan type; PPOs with national networks usually travel best."
+    },
+    {
+     "q": "Is losing my agency insurance a reason to enroll mid-year?",
+     "a": "Yes. Losing qualifying health coverage, including when an assignment ends, generally opens a 60-day Special Enrollment Period for Marketplace coverage."
+    }
+   ],
+   "related": [
+    "individual-family-health-insurance",
+    "cobra-alternatives",
+    "health-insurance-for-1099",
+    "private-health-insurance"
+   ],
+   "learn": [
+    "ppo-vs-hmo-vs-epo",
+    "open-enrollment-guide"
+   ],
+   "parent": null
+  },
+  "realtor-health-insurance": {
+   "slug": "realtor-health-insurance",
+   "nav": "Realtors",
+   "icon": "fa-home",
+   "service_type": "Health insurance for real estate agents",
+   "title": "Health Insurance for Realtors & Real Estate Agents",
+   "lead": "Most real estate agents are independent contractors, so the brokerage doesn’t provide health insurance. Joe helps agents find coverage that works with commission income.",
+   "summary": "Options for independent-contractor agents and brokers paid on commission.",
+   "seo_title": "Health Insurance for Realtors & Real Estate Agents | Insurance Guy Joe",
+   "seo_desc": "Health insurance for realtors and real estate agents: individual ACA plans, private plans, and how commission income affects Marketplace savings.",
+   "sections": [
+    {
+     "h": "Why agents buy their own coverage",
+     "p": [
+      "Real estate agents are usually treated as independent contractors, so even large brokerages generally don’t offer them employer health plans. That puts agents in the same position as other self-employed people: you pick the plan, pay the premium and may be able to deduct it (see <a href=\"/services/self-employed-health-insurance/\">self-employed health insurance</a>)."
+     ]
+    },
+    {
+     "h": "Commission income and Marketplace savings",
+     "p": [
+      "ACA premium tax credits are based on your estimated household income for the whole year. For agents, a strong or slow year can move you into a different savings bracket. Estimating conservatively, tracking closings and updating your Marketplace application when your income changes helps keep your tax-credit reconciliation from surprising you at tax time."
+     ]
+    },
+    {
+     "h": "What agents often prioritize",
+     "list": [
+      "A network that includes doctors near where you live and show homes",
+      "Predictable costs during slow months",
+      "Coverage for a spouse and kids, especially if a spouse’s job plan is expensive for dependents",
+      "Add-ons like dental, vision or accident coverage for time on the road (see <a href=\"/services/supplemental-insurance/\">supplemental insurance</a>)"
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Does my brokerage or association offer health insurance?",
+     "a": "Some brokerages and REALTOR® associations offer access to group or association programs, and availability varies by state. Joe can compare what you’re offered against individual-market options."
+    },
+    {
+     "q": "What income should I estimate if my commissions vary?",
+     "a": "Use your best estimate of net self-employment income for the year after business expenses. If it changes significantly, update your Marketplace application so your advance tax credit stays accurate."
+    }
+   ],
+   "related": [
+    "self-employed-health-insurance",
+    "health-insurance-for-1099",
+    "individual-family-health-insurance",
+    "supplemental-insurance"
+   ],
+   "learn": [
+    "aca-vs-private-health-insurance",
+    "open-enrollment-guide"
+   ],
+   "parent": null
+  },
+  "early-retiree-health-insurance": {
+   "slug": "early-retiree-health-insurance",
+   "nav": "Early Retirees",
+   "icon": "fa-sun-o",
+   "service_type": "Health insurance for early retirees before Medicare",
+   "title": "Health Insurance for Early Retirees",
+   "lead": "Retiring before 65 means bridging the years until Medicare. Joe helps early retirees plan coverage that protects their savings.",
+   "summary": "Bridge coverage from retirement until Medicare eligibility at 65.",
+   "seo_title": "Early Retiree Health Insurance Before Medicare | Insurance Guy Joe",
+   "seo_desc": "Retiring before 65? Compare COBRA, ACA Marketplace plans, retiree coverage and private plans to bridge the gap until Medicare.",
+   "sections": [
+    {
+     "h": "Your bridge options until Medicare",
+     "list": [
+      "<strong>COBRA:</strong> keep your former employer’s plan, usually for up to 18 months, but you typically pay the full premium plus up to a 2% fee (see <a href=\"/services/cobra-alternatives/\">COBRA alternatives</a>)",
+      "<strong>ACA Marketplace plans:</strong> available regardless of health; premium tax credits are based on household income, which can be lower once you stop working",
+      "<strong>Retiree health benefits:</strong> some employers and unions offer them; check the cost and how long they last",
+      "<strong>A working spouse’s plan:</strong> often the simplest bridge, if available",
+      "<strong>Private plans:</strong> may suit some healthy early retirees; know what’s excluded"
+     ]
+    },
+    {
+     "h": "Income planning matters",
+     "p": [
+      "Marketplace savings are based on modified adjusted gross income (MAGI), so how you draw retirement income can affect what you pay for coverage. Withdrawals from traditional IRAs and 401(k)s, Social Security benefits and capital gains generally count toward MAGI. Talk with your financial or tax advisor about timing; for 2026 and later, premium tax credits are generally limited to households with incomes from 100% to 400% of the federal poverty level."
+     ]
+    },
+    {
+     "h": "Getting ready for Medicare",
+     "p": [
+      "Your Medicare Initial Enrollment Period generally runs for seven months around the month you turn 65. Plan your individual coverage so it ends when Medicare begins, and avoid a gap."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Is losing my job-based coverage at retirement a Special Enrollment Period?",
+     "a": "Yes. Losing job-based coverage generally gives you a 60-day Special Enrollment Period to choose a Marketplace plan, even if you’re offered COBRA."
+    },
+    {
+     "q": "Can I drop COBRA later and switch to a Marketplace plan?",
+     "a": "During Open Enrollment, yes. Outside Open Enrollment, voluntarily dropping COBRA or stopping payments generally does not qualify you for a Special Enrollment Period; running out of COBRA at the end of its term does."
+    },
+    {
+     "q": "What happens to my individual plan when I turn 65?",
+     "a": "Once you’re eligible for Medicare, you generally lose eligibility for Marketplace premium tax credits. Plan to start Medicare on time and cancel the individual plan when Medicare begins."
+    }
+   ],
+   "related": [
+    "cobra-alternatives",
+    "aca-marketplace-health-insurance",
+    "private-health-insurance",
+    "dental-vision-insurance"
+   ],
+   "learn": [
+    "open-enrollment-guide",
+    "aca-vs-private-health-insurance"
+   ],
+   "parent": null
+  },
+  "turning-26-health-insurance": {
+   "slug": "turning-26-health-insurance",
+   "nav": "Turning 26",
+   "icon": "fa-birthday-cake",
+   "service_type": "Health insurance for young adults aging off a parent’s plan",
+   "title": "Health Insurance When You Turn 26",
+   "lead": "The ACA lets young adults stay on a parent’s plan until 26. When that ends, you get a window to pick your own plan. Joe helps you use it.",
+   "summary": "Coming off a parent’s plan? Pick your own coverage without a gap.",
+   "seo_title": "Turning 26 Health Insurance: Coming Off a Parent’s Plan | Insurance Guy Joe",
+   "seo_desc": "Turning 26 and losing coverage on a parent’s plan? Learn about your Special Enrollment Period, job-based coverage, ACA Marketplace and catastrophic plans.",
+   "sections": [
+    {
+     "h": "When parent coverage ends",
+     "p": [
+      "Under the Affordable Care Act, plans that offer dependent coverage must let children stay on a parent’s plan until age 26, whether or not they’re married, in school, living at home or financially independent. When that coverage actually stops depends on the plan: some end on your birthday, some at the end of that month and some at the end of the year. Ask your parent to check with their plan or HR."
+     ]
+    },
+    {
+     "h": "Your Special Enrollment Period",
+     "p": [
+      "Losing coverage when you age off a parent’s plan is a qualifying life event. You can generally pick a Marketplace plan up to 60 days before and up to 60 days after the coverage ends. Enrolling before it ends lets your new plan start right away, with no gap."
+     ]
+    },
+    {
+     "h": "Options to compare",
+     "list": [
+      "<strong>Your own employer’s plan:</strong> losing other coverage also triggers a special enrollment window at work (usually 30 days)",
+      "<strong>ACA Marketplace plans:</strong> premium tax credits depend on your income; starting out in a career often means more savings",
+      "<strong>Catastrophic plans:</strong> available if you’re under 30 (or qualify for a hardship exemption); low premiums and very high deductibles, with three primary-care visits a year covered before the deductible",
+      "<strong>Medicaid:</strong> if your income is low enough in your state"
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Can I stay on my parent’s plan if I’m married or don’t live at home?",
+     "a": "Yes. Until you turn 26, marriage, school, residence and financial dependence don’t affect eligibility for dependent coverage on a parent’s plan that offers it."
+    },
+    {
+     "q": "How long do I have to get my own plan after turning 26?",
+     "a": "For a Marketplace plan, generally 60 days before and 60 days after losing your parent’s coverage. Employer plans usually give you 30 days."
+    },
+    {
+     "q": "Do some states allow coverage past 26?",
+     "a": "Some states require state-regulated plans to cover dependents beyond 26 under certain conditions. These rules don’t apply to every plan, especially self-funded employer plans, so check the specific plan."
+    }
+   ],
+   "related": [
+    "individual-family-health-insurance",
+    "aca-marketplace-health-insurance",
+    "health-insurance-for-1099",
+    "dental-vision-insurance"
+   ],
+   "learn": [
+    "open-enrollment-guide",
+    "ppo-vs-hmo-vs-epo"
+   ],
+   "parent": null
+  },
+  "private-health-insurance": {
+   "slug": "private-health-insurance",
+   "nav": "Private Health Insurance",
+   "icon": "fa-shield",
+   "service_type": "Private (off-exchange) health insurance",
+   "title": "Private Health Insurance",
+   "lead": "“Private” health insurance can mean an ACA plan bought directly from an insurer, or a non-ACA plan with different rules. Joe explains the trade-offs in plain English.",
+   "summary": "Off-exchange and non-ACA plans, with the trade-offs explained.",
+   "seo_title": "Private Health Insurance Plans vs. ACA | Insurance Guy Joe",
+   "seo_desc": "What private health insurance means: off-exchange ACA plans, underwritten plans, short-term and fixed indemnity coverage, and how they compare to Marketplace plans.",
+   "sections": [
+    {
+     "h": "Two very different kinds of “private” plans",
+     "p": [
+      "<strong>Off-exchange ACA plans</strong> are sold directly by insurers instead of through HealthCare.gov or a state exchange. They follow the same ACA rules: essential health benefits, no pre-existing condition exclusions and annual out-of-pocket limits. They aren’t eligible for premium tax credits.",
+      "<strong>Non-ACA plans</strong> include medically underwritten health plans, short-term health insurance, fixed indemnity plans and other products regulated differently. They can be priced on your health history, may exclude pre-existing conditions, may have benefit limits and may not cover all essential health benefits."
+     ]
+    },
+    {
+     "h": "Who sometimes chooses non-ACA plans",
+     "list": [
+      "Healthy people whose income is above the range for Marketplace savings",
+      "People who want a specific network that isn’t available on their local exchange",
+      "People with a short, defined gap in coverage (short-term plans)"
+     ]
+    },
+    {
+     "h": "Questions to ask before you buy",
+     "list": [
+      "Are pre-existing conditions excluded, or is there a waiting period?",
+      "Is there an annual or lifetime benefit maximum?",
+      "Are prescriptions, maternity care and mental health care covered?",
+      "Is it renewable, and can the price change with my health?",
+      "Is it insurance at all? (Health care sharing ministries, for example, aren’t insurance and don’t guarantee payment.)"
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Is private health insurance cheaper than an ACA plan?",
+     "a": "Sometimes, for healthy people who don’t qualify for premium tax credits, but lower premiums usually come with more limits. If you qualify for Marketplace savings, a subsidized ACA plan is often the better value. Joe can show you both side by side."
+    },
+    {
+     "q": "Can a private plan deny me for health reasons?",
+     "a": "ACA-compliant plans, on or off the exchange, can’t. Medically underwritten and short-term plans generally can, or can exclude conditions you already have."
+    }
+   ],
+   "related": [
+    "aca-marketplace-health-insurance",
+    "individual-family-health-insurance",
+    "self-employed-health-insurance",
+    "supplemental-insurance"
+   ],
+   "learn": [
+    "aca-vs-private-health-insurance",
+    "ppo-vs-hmo-vs-epo"
+   ],
+   "parent": null
+  },
+  "aca-marketplace-health-insurance": {
+   "slug": "aca-marketplace-health-insurance",
+   "nav": "ACA Marketplace",
+   "icon": "fa-check-square-o",
+   "service_type": "ACA Marketplace (Obamacare) health insurance enrollment help",
+   "title": "ACA Marketplace Health Insurance",
+   "lead": "Marketplace (“Obamacare”) plans guarantee coverage regardless of health, and many households qualify for savings based on income. Joe can walk you through the options.",
+   "summary": "Guaranteed-issue plans with income-based savings for eligible households.",
+   "seo_title": "ACA Marketplace (Obamacare) Health Insurance Help | Insurance Guy Joe",
+   "seo_desc": "Help with ACA Marketplace health insurance: metal tiers, premium tax credits, cost-sharing reductions, open enrollment and special enrollment periods.",
+   "sections": [
+    {
+     "h": "What every Marketplace plan includes",
+     "p": [
+      "Every Marketplace plan covers the ACA’s ten essential health benefits, including doctor visits, emergency care, hospital stays, maternity and newborn care, mental health care, prescription drugs and preventive care, and can’t deny you or charge more because of a pre-existing condition. Plans also have an annual cap on what you pay out of pocket for in-network care."
+     ]
+    },
+    {
+     "h": "Metal tiers in plain English",
+     "list": [
+      "<strong>Bronze:</strong> lowest premiums, highest costs when you get care (the plan pays about 60% of average costs)",
+      "<strong>Silver:</strong> about 70%; the only tier with extra cost-sharing reductions for eligible lower incomes",
+      "<strong>Gold:</strong> about 80%; higher premiums, lower deductibles",
+      "<strong>Platinum:</strong> about 90%, where offered",
+      "<strong>Catastrophic:</strong> for people under 30 or with a hardship exemption"
+     ]
+    },
+    {
+     "h": "Savings based on income",
+     "p": [
+      "Premium tax credits lower your monthly premium if your household income qualifies and you don’t have access to affordable employer coverage. The enhanced credits of 2021–2025 expired, so for 2026 and later the credits are generally available to households with incomes from 100% to 400% of the federal poverty level (above 138% in states that expanded Medicaid). Cost-sharing reductions on Silver plans can lower deductibles and copays for households up to 250% of the poverty level. Rules can change; Joe checks the current year’s rules with you."
+     ]
+    },
+    {
+     "h": "Enrolling",
+     "p": [
+      "Most states use HealthCare.gov; some, including Georgia (Georgia Access), run their own marketplace with their own deadlines. You can enroll during the annual <a href=\"/learn/open-enrollment-guide/\">Open Enrollment Period</a>, or within a Special Enrollment Period after a qualifying life event. {{todo:Confirm Joe is registered with the federal Marketplace and/or state exchanges for the current plan year before promising enrollment help.}}"
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Does it cost more to buy a Marketplace plan through an agent?",
+     "a": "No. Premiums for the same plan are the same whether you enroll on your own or with a licensed agent; agents are typically paid by the insurance company."
+    },
+    {
+     "q": "What counts as income for Marketplace savings?",
+     "a": "Modified adjusted gross income (MAGI) for your tax household: generally your adjusted gross income plus untaxed foreign income, non-taxable Social Security benefits and tax-exempt interest."
+    },
+    {
+     "q": "What happens if my income changes during the year?",
+     "a": "Report it to the Marketplace. Your advance tax credit is adjusted, and the final amount is reconciled when you file taxes. If you received too much advance credit, you may have to pay some or all of it back."
+    }
+   ],
+   "related": [
+    "individual-family-health-insurance",
+    "turning-26-health-insurance",
+    "early-retiree-health-insurance",
+    "private-health-insurance"
+   ],
+   "learn": [
+    "open-enrollment-guide",
+    "aca-vs-private-health-insurance"
+   ],
+   "parent": null
+  },
+  "cobra-alternatives": {
+   "slug": "cobra-alternatives",
+   "nav": "COBRA Alternatives",
+   "icon": "fa-exchange",
+   "service_type": "COBRA alternative health insurance",
+   "title": "COBRA Alternatives",
+   "lead": "COBRA lets you keep your old job’s plan, but usually at full price. Joe compares COBRA with the other options you have after leaving a job.",
+   "summary": "Compare COBRA with Marketplace, spouse and private options after a job change.",
+   "seo_title": "COBRA Alternatives: Health Insurance After a Job Loss | Insurance Guy Joe",
+   "seo_desc": "Lost or left a job? Compare COBRA with ACA Marketplace plans, a spouse’s plan and private options. Know your 60-day Special Enrollment Period.",
+   "sections": [
+    {
+     "h": "How COBRA works",
+     "p": [
+      "COBRA is a federal law that lets you and your family keep your employer’s group health plan for a limited time after you leave a job, have your hours cut or experience certain other events. It generally applies to employers with 20 or more employees (many states have “mini-COBRA” laws for smaller employers). Coverage usually lasts up to 18 months, longer in some situations. You typically have at least 60 days to elect it, and the cost can be up to 102% of the plan’s full premium, including the part your employer used to pay."
+     ]
+    },
+    {
+     "h": "When COBRA makes sense",
+     "list": [
+      "You’ve met most of this year’s deductible and out-of-pocket maximum",
+      "You’re in the middle of treatment with doctors who may not be in other networks",
+      "You expect new job coverage to start soon"
+     ]
+    },
+    {
+     "h": "Alternatives to compare",
+     "list": [
+      "<strong>ACA Marketplace plan:</strong> losing job-based coverage gives you a 60-day Special Enrollment Period, even if you’re offered COBRA; premium tax credits may apply based on your income (see <a href=\"/services/aca-marketplace-health-insurance/\">ACA Marketplace</a>)",
+      "<strong>A spouse’s or partner’s employer plan:</strong> losing your coverage lets you join, usually within 30 days",
+      "<strong>Off-exchange or private plans:</strong> see <a href=\"/services/private-health-insurance/\">private health insurance</a>",
+      "<strong>Medicaid:</strong> if your household income has dropped enough in your state"
+     ]
+    },
+    {
+     "h": "Watch the timing",
+     "p": [
+      "If you pick COBRA and later drop it outside Open Enrollment, that generally does not create a Special Enrollment Period. Compare your options within 60 days of losing coverage, while every door is still open."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Can I get a Marketplace plan if I’m eligible for COBRA?",
+     "a": "Yes. Being offered COBRA doesn’t block you from a Marketplace plan or premium tax credits. If you actually enroll in COBRA, you generally can’t get premium tax credits for the months you have it."
+    },
+    {
+     "q": "Is COBRA coverage retroactive?",
+     "a": "Yes. If you elect COBRA within the election period and pay the premium, coverage is retroactive to the date your job-based coverage ended, so you aren’t left with a gap."
+    },
+    {
+     "q": "How long do I have to decide?",
+     "a": "For a Marketplace plan, generally 60 days from losing coverage. COBRA elections must also generally be made within 60 days of your election notice or coverage loss, whichever is later."
+    }
+   ],
+   "related": [
+    "early-retiree-health-insurance",
+    "aca-marketplace-health-insurance",
+    "individual-family-health-insurance",
+    "travel-nurse-health-insurance"
+   ],
+   "learn": [
+    "open-enrollment-guide",
+    "aca-vs-private-health-insurance"
+   ],
+   "parent": null
+  },
+  "health-insurance-for-1099": {
+   "slug": "health-insurance-for-1099",
+   "nav": "1099 Workers",
+   "icon": "fa-file-text-o",
+   "service_type": "Health insurance for 1099 contractors and gig workers",
+   "title": "Health Insurance for 1099 Workers",
+   "lead": "Gig workers, contractors and freelancers paid on a 1099 don’t get employer benefits. Joe helps you find a plan that fits uneven income.",
+   "summary": "Plans for contractors, gig workers and anyone paid on a 1099.",
+   "seo_title": "Health Insurance for 1099 Contractors & Gig Workers | Insurance Guy Joe",
+   "seo_desc": "Health insurance for 1099 contractors, gig and rideshare drivers and freelancers: ACA plans, savings based on net income, private plans and supplemental coverage.",
+   "sections": [
+    {
+     "h": "You’re your own benefits department",
+     "p": [
+      "If you’re paid as an independent contractor (rideshare and delivery drivers, consultants, creatives, tradespeople), the companies you work with don’t provide health insurance. You can buy coverage on the individual market, during Open Enrollment or after a qualifying life event."
+     ]
+    },
+    {
+     "h": "Use your net income for Marketplace savings",
+     "p": [
+      "Marketplace savings are based on household MAGI, which for 1099 earners generally means income after deductible business expenses such as mileage, equipment and supplies, not the gross amount on your 1099s. Keeping good records helps you estimate accurately. Many 1099 workers may also qualify for the self-employed health insurance deduction; see <a href=\"/services/self-employed-health-insurance/\">self-employed health insurance</a>."
+     ]
+    },
+    {
+     "h": "Coverage that fits gig work",
+     "list": [
+      "An ACA plan for core medical coverage you can keep year-round",
+      "Accident or disability-type coverage if your work is physical or on the road (see <a href=\"/services/supplemental-insurance/\">supplemental insurance</a>)",
+      "Dental and vision, which most individual medical plans don’t include for adults (see <a href=\"/services/supplemental-insurance/dental-vision-insurance/\">dental &amp; vision</a>)"
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Do I have W-2 and 1099 income? Which counts?",
+     "a": "Both. Marketplace savings use your total household MAGI, which includes wages plus net self-employment income. If you have a W-2 job that offers affordable coverage, that offer can affect your eligibility for premium tax credits."
+    },
+    {
+     "q": "Can I enroll when I start 1099 work?",
+     "a": "Starting contract work by itself isn’t a qualifying life event. If you lost job-based coverage when you left a W-2 job, though, you generally have a 60-day Special Enrollment Period."
+    }
+   ],
+   "related": [
+    "self-employed-health-insurance",
+    "realtor-health-insurance",
+    "travel-nurse-health-insurance",
+    "aca-marketplace-health-insurance"
+   ],
+   "learn": [
+    "aca-vs-private-health-insurance",
+    "open-enrollment-guide"
+   ],
+   "parent": null
+  },
+  "supplemental-insurance": {
+   "slug": "supplemental-insurance",
+   "nav": "Supplemental Insurance",
+   "icon": "fa-plus-square",
+   "service_type": "Supplemental health insurance",
+   "title": "Supplemental Insurance",
+   "lead": "Supplemental plans pay benefits on top of your health insurance, helping with deductibles, lost income or expenses health insurance doesn’t cover.",
+   "summary": "Accident, critical illness, hospital indemnity, dental and vision coverage.",
+   "seo_title": "Supplemental Insurance: Accident, Critical Illness, Dental & Vision | Insurance Guy Joe",
+   "seo_desc": "Supplemental insurance explained: accident, critical illness, hospital indemnity, dental and vision plans that add to, but don’t replace, your health insurance.",
+   "sections": [
+    {
+     "h": "What supplemental insurance does",
+     "p": [
+      "Most supplemental policies pay you a set cash benefit when a covered event happens, such as an accident, a hospital stay or a diagnosis of a covered illness, regardless of what your medical plan pays. You can use the money for deductibles, copays, travel, rent or groceries. These plans <strong>add to</strong> major medical coverage; they don’t replace it and aren’t ACA-compliant health insurance on their own."
+     ]
+    },
+    {
+     "h": "Common types",
+     "list": [
+      "<strong>Accident insurance:</strong> benefits for covered injuries, such as ER visits, fractures and follow-up care",
+      "<strong>Critical illness insurance:</strong> a lump sum if you’re diagnosed with a covered condition such as cancer, heart attack or stroke",
+      "<strong>Hospital indemnity insurance:</strong> a set amount per day or per admission when you’re hospitalized",
+      "<strong>Dental and vision insurance:</strong> routine exams, cleanings, glasses and contacts (see <a href=\"/services/supplemental-insurance/dental-vision-insurance/\">dental &amp; vision insurance</a>)"
+     ]
+    },
+    {
+     "h": "Read before you buy",
+     "list": [
+      "Which events and diagnoses are covered, and how the policy defines them",
+      "Waiting periods and pre-existing condition limits",
+      "Benefit amounts and maximums",
+      "Whether premiums can increase"
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Do I need supplemental insurance if I have a good health plan?",
+     "a": "Not always. It can help if your deductible would be hard to pay in an emergency, or if you’d lose income while recovering. Compare the cost to your emergency savings first."
+    },
+    {
+     "q": "Is supplemental insurance the same as Medicare Supplement?",
+     "a": "No. Medicare Supplement (Medigap) is a specific type of coverage for people on Original Medicare. The supplemental plans described here are for people with any type of health coverage."
+    }
+   ],
+   "related": [
+    "dental-vision-insurance",
+    "individual-family-health-insurance",
+    "small-business-health-insurance",
+    "health-insurance-for-1099"
+   ],
+   "learn": [
+    "aca-vs-private-health-insurance",
+    "ppo-vs-hmo-vs-epo"
+   ],
+   "parent": null
+  },
+  "dental-vision-insurance": {
+   "slug": "dental-vision-insurance",
+   "parent": "supplemental-insurance",
+   "nav": "Dental & Vision",
+   "icon": "fa-eye",
+   "service_type": "Dental and vision insurance",
+   "title": "Dental & Vision Insurance",
+   "lead": "Most adult medical plans don’t include routine dental or vision care. Standalone plans help with cleanings, fillings, eye exams, glasses and contacts.",
+   "summary": "Standalone dental and vision coverage for adults and kids.",
+   "seo_title": "Dental & Vision Insurance Plans | Insurance Guy Joe",
+   "seo_desc": "Standalone dental and vision insurance: cleanings, fillings, major work, eye exams, glasses and contacts. Waiting periods and annual maximums explained.",
+   "sections": [
+    {
+     "h": "Dental insurance basics",
+     "p": [
+      "Dental plans usually group care into three levels: <strong>preventive</strong> (cleanings, exams, X-rays, often covered at or near 100%), <strong>basic</strong> (fillings, simple extractions) and <strong>major</strong> (crowns, bridges, root canals, dentures), each covered at a lower percentage. Most plans have an <strong>annual maximum</strong> they’ll pay, and many have <strong>waiting periods</strong> before basic and major services are covered.",
+      "Dental care for children is an essential health benefit under the ACA, so it’s offered with or alongside Marketplace plans. Adult dental isn’t required to be included."
+     ]
+    },
+    {
+     "h": "Vision insurance basics",
+     "p": [
+      "Vision plans typically cover a routine eye exam and give an allowance or copay toward frames, lenses or contact lenses, usually once every 12 or 24 months, through a network of eye doctors and retailers. Medical eye problems such as an eye infection or glaucoma are generally billed to your health insurance, not your vision plan."
+     ]
+    },
+    {
+     "h": "How to choose",
+     "list": [
+      "Check that your dentist and eye doctor are in-network",
+      "Compare the annual maximum with the work you expect to need",
+      "Ask about waiting periods if you need a crown, implant or other major work soon",
+      "Bundle dental and vision when it lowers the total cost"
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Can I buy dental insurance without health insurance?",
+     "a": "Yes. Standalone dental and vision plans can be bought on their own, and many can be bought any time of year."
+    },
+    {
+     "q": "Will dental insurance cover work I need right away?",
+     "a": "Preventive care is often covered right away, but many plans have waiting periods of several months or more for basic and major services. Some plans waive waiting periods if you had prior dental coverage."
+    }
+   ],
+   "related": [
+    "supplemental-insurance",
+    "individual-family-health-insurance",
+    "small-business-health-insurance",
+    "turning-26-health-insurance"
+   ],
+   "learn": [
+    "aca-vs-private-health-insurance",
+    "open-enrollment-guide"
+   ]
+  }
+ }
+}

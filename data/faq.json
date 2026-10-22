@@ -1,0 +1,81 @@
+{
+ "_readme": "FAQ page content (tpl_igj_faq.php). Also emitted as FAQPage JSON-LD.",
+ "groups": [
+  {
+   "group": "Enrolling",
+   "items": [
+    {
+     "q": "When can I sign up for health insurance?",
+     "a": "For ACA plans, during the annual Open Enrollment Period. For 2027 coverage on HealthCare.gov it runs November 1, 2026 through January 15, 2027; enroll by December 15 for coverage starting January 1. State-run marketplaces can have different deadlines. Outside Open Enrollment you need a Special Enrollment Period. See the <a href=\"/learn/open-enrollment-guide/\">open enrollment guide</a>."
+    },
+    {
+     "q": "What is a Special Enrollment Period?",
+     "a": "A window, usually 60 days, to enroll in or change a Marketplace plan after a qualifying life event such as losing other health coverage, moving to a new area, getting married, having or adopting a child, or certain changes in income. You may be asked to show documents proving the event."
+    },
+    {
+     "q": "Can I sign up for Medicaid or CHIP any time?",
+     "a": "Yes. Medicaid and the Children’s Health Insurance Program accept applications all year. Eligibility depends on your state, household size and income."
+    },
+    {
+     "q": "I just lost my job. What should I do first?",
+     "a": "Don’t wait. Losing job-based coverage generally gives you 60 days to pick a Marketplace plan, and you’ll also be offered COBRA if your employer is large enough. Compare both before the window closes; see <a href=\"/services/cobra-alternatives/\">COBRA alternatives</a>."
+    }
+   ]
+  },
+  {
+   "group": "Costs and savings",
+   "items": [
+    {
+     "q": "What’s the difference between a premium, deductible, copay and out-of-pocket maximum?",
+     "a": "The <strong>premium</strong> is what you pay each month to keep coverage. The <strong>deductible</strong> is what you pay for covered care before the plan starts sharing costs (preventive care is often covered before it). <strong>Copays</strong> and <strong>coinsurance</strong> are your share after that. The <strong>out-of-pocket maximum</strong> is the most you’ll pay for covered in-network care in a plan year; after that, the plan pays 100%."
+    },
+    {
+     "q": "Will I qualify for help paying my premium?",
+     "a": "Marketplace premium tax credits are based on household income and size, and on whether you can get affordable job-based coverage. For 2026 and later they’re generally available from 100% to 400% of the federal poverty level, since the enhanced credits of 2021–2025 expired. Joe can help you estimate based on your situation."
+    },
+    {
+     "q": "Does using an agent cost me more?",
+     "a": "No. For the same plan, the premium is the same whether you buy it yourself or through a licensed agent. Agents are typically paid a commission by the insurance company. {{todo:Joe to confirm compensation disclosure wording.}}"
+    }
+   ]
+  },
+  {
+   "group": "Plans and networks",
+   "items": [
+    {
+     "q": "What’s the difference between a PPO, HMO and EPO?",
+     "a": "HMOs usually require you to use in-network doctors and get referrals to see specialists. EPOs also limit you to the network (except emergencies) but usually don’t need referrals. PPOs let you see out-of-network providers at a higher cost. See <a href=\"/learn/ppo-vs-hmo-vs-epo/\">PPO vs. HMO vs. EPO</a>."
+    },
+    {
+     "q": "Are pre-existing conditions covered?",
+     "a": "On ACA-compliant plans, yes. They can’t deny you, exclude a condition or charge more because of your health. Non-ACA products such as short-term and medically underwritten plans can. See <a href=\"/learn/aca-vs-private-health-insurance/\">ACA vs. private health insurance</a>."
+    },
+    {
+     "q": "Can I keep my doctor?",
+     "a": "Only if your doctor is in the plan’s network (or the plan covers out-of-network care). Before you enroll, check each doctor, your hospital and your prescriptions against the plan’s directory and drug list."
+    },
+    {
+     "q": "Can I stay on my parent’s plan?",
+     "a": "Yes, until you turn 26, if the plan offers dependent coverage. See <a href=\"/services/turning-26-health-insurance/\">turning 26</a>."
+    }
+   ]
+  },
+  {
+   "group": "Working with Joe",
+   "items": [
+    {
+     "q": "How does a quote with Joe work?",
+     "a": "Call {{phone}} or <a href=\"/contact/\">book a time</a>. Joe will ask about your household, income range, doctors and prescriptions, then walk you through the options that fit. There’s no obligation to buy."
+    },
+    {
+     "q": "Which states does Joe serve?",
+     "a": "{{todo:List the states Joe is licensed in, and his license numbers / NPN.}}"
+    },
+    {
+     "q": "Is this website affiliated with HealthCare.gov or the government?",
+     "a": "No. Insurance Guy Joe is a private insurance agency and isn’t affiliated with HealthCare.gov, any state marketplace, Medicare or any government agency. See our <a href=\"/disclaimers/\">disclaimers</a>."
+    }
+   ]
+  }
+ ]
+}
