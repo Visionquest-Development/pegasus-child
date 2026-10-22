@@ -1,0 +1,127 @@
+{
+  "_comment": "From https://www.rusanskennesaw.com/catering/ (crawled 2026-10-22). Item lists are verbatim.",
+  "intro": "Whether you want to place a sushi platter order, need reservations, or any special requests please reach out!",
+  "sections": [
+    {
+      "title": "Sushi Platters",
+      "items": [
+        {
+          "name": "Deluxe Sushi Platter",
+          "price": "150",
+          "image": "platter-deluxe",
+          "contents": [
+            "Philly Roll 3X",
+            "California Roll 3X",
+            "10 pc Salmon Nigiri",
+            "10 pc Tuna Nigiri",
+            "Spicy Tuna Roll 2X",
+            "Cucumber Roll 2X",
+            "Hard Rock n Roll 2X",
+            "Rainbow Roll 2X",
+            "Power Ball Roll 2X",
+            "Vegetable Tempura Roll 2X"
+          ]
+        },
+        {
+          "name": "Large Sushi Platter",
+          "price": "",
+          "price_todo": "TODO: no price listed on the current site",
+          "image": "platter-large",
+          "contents": [
+            "Shrimp Nigiri 6X",
+            "Inari Nigiri (Tofu) 6X",
+            "Wakame Gunkan (Seaweed Salad) 6X",
+            "Kani Gunkan (Imitation Crab Salad) 6X",
+            "Cucumber Roll 2X",
+            "Erika #2 Roll",
+            "Crunchy Roll 2X",
+            "Vegetable Tempura Roll 2X",
+            "California Roll 3X"
+          ]
+        },
+        {
+          "name": "Medium Sushi Platter",
+          "price": "85",
+          "image": "platter-medium",
+          "contents": [
+            "3 California rolls",
+            "Salmon Roll",
+            "Tuna Roll",
+            "Dragon Roll",
+            "Rainbow Roll"
+          ]
+        },
+        {
+          "name": "Small Sushi Platter",
+          "price": "55",
+          "image": "",
+          "image_todo": "TODO: only a 225px photo exists on the current site; need a better photo",
+          "contents": [
+            "California Roll",
+            "Cucumber Roll",
+            "California Sunset",
+            "Rainbow Roll",
+            "Tekka Maki"
+          ]
+        },
+        {
+          "name": "Nigiri Platter",
+          "price": "75",
+          "image": "platter-nigiri",
+          "description": "50 pcs total",
+          "contents": [
+            "Unagi",
+            "Tempura",
+            "Tuna",
+            "Salmon",
+            "Shrimp",
+            "Hamachi",
+            "Surf Clam"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Party Platters",
+      "items": [
+        {
+          "name": "Calamari Platter",
+          "price": "60",
+          "image": "platter-calamari",
+          "description": "Ru San's Signature Calamari perfectly seasoned with a touch of crispiness that isn't heavily breaded.",
+          "contents": []
+        },
+        {
+          "name": "Chicken Yakitori Platter",
+          "price": "50",
+          "image": "platter-yakitori",
+          "description": "Grilled Skewered Chicken",
+          "contents": []
+        },
+        {
+          "name": "Pork Gyoza Platter",
+          "price": "50",
+          "image": "",
+          "image_todo": "TODO: only a 273px photo exists on the current site",
+          "description": "Delicious pan fried pork dumplings",
+          "contents": []
+        },
+        {
+          "name": "Fried Rice Platter",
+          "price": "40",
+          "image": "platter-fried-rice",
+          "description": "",
+          "contents": []
+        },
+        {
+          "name": "Edamame Platter",
+          "price": "25",
+          "image": "platter-edamame",
+          "description": "",
+          "contents": []
+        }
+      ]
+    }
+  ],
+  "todo": "TODO: confirm platter prices/serving sizes and lead time for catering orders (not stated on the current site)."
+}

@@ -1,0 +1,2959 @@
+{
+  "restaurant_name": "Ru San’s Kennesaw Menu",
+  "updated": "July 2024 printed menu",
+  "source": "https://www.rusanskennesaw.com/wp-content/uploads/2024/07/Rusan_7_2024.pdf",
+  "download": {
+    "href": "assets/menus/rusans-menu-2024-07.pdf",
+    "text": "Download Full Menu (PDF)",
+    "target": "_blank"
+  },
+  "tabs": [
+    {
+      "id": "appetizers",
+      "label": "Appetizers",
+      "description": "",
+      "sections": [
+        {
+          "title": "House Special Appetizers",
+          "note": "",
+          "items": [
+            {
+              "name": "Beef Tataki",
+              "description": "Grilled Rare *Beef with Ponzu Sauce",
+              "price": "12.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Baked Mussels",
+              "description": "Chopped Green Mussels baked in Special Sauce, Topped with Masago and Unagi Sauce",
+              "price": "13.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Cajun Seared Tuna",
+              "description": "Fresh *Tuna, Rolled in Ru San’s Blend of Cajun Spices, Flash Seared, Spicy Aioli",
+              "price": "13.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Chicken Spring Rolls",
+              "description": "Chicken, Taro, Carrots, Mushrooms",
+              "price": "6.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Crabcake",
+              "description": "With Batayaki Sauce",
+              "price": "6.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Crab Ragoon",
+              "description": "Crabmeat, Cream Cheese",
+              "price": "6.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Crispy Calamari",
+              "description": "Dusted with Cajun Spiced Flour, Fried Crispy, Spicy Aioli Sauce",
+              "price": "13.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Crispy Tuna or Crispy Salmon",
+              "description": "*Tuna or *Salmon Wrapped in Nori, Katsu Fried, Topped with Mayo and Hot Chili",
+              "price": "13.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Golden Eye",
+              "description": "Cajun Seasoned Salmon & Tuna, Rice, Stuffed in Calamari",
+              "price": "12.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Gyoza Pork",
+              "description": "Dumpling with Ponzu Sauce",
+              "price": "7.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Gyoza Shrimp",
+              "description": "Dumpling with Ponzu Sauce",
+              "price": "7.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Hamachi Kama",
+              "description": "Grilled Yellowtail Collar, with Ponzu Sauce",
+              "price": "15.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Hamachi Usu Ku",
+              "description": "Hamachi sashimi covered with Ponzu and topped with cilantro, diced jalapenos and masago",
+              "price": "22.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Hot Wok Tiger Shrimp",
+              "description": "Wok Stir Fried with Hot Chili Lime Sauce, Ru San’s Salsa and Shrimp Crisp",
+              "price": "12.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "“O” Face Lobster",
+              "description": "Flash Fried Then Baked, Covered with Masago and Tobiko",
+              "price": "18.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Ru San’s Tiger Beef",
+              "description": "Grilled Rare *Beef Marinated with Special Blend of Spices and Soy-Lemon and Lime Sauce",
+              "price": "12.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tuna Tartare",
+              "description": "Blend of Fresh *Tuna, Garlic, Green Onion, and Seasoning, Topped with *Quail Egg",
+              "price": "13.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Shisamo",
+              "description": "Whole Flying Fish Roe, with Ponzu Sauce",
+              "price": "9.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Soft Shell Crab Tatsuta Age",
+              "description": "Fried, Served with Mixed Vegetable Tempura, Ponzu Sauce",
+              "price": "9.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tuna Tataki",
+              "description": "Fresh *Tuna, Slightly Seared with Hot Sesame Oil, Ru San’s Garlic Ponzu Sauce",
+              "price": "13.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Soup and Salad",
+          "note": "",
+          "items": [
+            {
+              "name": "Cucumber with Kanikama Salad",
+              "description": "",
+              "price": "6.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Edamame",
+              "description": "Boiled Soy Beans",
+              "price": "5.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "House Salad",
+              "description": "Ginger Dressing",
+              "price": "3.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Ika Sansai",
+              "description": "Seasoned Calamari Salad",
+              "price": "7.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Miso Soup",
+              "description": "",
+              "price": "2.75",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Wakame (Seaweed) Salad",
+              "description": "",
+              "price": "7.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Tofu",
+          "note": "",
+          "items": [
+            {
+              "name": "Garlic Sesame Tofu",
+              "description": "Cooked in Sesame Oil with Chopped Garlic, Green Onion, Shiitake Mushroom, and Wakame",
+              "price": "11.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "House Age-Dashi Tofu",
+              "description": "Fried Tofu with Kajekiru Sauce and Bonito Flakes",
+              "price": "7.75",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Ru San’s Mozzarella Tofu",
+              "description": "Sesame Fried Tofu with Mozzarella Cheese, Kakejiru Sauce, and Bonito Flakes",
+              "price": "8.75",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Katsu Small Plate",
+          "note": "Breaded or Sesame Coated — $3.25 each",
+          "items": [
+            {
+              "name": "Beef or Chicken Katsu",
+              "description": "",
+              "price": "3.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Pork Katsu",
+              "description": "",
+              "price": "3.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Sesame Beef",
+              "description": "",
+              "price": "3.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Sesame Cheese",
+              "description": "",
+              "price": "3.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Sesame Chicken",
+              "description": "",
+              "price": "3.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Shrimp Katsu",
+              "description": "",
+              "price": "3.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Yakitori",
+          "note": "With Yakitori Sauce or with Salt Only — priced per stick",
+          "items": [
+            {
+              "name": "Chicken",
+              "description": "",
+              "price": "2.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Mushroom",
+              "description": "",
+              "price": "2.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tofu",
+              "description": "",
+              "price": "2.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Beef",
+              "description": "",
+              "price": "2.75",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Pork",
+              "description": "",
+              "price": "2.75",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Squid",
+              "description": "",
+              "price": "2.75",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Bacon Asparagus",
+              "description": "",
+              "price": "3.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Bacon Scallops",
+              "description": "",
+              "price": "3.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Beef Negima",
+              "description": "Green Onion with Beef",
+              "price": "3.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Salmon",
+              "description": "",
+              "price": "3.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Shrimp",
+              "description": "",
+              "price": "3.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tuna",
+              "description": "",
+              "price": "3.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Tempura",
+          "note": "With Tempura Dipping Sauce — priced per two pieces",
+          "items": [
+            {
+              "name": "Chicken",
+              "description": "",
+              "price": "2.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Crab Stick",
+              "description": "",
+              "price": "2.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Eggplant",
+              "description": "",
+              "price": "2.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Onion Ring",
+              "description": "",
+              "price": "2.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Sweet Potato",
+              "description": "",
+              "price": "2.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Zucchini",
+              "description": "",
+              "price": "2.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Asparagus",
+              "description": "",
+              "price": "2.75",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Calamari",
+              "description": "",
+              "price": "2.75",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Mussel",
+              "description": "",
+              "price": "2.75",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Shrimp",
+              "description": "",
+              "price": "2.75",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Mix Vegetable",
+              "description": "",
+              "price": "3.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Salmon",
+              "description": "",
+              "price": "3.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Scallops",
+              "description": "",
+              "price": "3.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tilapia",
+              "description": "",
+              "price": "3.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tuna",
+              "description": "",
+              "price": "3.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        }
+      ],
+      "footnotes": [
+        "* These items are served raw or undercooked and may contain raw or undercooked beef, eggs, and seafood ingredients. Consuming raw or undercooked meat, poultry, seafood or eggs may increase your risk of foodborne illness, especially if you have certain medical conditions.",
+        "\"Fried\" marks items shown with F (fried item) on the printed menu.",
+        "No refunds or exchange once food is made.",
+        "Prices from the July 2024 printed menu (Rusan_7_2024.pdf). TODO: confirm current prices with Ru San's before launch."
+      ]
+    },
+    {
+      "id": "rolls",
+      "label": "Sushi Rolls",
+      "description": "",
+      "sections": [
+        {
+          "title": "Powerful House Sushi",
+          "note": "",
+          "items": [
+            {
+              "name": "Protein Bomb",
+              "description": "Miso Soup, House Salad, Tuna with Cucumber Maki, California Roll with Smelt Roe, Kimchee Tuna Maki, Shrimp, Salmon, Yellowtail, Eel, Japanese Omelet (Tamago), Flying Fish Roe, with Quail Egg, Salmon Skin’s Hand Roll (Temaki), Tuna Teriyaki",
+              "price": "29.95",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Power Builder",
+              "description": "Miso Soup, House Salad, Snow Crab Cake, Firecracker Maki, California Roll with Smelt Roe, Spicy Tuna Roll, Eel, Tuna, Salmon, Salmon Skin’s Hand Roll",
+              "price": "28.95",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Super Protein Bomb",
+              "description": "Miso Soup, House Salad, California Roll with Smelt Roe, Punk Rock and Roll, Spicy Tuna Roll, Ahi Poki Tuna Gunkan, Octopus Poki Gunkan, Pickled Garlic Gunkan, Shrimp, Salmon, Yellowtail, Eel, Tamago, Tuna Tartare, Salmon Spicy Aioli Sauce, Crab Cake with Spicy Batayaki Sauce",
+              "price": "35.95",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Super Power Builder",
+              "description": "Miso Soup, House Salad, Snow Crab Cake, Seared Triple Sec Roll, Dr. Zhivago Roll, California Roll with Smelt Roe, Spicy Tuna Roll, Eel, Tuna, Salmon, Salmon Skin Temaki, Tuna Ahi Poki, Salmon with Spicy Aioli Sauce",
+              "price": "33.95",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Sushi Rolls",
+          "note": "",
+          "items": [
+            {
+              "name": "Avenger",
+              "description": "Crabstick and Avocado Inside, Topped with Salmon, Kani, Avocado, and Sweet Chili Sauce",
+              "price": "12.75",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Baked Cajun Roll",
+              "description": "Crawlfish meat with cajun seasoning, Rolled and Fried, Topped with Spicy Garlic Sauce",
+              "price": "11.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Baked Spicy Chicken",
+              "description": "Spicy Chicken Rolled and Fried. Topped with Spicy Garlic Sauce",
+              "price": "10.95",
+              "badges": [
+                "Fried"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Baked California Roll",
+              "description": "Crabstick and Avocado, Rolled and Fried. Topped with Spicy Garlic Sauce",
+              "price": "10.95",
+              "badges": [
+                "Fried"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Baked Spicy Tuna Roll",
+              "description": "Spicy *Tuna Rolled and Fried, Topped with a Spicy Garlic and Aioli Sauce",
+              "price": "11.95",
+              "badges": [
+                "Fried"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Baked Shrimp Tempura Roll",
+              "description": "Fried Shrimp Rolled and Fried, Topped Spicy Garlic Sauce",
+              "price": "11.95",
+              "badges": [
+                "Fried"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Baked Spicy Salmon Roll",
+              "description": "Spicy Salmon, Rolled and Fried, with a Spicy Garlic and Aioli Sauce",
+              "price": "11.95",
+              "badges": [
+                "Fried"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Big Daddy",
+              "description": "Shrimp Tempura, Mixed Crabmeat, Topped with Salmon and Avocado and Covered with Spicy Mayo and Sliced Jalapenos then Torched",
+              "price": "13.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "B-12 Roll",
+              "description": "Snow Crab Topped with *Salmon and *Tuna, Served on a Bed of Fried Spinach",
+              "price": "12.50",
+              "badges": [
+                "Fried"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "B-52 Roll",
+              "description": "Fresh *Salmon, Crabstick, Cream Cheese, Asparagus, Wrapped in Seaweed then Lightly Tempura Fried and Covered in a Special Sauce",
+              "price": "12.95",
+              "badges": [
+                "Fried"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Banana Boat Roll",
+              "description": "Crabstick, Cream Cheese, Banana Slices. Lightly Tempura Fried Served with Unagi Sauce",
+              "price": "10.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Calamari Tempura",
+              "description": "Fried Calamari",
+              "price": "9.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "California Sunset",
+              "description": "*Salmon and *Tuna Rolled in Avocado with *Flying Fish Roe",
+              "price": "13.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Candy Maki",
+              "description": "*Tuna and *Salmon on Top, Inside Cucumber, and Crabstick",
+              "price": "12.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Caterpillar",
+              "description": "Eel, Cucumber, Cream Cheese, with Avocado, *Flying Fish Roe and Unagi Sauce on Top",
+              "price": "12.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Catherine’s Roll",
+              "description": "Mixed Spicy Crab with *Smelt Roe, Topped with Avocado, Smoked Salmon, Eel, and Shrimp",
+              "price": "13.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Cha Cha Roll",
+              "description": "Avocado Rolled and Fried, Topped with Stir Fried Spicy Shrimp with Spicy Mayo",
+              "price": "14.25",
+              "badges": [
+                "Fried"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Crunchy Muy Bueno™",
+              "description": "Shrimp Tempura, Cucumber, Avocado, Mayo and *Smelt Roe",
+              "price": "12.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Crunchy Roll",
+              "description": "Crispy Crunches, Aioli Sauce, and *Smelt Roe, Topped with Smoked Salmon, Avocado, and Eel",
+              "price": "12.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Damien’s Chance Roll",
+              "description": "Tempura Scallops, Baby Carrots and Bacon, Topped with Unagi Sauce,Masago and Green Onion",
+              "price": "13.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Doing it Roll",
+              "description": "Shrimp Tempura and Cucumber, Topped with Kani/Crab Salad, *Flying Fish Roe, and Tempura Flakes Served with Unagi Sauce",
+              "price": "11.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Dr. Zhivago™",
+              "description": "Fresh *Salmon, Cucumber, and Crabstick, Topped with Black Caviar",
+              "price": "12.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Dragon",
+              "description": "Crabstick and Avacado Inside, Topped with Fresh Water Eel and Eel Sauce",
+              "price": "13.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Dynamite Maki",
+              "description": "Various Fresh *Shellfish, Crabstick, *Tuna, *Salmon, *Tilapia, *Smelt Roe, and Green Onion, Mixed with Spicy Sauce",
+              "price": "12.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Erika #1 Roll",
+              "description": "Snow Crab, *Tuna, *Tilapia, Shrimp Tempura, and Avocado in a Thinly Sliced Cucumber Wrap Topped with a Special Sauce",
+              "price": "13.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Erika #2 Roll",
+              "description": "Shrimp Tempura, Mixed Spicy Crabmeat, Topped with Seared *Beef and Special Sauce",
+              "price": "13.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Erika #4 Roll",
+              "description": "Spicy *Tuna, *Smelt Roe, Hot Sauce, Mayo, and Crunchy Tempura Pieces Wrapped in Rice and *Smelt Roe",
+              "price": "13.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "F-17 Maki",
+              "description": "Fresh *Salmon, *Tuna, Crabstick, *Tilapia, White *Tuna, Wrapped with Seaweed, Panko Fried, and Served with a Special Sauce",
+              "price": "12.50",
+              "badges": [
+                "Fried"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Fire Cracker Roll",
+              "description": "*White Tuna slightly Cooked and Rare *Red Tuna Rolled in Sushi Rice, Flash Fried until Crunchy Brown Served with Spicy Red Sauce and Mayo",
+              "price": "12.50",
+              "badges": [
+                "Fried"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Flying Kamikaze Roll",
+              "description": "BBQ Eel, Spicy *Tuna, Cucumber, Yamagobo (Pickled Burdock Root) and Cream Cheese, Topped with Sweet Unagi Sauce",
+              "price": "12.25",
+              "badges": [
+                "Fried"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Funky Roll",
+              "description": "Shrimp Tempura Roll, Topped with *Tuna, Avocado, and Fried Shrimp",
+              "price": "12.25",
+              "badges": [
+                "Fried"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Gone with the Wind",
+              "description": "*Tuna, *Salmon, Crabstick, Cream Cheese, Cucumber, Masago, Avocado, and Katsu, Fried with Spicy Aioli Sauce",
+              "price": "12.95",
+              "badges": [
+                "Fried"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Grilled Smoked Salmon Skin Maki",
+              "description": "Cucumber, Negi, Yamagobo- Pickled Burdock Root and *Smelt Roe",
+              "price": "8.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Grilled Fresh Salmon Skin Maki",
+              "description": "Cucumber, Negi, Yamagobo - Pickled Burdock Root and *Smelt Roe",
+              "price": "8.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Hard Rock and Roll",
+              "description": "*Eel, *Scallops, and Picked Garlic with Unagi and Spicy Garlic Sauce",
+              "price": "12.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "HootieRacha Roll",
+              "description": "*Salmon and Cucumber, Topped with Snowcrab, Smoked Salmon Skin, Masago, Unagi Sauce, Sriracha, and Green Onion",
+              "price": "13.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Japanese Bagel™",
+              "description": "Smoked Salmon, Cream Cheese, and Avocado",
+              "price": "11.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "King and I",
+              "description": "Grilled Chicken with Cilantro and Jalapeño Pepper, Sesame Coated, Fried and served with Peanut Sauce",
+              "price": "11.95",
+              "badges": [
+                "Fried"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Love Me Roll",
+              "description": "Avocado and Crabstick, Topped with Cream Cheese then Baked. Unagi Sauce on Top and Batayaki Sauce on the Side",
+              "price": "11.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Love Me Too",
+              "description": "Avocado, crabstick, and shrimp tempura, topped with cream cheese then baked. Unagi sauce on top and batayaki sauce on the side",
+              "price": "12.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Mexican Roll",
+              "description": "Shrimp Tempura, Avocado, and Mayo, with *Smelt Roe on the Outside",
+              "price": "11.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Olympic Five Ring",
+              "description": "Rare *Tuna, *Salmon, and Masago Served with Spicy Aioli Sauce",
+              "price": "12.25",
+              "badges": [
+                "Fried"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Power Ball",
+              "description": "Special Tempura Sushi Combination Served with Masago and Spicy Aioli Sauce",
+              "price": "11.95",
+              "badges": [
+                "Fried"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Queen Roll",
+              "description": "Kani Inside, Topped with Eel and Eel Sauce",
+              "price": "14.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Rising Sun Roll",
+              "description": "*Tuna, Smoked Salmon, Cream Cheese, Avocado, Rolled and Crusted with Shredded Wonton Skin Served with Spicy Aioli Sauce",
+              "price": "12.50",
+              "badges": [
+                "Fried"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Salmon Maki",
+              "description": "*Salmon Roll",
+              "price": "8.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Seven Color Rainbow",
+              "description": "*Tuna, *Yellowtail, Squid, *Octopus, *Tilapia, *Salmon, Shrimp, Avocado, and Crabstick with *Smelt Roe",
+              "price": "12.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Salmon Delight",
+              "description": "Spicy salmon, and torched salmon with Japanese mayo and topped with Ikura and cilantro",
+              "price": "14.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Shrimp Tempura",
+              "description": "Fried Shrimp",
+              "price": "8.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Spider Roll",
+              "description": "Fried Soft Shell Crab, Kani - Crab and Cucumber with *Smelt Roe",
+              "price": "12.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Suki Roll",
+              "description": "Crab Meat, Topped with Avocado, *Salmon, and Sliced Lemon",
+              "price": "12.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Summer Breeze",
+              "description": "Avocado, cucumber, and crabstick with avocado and tuna tataki topped with ponzu and cilantro",
+              "price": "12.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "SuperCrunch",
+              "description": "Shrimp Tempura, Topped with Ebi, Unagi Sauce, and Crunchies",
+              "price": "12.95",
+              "badges": [
+                "Fried"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Super Fire Roll",
+              "description": "*Tilapia, *Tuna, and White *Tuna, Rolled in Sushi Rice and Flash Fried, Served with Firecracker Sauce",
+              "price": "13.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tekka Maki",
+              "description": "*Tuna roll",
+              "price": "9.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tempura Jap. Bagel",
+              "description": "Smoked Salmon, Cream Cheese, Avocado, Fried Served with Spicy Aioli",
+              "price": "12.50",
+              "badges": [
+                "Fried"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tuna and Avocado Maki",
+              "description": "",
+              "price": "10.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Twice Cooked Smoked Salmon Roll",
+              "description": "California Maki, Topped with Smoked Salmon, Toasted and Served with Batayaki Sauce",
+              "price": "12.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Volcano",
+              "description": "Crabstick and Avacado, Topped with Crabstick, Shrimp, Mixed with Spicy Mayo, Baked and Eel Sauce, Masago and Tobiko",
+              "price": "14.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Volcano and Tuna",
+              "description": "Crabstick and Avacado, Topped with Crabstick and Shrimp, Mixed with Spicy Mayo, Baked Spicy Tuna and Eel Sauce, Masago and Togiko Crunches",
+              "price": "19.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Vegetarian Rolls",
+          "note": "",
+          "items": [
+            {
+              "name": "Asparagus Maki",
+              "description": "",
+              "price": "7.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Avocado Maki",
+              "description": "",
+              "price": "7.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Cream Cheese Maki",
+              "description": "",
+              "price": "7.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Fried Garlic",
+              "description": "",
+              "price": "7.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Grilled Sweet Potato",
+              "description": "",
+              "price": "7.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Inari Tofu",
+              "description": "Sweet Tofu",
+              "price": "7.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Mixed Vegetable Tempura",
+              "description": "",
+              "price": "8.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Spinach",
+              "description": "",
+              "price": "7.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Stamina",
+              "description": "Pickled Garlic",
+              "price": "7.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tamago",
+              "description": "Sweet Egg Omelet",
+              "price": "7.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tempura Banana",
+              "description": "",
+              "price": "7.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tempura Cream Cheese",
+              "description": "",
+              "price": "7.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tempura Mozzarella",
+              "description": "",
+              "price": "7.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tempura Tofu",
+              "description": "",
+              "price": "7.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tempura Vegetable",
+              "description": "Choice of Sweet Potato, Onion, Zucchini, Asparagus, Eggplant, or Spinach",
+              "price": "7.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Teriyaki Eggplant",
+              "description": "",
+              "price": "7.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Teriyaki Zucchini",
+              "description": "",
+              "price": "7.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        }
+      ],
+      "footnotes": [
+        "* These items are served raw or undercooked and may contain raw or undercooked beef, eggs, and seafood ingredients. Consuming raw or undercooked meat, poultry, seafood or eggs may increase your risk of foodborne illness, especially if you have certain medical conditions.",
+        "\"Fried\" marks items shown with F (fried item) on the printed menu.",
+        "No refunds or exchange once food is made.",
+        "Prices from the July 2024 printed menu (Rusan_7_2024.pdf). TODO: confirm current prices with Ru San's before launch."
+      ]
+    },
+    {
+      "id": "nigiri-sashimi",
+      "label": "Nigiri & Sashimi",
+      "description": "",
+      "sections": [
+        {
+          "title": "Nigiri",
+          "note": "One piece, served on rice",
+          "items": [
+            {
+              "name": "Ebi",
+              "description": "Shrimp",
+              "price": "3.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Conch Clam",
+              "description": "",
+              "price": "3.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Hoki Gai",
+              "description": "Surf Clam",
+              "price": "3.75",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Ika",
+              "description": "Squid",
+              "price": "3.00",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Inari",
+              "description": "Sweet Tofu",
+              "price": "2.75",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Kanikama",
+              "description": "Crab Stick",
+              "price": "3.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Maguro",
+              "description": "Tuna",
+              "price": "3.75",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Niku Tataki",
+              "description": "Seared Beef",
+              "price": "3.75",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Shiro Maguro",
+              "description": "White Tuna",
+              "price": "3.75",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Saba",
+              "description": "Mackerel",
+              "price": "3.25",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Sake",
+              "description": "Fresh Salmon",
+              "price": "3.50",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tai",
+              "description": "Tilapia",
+              "price": "3.00",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tamago",
+              "description": "Egg Omelet",
+              "price": "3.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Ama Ebi",
+              "description": "Sweet Shrimp",
+              "price": "5.00",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Cajun Salmon Tataki",
+              "description": "",
+              "price": "3.75",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Hamachi",
+              "description": "Yellowtail",
+              "price": "4.00",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Sake Kunsei",
+              "description": "Smoked Salmon",
+              "price": "3.75",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Seven Spiced Tuna Tataki",
+              "description": "",
+              "price": "3.75",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Unagi",
+              "description": "Freshwater Eel",
+              "price": "3.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tako",
+              "description": "Octopus",
+              "price": "3.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "White Truffle Salmon",
+              "description": "",
+              "price": "5.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Maki Sushi Roll",
+          "note": "3 pieces",
+          "items": [
+            {
+              "name": "Ahi Poki Maki",
+              "description": "",
+              "price": "4.50",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Bay Shrimp Salad Maki",
+              "description": "",
+              "price": "3.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Cajun Maki",
+              "description": "Crawfish Meat with Cajun Seasoning",
+              "price": "3.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "California Maki",
+              "description": "",
+              "price": "3.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Crispy Calamari",
+              "description": "",
+              "price": "3.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Fish Tempura Maki",
+              "description": "Choice of Tuna, Salmon, Tilapia, or Hamachi",
+              "price": "4.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Garlic Chilli Salmon",
+              "description": "",
+              "price": "4.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Garlic Chilli Tai",
+              "description": "",
+              "price": "3.50",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Grilled Ika",
+              "description": "",
+              "price": "4.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Kimchee Maguro",
+              "description": "",
+              "price": "4.00",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Kimchee Negi Hamachi",
+              "description": "",
+              "price": "4.75",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Kimchee Salmon",
+              "description": "",
+              "price": "4.00",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Lomi Lomi Salmon",
+              "description": "",
+              "price": "4.00",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Negi Hamachi Maki",
+              "description": "Yellowtail with Green Onion",
+              "price": "4.75",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Negi Maguro",
+              "description": "Tuna with Green Onion",
+              "price": "4.00",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Rock n’ Roll",
+              "description": "",
+              "price": "4.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Seviche Shrimp",
+              "description": "Lime Marinated Shrimp",
+              "price": "3.50",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Smoked Fish",
+              "description": "Choice of Salmon",
+              "price": "4.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Spicy Aioli Scallop",
+              "description": "",
+              "price": "4.50",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Spicy Chicken",
+              "description": "",
+              "price": "3.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Spicy Negi Hamachi",
+              "description": "Spicy Yellowtail",
+              "price": "4.75",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Spicy Salmon",
+              "description": "",
+              "price": "4.00",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Spicy Scallop",
+              "description": "",
+              "price": "4.50",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Spicy Tuna",
+              "description": "",
+              "price": "4.00",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Spicy Tai",
+              "description": "",
+              "price": "3.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Teriyaki Hamachi",
+              "description": "Teriyaki Yellowtail",
+              "price": "4.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Teriyaki Maguro",
+              "description": "Teriyaki Tuna",
+              "price": "4.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Teriyaki Salmon",
+              "description": "",
+              "price": "4.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Temaki (Hand Roll)",
+          "note": "",
+          "items": [
+            {
+              "name": "California",
+              "description": "",
+              "price": "5.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Eel",
+              "description": "",
+              "price": "5.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Grilled Fresh Salmon Skin",
+              "description": "",
+              "price": "5.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Grilled Smoked Salmon Skin",
+              "description": "",
+              "price": "6.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Kani",
+              "description": "",
+              "price": "6.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Salmon",
+              "description": "",
+              "price": "5.75",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Salmon Avocado",
+              "description": "",
+              "price": "6.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Shrimp Tempura",
+              "description": "",
+              "price": "5.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Spicy Scallop",
+              "description": "",
+              "price": "6.00",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Spicy Tuna",
+              "description": "",
+              "price": "6.00",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tuna",
+              "description": "",
+              "price": "6.00",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tuna Avocado",
+              "description": "",
+              "price": "6.75",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Gunkan",
+          "note": "One piece per order",
+          "items": [
+            {
+              "name": "Black Caviar",
+              "description": "",
+              "price": "4.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Hotate Gai",
+              "description": "Scallops",
+              "price": "4.75",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Ika Sansai",
+              "description": "Calamari Salad",
+              "price": "4.25",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Ikura Gunkan",
+              "description": "",
+              "price": "9.00",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Wakame",
+              "description": "Seaweed Salad",
+              "price": "4.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Kani",
+              "description": "Crab Salad",
+              "price": "5.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Masago Gunkan with Quail Egg",
+              "description": "",
+              "price": "5.25",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Scallop Gunkan with Spicy Aioli",
+              "description": "",
+              "price": "5.25",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tobiko Gunkan with Quail Egg",
+              "description": "",
+              "price": "5.25",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tuna Ahi Poki Gunkan",
+              "description": "",
+              "price": "5.25",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Fresh Salmon",
+              "description": "",
+              "price": "5.25",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Sashimi",
+          "note": "",
+          "items": [
+            {
+              "name": "Maguro",
+              "description": "Tuna",
+              "price": "19.95",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Hamachi",
+              "description": "Yellowtail",
+              "price": "21.95",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Sake",
+              "description": "Salmon",
+              "price": "18.95",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tako",
+              "description": "Octopus",
+              "price": "18.95",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tuna and Yellowtail",
+              "description": "",
+              "price": "22.95",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Regular Assortment",
+              "description": "Tuna, Salmon, Yellowtail, Octopus, Squid, and Tai",
+              "price": "28.95",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Ru San’s Chef’s Choice Sashimi Assortment",
+              "description": "",
+              "price": "65.95",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tuna Symphony",
+              "description": "Assortment of Tuna, Seared Tuna, Tuna Tartare, Tuna Ahi Poki, and Spicy Tuna Aioli",
+              "price": "28.95",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Salmon Quartet",
+              "description": "Assortment of Salmon, Seared Salmon, Lomi Lomi Salmon, and Spicy Salmon Aioli",
+              "price": "26.95",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Ru San’s Sashimi Napoleon",
+              "description": "Crispy Wontons Layered with Tai, Tuna, Salmon, and Yellowtail with Wasabi Vinaigrette, Masago, and Tobiko",
+              "price": "21.95",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Hawaiian Ahi Poki",
+              "description": "Hawaiian Style Marinated Tuna",
+              "price": "15.95",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Ru San’s Sushi and Sashimi Assortment",
+              "description": "Tuna, Salmon, Yellowtail, Freshwater Eel, Octopus, Squid, Sweet Egg, Ebi, Flying Fish Roe (Tobiko), California Roll and Sashimi (Tuna, Salmon, and Yellowtail)",
+              "price": "31.95",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tokusen Assortment",
+              "description": "7 piece Nigiri (Tuna, Salmon, Yellowtail, Freshwater Eel, Tamago, Shrimp, and Masago) and California and Spicy Tuna Roll",
+              "price": "18.95",
+              "badges": [
+                "Raw"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Donburi Rice Bowls",
+          "note": "",
+          "items": [
+            {
+              "name": "Tekka Don",
+              "description": "Tuna over Sushi Rice",
+              "price": "19.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Una Don",
+              "description": "BBQ Eel over Sushi Rice",
+              "price": "19.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Chirashi Don",
+              "description": "Assorted Sashimi over Sushi Rice",
+              "price": "21.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Poke Bowl",
+              "description": "Marinated Salmon and Tuna, Served on Marinated Rice with Crab, Masago, Tobiko, Ikura, Avocado, Cucumber, and Carrots",
+              "price": "16.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        }
+      ],
+      "footnotes": [
+        "* These items are served raw or undercooked and may contain raw or undercooked beef, eggs, and seafood ingredients. Consuming raw or undercooked meat, poultry, seafood or eggs may increase your risk of foodborne illness, especially if you have certain medical conditions.",
+        "\"Fried\" marks items shown with F (fried item) on the printed menu.",
+        "No refunds or exchange once food is made.",
+        "Prices from the July 2024 printed menu (Rusan_7_2024.pdf). TODO: confirm current prices with Ru San's before launch."
+      ]
+    },
+    {
+      "id": "entrees",
+      "label": "Entrées",
+      "description": "All Dinners Served with Miso Soup, House Green Salad, and Steamed Rice. Add Sushi to any Dinner for $5.75 (California Roll, *Tuna, *Salmon, and Freshwater Eel).",
+      "sections": [
+        {
+          "title": "Seafood Specialty",
+          "note": "Served with Miso Soup, House Green Salad, and Steamed Rice",
+          "items": [
+            {
+              "name": "Miso Seared Pagoda Salmon",
+              "description": "Salmon Brushed with Miso Nuta Sauce then Seared Layered with Vinegar Sesame Rice, Teriyaki Eggplant, Tomato Salsa, Sesame Spinach",
+              "price": "25.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Plum Wine Glazed Bacon Scallops",
+              "description": "Atlantic Sea Scallops Wrapped in Bacon, Broiled and Simmered in a Plum Wine Soy Glaze",
+              "price": "25.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Seafood Medley",
+              "description": "Scallops, Mussel, Shrimp, Oyster, Ahi Tuna, and Salmon Lightly Sautéed and Simmered with Tobiko Caviar Cream Sauce Served Over Rice",
+              "price": "29.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Wok Fried Ahi *Tuna with Pesto Sauce",
+              "description": "Lightly Coated with Tempura Batter and Wok Fried",
+              "price": "25.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Yaki Sakana (Grilled Fish)",
+          "note": "Most fresh fish is delicious when simply grilled with a touch more of salt and pepper. Yaki Sakana (Grilled Fish) in Japan is the most traditional and popular way of cooking fish. Enjoy a variety of fish prepared in the most healthy and tasty way.",
+          "items": [
+            {
+              "name": "Grilled Shrimp and Scallops",
+              "description": "",
+              "price": "19.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Grilled Tuna",
+              "description": "",
+              "price": "19.45",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Grilled Salmon",
+              "description": "",
+              "price": "19.45",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Grilled Calamari",
+              "description": "",
+              "price": "17.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Grilled Mackerel",
+              "description": "",
+              "price": "17.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Grilled Tilapia",
+              "description": "",
+              "price": "17.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Breaded (Fried)",
+          "note": "For those who eat only fried fish, we present a deliciously fried fish, using Japanese Panko and a different way of frying.",
+          "items": [
+            {
+              "name": "Fried Shrimp and Scallops",
+              "description": "",
+              "price": "19.95",
+              "badges": [
+                "Fried"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Fried Shrimp and Calamari",
+              "description": "",
+              "price": "19.95",
+              "badges": [
+                "Fried"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Fried Tilapia",
+              "description": "",
+              "price": "17.95",
+              "badges": [
+                "Fried"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Fried Salmon",
+              "description": "",
+              "price": "19.95",
+              "badges": [
+                "Fried"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Traditional Dinner",
+          "note": "",
+          "items": [
+            {
+              "name": "Beef Teriyaki",
+              "description": "",
+              "price": "18.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Chicken Teriyaki",
+              "description": "",
+              "price": "17.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Oyako Don",
+              "description": "Grilled Chicken, Egg, Rice",
+              "price": "15.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Pork Teriyaki",
+              "description": "",
+              "price": "17.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Salmon Teriyaki",
+              "description": "",
+              "price": "19.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Scallop Teriyaki",
+              "description": "",
+              "price": "19.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Shrimp Teriyaki",
+              "description": "",
+              "price": "19.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tuna Teriyaki",
+              "description": "",
+              "price": "19.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Chicken Katsu Dinner",
+              "description": "",
+              "price": "17.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Pork Katsu Dinner",
+              "description": "",
+              "price": "17.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Pork Katsu Don",
+              "description": "Fried Pork over Rice",
+              "price": "17.95",
+              "badges": [
+                "Fried"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tempura Dinner",
+              "description": "Shrimp, Tilapia, Crabstick, and Mixed Vegetable",
+              "price": "17.95",
+              "badges": [
+                "Fried"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Sesame Dusted Chicken with Ramen and Mixed Vegetables",
+              "description": "",
+              "price": "19.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Ten Don",
+              "description": "Shrimp, Veggie Temp Over Rice",
+              "price": "19.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tuna Sashimi and Tempura",
+              "description": "Shrimp and Mixed Vegetable",
+              "price": "19.95",
+              "badges": [
+                "Fried"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Signature Fried Rice",
+          "note": "",
+          "items": [
+            {
+              "name": "Beef Fried Rice",
+              "description": "",
+              "price": "12.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Chicken Fried Rice",
+              "description": "",
+              "price": "11.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Seafood Fried Rice",
+              "description": "Calamari, Scallop and Shrimp",
+              "price": "14.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Shrimp Fried Rice",
+              "description": "",
+              "price": "12.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Vegetable Fried Rice",
+              "description": "",
+              "price": "11.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "House Fried Rice",
+              "description": "Beef, Chicken, Shrimp",
+              "price": "14.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Salmon Fried Rice",
+              "description": "",
+              "price": "14.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Plain Fried Rice",
+              "description": "",
+              "price": "7.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Grilled Rice Ball with Teriyaki Sauce",
+              "description": "",
+              "price": "4.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        }
+      ],
+      "footnotes": [
+        "* These items are served raw or undercooked and may contain raw or undercooked beef, eggs, and seafood ingredients. Consuming raw or undercooked meat, poultry, seafood or eggs may increase your risk of foodborne illness, especially if you have certain medical conditions.",
+        "\"Fried\" marks items shown with F (fried item) on the printed menu.",
+        "No refunds or exchange once food is made.",
+        "Prices from the July 2024 printed menu (Rusan_7_2024.pdf). TODO: confirm current prices with Ru San's before launch."
+      ]
+    },
+    {
+      "id": "noodles",
+      "label": "Soup & Noodles",
+      "description": "",
+      "sections": [
+        {
+          "title": "Udon — Thick Flour Noodles",
+          "note": "",
+          "items": [
+            {
+              "name": "Nabeyaki Udon",
+              "description": "Udon Noodle, Chicken Vegetables, Eggs, Shrimp Tempura, Fish Cake, Inari Tofu and Spinach",
+              "price": "15.75",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Hot Wok Tiger Shrimp Udon",
+              "description": "Spicy Udon Soup with Tiger Shrimp",
+              "price": "15.75",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Inaka Yasai Udon",
+              "description": "Miso Flavored Soup with Udon Noodle, Tofu, Shiitake Mushroom, Vegetables, Egg, Inari Tofu and Spinach",
+              "price": "13.75",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Pork Curry Udon",
+              "description": "Curry Flavored Soup with Vegetables and Sautéed Sliced Pork",
+              "price": "13.75",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Soba Soup — Buckwheat Noodles",
+          "note": "",
+          "items": [
+            {
+              "name": "Yasai Soba",
+              "description": "Buckwheat Noodle Soup and Mixed Vegetables, Topped with Spinach",
+              "price": "13.75",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tori Niku Soba",
+              "description": "Buckwheat Noodle Soup with Chicken and Vegetables",
+              "price": "13.75",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Shrimp Tempura Soba",
+              "description": "Buckwheat Noodle Soup, Shrimp Tempura and Vegetables",
+              "price": "14.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Ramen — Egg Noodles",
+          "note": "",
+          "items": [
+            {
+              "name": "Tokyo Shoyu Ramen",
+              "description": "Egg Noodle in Soy Ramen Soup, Topped with Butter Sautéed Pork",
+              "price": "13.75",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Kyushu Gomoku Champon",
+              "description": "Egg Noodle in Soy Ramen Soup, Topped with Butter Sautéed Calamari, Scallops, and Shrimp",
+              "price": "15.75",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Shinshu Yasai Miso Ramen",
+              "description": "Egg Noodle in Soy Ramen Soup, Topped with Seaweed and Vegetables",
+              "price": "13.75",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Pan Fried Noodles",
+          "note": "Customize your order: 1. Choose noodle — Creamy Pesto Yakiudon (Udon Noodle with Pesto Sauce), Yakisoba (Pan-Fried Egg Noodles) or Spicy Yakiudon (Udon Noodle with Spicy Sauce). 2. Choose protein (priced below).",
+          "items": [
+            {
+              "name": "Beef",
+              "description": "",
+              "price": "13.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Chicken",
+              "description": "",
+              "price": "12.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Pork",
+              "description": "",
+              "price": "12.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Shrimp",
+              "description": "",
+              "price": "13.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Calamari",
+              "description": "",
+              "price": "13.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Mussels",
+              "description": "",
+              "price": "13.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Scallops",
+              "description": "",
+              "price": "13.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Vegetable",
+              "description": "",
+              "price": "12.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        }
+      ],
+      "footnotes": [
+        "* These items are served raw or undercooked and may contain raw or undercooked beef, eggs, and seafood ingredients. Consuming raw or undercooked meat, poultry, seafood or eggs may increase your risk of foodborne illness, especially if you have certain medical conditions.",
+        "\"Fried\" marks items shown with F (fried item) on the printed menu.",
+        "No refunds or exchange once food is made.",
+        "Prices from the July 2024 printed menu (Rusan_7_2024.pdf). TODO: confirm current prices with Ru San's before launch."
+      ]
+    },
+    {
+      "id": "lunch",
+      "label": "Lunch",
+      "description": "Lunch offered 11:30 AM – 3:00 PM. No substitution.",
+      "sections": [
+        {
+          "title": "Lunch Specials",
+          "note": "Lunch offered 11:30 AM – 3:00 PM. No substitution.",
+          "items": [
+            {
+              "name": "Quick Energizer",
+              "description": "Choice of 5 Temaki (Eel, Smoke Salmon Skin, Fresh Salmon Skin, Tuna, Spicy Tuna, Kani, or Spicy Scallop). Served with Soup or Salad.",
+              "price": "12.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Yakitori Sushi Combo",
+              "description": "Choice of 3 Yakitori (Chicken, Beef, or Squid), California Maki, 3 Nigiri (Salmon, Tuna, and Unagi). Served with Soup or Salad.",
+              "price": "9.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Poki Bowl",
+              "description": "Marinated Salmon and Tuna, Served on Marinated Rice with Crab, Masago, Tobiko, Ikura, Avocado, Cucumber, and Carrots. Served with Soup or Salad.",
+              "price": "14.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Sushi and Sashimi",
+              "description": "5 Nigiri (Salmon, Tuna, Tai, Unagi, and Tamago), Spicy Tuna, California Maki, and 6-Piece Sashimi (Salmon, Tuna, and Tai). Served with Soup or Salad.",
+              "price": "14.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Roll and Sashimi Combo",
+              "description": "Choice of any 1 Roll on the Menu and 6-Piece Sashimi (Salmon, Tuna, and Tai). Served with Soup, or Salad, and Side of Fried Rice. Price of roll + $6.",
+              "price": "",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Yaki Sakana Teriyaki",
+          "note": "Served with Soup, or Salad, and Side of Fried Rice",
+          "items": [
+            {
+              "name": "Beef Tenderloin",
+              "description": "",
+              "price": "11.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Chicken Breast",
+              "description": "",
+              "price": "10.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Salmon",
+              "description": "",
+              "price": "12.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Katsu",
+          "note": "Served with Soup, Salad, and Side of Fried Rice",
+          "items": [
+            {
+              "name": "Chicken",
+              "description": "",
+              "price": "10.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Pork",
+              "description": "",
+              "price": "10.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Fried Rice Combo",
+          "note": "3 Nigiri (Salmon, Tuna, and Unagi). Served with Soup or Salad",
+          "items": [
+            {
+              "name": "Beef Tenderloin",
+              "description": "",
+              "price": "11.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Chicken",
+              "description": "",
+              "price": "10.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Shrimp",
+              "description": "",
+              "price": "12.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Vegetarian Lunch",
+          "note": "Served with Soup or Salad.",
+          "items": [
+            {
+              "name": "Tempura",
+              "description": "Choice of 4 Tempura (Mixed Vegetable, Onion Ring, Zucchini, Sweet Potato, Egg Plant, or Mozzarella)",
+              "price": "9.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tofu and Sushi Combo",
+              "description": "Garlic Sesame Tofu and Choice of 1 Vegetarian Roll (Asparagus, Avocado, Cream Cheese, or Tempura Banana)",
+              "price": "10.25",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        }
+      ],
+      "footnotes": [
+        "* These items are served raw or undercooked and may contain raw or undercooked beef, eggs, and seafood ingredients. Consuming raw or undercooked meat, poultry, seafood or eggs may increase your risk of foodborne illness, especially if you have certain medical conditions.",
+        "\"Fried\" marks items shown with F (fried item) on the printed menu.",
+        "No refunds or exchange once food is made.",
+        "Prices from the July 2024 printed menu (Rusan_7_2024.pdf). TODO: confirm current prices with Ru San's before launch."
+      ]
+    },
+    {
+      "id": "kids-desserts",
+      "label": "Kids & Desserts",
+      "description": "",
+      "sections": [
+        {
+          "title": "Children’s Menu",
+          "note": "Ages 8 and under",
+          "items": [
+            {
+              "name": "Chicken Fried Rice",
+              "description": "A Kids-Sized Portion of Chicken Fried Rice with Egg, Carrots, Zucchini and Onion",
+              "price": "5.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Shrimp Tempura",
+              "description": "8 Pieces of Shrimp Tempura, Served with Steamed Rice and Sweet Potato Fries",
+              "price": "7.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Chicken Teriyaki",
+              "description": "Grilled Chicken in Teriyaki Sauce, Served with Steamed Rice and Sweet Potato Fries",
+              "price": "6.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Beef Teriyaki",
+              "description": "Grilled Beef in Teriyaki Sauce, Served with Steamed Rice and Sweet Potato Fries",
+              "price": "7.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Chicken Yakisoba",
+              "description": "Marinated Pan-Fried Noodles with Grilled Chicken",
+              "price": "7.95",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Ice Cream",
+          "note": "One scoop per order",
+          "items": [
+            {
+              "name": "Green Tea",
+              "description": "",
+              "price": "5.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Red Bean",
+              "description": "",
+              "price": "5.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Vanilla",
+              "description": "",
+              "price": "5.00",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        },
+        {
+          "title": "Ru San’s Specialty Desserts",
+          "note": "",
+          "items": [
+            {
+              "name": "Ru San’s Cream Puffs",
+              "description": "Mini Cream Puffs with Chocolate Sauce",
+              "price": "6.50",
+              "badges": [],
+              "spicy_level": 0,
+              "extras": []
+            },
+            {
+              "name": "Tempura Ice Cream",
+              "description": "Fried Ice Cream with Strawberry and Caramel Sauce",
+              "price": "6.95",
+              "badges": [
+                "Fried"
+              ],
+              "spicy_level": 0,
+              "extras": []
+            }
+          ]
+        }
+      ],
+      "footnotes": [
+        "* These items are served raw or undercooked and may contain raw or undercooked beef, eggs, and seafood ingredients. Consuming raw or undercooked meat, poultry, seafood or eggs may increase your risk of foodborne illness, especially if you have certain medical conditions.",
+        "\"Fried\" marks items shown with F (fried item) on the printed menu.",
+        "No refunds or exchange once food is made.",
+        "Prices from the July 2024 printed menu (Rusan_7_2024.pdf). TODO: confirm current prices with Ru San's before launch."
+      ]
+    }
+  ]
+}

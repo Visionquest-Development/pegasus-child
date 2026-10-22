@@ -1,0 +1,180 @@
+{
+  "_comment": "Single source of truth for Ru San's NAP, hours, links and SEO copy. Everything here was taken from rusanskennesaw.com (crawled 2026-10-22). Items marked TODO need confirmation from the owner.",
+  "name": "Ru San's Kennesaw",
+  "legal_name_todo": "TODO: confirm exact business name used on Google Business Profile (site uses both \"Ru San's Kennesaw\" and \"Ru Sans Kennesaw\").",
+  "tagline": "Japanese Seafood & Sushi",
+  "since": "2003",
+  "address": {
+    "street": "425 Ernest Barrett Pkwy #1090",
+    "city": "Kennesaw",
+    "region": "GA",
+    "postal": "30144",
+    "country": "US"
+  },
+  "phone_display": "(678) 766-0598",
+  "phone_e164": "+16787660598",
+  "email_catering": "catering@rusanskennesaw.com",
+  "email_info": "info@rusanskennesaw.com",
+  "maps_url": "https://www.google.com/maps/search/?api=1&query=Ru+San%27s+425+Ernest+Barrett+Pkwy+%231090+Kennesaw+GA+30144",
+  "maps_embed": "https://www.google.com/maps?q=Ru+San%27s+425+Ernest+Barrett+Pkwy+%231090+Kennesaw+GA+30144&output=embed",
+  "hours": [
+    {
+      "days": "Monday – Thursday",
+      "open": "11:30",
+      "close": "22:00",
+      "label": "11:30 AM – 10:00 PM",
+      "schema_days": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday"
+      ]
+    },
+    {
+      "days": "Friday – Saturday",
+      "open": "11:30",
+      "close": "22:00",
+      "label": "11:30 AM – 10:00 PM",
+      "schema_days": [
+        "Friday",
+        "Saturday"
+      ]
+    },
+    {
+      "days": "Sunday",
+      "open": "",
+      "close": "",
+      "label": "Closed",
+      "schema_days": []
+    }
+  ],
+  "hours_note": "Lunch offered 11:30 AM – 3:00 PM.",
+  "hours_todo": "TODO: confirm hours. Contact page + homepage say 11:30 AM – 10:00 PM Mon–Sat, Sunday closed; the site's old schema says Fri–Sat until 11:00 PM.",
+  "order": {
+    "call": {
+      "label": "Call for Takeout",
+      "href": "tel:+16787660598"
+    },
+    "partners": [
+      {
+        "label": "DoorDash",
+        "href": "https://order.online/business/~14366381/",
+        "note": "Doordash driver picks up food, however any customer service issues with the driver should be directed towards doordash"
+      },
+      {
+        "label": "Grubhub",
+        "href": "https://www.grubhub.com/restaurant/ru-sans-425-ernest-barrett-pkwy-nw-ste-1090-kennesaw/338223"
+      },
+      {
+        "label": "Uber Eats",
+        "href": "https://www.ubereats.com/atlanta/food-delivery/ru-sans-kennesaw/nwbeKo95QPK29sJx8WMQxw"
+      },
+      {
+        "label": "Postmates",
+        "href": "https://postmates.com/merchant/ru-sans-kennesaw"
+      }
+    ],
+    "todo": "TODO: confirm which delivery partners are still active (Uber Eats/Postmates links could not be verified from a script). Current site's 'Online Ordering' page shows an unrendered [wfm_food_menu] shortcode, so there is no working first-party online ordering link."
+  },
+  "reservations": {
+    "text": "Whether you want to place a sushi platter order, need reservations, or any special requests please reach out!",
+    "href": "tel:+16787660598",
+    "todo": "TODO: no online reservation system found on the current site; reservations are by phone."
+  },
+  "social": [
+    {
+      "label": "Facebook",
+      "href": "https://www.facebook.com/RusansKennesaw/",
+      "icon": "fa-facebook"
+    },
+    {
+      "label": "Instagram",
+      "href": "https://www.instagram.com/rusanskennesaw/",
+      "icon": "fa-instagram"
+    },
+    {
+      "label": "X (Twitter)",
+      "href": "https://twitter.com/rusanskennesaw",
+      "icon": "fa-twitter"
+    },
+    {
+      "label": "Tripadvisor",
+      "href": "https://www.tripadvisor.com/Restaurant_Review-g60874-d435396-Reviews-Ru_San_s_Kennesaw-Kennesaw_Georgia.html",
+      "icon": "fa-tripadvisor"
+    }
+  ],
+  "about": {
+    "headline": "Deliciously Fulfilling & Economically Priced",
+    "short": "A staple in Kennesaw for decades, Ru San's Kennesaw brings quality, fresh sushi and authentic flavors without breaking your bank.",
+    "long": "Ru San’s, based in Kennesaw, GA since 2003, is the original mainstream Japanese seafood and sushi restaurant in the area. We are locally owned and operated and serve a variety of fresh sushi and seafood daily. Come and experience our casual and active atmosphere only 5 minutes from Kennesaw State University. We have free Wi-Fi and 5 flat-screen TV’s for your entertainment enjoyment. We serve lunch and dinner and offer catering and take-out. We welcome groups for special events such as birthdays, family reunions and business luncheons.",
+    "features": [
+      {
+        "title": "Appetizers",
+        "text": "Aside from familiar staples like fried calamari, crab cakes or potstickers, we have some distinctive dishes to try like our popular Hot Wok Tiger Shrimp, \"O\" Face Lobster or Shisamo plate.",
+        "image": "hot-wok-tiger-shrimp",
+        "link": "/menu/#appetizers"
+      },
+      {
+        "title": "Artistically Crafted Rolls",
+        "text": "Premium sushi rolls without the premium pricing. Sushi is meant to be enjoyed by all as a healthy meal, not just for the elite.",
+        "image": "erika-1-roll",
+        "link": "/menu/#rolls"
+      },
+      {
+        "title": "Hearty Entrées",
+        "text": "Many diners see the value in our food: from deliciously healthy entrees with generous servings and artistic plating.",
+        "image": "sashimi-assortment",
+        "link": "/menu/#entrees"
+      }
+    ]
+  },
+  "specials": {
+    "text": "Please check back periodically for specials or promotions. Feel free to contact us and ask to be part of our mailing list for deals.",
+    "giveback": "Ru San's Kennesaw is proud to give back to our community, contact us if you are a school or non profit interested in give back nights.",
+    "todo": "TODO: no current specials are listed on the live site. Ask the owner for current specials / happy hour, or hide this page."
+  },
+  "seo": {
+    "home": {
+      "title": "Ru San's Kennesaw | Sushi & Japanese Seafood on Barrett Pkwy",
+      "description": "Fresh sushi, Japanese seafood and hearty entrées in Kennesaw, GA since 2003. Takeout, delivery, party platters and catering on Ernest Barrett Pkwy. Call (678) 766-0598."
+    },
+    "menu": {
+      "title": "Menu | Sushi Rolls, Sashimi & Entrées | Ru San's Kennesaw",
+      "description": "Browse Ru San's Kennesaw menu: house special appetizers, 60+ sushi rolls, nigiri, sashimi, teriyaki, udon, ramen, lunch specials and kids menu."
+    },
+    "about": {
+      "title": "About Ru San's | Kennesaw Sushi Since 2003",
+      "description": "Locally owned Japanese seafood and sushi restaurant in Kennesaw since 2003, 5 minutes from Kennesaw State University. Lunch, dinner, catering and takeout."
+    },
+    "location": {
+      "title": "Hours & Location | Ru San's Kennesaw, Barrett Pkwy",
+      "description": "Ru San's Kennesaw, 425 Ernest Barrett Pkwy #1090, Kennesaw, GA 30144. Open Mon–Sat 11:30 AM–10 PM. Call (678) 766-0598 for takeout or reservations."
+    },
+    "catering": {
+      "title": "Sushi Catering & Party Platters | Ru San's Kennesaw",
+      "description": "Sushi platters and party platters for offices, birthdays and events in Kennesaw. Deluxe, medium, small and nigiri platters plus calamari, gyoza and yakitori."
+    },
+    "gallery": {
+      "title": "Photo Gallery | Ru San's Kennesaw Sushi & Seafood",
+      "description": "Photos of sushi rolls, sashimi, platters and dishes from Ru San's Kennesaw Japanese seafood and sushi restaurant on Barrett Parkway."
+    },
+    "specials": {
+      "title": "Specials & Give Back Nights | Ru San's Kennesaw",
+      "description": "Specials and promotions at Ru San's Kennesaw. Schools and non-profits: ask about give back nights. Join our mailing list for deals."
+    }
+  },
+  "schema": {
+    "servesCuisine": [
+      "Sushi",
+      "Japanese",
+      "Seafood"
+    ],
+    "priceRange": "$$",
+    "acceptsReservations": true,
+    "geo_todo": "TODO: add latitude/longitude from Google Business Profile (not published on the current site)."
+  },
+  "hours_summary": {
+    "primary": "Mon – Sat 11:30 AM – 10:00 PM",
+    "secondary": "Sunday closed"
+  }
+}

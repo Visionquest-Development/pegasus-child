@@ -1,0 +1,333 @@
+{
+  "hero-rolls": {
+    "alt": "Platter of colorful signature sushi rolls at Ru San's Kennesaw",
+    "width": 1600,
+    "height": 900,
+    "sizes": [
+      1600,
+      800
+    ],
+    "role": "hero",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2017/09/IMG_1642.jpg"
+  },
+  "hero-sashimi": {
+    "alt": "Fresh sashimi with cucumber, lemon and ginger",
+    "width": 1600,
+    "height": 900,
+    "sizes": [
+      1600,
+      800
+    ],
+    "role": "hero",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2017/09/IMG_2410.jpg"
+  },
+  "hero-sashimi-platter": {
+    "alt": "Large sashimi platter with tuna, salmon and crab",
+    "width": 1600,
+    "height": 900,
+    "sizes": [
+      1600,
+      800
+    ],
+    "role": "hero",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2018/05/IMG_20180310_135151.jpg"
+  },
+  "hero-sushi-combo": {
+    "alt": "Sushi & nigiri combination plate",
+    "width": 1600,
+    "height": 900,
+    "sizes": [
+      1600,
+      800
+    ],
+    "role": "hero / page hero",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2017/09/SushiCombo-e1505438782200.jpg"
+  },
+  "feature-calamari": {
+    "alt": "Crispy calamari",
+    "width": 1000,
+    "height": 750,
+    "sizes": [
+      1000,
+      560
+    ],
+    "role": "home feature: Appetizers",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2017/09/IMG_20170908_125029-1.jpg"
+  },
+  "feature-erika-roll": {
+    "alt": "Erika #1 Roll",
+    "width": 1000,
+    "height": 750,
+    "sizes": [
+      1000,
+      560
+    ],
+    "role": "home feature: Rolls",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2017/09/Erika1-e1505434103232.jpg"
+  },
+  "feature-entree": {
+    "alt": "Plated seafood entrée at Ru San's Kennesaw",
+    "width": 1000,
+    "height": 750,
+    "sizes": [
+      1000,
+      560
+    ],
+    "role": "home feature: Entrées",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2017/09/IMG_0213-e1586094893462.jpg"
+  },
+  "storefront": {
+    "alt": "Ru San's storefront sign: Sushi, Tempura, Steak & Seafood",
+    "width": 642,
+    "height": 468,
+    "sizes": [
+      642
+    ],
+    "role": "location / about",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2017/09/Rusan.jpg"
+  },
+  "dining-room": {
+    "alt": "Dining room at Ru San's Kennesaw",
+    "width": 525,
+    "height": 700,
+    "sizes": [
+      525
+    ],
+    "role": "about",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2020/04/o-13.jpg"
+  },
+  "guest-rolls": {
+    "alt": "Guest enjoying sushi rolls with chopsticks",
+    "width": 1000,
+    "height": 667,
+    "sizes": [
+      1000,
+      560
+    ],
+    "role": "about / gallery",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2020/04/o-6.jpg"
+  },
+  "platter-deluxe": {
+    "alt": "Deluxe Sushi Platter",
+    "width": 1000,
+    "height": 562,
+    "sizes": [
+      1000,
+      560
+    ],
+    "role": "catering",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2017/11/Deluxe-Platter.jpg"
+  },
+  "platter-medium": {
+    "alt": "Medium Sushi Platter",
+    "width": 800,
+    "height": 716,
+    "sizes": [
+      800,
+      560
+    ],
+    "role": "catering",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2017/11/Medium-Platter.jpg"
+  },
+  "platter-large": {
+    "alt": "Large Sushi Platter",
+    "width": 640,
+    "height": 640,
+    "sizes": [
+      640
+    ],
+    "role": "catering",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2017/11/Large-Platter.jpg"
+  },
+  "platter-nigiri": {
+    "alt": "Nigiri Platter",
+    "width": 736,
+    "height": 687,
+    "sizes": [
+      736
+    ],
+    "role": "catering",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2017/11/Nigiri-Platter.jpg"
+  },
+  "platter-calamari": {
+    "alt": "Calamari Platter",
+    "width": 1000,
+    "height": 750,
+    "sizes": [
+      1000,
+      560
+    ],
+    "role": "catering",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2017/09/IMG_20170908_125029-1.jpg"
+  },
+  "platter-edamame": {
+    "alt": "Edamame Platter",
+    "width": 1000,
+    "height": 750,
+    "sizes": [
+      1000,
+      560
+    ],
+    "role": "catering",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2017/09/IMG_20170908_125049-1.jpg"
+  },
+  "platter-fried-rice": {
+    "alt": "Ru San's Kennesaw famous fried rice",
+    "width": 1000,
+    "height": 750,
+    "sizes": [
+      1000,
+      560
+    ],
+    "role": "catering",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2017/09/IMG_20170908_125107-1.jpg"
+  },
+  "platter-yakitori": {
+    "alt": "Chicken Yakitori Platter",
+    "width": 450,
+    "height": 318,
+    "sizes": [
+      450
+    ],
+    "role": "catering",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2017/11/8782648.jpg"
+  },
+  "gallery-rising-sun": {
+    "alt": "Rising Sun Roll",
+    "width": 1000,
+    "height": 1333,
+    "sizes": [
+      1000,
+      560
+    ],
+    "role": "gallery",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2017/09/RisingSun.jpg"
+  },
+  "gallery-gone-with-the-wind": {
+    "alt": "Gone with the Wind roll",
+    "width": 1000,
+    "height": 1333,
+    "sizes": [
+      1000,
+      560
+    ],
+    "role": "gallery",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2017/09/GoneWithTheWind.jpg"
+  },
+  "gallery-sashimi-assortment": {
+    "alt": "Sashimi Assortment",
+    "width": 1000,
+    "height": 1029,
+    "sizes": [
+      1000,
+      560
+    ],
+    "role": "gallery",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2017/09/2000.jpg"
+  },
+  "gallery-sushi-sashimi": {
+    "alt": "Ru San's Sushi & Sashimi Assortment",
+    "width": 1000,
+    "height": 750,
+    "sizes": [
+      1000,
+      560
+    ],
+    "role": "gallery",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2017/09/QALQ7711-e1505438164387.jpg"
+  },
+  "gallery-pepper-tuna": {
+    "alt": "Pepper Tuna",
+    "width": 1000,
+    "height": 750,
+    "sizes": [
+      1000,
+      560
+    ],
+    "role": "gallery",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2017/09/IMG_20170908_125627-1.jpg"
+  },
+  "gallery-eel-roll": {
+    "alt": "Sushi roll topped with eel and eel sauce",
+    "width": 1000,
+    "height": 750,
+    "sizes": [
+      1000,
+      560
+    ],
+    "role": "gallery",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2017/09/IMG_2633.jpg"
+  },
+  "gallery-tempura-roll": {
+    "alt": "Specialty roll on shredded carrots",
+    "width": 1000,
+    "height": 750,
+    "sizes": [
+      1000,
+      560
+    ],
+    "role": "gallery",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2017/09/IMG_2604.jpg"
+  },
+  "gallery-sashimi-plate": {
+    "alt": "Sashimi plate with salmon, tuna and garnish",
+    "width": 560,
+    "height": 534,
+    "sizes": [
+      560
+    ],
+    "role": "gallery",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2020/04/triple-e1586111312101.jpg"
+  },
+  "gallery-nigiri-board": {
+    "alt": "Nigiri and sushi rolls on a serving board",
+    "width": 747,
+    "height": 1000,
+    "sizes": [
+      747
+    ],
+    "role": "gallery",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2020/04/o-17.jpg"
+  },
+  "gallery-sashimi-bowl": {
+    "alt": "Sashimi bowl with cucumber and radish",
+    "width": 1000,
+    "height": 998,
+    "sizes": [
+      1000,
+      560
+    ],
+    "role": "gallery",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/brizy/imgs/IMG_2632-1402x1052x174x0x1054x1052x1585872000.jpg"
+  },
+  "gallery-wakame-salad": {
+    "alt": "Wakame seaweed salad",
+    "width": 1000,
+    "height": 1333,
+    "sizes": [
+      1000,
+      560
+    ],
+    "role": "gallery",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2018/03/WakemeSalad-e1521047440292.jpg"
+  },
+  "og-share": {
+    "alt": "Signature sushi rolls at Ru San's Kennesaw",
+    "width": 1200,
+    "height": 630,
+    "sizes": [],
+    "role": "Open Graph / Twitter share image",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2017/09/IMG_1642.jpg"
+  },
+  "rusans-logo": {
+    "alt": "Ru San's Kennesaw",
+    "width": 150,
+    "height": 191,
+    "sizes": [
+      150
+    ],
+    "role": "logo",
+    "source": "https://www.rusanskennesaw.com/wp-content/uploads/2017/09/RuLogo-1.png",
+    "ext": "png"
+  }
+}
