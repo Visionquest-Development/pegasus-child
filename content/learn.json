@@ -1,0 +1,8 @@
+{
+ "_readme": "Learn articles created as WordPress posts by setup-insuranceguyjoe-wp.sh. Content files: content/learn/<slug>.html. After creation, edit them in WP; these files are only the seed.",
+ "posts": [
+  {"slug":"aca-vs-private-health-insurance","title":"ACA vs. Private Health Insurance: What’s the Difference?","excerpt":"ACA-compliant plans and non-ACA private plans follow very different rules. Compare pre-existing condition coverage, benefits, subsidies and enrollment windows.","category":"Plan Basics","date":"2026-10-20 09:00:00"},
+  {"slug":"open-enrollment-guide","title":"Open Enrollment Guide: Dates, Deadlines & Special Enrollment Periods","excerpt":"Key Open Enrollment dates for 2027 coverage, what to do if you already have a plan, and how Special Enrollment Periods work after a life event.","category":"Enrollment","date":"2026-10-21 09:00:00"},
+  {"slug":"ppo-vs-hmo-vs-epo","title":"PPO vs. HMO vs. EPO: How Health Plan Networks Work","excerpt":"How PPO, HMO and EPO networks differ on out-of-network coverage, referrals and cost, plus where POS plans and HSAs fit in.","category":"Plan Basics","date":"2026-10-22 09:00:00"}
+ ]
+}
