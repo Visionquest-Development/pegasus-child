@@ -1242,12 +1242,11 @@
 		} */
 		
 	path#GA,
-	path#NJ, 
+	path#NJ,
 	path#NV,
-	path#TN, 
 	path#TX {
 		fill:#f78a6d; cursor:pointer;
-	} 
+	}
 	
 	#qbiq-camp-map {
 		
