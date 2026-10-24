@@ -406,39 +406,6 @@
 		background-image: linear-gradient(87deg, #0000008a, #0000);
 		opacity: 1;
 	}
-
-	/* ===== Hero background video (home section 1) ===== */
-	.home .qbiqcamp-home-section-1 {
-		position: relative;
-		overflow: hidden;
-	}
-
-	.home .qbiqcamp-home-section-1 .hero-bg-video {
-		position: absolute;
-		inset: 0;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		object-position: center 30%;
-		z-index: 0;
-		pointer-events: none;
-	}
-
-	/* Readability overlay drawn above the video, below the text (text/buttons are z-index: 99) */
-	.home .qbiqcamp-home-section-1::before {
-		content: "";
-		position: absolute;
-		inset: 0;
-		background-image: linear-gradient(87deg, #0000008a, #0000);
-		z-index: 1;
-	}
-
-	/* Respect users who prefer reduced motion: hide the video, keep the poster background */
-	@media (prefers-reduced-motion: reduce) {
-		.home .qbiqcamp-home-section-1 .hero-bg-video {
-			display: none;
-		}
-	}
 	
 	.text-container, .button-container {
 		position: relative;

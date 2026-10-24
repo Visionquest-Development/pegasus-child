@@ -317,12 +317,20 @@
 		videoElement.preload = 'auto';
 		
 
-		// Create a source element and add it to the video
+		// Poster image shows until the video is ready (better LCP / fallback)
+		videoElement.poster = '/wp-content/themes/pegasus-child/videos/qbiq-quarterback-camp-hero-poster.jpg';
+
+		// WebM first (smaller, preferred where supported), MP4 fallback for Safari/iOS
+		let sourceWebm = document.createElement('source');
+		sourceWebm.src = '/wp-content/themes/pegasus-child/videos/qbiq-quarterback-camp-hero.webm';
+		sourceWebm.type = 'video/webm';
+
 		let sourceElement = document.createElement('source');
-		sourceElement.src = 'https://qbiqcamp.com/wp-content/uploads/2024/11/QBIQ-WEB-BANNER-VIDEO-1.mp4';
+		sourceElement.src = '/wp-content/themes/pegasus-child/videos/qbiq-quarterback-camp-hero.mp4';
 		sourceElement.type = 'video/mp4';
-		
-		
+
+
+		videoElement.appendChild(sourceWebm);
 		videoElement.appendChild(sourceElement);
 		jQuery('.home #large-header canvas').remove();
 

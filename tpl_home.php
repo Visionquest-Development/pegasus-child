@@ -39,19 +39,6 @@
 				
 				$output .= '<section class="p-5 site qbiqcamp-home-section qbiqcamp-home-section-' . $index . ' background-attachment-fixed " style="background-image: url(' . $bg_image . ');">';
 				//$output .= '[section class="p-5 qbiqcamp-home-section-2" background="' . $bg_image . '"]';
-
-					// Hero background video (first section only). The CSS background-image above
-					// is kept as the poster/fallback for browsers that block autoplay (e.g. iOS low-power mode).
-					if ( 1 === $index ) {
-						$theme_uri   = get_stylesheet_directory_uri();
-						$video_base  = $theme_uri . '/videos/qbiq-quarterback-camp-hero';
-						$video_poster = $bg_image ? $bg_image : esc_url( $video_base . '-poster.jpg' );
-						$output .= '<video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" poster="' . $video_poster . '" aria-hidden="true" tabindex="-1">';
-							$output .= '<source src="' . esc_url( $video_base . '.webm' ) . '" type="video/webm">';
-							$output .= '<source src="' . esc_url( $video_base . '.mp4' ) . '" type="video/mp4">';
-						$output .= '</video>';
-					}
-
 					$output .= '<div class="overlay"></div>';
 					$output .= '<div class="text-container container my-5">';
 					
