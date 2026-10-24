@@ -821,3 +821,170 @@
 	.elliot-home .elliot-hero__actions { gap: 16px; }
 	.elliot-home .elliot-credcard { padding: 24px 18px; }
 }
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~CONTACT PAGE ( tpl_contact.php )~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.elliot-contact {
+	--e-bg:      #F3F1E9;
+	--e-ink:     #12181F;
+	--e-dark:    #0E1218;
+	--e-dark2:   #12181F;
+	--e-cream:   #E8E7E3;
+	--e-paper:   #F3F1E9;
+	--e-gold:    #EEB43F;
+	--e-gold2:   #D99A1C;
+	--e-gold3:   #F2B441;
+	--e-muted:   #696A68;
+	--e-muted2:  #9EA0A0;
+	--e-band:    #E9E6DC;
+	--e-hairline: rgba(26,22,18,.13);
+
+	background: var(--e-bg);
+	color: var(--e-ink);
+	font-family: var(--font-sans);
+	-webkit-font-smoothing: antialiased;
+	overflow-x: hidden;
+}
+
+.elliot-contact ::-moz-selection { background: var(--e-gold2); color: var(--e-paper); }
+.elliot-contact ::selection { background: var(--e-gold2); color: var(--e-paper); }
+
+/* Shared type helpers */
+.elliot-contact .elliot-contact-eyebrow {
+	font-family: var(--font-mono);
+	font-weight: 500;
+	font-size: 12px;
+	letter-spacing: .2em;
+	text-transform: uppercase;
+	color: var(--e-gold);
+	margin: 0;
+}
+.elliot-contact .elliot-contact-eyebrow--rule {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+}
+.elliot-contact .elliot-contact-eyebrow--rule::before {
+	content: "";
+	width: 30px;
+	height: 1px;
+	background: var(--e-gold);
+	flex: none;
+}
+.elliot-contact .elliot-contact-emph { font-style: italic; color: var(--e-gold); }
+
+/* ===== HERO =========================================================== */
+.elliot-contact .elliot-contact-hero {
+	background: var(--e-dark);
+	color: var(--e-cream);
+	padding: 96px 0;
+}
+.elliot-contact .elliot-contact-hero__title {
+	font-family: var(--font-serif);
+	font-weight: 500;
+	font-size: clamp(44px, 7.5vw, 84px);
+	line-height: 1.0;
+	letter-spacing: -.022em;
+	margin: 0;
+	color: var(--e-paper);
+}
+.elliot-contact .elliot-contact-hero__intro {
+	font-size: 16px;
+	line-height: 1.7;
+	color: var(--e-muted2);
+	margin: 0;
+}
+
+/* ===== BODY : DETAILS + FORM ========================================= */
+.elliot-contact .elliot-contact-body { padding: 96px 0; }
+
+/* Contact details ( left column ) */
+.elliot-contact .elliot-contact-detail {
+	padding: 22px 0;
+	border-bottom: 1px solid var(--e-hairline);
+}
+.elliot-contact .elliot-contact-detail:first-child { padding-top: 0; }
+.elliot-contact .elliot-contact-detail__label {
+	font-family: var(--font-mono);
+	font-weight: 500;
+	font-size: 11px;
+	letter-spacing: .2em;
+	text-transform: uppercase;
+	color: var(--e-gold2);
+	margin-bottom: 10px;
+}
+.elliot-contact .elliot-contact-detail__value {
+	font-family: var(--font-serif);
+	font-size: clamp(20px, 2.4vw, 26px);
+	line-height: 1.35;
+	color: var(--e-ink);
+}
+.elliot-contact .elliot-contact-detail__value a {
+	color: var(--e-ink);
+	text-decoration: none;
+	border-bottom: 1px solid var(--e-hairline);
+	transition: color .18s ease, border-color .18s ease;
+}
+.elliot-contact .elliot-contact-detail__value a:hover {
+	color: var(--e-gold2);
+	border-bottom-color: var(--e-gold2);
+}
+
+/* Form panel ( right column ) */
+.elliot-contact .elliot-contact-formpanel {
+	background: #FBFAF5;
+	border: 1px solid var(--e-hairline);
+	padding: clamp(28px, 4vw, 48px);
+}
+.elliot-contact .elliot-contact-formpanel__eyebrow {
+	font-family: var(--font-mono);
+	font-weight: 500;
+	font-size: 11px;
+	letter-spacing: .2em;
+	text-transform: uppercase;
+	color: var(--e-gold2);
+	margin-bottom: 16px;
+}
+.elliot-contact .elliot-contact-formpanel__title {
+	font-family: var(--font-serif);
+	font-weight: 500;
+	font-size: clamp(28px, 3.4vw, 40px);
+	line-height: 1.05;
+	letter-spacing: -.02em;
+	margin: 0 0 32px;
+	color: var(--e-ink);
+}
+
+/* Gravity Forms placeholder ( shown until a shortcode is added / active ) */
+.elliot-contact .elliot-contact-form__placeholder {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 260px;
+	padding: 32px;
+	text-align: center;
+	border: 1px dashed rgba(26,22,18,.25);
+	background: rgba(26,22,18,.03);
+}
+.elliot-contact .elliot-contact-form__placeholder span {
+	font-family: var(--font-mono);
+	font-size: 12px;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+	color: var(--e-muted2);
+	line-height: 1.8;
+}
+
+/* Light touch-up so Gravity Forms sits comfortably in the panel */
+.elliot-contact .elliot-contact-form .gform_wrapper { margin: 0; }
+.elliot-contact .elliot-contact-form .gform_wrapper .gform_footer { margin-bottom: 0; }
+
+.elliot-contact .elliot-contact-pagebody { padding: 60px 0; }
+
+/* Responsive */
+@media only screen and ( max-width: 991px ) {
+	.elliot-contact .elliot-contact-hero { padding: 64px 0; }
+	.elliot-contact .elliot-contact-body { padding: 56px 0; }
+}

@@ -18,6 +18,13 @@
 	 */
 	require_once get_stylesheet_directory() . '/inc/cmb2-services-fields.php';
 
+	/**
+	 * Contact page ( tpl_contact.php ) CMB2 fields + design default content.
+	 * Also uses the shared elliot_field() / elliot_group() helpers defined in
+	 * cmb2-homepage-fields.php, so it is loaded after that file.
+	 */
+	require_once get_stylesheet_directory() . '/inc/cmb2-contact-fields.php';
+
 	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~PROPER WAY OF ADDING CHILD THEME CSS FILE ~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
