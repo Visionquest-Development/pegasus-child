@@ -1,36 +1,61 @@
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PEGASUS CUSTOM JS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ PEGASUS CUSTOM JS — MR NICE GUY ~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
+jQuery( function ( $ ) {
+	'use strict';
 
+	var reduceMotion = window.matchMedia && window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
 
-	jQuery(document).ready(function($) {
+	/* ---------- Gallery strip carousel (slick from pegasus-carousel, optional) ---------- */
+	var $car = $( '[data-mng-carousel]' );
+	if ( $car.length && $.fn.slick ) {
+		$car.addClass( 'is-slick' ).slick( {
+			slidesToShow: 4,
+			slidesToScroll: 1,
+			autoplay: ! reduceMotion,
+			autoplaySpeed: 3200,
+			arrows: true,
+			dots: false,
+			responsive: [
+				{ breakpoint: 992, settings: { slidesToShow: 3 } },
+				{ breakpoint: 768, settings: { slidesToShow: 2 } },
+				{ breakpoint: 480, settings: { slidesToShow: 1, centerMode: true, centerPadding: '40px' } }
+			]
+		} );
+	}
 
-		//if($(window).width() >= 768){
-			//initialize()
-		//}//end if
+	/* ---------- Gallery lightbox (native <dialog>, no library) ---------- */
+	var dialog = document.querySelector( '[data-mng-lightbox-dialog]' );
+	if ( dialog && typeof dialog.showModal === 'function' ) {
+		var img = dialog.querySelector( 'img' ), cap = dialog.querySelector( '.mng-lightbox__caption' );
+		$( document ).on( 'click', '[data-mng-lightbox]', function ( e ) {
+			e.preventDefault();
+			img.src = this.getAttribute( 'href' );
+			img.alt = this.getAttribute( 'data-caption' ) || '';
+			cap.textContent = img.alt;
+			dialog.showModal();
+		} );
+		$( dialog ).on( 'click', function ( e ) {
+			if ( e.target === dialog || $( e.target ).hasClass( 'mng-lightbox__close' ) ) {
+				dialog.close();
+			}
+		} );
+	}
 
-		//$( window ).resize(function() {
-			//if($(window).width() > 768){
-				//initialize();
-			//}
+	/* ---------- Menu day chips: keep the sticky nav below the sticky header ---------- */
+	var header = document.querySelector( '.mng-header' ), menuNav = document.querySelector( '.mng-menu-nav' );
+	function placeMenuNav() {
+		if ( header && menuNav ) {
+			var top = window.getComputedStyle( header ).position === 'sticky' ? header.getBoundingClientRect().height : 0;
+			menuNav.style.top = top + 'px';
+		}
+	}
+	placeMenuNav();
+	$( window ).on( 'resize', placeMenuNav );
 
-		//});
-
-	}); //end document ready function
-
-
-	jQuery(document).ready(function($) {
-		// executes when HTML-Document is loaded and DOM is ready
-		//alert("document is ready");
-	});
-
-
-	jQuery(window).on( 'load', function($) {
-		// executes when complete page is fully loaded, including all frames, objects and images
-		//alert("window is loaded");
-	});
+	/* ---------- Footer action bar: keep page content clear of it ---------- */
+	if ( document.querySelector( '.mng-actionbar' ) ) {
+		document.body.classList.add( 'has-mng-actionbar' );
+	}
+} );
