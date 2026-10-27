@@ -1,0 +1,230 @@
+{
+  "_comment": "Menu and prices as listed on mrniceguyasf.com/menu (checked 2026-10-27). TODO: owner to confirm current prices; older 2022-23 Instagram prices differ.",
+  "price_todo": "TODO: confirm every price with Chef Darrell before launch.",
+  "sections": [
+    {
+      "id": "wednesday",
+      "day": "Wednesday",
+      "title": "Sack Lunch Wednesday",
+      "note": "All meals come with a drink and fries.",
+      "image": "bbq-sandwiches",
+      "items": [
+        {
+          "name": "Deluxe Smash Burger Combo",
+          "price": "$10 single / $15 double"
+        },
+        {
+          "name": "Country Boy Chicken Sandwich Combo",
+          "price": "$14"
+        },
+        {
+          "name": "Philly Cheese Steak or Chicken Philly Combo",
+          "price": "$13"
+        },
+        {
+          "name": "Loaded Nacho Combo",
+          "price": "$15",
+          "desc": "With beef or chicken."
+        },
+        {
+          "name": "Mr. Nice Guy Loaded Footlong Beef Hot Dog",
+          "price": "$13",
+          "desc": "Ground beef, peppers, onions and cheese."
+        },
+        {
+          "name": "BBQ Pork or Chicken Quesadilla",
+          "price": "$10"
+        },
+        {
+          "name": "Grilled Chicken Teriyaki Sandwich",
+          "price": "$14"
+        },
+        {
+          "name": "Chicken Tender Basket",
+          "price": "$10"
+        },
+        {
+          "name": "Chili Cheese Slaw Dog Combo",
+          "price": "$10"
+        }
+      ]
+    },
+    {
+      "id": "thursday",
+      "day": "Thursday",
+      "title": "Soul Food Thursday",
+      "note": "All meals come with a drink and homemade cornbread.",
+      "image": "smoked-tray",
+      "lists": [
+        {
+          "title": "Meats",
+          "items": [
+            "Meatloaf",
+            "Fried or Baked Chicken",
+            "Fried or Smothered Pork Chops",
+            "Salisbury Steak",
+            "Pot Roast",
+            "Fried or Smothered Turkey Wings"
+          ]
+        },
+        {
+          "title": "Sides",
+          "items": [
+            "Mac n Cheese",
+            "Green Beans",
+            "Squash",
+            "Creamed Corn",
+            "Corn on the Cob",
+            "Collard Greens",
+            "Black-eyed Peas",
+            "Pintos",
+            "Broccoli n Cheese Casserole",
+            "Sweet Potato Soufflé or Candied Yams",
+            "Dressing",
+            "Potato Salad"
+          ]
+        },
+        {
+          "title": "Special Request",
+          "items": [
+            "Chitlin’s",
+            "Venison"
+          ]
+        }
+      ],
+      "items": [
+        {
+          "name": "1 Meat with Your Choice of 3 Sides",
+          "price": "$25"
+        },
+        {
+          "name": "Chicken Pot Pie",
+          "price": "$5 small / $10 large"
+        },
+        {
+          "name": "Homemade Chili",
+          "price": "$5 small / $10 large"
+        },
+        {
+          "name": "Chicken and Rice",
+          "price": "$5 small / $10 large"
+        }
+      ]
+    },
+    {
+      "id": "friday",
+      "day": "Friday",
+      "title": "Seafood Friday",
+      "note": "All meals come with a drink and chips.",
+      "image": "fried-fish-basket",
+      "items": [
+        {
+          "name": "Shrimp Po Boy",
+          "price": "$13"
+        },
+        {
+          "name": "Fried Shrimp Basket",
+          "price": "$13"
+        },
+        {
+          "name": "Seafood Nachos",
+          "price": "$15",
+          "desc": "Shrimp, lobster and scallops."
+        },
+        {
+          "name": "Fried Catfish Filet or Nuggets with Hushpuppies",
+          "price": "$13"
+        },
+        {
+          "name": "Fried Fish Basket",
+          "price": "$13",
+          "desc": "Whiting, swai or tilapia."
+        },
+        {
+          "name": "Frog Leg Basket",
+          "price": "$13"
+        },
+        {
+          "name": "Salmon Philly Basket",
+          "price": "$15"
+        },
+        {
+          "name": "Fried Salmon Nugget Basket",
+          "price": "$13"
+        },
+        {
+          "name": "Seafood Alfredo",
+          "price": "$10"
+        },
+        {
+          "name": "Seafood Mac n Cheese",
+          "price": "$15",
+          "desc": "Shrimp, lobster and scallops."
+        }
+      ]
+    },
+    {
+      "id": "saturday",
+      "day": "Saturday",
+      "title": "BBQ Saturday",
+      "note": "Meals come with your choice of 1 meat, 3 sides and a drink.",
+      "image": "ribs-on-grill",
+      "items": [
+        {
+          "name": "Brisket Meal",
+          "price": "$25"
+        },
+        {
+          "name": "Beef Rib Meal",
+          "price": "$30"
+        },
+        {
+          "name": "Pork Rib Meal",
+          "price": "$17"
+        },
+        {
+          "name": "Chicken Meal",
+          "price": "$13"
+        },
+        {
+          "name": "Sausage Link Meal (2 links)",
+          "price": "$13"
+        },
+        {
+          "name": "Sausage Link Only",
+          "price": "$8"
+        },
+        {
+          "name": "Smoked Cheeseburger Meal",
+          "price": "$10"
+        },
+        {
+          "name": "Chopped Pork Meal",
+          "price": "$13"
+        },
+        {
+          "name": "Chopped Pork Sandwich",
+          "price": "$8",
+          "desc": "No sides."
+        },
+        {
+          "name": "Big D’s Bowl",
+          "price": "$10"
+        },
+        {
+          "name": "Rib Tips Bowl",
+          "price": "$10",
+          "desc": "No side."
+        },
+        {
+          "name": "Smoked Turkey Leg",
+          "price": "$13"
+        },
+        {
+          "name": "Brunswick Stew",
+          "price": "$10 small / $15 large"
+        }
+      ]
+    }
+  ]
+}

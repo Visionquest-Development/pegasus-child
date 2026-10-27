@@ -1,0 +1,347 @@
+{
+  "_comment": "Single source of truth for Mr Nice Guy's name, address, phone, hours, links, events and SEO copy. Sources (checked 2026-10-27): mrniceguyasf.com (current WordPress/Elementor site), facebook.com/p/Mr-Nice-Guy-Authentic-Soul-Food-BBQ-61579611354036, instagram.com/mrniceguyasf, instagram.com/mrniceguyauthenticsoulfood, linktr.ee/mrniceguyasf. Anything we could not confirm is a TODO; never fill a TODO with a guess.",
+  "name": "Mr Nice Guy Authentic Soul Food",
+  "name_long": "Mr Nice Guy Authentic Soul Food & BBQ",
+  "short_name": "Mr Nice Guy",
+  "tagline": "Authentic Soul Food & BBQ",
+  "slogans": [
+    "We feed EVERYBODY!",
+    "There are no small portions.",
+    "Guaranteed to please."
+  ],
+  "chef": {
+    "name": "Chef Darrell",
+    "full_name_todo": "TODO: confirm how Chef Darrell wants his name shown (an older Instagram account lists him as Darrell Johnson).",
+    "photo_todo": "TODO: a good portrait of Chef Darrell at the pit (Facebook profile photo style) for the About section."
+  },
+  "service_area": "Woodstock, Marietta & metro Atlanta, GA",
+  "address": {
+    "street": "5060 Canton Rd",
+    "city": "Marietta",
+    "region": "GA",
+    "postal": "30066",
+    "country": "US"
+  },
+  "address_todo": "TODO: confirm 5060 Canton Rd is still where customers pick up (it's listed on mrniceguyasf.com and Facebook; older posts call it the County Line pawn shop lot, and Facebook says 'located in the Woodstock area').",
+  "phone_display": "(229) 633-3518",
+  "phone_e164": "+12296333518",
+  "email": "mrniceguyasf@gmail.com",
+  "maps_url": "https://www.google.com/maps/search/?api=1&query=5060+Canton+Rd+Marietta+GA+30066",
+  "maps_embed": "https://www.google.com/maps?q=5060+Canton+Rd+Marietta+GA+30066&output=embed",
+  "open_days": [
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ],
+  "hours_summary": "Open Wednesday – Saturday",
+  "hours": [
+    {
+      "days": "Wednesday",
+      "theme": "Sack Lunch Wednesday",
+      "open": "",
+      "close": "",
+      "label": "Open (hours TODO)",
+      "schema_days": [
+        "Wednesday"
+      ]
+    },
+    {
+      "days": "Thursday",
+      "theme": "Soul Food Thursday",
+      "open": "",
+      "close": "",
+      "label": "Open (hours TODO)",
+      "schema_days": [
+        "Thursday"
+      ]
+    },
+    {
+      "days": "Friday",
+      "theme": "Seafood Friday",
+      "open": "",
+      "close": "",
+      "label": "Open (hours TODO)",
+      "schema_days": [
+        "Friday"
+      ]
+    },
+    {
+      "days": "Saturday",
+      "theme": "BBQ Saturday",
+      "open": "",
+      "close": "",
+      "label": "Open (hours TODO)",
+      "schema_days": [
+        "Saturday"
+      ]
+    },
+    {
+      "days": "Sunday – Tuesday",
+      "theme": "",
+      "open": "",
+      "close": "",
+      "label": "Closed",
+      "schema_days": []
+    }
+  ],
+  "hours_todo": "TODO: opening and closing times. mrniceguyasf.com only says 'We're open Wednesday through Saturday'; Facebook lists no hours. Fill open/close as 24h HH:MM and they'll show on the site and in the Restaurant schema automatically.",
+  "order": {
+    "call": {
+      "label": "Call to Order",
+      "href": "tel:+12296333518"
+    },
+    "partners": [],
+    "todo": "TODO: online ordering / delivery links (DoorDash, Uber Eats, Square, etc.). None found: the current site's 'Order now' button just goes to the contact page."
+  },
+  "social": [
+    {
+      "label": "Facebook",
+      "href": "https://www.facebook.com/p/Mr-Nice-Guy-Authentic-Soul-Food-BBQ-61579611354036/",
+      "icon": "fa-facebook"
+    },
+    {
+      "label": "Instagram",
+      "href": "https://www.instagram.com/mrniceguyasf/",
+      "icon": "fa-instagram"
+    },
+    {
+      "label": "Linktree",
+      "href": "https://linktr.ee/mrniceguyasf",
+      "icon": "fa-link"
+    }
+  ],
+  "about": {
+    "headline": "Come Hungry. Leave Happy. Repeat Often.",
+    "short": "Smoked meats, soul food classics and Friday seafood, cooked by Chef Darrell. There are no small portions, and every plate is guaranteed to please.",
+    "story": "Food has always been more than a passion for Chef Darrell. It's a way to connect with people and create lasting memories. As the founder and heart behind Mr. Nice Guy, Chef Darrell's mission is simple: to bring exceptional culinary creations to life and leave a lasting impression on every customer's taste buds.",
+    "mission": "At Mr. Nice Guy, our mission is to bring people together through food. We strive to create an environment where our customers can enjoy the perfect balance of familiar comfort and exciting new flavors.",
+    "vision": "We aim to be a leader in flavor innovation, consistently introducing unique dishes and creating a lasting legacy in our community, with a fresh “spice of life.”",
+    "values": [
+      "Transforming simple ingredients into extraordinary indulgences.",
+      "Bringing a sense of community through our food.",
+      "Always adapting to meet the changing tastes and preferences of our customers."
+    ],
+    "promise": "From humble beginnings to becoming a favorite in our community, we've built a reputation for delicious food, welcoming service, and an ever-changing menu that keeps customers excited to return.",
+    "facebook_intro": "Mr Nice Guy is located in the Woodstock area. We offer a variety of Southern Soul Food. There are no small portions and we guarantee 100% customer satisfaction."
+  },
+  "days": [
+    {
+      "day": "Wednesday",
+      "title": "Sack Lunch Wednesday",
+      "text": "Quick, hearty combos: deluxe smash burgers, Philly cheesesteaks, loaded nachos and more.",
+      "image": "bbq-sandwiches",
+      "anchor": "wednesday"
+    },
+    {
+      "day": "Thursday",
+      "title": "Soul Food Thursday",
+      "text": "Comfort food favorites: fried chicken, meatloaf, sweet potato soufflé and collard greens.",
+      "image": "smoked-tray",
+      "anchor": "thursday"
+    },
+    {
+      "day": "Friday",
+      "title": "Seafood Friday",
+      "text": "Shrimp po' boys, fried catfish, seafood mac n cheese and seafood Alfredo.",
+      "image": "fried-fish-basket",
+      "anchor": "friday"
+    },
+    {
+      "day": "Saturday",
+      "title": "BBQ Saturday",
+      "text": "Brisket, beef and pork ribs, chopped pork and smoked turkey legs with Southern sides.",
+      "image": "ribs-on-grill",
+      "anchor": "saturday"
+    }
+  ],
+  "catering": {
+    "intro": "Planning an event? Let Mr. Nice Guy handle the food! From intimate family reunions to large corporate gatherings, our catering is designed to impress your guests and leave everyone raving.",
+    "features": [
+      {
+        "title": "Customized Menus",
+        "text": "Tailored to the theme and preferences of your event.",
+        "icon": "fa-list-alt"
+      },
+      {
+        "title": "Full-Service Catering",
+        "text": "We take care of the setup, serving and cleanup, so you can enjoy the moment.",
+        "icon": "fa-cutlery"
+      },
+      {
+        "title": "Versatile Options",
+        "text": "Homestyle comfort food, upscale dishes or casual BBQ: we bring your vision to life.",
+        "icon": "fa-fire"
+      }
+    ],
+    "occasions": [
+      "Weddings",
+      "Family reunions",
+      "Corporate gatherings",
+      "School events & homecomings",
+      "Festivals & community events",
+      "Seafood boils"
+    ],
+    "recent": [
+      "A Mr Nice Guy seafood boil for a wedding in Rome, GA",
+      "BBQ for the Kell High School homecoming"
+    ],
+    "todo": "TODO: catering packages, per-person pricing, minimum headcount, lead time and travel radius. Inquiries go to phone/email until a form plugin is chosen."
+  },
+  "events": {
+    "intro": "Find the smoker at festivals across North Georgia. Here's where we'll be next.",
+    "source": "Instagram @mrniceguyasf 'Upcoming Events' poster + linktr.ee/mrniceguyasf (2026 season)",
+    "todo": "TODO: keep this list current (add the 2027 season); add each event's venue/city so Event schema can be published.",
+    "list": [
+      {
+        "name": "Las Américas 2026",
+        "start": "2026-08-22",
+        "end": "2026-08-22",
+        "href": "https://www.ironmountainresort.com/event/las-americas-x2-36/register"
+      },
+      {
+        "name": "The Ultimate Fall Fest 2026",
+        "start": "2026-09-05",
+        "end": "2026-09-05",
+        "href": "https://www.eventbrite.com/e/the-ultimate-fall-fest-2026-tickets-1982112624216"
+      },
+      {
+        "name": "Taste & Brews Music Fest",
+        "start": "2026-09-12",
+        "end": "2026-09-13",
+        "href": "https://tasteandbrews.com/"
+      },
+      {
+        "name": "Blue Ridge Blues & BBQ Festival 2026",
+        "start": "2026-09-19",
+        "end": "2026-09-19",
+        "href": "https://blueridgebluesandbbq.com/"
+      },
+      {
+        "name": "Family Fun Day, Woodstock",
+        "start": "2026-09-26",
+        "end": "2026-09-26",
+        "href": "https://www.eventeny.com/events/family-fun-day-september-30880"
+      },
+      {
+        "name": "Georgia Tasting Festival 2026",
+        "start": "2026-10-11",
+        "end": "2026-10-11",
+        "href": "https://www.eventbrite.com/e/georgia-tasting-festival-2026-tickets-1983562330326"
+      },
+      {
+        "name": "Pigs & Peaches BBQ Festival 2026",
+        "start": "2026-10-16",
+        "end": "2026-10-17",
+        "href": "https://www.kennesaw.com/pigs-peaches-bbq-festival"
+      },
+      {
+        "name": "Christmas at the Ranch 2026",
+        "start": "2026-11-22",
+        "end": "2026-11-22",
+        "href": "https://theriversranch.com/upcoming-community-events"
+      }
+    ]
+  },
+  "testimonials": {
+    "show": false,
+    "todo": "TODO: these three quotes are on mrniceguyasf.com with no names or source. Confirm they're real customer reviews (and get a first name/source, e.g. Google or Facebook) before setting show: true.",
+    "list": [
+      "Mr. Nice Guy Authentic Soul Food is a game-changer! Chef Darrell's dishes are bursting with flavor, and you can feel the love and care in every bite. Simply outstanding!",
+      "Incredible food, warm atmosphere, and amazing service! Mr. Nice Guy makes you feel like family while serving some of the best soul food I've ever had.",
+      "From the first bite to the last, it's pure perfection. Chef Darrell's creativity shines through in every dish. A must-visit for soul food lovers!"
+    ]
+  },
+  "gallery": [
+    "smoker-racks",
+    "ribs-on-grill",
+    "smoked-brisket",
+    "smoker-meats",
+    "fried-fish-basket",
+    "smoked-chicken",
+    "brisket-bark",
+    "rib-plate",
+    "pork-shoulder",
+    "smoked-wings",
+    "glazed-closeup",
+    "pound-cake",
+    "pitmaster-2",
+    "smoked-chicken-2",
+    "ribs-glazed",
+    "bbq-sandwiches",
+    "smoked-tray",
+    "pitmaster-1",
+    "bbq-collage"
+  ],
+  "schema": {
+    "servesCuisine": [
+      "Soul Food",
+      "Barbecue",
+      "Southern",
+      "Seafood"
+    ],
+    "priceRange": "$$",
+    "acceptsReservations": false,
+    "geo_todo": "TODO: add lat/lng from the Google Business Profile once confirmed."
+  },
+  "seo": {
+    "home": {
+      "title": "Mr Nice Guy Authentic Soul Food & BBQ | Marietta & Woodstock, GA",
+      "description": "Smoked BBQ, soul food plates and Friday seafood by Chef Darrell in Marietta & Woodstock, GA. Open Wed–Sat, catering and festival events. Call (229) 633-3518."
+    },
+    "menu": {
+      "title": "Menu | Soul Food, BBQ & Seafood | Mr Nice Guy, Marietta GA",
+      "description": "Sack Lunch Wednesday, Soul Food Thursday, Seafood Friday and BBQ Saturday: brisket, ribs, fried chicken, catfish, smash burgers and homemade sides."
+    },
+    "about": {
+      "title": "About Chef Darrell | Mr Nice Guy Authentic Soul Food",
+      "description": "Meet Chef Darrell, the founder and pitmaster behind Mr Nice Guy Authentic Soul Food & BBQ. No small portions, guaranteed to please."
+    },
+    "catering": {
+      "title": "BBQ & Soul Food Catering | Mr Nice Guy, Marietta & Woodstock GA",
+      "description": "Full-service soul food and BBQ catering for weddings, reunions, corporate events and seafood boils across metro Atlanta. Call (229) 633-3518 for a quote."
+    },
+    "events": {
+      "title": "Upcoming Events & Festivals | Mr Nice Guy Soul Food & BBQ",
+      "description": "Where to find Mr Nice Guy's smoker next: BBQ festivals, fall fests and community events across North Georgia."
+    },
+    "gallery": {
+      "title": "Photo Gallery | Smoked Meats & Soul Food | Mr Nice Guy",
+      "description": "Brisket, ribs, smoked chicken, fried fish and more straight off Mr Nice Guy's smoker in Marietta, GA."
+    },
+    "contact": {
+      "title": "Contact & Location | Mr Nice Guy Authentic Soul Food, Marietta GA",
+      "description": "Call (229) 633-3518 or email mrniceguyasf@gmail.com. 5060 Canton Rd, Marietta, GA 30066. Open Wednesday through Saturday."
+    }
+  },
+  "highlights": [
+    {
+      "name": "Brisket Meal",
+      "price": "$25",
+      "day": "BBQ Saturday",
+      "image": "smoked-brisket",
+      "link": "/menu/#saturday"
+    },
+    {
+      "name": "Pork Rib Meal",
+      "price": "$17",
+      "day": "BBQ Saturday",
+      "image": "ribs-on-grill",
+      "link": "/menu/#saturday"
+    },
+    {
+      "name": "Fried Fish Basket",
+      "price": "$13",
+      "day": "Seafood Friday",
+      "image": "fried-fish-basket",
+      "link": "/menu/#friday"
+    },
+    {
+      "name": "1 Meat + 3 Sides",
+      "price": "$25",
+      "day": "Soul Food Thursday",
+      "image": "smoked-tray",
+      "link": "/menu/#thursday"
+    }
+  ]
+}
