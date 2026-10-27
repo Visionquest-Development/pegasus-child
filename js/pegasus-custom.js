@@ -20,6 +20,34 @@
 			//}
 
 		//});
+    $('.ulg-logo-slider').slick({
+		  centerMode: false,
+      draggable: true,
+      arrows: true,
+      dots: true,
+		  slidesToShow: 5,
+		  autoplay: true,
+		  autoplaySpeed: 6000,
+		  speed: 800,
+		  responsive: [
+			{
+			  breakpoint: 990,
+			  settings: {
+				arrows: true,
+				centerMode: false,
+				slidesToShow: 3
+			  }
+			},
+			{
+			  breakpoint: 560,
+			  settings: {
+				arrows: true,
+				centerMode: false,
+				slidesToShow: 2
+			  }
+			}
+		  ]
+		});
 
 	}); //end document ready function
 
