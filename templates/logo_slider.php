@@ -4,12 +4,14 @@ $theloft_bkg_url = '/wp-content/themes/pegasus-child/images/logo_slider/theloft_
 $saltcellar_bkg_url = '/wp-content/themes/pegasus-child/images/logo_slider/saltcellar_bkg.png';
 $mixmarket_bkg_url = '/wp-content/themes/pegasus-child/images/logo_slider/mix_bkg.png';
 $tommygs_bkg_url = '/wp-content/themes/pegasus-child/images/logo_slider/tommygs_bkg.png';
+$sugarpeddler_bkg_url = '/wp-content/themes/pegasus-child/images/logo_slider/sugarpeddler_bkg.png';
 
 $mabellas_white_logo_url = '/wp-content/themes/pegasus-child/images/logo_slider/mabellas_logo.png';
 $theloft_white_logo_url = '/wp-content/themes/pegasus-child/images/logo_slider/theloft_logo.png';
 $saltcellar_white_logo_url = '/wp-content/themes/pegasus-child/images/logo_slider/saltcellar_logo.png';
 $mixmarket_white_logo_url = '/wp-content/themes/pegasus-child/images/logo_slider/mix_market_logo.png';
 $tommygs_white_logo_url = '/wp-content/themes/pegasus-child/images/logo_slider/tommygs_logo.png';
+$sugarpeddler_white_logo_url = '/wp-content/themes/pegasus-child/images/logo_slider/sugarpeddler_logo.png';
 
 ?>
 
@@ -37,6 +39,11 @@ $tommygs_white_logo_url = '/wp-content/themes/pegasus-child/images/logo_slider/t
 	<figure class="logo-slide tommygs-logo" >
 		<a class="slick-slider-item" href="https://tommygs.com" style="background-image: url('<?php echo $tommygs_bkg_url; ?>');">
 			<img class="post-img-feat img-fluid" src="<?php echo $tommygs_white_logo_url; ?>" alt="TommyG's">
+		</a>
+	</figure>
+	<figure class="logo-slide sugarpeddler-logo" >
+		<a class="slick-slider-item" href="https://sugarpeddler.com" style="background-image: url('<?php echo $sugarpeddler_bkg_url; ?>');">
+			<img class="post-img-feat img-fluid" src="<?php echo $sugarpeddler_white_logo_url; ?>" alt="Sugar Peddler">
 		</a>
 	</figure>
 </div>
