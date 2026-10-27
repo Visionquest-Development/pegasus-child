@@ -2009,7 +2009,15 @@
 		}
 	
 		.home .qbiqcamp-home-section {
-			height: 70vh;
+			min-height: 70vh;
+			height: auto;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			/* reserve room at the bottom so long text never runs into the
+			   absolutely positioned button or spills into the next section
+			   (!important beats Bootstrap's .p-5 padding utility) */
+			padding-bottom: 120px !important;
 		}
 
 
