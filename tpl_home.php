@@ -73,6 +73,9 @@ $och_star = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" foc
 			</div>
 		</section>
 
+		<?php // ======================================= SUPPORT THE TROOPS ?>
+		<?php och_troops_block(); // inc/outlaw-troops.php ?>
+
 		<?php // ================================================ SHOP GRID ?>
 		<section class="och-section och-shop">
 			<div class="container">

@@ -5,6 +5,7 @@
  */
 require_once get_stylesheet_directory() . '/inc/outlaw-home-fields.php';
 require_once get_stylesheet_directory() . '/inc/outlaw-hamilton-fields.php';
+require_once get_stylesheet_directory() . '/inc/outlaw-troops.php';
 
 /**
  * Enqueue parent CSS.
