@@ -752,6 +752,18 @@
 	}
 
 	/**
+	 * Whether Toast has hidden a menu, group, or item.
+	 *
+	 * Toast reports a hidden entity with an empty `visibility` array.
+	 *
+	 * @param array $entity Toast menu, menuGroup, or menuItem.
+	 * @return bool
+	 */
+	function vqdev_toast_is_hidden( $entity ) {
+		return isset( $entity['visibility'] ) && is_array( $entity['visibility'] ) && empty( $entity['visibility'] );
+	}
+
+	/**
 	 * Check the Toast metadata endpoint to see if the menu has changed.
 	 *
 	 * Uses a lightweight API call (returns only restaurantGuid + lastUpdated)
@@ -789,9 +801,9 @@
 		// Mark that we checked, regardless of result.
 		set_transient( $throttle_key, 1, 10 * MINUTE_IN_SECONDS );
 
+		// The stored timestamp is only updated after a successful full fetch
+		// (in vqdev_toast_get_menu_data), so a failed fetch is retried.
 		if ( $api_timestamp !== $stored_timestamp ) {
-			// Menu has changed — store the new timestamp.
-			update_option( $option_key, $api_timestamp, false );
 			return true;
 		}
 
@@ -821,7 +833,7 @@
 			return null;
 		}
 
-		$cache_key = 'vqdev_toast_menu_data' . ( $restaurant_guid ? '_' . $restaurant_guid : '' );
+		$cache_key = 'vqdev_toast_menu_data_v2' . ( $restaurant_guid ? '_' . $restaurant_guid : '' );
 		$cached    = get_transient( $cache_key );
 
 		// If we have cached data, check metadata to see if it's stale.
@@ -866,7 +878,7 @@
 		$tabs = array();
 
 		foreach ( $api['menus'] as $menu ) {
-			if ( in_array( $menu['name'], $skip_menus, true ) ) {
+			if ( in_array( $menu['name'], $skip_menus, true ) || vqdev_toast_is_hidden( $menu ) ) {
 				continue;
 			}
 
@@ -879,6 +891,10 @@
 			);
 
 			foreach ( $menu['menuGroups'] as $group ) {
+				if ( vqdev_toast_is_hidden( $group ) ) {
+					continue;
+				}
+
 				$has_subgroups = ! empty( $group['menuGroups'] );
 
 				// If the group itself has items, add it as a section.
@@ -889,14 +905,19 @@
 				// Flatten nested subgroups into their own sections.
 				if ( $has_subgroups ) {
 					foreach ( $group['menuGroups'] as $sub ) {
-						if ( ! empty( $sub['menuItems'] ) ) {
+						if ( ! empty( $sub['menuItems'] ) && ! vqdev_toast_is_hidden( $sub ) ) {
 							$tab['sections'][] = vqdev_toast_transform_group( $sub, $mod_groups, $mod_options, $oos_guids, $hide_oos );
 						}
 					}
 				}
 			}
 
-			// Skip tabs that resolved to no sections (e.g. an empty Catering menu).
+			// Drop sections whose items are all hidden, then skip tabs that
+			// resolved to no sections (e.g. an empty Catering menu).
+			$tab['sections'] = array_values( array_filter( $tab['sections'], function ( $section ) {
+				return ! empty( $section['items'] );
+			} ) );
+
 			if ( empty( $tab['sections'] ) ) {
 				continue;
 			}
@@ -908,7 +929,9 @@
 		if ( ! empty( $api['lastUpdated'] ) ) {
 			$ts = strtotime( $api['lastUpdated'] );
 			if ( $ts ) {
-				$last_updated = gmdate( 'Y-m-d', $ts );
+				// Use the site timezone; fall back to Eastern if the site is still on UTC.
+				$tz           = get_option( 'timezone_string' ) ? wp_timezone() : new DateTimeZone( 'America/New_York' );
+				$last_updated = wp_date( 'M j, Y, g:i A T', $ts, $tz );
 			}
 		}
 
@@ -949,6 +972,10 @@
 		$items = array();
 
 		foreach ( $group['menuItems'] as $toast_item ) {
+			if ( vqdev_toast_is_hidden( $toast_item ) ) {
+				continue;
+			}
+
 			$is_oos = isset( $oos_guids[ $toast_item['guid'] ?? '' ] );
 
 			// Skip OOS items entirely if configured.
@@ -1137,6 +1164,7 @@ add_action( 'vqdev_toast_flush_cache', function () {
 
 	foreach ( $suffixes as $suffix ) {
 		delete_transient( 'vqdev_toast_menu_data' . $suffix );
+		delete_transient( 'vqdev_toast_menu_data_v2' . $suffix );
 		delete_transient( 'vqdev_toast_metadata_checked' . $suffix );
 		delete_transient( 'vqdev_toast_oos_guids' . $suffix );
 	}
