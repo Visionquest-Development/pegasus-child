@@ -99,14 +99,18 @@ function och_troops_session_has_flag() {
 }
 
 /**
- * Is this cart/package line the troop bag?
+ * Is this cart/package line a donated troop bag?
+ *
+ * The pay link adds the bag with an `och_troop` flag (see och_troops_handle_link),
+ * so a troop line never merges with the same product bought for the shopper. We
+ * key off that flag, not the variation ID: an identical bag added normally is a
+ * personal purchase that must ship and must not get the donation coupon.
  *
  * @param array $item Cart item or package content row.
  * @return bool
  */
 function och_troops_is_troop_item( $item ) {
-	$id = ! empty( $item['variation_id'] ) ? (int) $item['variation_id'] : (int) ( isset( $item['product_id'] ) ? $item['product_id'] : 0 );
-	return $id && $id === och_troops_product_id();
+	return ! empty( $item['och_troop'] );
 }
 
 /** @return bool Is the troop coupon applied to the current cart? */
@@ -135,7 +139,7 @@ function och_troops_handle_link() {
 
 	nocache_headers();
 	$variation = wc_get_product( och_troops_product_id() );
-	if ( 'hide' === och_troops_opt( 'show' ) || ! $variation || ! $variation->is_purchasable() || ! WC()->session || ! WC()->cart ) {
+	if ( 'hide' === och_troops_opt( 'show' ) || ! $variation || ! $variation->is_purchasable() || ! $variation->is_in_stock() || ! WC()->session || ! WC()->cart ) {
 		wp_safe_redirect( home_url( '/online-shop/' ), 302 );
 		exit;
 	}
@@ -155,14 +159,29 @@ function och_troops_handle_link() {
 	$parent_id = $variation->get_parent_id() ? $variation->get_parent_id() : $variation->get_id();
 	$var_id    = $variation->get_parent_id() ? $variation->get_id() : 0;
 	$attrs     = $var_id ? wc_get_product_variation_attributes( $var_id ) : array();
-	WC()->cart->add_to_cart( $parent_id, $qty, $var_id, $attrs );
+	// The `och_troop` flag keeps the donation on its own cart line, so it never
+	// merges with the same bag the shopper added for themselves.
+	$added = WC()->cart->add_to_cart( $parent_id, $qty, $var_id, $attrs, array( 'och_troop' => 1 ) );
 
-	$code = och_troops_coupon_code();
-	if ( $code && ! WC()->cart->has_discount( $code ) ) {
-		WC()->cart->apply_coupon( $code );
+	if ( $added ) {
+		$code = och_troops_coupon_code();
+		if ( $code && ! WC()->cart->has_discount( $code ) ) {
+			WC()->cart->apply_coupon( $code );
+		}
 	}
 	WC()->session->set( 'chosen_shipping_methods', $chosen_before );
 	WC()->session->set( 'previous_shipping_methods', null );
+
+	if ( ! $added ) {
+		// Out of stock, over inventory, or otherwise unavailable. Clear the link
+		// flag and send the shopper to the shop with WooCommerce's own notice
+		// (e.g. the stock message) rather than to an empty checkout with no
+		// explanation and no donation.
+		WC()->session->set( OCH_TROOPS_SESSION_KEY, null );
+		wp_safe_redirect( home_url( '/online-shop/' ), 302 );
+		exit;
+	}
+
 	wc_clear_notices();
 
 	wp_safe_redirect( wc_get_checkout_url(), 302 );
@@ -195,6 +214,33 @@ function och_troops_coupon_link_only( $valid, $coupon, $discounts = null ) {
 	return $valid;
 }
 add_filter( 'woocommerce_coupon_is_valid', 'och_troops_coupon_link_only', 99, 3 );
+
+/**
+ * The troop coupon discounts only the donated bags, never an identical bag the
+ * shopper added for themselves. WooCommerce's coupon product restriction matches
+ * by product/variation ID, so without this a personal Frontline Hero line in the
+ * same cart would also be discounted; here we apply it only to the flagged troop
+ * line. Scoped to live cart calculations — admin/order recalculation is left
+ * untouched so existing orders keep the discount they were placed with.
+ *
+ * @param bool       $valid   Whether the coupon applies to this product.
+ * @param WC_Product $product Product being checked.
+ * @param WC_Coupon  $coupon  Coupon.
+ * @param array      $values  Cart item (empty/other in non-cart contexts).
+ * @return bool
+ */
+function och_troops_coupon_only_troop_lines( $valid, $product, $coupon, $values ) {
+	if ( ! $coupon instanceof WC_Coupon || wc_format_coupon_code( $coupon->get_code() ) !== och_troops_coupon_code() ) {
+		return $valid;
+	}
+	// A cart line always carries the product object under 'data'; order-item and
+	// generic checks do not, and we leave those alone.
+	if ( is_array( $values ) && isset( $values['data'] ) ) {
+		return ! empty( $values['och_troop'] );
+	}
+	return $valid;
+}
+add_filter( 'woocommerce_coupon_is_valid_for_product', 'och_troops_coupon_only_troop_lines', 10, 4 );
 
 /**
  * A cart holding only troop bags (with the troop coupon) needs no shipping.
@@ -335,8 +381,13 @@ add_filter( 'woocommerce_get_item_data', 'och_troops_cart_item_data', 10, 2 );
  * @param array                 $values Cart item.
  */
 function och_troops_order_item_meta( $line, $key, $values ) {
-	if ( och_troops_is_troop_item( $values ) && och_troops_cart_has_coupon() && '' !== och_troops_opt( 'item_label' ) ) {
-		$line->add_meta_data( och_troops_opt( 'item_label' ), och_troops_opt( 'item_value' ), true );
+	if ( och_troops_is_troop_item( $values ) && och_troops_cart_has_coupon() ) {
+		// Hidden flag so the order knows exactly which lines are donated bags
+		// (used to tell a donation-only order from a mixed one).
+		$line->add_meta_data( '_och_troop', 1, true );
+		if ( '' !== och_troops_opt( 'item_label' ) ) {
+			$line->add_meta_data( och_troops_opt( 'item_label' ), och_troops_opt( 'item_value' ), true );
+		}
 	}
 }
 add_action( 'woocommerce_checkout_create_order_line_item', 'och_troops_order_item_meta', 10, 3 );
@@ -362,6 +413,34 @@ function och_troops_is_troop_order( $order ) {
 }
 
 /**
+ * Is the whole order donated bags — nothing in it ships to the customer?
+ *
+ * The order-level "nothing will be mailed or shipped to you" copy is only true
+ * for a donation-only order. In a mixed order the other items still ship via UPS,
+ * so that copy is shown per line item (see och_troops_order_item_meta) but not at
+ * the order level, where it would be misleading.
+ *
+ * @param int|WC_Order $order Order ID or object.
+ * @return bool
+ */
+function och_troops_order_donation_only( $order ) {
+	$order = is_numeric( $order ) ? wc_get_order( $order ) : $order;
+	if ( ! och_troops_is_troop_order( $order ) ) {
+		return false;
+	}
+	foreach ( $order->get_items() as $item ) {
+		if ( $item->get_meta( '_och_troop' ) ) {
+			continue;
+		}
+		$product = $item->get_product();
+		if ( $product instanceof WC_Product && $product->needs_shipping() ) {
+			return false; // A non-troop item in the order still ships.
+		}
+	}
+	return true;
+}
+
+/**
  * Tag troop orders with meta + an order note.
  *
  * @param WC_Order|int $order Order object or ID.
@@ -373,8 +452,17 @@ function och_troops_flag_order( $order ) {
 	}
 	$bags = 0;
 	foreach ( $order->get_items() as $item ) {
-		if ( (int) $item->get_variation_id() === och_troops_product_id() || (int) $item->get_product_id() === och_troops_product_id() ) {
+		if ( $item->get_meta( '_och_troop' ) ) {
 			$bags += (int) $item->get_quantity();
+		}
+	}
+	if ( ! $bags ) {
+		// Fallback for an order matched only by its coupon (no per-line flag),
+		// counting the troop variation/product directly.
+		foreach ( $order->get_items() as $item ) {
+			if ( (int) $item->get_variation_id() === och_troops_product_id() || (int) $item->get_product_id() === och_troops_product_id() ) {
+				$bags += (int) $item->get_quantity();
+			}
 		}
 	}
 	$order->update_meta_data( '_och_troop_support', 'yes' );
@@ -395,7 +483,10 @@ add_action( 'woocommerce_store_api_checkout_order_processed', 'och_troops_flag_o
  */
 function och_troops_thankyou_notice( $order ) {
 	$order = is_numeric( $order ) ? wc_get_order( $order ) : $order;
-	if ( ! och_troops_is_troop_order( $order ) ) {
+	// Only on a donation-only order: a mixed order ships its other items, so the
+	// "nothing ships to you" thank-you would be wrong (the donated line still
+	// carries its own "not shipped to you" note in the items table).
+	if ( ! och_troops_order_donation_only( $order ) ) {
 		return;
 	}
 	printf(
@@ -417,7 +508,16 @@ function och_troops_email_notice( $order, $sent_to_admin = false, $plain_text = 
 	if ( ! och_troops_is_troop_order( $order ) ) {
 		return;
 	}
-	$line = $sent_to_admin ? OCH_TROOPS_ORDER_NOTE : och_troops_opt( 'thanks' );
+	if ( $sent_to_admin ) {
+		// Admin always sees the DONATION line, mixed order or not.
+		$line = OCH_TROOPS_ORDER_NOTE;
+	} elseif ( och_troops_order_donation_only( $order ) ) {
+		$line = och_troops_opt( 'thanks' );
+	} else {
+		// Mixed order: other items ship, so skip the order-level "nothing ships"
+		// copy. The donated line still shows its own note in the items table.
+		return;
+	}
 	if ( $plain_text ) {
 		echo "\n" . esc_html( $line ) . "\n\n";
 		return;
@@ -515,7 +615,7 @@ function och_troops_block() {
 		return;
 	}
 	$product = wc_get_product( och_troops_product_id() );
-	if ( ! $product || ! $product->is_purchasable() ) {
+	if ( ! $product || ! $product->is_purchasable() || ! $product->is_in_stock() ) {
 		return;
 	}
 
