@@ -139,7 +139,10 @@ function och_troops_handle_link() {
 
 	nocache_headers();
 	$variation = wc_get_product( och_troops_product_id() );
-	if ( 'hide' === och_troops_opt( 'show' ) || ! $variation || ! $variation->is_purchasable() || ! $variation->is_in_stock() || ! WC()->session || ! WC()->cart ) {
+	// Note: no is_in_stock() check here on purpose. A sold-out bag is left to
+	// add_to_cart below so WooCommerce raises its own stock notice and the
+	// failure path can show it; bailing here would redirect with no explanation.
+	if ( 'hide' === och_troops_opt( 'show' ) || ! $variation || ! $variation->is_purchasable() || ! WC()->session || ! WC()->cart ) {
 		wp_safe_redirect( home_url( '/online-shop/' ), 302 );
 		exit;
 	}
@@ -173,10 +176,14 @@ function och_troops_handle_link() {
 	WC()->session->set( 'previous_shipping_methods', null );
 
 	if ( ! $added ) {
-		// Out of stock, over inventory, or otherwise unavailable. Clear the link
-		// flag and send the shopper to the shop with WooCommerce's own notice
-		// (e.g. the stock message) rather than to an empty checkout with no
-		// explanation and no donation.
+		// Out of stock, over inventory, or otherwise unavailable. Keep
+		// WooCommerce's own notice (e.g. the stock message) so the shopper lands
+		// on the shop with an explanation rather than on an empty checkout. If
+		// add_to_cart left no notice, add a plain one so the redirect is never
+		// silent. Clear the link flag either way.
+		if ( function_exists( 'wc_notice_count' ) && 0 === wc_notice_count( 'error' ) ) {
+			wc_add_notice( esc_html__( 'Sorry — the bag for deployed soldiers is sold out right now. Please check back soon.', 'pegasus-child' ), 'error' );
+		}
 		WC()->session->set( OCH_TROOPS_SESSION_KEY, null );
 		wp_safe_redirect( home_url( '/online-shop/' ), 302 );
 		exit;
