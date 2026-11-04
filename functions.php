@@ -154,6 +154,7 @@
 	if ( ! function_exists( 'sp_flush_toast_menu_cache' ) ) {
 		function sp_flush_toast_menu_cache() {
 			delete_transient( 'vqdev_toast_menu_data' );
+			delete_transient( 'vqdev_toast_menu_data_v2' );
 			delete_transient( 'vqdev_toast_menu_meta_check' );
 			delete_transient( 'vqdev_toast_oos_guids' );
 		}
@@ -187,6 +188,15 @@
 
 			set_transient( 'vqdev_toast_oos_guids', $guids, 5 * MINUTE_IN_SECONDS );
 			return $guids;
+		}
+	}
+
+	/**
+	 * Whether Toast has hidden a menu, group, or item (empty `visibility` array).
+	 */
+	if ( ! function_exists( 'vqdev_toast_is_hidden' ) ) {
+		function vqdev_toast_is_hidden( $entity ) {
+			return isset( $entity['visibility'] ) && is_array( $entity['visibility'] ) && empty( $entity['visibility'] );
 		}
 	}
 
@@ -238,10 +248,10 @@
 
 			// Smart cache: invalidate if metadata changed.
 			if ( vqdev_toast_menu_has_changed() ) {
-				delete_transient( 'vqdev_toast_menu_data' );
+				delete_transient( 'vqdev_toast_menu_data_v2' );
 			}
 
-			$cached = get_transient( 'vqdev_toast_menu_data' );
+			$cached = get_transient( 'vqdev_toast_menu_data_v2' );
 			if ( is_array( $cached ) ) {
 				return vqdev_toast_filter_menu_by_hours( $cached );
 			}
@@ -282,12 +292,16 @@
 
 			foreach ( $raw_menus as $menu ) {
 				$menu_name = $menu['name'] ?? 'Menu';
-				if ( in_array( strtolower( $menu_name ), $skip_lower, true ) ) {
+				if ( in_array( strtolower( $menu_name ), $skip_lower, true ) || vqdev_toast_is_hidden( $menu ) ) {
 					continue;
 				}
 
 				$sections = array();
 				foreach ( $menu['menuGroups'] ?? array() as $group ) {
+					if ( vqdev_toast_is_hidden( $group ) ) {
+						continue;
+					}
+
 					$section = vqdev_toast_transform_group( $group, $mod_groups, $mod_options, $oos_guids, $hide_oos );
 					if ( $section ) {
 						$sections[] = $section;
@@ -313,15 +327,21 @@
 				return false;
 			}
 
+			// Show Toast's lastUpdated (fall back to now) in the site timezone, or the
+			// restaurant's Toast timezone when the site is still on UTC.
+			$updated_ts = ! empty( $api_data['lastUpdated'] ) ? strtotime( $api_data['lastUpdated'] ) : false;
+			$updated_tz = get_option( 'timezone_string' ) ? wp_timezone() : new DateTimeZone( $timezone );
+			$updated    = wp_date( 'M j, Y g:ia T', $updated_ts ? $updated_ts : time(), $updated_tz );
+
 			$data = array(
 				'restaurant_name' => 'Sugar Peddler',
-				'updated'         => gmdate( 'M j, Y g:ia' ),
+				'updated'         => $updated,
 				'timezone'        => $timezone,
 				'tabs'            => $tabs,
 			);
 
 			// Cache the FULL menu (all tabs); time-gating is applied per-request below.
-			set_transient( 'vqdev_toast_menu_data', $data, DAY_IN_SECONDS );
+			set_transient( 'vqdev_toast_menu_data_v2', $data, DAY_IN_SECONDS );
 			return vqdev_toast_filter_menu_by_hours( $data );
 		}
 	}
