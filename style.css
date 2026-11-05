@@ -996,3 +996,84 @@
 	.elliot-contact .elliot-contact-hero { padding: 64px 0; }
 	.elliot-contact .elliot-contact-body { padding: 56px 0; }
 }
+
+/* ---- Footer widget columns (Elliot) ---------------------------------- */
+.pegasus-footer .footer-widget-areas {
+	padding-top: 2.5rem;
+	padding-bottom: 1.5rem;
+}
+.pegasus-footer .footer-widget-area .widget {
+	margin-bottom: 1.5rem;
+}
+.pegasus-footer .elliot-fcol__title {
+	font-family: "IBM Plex Mono", ui-monospace, monospace;
+	font-size: 0.75rem;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: #eeb43f;
+	margin: 0 0 1rem;
+}
+.pegasus-footer .elliot-fcol__text {
+	font-family: "IBM Plex Sans", system-ui, sans-serif;
+	font-size: 0.95rem;
+	line-height: 1.55;
+	color: #e8e7e3;
+	margin: 0;
+	opacity: 0.9;
+}
+.pegasus-footer .elliot-fcol__text--sm {
+	font-size: 0.8rem;
+	margin-top: 0.75rem;
+	opacity: 0.7;
+}
+.pegasus-footer .elliot-fcol__name {
+	font-family: "IBM Plex Sans", system-ui, sans-serif;
+	font-weight: 600;
+	font-size: 1rem;
+	color: #fff;
+	margin: 0 0 0.5rem;
+}
+.pegasus-footer .elliot-fcol__line {
+	font-family: "IBM Plex Sans", system-ui, sans-serif;
+	font-size: 0.9rem;
+	line-height: 1.5;
+	margin: 0 0 0.4rem;
+	color: #e8e7e3;
+}
+.pegasus-footer .elliot-fcol__line a,
+.pegasus-footer .elliot-fcol__list a {
+	color: #e8e7e3;
+	text-decoration: none;
+	border-bottom: 1px solid transparent;
+	transition: color 0.15s ease, border-color 0.15s ease;
+}
+.pegasus-footer .elliot-fcol__line a:hover,
+.pegasus-footer .elliot-fcol__list a:hover {
+	color: #eeb43f;
+	border-bottom-color: rgba(238, 180, 63, 0.45);
+}
+.pegasus-footer .elliot-fcol__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.pegasus-footer .elliot-fcol__list li {
+	margin: 0 0 0.45rem;
+	font-family: "IBM Plex Sans", system-ui, sans-serif;
+	font-size: 0.95rem;
+}
+.pegasus-footer .elliot-fcol__badge {
+	display: inline-block;
+	max-width: 220px;
+}
+.pegasus-footer .elliot-fcol__badge img {
+	display: block;
+	width: 100%;
+	height: auto;
+	max-width: 220px;
+}
+@media (max-width: 767.98px) {
+	.pegasus-footer .footer-widget-area {
+		margin-bottom: 0.5rem;
+	}
+}
