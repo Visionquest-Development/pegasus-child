@@ -369,6 +369,12 @@
 		</section>
 
 		<!-- ===================== SEO / PAGE CONTENT ===================== -->
+		<?php
+			// Hide the SEO / body-content band when the Home page has no body content,
+			// so an empty page doesn't leave a blank padded section on the homepage.
+			$rcd_has_seo_content = isset( $post->post_content ) && '' !== trim( $post->post_content );
+			if ( $rcd_has_seo_content ) :
+		?>
 		<section class="rcd-section rcd-seo-content">
 			<div class="<?php echo esc_attr( $final_container_class ); ?>">
 				<div class="row justify-content-center">
@@ -428,6 +434,7 @@
 				</div>
 			</div>
 		</section>
+		<?php endif; ?>
 
 		<!-- ===================== CTA ===================== -->
 		<section id="contact" class="rcd-band-dark rcd-section">
