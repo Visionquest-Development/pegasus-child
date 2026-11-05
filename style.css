@@ -345,9 +345,17 @@
 	max-width: 420px;
 }
 .elliot-home .elliot-credcards {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 1px;
 	background: var(--e-hairline-light);
 	border: 1px solid var(--e-hairline-light);
-	gap: 1px;
+}
+/* Neutralise the Bootstrap col-6 width so the grid controls the 2-up layout
+   ( col-6's 50% + the 1px gap would otherwise overflow and wrap to 1-up ). */
+.elliot-home .elliot-credcards > .elliot-credcard {
+	width: auto;
+	max-width: none;
 }
 .elliot-home .elliot-credcard {
 	background: var(--e-dark2);
