@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit( 1 );
 }
 
-$logo_uri = trailingslashit( get_stylesheet_directory_uri() ) . 'assets/CODESYS-System-Partner-light.svg';
+$logo_uri = set_url_scheme( trailingslashit( get_stylesheet_directory_uri() ) . 'assets/CODESYS-System-Partner-light.svg', 'https' );
 $home     = home_url( '/' );
 $services = home_url( '/services/' );
 $contact  = home_url( '/contact/' );
