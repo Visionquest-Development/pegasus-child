@@ -146,16 +146,16 @@
           <div class="rv-job wow fadeInUp" data-wow-delay="0.05s">
             <div class="rv-job-header">
               <div class="rv-job-logo">
-                <img src="//visionquestdevelopment.com/wp-content/uploads/2013/12/VQD-Logo-blk-sml.png" alt="VisionQuest">
+                <img src="//visionquestdevelopment.com/wp-content/uploads/2013/12/VQD-Logo-blk-sml.png" alt="Visionquest">
               </div>
               <div class="rv-job-meta">
-                <h3 class="rv-job-company">VisionQuest</h3>
+                <h3 class="rv-job-company">Visionquest</h3>
                 <span class="rv-job-dates">2013 &ndash; Present &nbsp;&middot;&nbsp; Atlanta, GA</span>
               </div>
               <span class="rv-job-badge">Current</span>
             </div>
             <h4 class="rv-job-title">WordPress Developer (Freelance / Owner)</h4>
-            <p class="rv-job-desc">Currently taking on leads, job opportunities, contracts, and for-hire positions. Owner of VisionQuest, working for myself on and off since 2013.</p>
+            <p class="rv-job-desc">Currently taking on leads, job opportunities, contracts, and for-hire positions. Owner of Visionquest, working for myself on and off since 2013.</p>
           </div>
 
           <div class="rv-job wow fadeInUp" data-wow-delay="0.1s">

@@ -36,9 +36,9 @@
         </div>
         <div class="vq-design-intro-text wow fadeInRight">
           <div class="vq-kicker"><span style="color:var(--vq-quinary)">&#9656;</span> [01] &mdash; UI &amp; UX</div>
-          <h2 class="vq-h2" style="font-size:38px">How VisionQuest Elevates Your Design Experience</h2>
+          <h2 class="vq-h2" style="font-size:38px">How Visionquest Elevates Your Design Experience</h2>
           <p style="font-size:16px;line-height:1.75;color:var(--vq-ink-dim);margin-top:20px">
-            At VisionQuest, we understand the critical role that both UI (User Interface) and UX (User Experience) play in the success of your website.
+            At Visionquest, we understand the critical role that both UI (User Interface) and UX (User Experience) play in the success of your website.
             We focus on creating designs that not only look great but are intuitive and user-friendly, ensuring your visitors have a seamless experience.
           </p>
           <p style="font-size:16px;line-height:1.75;color:var(--vq-ink-dim);margin-top:16px">
@@ -85,7 +85,7 @@
         </div>
       </div>
       <p class="vq-outsource-note">
-        In design, it takes effort and creativity to create flow and feel. VisionQuest has the resources to find great designers and the relationships to outsource
+        In design, it takes effort and creativity to create flow and feel. Visionquest has the resources to find great designers and the relationships to outsource
         effectively &mdash; so you get an aesthetically pleasing result without managing multiple vendors.
       </p>
     </div>
@@ -110,7 +110,7 @@
             ],
             [
                 '02', 'Outsource to Your Designer',
-                'If you decide to work with your own designer to create a mockup, we handle the development once the design is finalized. VisionQuest is available for consultation to estimate outsourcing costs and refer trusted design contacts.',
+                'If you decide to work with your own designer to create a mockup, we handle the development once the design is finalized. Visionquest is available for consultation to estimate outsourcing costs and refer trusted design contacts.',
                 [ 'PSD to WP', 'Figma', 'Your designer' ],
                 'var(--vq-tertiary)',
             ],
@@ -174,7 +174,7 @@
           [
               '04', 'Build', 100, 'var(--vq-secondary)',
               'https://visionquestdevelopment.com/wp-content/uploads/2014/03/Untitled-11.png',
-              'This is where VisionQuest excels. Over 5+ years of building websites for companies across Atlanta and beyond. Weekly demos, staging access from day one, and a clean handoff with documentation when the project ships.',
+              'This is where Visionquest excels. Over 5+ years of building websites for companies across Atlanta and beyond. Weekly demos, staging access from day one, and a clean handoff with documentation when the project ships.',
           ],
       ];
 

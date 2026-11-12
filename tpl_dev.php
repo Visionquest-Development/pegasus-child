@@ -33,16 +33,16 @@
       <div class="vq-design-intro">
         <div class="vq-design-intro-text wow fadeInLeft">
           <div class="vq-kicker"><span style="color:var(--vq-quinary)">&#9656;</span> [01] &mdash; Our Approach</div>
-          <h2 class="vq-h2" style="font-size:38px">How VisionQuest Can Help</h2>
+          <h2 class="vq-h2" style="font-size:38px">How Visionquest Can Help</h2>
           <p style="font-size:16px;line-height:1.75;color:var(--vq-ink-dim);margin-top:20px">
             Many customers think they can design their own websites, and in some respects that's true. However, having someone with experience in design, content creation, and implementation makes a significant difference in the outcome.
           </p>
           <p style="font-size:16px;line-height:1.75;color:var(--vq-ink-dim);margin-top:16px">
-            I pride myself on not just being a web coder &mdash; I take the time to understand your business needs and help you make decisions that enable your website to fulfill the requirements you need to grow. From concept to content, graphics, e-commerce, social media, and SEO, VisionQuest is your metro Atlanta development specialist.
+            I pride myself on not just being a web coder &mdash; I take the time to understand your business needs and help you make decisions that enable your website to fulfill the requirements you need to grow. From concept to content, graphics, e-commerce, social media, and SEO, Visionquest is your metro Atlanta development specialist.
           </p>
         </div>
         <div class="vq-design-intro-img wow fadeInRight">
-          <img src="https://visionquestdevelopment.com/wp-content/uploads/2024/09/Hero.png" alt="VisionQuest Development">
+          <img src="https://visionquestdevelopment.com/wp-content/uploads/2024/09/Hero.png" alt="Visionquest Development">
         </div>
       </div>
     </div>

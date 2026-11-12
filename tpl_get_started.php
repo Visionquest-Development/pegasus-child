@@ -16,7 +16,7 @@
         <span class="vq-page-hero-brand">GET STARTED</span>
         <span class="vq-grad-2">Let&rsquo;s build something great.</span>
       </h1>
-      <p class="vq-sub wow fadeInUp" data-wow-delay="0.2s" style="margin-top:20px;max-width:640px">Transparent pricing, clear process, no surprises. Here&rsquo;s exactly how a project with VisionQuest works from inquiry to launch.</p>
+      <p class="vq-sub wow fadeInUp" data-wow-delay="0.2s" style="margin-top:20px;max-width:640px">Transparent pricing, clear process, no surprises. Here&rsquo;s exactly how a project with Visionquest works from inquiry to launch.</p>
       <div class="vq-hero-ctas wow fadeInUp" data-wow-delay="0.3s" style="margin-top:36px">
         <a href="#gs-form" class="vq-btn vq-btn--primary">&#9658; Start a Project</a>
         <a href="/contact" class="vq-btn">Contact Us</a>

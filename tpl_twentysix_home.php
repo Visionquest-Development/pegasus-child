@@ -227,7 +227,7 @@ if ( ! function_exists( 'vq_mountain_row' ) ) {
             We help you <span class="vq-grad-2">understand and implement it.</span>
           </h2>
           <p class="vq-ai-sub">
-            VisionQuest is an <strong style="color:var(--vq-quinary)">AI-implementation studio</strong>. We design, build, and champion agentic systems — autonomous workflows that plan, act, and learn inside your tools. From PoC to production, with guardrails, evals, and a human still in the loop.
+            Visionquest is an <strong style="color:var(--vq-quinary)">AI-implementation studio</strong>. We design, build, and champion agentic systems — autonomous workflows that plan, act, and learn inside your tools. From PoC to production, with guardrails, evals, and a human still in the loop.
           </p>
           <div class="vq-ai-pillars">
             <?php
