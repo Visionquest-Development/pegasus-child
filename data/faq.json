@@ -31,11 +31,11 @@
     },
     {
      "q": "Will I qualify for help paying my premium?",
-     "a": "Marketplace premium tax credits are based on household income and size, and on whether you can get affordable job-based coverage. For 2026 and later they’re generally available from 100% to 400% of the federal poverty level, since the enhanced credits of 2021–2025 expired. Joe can help you estimate based on your situation."
+     "a": "Marketplace premium tax credits are based on household income and size, and on whether you can get affordable job-based coverage. For 2026 and later they’re generally available from 100% to 400% of the federal poverty level, since the enhanced credits of 2021–2025 expired. We can help you estimate based on your situation."
     },
     {
      "q": "Does using an agent cost me more?",
-     "a": "No. For the same plan, the premium is the same whether you buy it yourself or through a licensed agent. Agents are typically paid a commission by the insurance company. {{todo:Joe to confirm compensation disclosure wording.}}"
+     "a": "No. For the same plan, the premium is the same whether you buy it yourself or through a licensed agent. Our services are always free to you. We may receive commissions or other compensation from insurance carriers, agencies, or program administrators when eligible clients enroll in coverage. Compensation varies by carrier and product, and you don’t pay us an additional fee for our assistance."
     }
    ]
   },
@@ -61,19 +61,19 @@
    ]
   },
   {
-   "group": "Working with Joe",
+   "group": "Working with Joe & Dianna",
    "items": [
     {
-     "q": "How does a quote with Joe work?",
-     "a": "Call {{phone}} or <a href=\"/contact/\">book a time</a>. Joe will ask about your household, income range, doctors and prescriptions, then walk you through the options that fit. There’s no obligation to buy."
+     "q": "How does a free consultation with Joe & Dianna work?",
+     "a": "Call {{phone}} or <a href=\"/contact/\">schedule a free consultation</a>. We’ll ask about your household, income range, doctors and prescriptions, then walk you through the options that fit. There’s no obligation to buy."
     },
     {
-     "q": "Which states does Joe serve?",
-     "a": "{{todo:List the states Joe is licensed in, and his license numbers / NPN.}}"
+     "q": "Which states do you serve?",
+     "a": "We’re based in Roswell, Georgia, and help clients by phone and online. Between Joe and Dianna, we’re licensed in Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware, Florida, Georgia, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana, Nebraska, Nevada, New Jersey, New York, North Carolina, North Dakota, Ohio, Oklahoma, Pennsylvania, South Carolina, South Dakota, Tennessee, Texas, Utah, Virginia, Washington, West Virginia, Wisconsin and Wyoming — and growing! Plans and carriers vary by state, and we only offer coverage where we’re licensed and appointed. If you don’t see your state, ask us: we obtain any required licenses and appointments before helping in a new state. Joe Avena’s NPN is 7126000 and Dianna Avena’s NPN is 19608869; state license numbers are available on request. See <a href=\"/about/#states-we-serve\">States we serve</a>."
     },
     {
      "q": "Is this website affiliated with HealthCare.gov or the government?",
-     "a": "No. Insurance Guy Joe is a private insurance agency and isn’t affiliated with HealthCare.gov, any state marketplace, Medicare or any government agency. See our <a href=\"/disclaimers/\">disclaimers</a>."
+     "a": "No. Insurance Guy Joe Solutions is a private insurance agency and isn’t affiliated with HealthCare.gov, any state marketplace, Medicare or any government agency. See our <a href=\"/disclaimers/\">disclaimers</a>."
     }
    ]
   }

@@ -21,7 +21,7 @@ $cta     = $args['cta'] ?? true;
 		<?php endif; ?>
 		<?php if ( $cta ) : ?>
 			<div class="igj-actions">
-				<a class="btn igj-btn igj-btn--cta" href="<?php echo esc_url( igj_contact_url( 'quote-form' ) ); ?>"><?php esc_html_e( 'Get a Free Quote', 'pegasus' ); ?></a>
+				<?php echo igj_schedule_button( 'igj-btn--cta' ); // phpcs:ignore ?>
 				<a class="btn igj-btn igj-btn--outline-light" href="tel:<?php echo esc_attr( igj_site( 'phone_e164' ) ); ?>"><i class="fa fa-phone" aria-hidden="true"></i> <?php printf( esc_html__( 'Call %s', 'pegasus' ), esc_html( igj_site( 'phone_display' ) ) ); ?></a>
 			</div>
 		<?php endif; ?>

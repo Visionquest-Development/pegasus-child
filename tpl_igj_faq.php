@@ -10,7 +10,7 @@ $faq = igj_data( 'faq' );
 	<?php
 	get_template_part( 'templates/igj-page-hero', null, array(
 		'title' => __( 'Health Insurance FAQs', 'pegasus' ),
-		'lead'  => __( 'Straight answers to the questions Joe hears most. Don’t see yours? Just ask.', 'pegasus' ),
+		'lead'  => __( 'Straight answers to the questions we hear most. Don’t see yours? Just ask.', 'pegasus' ),
 	) );
 	?>
 	<div class="igj-section">
@@ -34,7 +34,7 @@ $faq = igj_data( 'faq' );
 				<aside class="col-lg-4" aria-label="<?php esc_attr_e( 'Services and guides', 'pegasus' ); ?>">
 					<div class="igj-sidecard igj-sidecard--quote">
 						<h2 class="igj-sidecard__title"><?php esc_html_e( 'Still have questions?', 'pegasus' ); ?></h2>
-						<p><?php esc_html_e( 'Joe is happy to walk you through it.', 'pegasus' ); ?></p>
+						<p><?php esc_html_e( 'We’re happy to walk you through it, free.', 'pegasus' ); ?></p>
 						<a class="btn igj-btn igj-btn--cta w-100 mb-2" href="<?php echo esc_url( igj_contact_url( 'quote-form' ) ); ?>"><?php esc_html_e( 'Get a Free Quote', 'pegasus' ); ?></a>
 						<a class="btn igj-btn igj-btn--outline w-100" href="tel:<?php echo esc_attr( igj_site( 'phone_e164' ) ); ?>"><i class="fa fa-phone" aria-hidden="true"></i> <?php echo esc_html( igj_site( 'phone_display' ) ); ?></a>
 					</div>

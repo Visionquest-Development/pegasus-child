@@ -26,7 +26,7 @@ $related = array_keys( array_filter( igj_services(), function ( $s ) use ( $slug
 					</p>
 					<?php the_content(); ?>
 					<div class="igj-authorbox">
-						<?php echo igj_picture( 'joe-avena', array( 'class' => 'igj-authorbox__img', 'alt' => '' ) ); // phpcs:ignore ?>
+						<?php echo igj_picture( 'joe-avena-headshot', array( 'class' => 'igj-authorbox__img', 'sizes' => '72px', 'alt' => '' ) ); // phpcs:ignore ?>
 						<div>
 							<p class="igj-authorbox__name"><?php echo esc_html( igj_site( 'agent.full_name' ) ); ?></p>
 							<p class="mb-1"><?php echo esc_html( igj_site( 'agent.job_title' ) ); ?>, <?php echo esc_html( igj_site( 'name' ) ); ?></p>
@@ -37,7 +37,7 @@ $related = array_keys( array_filter( igj_services(), function ( $s ) use ( $slug
 				<aside class="col-lg-4" aria-label="<?php esc_attr_e( 'Related coverage and guides', 'pegasus' ); ?>">
 					<div class="igj-sidecard igj-sidecard--quote">
 						<h2 class="igj-sidecard__title"><?php esc_html_e( 'Want a second opinion?', 'pegasus' ); ?></h2>
-						<p><?php esc_html_e( 'Joe can review your options with you, free.', 'pegasus' ); ?></p>
+						<p><?php esc_html_e( 'Joe & Dianna can review your options with you. Our help is always free.', 'pegasus' ); ?></p>
 						<a class="btn igj-btn igj-btn--cta w-100 mb-2" href="<?php echo esc_url( igj_contact_url( 'quote-form' ) ); ?>"><?php esc_html_e( 'Get a Free Quote', 'pegasus' ); ?></a>
 						<a class="btn igj-btn igj-btn--outline w-100" href="tel:<?php echo esc_attr( igj_site( 'phone_e164' ) ); ?>"><i class="fa fa-phone" aria-hidden="true"></i> <?php echo esc_html( igj_site( 'phone_display' ) ); ?></a>
 					</div>

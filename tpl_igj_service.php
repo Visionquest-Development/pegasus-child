@@ -69,7 +69,7 @@ $svc  = $slug ? igj_service( $slug ) : array();
 
 				<aside class="col-lg-4" aria-label="<?php esc_attr_e( 'Get help and related pages', 'pegasus' ); ?>">
 					<div class="igj-sidecard igj-sidecard--quote">
-						<h2 class="igj-sidecard__title"><?php esc_html_e( 'Talk to Joe', 'pegasus' ); ?></h2>
+						<h2 class="igj-sidecard__title"><?php esc_html_e( 'Talk to Joe & Dianna', 'pegasus' ); ?></h2>
 						<p><?php esc_html_e( 'Get a free, no-obligation quote and straight answers about your options.', 'pegasus' ); ?></p>
 						<a class="btn igj-btn igj-btn--cta w-100 mb-2" href="<?php echo esc_url( igj_contact_url( 'quote-form' ) ); ?>"><?php esc_html_e( 'Get a Free Quote', 'pegasus' ); ?></a>
 						<a class="btn igj-btn igj-btn--outline w-100" href="tel:<?php echo esc_attr( igj_site( 'phone_e164' ) ); ?>"><i class="fa fa-phone" aria-hidden="true"></i> <?php echo esc_html( igj_site( 'phone_display' ) ); ?></a>

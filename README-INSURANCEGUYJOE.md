@@ -131,18 +131,41 @@ RewriteCond %{QUERY_STRING} (^|&)page_id=(1099|1101|1103|2333)(&|$)
 RewriteRule ^$ /? [L,R=301]
 ```
 
-## TODOs for Joe (nothing below was invented — all are placeholders)
-1. Public **email** for quotes (form recipient) and **mailing address** / or "phone & virtual only".
-2. **States licensed, license numbers and NPN** (footer license notice, Disclaimers, schema `areaServed`).
-3. **Marketplace registration** (HealthCare.gov FFM and/or Georgia Access or other state exchanges) for the current plan year.
-4. **Affiliation:** still a USHEALTH Advisors agent, or independent? (old site shows both USHEALTH awards and a multi-carrier logo bar). Title to display.
-5. **Carrier appointments + logo permission** before turning on `show_carrier_logos`.
-6. **Testimonials:** permission to publish "Joe is sooo great!" — Howard Flint, plus more real reviews (Google Business Profile link if one exists). No reviews/ratings schema until then.
-7. **Social profile URLs** (old site links are all `#`).
-8. **High-res headshot** (current is 155×200) and a vector/large **logo**.
-9. **Bio details:** years licensed, background, languages, hours.
-10. **Contact form / TCPA consent wording** and who receives leads.
-11. **Privacy Policy and Disclaimers** review (drafts), compensation-disclosure wording.
-12. Review **Open Enrollment dates** each year (currently 2027 plan year: Nov 1, 2026 – Jan 15, 2027).
-13. Confirm the license of the hero/consultation stock photos carried over from the old site.
-14. At launch: remove Avada + demo content, add the redirects above, set `igj_show_todos` false, submit the sitemap in Search Console.
+## Open Enrollment banner (home page)
+Big banner above the home hero, managed in **Appearance → Customize → Open Enrollment Banner** (no code):
+- **Show the banner** (on/off), **Repeat every year** (reuses the month/day of the dates), **Start date**, **End date**,
+  **January 1 coverage deadline**, eyebrow, headline, dates line, body, "days left" countdown, button label/link
+  (empty = Picktime), call button, text link.
+- Text tokens: `{start}`, `{end}`, `{deadline}`, `{coverage_year}`, `{days_left}`.
+- Defaults (`inc/igj-oe-banner.php`): Nov 1 – Jan 15, deadline Dec 15 (2027 plan year dates verified Nov 12, 2026 on
+  HealthCare.gov, GeorgiaAccess.gov and GetCoveredIllinois.gov). With "Repeat every year" on, it reappears every Nov 1.
+  Re-check the official dates each fall and adjust the dates in the Customizer if they change.
+
+## Answers from Joe (email Nov 10, 2026) now on the site
+- Legal entity **IGJ Solutions LLC**, brand Insurance Guy Joe / Insurance Guy Joe Solutions (DBA wording to confirm).
+- Husband-and-wife team: **Joe Avena** (Licensed Health Insurance Agent, NPN 7126000, joe.avena@insuranceguyjoe.com,
+  (404) 644-8072) and **Dianna Avena** (Independent Licensed Health Insurance Broker, NPN 19608869,
+  dianna.avena@igjsolutions.com). Both receive contact-form leads (`lead_recipients`).
+- Roswell, GA; phone & online only; no street address published.
+- Licensed states from the license screenshots (`agents[].states`, `service_area`), shown with "and growing!";
+  no license numbers published (Joe's preference).
+- FFM-certified for 2027 + Georgia Access + Get Covered Illinois. Marketplace carriers and private programs listed as
+  text (no logos; Cigna omitted until verified).
+- Four-step process (Discover, Obtain, Gather, Educate), "Our Services Are Always Free to You!" + Joe's compensation wording.
+- Primary CTA: "Schedule Your Free Health Insurance Consultation" (Picktime). Contact form also asks who needs coverage
+  and desired effective date.
+- Real photos replace the unverified old-site stock photos (hero-family / consultation / page-hero are no longer used).
+- Howard Flint testimonial removed until permission is verified.
+
+## Still open for Joe
+1. Verify the final list of currently licensed states; any license numbers a state requires on the site.
+2. Exact registered DBA wording; any required affiliation disclosure; compliance review of compensation + TCPA wording.
+3. Years licensed and Joe & Dianna's story in their own words (how they got into insurance, family, community, languages).
+4. Hours (optional); Dianna's phone number if it should be public.
+5. Which carrier logos are authorized; Cigna appointment/product category.
+6. Client reviews with permission, Google Business Profile and social links.
+7. Privacy Policy: analytics/ads/chat tools, CRM/lead vendors, how data is stored/protected, approval date.
+8. Higher-resolution / vector logo.
+9. Picktime: add intake questions (ZIP, who needs coverage, desired effective date, what they're looking for).
+10. At launch: remove Avada + demo content, add the redirects above, set `igj_show_todos` false, Search Console,
+    Analytics, XML sitemap and appointment conversion tracking.

@@ -15,7 +15,7 @@ $groups = array(
 	<?php
 	get_template_part( 'templates/igj-page-hero', null, array(
 		'title' => __( 'Health Insurance Services', 'pegasus' ),
-		'lead'  => __( 'Whatever your situation, from a new family to a new business, a job change or early retirement, Joe helps you find coverage that fits. Pick the one that sounds like you.', 'pegasus' ),
+		'lead'  => __( 'Whatever your situation, from a new family to a new business, a job change or early retirement, Joe & Dianna help you find coverage that fits. Pick the one that sounds like you.', 'pegasus' ),
 	) );
 	?>
 	<?php foreach ( $groups as $label => $slugs ) : ?>
@@ -27,12 +27,29 @@ $groups = array(
 		</section>
 	<?php endforeach; ?>
 
+	<section class="igj-section" aria-labelledby="igj-howhelp">
+		<div class="container">
+			<div class="row g-4 g-lg-5 align-items-center">
+				<div class="col-lg-5 wow fadeInLeft"><?php echo igj_picture( 'dianna-laptop', array( 'class' => 'igj-rounded igj-shadow', 'sizes' => '(min-width: 992px) 40vw, 100vw' ) ); // phpcs:ignore ?></div>
+				<div class="col-lg-7 igj-prose wow fadeInRight">
+					<p class="igj-eyebrow"><?php esc_html_e( 'How we help', 'pegasus' ); ?></p>
+					<h2 id="igj-howhelp" class="igj-section-title"><?php esc_html_e( 'Personal help comparing ACA Marketplace and private health insurance', 'pegasus' ); ?></h2>
+					<p><?php esc_html_e( 'We help people understand their health insurance options and make informed decisions based on their healthcare needs and budget. We look at your preferred providers, prescriptions, financial situation and budget, research what’s available to you, and explain premiums, deductibles, networks, out-of-pocket costs, benefits and limitations in plain English.', 'pegasus' ); ?></p>
+					<p><?php esc_html_e( 'Our consultations, plan comparisons, enrollment assistance and ongoing help with your coverage are always free to you.', 'pegasus' ); ?></p>
+					<?php echo igj_schedule_button( 'igj-btn--cta' ); // phpcs:ignore ?>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<?php get_template_part( 'templates/igj-carriers' ); ?>
+
 	<section class="igj-section igj-section--tint">
 		<div class="container">
 			<div class="row g-4">
 				<div class="col-lg-6 igj-prose">
 					<h2 class="igj-section-title"><?php esc_html_e( 'Not sure where you fit?', 'pegasus' ); ?></h2>
-					<p><?php esc_html_e( 'Many people fit more than one category, like a self-employed parent covering a family, or an early retiree weighing COBRA. That’s normal. A short call with Joe sorts out which options are actually open to you, and when you can enroll.', 'pegasus' ); ?></p>
+					<p><?php esc_html_e( 'Many people fit more than one category, like a self-employed parent covering a family, or an early retiree weighing COBRA. That’s normal. A short, free call with us sorts out which options are actually open to you, and when you can enroll.', 'pegasus' ); ?></p>
 					<?php
 					while ( have_posts() ) :
 						the_post();

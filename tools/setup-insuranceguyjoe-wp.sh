@@ -57,7 +57,7 @@ SVC[dental-vision-insurance]=$(mk "Dental & Vision Insurance" dental-vision-insu
 LEARN_ID=$(mk "Learn" learn "" 0)
 w post meta delete "$LEARN_ID" _wp_page_template >/dev/null 2>&1 || true
 FAQ_ID=$(mk "FAQs" faq tpl_igj_faq.php)
-ABOUT_ID=$(mk "About" about tpl_igj_about.php)
+ABOUT_ID=$(mk "Meet Joe & Dianna" about tpl_igj_about.php)
 CONTACT_ID=$(mk "Contact" contact tpl_igj_contact.php)
 PRIV_ID=$(mk "Privacy Policy" privacy-policy tpl_igj_legal.php 0 "$THEME_DIR/content/legal/privacy-policy.html")
 DISC_ID=$(mk "Disclaimers" disclaimers tpl_igj_legal.php 0 "$THEME_DIR/content/legal/disclaimers.html")
@@ -107,7 +107,7 @@ if true; then
   done
   w menu item add-post Main "$LEARN_ID" --title="Learn" >/dev/null
   w menu item add-post Main "$FAQ_ID" --title="FAQs" >/dev/null
-  w menu item add-post Main "$ABOUT_ID" --title="About" >/dev/null
+  w menu item add-post Main "$ABOUT_ID" --title="Meet Joe & Dianna" >/dev/null
   w menu item add-post Main "$CONTACT_ID" --title="Contact" >/dev/null
 fi
 w menu location assign Main primary
@@ -120,6 +120,10 @@ if true; then
   w menu item add-post "Footer Legal" "$DISC_ID" >/dev/null
 fi
 w menu location assign "Footer Legal" footer-legal
+
+# Open Enrollment banner (Appearance → Customize → Open Enrollment Banner): ON, repeats yearly.
+# Only sets it the first time; afterwards wp-admin controls it.
+w eval 'if ( null === get_theme_mod( "igj_oe_enabled", null ) ) { set_theme_mod( "igj_oe_enabled", true ); } if ( null === get_theme_mod( "igj_oe_repeat", null ) ) { set_theme_mod( "igj_oe_repeat", true ); }'
 
 w rewrite flush --hard 2>/dev/null || w rewrite flush
 

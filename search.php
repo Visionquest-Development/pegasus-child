@@ -23,7 +23,7 @@ get_header();
 				</ul>
 				<?php the_posts_pagination(); ?>
 			<?php else : ?>
-				<p><?php esc_html_e( 'No results found. Try different words, browse our services, or call Joe.', 'pegasus' ); ?></p>
+				<p><?php esc_html_e( 'No results found. Try different words, browse our services, or give us a call.', 'pegasus' ); ?></p>
 			<?php endif; ?>
 		</div>
 	</section>

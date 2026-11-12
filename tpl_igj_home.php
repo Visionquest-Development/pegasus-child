@@ -18,72 +18,73 @@ $t = (array) ( $site['testimonials'] ?? array() );
 <div id="page-wrap">
 <main id="primary" class="site-main igj igj-home">
 
-	<section class="igj-hero">
-		<div class="igj-hero__media" aria-hidden="true">
-			<?php echo igj_picture( 'hero-family', array( 'eager' => true, 'alt' => '', 'class' => 'igj-hero__img' ) ); // phpcs:ignore ?>
-		</div>
+	<?php echo igj_oe_banner(); // phpcs:ignore -- Appearance → Customize → Open Enrollment Banner ?>
+
+	<section class="igj-hero igj-hero--split">
 		<div class="container igj-hero__inner">
-			<div class="igj-hero__panel">
-				<p class="igj-eyebrow"><?php esc_html_e( 'Insurance Guy Joe · Joe Avena, licensed agent', 'pegasus' ); ?></p>
-				<h1 class="igj-hero__title"><?php esc_html_e( 'Health insurance for individuals, families, the self-employed & small businesses', 'pegasus' ); ?></h1>
-				<p class="igj-hero__lead"><?php esc_html_e( 'Talk to a real person who explains your options in plain English, from ACA Marketplace plans to private coverage, COBRA alternatives and dental & vision.', 'pegasus' ); ?></p>
-				<div class="igj-actions">
-					<a class="btn igj-btn igj-btn--cta igj-btn--lg" href="<?php echo esc_url( igj_contact_url( 'quote-form' ) ); ?>"><?php esc_html_e( 'Get a Free Quote', 'pegasus' ); ?></a>
-					<a class="btn igj-btn igj-btn--outline-light igj-btn--lg" href="tel:<?php echo esc_attr( igj_site( 'phone_e164' ) ); ?>"><i class="fa fa-phone" aria-hidden="true"></i> <?php echo esc_html( igj_site( 'phone_display' ) ); ?></a>
+			<div class="row g-4 g-lg-5 align-items-center">
+				<div class="col-lg-7 igj-hero__panel">
+					<p class="igj-eyebrow"><?php esc_html_e( 'Insurance Guy Joe Solutions · Joe & Dianna Avena', 'pegasus' ); ?></p>
+					<h1 class="igj-hero__title"><?php esc_html_e( 'Health insurance for individuals, families, the self-employed & small businesses', 'pegasus' ); ?></h1>
+					<p class="igj-hero__lead"><?php esc_html_e( 'We’re a husband-and-wife team of licensed health insurance professionals. We help you understand your options, from ACA Marketplace plans to private coverage, so you can make an informed decision for your health needs and budget.', 'pegasus' ); ?></p>
+					<div class="igj-actions">
+						<?php echo igj_schedule_button( 'igj-btn--cta igj-btn--lg' ); // phpcs:ignore ?>
+						<a class="btn igj-btn igj-btn--outline-light igj-btn--lg" href="tel:<?php echo esc_attr( igj_site( 'phone_e164' ) ); ?>"><i class="fa fa-phone" aria-hidden="true"></i> <?php echo esc_html( igj_site( 'phone_display' ) ); ?></a>
+					</div>
+					<p class="igj-hero__alt"><a href="<?php echo esc_url( igj_contact_url( 'quote-form' ) ); ?>"><?php esc_html_e( 'Or request a free quote online', 'pegasus' ); ?> <i class="fa fa-angle-right" aria-hidden="true"></i></a></p>
+					<ul class="igj-hero__trust list-unstyled">
+						<li><i class="fa fa-check" aria-hidden="true"></i> <?php esc_html_e( 'Our services are always free to you', 'pegasus' ); ?></li>
+						<li><i class="fa fa-check" aria-hidden="true"></i> <?php printf( esc_html__( 'Licensed in %d states — and growing', 'pegasus' ), count( (array) igj_site( 'service_area', array() ) ) ); ?></li>
+						<li><i class="fa fa-check" aria-hidden="true"></i> <?php esc_html_e( 'ACA Marketplace & private health insurance options', 'pegasus' ); ?></li>
+					</ul>
 				</div>
-				<ul class="igj-hero__trust list-unstyled">
-					<li><i class="fa fa-check" aria-hidden="true"></i> <?php esc_html_e( 'No cost to compare plans with an agent', 'pegasus' ); ?></li>
-					<li><i class="fa fa-check" aria-hidden="true"></i> <?php esc_html_e( 'One-on-one help, start to finish', 'pegasus' ); ?></li>
-					<li><i class="fa fa-check" aria-hidden="true"></i> <?php esc_html_e( 'Open enrollment and life-event changes', 'pegasus' ); ?></li>
-				</ul>
+				<div class="col-lg-5">
+					<div class="igj-hero__photo">
+						<?php echo igj_picture( 'joe-dianna-indoor', array( 'eager' => true, 'class' => 'igj-hero__portrait', 'sizes' => '(min-width: 992px) 40vw, 90vw' ) ); // phpcs:ignore ?>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="igj-section" aria-labelledby="igj-who">
+	<?php get_template_part( 'templates/igj-free-services' ); ?>
+
+	<section class="igj-section igj-section--tint" aria-labelledby="igj-who">
 		<div class="container">
 			<div class="igj-section__head text-center">
-				<p class="igj-eyebrow"><?php esc_html_e( 'Who Joe helps', 'pegasus' ); ?></p>
+				<p class="igj-eyebrow"><?php esc_html_e( 'Who we help', 'pegasus' ); ?></p>
 				<h2 id="igj-who" class="igj-section-title"><?php esc_html_e( 'Coverage for where you are in life and work', 'pegasus' ); ?></h2>
 			</div>
-			<?php get_template_part( 'templates/igj-service-cards', null, array( 'slugs' => array( 'individual-family-health-insurance', 'self-employed-health-insurance', 'small-business-health-insurance', 'aca-marketplace-health-insurance', 'cobra-alternatives', 'early-retiree-health-insurance' ) ) ); ?>
+			<?php get_template_part( 'templates/igj-service-cards', null, array( 'slugs' => array( 'individual-family-health-insurance', 'self-employed-health-insurance', 'small-business-health-insurance', 'aca-marketplace-health-insurance', 'private-health-insurance', 'cobra-alternatives' ) ) ); ?>
 			<p class="text-center mt-4"><a class="btn igj-btn igj-btn--outline" href="<?php echo esc_url( home_url( '/services/' ) ); ?>"><?php esc_html_e( 'See all 13 health insurance services', 'pegasus' ); ?></a></p>
 		</div>
 	</section>
 
-	<section class="igj-section igj-section--tint" aria-labelledby="igj-steps">
+	<?php get_template_part( 'templates/igj-steps', null, array( 'tint' => false ) ); ?>
+
+	<section class="igj-section igj-section--tint" aria-labelledby="igj-meet">
 		<div class="container">
-			<div class="igj-section__head text-center">
-				<p class="igj-eyebrow"><?php esc_html_e( 'How it works', 'pegasus' ); ?></p>
-				<h2 id="igj-steps" class="igj-section-title"><?php esc_html_e( 'Three simple steps to the right plan', 'pegasus' ); ?></h2>
+			<div class="row g-4 g-lg-5 align-items-center">
+				<div class="col-lg-6 wow fadeInLeft">
+					<?php echo igj_picture( 'joe-dianna-closeup', array( 'class' => 'igj-rounded igj-shadow', 'sizes' => '(min-width: 992px) 45vw, 100vw' ) ); // phpcs:ignore ?>
+				</div>
+				<div class="col-lg-6 wow fadeInRight">
+					<p class="igj-eyebrow"><?php esc_html_e( 'Your trusted partners in health coverage', 'pegasus' ); ?></p>
+					<h2 id="igj-meet" class="igj-section-title"><?php esc_html_e( 'Meet Joe & Dianna Avena', 'pegasus' ); ?></h2>
+					<p class="igj-lead"><?php esc_html_e( 'Insurance Guy Joe Solutions is a husband-and-wife team based in Roswell, Georgia. Our business is built around helping people understand their health insurance options and make informed decisions based on their healthcare needs and budget.', 'pegasus' ); ?></p>
+					<p><?php esc_html_e( 'We take a personal approach. We’re here to help you, not simply sell you a policy, and we work with clients by phone and online.', 'pegasus' ); ?></p>
+					<ul class="igj-meet__people list-unstyled">
+						<?php foreach ( igj_agents() as $a ) : ?>
+							<li><?php echo igj_picture( $a['photo'], array( 'class' => 'igj-meet__avatar', 'sizes' => '64px', 'alt' => '' ) ); // phpcs:ignore ?><span><strong><?php echo esc_html( $a['name'] ); ?></strong><br><?php echo esc_html( $a['job_title'] ); ?></span></li>
+						<?php endforeach; ?>
+					</ul>
+					<a class="btn igj-btn igj-btn--outline" href="<?php echo esc_url( home_url( '/about/' ) ); ?>"><?php esc_html_e( 'Meet Joe & Dianna', 'pegasus' ); ?></a>
+				</div>
 			</div>
-			<ol class="igj-steps row g-4 list-unstyled">
-				<li class="col-md-4 wow fadeInUp"><div class="igj-step"><span class="igj-step__n" aria-hidden="true">1</span><h3><?php esc_html_e( 'Tell Joe about you', 'pegasus' ); ?></h3><p><?php esc_html_e( 'Who needs coverage, your ZIP code, a rough income range, and the doctors and prescriptions you want to keep.', 'pegasus' ); ?></p></div></li>
-				<li class="col-md-4 wow fadeInUp" data-wow-delay=".08s"><div class="igj-step"><span class="igj-step__n" aria-hidden="true">2</span><h3><?php esc_html_e( 'Compare real options', 'pegasus' ); ?></h3><p><?php esc_html_e( 'Joe lays out plans side by side: premiums, deductibles, networks and any savings you qualify for, in plain English.', 'pegasus' ); ?></p></div></li>
-				<li class="col-md-4 wow fadeInUp" data-wow-delay=".16s"><div class="igj-step"><span class="igj-step__n" aria-hidden="true">3</span><h3><?php esc_html_e( 'Enroll with confidence', 'pegasus' ); ?></h3><p><?php esc_html_e( 'Pick the plan that fits and Joe helps you enroll, then stays your go-to person for questions, renewals and life changes.', 'pegasus' ); ?></p></div></li>
-			</ol>
 		</div>
 	</section>
 
-	<section class="igj-section" aria-labelledby="igj-meet">
-		<div class="container">
-			<div class="row g-4 g-lg-5 align-items-center">
-				<div class="col-lg-5 wow fadeInLeft">
-					<div class="igj-meet__media">
-						<?php echo igj_picture( 'consultation', array( 'class' => 'igj-rounded', 'sizes' => '(min-width: 992px) 40vw, 100vw' ) ); // phpcs:ignore ?>
-						<?php echo igj_picture( 'joe-avena', array( 'class' => 'igj-meet__headshot' ) ); // phpcs:ignore ?>
-					</div>
-				</div>
-				<div class="col-lg-7 wow fadeInRight">
-					<p class="igj-eyebrow"><?php esc_html_e( 'Your trusted partner in health coverage', 'pegasus' ); ?></p>
-					<h2 id="igj-meet" class="igj-section-title"><?php esc_html_e( 'Meet Joe Avena', 'pegasus' ); ?></h2>
-					<blockquote class="igj-quote-lead"><p><?php echo esc_html( igj_site( 'agent.bio_from_site' ) ); ?></p></blockquote>
-					<p><?php esc_html_e( 'Health insurance is personal. Joe takes the time to understand your household, your budget and the care you actually use, then helps you choose coverage you understand before you sign up.', 'pegasus' ); ?></p>
-					<a class="btn igj-btn igj-btn--outline" href="<?php echo esc_url( home_url( '/about/' ) ); ?>"><?php esc_html_e( 'More about Joe', 'pegasus' ); ?></a>
-				</div>
-			</div>
-		</div>
-	</section>
+	<?php get_template_part( 'templates/igj-states' ); ?>
 
 	<?php if ( $t ) : ?>
 	<section class="igj-section igj-section--brand" aria-labelledby="igj-reviews">
@@ -97,7 +98,6 @@ $t = (array) ( $site['testimonials'] ?? array() );
 					</figure>
 				<?php endforeach; ?>
 			</div>
-			<p><?php echo igj_todo( 'Confirm permission for this testimonial and add more real client reviews. With 2+ reviews this becomes a pegasus-carousel slider.' ); // phpcs:ignore ?></p>
 		</div>
 	</section>
 	<?php endif; ?>
@@ -105,7 +105,7 @@ $t = (array) ( $site['testimonials'] ?? array() );
 	<?php if ( igj_site( 'show_carrier_logos' ) ) : ?>
 	<section class="igj-section igj-section--carriers" aria-labelledby="igj-carriers">
 		<div class="container text-center">
-			<h2 id="igj-carriers" class="igj-section-title igj-section-title--sm"><?php esc_html_e( 'Carriers Joe works with', 'pegasus' ); ?></h2>
+			<h2 id="igj-carriers" class="igj-section-title igj-section-title--sm"><?php esc_html_e( 'Carriers we work with', 'pegasus' ); ?></h2>
 			<?php echo igj_picture( 'carrier-logos', array( 'sizes' => '(min-width: 1100px) 1088px, 100vw' ) ); // phpcs:ignore ?>
 		</div>
 	</section>

@@ -12,7 +12,7 @@ $fallback = '<ul class="navbar-nav ms-auto"><li class="nav-item"><a class="nav-l
 	<div class="igj-topbar d-none d-md-block">
 		<div class="container d-flex justify-content-between align-items-center">
 			<p class="igj-topbar__note mb-0"><?php echo esc_html( igj_site( 'tagline' ) ); ?></p>
-			<p class="igj-topbar__call mb-0"><i class="fa fa-phone" aria-hidden="true"></i> <?php esc_html_e( 'Call or text Joe:', 'pegasus' ); ?> <?php echo igj_phone_link(); // phpcs:ignore ?></p>
+			<p class="igj-topbar__call mb-0"><i class="fa fa-phone" aria-hidden="true"></i> <?php esc_html_e( 'Call or text:', 'pegasus' ); ?> <?php echo igj_phone_link(); // phpcs:ignore ?></p>
 		</div>
 	</div>
 	<nav class="navbar navbar-expand-lg igj-navbar" aria-label="<?php esc_attr_e( 'Main', 'pegasus' ); ?>">
@@ -24,7 +24,7 @@ $fallback = '<ul class="navbar-nav ms-auto"><li class="nav-item"><a class="nav-l
 					<span class="igj-brand__text"><?php echo esc_html( igj_site( 'name' ) ); ?></span>
 				<?php endif; ?>
 			</a>
-			<a class="btn igj-btn igj-btn--cta igj-header-quote d-lg-none ms-auto me-2" href="<?php echo esc_url( igj_contact_url( 'quote-form' ) ); ?>"><?php esc_html_e( 'Free Quote', 'pegasus' ); ?></a>
+			<a class="btn igj-btn igj-btn--cta igj-header-quote d-lg-none ms-auto me-2" href="<?php echo esc_url( igj_schedule_url() ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Schedule', 'pegasus' ); ?><span class="visually-hidden"> <?php esc_html_e( 'a free consultation (opens in a new tab)', 'pegasus' ); ?></span></a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#igj-nav" aria-controls="igj-nav" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'pegasus' ); ?>">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -32,7 +32,7 @@ $fallback = '<ul class="navbar-nav ms-auto"><li class="nav-item"><a class="nav-l
 				<?php echo pegasus_get_menu( 'primary', 'navbar-nav primary-navigation-bar ms-auto', 2, $fallback ); // phpcs:ignore ?>
 				<div class="igj-nav-actions">
 					<a class="btn igj-btn igj-btn--ghost" href="tel:<?php echo esc_attr( igj_site( 'phone_e164' ) ); ?>"><i class="fa fa-phone" aria-hidden="true"></i> <?php echo esc_html( igj_site( 'phone_display' ) ); ?></a>
-					<a class="btn igj-btn igj-btn--cta" href="<?php echo esc_url( igj_contact_url( 'quote-form' ) ); ?>"><?php esc_html_e( 'Get a Free Quote', 'pegasus' ); ?></a>
+					<?php echo igj_schedule_button( 'igj-btn--cta', __( 'Free Consultation', 'pegasus' ) ); // phpcs:ignore ?>
 				</div>
 			</div>
 		</div>

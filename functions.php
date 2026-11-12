@@ -46,6 +46,7 @@
 	require_once get_stylesheet_directory() . '/inc/igj-data.php';
 	require_once get_stylesheet_directory() . '/inc/igj-seo.php';
 	require_once get_stylesheet_directory() . '/inc/igj-setup.php';
+	require_once get_stylesheet_directory() . '/inc/igj-oe-banner.php';
 
 	/**
 	 * The parent enqueues this child stylesheet ('pegasus') before Bootstrap

@@ -147,8 +147,8 @@ add_action( 'wp_head', function () {
 function igj_agency_id() {
 	return home_url( '/#agency' );
 }
-function igj_person_id() {
-	return home_url( '/about/#joe' );
+function igj_person_id( $id = 'joe' ) {
+	return home_url( '/about/#' . sanitize_key( $id ) );
 }
 
 function igj_schema_agency() {
@@ -164,7 +164,8 @@ function igj_schema_agency() {
 		'image'     => igj_img_url( 'og-share', 'jpg' ),
 		'description' => igj_site( 'seo.home.description' ),
 		'founder'   => array( '@id' => igj_person_id() ),
-		'employee'  => array( '@id' => igj_person_id() ),
+		'employee'  => array_map( function ( $a ) { return array( '@id' => igj_person_id( $a['id'] ) ); }, igj_agents() ),
+		'slogan'    => igj_site( 'states_headline' ),
 		'knowsAbout' => array_values( array_map( function ( $x ) { return $x['service_type']; }, igj_services() ) ),
 	);
 	if ( ! empty( $s['legal_name'] ) ) {
@@ -173,15 +174,16 @@ function igj_schema_agency() {
 	if ( ! empty( $s['email'] ) ) {
 		$node['email'] = $s['email'];
 	}
-	if ( ! empty( $a['street'] ) ) {
-		$node['address'] = array(
+	if ( ! empty( $a['street'] ) || ! empty( $a['city'] ) ) {
+		/* No street address on purpose (Joe works by phone/online from Roswell, GA). */
+		$node['address'] = array_filter( array(
 			'@type'           => 'PostalAddress',
-			'streetAddress'   => $a['street'],
+			'streetAddress'   => $a['street'] ?? '',
 			'addressLocality' => $a['city'] ?? '',
 			'addressRegion'   => $a['region'] ?? '',
 			'postalCode'      => $a['postal'] ?? '',
 			'addressCountry'  => $a['country'] ?? 'US',
-		);
+		) );
 	}
 	if ( ! empty( $s['service_area'] ) ) {
 		$node['areaServed'] = array_map( function ( $st ) { return array( '@type' => 'State', 'name' => $st ); }, (array) $s['service_area'] );
@@ -203,24 +205,42 @@ function igj_schema_agency() {
 	return $node;
 }
 
-function igj_schema_person() {
-	$ag   = igj_site( 'agent', array() );
-	$node = array(
-		'@type'    => 'Person',
-		'@id'      => igj_person_id(),
-		'name'     => $ag['name'] ?? '',
-		'alternateName' => $ag['full_name'] ?? '',
-		'jobTitle' => $ag['job_title'] ?? '',
-		'image'    => igj_img_url( 'joe-avena', 'jpg' ),
-		'telephone' => igj_site( 'phone_e164' ),
-		'worksFor' => array( '@id' => igj_agency_id() ),
-		'url'      => home_url( '/about/' ),
-	);
+function igj_schema_person( $ag = null ) {
+	if ( null === $ag ) {
+		$all = igj_agents();
+		$ag  = $all ? $all[0] : array();
+	}
 	$about = get_page_by_path( 'about' );
-	if ( $about ) {
-		$node['url'] = get_permalink( $about );
+	$url   = $about ? get_permalink( $about ) : home_url( '/about/' );
+	$node  = array(
+		'@type'    => 'Person',
+		'@id'      => igj_person_id( $ag['id'] ?? 'joe' ),
+		'name'     => $ag['name'] ?? '',
+		'jobTitle' => $ag['job_title'] ?? '',
+		'image'    => igj_img_url( $ag['photo'] ?? 'joe-avena-headshot', 'jpg' ),
+		'worksFor' => array( '@id' => igj_agency_id() ),
+		'url'      => $url . '#' . ( $ag['id'] ?? 'joe' ),
+	);
+	if ( ! empty( $ag['full_name'] ) && $ag['full_name'] !== $ag['name'] ) {
+		$node['alternateName'] = $ag['full_name'];
+	}
+	if ( ! empty( $ag['email'] ) ) {
+		$node['email'] = $ag['email'];
+	}
+	if ( ! empty( $ag['phone_e164'] ) ) {
+		$node['telephone'] = $ag['phone_e164'];
+	}
+	if ( ! empty( $ag['npn'] ) ) {
+		$node['identifier'] = array( '@type' => 'PropertyValue', 'propertyID' => 'NPN', 'name' => 'National Producer Number', 'value' => $ag['npn'] );
+	}
+	if ( ! empty( $ag['states'] ) ) {
+		$node['areaServed'] = array_map( function ( $st ) { return array( '@type' => 'State', 'name' => $st ); }, (array) $ag['states'] );
 	}
 	return $node;
+}
+
+function igj_schema_people() {
+	return array_map( 'igj_schema_person', igj_agents() );
 }
 
 function igj_schema_breadcrumbs() {
@@ -259,7 +279,7 @@ function igj_schema_faq( $items, $id ) {
 }
 
 function igj_schema_graph() {
-	$graph = array( igj_schema_agency(), igj_schema_person() );
+	$graph = array_merge( array( igj_schema_agency() ), igj_schema_people() );
 	if ( is_front_page() ) {
 		$graph[] = array(
 			'@type'     => 'WebSite',

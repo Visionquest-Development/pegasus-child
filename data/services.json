@@ -25,7 +25,7 @@
    "lead": "Coverage for you, your spouse and your kids when you don’t get health insurance through a job, or when the job plan doesn’t fit your family.",
    "summary": "Plans for individuals, couples and families buying coverage on their own.",
    "seo_title": "Individual & Family Health Insurance Plans | Insurance Guy Joe",
-   "seo_desc": "Compare individual and family health insurance: ACA Marketplace plans, off-exchange plans and options for kids. Get a free quote from Joe Avena.",
+   "seo_desc": "Compare individual and family health insurance: ACA Marketplace plans, off-exchange plans and options for kids. Get a free consultation with Joe & Dianna Avena.",
    "sections": [
     {
      "h": "Who individual and family coverage is for",
@@ -95,7 +95,7 @@
    "icon": "fa-briefcase",
    "service_type": "Health insurance for self-employed people",
    "title": "Health Insurance for the Self-Employed",
-   "lead": "Running your own business means choosing your own health plan. Joe helps owners, freelancers and contractors find coverage that fits a variable income.",
+   "lead": "Running your own business means choosing your own health plan. We help owners, freelancers and contractors find coverage that fits a variable income.",
    "summary": "Coverage for business owners, freelancers and contractors without an employer plan.",
    "seo_title": "Self-Employed Health Insurance | Insurance Guy Joe",
    "seo_desc": "Health insurance options for self-employed people, freelancers and sole proprietors: ACA plans, private plans and the self-employed health insurance deduction.",
@@ -161,7 +161,7 @@
    "icon": "fa-building",
    "service_type": "Small business group health insurance",
    "title": "Small Business Health Insurance",
-   "lead": "Offering health benefits helps you hire and keep good people. Joe helps small employers compare group plans and other ways to help employees pay for coverage.",
+   "lead": "Offering health benefits helps you hire and keep good people. We help small employers compare group plans and other ways to help employees pay for coverage.",
    "summary": "Group plans and health reimbursement options for small employers.",
    "seo_title": "Small Business Health Insurance & Group Plans | Insurance Guy Joe",
    "seo_desc": "Small business health insurance options: small group plans, SHOP, QSEHRA and ICHRA reimbursement arrangements, plus dental and vision. Free consultation.",
@@ -224,7 +224,7 @@
    "icon": "fa-medkit",
    "service_type": "Health insurance for travel nurses",
    "title": "Health Insurance for Travel Nurses",
-   "lead": "Short contracts, different states and gaps between assignments make coverage tricky. Joe helps travel nurses and other traveling healthcare workers keep continuous coverage.",
+   "lead": "Short contracts, different states and gaps between assignments make coverage tricky. We help travel nurses and other traveling healthcare workers keep continuous coverage.",
    "summary": "Coverage that follows you between contracts and across state lines.",
    "seo_title": "Travel Nurse Health Insurance | Insurance Guy Joe",
    "seo_desc": "Health insurance for travel nurses and traveling healthcare professionals: agency plans vs. your own plan, coverage between contracts and out-of-state networks.",
@@ -252,7 +252,7 @@
    "faq": [
     {
      "q": "Which state should I buy a plan in as a travel nurse?",
-     "a": "Generally the state where you live and maintain your tax home, because individual plans are sold based on your residence. Talk to your tax advisor about your tax home; Joe can help you compare plans available where you live."
+     "a": "Generally the state where you live and maintain your tax home, because individual plans are sold based on your residence. Talk to your tax advisor about your tax home; we can help you compare plans available where you live."
     },
     {
      "q": "Will my plan cover me in another state?",
@@ -281,7 +281,7 @@
    "icon": "fa-home",
    "service_type": "Health insurance for real estate agents",
    "title": "Health Insurance for Realtors & Real Estate Agents",
-   "lead": "Most real estate agents are independent contractors, so the brokerage doesn’t provide health insurance. Joe helps agents find coverage that works with commission income.",
+   "lead": "Most real estate agents are independent contractors, so the brokerage doesn’t provide health insurance. We help agents find coverage that works with commission income.",
    "summary": "Options for independent-contractor agents and brokers paid on commission.",
    "seo_title": "Health Insurance for Realtors & Real Estate Agents | Insurance Guy Joe",
    "seo_desc": "Health insurance for realtors and real estate agents: individual ACA plans, private plans, and how commission income affects Marketplace savings.",
@@ -311,7 +311,7 @@
    "faq": [
     {
      "q": "Does my brokerage or association offer health insurance?",
-     "a": "Some brokerages and REALTOR® associations offer access to group or association programs, and availability varies by state. Joe can compare what you’re offered against individual-market options."
+     "a": "Some brokerages and REALTOR® associations offer access to group or association programs, and availability varies by state. We can compare what you’re offered against individual-market options."
     },
     {
      "q": "What income should I estimate if my commissions vary?",
@@ -336,7 +336,7 @@
    "icon": "fa-sun-o",
    "service_type": "Health insurance for early retirees before Medicare",
    "title": "Health Insurance for Early Retirees",
-   "lead": "Retiring before 65 means bridging the years until Medicare. Joe helps early retirees plan coverage that protects their savings.",
+   "lead": "Retiring before 65 means bridging the years until Medicare. We help early retirees plan coverage that protects their savings.",
    "summary": "Bridge coverage from retirement until Medicare eligibility at 65.",
    "seo_title": "Early Retiree Health Insurance Before Medicare | Insurance Guy Joe",
    "seo_desc": "Retiring before 65? Compare COBRA, ACA Marketplace plans, retiree coverage and private plans to bridge the gap until Medicare.",
@@ -396,7 +396,7 @@
    "icon": "fa-birthday-cake",
    "service_type": "Health insurance for young adults aging off a parent’s plan",
    "title": "Health Insurance When You Turn 26",
-   "lead": "The ACA lets young adults stay on a parent’s plan until 26. When that ends, you get a window to pick your own plan. Joe helps you use it.",
+   "lead": "The ACA lets young adults stay on a parent’s plan until 26. When that ends, you get a window to pick your own plan. we help you use it.",
    "summary": "Coming off a parent’s plan? Pick your own coverage without a gap.",
    "seo_title": "Turning 26 Health Insurance: Coming Off a Parent’s Plan | Insurance Guy Joe",
    "seo_desc": "Turning 26 and losing coverage on a parent’s plan? Learn about your Special Enrollment Period, job-based coverage, ACA Marketplace and catastrophic plans.",
@@ -455,7 +455,7 @@
    "icon": "fa-shield",
    "service_type": "Private (off-exchange) health insurance",
    "title": "Private Health Insurance",
-   "lead": "“Private” health insurance can mean an ACA plan bought directly from an insurer, or a non-ACA plan with different rules. Joe explains the trade-offs in plain English.",
+   "lead": "“Private” health insurance can mean an ACA plan bought directly from an insurer, or a non-ACA plan with different rules. We explain the trade-offs in plain English.",
    "summary": "Off-exchange and non-ACA plans, with the trade-offs explained.",
    "seo_title": "Private Health Insurance Plans vs. ACA | Insurance Guy Joe",
    "seo_desc": "What private health insurance means: off-exchange ACA plans, underwritten plans, short-term and fixed indemnity coverage, and how they compare to Marketplace plans.",
@@ -489,7 +489,7 @@
    "faq": [
     {
      "q": "Is private health insurance cheaper than an ACA plan?",
-     "a": "Sometimes, for healthy people who don’t qualify for premium tax credits, but lower premiums usually come with more limits. If you qualify for Marketplace savings, a subsidized ACA plan is often the better value. Joe can show you both side by side."
+     "a": "Sometimes, for healthy people who don’t qualify for premium tax credits, but lower premiums usually come with more limits. If you qualify for Marketplace savings, a subsidized ACA plan is often the better value. We can show you both side by side."
     },
     {
      "q": "Can a private plan deny me for health reasons?",
@@ -514,7 +514,7 @@
    "icon": "fa-check-square-o",
    "service_type": "ACA Marketplace (Obamacare) health insurance enrollment help",
    "title": "ACA Marketplace Health Insurance",
-   "lead": "Marketplace (“Obamacare”) plans guarantee coverage regardless of health, and many households qualify for savings based on income. Joe can walk you through the options.",
+   "lead": "Marketplace (“Obamacare”) plans guarantee coverage regardless of health, and many households qualify for savings based on income. We can walk you through the options.",
    "summary": "Guaranteed-issue plans with income-based savings for eligible households.",
    "seo_title": "ACA Marketplace (Obamacare) Health Insurance Help | Insurance Guy Joe",
    "seo_desc": "Help with ACA Marketplace health insurance: metal tiers, premium tax credits, cost-sharing reductions, open enrollment and special enrollment periods.",
@@ -538,13 +538,13 @@
     {
      "h": "Savings based on income",
      "p": [
-      "Premium tax credits lower your monthly premium if your household income qualifies and you don’t have access to affordable employer coverage. The enhanced credits of 2021–2025 expired, so for 2026 and later the credits are generally available to households with incomes from 100% to 400% of the federal poverty level (above 138% in states that expanded Medicaid). Cost-sharing reductions on Silver plans can lower deductibles and copays for households up to 250% of the poverty level. Rules can change; Joe checks the current year’s rules with you."
+      "Premium tax credits lower your monthly premium if your household income qualifies and you don’t have access to affordable employer coverage. The enhanced credits of 2021–2025 expired, so for 2026 and later the credits are generally available to households with incomes from 100% to 400% of the federal poverty level (above 138% in states that expanded Medicaid). Cost-sharing reductions on Silver plans can lower deductibles and copays for households up to 250% of the poverty level. Rules can change; we check the current year’s rules with you."
      ]
     },
     {
      "h": "Enrolling",
      "p": [
-      "Most states use HealthCare.gov; some, including Georgia (Georgia Access), run their own marketplace with their own deadlines. You can enroll during the annual <a href=\"/learn/open-enrollment-guide/\">Open Enrollment Period</a>, or within a Special Enrollment Period after a qualifying life event. {{todo:Confirm Joe is registered with the federal Marketplace and/or state exchanges for the current plan year before promising enrollment help.}}"
+      "Most states use HealthCare.gov; some, including Georgia (Georgia Access), run their own marketplace with their own deadlines. You can enroll during the annual <a href=\"/learn/open-enrollment-guide/\">Open Enrollment Period</a>, or within a Special Enrollment Period after a qualifying life event. Joe and Dianna are certified with the federal Marketplace (HealthCare.gov) for the 2027 plan year in applicable states, and with Georgia Access and Get Covered Illinois, so we can help you compare and enroll in Marketplace plans."
      ]
     }
    ],
@@ -580,7 +580,7 @@
    "icon": "fa-exchange",
    "service_type": "COBRA alternative health insurance",
    "title": "COBRA Alternatives",
-   "lead": "COBRA lets you keep your old job’s plan, but usually at full price. Joe compares COBRA with the other options you have after leaving a job.",
+   "lead": "COBRA lets you keep your old job’s plan, but usually at full price. We compare COBRA with the other options you have after leaving a job.",
    "summary": "Compare COBRA with Marketplace, spouse and private options after a job change.",
    "seo_title": "COBRA Alternatives: Health Insurance After a Job Loss | Insurance Guy Joe",
    "seo_desc": "Lost or left a job? Compare COBRA with ACA Marketplace plans, a spouse’s plan and private options. Know your 60-day Special Enrollment Period.",
@@ -647,7 +647,7 @@
    "icon": "fa-file-text-o",
    "service_type": "Health insurance for 1099 contractors and gig workers",
    "title": "Health Insurance for 1099 Workers",
-   "lead": "Gig workers, contractors and freelancers paid on a 1099 don’t get employer benefits. Joe helps you find a plan that fits uneven income.",
+   "lead": "Gig workers, contractors and freelancers paid on a 1099 don’t get employer benefits. We help you find a plan that fits uneven income.",
    "summary": "Plans for contractors, gig workers and anyone paid on a 1099.",
    "seo_title": "Health Insurance for 1099 Contractors & Gig Workers | Insurance Guy Joe",
    "seo_desc": "Health insurance for 1099 contractors, gig and rideshare drivers and freelancers: ACA plans, savings based on net income, private plans and supplemental coverage.",

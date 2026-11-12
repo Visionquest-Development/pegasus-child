@@ -204,6 +204,109 @@ body.igj { font-family: var(--igj-font); color: var(--igj-ink); font-size: 1.062
 /* TODO placeholders (hidden at launch with add_filter( 'igj_show_todos', '__return_false' )) */
 .igj-todo { display: inline-block; background: #fff3cd; color: #5c4400; border: 1px dashed #c9a227; border-radius: 6px; padding: .1rem .5rem; font-size: .88rem; line-height: 1.45; }
 
+/* ==========================================================================
+   Open Enrollment banner (home). Toggle: Appearance → Customize → Open Enrollment Banner
+   ========================================================================== */
+.igj-oe { position: relative; overflow: hidden; background: linear-gradient(120deg, #f2a33a 0%, #f6b552 45%, #f8c77a 100%); color: var(--igj-navy); padding: 3rem 0 3.25rem; border-bottom: 6px solid var(--igj-navy); }
+.igj-oe::before { content: ""; position: absolute; right: -120px; top: -140px; width: 420px; height: 420px; border-radius: 50%; background: rgba(255,255,255,.18); pointer-events: none; }
+.igj-oe::after { content: ""; position: absolute; left: -90px; bottom: -160px; width: 340px; height: 340px; border-radius: 50%; background: rgba(28,32,66,.06); pointer-events: none; }
+.igj-oe .container { position: relative; z-index: 1; }
+.igj-oe__grid { display: grid; gap: 1.75rem 3rem; align-items: center; }
+@media (min-width: 992px) { .igj-oe__grid { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); } }
+.igj-oe__eyebrow { display: inline-flex; align-items: center; gap: .55rem; background: var(--igj-navy); color: #fff; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; font-size: .82rem; border-radius: 999px; padding: .4rem .95rem; margin: 0 0 1rem; }
+.igj-oe__pulse { width: 10px; height: 10px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 0 0 rgba(74,222,128,.7); animation: igj-pulse 1.8s infinite; }
+@keyframes igj-pulse { 0% { box-shadow: 0 0 0 0 rgba(74,222,128,.7); } 70% { box-shadow: 0 0 0 10px rgba(74,222,128,0); } 100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); } }
+.igj .igj-oe__title { color: var(--igj-navy); font-size: clamp(2.1rem, 5vw, 3.6rem); font-weight: 850; line-height: 1.05; letter-spacing: -.02em; margin: 0 0 .85rem; }
+.igj-oe__dates { font-size: clamp(1.25rem, 2.4vw, 1.75rem); font-weight: 800; margin: 0 0 .75rem; }
+.igj-oe__dates .fa { margin-right: .35rem; }
+.igj-oe__body { font-size: 1.1rem; max-width: 46rem; margin: 0; color: #22264a; }
+.igj-oe__side { display: flex; flex-direction: column; gap: .75rem; align-items: stretch; background: rgba(255,255,255,.55); border-radius: 18px; padding: 1.5rem; box-shadow: 0 12px 30px rgba(28,32,66,.12); }
+.igj-oe__count { margin: 0; text-align: center; font-size: 1.35rem; font-weight: 850; color: var(--igj-navy); }
+.igj-oe .igj-btn--cta { background: var(--igj-navy); border-color: var(--igj-navy); color: #fff !important; }
+.igj-oe .igj-btn--cta:hover { background: var(--igj-brand-dark); border-color: var(--igj-brand-dark); }
+.igj-oe .igj-btn--outline-light { color: var(--igj-navy) !important; border-color: var(--igj-navy); background: transparent; }
+.igj-oe .igj-btn--outline-light:hover { background: var(--igj-navy); color: #fff !important; }
+.igj-oe .igj-btn { width: 100%; white-space: normal; text-align: center; }
+.igj-oe__link { text-align: center; font-weight: 700; color: var(--igj-navy) !important; }
+@media (max-width: 575.98px) { .igj-oe { padding: 2.25rem 0 2.5rem; } .igj-oe__side { padding: 1.1rem; } }
+@media (prefers-reduced-motion: reduce) { .igj-oe__pulse { animation: none; } }
+
+/* Split hero with Joe & Dianna's portrait */
+.igj-hero--split { background: linear-gradient(135deg, var(--igj-navy) 0%, var(--igj-brand-dark) 100%); min-height: 0; }
+.igj-hero--split .igj-hero__inner { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+.igj-hero--split .igj-hero__panel { max-width: none; }
+.igj-hero__photo { position: relative; max-width: 460px; margin: 0 auto; }
+.igj-hero__photo::before { content: ""; position: absolute; inset: 18px -18px -18px 18px; border: 3px solid rgba(248,199,122,.65); border-radius: 22px; }
+.igj .igj-hero__portrait { position: relative; display: block; width: 100%; height: auto; border-radius: 22px; box-shadow: 0 24px 50px rgba(0,0,0,.35); }
+.igj-hero__alt { margin: .9rem 0 0; }
+.igj-hero__alt a { color: #f8c77a; font-weight: 700; }
+@media (max-width: 991.98px) { .igj-hero__photo { max-width: 340px; } }
+
+/* Utilities */
+.igj-shadow { box-shadow: var(--igj-shadow); }
+.igj-lead { font-size: 1.15rem; color: var(--igj-ink); }
+.igj-small { font-size: .92rem; color: var(--igj-muted); }
+
+/* Free services band */
+.igj-free { padding: 3rem 0; }
+.igj-free__box { display: grid; gap: 1.25rem 2rem; grid-template-columns: 1fr; align-items: start; background: #fff; border: 2px solid var(--igj-cta); border-radius: 20px; padding: 2rem; box-shadow: var(--igj-shadow); }
+@media (min-width: 768px) { .igj-free__box { grid-template-columns: auto 1fr; padding: 2.5rem; } }
+.igj-free__icon { width: 76px; height: 76px; border-radius: 50%; background: #fff4e0; color: var(--igj-cta-dark); display: grid; place-items: center; font-size: 2rem; }
+.igj-free .igj-section-title { font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
+.igj-free__lead { font-size: 1.15rem; }
+.igj-free__list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .4rem 1.5rem; margin: 1rem 0; font-weight: 700; color: var(--igj-navy); }
+.igj-free__list .fa { color: var(--igj-ok); margin-right: .35rem; }
+.igj-free__fine { font-size: .9rem; color: var(--igj-muted); margin: 0; }
+
+/* Four steps */
+.igj-step__word { display: block; color: var(--igj-brand-dark); font-size: 1.35rem; }
+.igj-step__sub { display: block; font-size: 1rem; color: var(--igj-navy); font-weight: 700; margin-top: .15rem; }
+
+/* Meet Joe & Dianna (home) */
+.igj-meet__people { display: grid; gap: .75rem; margin: 1.25rem 0 1.5rem; }
+.igj-meet__people li { display: flex; align-items: center; gap: .85rem; }
+.igj .igj-meet__avatar { width: 64px; height: 64px; object-fit: cover; object-position: top; border-radius: 50%; border: 3px solid #fff; box-shadow: var(--igj-shadow); }
+
+/* Agent cards */
+.igj-agent { background: #fff; border: 1px solid var(--igj-line); border-radius: var(--igj-radius); padding: 1.5rem; height: 100%; box-shadow: var(--igj-shadow); scroll-margin-top: 140px; }
+.igj-agent__head { display: flex; gap: 1.1rem; align-items: center; margin-bottom: 1rem; }
+.igj .igj-agent__photo { width: 120px; height: 150px; object-fit: cover; object-position: top; border-radius: 14px; flex: 0 0 auto; }
+.igj .igj-agent__name { font-size: 1.45rem; margin: 0 0 .2rem; }
+.igj-agent__title { font-weight: 700; color: var(--igj-brand-dark); margin: 0 0 .2rem; }
+.igj-agent__npn { font-size: .92rem; color: var(--igj-muted); margin: 0; }
+.igj-agent__contact li { margin-bottom: .4rem; display: flex; gap: .5rem; align-items: baseline; }
+.igj-agent__contact .fa { color: var(--igj-brand); width: 1.1rem; flex: 0 0 auto; }
+.igj-agent__contact a { word-break: break-word; }
+.igj-agent__states { margin-top: .75rem; border-top: 1px solid var(--igj-line); padding-top: .75rem; }
+.igj-agent__states summary { cursor: pointer; font-weight: 800; color: var(--igj-navy); }
+.igj-agent__states p { margin: .6rem 0 0; color: var(--igj-muted); font-size: .95rem; }
+@media (max-width: 400px) { .igj-agent__head { flex-direction: column; align-items: flex-start; } }
+
+/* States we serve */
+.igj-states__list { display: grid; grid-template-columns: repeat(auto-fill, minmax(165px, 1fr)); gap: .5rem; margin: 0 0 1.25rem; }
+.igj-states__list li { background: #fff; border: 1px solid var(--igj-line); border-radius: 10px; padding: .55rem .75rem; font-weight: 650; color: var(--igj-navy); font-size: .97rem; }
+.igj-section:not(.igj-section--tint).igj-states .igj-states__list li { background: var(--igj-tint); border-color: transparent; }
+.igj-states__list .fa { color: var(--igj-brand); margin-right: .3rem; }
+.igj-states__list li.is-home { background: var(--igj-navy) !important; color: #fff; }
+.igj-states__list li.is-home .fa { color: #f8c77a; }
+.igj-states__badge { display: inline-block; font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; background: var(--igj-cta); color: #1b1b1b; border-radius: 999px; padding: .05rem .45rem; margin-left: .25rem; vertical-align: middle; }
+.igj-states__list li.igj-states__more { background: #fff4e0 !important; border: 1px dashed var(--igj-cta-dark); color: #6b3d00; }
+.igj-states__note { font-size: .92rem; color: var(--igj-muted); max-width: 820px; margin: 0 auto; }
+
+/* Carrier / program chips (text only) */
+.igj-chips { display: flex; flex-wrap: wrap; gap: .45rem; margin: 0 0 1rem; }
+.igj-chips li { background: var(--igj-tint); color: var(--igj-navy); border-radius: 999px; padding: .3rem .8rem; font-size: .93rem; font-weight: 650; }
+
+/* Contact: schedule band */
+.igj-schedule { display: grid; gap: 1rem 2rem; align-items: center; background: var(--igj-tint); border-radius: 18px; padding: 1.75rem; border-left: 6px solid var(--igj-cta); }
+@media (min-width: 992px) { .igj-schedule { grid-template-columns: 1fr auto; padding: 2rem 2.25rem; } }
+.igj-schedule .igj-section-title { margin-bottom: .5rem; }
+.igj-contact__people li { margin-bottom: .6rem; }
+
+/* CTA band alt link */
+.igj-cta-band__alt { margin: .6rem .25rem 0; font-size: .95rem; }
+.igj-cta-band__alt a { color: #f8c77a; }
+
 /* Footer */
 .igj-footer { background: var(--igj-navy); color: #cfd2e6; padding: 3.25rem 0 1.5rem; font-size: .97rem; }
 .igj-footer a { color: #fff; }

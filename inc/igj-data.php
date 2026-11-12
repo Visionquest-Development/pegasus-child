@@ -72,6 +72,34 @@ function igj_phone_link( $class = '', $label = '' ) {
 }
 
 /**
+ * Team members (Joe & Dianna) from site.json "agents".
+ */
+function igj_agents() {
+	return array_values( array_filter( (array) igj_site( 'agents', array() ), 'is_array' ) );
+}
+
+/**
+ * Online scheduling URL (Picktime) for "Schedule Your Free Health Insurance Consultation".
+ */
+function igj_schedule_url() {
+	return (string) igj_site( 'quote_url' );
+}
+
+/**
+ * Primary scheduling button (opens Picktime in a new tab).
+ */
+function igj_schedule_button( $class = 'igj-btn--cta', $label = '' ) {
+	$label = $label ? $label : (string) igj_site( 'schedule_cta' );
+	return sprintf(
+		'<a class="btn igj-btn %1$s" href="%2$s" target="_blank" rel="noopener"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> %3$s<span class="visually-hidden"> %4$s</span></a>',
+		esc_attr( $class ),
+		esc_url( igj_schedule_url() ),
+		esc_html( $label ),
+		esc_html__( '(opens in a new tab)', 'pegasus' )
+	);
+}
+
+/**
  * URL of the Contact page (the on-site quote form), falling back to /contact/.
  */
 function igj_contact_url( $fragment = '' ) {
@@ -281,13 +309,19 @@ function igj_handle_quote_form() {
 	$zip     = sanitize_text_field( wp_unslash( $_POST['igj_zip'] ?? '' ) );
 	$topic   = sanitize_text_field( wp_unslash( $_POST['igj_topic'] ?? '' ) );
 	$message = sanitize_textarea_field( wp_unslash( $_POST['igj_message'] ?? '' ) );
+	$who     = sanitize_text_field( wp_unslash( $_POST['igj_who'] ?? '' ) );
+	$start   = sanitize_text_field( wp_unslash( $_POST['igj_effective'] ?? '' ) );
 	$consent = ! empty( $_POST['igj_consent'] );
 	if ( ! $name || ( ! $phone && ! is_email( $email ) ) || ! $consent ) {
 		wp_safe_redirect( add_query_arg( 'igj_sent', 'missing', $back ) . '#quote-form' );
 		exit;
 	}
-	$to   = igj_site( 'email' ) ? igj_site( 'email' ) : get_option( 'admin_email' );
-	$body = "Quote request from " . home_url( '/' ) . "\n\nName: {$name}\nPhone: {$phone}\nEmail: {$email}\nZIP: {$zip}\nLooking for: {$topic}\n\nMessage:\n{$message}\n";
+	/* Joe and Dianna both receive website inquiries (site.json lead_recipients). */
+	$to = array_values( array_filter( (array) igj_site( 'lead_recipients', array() ), 'is_email' ) );
+	if ( ! $to ) {
+		$to = igj_site( 'email' ) ? array( igj_site( 'email' ) ) : array( get_option( 'admin_email' ) );
+	}
+	$body = "Quote request from " . home_url( '/' ) . "\n\nName: {$name}\nPhone: {$phone}\nEmail: {$email}\nZIP: {$zip}\nWho needs coverage: {$who}\nDesired effective date: {$start}\nLooking for: {$topic}\n\nMessage:\n{$message}\n";
 	$headers = array();
 	if ( is_email( $email ) ) {
 		$headers[] = 'Reply-To: ' . $name . ' <' . $email . '>';

@@ -7,18 +7,18 @@
    1600,
    800
   ],
-  "role": "home hero",
+  "role": "home hero (UNUSED: stock photo from old site, license unverified; Joe asked not to reuse it)",
   "ext": "jpg",
   "source": "https://insuranceguyjoe.com/wp-content/uploads/2024/01/iStock-1159499688.jpg"
  },
  "og-share": {
-  "alt": "Insurance Guy Joe",
+  "alt": "Joe and Dianna Avena, Insurance Guy Joe Solutions",
   "width": 1200,
   "height": 630,
   "sizes": [],
   "role": "Open Graph share image",
   "ext": "jpg",
-  "source": "https://insuranceguyjoe.com/wp-content/uploads/2024/01/iStock-1159499688.jpg"
+  "source": "Joe Avena email 2026-11-10: Outlook-prtyq1ho.png (cropped 1200x630). Replaces the unverified iStock image."
  },
  "consultation": {
   "alt": "A couple reviewing health coverage options with an advisor",
@@ -28,7 +28,7 @@
    1000,
    560
   ],
-  "role": "about / services / contact",
+  "role": "about / services / contact (UNUSED: stock photo from old site, license unverified; Joe asked not to reuse it)",
   "ext": "jpg",
   "source": "https://insuranceguyjoe.com/wp-content/uploads/2024/01/iStock-872557702-scaled.jpg"
  },
@@ -40,7 +40,7 @@
    1600,
    800
   ],
-  "role": "inner page hero background",
+  "role": "inner page hero background (UNUSED: stock photo from old site, license unverified; Joe asked not to reuse it)",
   "ext": "jpg",
   "source": "https://insuranceguyjoe.com/wp-content/uploads/2024/01/iStock-872557702-scaled.jpg"
  },
@@ -56,7 +56,7 @@
   "source": "https://insuranceguyjoe.com/wp-content/uploads/2024/01/Joe-Avena-headshot.jpg"
  },
  "igj-logo": {
-  "alt": "Insurance Guy Joe Solutions \u2013 Affordable Health Coverage",
+  "alt": "Insurance Guy Joe Solutions – Affordable Health Coverage",
   "width": 300,
   "height": 87,
   "sizes": [
@@ -88,5 +88,89 @@
   "role": "carriers strip (TODO confirm appointments)",
   "ext": "png",
   "source": "https://insuranceguyjoe.com/wp-content/uploads/2024/02/Joe-Avena-logo-bar-FOOTER-FEB24.png"
+ },
+ "joe-dianna-indoor": {
+  "alt": "Joe and Dianna Avena of Insurance Guy Joe Solutions",
+  "width": 960,
+  "height": 1200,
+  "sizes": [
+   960,
+   560
+  ],
+  "role": "home hero (indoor standing portrait)",
+  "ext": "jpg",
+  "source": "Joe Avena email 2026-11-10: dianna-joe-3.jpg"
+ },
+ "joe-dianna-outdoor": {
+  "alt": "Joe and Dianna Avena, licensed health insurance professionals in Roswell, Georgia",
+  "width": 960,
+  "height": 1200,
+  "sizes": [
+   960,
+   560
+  ],
+  "role": "About / Meet Joe & Dianna (outdoor standing portrait)",
+  "ext": "jpg",
+  "source": "Joe Avena email 2026-11-10: Outlook-jlhxuc31.jpg"
+ },
+ "dianna-laptop": {
+  "alt": "Dianna Avena comparing health insurance plans on a laptop with Joe Avena",
+  "width": 800,
+  "height": 1000,
+  "sizes": [
+   800,
+   480
+  ],
+  "role": "Services / How we help",
+  "ext": "jpg",
+  "source": "Joe Avena email 2026-11-10: Outlook-20mvxqy5.jpg"
+ },
+ "joe-laptop": {
+  "alt": "Joe Avena reviewing health insurance options on a laptop with Dianna Avena",
+  "width": 800,
+  "height": 1000,
+  "sizes": [
+   800,
+   480
+  ],
+  "role": "Contact / consultation",
+  "ext": "jpg",
+  "source": "Joe Avena email 2026-11-10: Outlook-zty4qb35.jpg"
+ },
+ "joe-dianna-closeup": {
+  "alt": "Joe and Dianna Avena smiling in their Roswell, Georgia home office",
+  "width": 1200,
+  "height": 1022,
+  "sizes": [
+   1200,
+   600
+  ],
+  "role": "home Meet Joe & Dianna section",
+  "ext": "jpg",
+  "source": "Joe Avena email 2026-11-10: Outlook-prtyq1ho.png"
+ },
+ "joe-avena-headshot": {
+  "alt": "Joe Avena, Licensed Health Insurance Agent",
+  "width": 600,
+  "height": 750,
+  "sizes": [
+   600,
+   300
+  ],
+  "role": "Joe headshot (agent card, schema)",
+  "ext": "jpg",
+  "source": "Joe Avena email 2026-11-10: dianna-joe-3.jpg"
+ },
+ "dianna-avena-headshot": {
+  "alt": "Dianna Avena, Independent Licensed Health Insurance Broker",
+  "width": 600,
+  "height": 750,
+  "sizes": [
+   600,
+   300
+  ],
+  "role": "Dianna headshot (agent card, schema)",
+  "ext": "jpg",
+  "source": "Joe Avena email 2026-11-10: dianna-joe-3.jpg"
  }
 }
