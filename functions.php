@@ -44,6 +44,9 @@
 	 * Insurance Guy Joe helpers: site data, responsive images, SEO + schema, setup.
 	 */
 	require_once get_stylesheet_directory() . '/inc/igj-data.php';
+	require_once get_stylesheet_directory() . '/inc/igj-cms.php';
+	require_once get_stylesheet_directory() . '/inc/igj-content-defaults.php';
+	require_once get_stylesheet_directory() . '/inc/igj-cmb2.php';
 	require_once get_stylesheet_directory() . '/inc/igj-seo.php';
 	require_once get_stylesheet_directory() . '/inc/igj-setup.php';
 	require_once get_stylesheet_directory() . '/inc/igj-oe-banner.php';

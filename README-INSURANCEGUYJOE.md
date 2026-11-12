@@ -131,6 +131,33 @@ RewriteCond %{QUERY_STRING} (^|&)page_id=(1099|1101|1103|2333)(&|$)
 RewriteRule ^$ /? [L,R=301]
 ```
 
+## Editing content in wp-admin (CMB2)
+
+CMB2 ships with the Pegasus parent theme (`pegasus/inc/cmb2`), so no plugin is needed.
+
+- **Pages → (page) edit screen**: one collapsed box per page section, numbered in page order
+  (`01 — Hero`, `02 — Free Services`, …). Boxes only appear on pages using that template
+  (Home also on the front page). Lists (steps, bullets, cards, FAQs, links…) are repeatable,
+  collapsed, sortable groups ("Step 1", "Question 2", …).
+- **IGJ Site Info** (admin menu): site-wide facts used by the header, footer, every page and the
+  JSON-LD schema — phone, emails, scheduling link, quote-form recipients, team members (NPN,
+  licensed states, headshot), states served, carriers, private programs, compensation
+  disclosure, testimonials.
+- **Defaults**: the shipped copy lives in `inc/igj-content-defaults.php` (service pages take
+  theirs from `data/services.json`, the FAQ from `data/faq.json`, site facts from
+  `data/site.json`). Fields are prefilled with it.
+  - Text: an empty field falls back to the default; anything else replaces it.
+  - Repeatable lists: only the FIRST item is prefilled. While the list is just that untouched
+    first item, the site keeps showing the whole default list. Edit the first item or add a
+    second and the site shows exactly what's saved (so re-add any defaults you want to keep).
+  - Images: empty = built-in optimized theme photo; uploads use the Media Library alt text.
+  - Tokens: `{state_count}`, `{count}`, `{npn}`, `{title}`, `{phone}` where noted; `{{phone}}`
+    in HTML fields becomes a tap-to-call link.
+- Helpers: `igj_section( $tpl, $section )`, `igj_field()`, `igj_group()` in `inc/igj-cms.php`;
+  box registration in `inc/igj-cmb2.php`. Header/footer/schema read through `igj_site()`.
+- Still in code on purpose: Open Enrollment banner (Appearance → Customize), form field labels,
+  developer TODO notes, legal page drafts (edit those in the page editor), header/footer layout.
+
 ## Open Enrollment banner (home page)
 Big banner above the home hero, managed in **Appearance → Customize → Open Enrollment Banner** (no code):
 - **Show the banner** (on/off), **Repeat every year** (reuses the month/day of the dates), **Start date**, **End date**,

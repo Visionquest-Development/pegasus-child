@@ -14,7 +14,7 @@ $i     = 0;
 		if ( empty( $all[ $slug ] ) || ( ! empty( $args['exclude'] ) && $args['exclude'] === $slug ) ) {
 			continue;
 		}
-		$s = $all[ $slug ];
+		$s = igj_service_card( $slug ); // Title/summary/icon as edited on the service page.
 		?>
 		<li class="col-12 col-sm-6 col-lg-4 wow fadeInUp" data-wow-delay="<?php echo esc_attr( ( ( $i++ % 3 ) * 0.06 ) . 's' ); ?>">
 			<a class="igj-card" href="<?php echo esc_url( igj_service_url( $slug ) ); ?>">

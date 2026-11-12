@@ -35,7 +35,7 @@ function igj_data( $name = 'site', $dir = 'data' ) {
  * Value from site.json with dot notation, e.g. igj_site( 'agent.name' ).
  */
 function igj_site( $key, $default = '' ) {
-	$value = igj_data( 'site' );
+	$value = function_exists( 'igj_site_data' ) ? igj_site_data() : igj_data( 'site' );
 	foreach ( explode( '.', $key ) as $part ) {
 		if ( ! is_array( $value ) || ! array_key_exists( $part, $value ) ) {
 			return $default;
@@ -148,6 +148,39 @@ function igj_service( $slug ) {
 }
 
 /**
+ * Page ID of a service page by slug (0 if missing).
+ */
+function igj_service_page_id( $slug ) {
+	static $ids = array();
+	if ( ! isset( $ids[ $slug ] ) ) {
+		$svc  = igj_service( $slug );
+		$page = $svc ? get_page_by_path( 'services/' . ( ! empty( $svc['parent'] ) ? $svc['parent'] . '/' : '' ) . $slug ) : null;
+		$ids[ $slug ] = $page ? (int) $page->ID : 0;
+	}
+	return $ids[ $slug ];
+}
+
+/**
+ * Service as edited on its page (Service Page → 01 title, 02 card summary/icon),
+ * falling back to data/services.json.
+ */
+function igj_service_card( $slug ) {
+	$svc = igj_service( $slug );
+	if ( ! $svc ) {
+		return array();
+	}
+	$pid = igj_service_page_id( $slug );
+	if ( $pid && function_exists( 'igj_section' ) ) {
+		$hero = igj_section( 'service', 'hero', $pid );
+		$card = igj_section( 'service', 'card', $pid );
+		$svc['title']   = $hero['title'] ?? $svc['title'];
+		$svc['summary'] = $card['summary'] ?? $svc['summary'];
+		$svc['icon']    = $card['icon'] ?? ( $svc['icon'] ?? 'fa-heartbeat' );
+	}
+	return $svc;
+}
+
+/**
  * URL of a service page by slug (real permalink if the page exists).
  */
 function igj_service_url( $slug ) {
@@ -192,6 +225,9 @@ function igj_learn_title( $slug ) {
 /* ---------- Images ---------- */
 
 function igj_img_url( $slug, $ext = null, $size = '' ) {
+	if ( false !== strpos( (string) $slug, '/' ) ) {
+		return (string) $slug; // Already a URL (uploaded image).
+	}
 	$meta = igj_img_meta( $slug );
 	$ext  = $ext ? $ext : ( $meta['ext'] ?? 'jpg' );
 	return get_stylesheet_directory_uri() . '/images/' . $slug . ( $size ? '-' . $size : '' ) . '.' . $ext;
@@ -206,11 +242,15 @@ function igj_img_meta( $slug ) {
  * <picture>: WebP with JPEG/PNG fallback, width/height set, lazy unless eager.
  */
 function igj_picture( $slug, $args = array() ) {
+	$args = wp_parse_args( $args, array( 'class' => '', 'eager' => false, 'sizes' => '100vw', 'alt' => null, 'id' => 0 ) );
+	$slug = igj_img_ref( $slug );
+	if ( false !== strpos( $slug, '/' ) ) {
+		return igj_custom_img( $slug, $args );
+	}
 	$meta = igj_img_meta( $slug );
 	if ( empty( $meta ) ) {
 		return '';
 	}
-	$args  = wp_parse_args( $args, array( 'class' => '', 'eager' => false, 'sizes' => '100vw', 'alt' => null ) );
 	$alt   = null !== $args['alt'] ? $args['alt'] : ( $meta['alt'] ?? '' );
 	$w     = (int) ( $meta['width'] ?? 0 );
 	$h     = (int) ( $meta['height'] ?? 0 );
@@ -238,6 +278,51 @@ function igj_picture( $slug, $args = array() ) {
 		$args['eager'] ? 'fetchpriority="high"' : 'loading="lazy"'
 	);
 	return $html . '</picture>';
+}
+
+/**
+ * Image reference from a CMB2 file field: a theme image URL maps back to its slug (so it keeps
+ * the optimized WebP <picture>); any other URL is returned as-is.
+ */
+function igj_img_ref( $ref ) {
+	$ref = trim( (string) $ref );
+	if ( false === strpos( $ref, '/' ) ) {
+		return $ref;
+	}
+	$base = trailingslashit( get_stylesheet_directory_uri() ) . 'images/';
+	$path = preg_replace( '#^https?:#', '', $ref );
+	if ( 0 === strpos( $path, preg_replace( '#^https?:#', '', $base ) ) ) {
+		$slug = preg_replace( '/\.(jpe?g|png|webp)$/i', '', substr( $path, strlen( preg_replace( '#^https?:#', '', $base ) ) ) );
+		if ( igj_img_meta( $slug ) ) {
+			return $slug;
+		}
+	}
+	return $ref;
+}
+
+/**
+ * Uploaded (Media Library) image with responsive srcset; plain <img> for external URLs.
+ */
+function igj_custom_img( $url, $args ) {
+	$id = (int) $args['id'] ? (int) $args['id'] : (int) attachment_url_to_postid( $url );
+	$attr = array(
+		'class'    => $args['class'],
+		'sizes'    => $args['sizes'],
+		'decoding' => 'async',
+	);
+	if ( null !== $args['alt'] ) {
+		$attr['alt'] = $args['alt'];
+	}
+	if ( $args['eager'] ) {
+		$attr['loading']       = 'eager';
+		$attr['fetchpriority'] = 'high';
+	} else {
+		$attr['loading'] = 'lazy';
+	}
+	if ( $id && wp_attachment_is_image( $id ) ) {
+		return wp_get_attachment_image( $id, 'large', false, $attr );
+	}
+	return sprintf( '<img src="%s" alt="%s" class="%s" loading="%s" decoding="async">', esc_url( $url ), esc_attr( (string) $args['alt'] ), esc_attr( $args['class'] ), $args['eager'] ? 'eager' : 'lazy' );
 }
 
 /**

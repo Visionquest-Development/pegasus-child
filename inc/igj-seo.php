@@ -152,7 +152,7 @@ function igj_person_id( $id = 'joe' ) {
 }
 
 function igj_schema_agency() {
-	$s = igj_data( 'site' );
+	$s = igj_site_data(); // site.json + IGJ Site Info overrides.
 	$a = $s['address'] ?? array();
 	$node = array(
 		'@type'     => 'InsuranceAgency',
@@ -217,10 +217,12 @@ function igj_schema_person( $ag = null ) {
 		'@id'      => igj_person_id( $ag['id'] ?? 'joe' ),
 		'name'     => $ag['name'] ?? '',
 		'jobTitle' => $ag['job_title'] ?? '',
-		'image'    => igj_img_url( $ag['photo'] ?? 'joe-avena-headshot', 'jpg' ),
 		'worksFor' => array( '@id' => igj_agency_id() ),
 		'url'      => $url . '#' . ( $ag['id'] ?? 'joe' ),
 	);
+	if ( ! empty( $ag['photo'] ) ) {
+		$node = array_slice( $node, 0, 4, true ) + array( 'image' => igj_img_url( igj_img_ref( $ag['photo'] ), 'jpg' ) ) + array_slice( $node, 4, null, true );
+	}
 	if ( ! empty( $ag['full_name'] ) && $ag['full_name'] !== $ag['name'] ) {
 		$node['alternateName'] = $ag['full_name'];
 	}
@@ -296,7 +298,7 @@ function igj_schema_graph() {
 	}
 	$svc_slug = igj_current_service_slug();
 	if ( $svc_slug ) {
-		$svc   = igj_service( $svc_slug );
+		$svc   = igj_service_card( $svc_slug ); // Title as edited on the page (01 — Page Hero).
 		$node  = array(
 			'@type'       => 'Service',
 			'@id'         => get_permalink() . '#service',
@@ -310,14 +312,14 @@ function igj_schema_graph() {
 		$area = igj_site( 'service_area', array() );
 		$node['areaServed'] = $area ? array_map( function ( $st ) { return array( '@type' => 'State', 'name' => $st ); }, (array) $area ) : array( '@type' => 'Country', 'name' => 'United States' );
 		$graph[] = $node;
-		$faq = igj_schema_faq( $svc['faq'] ?? array(), get_permalink() . '#faq' );
+		$faq = igj_schema_faq( igj_section( 'service', 'faq' )['items'] ?? array(), get_permalink() . '#faq' ); // Same items as the visible FAQ (04).
 		if ( $faq ) {
 			$graph[] = $faq;
 		}
 	}
 	if ( is_page() && 'faq' === get_post_field( 'post_name', get_queried_object_id() ) ) {
 		$all = array();
-		foreach ( (array) ( igj_data( 'faq' )['groups'] ?? array() ) as $g ) {
+		foreach ( igj_faq_page_groups( get_queried_object_id() ) as $g ) { // Same items as the visible FAQ (02).
 			$all = array_merge( $all, $g['items'] );
 		}
 		$faq = igj_schema_faq( $all, get_permalink() . '#faq' );

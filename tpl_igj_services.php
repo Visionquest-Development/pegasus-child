@@ -3,22 +3,30 @@
 	Template Name: IGJ Services Hub
 */
 get_header();
-$groups = array(
-	__( 'Individuals & families', 'pegasus' )         => array( 'individual-family-health-insurance', 'turning-26-health-insurance', 'early-retiree-health-insurance' ),
-	__( 'Self-employed, 1099 & business owners', 'pegasus' ) => array( 'self-employed-health-insurance', 'health-insurance-for-1099', 'small-business-health-insurance', 'realtor-health-insurance', 'travel-nurse-health-insurance' ),
-	__( 'Plan types & coverage changes', 'pegasus' )  => array( 'aca-marketplace-health-insurance', 'private-health-insurance', 'cobra-alternatives' ),
-	__( 'Supplemental coverage', 'pegasus' )          => array( 'supplemental-insurance', 'dental-vision-insurance' ),
-);
+/* Content: Pages → Services → boxes "01 — Page Hero" … "07 — Bottom Call-to-Action". */
+$hero   = igj_section( 'services', 'hero' );
+$groups = igj_section( 'services', 'groups' );
+$help   = igj_section( 'services', 'howhelp' );
+$fit    = igj_section( 'services', 'fit' );
+$basics = igj_section( 'services', 'basics' );
 ?>
 <div id="page-wrap">
 <main id="primary" class="site-main igj igj-services">
 	<?php
 	get_template_part( 'templates/igj-page-hero', null, array(
-		'title' => __( 'Health Insurance Services', 'pegasus' ),
-		'lead'  => __( 'Whatever your situation, from a new family to a new business, a job change or early retirement, Joe & Dianna help you find coverage that fits. Pick the one that sounds like you.', 'pegasus' ),
+		'eyebrow' => $hero['eyebrow'],
+		'title'   => $hero['title'],
+		'lead'    => $hero['lead'],
 	) );
 	?>
-	<?php foreach ( $groups as $label => $slugs ) : ?>
+	<?php
+	foreach ( (array) $groups['groups'] as $grp ) :
+		$label = (string) $grp['label'];
+		$slugs = array_values( (array) $grp['services'] );
+		if ( ! $slugs ) {
+			continue;
+		}
+		?>
 		<section class="igj-section igj-section--compact" aria-labelledby="g-<?php echo esc_attr( sanitize_title( $label ) ); ?>">
 			<div class="container">
 				<h2 id="g-<?php echo esc_attr( sanitize_title( $label ) ); ?>" class="igj-section-title"><?php echo esc_html( $label ); ?></h2>
@@ -30,26 +38,25 @@ $groups = array(
 	<section class="igj-section" aria-labelledby="igj-howhelp">
 		<div class="container">
 			<div class="row g-4 g-lg-5 align-items-center">
-				<div class="col-lg-5 wow fadeInLeft"><?php echo igj_picture( 'dianna-laptop', array( 'class' => 'igj-rounded igj-shadow', 'sizes' => '(min-width: 992px) 40vw, 100vw' ) ); // phpcs:ignore ?></div>
+				<div class="col-lg-5 wow fadeInLeft"><?php echo igj_picture( $help['image'], array( 'class' => 'igj-rounded igj-shadow', 'sizes' => '(min-width: 992px) 40vw, 100vw', 'id' => $help['image_id'] ) ); // phpcs:ignore ?></div>
 				<div class="col-lg-7 igj-prose wow fadeInRight">
-					<p class="igj-eyebrow"><?php esc_html_e( 'How we help', 'pegasus' ); ?></p>
-					<h2 id="igj-howhelp" class="igj-section-title"><?php esc_html_e( 'Personal help comparing ACA Marketplace and private health insurance', 'pegasus' ); ?></h2>
-					<p><?php esc_html_e( 'We help people understand their health insurance options and make informed decisions based on their healthcare needs and budget. We look at your preferred providers, prescriptions, financial situation and budget, research what’s available to you, and explain premiums, deductibles, networks, out-of-pocket costs, benefits and limitations in plain English.', 'pegasus' ); ?></p>
-					<p><?php esc_html_e( 'Our consultations, plan comparisons, enrollment assistance and ongoing help with your coverage are always free to you.', 'pegasus' ); ?></p>
+					<?php if ( $help['eyebrow'] ) : ?><p class="igj-eyebrow"><?php echo esc_html( $help['eyebrow'] ); ?></p><?php endif; ?>
+					<h2 id="igj-howhelp" class="igj-section-title"><?php echo esc_html( $help['title'] ); ?></h2>
+					<?php echo igj_cms_paras( $help['body'] ); // phpcs:ignore -- kses-filtered ?>
 					<?php echo igj_schedule_button( 'igj-btn--cta' ); // phpcs:ignore ?>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<?php get_template_part( 'templates/igj-carriers' ); ?>
+	<?php get_template_part( 'templates/igj-carriers', null, array( 'c' => igj_section( 'services', 'carriers' ) ) ); ?>
 
 	<section class="igj-section igj-section--tint">
 		<div class="container">
 			<div class="row g-4">
 				<div class="col-lg-6 igj-prose">
-					<h2 class="igj-section-title"><?php esc_html_e( 'Not sure where you fit?', 'pegasus' ); ?></h2>
-					<p><?php esc_html_e( 'Many people fit more than one category, like a self-employed parent covering a family, or an early retiree weighing COBRA. That’s normal. A short, free call with us sorts out which options are actually open to you, and when you can enroll.', 'pegasus' ); ?></p>
+					<h2 class="igj-section-title"><?php echo esc_html( $fit['title'] ); ?></h2>
+					<?php if ( $fit['text'] ) : ?><p><?php echo wp_kses_post( igj_render( $fit['text'] ) ); ?></p><?php endif; ?>
 					<?php
 					while ( have_posts() ) :
 						the_post();
@@ -58,19 +65,18 @@ $groups = array(
 					?>
 				</div>
 				<div class="col-lg-6">
-					<h2 class="igj-section-title"><?php esc_html_e( 'Start with the basics', 'pegasus' ); ?></h2>
+					<h2 class="igj-section-title"><?php echo esc_html( $basics['title'] ); ?></h2>
 					<ul class="igj-linklist">
-						<li><a href="<?php echo esc_url( igj_learn_url( 'aca-vs-private-health-insurance' ) ); ?>"><?php echo esc_html( igj_learn_title( 'aca-vs-private-health-insurance' ) ); ?></a></li>
-						<li><a href="<?php echo esc_url( igj_learn_url( 'open-enrollment-guide' ) ); ?>"><?php echo esc_html( igj_learn_title( 'open-enrollment-guide' ) ); ?></a></li>
-						<li><a href="<?php echo esc_url( igj_learn_url( 'ppo-vs-hmo-vs-epo' ) ); ?>"><?php echo esc_html( igj_learn_title( 'ppo-vs-hmo-vs-epo' ) ); ?></a></li>
-						<li><a href="<?php echo esc_url( home_url( '/faq/' ) ); ?>"><?php esc_html_e( 'Health insurance FAQs', 'pegasus' ); ?></a></li>
+						<?php foreach ( (array) $basics['links'] as $l ) : ?>
+						<li><a href="<?php echo esc_url( igj_cms_url( $l['url'] ) ); ?>"><?php echo esc_html( $l['label'] ); ?></a></li>
+						<?php endforeach; ?>
 					</ul>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<?php get_template_part( 'templates/igj-cta-band' ); ?>
+	<?php get_template_part( 'templates/igj-cta-band', null, array( 'c' => igj_section( 'services', 'cta' ) ) ); ?>
 </main>
 </div>
 <?php get_footer(); ?>
