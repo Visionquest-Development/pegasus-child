@@ -37,7 +37,7 @@
 		$bootstrap_navbar_expand_class = 'navbar-expand-md';
 	}
 
-	$home_url = esc_url( home_url( '/' ) ) ? esc_url( home_url( '/' ) ) : '#';
+	$home_url = esc_url( hfhs_home_link( '/' ) ) ? esc_url( hfhs_home_link( '/' ) ) : '#';
 	$fallback_menu = '<ul id="" class="navbar-nav"><li class="nav-item active current-menu-item"><a class="nav-link" href="' . $home_url . '">Home <span class="visually-hidden">(current)</span></a></li></ul>';
 	$classes_for_nav_menu = 'navbar-nav primary-navigation-bar ' . $right_align_nav_items . ' ';
 	//$final_menu = pegasus_get_menu( 'primary', $classes_for_nav_menu, 4, $fallback_menu );
@@ -63,9 +63,9 @@
 		<div class="<?php echo esc_attr( $header_one_top_logo_container ); ?>">
 			<div class="site-branding <?php echo esc_attr( $centerLogo ); ?>">
 				<?php if( ! empty( $logo ) ) : ?>
-					<a class="logo-container" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img id="logo" src="<?php echo esc_url( $logo ); ?>" alt=""/></a>
+					<a class="logo-container" href="<?php echo esc_url( hfhs_home_link( '/' ) ); ?>"><img id="logo" src="<?php echo esc_url( $logo ); ?>" alt=""/></a>
 				<?php else: ?>
-					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="" ><?php bloginfo( 'name' ); ?></a></h1>
+					<h1 class="site-title"><a href="<?php echo esc_url( hfhs_home_link( '/' ) ); ?>" rel="home" class="" ><?php bloginfo( 'name' ); ?></a></h1>
 				<?php endif; ?>
 			</div><!-- .site-branding -->
 		</div><!-- container -->
@@ -84,7 +84,7 @@
 						$logo = null;
 					}
 				?>
-				<a class="navbar-brand <?php echo esc_attr( $centerLogo ); ?> <?php echo esc_attr( $hide_logo ); ?>" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+				<a class="navbar-brand <?php echo esc_attr( $centerLogo ); ?> <?php echo esc_attr( $hide_logo ); ?>" href="<?php echo esc_url( hfhs_home_link( '/' ) ); ?>">
 					<?php get_template_part( 'templates/logo', 'header' ); ?>
 				</a>
 
@@ -122,13 +122,17 @@
 						<a class="nav-phone-btn" href="tel:+14045072579">
 							<i class="fa fa-phone" aria-hidden="true"></i> <span>404-507-2579</span>
 						</a>
-						<?php // TODO: replace href="#" with the real client/staff login (external) URL. ?>
-						<a class="nav-login-btn" href="#" target="_blank" rel="noopener noreferrer">
-							<i class="fa fa-sign-in" aria-hidden="true"></i> <span>Login</span>
+						<?php
+						// Client Hub login (Appearance ▸ HFHS Site Settings). Hidden until a URL is set.
+						$hfhs_login_url = function_exists( 'hfhs_login_url' ) ? hfhs_login_url() : '';
+						if ( $hfhs_login_url ) : ?>
+						<a class="nav-login-btn" href="<?php echo esc_url( $hfhs_login_url ); ?>" target="_blank" rel="noopener noreferrer">
+							<i class="fa fa-sign-in" aria-hidden="true"></i> <span><?php echo esc_html( hfhs_site_option( 'login_label', 'Login' ) ); ?></span>
 						</a>
+						<?php endif; ?>
 						<?php if ( $nav_cta_text && $nav_cta_link ) : ?>
 						<div class="contact-button-container">
-							<a href="<?php echo esc_url( $nav_cta_link ); ?>" class="<?php echo $nav_cta_classes ? esc_attr( $nav_cta_classes ) : ''; ?>" data-wow-delay="0.3s"><?php echo esc_html( $nav_cta_text ); ?></a>
+							<a href="<?php echo esc_url( function_exists( 'hfhs_url' ) ? hfhs_url( $nav_cta_link ) : $nav_cta_link ); ?>" class="<?php echo $nav_cta_classes ? esc_attr( $nav_cta_classes ) : ''; ?>" data-wow-delay="0.3s"><?php echo esc_html( $nav_cta_text ); ?></a>
 						</div>
 						<?php endif; ?>
 					</div>

@@ -329,6 +329,10 @@
   @media (max-width: 575px) {
     .hfhs-colophon { justify-content: center; text-align: center; }
   }
+  .hfhs-colophon__link { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+  .hfhs-colophon__link:hover, .hfhs-colophon__link:focus { color: #fff; }
+  .hfhs-colophon__legal { padding: 0 0 1.5rem; font-size: 0.92rem; }
+  .hfhs-colophon__legal .hfhs-colophon__link { color: rgba(255, 255, 255, 0.5); }
 
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -1246,6 +1250,7 @@
   .hfhs-paycard__title { font-size: clamp(1.8rem, 3vw, 2.6rem); margin-bottom: 1.5rem; }
   .hfhs-paycard__body p { color: var(--hfhs-muted); font-size: 1.05rem; line-height: 1.75; margin-bottom: 1.25rem; }
   .hfhs-paycard__btn { margin-top: 0.75rem; }
+  .hfhs-paycard__stripe { margin-top: 0.75rem; min-height: 60px; }
   .hfhs-paycard__note {
     margin-top: 1.75rem;
     padding-top: 1.5rem;
