@@ -50,6 +50,7 @@ function hfhs_register_service_single_metaboxes() {
 
 	/* Recent work gallery */
 	$gal = new_cmb2_box( array_merge( $common, array( 'id' => $p . 'gallery_box', 'title' => 'Service — Recent Work Gallery' ) ) );
+	$gal->add_field( array( 'name' => 'Recent Work Heading', 'desc' => 'Default: "A few recent {service} projects." (e.g. "A few recent custom projects."). Use &lt;em&gt; for the italic accent.', 'id' => $p . 'recent_title', 'type' => 'text' ) );
 	$gal_grp = $gal->add_field( array( 'id' => $p . 'gallery', 'type' => 'group', 'options' => array( 'group_title' => 'Photo {#}', 'add_button' => 'Add Photo', 'remove_button' => 'Remove', 'sortable' => true, 'closed' => true ) ) );
 	$gal->add_group_field( $gal_grp, array( 'name' => 'Image', 'id' => 'image', 'type' => 'file', 'options' => array( 'url' => false ) ) );
 	$gal->add_group_field( $gal_grp, array( 'name' => 'Caption', 'id' => 'caption', 'type' => 'text' ) );
