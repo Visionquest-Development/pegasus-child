@@ -59,7 +59,7 @@
 		<div class="hfhs-hero__overlay" aria-hidden="true"></div>
 		<div class="container hfhs-hero__inner wow fadeInUp" data-wow-duration="1s">
 			<nav class="hfhs-breadcrumb" aria-label="Breadcrumb">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a>
+				<a href="<?php echo esc_url( hfhs_home_link( '/' ) ); ?>">Home</a>
 				<span aria-hidden="true">/</span>
 				<span aria-current="page">Testimonials</span>
 			</nav>
@@ -117,7 +117,7 @@
 							<h3 class="hfhs-way__title"><?php echo wp_kses_post( isset( $way['title'] ) ? $way['title'] : '' ); ?></h3>
 							<p class="hfhs-way__text"><?php echo wp_kses_post( isset( $way['text'] ) ? $way['text'] : '' ); ?></p>
 							<?php if ( ! empty( $way['link_label'] ) ) : ?>
-								<a class="hfhs-way__link hfhs-arrow-link" href="<?php echo esc_url( ! empty( $way['link_url'] ) ? $way['link_url'] : '#' ); ?>"><?php echo wp_kses_post( $way['link_label'] ); ?></a>
+								<a class="hfhs-way__link hfhs-arrow-link" href="<?php echo esc_url( ! empty( $way['link_url'] ) ? hfhs_url( $way['link_url'] ) : '#' ); ?>"><?php echo wp_kses_post( $way['link_label'] ); ?></a>
 							<?php endif; ?>
 						</div>
 					</div>
@@ -161,7 +161,7 @@
 			<p class="hfhs-eyebrow-script hfhs-eyebrow-script--light"><?php echo esc_html( hfhs_testi_field( 'cta_script', 'Ready to get started?' ) ); ?></p>
 			<h2 class="hfhs-display hfhs-cta__title"><?php echo wp_kses_post( hfhs_testi_field( 'cta_title', 'Become the next name on this page.' ) ); ?></h2>
 			<div class="hfhs-cta__actions">
-				<a class="hfhs-btn hfhs-btn--solid" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Request a Free Estimate</a>
+				<a class="hfhs-btn hfhs-btn--solid" href="<?php echo esc_url( hfhs_home_link( '/contact/' ) ); ?>">Request a Free Estimate</a>
 				<a class="hfhs-btn hfhs-btn--outline-light" href="tel:+14045072579">Call 404-507-2579</a>
 			</div>
 		</div>

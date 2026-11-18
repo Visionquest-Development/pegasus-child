@@ -63,7 +63,7 @@
 		<div class="hfhs-hero__overlay" aria-hidden="true"></div>
 		<div class="container hfhs-hero__inner wow fadeInUp" data-wow-duration="1s">
 			<nav class="hfhs-breadcrumb" aria-label="Breadcrumb">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a>
+				<a href="<?php echo esc_url( hfhs_home_link( '/' ) ); ?>">Home</a>
 				<span aria-hidden="true">/</span>
 				<span aria-current="page">FAQ</span>
 			</nav>
@@ -103,7 +103,7 @@
 			<p class="hfhs-eyebrow-script hfhs-eyebrow-script--light"><?php echo esc_html( hfhs_faq_field( 'cta_script', 'Still have questions?' ) ); ?></p>
 			<h2 class="hfhs-display hfhs-cta__title"><?php echo wp_kses_post( hfhs_faq_field( 'cta_title', 'Give us a call. We actually answer.' ) ); ?></h2>
 			<div class="hfhs-cta__actions">
-				<a class="hfhs-btn hfhs-btn--solid" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Request a Free Estimate</a>
+				<a class="hfhs-btn hfhs-btn--solid" href="<?php echo esc_url( hfhs_home_link( '/contact/' ) ); ?>">Request a Free Estimate</a>
 				<a class="hfhs-btn hfhs-btn--outline-light" href="tel:+14045072579">Call 404-507-2579</a>
 			</div>
 		</div>

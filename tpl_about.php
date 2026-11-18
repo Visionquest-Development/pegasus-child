@@ -246,7 +246,7 @@
 			<p class="hfhs-eyebrow-script hfhs-eyebrow-script--light"><?php echo esc_html( hfhs_about_field( 'cta_script', 'From our family to yours.' ) ); ?></p>
 			<h2 class="hfhs-display hfhs-cta__title"><?php echo wp_kses_post( hfhs_about_field( 'cta_title', 'Ready to work with a team that <em>treats you like family</em>?' ) ); ?></h2>
 			<div class="hfhs-cta__actions">
-				<a class="hfhs-btn hfhs-btn--solid" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact Us</a>
+				<a class="hfhs-btn hfhs-btn--solid" href="<?php echo esc_url( hfhs_home_link( '/contact/' ) ); ?>">Contact Us</a>
 				<a class="hfhs-btn hfhs-btn--outline-light" href="tel:+14045072579">Call 404-507-2579</a>
 			</div>
 		</div>

@@ -50,7 +50,7 @@
 		<div class="hfhs-hero__overlay" aria-hidden="true"></div>
 		<div class="container hfhs-hero__inner wow fadeInUp" data-wow-duration="1s">
 			<nav class="hfhs-breadcrumb" aria-label="Breadcrumb">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a>
+				<a href="<?php echo esc_url( hfhs_home_link( '/' ) ); ?>">Home</a>
 				<span aria-hidden="true">/</span>
 				<span aria-current="page">Community</span>
 			</nav>
@@ -113,7 +113,7 @@
 					<div class="hfhs-field__body"><?php echo wp_kses_post( wpautop( hfhs_comm_field( 'field_body', $field_body_default ) ) ); ?></div>
 					<?php $field_label = hfhs_comm_field( 'field_link_label', 'Read the Facebook Post &rarr;' ); ?>
 					<?php if ( $field_label ) : ?>
-						<a class="hfhs-field__link hfhs-arrow-link" href="<?php echo esc_url( hfhs_comm_field( 'field_link_url', '#' ) ); ?>"><?php echo wp_kses_post( $field_label ); ?></a>
+						<a class="hfhs-field__link hfhs-arrow-link" href="<?php echo esc_url( hfhs_url( hfhs_comm_field( 'field_link_url', '#' ) ) ); ?>"><?php echo wp_kses_post( $field_label ); ?></a>
 					<?php endif; ?>
 				</div>
 				<div class="col-lg-6">
@@ -145,7 +145,7 @@
 							<h3 class="hfhs-involve__card-title"><?php echo wp_kses_post( isset( $way['title'] ) ? $way['title'] : '' ); ?></h3>
 							<p class="hfhs-involve__text"><?php echo wp_kses_post( isset( $way['text'] ) ? $way['text'] : '' ); ?></p>
 							<?php if ( ! empty( $way['link_label'] ) ) : ?>
-								<a class="hfhs-involve__link hfhs-arrow-link hfhs-arrow-link--light" href="<?php echo esc_url( ! empty( $way['link_url'] ) ? $way['link_url'] : '#' ); ?>"><?php echo wp_kses_post( $way['link_label'] ); ?></a>
+								<a class="hfhs-involve__link hfhs-arrow-link hfhs-arrow-link--light" href="<?php echo esc_url( ! empty( $way['link_url'] ) ? hfhs_url( $way['link_url'] ) : '#' ); ?>"><?php echo wp_kses_post( $way['link_label'] ); ?></a>
 							<?php endif; ?>
 						</div>
 					</div>
@@ -165,7 +165,7 @@
 			<p class="hfhs-eyebrow-script"><?php echo esc_html( hfhs_comm_field( 'cta_script', 'From Our Family to Yours.' ) ); ?></p>
 			<h2 class="hfhs-display hfhs-cta__title"><?php echo wp_kses_post( hfhs_comm_field( 'cta_title', 'This is what family looks like &mdash; <em>taking care of each other.</em>' ) ); ?></h2>
 			<div class="hfhs-cta__actions">
-				<a class="hfhs-btn hfhs-btn--outline-dark" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Start a Conversation</a>
+				<a class="hfhs-btn hfhs-btn--outline-dark" href="<?php echo esc_url( hfhs_home_link( '/contact/' ) ); ?>">Start a Conversation</a>
 				<a class="hfhs-btn hfhs-btn--outline-dark" href="tel:+14045072579">Call 404-507-2579</a>
 			</div>
 		</div>

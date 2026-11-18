@@ -9,8 +9,8 @@
  * Header/footer handled by the parent theme via get_header()/get_footer().
  *
  * Fully CMB2-driven ("Contact Page Content" metabox in functions.php). The
- * estimate form is a Gravity Forms shortcode field — paste the [gravityform]
- * tag into "Gravity Forms Shortcode" and it renders in place of the placeholder.
+ * estimate form is a FluentForm — set "FluentForm ID" (or paste any form
+ * shortcode into "Form Shortcode") and it renders in place of the placeholder.
  * Repeatable groups power the Direct-Contact items and the Service-Area cities.
  */
 ?>
@@ -19,12 +19,27 @@
 <?php
 	$hero_bg = hfhs_hero_bg( hfhs_contact_field( 'hero_image', '' ), get_stylesheet_directory_uri() . '/images/branding/heroes/contact-hero.jpg' );
 
+	// Estimate form: explicit shortcode ▸ FluentForm ID ▸ placeholder.
 	$form_shortcode = hfhs_contact_field( 'form_shortcode', '' );
+	$form_id        = absint( hfhs_contact_field( 'fluentform_id', '' ) );
+	if ( ! $form_shortcode && $form_id ) {
+		$form_shortcode = '[fluentform id="' . $form_id . '"]';
+	}
+	$form_html = '';
+	if ( $form_shortcode ) {
+		$form_html = do_shortcode( $form_shortcode );
+		if ( trim( $form_html ) === trim( $form_shortcode ) ) {
+			$form_html = ''; // shortcode not registered (plugin inactive) → show placeholder
+		}
+	}
+
+	$cta_phone = hfhs_contact_field( 'cta_phone', '404-507-2579' );
+	$cta_email = hfhs_contact_field( 'cta_email', 'contact@hfhsgeorgia.com' );
 
 	// Direct-contact items (repeatable; falls back to these four).
 	$direct = hfhs_contact_group( 'direct', array(
 		array( 'icon' => 'phone', 'label' => 'Call or Text', 'value' => '404-507-2579', 'subtext' => 'Text a photo of your project to save time on estimates.' ),
-		array( 'icon' => 'email', 'label' => 'Email', 'value' => 'contact@hfhsgeorgia.com', 'subtext' => 'For sales inquiries: sales@hfhsgeorgia.com' ),
+		array( 'icon' => 'email', 'label' => 'Email', 'value' => 'contact@hfhsgeorgia.com', 'subtext' => '' ),
 		array( 'icon' => 'location', 'label' => 'Service Area', 'value' => 'Greater Atlanta, GA', 'subtext' => 'Serving homeowners, HOA boards, property managers, and commercial clients across metro Atlanta.' ),
 		array( 'icon' => 'hours', 'label' => 'Hours', 'value' => 'Monday–Friday · 9:00 AM — 6:00 PM', 'subtext' => "Saturday · By appointment\nSunday · With our families" ),
 	) );
@@ -55,7 +70,7 @@
 		<div class="hfhs-hero__overlay" aria-hidden="true"></div>
 		<div class="container hfhs-hero__inner wow fadeInUp" data-wow-duration="1s">
 			<nav class="hfhs-breadcrumb" aria-label="Breadcrumb">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a>
+				<a href="<?php echo esc_url( hfhs_home_link( '/' ) ); ?>">Home</a>
 				<span aria-hidden="true">/</span>
 				<span aria-current="page">Contact</span>
 			</nav>
@@ -77,12 +92,12 @@
 					<h2 class="hfhs-display hfhs-contact__title"><?php echo wp_kses_post( hfhs_contact_field( 'form_title', 'We&rsquo;ll respond <em>within one business day.</em>' ) ); ?></h2>
 
 					<div class="hfhs-contact__formwrap">
-						<?php if ( $form_shortcode ) : ?>
-							<?php echo do_shortcode( $form_shortcode ); ?>
+						<?php if ( $form_html ) : ?>
+							<?php echo $form_html; // phpcs:ignore WordPress.Security.EscapeOutput -- shortcode output ?>
 						<?php else : ?>
 							<div class="hfhs-form-placeholder hfhs-form-placeholder--light" role="note">
-								<span class="hfhs-form-placeholder__label">Gravity Forms</span>
-								<p class="hfhs-form-placeholder__text">The free-estimate form will be embedded here. Add the Gravity Forms shortcode to the &ldquo;Gravity Forms Shortcode&rdquo; field on this page once the form is built.</p>
+								<span class="hfhs-form-placeholder__label">Estimate Form</span>
+								<p class="hfhs-form-placeholder__text">The free-estimate form will be embedded here. Set the &ldquo;FluentForm ID&rdquo; field on this page (Contact Page Content &rsaquo; Estimate Form) once Fluent Forms is active.</p>
 							</div>
 						<?php endif; ?>
 					</div>
@@ -97,6 +112,8 @@
 							$label   = isset( $item['label'] ) ? $item['label'] : '';
 							$value   = isset( $item['value'] ) ? $item['value'] : '';
 							$subtext = isset( $item['subtext'] ) ? $item['subtext'] : '';
+							// Retired line from the original design: all email now goes to contact@.
+							$subtext = trim( str_ireplace( 'For sales inquiries: sales@hfhsgeorgia.com', '', $subtext ) );
 							$svg     = isset( $hfhs_contact_icons[ $icon ] ) ? $hfhs_contact_icons[ $icon ] : '';
 						?>
 							<div class="hfhs-cdirect__item wow fadeInUp" data-wow-duration="0.7s">
@@ -107,7 +124,7 @@
 										<span class="hfhs-cdirect__value">
 											<?php
 											if ( 'phone' === $icon ) {
-												echo '<a href="tel:' . esc_attr( preg_replace( '/[^0-9+]/', '', $value ) ) . '">' . esc_html( $value ) . '</a>';
+												echo '<a href="' . esc_url( hfhs_tel_href( $value ) ) . '">' . esc_html( $value ) . '</a>';
 											} elseif ( 'email' === $icon ) {
 												echo '<a href="mailto:' . esc_attr( $value ) . '">' . esc_html( $value ) . '</a>';
 											} else {
@@ -154,8 +171,10 @@
 			<p class="hfhs-eyebrow-script hfhs-eyebrow-script--light"><?php echo esc_html( hfhs_contact_field( 'cta_script', 'Prefer to talk first?' ) ); ?></p>
 			<h2 class="hfhs-display hfhs-cta__title"><?php echo wp_kses_post( hfhs_contact_field( 'cta_title', 'Give us a call. We actually answer.' ) ); ?></h2>
 			<div class="hfhs-cta__actions">
-				<a class="hfhs-btn hfhs-btn--solid" href="tel:+14045072579">Call 404-507-2579</a>
-				<a class="hfhs-btn hfhs-btn--outline-light" href="mailto:contact@hfhsgeorgia.com">Email Us</a>
+				<a class="hfhs-btn hfhs-btn--solid" href="<?php echo esc_url( hfhs_tel_href( $cta_phone ) ); ?>">Call <?php echo esc_html( $cta_phone ); ?></a>
+				<?php if ( is_email( $cta_email ) ) : ?>
+				<a class="hfhs-btn hfhs-btn--outline-light" href="<?php echo esc_url( 'mailto:' . antispambot( $cta_email ) ); ?>">Email Us</a>
+				<?php endif; ?>
 			</div>
 		</div>
 	</section>
