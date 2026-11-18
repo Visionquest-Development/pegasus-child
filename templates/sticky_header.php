@@ -123,13 +123,14 @@
 							<i class="fa fa-phone" aria-hidden="true"></i> <span>404-507-2579</span>
 						</a>
 						<?php
-						// Client Hub login (Appearance ▸ HFHS Site Settings). Hidden until a URL is set.
-						$hfhs_login_url = function_exists( 'hfhs_login_url' ) ? hfhs_login_url() : '';
-						if ( $hfhs_login_url ) : ?>
-						<a class="nav-login-btn" href="<?php echo esc_url( $hfhs_login_url ); ?>" target="_blank" rel="noopener noreferrer">
-							<i class="fa fa-sign-in" aria-hidden="true"></i> <span><?php echo esc_html( hfhs_site_option( 'login_label', 'Login' ) ); ?></span>
+						// TODO: Jobber client hub URL — paste HFHS's Client Hub login link below and
+						// uncomment the button. Hidden until then so we never ship a "#" link.
+						/*
+						<a class="nav-login-btn" href="https://clienthub.getjobber.com/client_hubs/REPLACE-ME/login/new" target="_blank" rel="noopener noreferrer">
+							<i class="fa fa-sign-in" aria-hidden="true"></i> <span>Login</span>
 						</a>
-						<?php endif; ?>
+						*/
+						?>
 						<?php if ( $nav_cta_text && $nav_cta_link ) : ?>
 						<div class="contact-button-container">
 							<a href="<?php echo esc_url( function_exists( 'hfhs_url' ) ? hfhs_url( $nav_cta_link ) : $nav_cta_link ); ?>" class="<?php echo $nav_cta_classes ? esc_attr( $nav_cta_classes ) : ''; ?>" data-wow-delay="0.3s"><?php echo esc_html( $nav_cta_text ); ?></a>
