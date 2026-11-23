@@ -26,8 +26,8 @@
 	$hero_bg = hfhs_hero_bg( hfhs_pay_field( 'hero_image', '' ), '' );
 
 	$pay_body_default =
-		'<p>Click the button below and sign in to your HFHS client portal to view your open invoices and pay online. You&rsquo;ll be able to see invoice details, choose a payment method, and receive an emailed receipt automatically.</p>' .
-		'<p>If this is your first time paying online, use the email address we have on file to access your account.</p>';
+		'<p>Click the secure payment button below to pay your invoice online by credit or debit card. Your payment is processed securely by Stripe, and a receipt is emailed to you automatically.</p>' .
+		'<p>Questions about an invoice before you pay? Give us a call &mdash; we&rsquo;re happy to walk you through it.</p>';
 
 	$pay_link   = hfhs_url( hfhs_pay_field( 'pay_button_link', '' ) );
 
@@ -70,7 +70,7 @@
 			<p class="hfhs-eyebrow hfhs-eyebrow--light"><?php echo esc_html( hfhs_pay_field( 'hero_eyebrow', 'Quick Pay' ) ); ?></p>
 			<p class="hfhs-eyebrow-script hfhs-eyebrow-script--light"><?php echo esc_html( hfhs_pay_field( 'hero_script', 'From Our Family to Yours.' ) ); ?></p>
 			<h1 class="hfhs-hero__title"><?php echo wp_kses_post( hfhs_pay_field( 'hero_title', 'Pay your <em>invoice.</em>' ) ); ?></h1>
-			<p class="hfhs-hero__lead"><?php echo esc_html( hfhs_pay_field( 'hero_text', 'Secure online payment through our client portal. Accepts credit cards, debit cards, and ACH bank transfers — all processed through our trusted billing partner.' ) ); ?></p>
+			<p class="hfhs-hero__lead"><?php echo esc_html( hfhs_pay_field( 'hero_text', 'Secure online payment by credit or debit card, processed through Stripe — our trusted billing partner.' ) ); ?></p>
 		</div>
 	</section>
 
@@ -84,7 +84,7 @@
 					<div class="hfhs-paycard">
 						<p class="hfhs-eyebrow"><?php echo esc_html( hfhs_pay_field( 'pay_eyebrow', 'Online Payment' ) ); ?></p>
 						<p class="hfhs-eyebrow-script hfhs-paycard__script"><?php echo esc_html( hfhs_pay_field( 'pay_script', 'Fast & secure.' ) ); ?></p>
-						<h2 class="hfhs-display hfhs-paycard__title"><?php echo wp_kses_post( hfhs_pay_field( 'pay_title', 'Pay through our <em>client portal.</em>' ) ); ?></h2>
+						<h2 class="hfhs-display hfhs-paycard__title"><?php echo wp_kses_post( hfhs_pay_field( 'pay_title', 'Pay your <em>invoice online.</em>' ) ); ?></h2>
 						<div class="hfhs-paycard__body"><?php echo wp_kses_post( wpautop( hfhs_pay_field( 'pay_body', $pay_body_default ) ) ); ?></div>
 
 						<?php if ( $pay_link ) : ?>

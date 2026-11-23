@@ -86,7 +86,12 @@ function hfhs_fix_http_links_in_html( $html ) {
 	return preg_replace_callback(
 		'#(href|src)=(["\'])(http://[^"\']+)\2#i',
 		function ( $m ) {
-			return $m[1] . '=' . $m[2] . esc_attr( hfhs_url( $m[3] ) ) . $m[2];
+			// $m[3] is pulled from already-rendered HTML, so it is attribute-encoded
+			// already (e.g. &amp; in a query string). Only rewrite the scheme/host via
+			// hfhs_url(); do NOT esc_attr() it again or &amp; becomes &amp;amp; and the
+			// query string breaks after the first parameter. The regex excludes the
+			// quote delimiter, so re-inserting the value as-is is safe.
+			return $m[1] . '=' . $m[2] . hfhs_url( $m[3] ) . $m[2];
 		},
 		$html
 	);
