@@ -14,6 +14,44 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Typo-safe default for the Recent Work heading.
+ *
+ * "Custom Projects" => "A few recent custom projects."
+ * "Fencing"         => "A few recent fencing projects."
+ *
+ * @param string $title Page/service title.
+ * @return string
+ */
+function hfhs_svc_recent_heading_default( $title = '' ) {
+	$title = trim( wp_strip_all_tags( (string) $title ) );
+	$noun  = strtolower( $title );
+	if ( $noun && preg_match( '/\bprojects?$/i', $noun ) ) {
+		return 'A few recent ' . $noun . '.';
+	}
+	if ( $noun ) {
+		return 'A few recent ' . $noun . ' projects.';
+	}
+	return 'A few recent projects.';
+}
+
+/**
+ * CMB2 after_field callback: show the typo-safe default for this page.
+ *
+ * @param array $field_args Field args.
+ * @param CMB2_Field $field Field object.
+ */
+function hfhs_cmb2_recent_title_after( $field_args, $field ) {
+	$post_id = 0;
+	if ( is_object( $field ) && method_exists( $field, 'object_id' ) ) {
+		$post_id = (int) $field->object_id();
+	}
+	$title   = $post_id ? get_the_title( $post_id ) : '';
+	$default = hfhs_svc_recent_heading_default( $title );
+	echo '<p class="cmb2-metabox-description"><em>Leave blank to use: &ldquo;' . esc_html( $default ) . '&rdquo;</em></p>';
+}
+
+
 function hfhs_register_service_single_metaboxes() {
 	$p       = 'hfhs_svc_';
 	$show_on = array( 'key' => 'page-template', 'value' => 'tpl_service_single.php' );
@@ -48,9 +86,15 @@ function hfhs_register_service_single_metaboxes() {
 	$proc->add_group_field( $proc_grp, array( 'name' => 'Title', 'id' => 'title', 'type' => 'text' ) );
 	$proc->add_group_field( $proc_grp, array( 'name' => 'Text', 'id' => 'text', 'type' => 'textarea_small' ) );
 
-	/* Recent work gallery */
-	$gal = new_cmb2_box( array_merge( $common, array( 'id' => $p . 'gallery_box', 'title' => 'Service — Recent Work Gallery' ) ) );
-	$gal->add_field( array( 'name' => 'Recent Work Heading', 'desc' => 'Default: "A few recent {service} projects." (e.g. "A few recent custom projects."). Use &lt;em&gt; for the italic accent.', 'id' => $p . 'recent_title', 'type' => 'text' ) );
+	/* Recent work gallery — open so the Recent Work Heading field is visible. */
+	$gal = new_cmb2_box( array_merge( $common, array( 'id' => $p . 'gallery_box', 'title' => 'Service — Recent Work Gallery', 'closed' => false ) ) );
+	$gal->add_field( array(
+		'name'        => 'Recent Work Heading',
+		'desc'        => 'The heading above the photo gallery. Use &lt;em&gt; for the italic accent.',
+		'id'          => $p . 'recent_title',
+		'type'        => 'text',
+		'after_field' => 'hfhs_cmb2_recent_title_after',
+	) );
 	$gal_grp = $gal->add_field( array( 'id' => $p . 'gallery', 'type' => 'group', 'options' => array( 'group_title' => 'Photo {#}', 'add_button' => 'Add Photo', 'remove_button' => 'Remove', 'sortable' => true, 'closed' => true ) ) );
 	$gal->add_group_field( $gal_grp, array( 'name' => 'Image', 'id' => 'image', 'type' => 'file', 'options' => array( 'url' => false ) ) );
 	$gal->add_group_field( $gal_grp, array( 'name' => 'Caption', 'id' => 'caption', 'type' => 'text' ) );

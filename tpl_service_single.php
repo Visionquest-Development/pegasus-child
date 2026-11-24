@@ -118,11 +118,13 @@ while ( have_posts() ) :
 
 	// Recent Work heading. Default "A few recent {service} projects." — without a
 	// doubled "projects" when the service name already ends in project(s).
-	$recent_noun = strtolower( $title );
-	$recent_default = preg_match( '/\bprojects?$/i', $recent_noun )
-		? 'A few recent ' . $recent_noun . '.'
-		: 'A few recent ' . $recent_noun . ' projects.';
-	$recent_title = hfhs_svc( 'hfhs_svc_recent_title', esc_html( $recent_default ) );
+	// Override per page via the "Recent Work Heading" CMB2 field (hfhs_svc_recent_title).
+	$recent_default = function_exists( 'hfhs_svc_recent_heading_default' )
+		? hfhs_svc_recent_heading_default( $title )
+		: ( preg_match( '/\bprojects?$/i', strtolower( $title ) )
+			? 'A few recent ' . strtolower( $title ) . '.'
+			: 'A few recent ' . strtolower( $title ) . ' projects.' );
+	$recent_title = hfhs_svc( 'hfhs_svc_recent_title', $recent_default );
 
 	$pricing_line  = hfhs_svc( 'hfhs_svc_pricing_line', $d['pricing_line'] );
 	$pricing_body  = hfhs_svc( 'hfhs_svc_pricing_body', $d['pricing_body'] );
