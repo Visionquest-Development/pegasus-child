@@ -54,7 +54,7 @@ body.igj { font-family: var(--igj-font); color: var(--igj-ink); font-size: 1.062
 .igj-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.25rem; }
 
 /* Header */
-.igj-header { position: sticky; top: 0; z-index: 1030; background: #fff; transition: box-shadow .2s; }
+.igj-header { position: -webkit-sticky; position: sticky; top: 0; z-index: 1030; background: #fff; transition: box-shadow .2s; }
 .admin-bar .igj-header { top: 32px; }
 .igj-header.is-scrolled { box-shadow: 0 4px 18px rgba(28,32,66,.1); }
 .igj-topbar { background: var(--igj-navy); color: #e8e9f5; font-size: .9rem; padding: .4rem 0; }
@@ -79,7 +79,7 @@ body.igj { font-family: var(--igj-font); color: var(--igj-ink); font-size: 1.062
 .igj-hero { position: relative; min-height: 560px; display: flex; align-items: center; color: #fff; isolation: isolate; overflow: hidden; }
 /* .igj prefix so the generic ".igj picture img { height: auto }" rule below can't shrink or stretch the hero photo out of the section */
 .igj-hero__media, .igj-hero__media picture, .igj .igj-hero__img, .igj-hero__img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
-.igj-hero__img { object-fit: cover; object-position: 30% 35%; }
+.igj-hero__img { -o-object-fit: cover; object-fit: cover; -o-object-position: 30% 35%; object-position: 30% 35%; }
 .igj-hero__media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(28,32,66,.92) 0%, rgba(28,32,66,.78) 45%, rgba(28,32,66,.25) 100%); }
 .igj-hero__inner { position: relative; z-index: 1; padding-top: 4rem; padding-bottom: 4rem; }
 .igj-hero__panel { max-width: 640px; }
@@ -177,8 +177,8 @@ body.igj { font-family: var(--igj-font); color: var(--igj-ink); font-size: 1.062
 
 /* Sidebar cards */
 .igj-sidecard { border: 1px solid var(--igj-line); border-radius: var(--igj-radius); padding: 1.4rem; margin-bottom: 1.25rem; background: #fff; }
-.igj-sidecard--quote { background: var(--igj-tint); border-color: transparent; }
-@media (min-width: 992px) { .igj-sidecard--quote { position: sticky; top: 130px; } }
+.igj-sidecard--quote { background: var(--igj-tint); border-color: transparent; z-index: 999; }
+@media (min-width: 992px) { .igj-sidecard--quote { position: -webkit-sticky; position: sticky; top: 130px; } }
 .igj-sidecard__title { font-size: 1.2rem; margin-bottom: .6rem; }
 .igj-linklist { list-style: none; padding: 0; margin: 0; }
 .igj-linklist li { border-bottom: 1px solid var(--igj-line); }
@@ -214,7 +214,8 @@ body.igj { font-family: var(--igj-font); color: var(--igj-ink); font-size: 1.062
 .igj-oe__grid { display: grid; gap: 1.75rem 3rem; align-items: center; }
 @media (min-width: 992px) { .igj-oe__grid { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); } }
 .igj-oe__eyebrow { display: inline-flex; align-items: center; gap: .55rem; background: var(--igj-navy); color: #fff; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; font-size: .82rem; border-radius: 999px; padding: .4rem .95rem; margin: 0 0 1rem; }
-.igj-oe__pulse { width: 10px; height: 10px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 0 0 rgba(74,222,128,.7); animation: igj-pulse 1.8s infinite; }
+.igj-oe__pulse { width: 10px; height: 10px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 0 0 rgba(74,222,128,.7); -webkit-animation: igj-pulse 1.8s infinite; animation: igj-pulse 1.8s infinite; }
+@-webkit-keyframes igj-pulse { 0% { box-shadow: 0 0 0 0 rgba(74,222,128,.7); } 70% { box-shadow: 0 0 0 10px rgba(74,222,128,0); } 100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); } }
 @keyframes igj-pulse { 0% { box-shadow: 0 0 0 0 rgba(74,222,128,.7); } 70% { box-shadow: 0 0 0 10px rgba(74,222,128,0); } 100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); } }
 .igj .igj-oe__title { color: var(--igj-navy); font-size: clamp(2.1rem, 5vw, 3.6rem); font-weight: 850; line-height: 1.05; letter-spacing: -.02em; margin: 0 0 .85rem; }
 .igj-oe__dates { font-size: clamp(1.25rem, 2.4vw, 1.75rem); font-weight: 800; margin: 0 0 .75rem; }
@@ -229,7 +230,7 @@ body.igj { font-family: var(--igj-font); color: var(--igj-ink); font-size: 1.062
 .igj-oe .igj-btn { width: 100%; white-space: normal; text-align: center; }
 .igj-oe__link { text-align: center; font-weight: 700; color: var(--igj-navy) !important; }
 @media (max-width: 575.98px) { .igj-oe { padding: 2.25rem 0 2.5rem; } .igj-oe__side { padding: 1.1rem; } }
-@media (prefers-reduced-motion: reduce) { .igj-oe__pulse { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .igj-oe__pulse { -webkit-animation: none; animation: none; } }
 
 /* Split hero with Joe & Dianna's portrait */
 .igj-hero--split { background: linear-gradient(135deg, var(--igj-navy) 0%, var(--igj-brand-dark) 100%); min-height: 0; }
@@ -265,12 +266,12 @@ body.igj { font-family: var(--igj-font); color: var(--igj-ink); font-size: 1.062
 /* Meet Joe & Dianna (home) */
 .igj-meet__people { display: grid; gap: .75rem; margin: 1.25rem 0 1.5rem; }
 .igj-meet__people li { display: flex; align-items: center; gap: .85rem; }
-.igj .igj-meet__avatar { width: 64px; height: 64px; object-fit: cover; object-position: top; border-radius: 50%; border: 3px solid #fff; box-shadow: var(--igj-shadow); }
+.igj .igj-meet__avatar { width: 64px; height: 64px; -o-object-fit: cover; object-fit: cover; -o-object-position: top; object-position: top; border-radius: 50%; border: 3px solid #fff; box-shadow: var(--igj-shadow); }
 
 /* Agent cards */
 .igj-agent { background: #fff; border: 1px solid var(--igj-line); border-radius: var(--igj-radius); padding: 1.5rem; height: 100%; box-shadow: var(--igj-shadow); scroll-margin-top: 140px; }
 .igj-agent__head { display: flex; gap: 1.1rem; align-items: center; margin-bottom: 1rem; }
-.igj .igj-agent__photo { width: 120px; height: 150px; object-fit: cover; object-position: top; border-radius: 14px; flex: 0 0 auto; }
+.igj .igj-agent__photo { width: 120px; height: 150px; -o-object-fit: cover; object-fit: cover; -o-object-position: top; object-position: top; border-radius: 14px; flex: 0 0 auto; }
 .igj .igj-agent__name { font-size: 1.45rem; margin: 0 0 .2rem; }
 .igj-agent__title { font-weight: 700; color: var(--igj-brand-dark); margin: 0 0 .2rem; }
 .igj-agent__npn { font-size: .92rem; color: var(--igj-muted); margin: 0; }
@@ -329,6 +330,6 @@ body.igj { font-family: var(--igj-font); color: var(--igj-ink); font-size: 1.062
 
 /* Motion preferences */
 @media (prefers-reduced-motion: reduce) {
-	.igj .wow { visibility: visible !important; animation: none !important; }
+	.igj .wow { visibility: visible !important; -webkit-animation: none !important; animation: none !important; }
 	.igj-btn, .igj-card { transition: none; }
 }
