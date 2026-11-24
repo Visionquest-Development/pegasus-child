@@ -8,14 +8,14 @@
  *
  * Header/footer handled by the parent theme via get_header()/get_footer().
  *
- * A branded landing that hands off to the payment portal. By default the card
- * shows HFHS's Stripe Buy Button (same button as the old hfhsgeorgia.com/pay/
- * page; button ID + publishable key are CMB2 fields). Filling "Button Link"
- * swaps it for a branded "Pay Online Now" link (Stripe Payment Link or Jobber
- * Client Hub) that opens in a new tab. Either way checkout happens on Stripe/
- * Jobber and no card data ever touches this site. Fully CMB2-driven
- * ("Pay Page Content" metabox in functions.php); every string/link ships with a
- * default. Right column is a repeatable "help" group (invoice questions, checks).
+ * A branded landing for paying an invoice with HFHS's Stripe Buy Button
+ * (same button as the old hfhsgeorgia.com/pay/ page; button ID + publishable
+ * key are CMB2 fields). Filling "Button Link" swaps it for a branded
+ * "Pay Online Now" link (Stripe Payment Link or Jobber Client Hub) that opens
+ * in a new tab. Checkout happens on Stripe (or Jobber) and no card data ever
+ * touches this site. Fully CMB2-driven ("Pay Page Content" metabox in
+ * functions.php); every string/link ships with a default. Right column is a
+ * repeatable "help" group (invoice questions, checks).
  */
 ?>
 <?php get_header(); ?>
@@ -26,8 +26,7 @@
 	$hero_bg = hfhs_hero_bg( hfhs_pay_field( 'hero_image', '' ), '' );
 
 	$pay_body_default =
-		'<p>Click the secure payment button below to pay your invoice online by credit or debit card. Your payment is processed securely by Stripe, and a receipt is emailed to you automatically.</p>' .
-		'<p>Questions about an invoice before you pay? Give us a call &mdash; we&rsquo;re happy to walk you through it.</p>';
+		'<p>Enter the amount from your invoice and click Buy to pay securely by card through Stripe. Please include your invoice number or service address in the checkout notes if prompted. Stripe will email you a receipt once your payment goes through.</p>';
 
 	$pay_link   = hfhs_url( hfhs_pay_field( 'pay_button_link', '' ) );
 
@@ -70,7 +69,7 @@
 			<p class="hfhs-eyebrow hfhs-eyebrow--light"><?php echo esc_html( hfhs_pay_field( 'hero_eyebrow', 'Quick Pay' ) ); ?></p>
 			<p class="hfhs-eyebrow-script hfhs-eyebrow-script--light"><?php echo esc_html( hfhs_pay_field( 'hero_script', 'From Our Family to Yours.' ) ); ?></p>
 			<h1 class="hfhs-hero__title"><?php echo wp_kses_post( hfhs_pay_field( 'hero_title', 'Pay your <em>invoice.</em>' ) ); ?></h1>
-			<p class="hfhs-hero__lead"><?php echo esc_html( hfhs_pay_field( 'hero_text', 'Secure online payment by credit or debit card, processed through Stripe — our trusted billing partner.' ) ); ?></p>
+			<p class="hfhs-hero__lead"><?php echo esc_html( hfhs_pay_field( 'hero_text', 'Enter the amount from your invoice and pay securely by card through Stripe.' ) ); ?></p>
 		</div>
 	</section>
 
