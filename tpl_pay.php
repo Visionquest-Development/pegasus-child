@@ -8,12 +8,14 @@
  *
  * Header/footer handled by the parent theme via get_header()/get_footer().
  *
- * A branded landing that hands off to the payment portal. The "Pay Online Now"
- * button is a plain URL field (Stripe Payment Link or Jobber Client Hub) that
- * opens in a new tab — the redirect is intentional so payments stay reconciled
- * in Stripe/Jobber and no card data ever touches this site. Fully CMB2-driven
- * ("Pay Page Content" metabox in functions.php); every string/link ships with a
- * default. Right column is a repeatable "help" group (invoice questions, checks).
+ * A branded landing for paying an invoice with HFHS's Stripe Buy Button
+ * (same button as the old hfhsgeorgia.com/pay/ page; button ID + publishable
+ * key are CMB2 fields). Filling "Button Link" swaps it for a branded
+ * "Pay Online Now" link (Stripe Payment Link or Jobber Client Hub) that opens
+ * in a new tab. Checkout happens on Stripe (or Jobber) and no card data ever
+ * touches this site. Fully CMB2-driven ("Pay Page Content" metabox in
+ * functions.php); every string/link ships with a default. Right column is a
+ * repeatable "help" group (invoice questions, checks).
  */
 ?>
 <?php get_header(); ?>
@@ -24,10 +26,14 @@
 	$hero_bg = hfhs_hero_bg( hfhs_pay_field( 'hero_image', '' ), '' );
 
 	$pay_body_default =
-		'<p>Click the button below and sign in to your HFHS client portal to view your open invoices and pay online. You&rsquo;ll be able to see invoice details, choose a payment method, and receive an emailed receipt automatically.</p>' .
-		'<p>If this is your first time paying online, use the email address we have on file to access your account.</p>';
+		'<p>Enter the amount from your invoice and click Buy to pay securely by card through Stripe. Please include your invoice number or service address in the checkout notes if prompted. Stripe will email you a receipt once your payment goes through.</p>';
 
-	$pay_link   = hfhs_pay_field( 'pay_button_link', '' );
+	$pay_link   = hfhs_url( hfhs_pay_field( 'pay_button_link', '' ) );
+
+	// Stripe Buy Button (default = the button from the old hfhsgeorgia.com/pay/ page).
+	$stripe_btn_id = hfhs_pay_field( 'stripe_buy_button_id', HFHS_STRIPE_BUY_BUTTON_ID );
+	$stripe_pk     = hfhs_pay_field( 'stripe_publishable_key', HFHS_STRIPE_PUBLISHABLE_KEY );
+	$use_stripe    = ! $pay_link && $stripe_btn_id && 0 === strpos( $stripe_pk, 'pk_' );
 	$pay_note   = hfhs_pay_field( 'pay_note', 'Secure payment processing via Stripe &middot; Hart Family of Home Services does not store your card details on our site.' );
 
 	// Right-column help cards (repeatable; falls back to these two).
@@ -56,14 +62,14 @@
 		<div class="hfhs-hero__overlay" aria-hidden="true"></div>
 		<div class="container hfhs-hero__inner wow fadeInUp" data-wow-duration="1s">
 			<nav class="hfhs-breadcrumb" aria-label="Breadcrumb">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a>
+				<a href="<?php echo esc_url( hfhs_home_link( '/' ) ); ?>">Home</a>
 				<span aria-hidden="true">/</span>
 				<span aria-current="page">Pay</span>
 			</nav>
 			<p class="hfhs-eyebrow hfhs-eyebrow--light"><?php echo esc_html( hfhs_pay_field( 'hero_eyebrow', 'Quick Pay' ) ); ?></p>
 			<p class="hfhs-eyebrow-script hfhs-eyebrow-script--light"><?php echo esc_html( hfhs_pay_field( 'hero_script', 'From Our Family to Yours.' ) ); ?></p>
 			<h1 class="hfhs-hero__title"><?php echo wp_kses_post( hfhs_pay_field( 'hero_title', 'Pay your <em>invoice.</em>' ) ); ?></h1>
-			<p class="hfhs-hero__lead"><?php echo esc_html( hfhs_pay_field( 'hero_text', 'Secure online payment through our client portal. Accepts credit cards, debit cards, and ACH bank transfers — all processed through our trusted billing partner.' ) ); ?></p>
+			<p class="hfhs-hero__lead"><?php echo esc_html( hfhs_pay_field( 'hero_text', 'Enter the amount from your invoice and pay securely by card through Stripe.' ) ); ?></p>
 		</div>
 	</section>
 
@@ -77,12 +83,19 @@
 					<div class="hfhs-paycard">
 						<p class="hfhs-eyebrow"><?php echo esc_html( hfhs_pay_field( 'pay_eyebrow', 'Online Payment' ) ); ?></p>
 						<p class="hfhs-eyebrow-script hfhs-paycard__script"><?php echo esc_html( hfhs_pay_field( 'pay_script', 'Fast & secure.' ) ); ?></p>
-						<h2 class="hfhs-display hfhs-paycard__title"><?php echo wp_kses_post( hfhs_pay_field( 'pay_title', 'Pay through our <em>client portal.</em>' ) ); ?></h2>
+						<h2 class="hfhs-display hfhs-paycard__title"><?php echo wp_kses_post( hfhs_pay_field( 'pay_title', 'Pay your <em>invoice online.</em>' ) ); ?></h2>
 						<div class="hfhs-paycard__body"><?php echo wp_kses_post( wpautop( hfhs_pay_field( 'pay_body', $pay_body_default ) ) ); ?></div>
 
-						<a class="hfhs-btn hfhs-btn--dark hfhs-paycard__btn" href="<?php echo esc_url( $pay_link ? $pay_link : '#' ); ?>"<?php echo $pay_link ? ' target="_blank" rel="noopener noreferrer"' : ''; ?>>
+						<?php if ( $pay_link ) : ?>
+						<a class="hfhs-btn hfhs-btn--dark hfhs-paycard__btn" href="<?php echo esc_url( $pay_link ); ?>" target="_blank" rel="noopener noreferrer">
 							<?php echo esc_html( hfhs_pay_field( 'pay_button_text', 'Pay Online Now' ) ); ?> <span class="hfhs-arrow" aria-hidden="true">&rarr;</span>
 						</a>
+						<?php elseif ( $use_stripe ) : ?>
+						<div class="hfhs-paycard__stripe">
+							<script async src="https://js.stripe.com/v3/buy-button.js"></script>
+							<stripe-buy-button buy-button-id="<?php echo esc_attr( $stripe_btn_id ); ?>" publishable-key="<?php echo esc_attr( $stripe_pk ); ?>"></stripe-buy-button>
+						</div>
+						<?php endif; ?>
 
 						<?php if ( $pay_note ) : ?>
 							<p class="hfhs-paycard__note"><span class="hfhs-paycard__lock" aria-hidden="true">&#128274;</span> <?php echo wp_kses_post( $pay_note ); ?></p>

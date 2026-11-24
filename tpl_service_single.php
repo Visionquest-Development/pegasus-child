@@ -116,6 +116,16 @@ while ( have_posts() ) :
 
 	$gallery = hfhs_svc_rows( 'hfhs_svc_gallery', $d['gallery'] );
 
+	// Recent Work heading. Default "A few recent {service} projects." — without a
+	// doubled "projects" when the service name already ends in project(s).
+	// Override per page via the "Recent Work Heading" CMB2 field (hfhs_svc_recent_title).
+	$recent_default = function_exists( 'hfhs_svc_recent_heading_default' )
+		? hfhs_svc_recent_heading_default( $title )
+		: ( preg_match( '/\bprojects?$/i', strtolower( $title ) )
+			? 'A few recent ' . strtolower( $title ) . '.'
+			: 'A few recent ' . strtolower( $title ) . ' projects.' );
+	$recent_title = hfhs_svc( 'hfhs_svc_recent_title', $recent_default );
+
 	$pricing_line  = hfhs_svc( 'hfhs_svc_pricing_line', $d['pricing_line'] );
 	$pricing_body  = hfhs_svc( 'hfhs_svc_pricing_body', $d['pricing_body'] );
 	$warranty_line = hfhs_svc( 'hfhs_svc_warranty_line', $d['warranty_line'] );
@@ -155,9 +165,9 @@ while ( have_posts() ) :
 		<div class="hfhs-hero__overlay" aria-hidden="true"></div>
 		<div class="container hfhs-hero__inner wow fadeInUp" data-wow-duration="1s">
 			<nav class="hfhs-breadcrumb" aria-label="Breadcrumb">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a>
+				<a href="<?php echo esc_url( hfhs_home_link( '/' ) ); ?>">Home</a>
 				<span aria-hidden="true">/</span>
-				<a href="<?php echo esc_url( $svc_url ); ?>">Services</a>
+				<a href="<?php echo esc_url( hfhs_url( $svc_url ) ); ?>">Services</a>
 				<span aria-hidden="true">/</span>
 				<span aria-current="page"><?php echo esc_html( $title ); ?></span>
 			</nav>
@@ -171,7 +181,7 @@ while ( have_posts() ) :
 			<h1 class="hfhs-hero__title hfhs-svc-hero__title"><?php echo esc_html( $title ); ?>.</h1>
 			<?php if ( $lead ) : ?><p class="hfhs-hero__lead"><?php echo esc_html( $lead ); ?></p><?php endif; ?>
 			<div class="hfhs-hero__actions">
-				<a class="hfhs-btn hfhs-btn--solid" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Get a Free Estimate</a>
+				<a class="hfhs-btn hfhs-btn--solid" href="<?php echo esc_url( hfhs_home_link( '/contact/' ) ); ?>">Get a Free Estimate</a>
 				<a class="hfhs-btn hfhs-btn--outline-light" href="tel:+14045072579">Call 404-507-2579</a>
 			</div>
 		</div>
@@ -255,7 +265,7 @@ while ( have_posts() ) :
 				<div class="col-lg-9 col-xl-8 text-center hfhs-svc-work__head wow fadeInUp" data-wow-duration="0.9s">
 					<p class="hfhs-eyebrow"><?php echo esc_html( $lbl( 'recent_eyebrow', 'Recent Work' ) ); ?></p>
 					<p class="hfhs-eyebrow-script"><?php echo esc_html( $lbl( 'recent_script', 'From the field.' ) ); ?></p>
-					<h2 class="hfhs-display hfhs-svc-work__title">A few recent <?php echo esc_html( strtolower( $title ) ); ?> projects.</h2>
+					<h2 class="hfhs-display hfhs-svc-work__title"><?php echo wp_kses_post( $recent_title ); ?></h2>
 				</div>
 			</div>
 			<div class="row g-3 hfhs-svc-work__grid">
@@ -322,7 +332,7 @@ while ( have_posts() ) :
 			<div class="row g-0 hfhs-svc-related__grid">
 				<?php foreach ( $related as $r ) : ?>
 					<div class="col-6 col-lg-3">
-						<a class="hfhs-svc-rcard wow fadeInUp" data-wow-duration="0.7s" href="<?php echo esc_url( $r['url'] ); ?>">
+						<a class="hfhs-svc-rcard wow fadeInUp" data-wow-duration="0.7s" href="<?php echo esc_url( hfhs_url( $r['url'] ) ); ?>">
 							<?php if ( $r['number'] ) : ?><span class="hfhs-svc-rcard__num"><?php echo esc_html( $r['number'] ); ?></span><?php endif; ?>
 							<h3 class="hfhs-svc-rcard__title"><?php echo esc_html( $r['title'] ); ?></h3>
 							<span class="hfhs-svc-rcard__cta hfhs-arrow-link hfhs-arrow-link--light">Explore <span class="hfhs-arrow" aria-hidden="true">&rarr;</span></span>
@@ -358,7 +368,7 @@ while ( have_posts() ) :
 			<p class="hfhs-eyebrow-script hfhs-eyebrow-script--light"><?php echo esc_html( $lbl( 'cta_script', 'Ready to get started?' ) ); ?></p>
 			<h2 class="hfhs-display hfhs-cta__title"><?php echo wp_kses_post( $cta_title ); ?></h2>
 			<div class="hfhs-cta__actions">
-				<a class="hfhs-btn hfhs-btn--solid" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact Us</a>
+				<a class="hfhs-btn hfhs-btn--solid" href="<?php echo esc_url( hfhs_home_link( '/contact/' ) ); ?>">Contact Us</a>
 				<a class="hfhs-btn hfhs-btn--outline-light" href="tel:+14045072579">Call 404-507-2579</a>
 			</div>
 		</div>

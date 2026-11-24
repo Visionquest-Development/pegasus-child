@@ -98,12 +98,20 @@
 											// otherwise we output the Hart Family colophon so it can't be wiped by a
 											// theme-options save. Year stays dynamic.
 											$custom_footer = pegasus_get_option( 'footer_copy_textareacode' );
+											// Footer Privacy Policy link: the page chosen in Settings ▸ Privacy (once
+											// published), otherwise /privacy-policy/.
+											$hfhs_privacy_url  = function_exists( 'get_privacy_policy_url' ) ? get_privacy_policy_url() : '';
+											$hfhs_privacy_url  = $hfhs_privacy_url ? $hfhs_privacy_url : home_url( '/privacy-policy/' );
+											$hfhs_privacy_link = '<a class="hfhs-colophon__link" href="' . esc_url( function_exists( 'hfhs_url' ) ? hfhs_url( $hfhs_privacy_url ) : $hfhs_privacy_url ) . '">Privacy Policy</a>';
 											if ( $custom_footer ) {
 												echo wp_kses_post( $custom_footer );
+												if ( $hfhs_privacy_link ) {
+													echo '<div class="hfhs-colophon__legal">' . $hfhs_privacy_link . '</div>'; // phpcs:ignore -- escaped above
+												}
 											} else {
 										?>
 											<div class="hfhs-colophon">
-												<span class="hfhs-colophon__copy">&copy; <?php echo esc_html( date( 'Y' ) ); ?> Hart Family of Home Services, LLC &middot; All rights reserved</span>
+												<span class="hfhs-colophon__copy">&copy; <?php echo esc_html( date( 'Y' ) ); ?> Hart Family of Home Services, LLC &middot; All rights reserved<?php if ( $hfhs_privacy_link ) : ?> &middot; <?php echo $hfhs_privacy_link; // phpcs:ignore -- escaped above ?><?php endif; ?></span>
 												<span class="hfhs-colophon__script">From Our Family to Yours</span>
 											</div>
 										<?php

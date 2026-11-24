@@ -37,7 +37,7 @@
 		$bootstrap_navbar_expand_class = 'navbar-expand-md';
 	}
 
-	$home_url = esc_url( home_url( '/' ) ) ? esc_url( home_url( '/' ) ) : '#';
+	$home_url = esc_url( hfhs_home_link( '/' ) ) ? esc_url( hfhs_home_link( '/' ) ) : '#';
 	$fallback_menu = '<ul id="" class="navbar-nav"><li class="nav-item active current-menu-item"><a class="nav-link" href="' . $home_url . '">Home <span class="visually-hidden">(current)</span></a></li></ul>';
 	$classes_for_nav_menu = 'navbar-nav primary-navigation-bar ' . $right_align_nav_items . ' ';
 	//$final_menu = pegasus_get_menu( 'primary', $classes_for_nav_menu, 4, $fallback_menu );
@@ -65,7 +65,7 @@
 				<?php if( 'on' !== pegasus_get_option( 'full_container_chk' ) & 'container' !== $header_container_check ) : ?>
 					<div class="<?php echo esc_attr( $final_inner_container_class ); ?>">
 				<?php endif; ?>
-						<a class="navbar-brand <?php echo esc_attr( $centerLogo ); ?> " href="<?php echo esc_url( home_url( '/' ) ); ?>">
+						<a class="navbar-brand <?php echo esc_attr( $centerLogo ); ?> " href="<?php echo esc_url( hfhs_home_link( '/' ) ); ?>">
 							<?php get_template_part( 'templates/logo', 'header' ); ?>
 						</a>
 						<!-- Brand and toggle get grouped for better mobile display -->
@@ -77,9 +77,9 @@
 							<?php
 							/*
 							if( ! empty( $logo ) ) : ?>
-								<a class="navbar-brand logo-container <?php echo esc_attr( $centerLogo ); ?>" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img id="logo" src="<?php echo esc_url( $logo ); ?>" alt=""/></a>
+								<a class="navbar-brand logo-container <?php echo esc_attr( $centerLogo ); ?>" href="<?php echo esc_url( hfhs_home_link( '/' ) ); ?>"><img id="logo" src="<?php echo esc_url( $logo ); ?>" alt=""/></a>
 							<?php else: ?>
-								<h1 class="site-title <?php echo esc_attr( $centerLogo ); ?>"><a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+								<h1 class="site-title <?php echo esc_attr( $centerLogo ); ?>"><a class="navbar-brand" href="<?php echo esc_url( hfhs_home_link( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 							<?php
 							endif;
 							*/
@@ -108,7 +108,7 @@
 							$nav_cta_classes = trim( (string) pegasus_get_option( 'nav_cta_classes' ) );
 							if ( $nav_cta_text && $nav_cta_link ) : ?>
 							<div class="contact-button-container">
-								<a href="<?php echo esc_url( $nav_cta_link ); ?>" class=" <?php echo $nav_cta_classes ? ' ' . esc_attr( $nav_cta_classes ) : ''; ?>" data-wow-delay="0.3s"><?php echo esc_html( $nav_cta_text ); ?></a>
+								<a href="<?php echo esc_url( function_exists( 'hfhs_url' ) ? hfhs_url( $nav_cta_link ) : $nav_cta_link ); ?>" class=" <?php echo $nav_cta_classes ? ' ' . esc_attr( $nav_cta_classes ) : ''; ?>" data-wow-delay="0.3s"><?php echo esc_html( $nav_cta_text ); ?></a>
 							</div>
 							<?php endif; ?>
 						</div>

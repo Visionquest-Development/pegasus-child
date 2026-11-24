@@ -15,7 +15,7 @@
 	 * override metaboxes for the reusable Service Detail Page template).
 	 */
 	function hfhs_include_inc_files() {
-		foreach ( array( 'hfhs-services-catalogue.php', 'cmb2-service-single-fields.php', 'cmb2-home-fields.php' ) as $file ) {
+		foreach ( array( 'hfhs-site-fixes.php', 'hfhs-services-catalogue.php', 'cmb2-service-single-fields.php', 'cmb2-home-fields.php', 'cmb2-services-hub-fields.php', 'cmb2-thank-you-fields.php' ) as $file ) {
 			$path = get_stylesheet_directory() . '/inc/' . $file;
 			if ( file_exists( $path ) ) {
 				require_once $path;
@@ -559,8 +559,8 @@
 	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~ CONTACT PAGE — CMB2 FIELDS + "FIELD OR DEFAULT" HELPERS ~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	Fully CMB2-driven. The estimate form is a Gravity Forms shortcode field (drop
-	the [gravityform] tag in). Repeatable groups: Direct-Contact items and the
+	Fully CMB2-driven. The estimate form is a FluentForm: set "FluentForm ID" (or
+	paste any form shortcode). Repeatable groups: Direct-Contact items and the
 	Service-Area city list. Same override-or-default pattern as the other pages.
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
@@ -627,7 +627,8 @@
 		$cmb->add_field( array( 'name' => 'Form Eyebrow', 'id' => $prefix . 'form_eyebrow', 'type' => 'text', 'attributes' => array( 'placeholder' => 'Free Estimate Form' ) ) );
 		$cmb->add_field( array( 'name' => 'Form Script', 'id' => $prefix . 'form_script', 'type' => 'text', 'attributes' => array( 'placeholder' => 'Tell us about your project.' ) ) );
 		$cmb->add_field( array( 'name' => 'Form Title', 'desc' => 'Use &lt;em&gt; for the italic accent.', 'id' => $prefix . 'form_title', 'type' => 'textarea_small' ) );
-		$cmb->add_field( array( 'name' => 'Gravity Forms Shortcode', 'desc' => 'Paste the Gravity Forms shortcode here (e.g. [gravityform id="1" title="false" description="false"]). Left blank, a placeholder shows.', 'id' => $prefix . 'form_shortcode', 'type' => 'text' ) );
+		$cmb->add_field( array( 'name' => 'FluentForm ID', 'desc' => 'The ID of the estimate form in Fluent Forms (Fluent Forms ▸ All Forms, "ID" column). Renders [fluentform id="…"]. Set the form\'s confirmation to redirect to the Thank You page.', 'id' => $prefix . 'fluentform_id', 'type' => 'text_small', 'attributes' => array( 'type' => 'number', 'min' => '1' ) ) );
+		$cmb->add_field( array( 'name' => 'Form Shortcode (optional)', 'desc' => 'Optional. Paste a full form shortcode instead (e.g. [fluentform id="3"]). When filled, it is used instead of the FluentForm ID. With neither set, a placeholder shows.', 'id' => $prefix . 'form_shortcode', 'type' => 'text' ) );
 
 		$cmb->add_field( array( 'name' => 'Direct Contact (right card)', 'type' => 'title', 'id' => $prefix . 'title_direct', 'before_row' => '<hr>' ) );
 		$cmb->add_field( array( 'name' => 'Direct Contact Heading', 'id' => $prefix . 'direct_heading', 'type' => 'text', 'attributes' => array( 'placeholder' => 'Direct Contact' ) ) );
@@ -651,20 +652,27 @@
 		$cmb->add_field( array( 'name' => 'Closing CTA', 'type' => 'title', 'id' => $prefix . 'title_cta', 'before_row' => '<hr>' ) );
 		$cmb->add_field( array( 'name' => 'CTA Script', 'id' => $prefix . 'cta_script', 'type' => 'text', 'attributes' => array( 'placeholder' => 'Prefer to talk first?' ) ) );
 		$cmb->add_field( array( 'name' => 'CTA Title', 'desc' => 'Use &lt;em&gt; for the italic accent.', 'id' => $prefix . 'cta_title', 'type' => 'textarea_small' ) );
+		$cmb->add_field( array( 'name' => 'CTA Phone', 'desc' => 'Shown on the "Call" button and auto-linked.', 'id' => $prefix . 'cta_phone', 'type' => 'text', 'attributes' => array( 'placeholder' => '404-507-2579' ) ) );
+		$cmb->add_field( array( 'name' => 'CTA Email', 'desc' => 'The "Email Us" button address.', 'id' => $prefix . 'cta_email', 'type' => 'text_email', 'attributes' => array( 'placeholder' => 'contact@hfhsgeorgia.com' ) ) );
 	}
 
 
 	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~ PAY PAGE — CMB2 FIELDS + "FIELD OR DEFAULT" HELPERS ~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	Branded landing that hands off to the payment portal. The "Pay Online Now"
-	button link is a plain URL field — paste the Stripe Payment Link (buy.stripe.com/…)
-	or the Jobber Client Hub URL. Redirect-out is intentional so payments stay
-	reconciled in Stripe/Jobber (nothing card-related is stored on this site).
-	Same override-or-default pattern as the other pages.
+	Branded landing for paying an invoice with HFHS's Stripe Buy Button (same
+	button as the old hfhsgeorgia.com/pay/ page; IDs are CMB2 fields). Filling
+	"Button Link" swaps it for a branded "Pay Online Now" link instead (Stripe
+	Payment Link or Jobber Client Hub URL). Redirect-out is intentional so
+	payments stay reconciled in Stripe/Jobber (nothing card-related is stored
+	on this site). Same override-or-default pattern as the other pages.
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 	define( 'HFHS_PAY_PREFIX', '_hfhs_pay_' );
+
+	// Stripe Buy Button from the old hfhsgeorgia.com/pay/ page (public, client-side embed values).
+	define( 'HFHS_STRIPE_BUY_BUTTON_ID', 'buy_btn_1OKhwzIxj8Xk81En8YtITVGF' );
+	define( 'HFHS_STRIPE_PUBLISHABLE_KEY', 'pk_live_51NdhhlIxj8Xk81EnQd9vwPOhDrM9FKjnR5Axo1WgZ1e3bX69WeX7kyN3SbW9rRl9yOxbNhCA6vp9uc0edOnbRF7G00s3heYZ7o' );
 
 	function hfhs_pay_field( $key, $default = '' ) {
 		if ( isset( $GLOBALS['hfhs_prefill'] ) ) { $GLOBALS['hfhs_prefill'][ HFHS_PAY_PREFIX . $key ] = $default; }
@@ -711,7 +719,7 @@
 				'object_types' => array( 'page' ),
 				'context'      => 'normal',
 				'priority'     => 'high',
-				'closed'       => true,
+				'closed'       => false,
 				'show_on_cb'   => 'hfhs_show_on_pay_template',
 			)
 		);
@@ -720,16 +728,18 @@
 		$cmb->add_field( array( 'name' => 'Hero Eyebrow', 'id' => $prefix . 'hero_eyebrow', 'type' => 'text', 'attributes' => array( 'placeholder' => 'Quick Pay' ) ) );
 		$cmb->add_field( array( 'name' => 'Hero Script', 'id' => $prefix . 'hero_script', 'type' => 'text', 'attributes' => array( 'placeholder' => 'From Our Family to Yours.' ) ) );
 		$cmb->add_field( array( 'name' => 'Hero Title', 'desc' => 'Use &lt;em&gt; for the italic accent.', 'id' => $prefix . 'hero_title', 'type' => 'textarea_small' ) );
-		$cmb->add_field( array( 'name' => 'Hero Intro', 'id' => $prefix . 'hero_text', 'type' => 'textarea_small' ) );
+		$cmb->add_field( array( 'name' => 'Hero Intro', 'desc' => 'Default: "Enter the amount from your invoice and pay securely by card through Stripe." Leave blank to use the default.', 'id' => $prefix . 'hero_text', 'type' => 'textarea_small' ) );
 		$cmb->add_field( array( 'name' => 'Hero Background Image', 'desc' => 'Optional. Leave empty for the solid dark hero shown in the design. (The page Featured Image is also used if set.)', 'id' => $prefix . 'hero_image', 'type' => 'file', 'options' => array( 'url' => false ) ) );
 
 		$cmb->add_field( array( 'name' => 'Payment Card (left)', 'type' => 'title', 'id' => $prefix . 'title_pay', 'before_row' => '<hr>' ) );
 		$cmb->add_field( array( 'name' => 'Eyebrow', 'id' => $prefix . 'pay_eyebrow', 'type' => 'text', 'attributes' => array( 'placeholder' => 'Online Payment' ) ) );
 		$cmb->add_field( array( 'name' => 'Script', 'id' => $prefix . 'pay_script', 'type' => 'text', 'attributes' => array( 'placeholder' => 'Fast & secure.' ) ) );
-		$cmb->add_field( array( 'name' => 'Title', 'desc' => 'Use &lt;em&gt; for the italic accent.', 'id' => $prefix . 'pay_title', 'type' => 'textarea_small' ) );
-		$cmb->add_field( array( 'name' => 'Body', 'id' => $prefix . 'pay_body', 'type' => 'wysiwyg', 'options' => array( 'textarea_rows' => 5 ) ) );
-		$cmb->add_field( array( 'name' => 'Button Text', 'id' => $prefix . 'pay_button_text', 'type' => 'text', 'attributes' => array( 'placeholder' => 'Pay Online Now' ) ) );
-		$cmb->add_field( array( 'name' => 'Button Link (payment portal)', 'desc' => 'Paste the Stripe Payment Link (https://buy.stripe.com/…) or the Jobber Client Hub URL. Opens in a new tab.', 'id' => $prefix . 'pay_button_link', 'type' => 'text_url' ) );
+		$cmb->add_field( array( 'name' => 'Title', 'desc' => 'Default: "Pay your invoice &lt;em&gt;online.&lt;/em&gt;" Use &lt;em&gt; for the italic accent. Leave blank to use the default.', 'id' => $prefix . 'pay_title', 'type' => 'textarea_small' ) );
+		$cmb->add_field( array( 'name' => 'Body', 'desc' => 'Default describes paying with the Stripe Buy Button (enter the invoice amount and click Buy). Leave blank to use the default. Do not refer to a client portal or sign-in.', 'id' => $prefix . 'pay_body', 'type' => 'wysiwyg', 'options' => array( 'textarea_rows' => 5 ) ) );
+		$cmb->add_field( array( 'name' => 'Stripe Buy Button ID', 'desc' => 'From Stripe ▸ Payment Links ▸ Buy button embed code (buy-button-id). Default: ' . HFHS_STRIPE_BUY_BUTTON_ID . ' (the button on the old Pay page).', 'id' => $prefix . 'stripe_buy_button_id', 'type' => 'text', 'attributes' => array( 'placeholder' => HFHS_STRIPE_BUY_BUTTON_ID ) ) );
+		$cmb->add_field( array( 'name' => 'Stripe Publishable Key', 'desc' => 'The publishable-key from the same embed code (pk_live_…). Never paste a secret key (sk_…).', 'id' => $prefix . 'stripe_publishable_key', 'type' => 'text', 'attributes' => array( 'placeholder' => 'pk_live_…' ) ) );
+		$cmb->add_field( array( 'name' => 'Button Text', 'desc' => 'Only used when "Button Link" is filled.', 'id' => $prefix . 'pay_button_text', 'type' => 'text', 'attributes' => array( 'placeholder' => 'Pay Online Now' ) ) );
+		$cmb->add_field( array( 'name' => 'Button Link (optional)', 'desc' => 'Optional. A Stripe Payment Link (https://buy.stripe.com/…) or Jobber Client Hub URL. When filled, a branded "Pay Online Now" button links here instead of the Stripe Buy Button. Opens in a new tab.', 'id' => $prefix . 'pay_button_link', 'type' => 'text_url' ) );
 		$cmb->add_field( array( 'name' => 'Security Note', 'id' => $prefix . 'pay_note', 'type' => 'textarea_small', 'attributes' => array( 'placeholder' => 'Secure payment processing via Stripe · …' ) ) );
 
 		$cmb->add_field( array( 'name' => 'Help Cards (right column)', 'type' => 'title', 'id' => $prefix . 'title_help', 'before_row' => '<hr>', 'desc' => 'Stacked cards beside the payment card (e.g. invoice questions, pay by check). Drag to reorder.' ) );
