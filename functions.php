@@ -107,3 +107,13 @@
 	if ( file_exists( $qbiq_seasonal ) ) {
 		require_once $qbiq_seasonal;
 	}
+
+
+	/**
+	 * Homepage promo popup (Black Friday). The include enqueues its own CSS
+	 * and works without CMB2 or Bootstrap (also droppable into a Divi child theme).
+	 */
+	$qbiq_promo = get_stylesheet_directory() . '/inc/qbiq-promo-popup.php';
+	if ( file_exists( $qbiq_promo ) ) {
+		require_once $qbiq_promo;
+	}

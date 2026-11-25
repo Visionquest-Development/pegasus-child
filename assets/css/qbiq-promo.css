@@ -1,0 +1,240 @@
+/* QBIQ homepage promo popup — self-contained styles (no Bootstrap).
+   Prefix: qbiq-promo- to avoid clashes with Divi and Bootstrap.
+   z-index is set above Divi's header (often ~99999).
+   Background image and further visual polish will be handled later. */
+
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@800;900&family=Inter:wght@600;700;900&display=swap');
+
+body.qbiq-promo-scroll-lock {
+	overflow: hidden;
+}
+
+.qbiq-promo-modal {
+	display: none;
+	position: fixed;
+	inset: 0;
+	z-index: 2000000;
+	font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.qbiq-promo-modal.qbiq-promo-is-open {
+	display: block;
+}
+
+.qbiq-promo-backdrop {
+	position: absolute;
+	inset: 0;
+	background: #000;
+	opacity: 0.65;
+}
+
+.qbiq-promo-dialog {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100%;
+	padding: 1.25rem;
+	box-sizing: border-box;
+}
+
+.qbiq-promo-content {
+	width: 100%;
+	max-width: 720px;
+	background: #000;
+	color: #fff;
+	border: 4px solid #FF8200;
+	border-radius: 0.75rem;
+	box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55);
+	overflow: hidden;
+}
+
+.qbiq-promo-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 0.85rem 1.1rem;
+	background: #000;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.qbiq-promo-title {
+	margin: 0;
+	font-size: 1.15rem;
+	font-weight: 700;
+	color: #fff;
+	line-height: 1.2;
+}
+
+.qbiq-promo-close {
+	appearance: none;
+	background: transparent;
+	border: 0;
+	color: #fff;
+	font-size: 1.75rem;
+	line-height: 1;
+	cursor: pointer;
+	padding: 0 0.25rem;
+}
+
+.qbiq-promo-close:hover,
+.qbiq-promo-close:focus {
+	color: #FF8200;
+	outline: none;
+}
+
+.qbiq-promo-body {
+	padding: 0;
+}
+
+.qbiq-promo-hero {
+	background: #000;
+	color: #fff;
+	text-align: center;
+	padding: 2.25rem 1.25rem 1.5rem;
+}
+
+.qbiq-promo-logo,
+.qbiq-promo-logo img,
+.qbiq-promo-logo-img,
+.qbiq-promo-hero .custom-logo,
+.qbiq-promo-hero svg {
+	max-width: 180px;
+	height: auto;
+	margin: 0 auto 1rem;
+	display: block;
+}
+
+.qbiq-promo-gradient {
+	--grad-start: #F5A33C;
+	--grad-end: #F0D6A0;
+	background: linear-gradient(180deg, var(--grad-start), var(--grad-end));
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	font-weight: 900;
+	line-height: 1;
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+}
+
+.qbiq-promo-heading {
+	font-size: clamp(3rem, 7.5vw, 5rem);
+	margin: 0.1rem 0;
+	font-family: "League Spartan", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	font-weight: 900;
+}
+
+.qbiq-promo-callout {
+	margin: 1rem 0;
+	font-weight: 900;
+	font-size: clamp(1.1rem, 4.5vw, 1.75rem);
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+}
+
+.qbiq-promo-links a {
+	color: #FF8200;
+	text-decoration: none;
+}
+
+.qbiq-promo-links a:hover,
+.qbiq-promo-links a:focus {
+	color: #FF8200;
+	text-decoration: underline;
+}
+
+.qbiq-promo-code-wrap {
+	margin-top: 1.25rem;
+}
+
+.qbiq-promo-code-label {
+	font-size: clamp(1.5rem, 5vw, 3rem);
+	line-height: 1;
+	font-weight: 900;
+	text-transform: uppercase;
+}
+
+.qbiq-promo-code {
+	display: inline-block;
+	font-size: clamp(1.5rem, 4.5vw, 2.5rem);
+	font-weight: 700;
+	color: #FF8200;
+	line-height: 1.2;
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+.qbiq-promo-footer {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.6rem 0.85rem;
+	padding: 0.9rem 1.1rem 1.15rem;
+	background: #000;
+	border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.qbiq-promo-btn {
+	appearance: none;
+	cursor: pointer;
+	font-family: inherit;
+	font-size: 1rem;
+	font-weight: 700;
+	line-height: 1.2;
+	border-radius: 0.35rem;
+	padding: 0.55rem 1rem;
+}
+
+.qbiq-promo-btn-primary {
+	background: #FF8200;
+	border: 1px solid #FF8200;
+	color: #000;
+}
+
+.qbiq-promo-btn-primary:hover,
+.qbiq-promo-btn-primary:focus {
+	background: #ffa64d;
+	border-color: #ffa64d;
+}
+
+.qbiq-promo-btn-copy {
+	background: transparent;
+	border: 1px solid rgba(255, 255, 255, 0.45);
+	color: #fff;
+}
+
+.qbiq-promo-btn-copy:hover,
+.qbiq-promo-btn-copy:focus {
+	border-color: #FF8200;
+	color: #FF8200;
+}
+
+.qbiq-promo-btn-link {
+	background: transparent;
+	border: 0;
+	color: #ccc;
+	text-decoration: none;
+	margin-left: auto;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.qbiq-promo-btn-link:hover,
+.qbiq-promo-btn-link:focus {
+	color: #fff;
+	text-decoration: underline;
+}
+
+@media (max-width: 575px) {
+	.qbiq-promo-footer {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.qbiq-promo-btn-link {
+		margin-left: 0;
+		text-align: center;
+	}
+}
