@@ -248,6 +248,27 @@
 	  #homePromoModal .modal-dialog{ max-width:720px; }
 	}
 
+	#homePromoModal .qbiq-hero svg,
+	#homePromoModal .qbiq-promo-logo,
+	#homePromoModal .qbiq-promo-logo img,
+	#homePromoModal .custom-logo {
+	  max-width: 180px;
+	  height: auto;
+	  margin: 0 auto 1rem;
+	  display: block;
+	}
+
+	#homePromoModal .qbiq-links a {
+	  color: #FF8200;
+	  text-decoration: none;
+	}
+
+	#homePromoModal .qbiq-links a:hover,
+	#homePromoModal .qbiq-links a:focus {
+	  color: #FF8200;
+	  text-decoration: underline;
+	}
+
 	
 	
 	/*#field_2_67 {
