@@ -36,16 +36,6 @@
 			filemtime( get_stylesheet_directory() . '/assets/css/qbiq.css' )
 		);
 
-		// Homepage promo popup (same modal styles as QBIQ Camp)
-		if ( is_front_page() ) {
-			wp_enqueue_style(
-				'qbiq-promo',
-				get_stylesheet_directory_uri() . '/assets/css/qbiq-promo.css',
-				array( 'qbiq-tokens' ),
-				filemtime( get_stylesheet_directory() . '/assets/css/qbiq-promo.css' )
-			);
-		}
-
 		// Home V1 page-scoped styles (only on the Home template)
 		if ( is_page_template( 'tpl_home.php' ) ) {
 			wp_enqueue_style(
@@ -120,7 +110,8 @@
 
 
 	/**
-	 * Homepage promo popup (Black Friday) + CMB2 fields.
+	 * Homepage promo popup (Black Friday). The include enqueues its own CSS
+	 * and works without CMB2 or Bootstrap (also droppable into a Divi child theme).
 	 */
 	$qbiq_promo = get_stylesheet_directory() . '/inc/qbiq-promo-popup.php';
 	if ( file_exists( $qbiq_promo ) ) {
