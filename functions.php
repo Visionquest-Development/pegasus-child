@@ -36,6 +36,16 @@
 			filemtime( get_stylesheet_directory() . '/assets/css/qbiq.css' )
 		);
 
+		// Homepage promo popup (same modal styles as QBIQ Camp)
+		if ( is_front_page() ) {
+			wp_enqueue_style(
+				'qbiq-promo',
+				get_stylesheet_directory_uri() . '/assets/css/qbiq-promo.css',
+				array( 'qbiq-tokens' ),
+				filemtime( get_stylesheet_directory() . '/assets/css/qbiq-promo.css' )
+			);
+		}
+
 		// Home V1 page-scoped styles (only on the Home template)
 		if ( is_page_template( 'tpl_home.php' ) ) {
 			wp_enqueue_style(
@@ -106,4 +116,13 @@
 	$qbiq_seasonal = get_stylesheet_directory() . '/inc/seasonal-events.php';
 	if ( file_exists( $qbiq_seasonal ) ) {
 		require_once $qbiq_seasonal;
+	}
+
+
+	/**
+	 * Homepage promo popup (Black Friday) + CMB2 fields.
+	 */
+	$qbiq_promo = get_stylesheet_directory() . '/inc/qbiq-promo-popup.php';
+	if ( file_exists( $qbiq_promo ) ) {
+		require_once $qbiq_promo;
 	}
